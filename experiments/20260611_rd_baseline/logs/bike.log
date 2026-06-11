@@ -1,0 +1,18 @@
+[Bike Roundabout] 1 seq merged, 7950 frames, 124 batches/ep | img=256 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768)
+  ep01/15 loss=0.4192 lr=7.63e-05  (82s)
+  ep02/15 loss=0.1876 lr=2.19e-04  (82s)
+  ep03/15 loss=0.1611 lr=3.81e-04  (82s)
+  ep04/15 loss=0.1271 lr=4.86e-04  (82s)
+  ep05/15 loss=0.1006 lr=4.97e-04  (82s)
+  ep06/15 loss=0.0864 lr=4.75e-04  (82s)
+  ep07/15 loss=0.0700 lr=4.33e-04  (82s)
+  ep08/15 loss=0.0630 lr=3.74e-04  (82s)
+  ep09/15 loss=0.0580 lr=3.05e-04  (82s)
+  ep10/15 loss=0.0542 lr=2.31e-04  (82s)
+  ep11/15 loss=0.0514 lr=1.58e-04  (82s)
+  ep12/15 loss=0.0494 lr=9.37e-05  (82s)
+  ep13/15 loss=0.0480 lr=4.31e-05  (82s)
+  ep14/15 loss=0.0471 lr=1.09e-05  (94s)
+  ep15/15 loss=0.0467 lr=2.73e-09  (83s)
+saved experiments/20260611_rd_baseline/ckpt/bike.pth

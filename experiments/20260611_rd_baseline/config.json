@@ -1,0 +1,21 @@
+{
+  "exp": "20260611_rd_baseline",
+  "date": "2026-06-11",
+  "method": "reverse-distillation: frozen DINOv3 ViT-B/16 teacher -> OCBE bottleneck (trainable) -> transformer decoder student (trainable); anomaly = Topk per-patch reconstruction discrepancy",
+  "teacher": "vit_base_patch16_dinov3 (frozen)",
+  "taps": [5, 7, 9, 11],
+  "code_dim": 64,
+  "decoder_depth": 12,
+  "k_topk": 5,
+  "img": 256,
+  "epochs": 15,
+  "batch_size": 64,
+  "optimizer": "AdamW",
+  "weight_decay": 0.05,
+  "lr_schedule": "OneCycleLR (max_lr=5e-4)",
+  "num_workers": 8,
+  "loss": "Topk per-patch cosine distance (top-5 hardest patches), summed over 4 taps; NO CLS/LL term",
+  "protocol": "one-class PER-SCENE (same as MADViT): each scene MERGES all its sequences' train sub-videos into one model (7 scenes total; e.g. crossroads=seq1+2+3) -> eval on the scene's merged test (global concat AUC)",
+  "recipe_note": "optimization recipe aligned to the proven MADViT recipe (AdamW + wd5e-2 + OneCycleLR + bs64 + workers8). img=256/ImageNet-norm/architecture are deliberate RD+DINOv3 choices.",
+  "todo": "taps/code_dim/depth are placeholders to be swept; L5-L8 was a DeiT finding, re-verify per-layer for DINOv3."
+}

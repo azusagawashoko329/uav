@@ -1,0 +1,10 @@
+# 大文件/可复现产物,不入 git(权重仍在磁盘 experiments/*/ckpt/)
+__pycache__/
+*.pyc
+*.pth
+# 临时调度文件
+experiments/*/.queue
+experiments/*/.queue.lock
+# 编辑器/harness
+.vscode/
+.claude/
