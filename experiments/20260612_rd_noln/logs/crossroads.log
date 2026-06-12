@@ -1,0 +1,18 @@
+[Crossroads] 3 seq merged, 15772 frames, 246 batches/ep | img=256 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 tap_norm=False | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768)
+  ep01/15 loss=0.4247 lr=7.62e-05  (161s)
+  ep02/15 loss=0.1985 lr=2.19e-04  (162s)
+  ep03/15 loss=0.1377 lr=3.80e-04  (162s)
+  ep04/15 loss=0.1157 lr=4.86e-04  (162s)
+  ep05/15 loss=0.1641 lr=4.97e-04  (162s)
+  ep06/15 loss=0.0955 lr=4.75e-04  (162s)
+  ep07/15 loss=0.0876 lr=4.33e-04  (162s)
+  ep08/15 loss=0.0818 lr=3.75e-04  (162s)
+  ep09/15 loss=0.0772 lr=3.05e-04  (162s)
+  ep10/15 loss=0.0732 lr=2.31e-04  (162s)
+  ep11/15 loss=0.0698 lr=1.58e-04  (162s)
+  ep12/15 loss=0.0670 lr=9.39e-05  (162s)
+  ep13/15 loss=0.0647 lr=4.33e-05  (162s)
+  ep14/15 loss=0.0631 lr=1.10e-05  (161s)
+  ep15/15 loss=0.0623 lr=2.18e-09  (161s)
+saved experiments/20260612_rd_noln/ckpt/crossroads.pth

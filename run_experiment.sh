@@ -2,11 +2,15 @@
 # DYNAMIC 2-GPU scheduler: one shared job queue; each GPU pulls the next scene the moment it is free.
 # No GPU ever idles while scenes remain. Scenes ordered heaviest-first (LPT) for a balanced tail.
 # PER-SCENE protocol (MADViT): each scene merges all its sequences into one model (7 scenes total).
-# Usage: bash run_experiment.sh <exp_name>
+# Usage: bash run_experiment.sh <exp_name> [extra train.py args ...]
+#   e.g. bash run_experiment.sh 20260612_rd_noln --no_tap_norm
 set -u
 EXP="${1:-20260611_rd_baseline}"
+shift || true
+EXTRA=("$@")                      # forwarded verbatim to every train.py call
 PY=/home/lyx/miniconda3/envs/DMAD/bin/python
 UAV=/data1/data8tb/liangyuxuan/code/uav
+cd "$UAV" || exit 1              # train.py writes ckpt to relative experiments/<exp>/ckpt
 EXPDIR="$UAV/experiments/$EXP"
 LOG="$EXPDIR/logs"
 QUEUE="$EXPDIR/.queue"
@@ -36,7 +40,7 @@ worker() {                       # a GPU keeps pulling scenes until the queue is
   local gpu="$1" scene rc
   while scene=$(pop_job); [ -n "$scene" ]; do
     echo "[GPU$gpu] START $scene  $(date +%H:%M:%S)"
-    "$PY" "$UAV/train.py" --scene "$scene" --gpu "$gpu" --exp "$EXP" \
+    "$PY" "$UAV/train.py" --scene "$scene" --gpu "$gpu" --exp "$EXP" "${EXTRA[@]+"${EXTRA[@]}"}" \
         > "$LOG/${scene}.log" 2>&1
     rc=$?
     echo "[GPU$gpu] DONE  $scene rc=$rc  $(date +%H:%M:%S)"

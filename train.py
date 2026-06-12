@@ -51,6 +51,8 @@ def main():
     ap.add_argument('--img', type=int, default=256, help='256 = DINOv3 native (256 patches); 224 -> 196')
     ap.add_argument('--taps', type=int, nargs='+', default=[5, 7, 9, 11])
     ap.add_argument('--code_dim', type=int, default=64)
+    ap.add_argument('--no_tap_norm', action='store_true',
+                    help='ablation: concat RAW taps (no per-tap LayerNorm) before the OCBE squeeze')
     ap.add_argument('--depth', type=int, default=12)
     ap.add_argument('--k', type=int, default=5, help='top-k hardest patches in the loss')
     ap.add_argument('--epochs', type=int, default=15)
@@ -67,7 +69,7 @@ def main():
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
 
     teacher = build_appearance_teacher(layers=a.taps).to(dev).eval()
-    ocbe = build_bottleneck(n_taps=len(a.taps), code_dim=a.code_dim).to(dev)
+    ocbe = build_bottleneck(n_taps=len(a.taps), code_dim=a.code_dim, use_tap_norm=not a.no_tap_norm).to(dev)
     student = build_student(n_taps=len(a.taps), code_dim=a.code_dim, depth=a.depth).to(dev)
 
     scene_dir = os.path.join(DATA_ROOT, scene)
@@ -80,8 +82,8 @@ def main():
     opt = torch.optim.AdamW(params, lr=a.lr, weight_decay=a.wd)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, steps_per_epoch=len(dl), epochs=a.epochs)
     print(f'[{scene}] {n_seq} seq merged, {len(ds)} frames, {len(dl)} batches/ep | img={a.img} '
-          f'taps={a.taps} code_dim={a.code_dim} depth={a.depth} k={a.k} | trainable={n_trainable:.1f}M | '
-          f'AdamW lr(max)={a.lr} wd={a.wd} OneCycleLR bs={a.bs} ep={a.epochs}', flush=True)
+          f'taps={a.taps} code_dim={a.code_dim} depth={a.depth} k={a.k} tap_norm={not a.no_tap_norm} | '
+          f'trainable={n_trainable:.1f}M | AdamW lr(max)={a.lr} wd={a.wd} OneCycleLR bs={a.bs} ep={a.epochs}', flush=True)
 
     for ep in range(a.epochs):
         ocbe.train(); student.train()

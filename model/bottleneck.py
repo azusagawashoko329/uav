@@ -25,16 +25,20 @@ import torch.nn as nn
 
 
 class OCBE(nn.Module):
-    def __init__(self, embed_dim=768, n_taps=3, code_dim=64, fuse_hidden=512):
+    def __init__(self, embed_dim=768, n_taps=3, code_dim=64, fuse_hidden=512, use_tap_norm=True):
         super().__init__()
         self.embed_dim = embed_dim
         self.n_taps = n_taps
         self.code_dim = code_dim
+        self.use_tap_norm = use_tap_norm
         assert code_dim < embed_dim, "code_dim must be << embed_dim or it is not a bottleneck"
         # different teacher depths have different feature scales/stats; LayerNorm each tap BEFORE
         # concat so no single layer dominates the squeeze (the concat just hands all the same-patch
         # depth-views to the learnable fuse below — it doesn't assert they share semantics).
-        self.tap_norms = nn.ModuleList([nn.LayerNorm(embed_dim) for _ in range(n_taps)])
+        # use_tap_norm=False is the ablation: concat the RAW taps (Identity) — tests whether the
+        # per-tap normalization is actually a positive contribution.
+        self.tap_norms = nn.ModuleList(
+            [nn.LayerNorm(embed_dim) if use_tap_norm else nn.Identity() for _ in range(n_taps)])
         # fuse the n normalized taps (each B,196,embed_dim) -> mix -> squeeze to code_dim
         self.fuse = nn.Sequential(
             nn.Linear(embed_dim * n_taps, fuse_hidden),
@@ -51,8 +55,9 @@ class OCBE(nn.Module):
         return code
 
 
-def build_bottleneck(n_taps=3, code_dim=64, embed_dim=768, fuse_hidden=512):
-    return OCBE(embed_dim=embed_dim, n_taps=n_taps, code_dim=code_dim, fuse_hidden=fuse_hidden)
+def build_bottleneck(n_taps=3, code_dim=64, embed_dim=768, fuse_hidden=512, use_tap_norm=True):
+    return OCBE(embed_dim=embed_dim, n_taps=n_taps, code_dim=code_dim, fuse_hidden=fuse_hidden,
+                use_tap_norm=use_tap_norm)
 
 
 if __name__ == '__main__':

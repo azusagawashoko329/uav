@@ -1,0 +1,45 @@
+=== motion probe1 | layer=7 W=4 d=256 depth=4 k=5 ep=10 bs=16 ===
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[crossroads] 10 train vids (15772 frames) 5 test vids | windows=15732 predictor=3.7M
+  ep01/10 loss=0.5846 (150s)
+  ep02/10 loss=0.4685 (164s)
+  ep03/10 loss=0.4145 (165s)
+  ep04/10 loss=0.3701 (163s)
+  ep05/10 loss=0.3359 (164s)
+  ep06/10 loss=0.3089 (144s)
+  ep07/10 loss=0.2847 (156s)
+  ep08/10 loss=0.2646 (125s)
+  ep09/10 loss=0.2511 (74s)
+  ep10/10 loss=0.2451 (75s)
+>>> [crossroads] motion AUC concat=46.11 mean=47.80 eer=0.517 | appearance ref=59.69 | Δ(concat-app)=-13.58
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[vehicle] 4 train vids (5266 frames) 2 test vids | windows=5250 predictor=3.7M
+  ep01/10 loss=0.6126 (27s)
+  ep02/10 loss=0.4554 (28s)
+  ep03/10 loss=0.4045 (27s)
+  ep04/10 loss=0.3718 (27s)
+  ep05/10 loss=0.3439 (25s)
+  ep06/10 loss=0.3175 (25s)
+  ep07/10 loss=0.2933 (26s)
+  ep08/10 loss=0.2720 (26s)
+  ep09/10 loss=0.2568 (28s)
+  ep10/10 loss=0.2501 (27s)
+>>> [vehicle] motion AUC concat=49.23 mean=42.94 eer=0.484 | appearance ref=60.71 | Δ(concat-app)=-11.48
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+[railway] 3 train vids (1206 frames) 1 test vids | windows=1194 predictor=3.7M
+  ep01/10 loss=0.7423 (6s)
+  ep02/10 loss=0.4974 (6s)
+  ep03/10 loss=0.4389 (6s)
+  ep04/10 loss=0.4022 (6s)
+  ep05/10 loss=0.3805 (5s)
+  ep06/10 loss=0.3672 (5s)
+  ep07/10 loss=0.3579 (5s)
+  ep08/10 loss=0.3497 (5s)
+  ep09/10 loss=0.3439 (5s)
+  ep10/10 loss=0.3416 (5s)
+>>> [railway] motion AUC concat=58.38 mean=58.38 eer=0.424 | appearance ref=95.91 | Δ(concat-app)=-37.53
+
+wrote experiments/20260612_motion_probe1/results.csv

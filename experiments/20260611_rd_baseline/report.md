@@ -69,15 +69,96 @@
 
 > 协议与 MADViT **一致**(按场景合并训、test 全局 concat、直接 `roc_auc_score`)。下表 3 列是**同一个重建差异**的 3 种空间读数;**`topk` 是训练一致读数(headline)**,max/mean 是同源变体。**场景顺序与上面 MADViT 表一致**,方便逐行对照。
 
-## RD 结果表（frame-level AUC%，全局 concat，ep15）
-| scene | **topk（训练一致）** | max | mean |
-|---|---|---|---|
-| highway | 92.69 | 92.18 | 64.43 |
-| farmland | 99.47 | 99.77 | 68.91 |
-| bike | 98.08 | 98.63 | 81.53 |
-| solar | 86.12 | 87.25 | 33.95 |
-| vehicle | 60.71 | 55.53 | 64.65 |
-| crossroads | 59.69 | 58.87 | 59.07 |
-| railway | **95.91** | 96.29 | 64.17 |
+## RD 结果表 vs MADViT 各权重匹配打分（frame-level AUC%，全局 concat，**前 6 列匹配打分对比:最高加粗、次高斜体**）
+
+> **左 5 列 = MADViT 各权重的匹配打分**:`LL/ML/Full` 用**原论文数据**(论文ll/ml/full);`LLTopk`=zfuse_ll_ptopk;`Topk`=ptopk_all。
+> **右 3 列 = 本方法(RD)** 同一重建差异的读数:**`RD-topk`=训练一致(headline)**、`RD-max`、`RD-mean`。
+> **加粗/斜体只在前 6 列(LL/ML/Full/LLTopk/Topk/RD-topk,均为匹配打分)之间比较**:最高=加粗、次高=斜体。`RD-max`/`RD-mean` 打分不匹配,**不参与对比**(仅列出参考)。
+
+| scene | LL | ML | Full | LLTopk | Topk | RD-topk | RD-max | RD-mean |
+|---|---|---|---|---|---|---|---|---|
+| highway | 93.3 | 74.2 | 88.3 | **93.91** | 89.92 | *92.69* | 92.18 | 64.43 |
+| farmland | 89.9 | 77.0 | 79.7 | 90.79 | *93.36* | **99.47** | 99.77 | 68.91 |
+| bike | 80.5 | 82.0 | 84.2 | 92.92 | *96.14* | **98.08** | 98.63 | 81.53 |
+| solar | *84.7* | 32.8 | 80.5 | 82.68 | 80.93 | **86.12** | 87.25 | 33.95 |
+| vehicle | 59.7 | *59.9* | 58.7 | 58.71 | 56.37 | **60.71** | 55.53 | 64.65 |
+| crossroads | **60.3** | 56.9 | 58.9 | 58.25 | 55.02 | *59.69* | 58.87 | 59.07 |
+| railway | 50.9 | 57.5 | 55.1 | 55.34 | *62.65* | **95.91** | 96.29 | 64.17 |
+
+> 匹配打分对比(前 6 列):**RD-topk 在 farmland / bike / solar / vehicle / railway 取得最高分(5/7)**;highway(LLTopk 93.91 vs RD-topk 92.69)、crossroads(LL 60.3 vs RD-topk 59.69)由 MADViT 险胜,RD-topk 均为**次高**。railway 上 RD-topk 比 MADViT 任一匹配打分高 **30+ 个点**。
 
 **配置**:DINOv3 ViT-B/16 教师(冻结) + OCBE 瓶颈(code_dim=64) + transformer decoder 学生(depth=12);taps=[5,7,9,11];img=256;k=5;AdamW + wd=5e-2 + OneCycleLR(max 5e-4) + bs=64 + ep15。详见 `config.json`、训练日志 `logs/`、机读 `results.csv`。
+
+## 消融：OCBE per-tap LayerNorm（experiment 20260612_rd_noln）
+
+> **动机**:teacher 不同深度 tap 的特征量级差 ~30×(block5≈40 vs block11≈1197),直接 concat 进 squeeze 深层会淹没浅层,故 baseline 在 concat 前对每个 tap 各做一次 LayerNorm。本消融检验该 LN 是否为正向贡献。
+> **设置**:同一配方全 7 场景重训,**唯一改动** = OCBE 去掉 per-tap LayerNorm(`--no_tap_norm`,Identity 替换),其余与 baseline 完全一致。RD-topk,global-concat 协议。
+
+| scene | baseline(有 LN) | no-LN | Δ(noLN−LN) |
+|---|---|---|---|
+| highway | 92.69 | 92.78 | +0.09 |
+| farmland | 99.47 | 99.54 | +0.07 |
+| bike | 98.08 | 98.02 | −0.06 |
+| solar | 86.12 | 87.65 | +1.53 |
+| vehicle | 60.71 | 62.40 | +1.69 |
+| crossroads | 59.69 | 58.57 | −1.12 |
+| railway | 95.91 | 93.89 | −2.02 |
+| **均值** | **84.67** | **84.69** | **+0.02** |
+
+> **结论**:去 LN 与有 LN **均值持平(84.67 vs 84.69)** → 后续可学的 fuse Linear 自行吸收了 30× 尺度差,per-tap LN 对最终 AUC 近乎 no-op。单场景 Δ(railway −2.02、solar/vehicle +1.5~1.7)落在单次 run 方差内(尤其 vehicle/crossroads 为无外观信号场景),不宜过读;论文级需多 seed 误差棒。**保留 LN**(无害 + 优化更稳 + 尺度先验有据)。机读 `../20260612_rd_noln/results.csv`、`README.md`。
+
+---
+
+# 与已发表方法的整体对比（Drone-Anomaly，frame-level AUC%）
+
+> baseline 数据来自 **MADViT 论文 Table 6**(其中 `*` 标注的几条转引自 Jin et al., 2022 / Drone-Anomaly 原始 benchmark)。本方法 (**RD**) 取 **RD-topk**(训练一致 headline)。
+> **每场景最高=加粗、次高=斜体**;`–` = 该方法在原论文未报告此场景。**均值列**只对覆盖全部 7 个场景的方法计算(缺场景的方法留 `–`,不参与均值排名)。
+
+| Method | highway | farmland | bike | solar | vehicle | crossroads | railway | mean(7) |
+|---|---|---|---|---|---|---|---|---|
+| adVAE, 2020* | 61.1 | 73.8 | 72.8 | 66.1 | 55.1 | 56.1 | 62.1 | 63.87 |
+| GANomaly, 2018* | 62.7 | 77.1 | 71.7 | 64.6 | 55.1 | 58.9 | 61.7 | 64.54 |
+| MemAE, 2019* | 67.2 | 74.1 | 79.5 | 65.8 | 64.1 | *64.1* | 58.9 | 67.67 |
+| MKD, 2021* | 64.3 | 75.2 | 74.8 | 63.5 | 62.7 | 63.5 | 62.4 | 66.63 |
+| ANDT, 2022 | 68.7 | 79.5 | 82.2 | 64.2 | 61.3 | **65.2** | 59.4 | 68.64 |
+| Future Frame, 2018 | 62.8 | – | 64.0 | – | 61.4 | 44.8 | 60.4 | – |
+| ST Dissoc., 2022 | 76.0 | – | 79.5 | – | 38.6 | 38.1 | 33.5 | – |
+| MLEP, 2019 | 55.6 | – | 45.1 | – | 56.2 | 49.8 | 68.4 | – |
+| ASTT, 2024 | 83.5 | – | 78.4 | – | *74.1* | 38.6 | 64.5 | – |
+| DAD-FSM, 2025 | 87.1 | – | 74.0 | – | **80.7** | 49.9 | *76.0* | – |
+| HSTforU, 2025 | 70.6 | 60.8 | 82.7 | 67.7 | 65.6 | 53.5 | 67.8 | 66.96 |
+| MADViT (Full) | 88.3 | 79.7 | *84.2* | 80.5 | 58.7 | 58.9 | 55.1 | 72.20 |
+| MADViT (Multi-layer) | 74.2 | 77.0 | 82.0 | 32.8 | 59.9 | 56.9 | 57.5 | 62.90 |
+| MADViT (Last-layer) | **93.3** | *89.9* | 80.5 | *84.7* | 59.7 | 60.3 | 50.9 | *74.19* |
+| **RD (ours, topk)** | *92.69* | **99.47** | **98.08** | **86.12** | 60.71 | 59.69 | **95.91** | **84.67** |
+
+> **整体**:RD 7 场景均值 **84.67**,比此前最强的 MADViT Last-layer(74.19)高 **+10.5**。
+> **逐场景**:RD 在 **farmland / bike / solar / railway 取得全场 SOTA**(railway 比第二名 DAD-FSM 76.0 高 ~20、farmland 比第二名 89.9 高 ~10,均为碾压式领先);**highway 92.69 = 次高**,仅差 MADViT Last-layer 93.3 0.6 分。
+> **短板**:**vehicle / crossroads** 仍落后——vehicle 被 DAD-FSM(80.7)、ASTT(74.1)领先,crossroads 连老 CNN 方法 ANDT(65.2)、MemAE(64.1)都更高。二者均为**轨迹/运动**场景,与"外观分支在方向性异常上哑火"的判断一致,是下一步运动分支要解决的目标。
+
+---
+
+# 运动轴探查：单帧时序预测探针（experiment 20260612_motion_probe1）
+
+> **目的**:vehicle/crossroads 已经诊断为"外观零信号、纯运动轴"。本探针回答运动分支的 go/no-go——**冻结单帧 DINOv3 特征里是否存在"可学的"运动信号**(区别于此前已死的免训练逐点幅度法:逐点 diff/平方;"逐点无关 ≠ 无可学结构",故用学习式注意力预测器再验一次)。
+
+## 实验步骤
+
+1. **底座**:冻结 DINOv3 ViT-B/16,取单层(block 7)patch 特征 (P=256, D=768),img=256;每帧编码一次,按帧序缓存为 fp16。
+2. **样本**:在每个 train 子视频内滑窗(不跨视频边界),`W=4` 帧作上下文、第 5 帧作预测目标(per-scene 合并所有序列)。
+3. **模型**(masked-target 时空 transformer,≈3.7M):`in_proj` 768→256 → 4 个过去帧特征 + 1 个 mask token(目标占位,无真值泄漏) → 加 spatial(patch 位置)/temporal(时间槽)位置编码 → flatten 成 (W+1)×P 个 token → depth=4、heads=8 全自注意力(目标 token 注意所有过去 patch,建模"内容从哪个 patch 流向哪个 patch") → 读出目标槽 → `out_proj` 256→768 得预测特征。
+4. **损失**:预测特征 vs 真实第 5 帧特征的逐 patch 余弦距离 → 每样本 top-5 → batch 均值;**仅正常帧**训练。AdamW lr=5e-4 wd=5e-2 + OneCycleLR,ep=10,bs=16。
+5. **打分**:测试时每帧 t 用 `[t-4..t-1]` 预测 t,top-5 余弦预测误差 = 该帧异常分;per-scene **global-concat** 出 AUC(与外观分支**同协议**,直接可比;前 4 帧回填)。
+6. **场景**:crossroads + vehicle(运动轴);**railway 作对照**(静态白粉=外观异常,运动预测器本该抓不到)。
+
+## 结果
+
+| scene | 运动探针 AUC(concat / mean) | 外观参照(RD-topk) | Δ(concat−外观) |
+|---|---|---|---|
+| crossroads | 46.11 / 47.80 | 59.69 | −13.58 |
+| vehicle | 49.23 / 42.94 | 60.71 | −11.48 |
+| railway（对照） | 58.38 / 58.38 | 95.91 | −37.53 |
+
+> **go/no-go = NO**:训练 loss 正常下降(crossroads 0.58→0.245、vehicle 0.61→0.25,预测器确实学会了预测正常下一帧),**但异常 AUC ≤ 随机**(crossroads 46、vehicle 49,mean 42.94 已跌破随机)。**决定性证据**:静态外观对照 **railway(58.38)反而高于两个真·运动场景(46/49)** → 探针那点信号是"新物体破坏预测"的**外观泄漏**,根本未抓到运动(否则运动场景应高于 railway)。
+> **失败原因**:① 冻结单帧特征语义化/位置容忍(RoPE),不编码精细位移;② 预测误差本质是**运动幅度**探测器,而拥堵=**低幅度**异常 → 反检测(vehicle mean 42.94 跌破随机正是此)。与"异常是方向性非幅度"一致。
+> **决策**:单帧共享骨干(方案 A)**出局**;运动分支须走**方案 B = 视频教师(V-JEPA2/VideoMAE)+ 反向蒸馏**,且打分用 **RD/流形距离**(非预测误差幅度,否则撞同一堵墙)。脚本 `../../probe_motion_v1.py`,机读 `results.csv`、`README.md`。

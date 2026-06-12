@@ -1,0 +1,18 @@
+[Solar Panel Inspection] 2 seq merged, 2848 frames, 44 batches/ep | img=256 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 tap_norm=False | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768)
+  ep01/15 loss=0.6525 lr=7.67e-05  (52s)
+  ep02/15 loss=0.3764 lr=2.20e-04  (49s)
+  ep03/15 loss=0.2877 lr=3.82e-04  (50s)
+  ep04/15 loss=0.2296 lr=4.87e-04  (49s)
+  ep05/15 loss=0.1920 lr=4.97e-04  (49s)
+  ep06/15 loss=0.1666 lr=4.74e-04  (50s)
+  ep07/15 loss=0.1499 lr=4.32e-04  (50s)
+  ep08/15 loss=0.1383 lr=3.74e-04  (50s)
+  ep09/15 loss=0.1294 lr=3.04e-04  (50s)
+  ep10/15 loss=0.1225 lr=2.30e-04  (50s)
+  ep11/15 loss=0.1173 lr=1.57e-04  (50s)
+  ep12/15 loss=0.1133 lr=9.28e-05  (49s)
+  ep13/15 loss=0.1105 lr=4.25e-05  (50s)
+  ep14/15 loss=0.1087 lr=1.06e-05  (50s)
+  ep15/15 loss=0.1079 lr=7.78e-09  (50s)
+saved experiments/20260612_rd_noln/ckpt/solar.pth

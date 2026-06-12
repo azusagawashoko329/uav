@@ -1,0 +1,18 @@
+[Vehicle Roundabout] 2 seq merged, 5266 frames, 82 batches/ep | img=256 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 tap_norm=False | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768)
+  ep01/15 loss=0.5580 lr=7.64e-05  (71s)
+  ep02/15 loss=0.2759 lr=2.19e-04  (70s)
+  ep03/15 loss=0.1832 lr=3.81e-04  (70s)
+  ep04/15 loss=0.1423 lr=4.86e-04  (70s)
+  ep05/15 loss=0.1103 lr=4.97e-04  (70s)
+  ep06/15 loss=0.0928 lr=4.75e-04  (70s)
+  ep07/15 loss=0.0817 lr=4.33e-04  (70s)
+  ep08/15 loss=0.0738 lr=3.74e-04  (70s)
+  ep09/15 loss=0.0679 lr=3.05e-04  (70s)
+  ep10/15 loss=0.0634 lr=2.30e-04  (70s)
+  ep11/15 loss=0.0598 lr=1.58e-04  (70s)
+  ep12/15 loss=0.0571 lr=9.34e-05  (70s)
+  ep13/15 loss=0.0552 lr=4.29e-05  (70s)
+  ep14/15 loss=0.0540 lr=1.08e-05  (70s)
+  ep15/15 loss=0.0534 lr=3.66e-09  (70s)
+saved experiments/20260612_rd_noln/ckpt/vehicle.pth

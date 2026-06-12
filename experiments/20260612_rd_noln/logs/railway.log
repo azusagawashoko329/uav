@@ -1,0 +1,18 @@
+[Railway Inspection] 1 seq merged, 1206 frames, 18 batches/ep | img=256 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 tap_norm=False | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768)
+  ep01/15 loss=0.8103 lr=7.75e-05  (22s)
+  ep02/15 loss=0.4290 lr=2.22e-04  (21s)
+  ep03/15 loss=0.3165 lr=3.85e-04  (21s)
+  ep04/15 loss=0.2648 lr=4.88e-04  (21s)
+  ep05/15 loss=0.2248 lr=4.97e-04  (21s)
+  ep06/15 loss=0.1922 lr=4.73e-04  (21s)
+  ep07/15 loss=0.1689 lr=4.30e-04  (21s)
+  ep08/15 loss=0.1552 lr=3.71e-04  (21s)
+  ep09/15 loss=0.1409 lr=3.02e-04  (21s)
+  ep10/15 loss=0.1315 lr=2.27e-04  (21s)
+  ep11/15 loss=0.1248 lr=1.55e-04  (21s)
+  ep12/15 loss=0.1199 lr=9.09e-05  (21s)
+  ep13/15 loss=0.1168 lr=4.11e-05  (21s)
+  ep14/15 loss=0.1151 lr=9.92e-06  (21s)
+  ep15/15 loss=0.1146 lr=3.65e-08  (21s)
+saved experiments/20260612_rd_noln/ckpt/railway.pth
