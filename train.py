@@ -19,7 +19,7 @@ from torch.utils.data import Dataset, DataLoader
 from PIL import Image
 import torchvision.transforms as T
 
-from model import build_appearance_teacher, build_bottleneck, build_student, topk_loss
+from model import build_appearance_teacher, build_bottleneck, build_student, topk_loss, full_loss
 
 DATA_ROOT = '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly'
 SCENES = {
@@ -55,6 +55,8 @@ def main():
                     help='ablation: concat RAW taps (no per-tap LayerNorm) before the OCBE squeeze')
     ap.add_argument('--depth', type=int, default=12)
     ap.add_argument('--k', type=int, default=5, help='top-k hardest patches in the loss')
+    ap.add_argument('--loss', default='topk', choices=['topk', 'full'],
+                    help="topk = top-k hardest patches (default); full = ablation, mean over ALL patches (MADViT-style)")
     ap.add_argument('--epochs', type=int, default=15)
     ap.add_argument('--bs', type=int, default=64)
     ap.add_argument('--lr', type=float, default=5e-4, help='OneCycleLR max_lr')
@@ -82,7 +84,7 @@ def main():
     opt = torch.optim.AdamW(params, lr=a.lr, weight_decay=a.wd)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, steps_per_epoch=len(dl), epochs=a.epochs)
     print(f'[{scene}] {n_seq} seq merged, {len(ds)} frames, {len(dl)} batches/ep | img={a.img} '
-          f'taps={a.taps} code_dim={a.code_dim} depth={a.depth} k={a.k} tap_norm={not a.no_tap_norm} | '
+          f'taps={a.taps} code_dim={a.code_dim} depth={a.depth} k={a.k} loss={a.loss} tap_norm={not a.no_tap_norm} | '
           f'trainable={n_trainable:.1f}M | AdamW lr(max)={a.lr} wd={a.wd} OneCycleLR bs={a.bs} ep={a.epochs}', flush=True)
 
     for ep in range(a.epochs):
@@ -95,8 +97,9 @@ def main():
             taps = teacher(x)['patches']                 # frozen, no grad
             recon = student(ocbe(taps))
             if ep == 0 and bi == 0:
-                print(f'  shape check: patches={tuple(taps[0].shape)} recon={tuple(recon[0].shape)}', flush=True)
-            loss = topk_loss(taps, recon, k=a.k)
+                print(f'  shape check: patches={tuple(taps[0].shape)} recon={tuple(recon[0].shape)} '
+                      f'n_taps={len(taps)} loss={a.loss}', flush=True)
+            loss = topk_loss(taps, recon, k=a.k) if a.loss == 'topk' else full_loss(taps, recon)
             opt.zero_grad(); loss.backward(); opt.step(); sched.step()
             tot += loss.item() * x.size(0); n += x.size(0)
         print(f'  ep{ep+1:02d}/{a.epochs} loss={tot/max(n,1):.4f} lr={sched.get_last_lr()[0]:.2e}  ({time.time()-t0:.0f}s)', flush=True)

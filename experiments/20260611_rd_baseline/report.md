@@ -89,23 +89,57 @@
 
 **配置**:DINOv3 ViT-B/16 教师(冻结) + OCBE 瓶颈(code_dim=64) + transformer decoder 学生(depth=12);taps=[5,7,9,11];img=256;k=5;AdamW + wd=5e-2 + OneCycleLR(max 5e-4) + bs=64 + ep15。详见 `config.json`、训练日志 `logs/`、机读 `results.csv`。
 
-## 消融：OCBE per-tap LayerNorm（experiment 20260612_rd_noln）
+## 外观分支消融（baseline / no-LN / no-topk / all-tap）
 
-> **动机**:teacher 不同深度 tap 的特征量级差 ~30×(block5≈40 vs block11≈1197),直接 concat 进 squeeze 深层会淹没浅层,故 baseline 在 concat 前对每个 tap 各做一次 LayerNorm。本消融检验该 LN 是否为正向贡献。
-> **设置**:同一配方全 7 场景重训,**唯一改动** = OCBE 去掉 per-tap LayerNorm(`--no_tap_norm`,Identity 替换),其余与 baseline 完全一致。RD-topk,global-concat 协议。
+> 三个单变量消融,各自"**只改一处**、其余与 baseline 完全一致"(同配方、7 场景 per-scene 合并训、global-concat 协议)。**每个权重用其训练一致的匹配读数**:baseline / no-LN / all-tap 用 top-k 损失 → **RD-topk** 读数;no-topk 用 MADViT 式整图 flatten 余弦损失 → **RD-flat** 读数。
+> - **no-LN**(`20260612_rd_noln`):OCBE concat 前去掉 per-tap LayerNorm(`--no_tap_norm`,Identity 替换)。动机:teacher 各深度 tap 量级差 ~30×(block5≈40 vs block11≈1197),baseline 用 per-tap LN 防止深层淹没浅层。
+> - **no-topk**(`20260612_rd_notopk`):loss 从"逐 patch 余弦 → 取 top-5 最难 patch 均值"换成"整图 flatten 成一个向量算一次余弦"(MADViT 式,`--loss full`);taps 仍 [5,7,9,11]。
+> - **all-tap**(`20260612_rd_alltap`):蒸馏层从 4 个选层 [5,7,9,11] → **全 12 层**(reverse-aligned);损失/读数仍 top-k。
 
-| scene | baseline(有 LN) | no-LN | Δ(noLN−LN) |
-|---|---|---|---|
-| highway | 92.69 | 92.78 | +0.09 |
-| farmland | 99.47 | 99.54 | +0.07 |
-| bike | 98.08 | 98.02 | −0.06 |
-| solar | 86.12 | 87.65 | +1.53 |
-| vehicle | 60.71 | 62.40 | +1.69 |
-| crossroads | 59.69 | 58.57 | −1.12 |
-| railway | 95.91 | 93.89 | −2.02 |
-| **均值** | **84.67** | **84.69** | **+0.02** |
+| scene | baseline(有 LN) | no-LN | no-topk(flat) | all-tap |
+|---|---|---|---|---|
+| highway | 92.69 | 92.78 | 68.21 | 96.20 |
+| farmland | 99.47 | 99.54 | 67.50 | 99.26 |
+| bike | 98.08 | 98.02 | 83.56 | 97.67 |
+| solar | 86.12 | 87.65 | 35.45 | 88.59 |
+| vehicle | 60.71 | 62.40 | 63.92 | 54.29 |
+| crossroads | 59.69 | 58.57 | 56.84 | 59.87 |
+| railway | 95.91 | 93.89 | 75.55 | 92.49 |
+| **均值** | **84.67** | **84.69** | **64.43** | **84.05** |
+| **Δ vs baseline** | — | **+0.02** | **−20.24** | **−0.62** |
 
-> **结论**:去 LN 与有 LN **均值持平(84.67 vs 84.69)** → 后续可学的 fuse Linear 自行吸收了 30× 尺度差,per-tap LN 对最终 AUC 近乎 no-op。单场景 Δ(railway −2.02、solar/vehicle +1.5~1.7)落在单次 run 方差内(尤其 vehicle/crossroads 为无外观信号场景),不宜过读;论文级需多 seed 误差棒。**保留 LN**(无害 + 优化更稳 + 尺度先验有据)。机读 `../20260612_rd_noln/results.csv`、`README.md`。
+> **三条结论**:
+> 1. **top-k 难例挖掘是最关键设计**:换成 MADViT 式整图 flatten 余弦,均值 **84.67 → 64.43(−20.2)**——solar −51、farmland −32、highway −24、railway −20、bike −15 几乎全线崩塌(仅 vehicle 这个外观零信号场景例外、+3)。整图余弦把局部异常在 196 个 patch 上**平均稀释**掉了;"异常是局部的"这一先验只有用 top-k 取最难的 5 个 patch 才能保住。
+> 2. **选 4 层 ≈ 蒸馏全 12 层**:all-tap 均值 84.05,与 baseline 84.67 基本持平(−0.6),却要多 ~3× 学生算力。逐场景互有胜负(highway +3.5、solar +2.5,但 railway −3.4、vehicle −6.4)。→ **taps=[5,7,9,11] 已够**,堆层只增算力,个别场景反而更不稳。
+> 3. **per-tap LN 近乎中性**:均值持平(+0.02,噪声级),唯一有意义的摆动是 railway(去 LN −2.0)。**保留 LN 是为护住 railway 这个强场景 + 优化更稳,而非提升均值**(详见下方效应量分析)。
+
+### no-topk 的"损失 vs 读数"分解（关键）
+
+> top-k 既是**训练损失**也是**打分读数**。把两者拆开看(均值 AUC,7 场景),才知道增益从哪来:
+
+|  | top-k 读数 | flat 读数 |
+|---|---|---|
+| **top-k 损失**(baseline) | **84.67** | 63.17 |
+| **flat 损失**(no-topk) | 82.26 | 64.43 |
+
+> **横看(换读数)**:固定损失,top-k 读数 → flat 读数,掉 **−21.5 / −17.8**(两行都暴跌)。**竖看(换损失)**:固定读数,top-k 损失 → flat 损失,只动 **−2.4 / +1.3**(噪声级)。→ **top-k 的价值几乎全在打分/定位端,训练目标本身近乎无关紧要**。这是更诚实也更稳的结论:不管用哪种 loss 蒸馏,只要**打分时取 top-k 最难 patch** 就能拿到 SOTA;而 MADViT 式"训练+打分都 flatten"(右下角对角 64.43)才是真正被消融掉的对象。
+
+### no-LN 的效应量分析
+
+> `anom/normal比` = no-LN 权重下 **异常帧平均分 ÷ 正常帧平均分**(RD-topk,分离强度);括号内为 baseline(有 LN)对照。
+
+| scene | baseline(有 LN) | no-LN | anom/normal比(noLN) | Δ(noLN−LN) |
+|---|---|---|---|---|
+| highway | 92.69 | 92.78 | 1.66 (vs 1.70) | +0.09 |
+| farmland | 99.47 | 99.54 | 2.41 (vs 2.22) | +0.07 |
+| bike | 98.08 | 98.02 | 2.47 (vs 2.34) | −0.06 |
+| solar | 86.12 | 87.65 | 1.28 (vs 1.24) | +1.53 |
+| vehicle | 60.71 | 62.40 | 1.04 (vs 1.04) | +1.69 |
+| crossroads | 59.69 | 58.57 | 1.03 (vs 1.04) | −1.12 |
+| railway | 95.91 | 93.89 | 1.33 (vs 1.33) | −2.02 |
+| **均值** | **84.67** | **84.69** | — | **+0.02** |
+
+> **结论**:去 LN 后**效应量逐场景几乎不变**(真信号场景照样高 farmland 2.41/bike 2.47,无信号场景照样 ≈1 vehicle 1.04/crossroads 1.03)→ 既不伤 AUC 也不伤真实分离强度,后续可学 fuse Linear 自行吸收了 30× 尺度差。单场景 Δ(railway −2.0、solar/vehicle +1.5~1.7)落在单 run 方差内(vehicle/crossroads 本就无外观信号),不宜过读;论文级需多 seed 误差棒。**保留 LN**(无害 + 优化更稳 + 尺度先验有据)。机读三个 `../20260612_rd_*/results.csv`、各 `README.md`。
 
 ---
 

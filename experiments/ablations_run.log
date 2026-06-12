@@ -1,0 +1,32 @@
+=== ablations START 2026年 06月 12日 星期五 15:56:13 CST | 14 jobs (alltap + notopk x 7) | dynamic 2-GPU shared queue ===
+[GPU0] START 20260612_rd_alltap/crossroads  15:56:13
+[GPU1] START 20260612_rd_notopk/crossroads  15:56:13
+[GPU0] DONE  20260612_rd_alltap/crossroads rc=0  16:39:44
+[GPU0] START 20260612_rd_alltap/farmland  16:39:44
+[GPU1] DONE  20260612_rd_notopk/crossroads rc=0  16:48:56
+[GPU1] START 20260612_rd_notopk/farmland  16:48:56
+[GPU0] DONE  20260612_rd_alltap/farmland rc=0  17:06:16
+[GPU0] START 20260612_rd_alltap/highway  17:06:16
+[GPU1] DONE  20260612_rd_notopk/farmland rc=0  17:21:02
+[GPU1] START 20260612_rd_notopk/highway  17:21:02
+[GPU0] DONE  20260612_rd_alltap/highway rc=0  17:31:31
+[GPU0] START 20260612_rd_alltap/bike  17:31:31
+[GPU1] DONE  20260612_rd_notopk/highway rc=0  17:51:31
+[GPU1] START 20260612_rd_notopk/bike  17:51:31
+[GPU0] DONE  20260612_rd_alltap/bike rc=0  17:53:47
+[GPU0] START 20260612_rd_alltap/vehicle  17:53:47
+[GPU0] DONE  20260612_rd_alltap/vehicle rc=0  18:08:39
+[GPU0] START 20260612_rd_notopk/vehicle  18:08:40
+[GPU1] DONE  20260612_rd_notopk/bike rc=0  18:18:21
+[GPU1] START 20260612_rd_alltap/solar  18:18:21
+[GPU0] DONE  20260612_rd_notopk/vehicle rc=0  18:22:43
+[GPU0] START 20260612_rd_notopk/solar  18:22:43
+[GPU1] DONE  20260612_rd_alltap/solar rc=0  18:28:54
+[GPU1] START 20260612_rd_alltap/railway  18:28:54
+[GPU0] DONE  20260612_rd_notopk/solar rc=0  18:30:31
+[GPU0] START 20260612_rd_notopk/railway  18:30:31
+[GPU1] DONE  20260612_rd_alltap/railway rc=0  18:33:27
+[GPU1] queue empty, exit  18:33:27
+[GPU0] DONE  20260612_rd_notopk/railway rc=0  18:33:57
+[GPU0] queue empty, exit  18:33:57
+=== ablations ALL DONE 2026年 06月 12日 星期五 18:33:57 CST ===

@@ -1,0 +1,18 @@
+[Highway] 3 seq merged, 9045 frames, 141 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/15 loss=0.4738 lr=7.63e-05  (99s)
+  ep02/15 loss=0.2472 lr=2.19e-04  (99s)
+  ep03/15 loss=0.1850 lr=3.81e-04  (100s)
+  ep04/15 loss=0.1430 lr=4.86e-04  (100s)
+  ep05/15 loss=0.1421 lr=4.97e-04  (100s)
+  ep06/15 loss=0.1265 lr=4.75e-04  (100s)
+  ep07/15 loss=0.1079 lr=4.33e-04  (100s)
+  ep08/15 loss=0.1007 lr=3.75e-04  (100s)
+  ep09/15 loss=0.0954 lr=3.05e-04  (100s)
+  ep10/15 loss=0.0912 lr=2.31e-04  (101s)
+  ep11/15 loss=0.0880 lr=1.58e-04  (100s)
+  ep12/15 loss=0.0855 lr=9.37e-05  (100s)
+  ep13/15 loss=0.0838 lr=4.31e-05  (100s)
+  ep14/15 loss=0.0827 lr=1.10e-05  (100s)
+  ep15/15 loss=0.0822 lr=2.56e-09  (100s)
+saved experiments/20260612_rd_alltap/ckpt/highway.pth

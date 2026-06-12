@@ -24,7 +24,7 @@ SCENES = {
     'highway': 'Highway', 'railway': 'Railway Inspection', 'solar': 'Solar Panel Inspection',
     'vehicle': 'Vehicle Roundabout',
 }
-READOUTS = ['topk', 'max', 'mean']
+READOUTS = ['topk', 'max', 'mean', 'flat']   # 'flat' = MADViT flatten-cosine (matched score for --loss full)
 ALL_SCENES = 'bike,crossroads,farmland,highway,railway,solar,vehicle'
 
 

@@ -1,0 +1,18 @@
+[Farmland Inspection] 1 seq merged, 9548 frames, 149 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/15 loss=0.4102 lr=7.63e-05  (104s)
+  ep02/15 loss=0.2172 lr=2.19e-04  (105s)
+  ep03/15 loss=0.1546 lr=3.81e-04  (105s)
+  ep04/15 loss=0.1265 lr=4.86e-04  (105s)
+  ep05/15 loss=0.1109 lr=4.97e-04  (105s)
+  ep06/15 loss=0.1014 lr=4.75e-04  (106s)
+  ep07/15 loss=0.1272 lr=4.33e-04  (106s)
+  ep08/15 loss=0.0953 lr=3.75e-04  (105s)
+  ep09/15 loss=0.0905 lr=3.05e-04  (105s)
+  ep10/15 loss=0.0873 lr=2.31e-04  (105s)
+  ep11/15 loss=0.0848 lr=1.58e-04  (105s)
+  ep12/15 loss=0.0830 lr=9.37e-05  (105s)
+  ep13/15 loss=0.0816 lr=4.32e-05  (105s)
+  ep14/15 loss=0.0808 lr=1.10e-05  (105s)
+  ep15/15 loss=0.0804 lr=2.50e-09  (105s)
+saved experiments/20260612_rd_alltap/ckpt/farmland.pth

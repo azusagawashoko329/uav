@@ -27,6 +27,17 @@ def topk_loss(teacher_taps, student_recons, k=5):
     return loss / len(teacher_taps)
 
 
+def full_loss(teacher_taps, student_recons):
+    """no-topk ablation = MADViT-style FLATTEN-then-cosine: flatten each tap's (B,P,D) feature map to a
+    single (B, P*D) vector and take ONE cosine distance (teacher vs student) — NOT a per-patch mean.
+    Averaged over taps & batch. Matched score = the 'flat' read-out (same flatten-cosine)."""
+    loss = 0.0
+    for A, Ahat in zip(teacher_taps, student_recons):
+        d = 1.0 - F.cosine_similarity(A.reshape(A.size(0), -1), Ahat.reshape(Ahat.size(0), -1), dim=1)  # (B,)
+        loss = loss + d.mean()                                    # batch mean
+    return loss / len(teacher_taps)
+
+
 @torch.no_grad()
 def anomaly_score(teacher_taps, student_recons, k=5):
     """Test-time PER-FRAME anomaly score: same Topk operator, kept per sample -> (B,)."""
@@ -39,14 +50,16 @@ def anomaly_score(teacher_taps, student_recons, k=5):
 
 @torch.no_grad()
 def anomaly_readouts(teacher_taps, student_recons, k=5):
-    """Per-frame scores under 3 spatial read-outs of the SAME per-patch reconstruction discrepancy
-    (each averaged over taps). 'topk' (k) is the training-consistent score (== anomaly_score);
-    'max'/'mean' are analysis variants of the identical discrepancy. Returns dict of (B,) tensors."""
-    topk = mx = mn = 0.0
+    """Per-frame scores under several read-outs of the reconstruction discrepancy (each averaged over
+    taps). 'topk' (k) is the training-consistent score for the top-k objective; 'max'/'mean' are
+    per-patch variants; 'flat' = MADViT-style flatten-then-cosine (the matched score for the
+    --loss full ablation). Returns dict of (B,) tensors."""
+    topk = mx = mn = fl = 0.0
     for A, Ahat in zip(teacher_taps, student_recons):
         d = _per_patch_cosine_dist(A, Ahat)                       # (B, P)
         topk = topk + d.topk(k, dim=-1).values.mean(-1)
         mx = mx + d.max(dim=-1).values
         mn = mn + d.mean(dim=-1)
+        fl = fl + (1.0 - F.cosine_similarity(A.reshape(A.size(0), -1), Ahat.reshape(Ahat.size(0), -1), dim=1))
     n = len(teacher_taps)
-    return {'topk': topk / n, 'max': mx / n, 'mean': mn / n}
+    return {'topk': topk / n, 'max': mx / n, 'mean': mn / n, 'flat': fl / n}
