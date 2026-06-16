@@ -1,0 +1,16 @@
+[crossroads] (concat) 5 test vids, 1687/6244 anom, k=5 | topk=56.24(eer0.411) max=54.99(eer0.426) mean=56.47(eer0.430) flat=57.12(eer0.435)
+[farmland] (concat) 1 test vids, 80/2387 anom, k=5 | topk=97.06(eer0.108) max=97.86(eer0.070) mean=72.14(eer0.299) flat=73.72(eer0.278)
+[highway] (concat) 3 test vids, 497/2820 anom, k=5 | topk=95.12(eer0.122) max=94.94(eer0.124) mean=74.61(eer0.303) flat=75.75(eer0.289)
+[railway] (concat) 1 test vids, 68/882 anom, k=5 | topk=94.86(eer0.120) max=98.27(eer0.069) mean=56.22(eer0.430) flat=56.70(eer0.423)
+[solar] no ckpt yet, skip
+[vehicle] (concat) 2 test vids, 973/2633 anom, k=5 | topk=62.18(eer0.360) max=63.10(eer0.364) mean=63.84(eer0.327) flat=65.01(eer0.328)
+
+wrote experiments/20260613_deit_teacher/results.csv
+
+=== AUC (%) | agg=concat | headline = topk (training-consistent) ===
+scene             topk       max      mean      flat
+crossroads       56.24     54.99     56.47     57.12
+farmland         97.06     97.86     72.14     73.72
+highway          95.12     94.94     74.61     75.75
+railway          94.86     98.27     56.22     56.70
+vehicle          62.18     63.10     63.84     65.01

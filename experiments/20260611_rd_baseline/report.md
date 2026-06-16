@@ -141,6 +141,36 @@
 
 > **结论**:去 LN 后**效应量逐场景几乎不变**(真信号场景照样高 farmland 2.41/bike 2.47,无信号场景照样 ≈1 vehicle 1.04/crossroads 1.03)→ 既不伤 AUC 也不伤真实分离强度,后续可学 fuse Linear 自行吸收了 30× 尺度差。单场景 Δ(railway −2.0、solar/vehicle +1.5~1.7)落在单 run 方差内(vehicle/crossroads 本就无外观信号),不宜过读;论文级需多 seed 误差棒。**保留 LN**(无害 + 优化更稳 + 尺度先验有据)。机读三个 `../20260612_rd_*/results.csv`、各 `README.md`。
 
+## 教师消融（DeiT vs DINOv3）—— 回应"增益是否来自换教师"
+
+> **质疑(组会)**:RD 均值 84.67 比 MADViT Last-layer 74.19 高 +10.5,会不会只是因为把教师从 MADViT 的 DeiT 换成了自监督的 DINOv3?
+> **做法**:在 RD 管线里**仅把教师换成 MADViT 自用的 DeiT**(`deit_base_distilled_patch16_224`,img=224→196 patch),其余 **OCBE / student / top-k 损失 / top-k 读数 / taps=[5,7,9,11] / 配方 / per-scene 协议逐字节不变**(新增 `model/teacher_deit.py` + wrapper `train_deit.py`/`eval_deit.py`,零改动已有文件)。DeiT 与 DINOv3 同为 ViT-B/16·768·12层·~86M —— **容量对等**,唯一变量 = 预训练(DeiT ImageNet 监督 vs DINOv3 1.7B 自监督)。实验 `../20260613_deit_teacher`。
+
+| scene | RD-DINOv3(baseline) | RD-DeiT | Δ(DeiT−DINOv3) |
+|---|---|---|---|
+| highway | 92.69 | 95.12 | +2.43 |
+| farmland | 99.47 | 97.06 | −2.41 |
+| bike | 98.08 | 96.98 | −1.10 |
+| solar | 86.11 | 88.91 | +2.80 |
+| vehicle | 60.71 | 62.18 | +1.47 |
+| crossroads | 59.68 | 56.24 | −3.44 |
+| railway | 95.92 | 94.86 | −1.06 |
+| **均值** | **84.67** | **84.48** | **−0.19** |
+
+> **换教师后均值只动 0.19 分**(逐场景 ±3.4 内有升有降、相互抵消)——**没有"换回 DeiT 就崩"的迹象**。
+
+### 三方对照(关键,直接回答质疑)
+
+| 教师 | 方法 | mean(7) |
+|---|---|---|
+| DeiT (deit_base_distilled) | MADViT(其最佳 Last-layer) | 74.19 |
+| **DeiT (deit_base_distilled)** | **RD (ours)** | **84.48** |
+| DINOv3 ViT-B/16 | RD (ours) | 84.67 |
+
+> **控制教师一致(都用 DeiT)**:方法从 MADViT 74.19 → RD **84.48**,**+10.3**(同教师下 railway +44.0、bike +16.5、farmland +7.2 碾压式领先,仅 crossroads −4.1)。
+> **控制方法一致(都用 RD)**:教师从 DeiT → DINOv3,84.48 → 84.67,仅 **+0.19**。
+> **结论**:增益**压倒性来自方法**(RD + 逐patch top-k 读数,贡献 +10.3),**换教师几乎零贡献(+0.19)**。DINOv3 只是顺手的更优默认,不是性能来源——组会质疑被否。机读 `../20260613_deit_teacher/results.csv`、`README.md`。
+
 ---
 
 # 与已发表方法的整体对比（Drone-Anomaly，frame-level AUC%）

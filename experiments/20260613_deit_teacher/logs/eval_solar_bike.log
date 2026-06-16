@@ -1,0 +1,9 @@
+[solar] (concat) 3 test vids, 792/2450 anom, k=5 | topk=88.91(eer0.165) max=90.60(eer0.172) mean=45.57(eer0.556) flat=45.30(eer0.562)
+[bike] (concat) 7 test vids, 12022/18427 anom, k=5 | topk=96.98(eer0.054) max=97.59(eer0.043) mean=81.84(eer0.259) flat=82.04(eer0.257)
+
+wrote experiments/20260613_deit_teacher/results.csv
+
+=== AUC (%) | agg=concat | headline = topk (training-consistent) ===
+scene             topk       max      mean      flat
+solar            88.91     90.60     45.57     45.30
+bike             96.98     97.59     81.84     82.04

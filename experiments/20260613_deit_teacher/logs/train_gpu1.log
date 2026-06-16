@@ -1,0 +1,172 @@
+=== farmland start 22:55:01 ===
+[Farmland Inspection] 1 seq merged, 9548 frames, 149 batches/ep | img=224 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 loss=topk tap_norm=True | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 196, 768) recon=(64, 196, 768) n_taps=4 loss=topk
+  ep01/15 loss=0.5155 lr=7.63e-05  (95s)
+  ep02/15 loss=0.2853 lr=2.19e-04  (95s)
+  ep03/15 loss=0.2017 lr=3.81e-04  (96s)
+  ep04/15 loss=0.2515 lr=4.86e-04  (96s)
+  ep05/15 loss=0.1623 lr=4.97e-04  (96s)
+  ep06/15 loss=0.1482 lr=4.75e-04  (96s)
+  ep07/15 loss=0.1385 lr=4.33e-04  (96s)
+  ep08/15 loss=0.1309 lr=3.75e-04  (96s)
+  ep09/15 loss=0.1248 lr=3.05e-04  (95s)
+  ep10/15 loss=0.1197 lr=2.31e-04  (96s)
+  ep11/15 loss=0.1155 lr=1.58e-04  (96s)
+  ep12/15 loss=0.1121 lr=9.37e-05  (96s)
+  ep13/15 loss=0.1095 lr=4.32e-05  (96s)
+  ep14/15 loss=0.1077 lr=1.10e-05  (96s)
+  ep15/15 loss=0.1068 lr=2.50e-09  (96s)
+saved experiments/20260613_deit_teacher/ckpt/farmland.pth
+=== farmland done 23:19:07 ===
+=== highway start 23:19:07 ===
+[Highway] 3 seq merged, 9045 frames, 141 batches/ep | img=224 taps=[5, 7, 9, 11] code_dim=64 depth=12 k=5 loss=topk tap_norm=True | trainable=89.1M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=15
+  shape check: patches=(64, 196, 768) recon=(64, 196, 768) n_taps=4 loss=topk
+  ep01/15 loss=0.5790 lr=7.63e-05  (91s)
+  ep02/15 loss=0.3216 lr=2.19e-04  (90s)
+  ep03/15 loss=0.2258 lr=3.81e-04  (90s)
+  ep04/15 loss=0.2980 lr=4.86e-04  (90s)
+  ep05/15 loss=0.1865 lr=4.97e-04  (90s)
+  ep06/15 loss=0.1653 lr=4.75e-04  (90s)
+  ep07/15 loss=0.1514 lr=4.33e-04  (90s)
+  ep08/15 loss=0.1410 lr=3.75e-04  (90s)
+  ep09/15 loss=0.1329 lr=3.05e-04  (90s)
+  ep10/15 loss=0.1263 lr=2.31e-04  (90s)
+  ep11/15 loss=0.1209 lr=1.58e-04  (90s)
+  ep12/15 loss=0.1167 lr=9.37e-05  (90s)
+  ep13/15 loss=0.1136 lr=4.31e-05  (90s)
+  ep14/15 loss=0.1115 lr=1.10e-05  (90s)
+  ep15/15 loss=0.1104 lr=2.56e-09  (90s)
+saved experiments/20260613_deit_teacher/ckpt/highway.pth
+=== highway done 23:41:57 ===
+=== bike start 23:41:57 ===
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: 18c56a4f-6d2a-4e5e-8686-d0bb2dd8588b)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: fa3f2550-ab35-4154-bfdc-2029665dca24)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: 5aedc22d-b3b4-477c-a7c4-3eaf0ffa4a98)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: f5c98d5e-5a54-40bf-9be2-c1c2a5461868)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: 277d731a-6cd9-4a82-b59d-a8c6e64890e3)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+Retrying in 8s [Retry 5/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: 77fbf8ff-bcfb-40d3-a888-2354ab6cc8e7)')' thrown while requesting HEAD https://huggingface.co/timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors
+urllib3.exceptions.SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/train_deit.py", line 27, in <module>
+    train.main()
+    ~~~~~~~~~~^^
+  File "/data1/data8tb/liangyuxuan/code/uav/train.py", line 73, in main
+    teacher = build_appearance_teacher(layers=a.taps).to(dev).eval()
+              ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/model/teacher_deit.py", line 79, in build_deit_teacher
+    return DeiTTeacher(layers=layers, pretrained=pretrained)
+  File "/data1/data8tb/liangyuxuan/code/uav/model/teacher_deit.py", line 31, in __init__
+    self.vit = timm.create_model(DEIT_NAME, pretrained=pretrained)
+               ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/_factory.py", line 138, in create_model
+    model = create_fn(
+        pretrained=pretrained,
+    ...<3 lines>...
+        **kwargs,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/deit.py", line 312, in deit_base_distilled_patch16_224
+    model = _create_deit(
+        'deit_base_distilled_patch16_224', pretrained=pretrained, distilled=True, **dict(model_args, **kwargs))
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/deit.py", line 125, in _create_deit
+    model = build_model_with_cfg(
+        model_cls,
+    ...<4 lines>...
+        **kwargs,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/_builder.py", line 457, in build_model_with_cfg
+    load_pretrained(
+    ~~~~~~~~~~~~~~~^
+        model,
+        ^^^^^^
+    ...<5 lines>...
+        cache_dir=cache_dir,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/_builder.py", line 226, in load_pretrained
+    state_dict = load_state_dict_from_hf(pretrained_loc, weights_only=True, cache_dir=cache_dir)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/timm/models/_hub.py", line 229, in load_state_dict_from_hf
+    cached_safe_file = hf_hub_download(
+        repo_id=hf_model_id,
+    ...<2 lines>...
+        cache_dir=cache_dir,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<14 lines>...
+        force_download=force_download,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1073, in _hf_hub_download_to_cache_dir
+    (url_to_download, etag, commit_hash, expected_size, xet_file_data, head_call_error) = _get_metadata_or_catch_error(
+                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        repo_id=repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        relative_filename=relative_filename,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1546, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+        url=url, proxies=proxies, timeout=etag_timeout, headers=headers, token=token, endpoint=endpoint
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1463, in get_hf_file_metadata
+    r = _request_wrapper(
+        method="HEAD",
+    ...<5 lines>...
+        timeout=timeout,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 286, in _request_wrapper
+    response = _request_wrapper(
+        method=method,
+    ...<2 lines>...
+        **params,
+    )
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 309, in _request_wrapper
+    response = http_backoff(method=method, url=url, **params)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/utils/_http.py", line 327, in http_backoff
+    raise err
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/utils/_http.py", line 308, in http_backoff
+    response = session.request(method=method, url=url, **kwargs)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/huggingface_hub/utils/_http.py", line 95, in send
+    return super().send(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lyx/miniconda3/lib/python3.13/site-packages/requests/adapters.py", line 698, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /timm/deit_base_distilled_patch16_224.fb_in1k/resolve/main/model.safetensors (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"), '(Request ID: 77fbf8ff-bcfb-40d3-a888-2354ab6cc8e7)')
+=== bike done 23:42:55 ===
