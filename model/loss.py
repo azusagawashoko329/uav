@@ -48,6 +48,75 @@ def anomaly_score(teacher_taps, student_recons, k=5):
     return score / len(teacher_taps)
 
 
+# ----------------------------------------------------------------------------------------------------
+# Layer-Attention Adapter (LAA) variants — top-k stays IDENTICAL (per-layer, over patches); the only
+# change is the OUTER reduce over layers: uniform mean over fixed taps  ->  adapter-weighted sum over
+# all 12 layers. See model/adapter.py for the design (collapse-safe targets, non-cheating selection).
+# ----------------------------------------------------------------------------------------------------
+def per_layer_topk_dist(teacher_taps, student_recons, k=5):
+    """Per-sample, per-layer top-k cosine distance -> (B, L). This is exactly the existing top-k
+    read-out (k hardest patches per layer), just kept SEPARATELY per layer so the adapter can weight
+    across layers. Carries gradient (trains student/OCBE/adapter-LN)."""
+    cols = []
+    for A, Ahat in zip(teacher_taps, student_recons):
+        d = _per_patch_cosine_dist(A, Ahat)                       # (B, P)
+        cols.append(d.topk(k, dim=-1).values.mean(-1))            # (B,)
+    return torch.stack(cols, dim=1)                               # (B, L)
+
+
+def adapter_objective(w, t_norm, t_pseudo=None, tau=1.0, lam_sel=1.0, lam_ent=0.01, eps=1e-8, gap_zscore=False):
+    """Total LAA training objective. `w`: (L,) softmax selection weights (from adapter, differentiable).
+    `t_norm`/`t_pseudo`: (B, L) per-layer top-k distances on normal / pseudo-anomaly frames.
+
+    Three terms, with deliberate gradient routing:
+      L_normal : w-weighted reconstruction on normal frames. `w` is DETACHED -> trains ONLY OCBE +
+                 student + adapter-LN, never the selection logits (no easy-layer gaming).
+      L_select : drives `w` toward layers with the largest normal-vs-pseudo gap g_l = t_pseudo - t_norm
+                 (KL(target||w), target = softmax(g/tau)). g is DETACHED -> trains ONLY the logits.
+      L_ent    : -lam_ent * H(w) keeps `w` from collapsing onto a single layer.
+    If `t_pseudo` is None (skeleton / no-pseudo run) only L_normal is used and `w` stays at init."""
+    L_normal = (w.detach() * t_norm).sum(1).mean()
+    loss = L_normal
+    logs = {'L_normal': float(L_normal)}
+    if t_pseudo is not None:
+        g = (t_pseudo.mean(0) - t_norm.mean(0)).detach()          # (L,) per-layer discriminability
+        # z-score-standardizing g spreads w (0.001 -> 0.01..0.1) = aggressive per-layer selection. Default OFF
+        # (plain softmax -> near-uniform w, the better model on Drone-Anomaly; zscore HURT 85.78->83.73, worst
+        # on appearance-null vehicle). --gap_zscore re-enables it (TODO3 "放开非均匀" exploration; see note/LAA.md).
+        if gap_zscore:
+            g = (g - g.mean()) / (g.std() + eps)
+        target = torch.softmax(g / tau, dim=0)                    # (L,) desired selection
+        L_select = (target * (torch.log(target + eps) - torch.log(w + eps))).sum()   # KL(target||w)
+        L_ent = (w * torch.log(w + eps)).sum()                    # = -H(w); minimizing -> toward uniform
+        loss = loss + lam_sel * L_select + lam_ent * L_ent
+        logs.update(L_select=float(L_select), H=float(-L_ent))
+    return loss, logs
+
+
+@torch.no_grad()
+def anomaly_score_weighted(teacher_taps, student_recons, w, k=5):
+    """Test-time per-frame score for the adapter pipeline: adapter-weighted sum of the per-layer top-k
+    distances -> (B,). Same top-k, same `w` as training; no pseudo-anomaly at test."""
+    t = per_layer_topk_dist(teacher_taps, student_recons, k=k)    # (B, L)
+    return (w.detach().view(1, -1) * t).sum(1)                    # (B,)
+
+
+@torch.no_grad()
+def anomaly_readouts_weighted(teacher_taps, student_recons, w, k=5):
+    """LAA counterpart of anomaly_readouts: SAME four read-outs, but combined over layers by the learned
+    weights `w` (sum_l w_l * .) instead of a uniform mean. 'topk' is the headline (= anomaly_score_weighted,
+    training-consistent); 'max'/'mean'/'flat' are diagnostic variants. Returns dict of (B,) tensors."""
+    w = w.detach().reshape(-1)
+    topk = mx = mn = fl = 0.0
+    for li, (A, Ahat) in enumerate(zip(teacher_taps, student_recons)):
+        d = _per_patch_cosine_dist(A, Ahat)                       # (B, P)
+        topk = topk + w[li] * d.topk(k, dim=-1).values.mean(-1)
+        mx = mx + w[li] * d.max(dim=-1).values
+        mn = mn + w[li] * d.mean(dim=-1)
+        fl = fl + w[li] * (1.0 - F.cosine_similarity(A.reshape(A.size(0), -1), Ahat.reshape(Ahat.size(0), -1), dim=1))
+    return {'topk': topk, 'max': mx, 'mean': mn, 'flat': fl}
+
+
 @torch.no_grad()
 def anomaly_readouts(teacher_taps, student_recons, k=5):
     """Per-frame scores under several read-outs of the reconstruction discrepancy (each averaged over
