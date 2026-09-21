@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "railway",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/railway.pth",
+  "checkpoint_sha256": "4bdd2057217fff0a101eddf2cdb69d0b3119734d8e2cdbe1341cd8a45d2482fe",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/railway/boundary_decision.txt",
+    "sha256": "52b0a8a4727978d1894a5e535ca3d63e852bcd382cb0481a7762642db538b7fa",
+    "frames": 301
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.6811560988426208,
+    -0.671165943145752,
+    -0.660149335861206,
+    -0.6509575843811035,
+    -0.643479585647583,
+    -0.6409712433815002,
+    -0.6447815299034119,
+    -0.6544808745384216,
+    -0.6679161190986633,
+    -0.6789908409118652,
+    -0.6891272068023682,
+    -0.700596809387207
+  ],
+  "policy": {
+    "boundary": 5,
+    "selected_taps": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": [
+      0.08200950175523758,
+      0.08283290266990662,
+      0.08375048637390137,
+      0.08452384918928146,
+      0.08515828102827072,
+      0.08537215739488602,
+      0.08504748344421387,
+      0.0842265635728836,
+      0.08310253173112869,
+      0.08218726515769958,
+      0.081358402967453,
+      0.08043058216571808
+    ],
+    "expected_boundary": 5.474095821380615,
+    "confidence": 0.08537215739488602,
+    "normalized_entropy": 0.9999309182167053
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/01": {
+      "frames": 75,
+      "policy": {
+        "boundary": 5,
+        "selected_taps": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08222868293523788,
+          0.08305047452449799,
+          0.08396999537944794,
+          0.08470022678375244,
+          0.08526486158370972,
+          0.08544914424419403,
+          0.08512065559625626,
+          0.08425212651491165,
+          0.08303163200616837,
+          0.08201891928911209,
+          0.08102178573608398,
+          0.07989144325256348
+        ],
+        "expected_boundary": 5.465332508087158,
+        "confidence": 0.08544914424419403,
+        "normalized_entropy": 0.9999155402183533
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/02": {
+      "frames": 100,
+      "policy": {
+        "boundary": 5,
+        "selected_taps": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08198724687099457,
+          0.08280761539936066,
+          0.08372503519058228,
+          0.08449450135231018,
+          0.08513139188289642,
+          0.08537977188825607,
+          0.08509990572929382,
+          0.08429525047540665,
+          0.08316903561353683,
+          0.08224407583475113,
+          0.08132722228765488,
+          0.08033889532089233
+        ],
+        "expected_boundary": 5.474380970001221,
+        "confidence": 0.08537977188825607,
+        "normalized_entropy": 0.9999290704727173
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/03": {
+      "frames": 126,
+      "policy": {
+        "boundary": 5,
+        "selected_taps": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08181242644786835,
+          0.08264042437076569,
+          0.08355621248483658,
+          0.08437639474868774,
+          0.08507796376943588,
+          0.08528690040111542,
+          0.08492130786180496,
+          0.08413168787956238,
+          0.08310624957084656,
+          0.08229836821556091,
+          0.0817270278930664,
+          0.08106508105993271
+        ],
+        "expected_boundary": 5.482599258422852,
+        "confidence": 0.08528690040111542,
+        "normalized_entropy": 0.9999449253082275
+      }
+    }
+  },
+  "peak_gpu_gib": 1.624953269958496
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "bike",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/bike.pth",
+  "checkpoint_sha256": "ca9d08215cc30f7ca4b954a9de8d036e77f2adb247ba0c9a250cc54bdb9ba630",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/bike/boundary_decision.txt",
+    "sha256": "9d427ed248b3498c595eebc47c23f51ecd0a6c997e2aaf888266eec69f9c30a4",
+    "frames": 1987
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.6215277910232544,
+    -0.6122992634773254,
+    -0.6017327904701233,
+    -0.5922019481658936,
+    -0.5824366211891174,
+    -0.5730178952217102,
+    -0.5631306171417236,
+    -0.5547690987586975,
+    -0.5464675426483154,
+    -0.5378526449203491,
+    -0.5296358466148376,
+    -0.5193436741828918
+  ],
+  "policy": {
+    "boundary": 11,
+    "selected_taps": [
+      11
+    ],
+    "probabilities": [
+      0.07907122373580933,
+      0.07980430871248245,
+      0.08065203577280045,
+      0.08142438530921936,
+      0.08222341537475586,
+      0.0830015167593956,
+      0.08382624387741089,
+      0.08453010022640228,
+      0.08523475378751755,
+      0.08597221225500107,
+      0.0866815447807312,
+      0.08757828921079636
+    ],
+    "expected_boundary": 5.609755516052246,
+    "confidence": 0.08757828921079636,
+    "normalized_entropy": 0.9997963905334473
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01": {
+      "frames": 225,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07904759794473648,
+          0.079775370657444,
+          0.08062638342380524,
+          0.08140947669744492,
+          0.08222050964832306,
+          0.08300487697124481,
+          0.08384618163108826,
+          0.08456163853406906,
+          0.08526027202606201,
+          0.08598042279481888,
+          0.08668722957372665,
+          0.08758000284433365
+        ],
+        "expected_boundary": 5.610329627990723,
+        "confidence": 0.08758000284433365,
+        "normalized_entropy": 0.9997941255569458
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02": {
+      "frames": 450,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.0790540799498558,
+          0.07978494465351105,
+          0.08063004910945892,
+          0.08140622079372406,
+          0.08220624923706055,
+          0.08298590034246445,
+          0.08381541073322296,
+          0.08454057574272156,
+          0.08525025844573975,
+          0.08598950505256653,
+          0.08670960366725922,
+          0.08762732148170471
+        ],
+        "expected_boundary": 5.610599040985107,
+        "confidence": 0.08762732148170471,
+        "normalized_entropy": 0.9997932314872742
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03": {
+      "frames": 450,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07906196266412735,
+          0.07979599386453629,
+          0.08064243197441101,
+          0.0814121887087822,
+          0.08220941573381424,
+          0.08299040049314499,
+          0.08381739258766174,
+          0.08452345430850983,
+          0.08523565530776978,
+          0.08598549664020538,
+          0.08670756965875626,
+          0.08761804550886154
+        ],
+        "expected_boundary": 5.610304832458496,
+        "confidence": 0.08761804550886154,
+        "normalized_entropy": 0.9997943639755249
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04": {
+      "frames": 225,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07907233387231827,
+          0.07980602234601974,
+          0.08065599203109741,
+          0.08142449706792831,
+          0.08221439272165298,
+          0.08299359679222107,
+          0.08381229639053345,
+          0.08450400829315186,
+          0.08522467315196991,
+          0.0859794095158577,
+          0.08670087903738022,
+          0.08761189877986908
+        ],
+        "expected_boundary": 5.609970569610596,
+        "confidence": 0.08761189877986908,
+        "normalized_entropy": 0.9997956156730652
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05": {
+      "frames": 262,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07907896488904953,
+          0.07981506735086441,
+          0.08066275715827942,
+          0.08143166452646255,
+          0.08222822844982147,
+          0.08300916105508804,
+          0.08382811397314072,
+          0.08451700955629349,
+          0.08522341400384903,
+          0.08596758544445038,
+          0.08667521923780441,
+          0.08756289631128311
+        ],
+        "expected_boundary": 5.609421253204346,
+        "confidence": 0.08756289631128311,
+        "normalized_entropy": 0.999797523021698
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06": {
+      "frames": 375,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07911240309476852,
+          0.07984847575426102,
+          0.08069457858800888,
+          0.08146227896213531,
+          0.08226173371076584,
+          0.08302515000104904,
+          0.08383806049823761,
+          0.08453390747308731,
+          0.08521423488855362,
+          0.08593083918094635,
+          0.08660874515771866,
+          0.08746964484453201
+        ],
+        "expected_boundary": 5.607907772064209,
+        "confidence": 0.08746964484453201,
+        "normalized_entropy": 0.9998031258583069
+      }
+    }
+  },
+  "peak_gpu_gib": 1.6272573471069336
+}

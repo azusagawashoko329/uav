@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "root": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint",
+  "passed": true,
+  "failures": [],
+  "scenes": {
+    "bike": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 1.7333984732289737e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 3.5908491611480713,
+      "without_relation_over_full": 249.3153533935547,
+      "transition_token_variance": 0.0001555533381178975,
+      "relation_residual_ratio": 5.428352701005025,
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "confidence": 0.08757828921079636,
+      "normalized_entropy": 0.9997963905334473,
+      "decision_subvideos": 6,
+      "peak_gpu_gib": 1.6272573471069336
+    },
+    "crossroads": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 2.4084055508994545e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 4.685500621795654,
+      "without_relation_over_full": 166.20742797851562,
+      "transition_token_variance": 0.0015885462053120136,
+      "relation_residual_ratio": 4.9377379441624365,
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "confidence": 0.09111394733190536,
+      "normalized_entropy": 0.9992637038230896,
+      "decision_subvideos": 10,
+      "peak_gpu_gib": 1.6256704330444336
+    },
+    "farmland": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 2.4331392745532393e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 4.678515434265137,
+      "without_relation_over_full": 149.16134643554688,
+      "transition_token_variance": 0.0010883958311751485,
+      "relation_residual_ratio": 5.265887605042017,
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "confidence": 0.0855429470539093,
+      "normalized_entropy": 0.9999340176582336,
+      "decision_subvideos": 4,
+      "peak_gpu_gib": 1.625899314880371
+    },
+    "highway": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 28,
+      "best_validation": 2.6822376422443947e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 3.9190597534179688,
+      "without_relation_over_full": 108.44204711914062,
+      "transition_token_variance": 0.0028285509906709194,
+      "relation_residual_ratio": 4.5032840154867255,
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "confidence": 0.0886388048529625,
+      "normalized_entropy": 0.999670684337616,
+      "decision_subvideos": 6,
+      "peak_gpu_gib": 1.625899314880371
+    },
+    "railway": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 0.0001685474805223445,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 1.7719465494155884,
+      "without_relation_over_full": 36.227264404296875,
+      "transition_token_variance": 0.0003851567453239113,
+      "relation_residual_ratio": 4.109635416666666,
+      "boundary": 5,
+      "selected_taps": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "confidence": 0.08537215739488602,
+      "normalized_entropy": 0.9999309182167053,
+      "decision_subvideos": 3,
+      "peak_gpu_gib": 1.624953269958496
+    },
+    "solar": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 8.483847664643286e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 3.4489872455596924,
+      "without_relation_over_full": 50.360111236572266,
+      "transition_token_variance": 0.0009500128217041492,
+      "relation_residual_ratio": 4.407986111111111,
+      "boundary": 7,
+      "selected_taps": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "confidence": 0.08508607000112534,
+      "normalized_entropy": 0.9999502301216125,
+      "decision_subvideos": 4,
+      "peak_gpu_gib": 1.624953269958496
+    },
+    "vehicle": {
+      "representation_epochs_run": 30,
+      "representation_best_epoch": 30,
+      "best_validation": 2.8868209593576577e-05,
+      "density_epochs_run": 300,
+      "density_best_epoch": 300,
+      "roll_over_aligned": 3.4409446716308594,
+      "without_relation_over_full": 124.80886840820312,
+      "transition_token_variance": 0.0009508832590654492,
+      "relation_residual_ratio": 5.100260416666667,
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "confidence": 0.0859602689743042,
+      "normalized_entropy": 0.9998998045921326,
+      "decision_subvideos": 4,
+      "peak_gpu_gib": 1.6256704330444336
+    }
+  },
+  "interpretation": "The audit checks software/data contracts and numerical validity. Roll, relation-ablation, entropy, and external Gate agreement remain scientific qualification metrics rather than pass/fail software assertions."
+}

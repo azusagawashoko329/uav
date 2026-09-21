@@ -1,0 +1,37 @@
+[2026-07-17 12:24:51] command=/home/lyx/miniconda3/envs/DMAD/bin/python /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/train_dlbm_v001.py --scene farmland --gpu 1 --split_root /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42 --probe_dir /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt --out_root /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint --seed 42 --batch_size 16 --workers 6 --max_epochs 30 --min_epochs 10 --patience 7
+[farmland] v001 boundary_train=2388 fit=1912 validation=476 decision=2388 batch=16 max_epochs=30 patience=7 device=cuda:1
+  ep01/30 train=0.00178632 val=0.000141307 pred=0.000140797 trans=0.000141817 rel=4.172 var=1.045e-04 lr=5.00e-04 (31s)
+  ep02/30 train=0.00010796 val=8.27946e-05 pred=8.54298e-05 trans=8.01595e-05 rel=4.289 var=4.423e-04 lr=5.00e-04 (28s)
+  ep03/30 train=7.61524e-05 val=6.89946e-05 pred=7.0205e-05 trans=6.77841e-05 rel=4.345 var=4.356e-04 lr=5.00e-04 (26s)
+  ep04/30 train=6.2236e-05 val=6.36029e-05 pred=6.5711e-05 trans=6.14948e-05 rel=4.289 var=4.682e-04 lr=5.00e-04 (27s)
+  ep05/30 train=5.65586e-05 val=5.09312e-05 pred=5.33067e-05 trans=4.85556e-05 rel=4.311 var=4.292e-04 lr=5.00e-04 (26s)
+  ep06/30 train=5.05321e-05 val=4.79748e-05 pred=5.01785e-05 trans=4.5771e-05 rel=4.361 var=3.995e-04 lr=5.00e-04 (26s)
+  ep07/30 train=4.73035e-05 val=4.36777e-05 pred=4.5771e-05 trans=4.15845e-05 rel=4.420 var=3.715e-04 lr=5.00e-04 (26s)
+  ep08/30 train=4.44418e-05 val=5.25275e-05 pred=5.35401e-05 trans=5.15149e-05 rel=4.405 var=3.849e-04 lr=5.00e-04 (26s)
+  ep09/30 train=4.09555e-05 val=6.20699e-05 pred=6.19764e-05 trans=6.21634e-05 rel=4.420 var=3.564e-04 lr=5.00e-04 (26s)
+  ep10/30 train=3.88926e-05 val=4.22442e-05 pred=4.30002e-05 trans=4.14882e-05 rel=4.470 var=3.936e-04 lr=5.00e-04 (26s)
+  ep11/30 train=3.31758e-05 val=3.44302e-05 pred=3.52505e-05 trans=3.36098e-05 rel=4.620 var=4.028e-04 lr=5.00e-04 (26s)
+  ep12/30 train=3.20399e-05 val=2.92485e-05 pred=3.04471e-05 trans=2.805e-05 rel=4.725 var=4.146e-04 lr=5.00e-04 (27s)
+  ep13/30 train=3.04628e-05 val=3.09301e-05 pred=3.19691e-05 trans=2.98911e-05 rel=4.764 var=4.456e-04 lr=5.00e-04 (26s)
+  ep14/30 train=3.20964e-05 val=3.17386e-05 pred=3.25254e-05 trans=3.09519e-05 rel=4.652 var=4.931e-04 lr=5.00e-04 (26s)
+  ep15/30 train=2.9562e-05 val=2.75775e-05 pred=2.85401e-05 trans=2.6615e-05 rel=4.815 var=5.052e-04 lr=5.00e-04 (26s)
+  ep16/30 train=2.84989e-05 val=3.66414e-05 pred=3.64491e-05 trans=3.68337e-05 rel=4.795 var=5.689e-04 lr=5.00e-04 (26s)
+  ep17/30 train=2.82823e-05 val=2.67415e-05 pred=2.76105e-05 trans=2.58724e-05 rel=4.929 var=6.501e-04 lr=5.00e-04 (27s)
+  ep18/30 train=2.81037e-05 val=2.65605e-05 pred=2.74603e-05 trans=2.56607e-05 rel=4.932 var=6.151e-04 lr=5.00e-04 (26s)
+  ep19/30 train=2.71076e-05 val=3.16975e-05 pred=3.20072e-05 trans=3.13878e-05 rel=4.940 var=7.010e-04 lr=5.00e-04 (26s)
+  ep20/30 train=2.75378e-05 val=2.75792e-05 pred=2.84122e-05 trans=2.67463e-05 rel=4.962 var=7.343e-04 lr=5.00e-04 (26s)
+  ep21/30 train=2.81172e-05 val=2.70127e-05 pred=2.77085e-05 trans=2.63168e-05 rel=4.968 var=9.507e-04 lr=2.50e-04 (26s)
+  ep22/30 train=2.57521e-05 val=2.51415e-05 pred=2.60562e-05 trans=2.42268e-05 rel=5.007 var=8.688e-04 lr=2.50e-04 (26s)
+  ep23/30 train=2.53028e-05 val=2.54133e-05 pred=2.63453e-05 trans=2.44814e-05 rel=5.054 var=9.138e-04 lr=2.50e-04 (26s)
+  ep24/30 train=2.52868e-05 val=2.48984e-05 pred=2.57807e-05 trans=2.40162e-05 rel=5.104 var=9.466e-04 lr=2.50e-04 (26s)
+  ep25/30 train=2.54351e-05 val=2.46978e-05 pred=2.55887e-05 trans=2.38068e-05 rel=5.145 var=9.496e-04 lr=2.50e-04 (26s)
+  ep26/30 train=2.51851e-05 val=2.49559e-05 pred=2.57869e-05 trans=2.4125e-05 rel=5.152 var=1.001e-03 lr=2.50e-04 (26s)
+  ep27/30 train=2.50062e-05 val=2.47165e-05 pred=2.55557e-05 trans=2.38774e-05 rel=5.226 var=1.007e-03 lr=2.50e-04 (27s)
+  ep28/30 train=2.48567e-05 val=2.503e-05 pred=2.58134e-05 trans=2.42466e-05 rel=5.261 var=1.088e-03 lr=1.25e-04 (26s)
+  ep29/30 train=2.44953e-05 val=2.44782e-05 pred=2.53862e-05 trans=2.35702e-05 rel=5.270 var=1.080e-03 lr=1.25e-04 (26s)
+  ep30/30 train=2.44415e-05 val=2.43314e-05 pred=2.52013e-05 trans=2.34615e-05 rel=5.266 var=1.088e-03 lr=1.25e-04 (26s)
+  intervention roll/full=4.679 no_relation/full=149.161
+  density epochs=300 best=300 validation_nll=0.621255
+  decision boundary=L11 taps=[11] confidence=0.086 entropy=1.000
+  saved /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/farmland.pth
+  saved /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/decision/farmland.json

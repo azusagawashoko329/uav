@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "highway",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/highway.pth",
+  "checkpoint_sha256": "341568d4087146ca3be7dcb7604c074ea4c8dcfe2e89936431e0eb15eb7f175c",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/highway/boundary_decision.txt",
+    "sha256": "efc9b70678f04f9103de686430b424681796e6dce3c01e051e4ebf71f056abe5",
+    "frames": 2260
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.755230188369751,
+    -0.7465347647666931,
+    -0.7370120882987976,
+    -0.72635418176651,
+    -0.7150847315788269,
+    -0.7025444507598877,
+    -0.6895032525062561,
+    -0.6766390204429626,
+    -0.6636164784431458,
+    -0.65111243724823,
+    -0.6411578059196472,
+    -0.6322112679481506
+  ],
+  "policy": {
+    "boundary": 11,
+    "selected_taps": [
+      11
+    ],
+    "probabilities": [
+      0.0783785954117775,
+      0.07906310260295868,
+      0.07981958985328674,
+      0.08067484200000763,
+      0.08158914744853973,
+      0.08261874318122864,
+      0.08370324224233627,
+      0.08478698134422302,
+      0.08589834719896317,
+      0.08697915822267532,
+      0.08784932643175125,
+      0.0886388048529625
+    ],
+    "expected_boundary": 5.6394243240356445,
+    "confidence": 0.0886388048529625,
+    "normalized_entropy": 0.999670684337616
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01": {
+      "frames": 1110,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07865559309720993,
+          0.07933355122804642,
+          0.08006655424833298,
+          0.08091720938682556,
+          0.08179277926683426,
+          0.08274853974580765,
+          0.08375171571969986,
+          0.0846967026591301,
+          0.08560491353273392,
+          0.08654490113258362,
+          0.08750759065151215,
+          0.08838002383708954
+        ],
+        "expected_boundary": 5.629518985748291,
+        "confidence": 0.08838002383708954,
+        "normalized_entropy": 0.999716579914093
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02": {
+      "frames": 554,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07866650819778442,
+          0.07934076339006424,
+          0.08006328344345093,
+          0.08090303838253021,
+          0.0817718356847763,
+          0.08271913230419159,
+          0.083707794547081,
+          0.08465024828910828,
+          0.08559344708919525,
+          0.08656348288059235,
+          0.0875539630651474,
+          0.08846651017665863
+        ],
+        "expected_boundary": 5.630148410797119,
+        "confidence": 0.08846651017665863,
+        "normalized_entropy": 0.9997137188911438
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01": {
+      "frames": 79,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07797496020793915,
+          0.07872391492128372,
+          0.07960325479507446,
+          0.08054434508085251,
+          0.08150740712881088,
+          0.08259241282939911,
+          0.08376943320035934,
+          0.08485369384288788,
+          0.0859440267086029,
+          0.0869714692234993,
+          0.08813957124948502,
+          0.08937548846006393
+        ],
+        "expected_boundary": 5.649969100952148,
+        "confidence": 0.08937548846006393,
+        "normalized_entropy": 0.9996196627616882
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02": {
+      "frames": 245,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07790850847959518,
+          0.07868466526269913,
+          0.07961666584014893,
+          0.08055935800075531,
+          0.08155804872512817,
+          0.08265162259340286,
+          0.08376815915107727,
+          0.08482309430837631,
+          0.08588273078203201,
+          0.0869467481970787,
+          0.08816036581993103,
+          0.08944001793861389
+        ],
+        "expected_boundary": 5.650483131408691,
+        "confidence": 0.08944001793861389,
+        "normalized_entropy": 0.9996171593666077
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01": {
+      "frames": 136,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07853721082210541,
+          0.07915011793375015,
+          0.07978589832782745,
+          0.08056400716304779,
+          0.08145157247781754,
+          0.08249380439519882,
+          0.08360082656145096,
+          0.08483831584453583,
+          0.08617331832647324,
+          0.08742709457874298,
+          0.08786895871162415,
+          0.0881088599562645
+        ],
+        "expected_boundary": 5.638279914855957,
+        "confidence": 0.0881088599562645,
+        "normalized_entropy": 0.9996728897094727
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02": {
+      "frames": 136,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07853029668331146,
+          0.07914599031209946,
+          0.07978087663650513,
+          0.08055982738733292,
+          0.0814516618847847,
+          0.08250491321086884,
+          0.08361930400133133,
+          0.08485764265060425,
+          0.08619114011526108,
+          0.08742314577102661,
+          0.0878652036190033,
+          0.08807002753019333
+        ],
+        "expected_boundary": 5.638197898864746,
+        "confidence": 0.08807002753019333,
+        "normalized_entropy": 0.9996731877326965
+      }
+    }
+  },
+  "peak_gpu_gib": 1.625899314880371
+}

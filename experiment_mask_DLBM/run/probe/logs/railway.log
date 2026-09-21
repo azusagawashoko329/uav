@@ -1,0 +1,15 @@
+[2026-07-16 20:55:49] command=/home/lyx/miniconda3/envs/DMAD/bin/python /data1/data8tb/liangyuxuan/code/uav/train.py --scene railway --gpu 0 --img 256 --taps 0 1 2 3 4 5 6 7 8 9 10 11 --code_dim 64 --depth 12 --tap_align absolute --k 5 --loss topk --epochs 10 --bs 64 --lr 5e-4 --wd 5e-2 --workers 8 --seed 42 --manifest /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/railway/probe_train.txt --out /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt
+[Railway Inspection] 1 seq merged, 603 frames, 9 batches/ep | manifest=/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/railway/probe_train.txt sha256=a2227f2b41640aa13837cbf2c9557c2b52741f5d898632fd5364a4e92e2cbf7a | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.8653 lr=1.48e-04  (8s)
+  ep02/10 loss=0.5068 lr=3.96e-04  (7s)
+  ep03/10 loss=0.3655 lr=5.00e-04  (7s)
+  ep04/10 loss=0.3315 lr=4.70e-04  (7s)
+  ep05/10 loss=0.2877 lr=3.96e-04  (7s)
+  ep06/10 loss=0.2638 lr=2.93e-04  (7s)
+  ep07/10 loss=0.2480 lr=1.82e-04  (7s)
+  ep08/10 loss=0.2372 lr=8.46e-05  (7s)
+  ep09/10 loss=0.2324 lr=1.96e-05  (7s)
+  ep10/10 loss=0.2305 lr=3.13e-07  (7s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt/railway.pth
+peak_gpu_memory=13.89 GiB

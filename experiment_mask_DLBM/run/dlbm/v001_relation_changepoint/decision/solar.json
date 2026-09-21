@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "solar",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/solar.pth",
+  "checkpoint_sha256": "67a58aaab0b7fade3e704eaf47a4cebf7c7546980e2cf61582b8412f204dff58",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/solar/boundary_decision.txt",
+    "sha256": "a18b1b5296ff6166ec20f21c29ee8e6766f11455d8c6b980a64f71e469a64cba",
+    "frames": 712
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.6884452104568481,
+    -0.6814783811569214,
+    -0.6728096008300781,
+    -0.6645604372024536,
+    -0.6555466651916504,
+    -0.6462495923042297,
+    -0.6389070153236389,
+    -0.6375467777252197,
+    -0.6429134011268616,
+    -0.6506420969963074,
+    -0.6589169502258301,
+    -0.6638089418411255
+  ],
+  "policy": {
+    "boundary": 7,
+    "selected_taps": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": [
+      0.08086369186639786,
+      0.08142901957035065,
+      0.08213797956705093,
+      0.08281835168600082,
+      0.08356823027133942,
+      0.08434879034757614,
+      0.08497041463851929,
+      0.08508607000112534,
+      0.08463066816329956,
+      0.08397909998893738,
+      0.0832870602607727,
+      0.08288060873746872
+    ],
+    "expected_boundary": 5.533016204833984,
+    "confidence": 0.08508607000112534,
+    "normalized_entropy": 0.9999502301216125
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/01": {
+      "frames": 193,
+      "policy": {
+        "boundary": 6,
+        "selected_taps": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08136043697595596,
+          0.08190000802278519,
+          0.08257574588060379,
+          0.08330735564231873,
+          0.08409756422042847,
+          0.08486652374267578,
+          0.08539234101772308,
+          0.0852447897195816,
+          0.08433852344751358,
+          0.08324666321277618,
+          0.08217649161815643,
+          0.08149360120296478
+        ],
+        "expected_boundary": 5.508886814117432,
+        "confidence": 0.08539234101772308,
+        "normalized_entropy": 0.999944269657135
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/02": {
+      "frames": 193,
+      "policy": {
+        "boundary": 7,
+        "selected_taps": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08106710761785507,
+          0.08161464333534241,
+          0.08227044343948364,
+          0.08298639953136444,
+          0.083762988448143,
+          0.08454862982034683,
+          0.08515791594982147,
+          0.08519744873046875,
+          0.08453931659460068,
+          0.08372536301612854,
+          0.08284088969230652,
+          0.08228892087936401
+        ],
+        "expected_boundary": 5.523669242858887,
+        "confidence": 0.08519744873046875,
+        "normalized_entropy": 0.9999498128890991
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/03": {
+      "frames": 193,
+      "policy": {
+        "boundary": 7,
+        "selected_taps": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08101492375135422,
+          0.08158586174249649,
+          0.08225443214178085,
+          0.0829649567604065,
+          0.08373773097991943,
+          0.08451083302497864,
+          0.08511285483837128,
+          0.08515192568302155,
+          0.08451519161462784,
+          0.0837627574801445,
+          0.08293958008289337,
+          0.08244898170232773
+        ],
+        "expected_boundary": 5.525556564331055,
+        "confidence": 0.08515192568302155,
+        "normalized_entropy": 0.9999510645866394
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence2/train/01": {
+      "frames": 133,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.0800076574087143,
+          0.08061021566390991,
+          0.08144429326057434,
+          0.08200899511575699,
+          0.08267005532979965,
+          0.08346420526504517,
+          0.08421161770820618,
+          0.08473934233188629,
+          0.08512002974748611,
+          0.08518248051404953,
+          0.08521108329296112,
+          0.08533002436161041
+        ],
+        "expected_boundary": 5.574316024780273,
+        "confidence": 0.08533002436161041,
+        "normalized_entropy": 0.9999003410339355
+      }
+    }
+  },
+  "peak_gpu_gib": 1.624953269958496
+}

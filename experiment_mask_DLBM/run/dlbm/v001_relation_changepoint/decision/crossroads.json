@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "crossroads",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/crossroads.pth",
+  "checkpoint_sha256": "8be1ae74b0c7894bf02b565309ed21ecb3327151b543cf50a35a13d29abd6d3a",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/crossroads/boundary_decision.txt",
+    "sha256": "cb0f88c5b367c17bfa6c830938bd6d5fc4664f07295b814148a6a4225d7eb654",
+    "frames": 3940
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.8238170742988586,
+    -0.8061386346817017,
+    -0.7883356213569641,
+    -0.7702820897102356,
+    -0.7515884637832642,
+    -0.7328439354896545,
+    -0.7140997648239136,
+    -0.6951720118522644,
+    -0.6785535216331482,
+    -0.6636117696762085,
+    -0.6486592888832092,
+    -0.6345404386520386
+  ],
+  "policy": {
+    "boundary": 11,
+    "selected_taps": [
+      11
+    ],
+    "probabilities": [
+      0.07540203630924225,
+      0.0767468810081482,
+      0.07812543958425522,
+      0.07954868674278259,
+      0.08104972541332245,
+      0.08258329331874847,
+      0.08414585143327713,
+      0.08575370907783508,
+      0.08719071000814438,
+      0.08850327134132385,
+      0.08983656018972397,
+      0.09111394733190536
+    ],
+    "expected_boundary": 5.708584785461426,
+    "confidence": 0.09111394733190536,
+    "normalized_entropy": 0.9992637038230896
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01": {
+      "frames": 127,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.075403593480587,
+          0.07676675915718079,
+          0.07826147228479385,
+          0.07969161123037338,
+          0.08120983093976974,
+          0.08277176320552826,
+          0.08433974534273148,
+          0.08596539497375488,
+          0.0871870145201683,
+          0.08808403462171555,
+          0.08951062709093094,
+          0.09080818295478821
+        ],
+        "expected_boundary": 5.703107833862305,
+        "confidence": 0.09080818295478821,
+        "normalized_entropy": 0.9992997646331787
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01": {
+      "frames": 617,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07539907842874527,
+          0.07671722769737244,
+          0.07806243002414703,
+          0.0795067772269249,
+          0.08103463053703308,
+          0.08257551491260529,
+          0.08416777849197388,
+          0.0857187956571579,
+          0.08724264800548553,
+          0.08852089941501617,
+          0.08985240757465363,
+          0.0912017747759819
+        ],
+        "expected_boundary": 5.709789276123047,
+        "confidence": 0.0912017747759819,
+        "normalized_entropy": 0.9992552399635315
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02": {
+      "frames": 617,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07549750059843063,
+          0.07685556262731552,
+          0.07817522436380386,
+          0.07955508679151535,
+          0.08101818710565567,
+          0.08253124356269836,
+          0.08407572656869888,
+          0.0856240913271904,
+          0.08709025382995605,
+          0.08848543465137482,
+          0.08986905217170715,
+          0.09122255444526672
+        ],
+        "expected_boundary": 5.707652568817139,
+        "confidence": 0.09122255444526672,
+        "normalized_entropy": 0.9992709755897522
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03": {
+      "frames": 617,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07535536587238312,
+          0.07668187469244003,
+          0.078050896525383,
+          0.07948178052902222,
+          0.08097337931394577,
+          0.08250395208597183,
+          0.08406925946474075,
+          0.0856415182352066,
+          0.08718978613615036,
+          0.08877144753932953,
+          0.09011410176753998,
+          0.09116649627685547
+        ],
+        "expected_boundary": 5.711982250213623,
+        "confidence": 0.09116649627685547,
+        "normalized_entropy": 0.9992397427558899
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04": {
+      "frames": 617,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07514981180429459,
+          0.07646164298057556,
+          0.07788804918527603,
+          0.07948087900876999,
+          0.08107145130634308,
+          0.08272254467010498,
+          0.0843077301979065,
+          0.08594267815351486,
+          0.08745285868644714,
+          0.08885383605957031,
+          0.09001495689153671,
+          0.09065356105566025
+        ],
+        "expected_boundary": 5.71267032623291,
+        "confidence": 0.09065356105566025,
+        "normalized_entropy": 0.9992308616638184
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01": {
+      "frames": 269,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07540924847126007,
+          0.07674413174390793,
+          0.07811793684959412,
+          0.07950346916913986,
+          0.08100096136331558,
+          0.08250682055950165,
+          0.08406516909599304,
+          0.08573880046606064,
+          0.08722689002752304,
+          0.08862096816301346,
+          0.08985508233308792,
+          0.0912104919552803
+        ],
+        "expected_boundary": 5.7098612785339355,
+        "confidence": 0.0912104919552803,
+        "normalized_entropy": 0.9992547631263733
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02": {
+      "frames": 269,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.0753927081823349,
+          0.07673662900924683,
+          0.07809481024742126,
+          0.07949535548686981,
+          0.0810081735253334,
+          0.08251841366291046,
+          0.08404003083705902,
+          0.08570069819688797,
+          0.08723633736371994,
+          0.08867240697145462,
+          0.08984555304050446,
+          0.09125888347625732
+        ],
+        "expected_boundary": 5.710427284240723,
+        "confidence": 0.09125888347625732,
+        "normalized_entropy": 0.9992509484291077
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03": {
+      "frames": 269,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07544661313295364,
+          0.07678443193435669,
+          0.07817170768976212,
+          0.07957424968481064,
+          0.0810835212469101,
+          0.08259618282318115,
+          0.08412440121173859,
+          0.08574172109365463,
+          0.08715259283781052,
+          0.08844577521085739,
+          0.08969476819038391,
+          0.0911841168999672
+        ],
+        "expected_boundary": 5.707309722900391,
+        "confidence": 0.0911841168999672,
+        "normalized_entropy": 0.9992728233337402
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04": {
+      "frames": 269,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.07548423856496811,
+          0.07686076313257217,
+          0.07820714265108109,
+          0.07956312596797943,
+          0.08103986084461212,
+          0.08254393935203552,
+          0.08412406593561172,
+          0.08574972301721573,
+          0.08711469918489456,
+          0.08833479881286621,
+          0.08976562321186066,
+          0.09121203422546387
+        ],
+        "expected_boundary": 5.7067551612854,
+        "confidence": 0.09121203422546387,
+        "normalized_entropy": 0.9992769360542297
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05": {
+      "frames": 269,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.0754818394780159,
+          0.07685960084199905,
+          0.07822442054748535,
+          0.07963380217552185,
+          0.08105651289224625,
+          0.08256196975708008,
+          0.08414405584335327,
+          0.08571320027112961,
+          0.0870136171579361,
+          0.08824494481086731,
+          0.08984365314245224,
+          0.09122230857610703
+        ],
+        "expected_boundary": 5.706297874450684,
+        "confidence": 0.09122230857610703,
+        "normalized_entropy": 0.9992803931236267
+      }
+    }
+  },
+  "peak_gpu_gib": 1.6256704330444336
+}

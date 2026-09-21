@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "vehicle",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/vehicle.pth",
+  "checkpoint_sha256": "feea97c8455f706e1bc699aa5a6eb28bf2896cddec2548e23dc5735b38b1590d",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/vehicle/boundary_decision.txt",
+    "sha256": "f9248c203a7b54daba7b3df983fae9329f0cb23e4de529b5ac412645116e6a0b",
+    "frames": 1316
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.6356651782989502,
+    -0.628667950630188,
+    -0.6216647624969482,
+    -0.6146341562271118,
+    -0.6068320870399475,
+    -0.5990633368492126,
+    -0.5915297269821167,
+    -0.584995687007904,
+    -0.5798720717430115,
+    -0.5752105712890625,
+    -0.5718541741371155,
+    -0.5667782425880432
+  ],
+  "policy": {
+    "boundary": 11,
+    "selected_taps": [
+      11
+    ],
+    "probabilities": [
+      0.08023808151483536,
+      0.08080149441957474,
+      0.08136935532093048,
+      0.08194344490766525,
+      0.08258527517318726,
+      0.08322935551404953,
+      0.08385874330997467,
+      0.0844084694981575,
+      0.08484205603599548,
+      0.08523847162723541,
+      0.08552505075931549,
+      0.0859602689743042
+    ],
+    "expected_boundary": 5.576566219329834,
+    "confidence": 0.0859602689743042,
+    "normalized_entropy": 0.9998998045921326
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/01": {
+      "frames": 231,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08029011636972427,
+          0.08085069805383682,
+          0.08139128983020782,
+          0.08194531500339508,
+          0.08259814977645874,
+          0.08325272053480148,
+          0.08388428390026093,
+          0.08448230475187302,
+          0.08490971475839615,
+          0.08521581441164017,
+          0.08536415547132492,
+          0.0858154147863388
+        ],
+        "expected_boundary": 5.574638366699219,
+        "confidence": 0.0858154147863388,
+        "normalized_entropy": 0.9999043345451355
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/02": {
+      "frames": 231,
+      "policy": {
+        "boundary": 9,
+        "selected_taps": [
+          9,
+          10,
+          11
+        ],
+        "probabilities": [
+          0.08042603731155396,
+          0.08099263161420822,
+          0.08154325932264328,
+          0.08211857825517654,
+          0.08279072493314743,
+          0.08345244824886322,
+          0.08404938131570816,
+          0.08455896377563477,
+          0.08486243337392807,
+          0.08512847870588303,
+          0.08496659994125366,
+          0.08511047810316086
+        ],
+        "expected_boundary": 5.566005706787109,
+        "confidence": 0.08512847870588303,
+        "normalized_entropy": 0.9999217987060547
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/01": {
+      "frames": 427,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08013183623552322,
+          0.08069751411676407,
+          0.08129743486642838,
+          0.08188533782958984,
+          0.08251320570707321,
+          0.0831386148929596,
+          0.0837814137339592,
+          0.08431462198495865,
+          0.08476801216602325,
+          0.08525615930557251,
+          0.08583167940378189,
+          0.08638419955968857
+        ],
+        "expected_boundary": 5.581577777862549,
+        "confidence": 0.08638419955968857,
+        "normalized_entropy": 0.9998874664306641
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/02": {
+      "frames": 427,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08010362088680267,
+          0.08066441118717194,
+          0.0812445804476738,
+          0.08182366192340851,
+          0.08243823796510696,
+          0.08307293057441711,
+          0.08371904492378235,
+          0.08427709341049194,
+          0.08482690155506134,
+          0.0853523537516594,
+          0.08594007045030594,
+          0.08653706312179565
+        ],
+        "expected_boundary": 5.584090709686279,
+        "confidence": 0.08653706312179565,
+        "normalized_entropy": 0.9998803734779358
+      }
+    }
+  },
+  "peak_gpu_gib": 1.6256704330444336
+}

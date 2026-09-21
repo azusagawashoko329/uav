@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "scene": "farmland",
+  "decision_role": "frozen same-distribution scene inference; no train-decision gap is computed or used",
+  "checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt/farmland.pth",
+  "checkpoint_sha256": "dfb67476b1d4989415d6e921e60ee5a60df1df442319661321643762e76ba693",
+  "manifest": {
+    "path": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/farmland/boundary_decision.txt",
+    "sha256": "595def21075c3e4617947a66268a87185554031999224f16140f90c98a449683",
+    "frames": 2388
+  },
+  "aggregation": "mean frames within subvideo, then equal-weight mean across subvideos",
+  "scene_logits": [
+    -0.6517741084098816,
+    -0.6463354825973511,
+    -0.640454113483429,
+    -0.6346503496170044,
+    -0.629019021987915,
+    -0.6232994794845581,
+    -0.6178536415100098,
+    -0.6127090454101562,
+    -0.6076955199241638,
+    -0.6028602123260498,
+    -0.5988258123397827,
+    -0.5954059958457947
+  ],
+  "policy": {
+    "boundary": 11,
+    "selected_taps": [
+      11
+    ],
+    "probabilities": [
+      0.08085443824529648,
+      0.08129537105560303,
+      0.08177490532398224,
+      0.08225088566541672,
+      0.08271537721157074,
+      0.08318982273340225,
+      0.08364410698413849,
+      0.08407552540302277,
+      0.0844980999827385,
+      0.084907665848732,
+      0.08525090664625168,
+      0.0855429470539093
+    ],
+    "expected_boundary": 5.562437057495117,
+    "confidence": 0.0855429470539093,
+    "normalized_entropy": 0.9999340176582336
+  },
+  "subvideos": {
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/01": {
+      "frames": 597,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.0808824896812439,
+          0.08132640272378922,
+          0.08181203156709671,
+          0.08227375149726868,
+          0.08273226767778397,
+          0.08319966495037079,
+          0.08365999162197113,
+          0.08409276604652405,
+          0.08449719101190567,
+          0.08488185703754425,
+          0.08518097549676895,
+          0.08546065539121628
+        ],
+        "expected_boundary": 5.561099529266357,
+        "confidence": 0.08546065539121628,
+        "normalized_entropy": 0.999936580657959
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/02": {
+      "frames": 597,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08083706349134445,
+          0.08127646893262863,
+          0.08175647258758545,
+          0.08223781734704971,
+          0.08270473778247833,
+          0.08317670971155167,
+          0.08363376557826996,
+          0.08406349271535873,
+          0.08449140936136246,
+          0.08492099493741989,
+          0.08529236912727356,
+          0.08560872077941895
+        ],
+        "expected_boundary": 5.563292503356934,
+        "confidence": 0.08560872077941895,
+        "normalized_entropy": 0.9999322891235352
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/03": {
+      "frames": 597,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08083326369524002,
+          0.08127116411924362,
+          0.0817461907863617,
+          0.08223900943994522,
+          0.08271493762731552,
+          0.08319314569234848,
+          0.08364163339138031,
+          0.084076888859272,
+          0.0845116600394249,
+          0.08493277430534363,
+          0.08528266102075577,
+          0.08555673062801361
+        ],
+        "expected_boundary": 5.5631327629089355,
+        "confidence": 0.08555673062801361,
+        "normalized_entropy": 0.9999325275421143
+      }
+    },
+    "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/04": {
+      "frames": 597,
+      "policy": {
+        "boundary": 11,
+        "selected_taps": [
+          11
+        ],
+        "probabilities": [
+          0.08086489886045456,
+          0.08130744099617004,
+          0.0817849189043045,
+          0.08225297927856445,
+          0.08270956575870514,
+          0.08318974822759628,
+          0.08364098519086838,
+          0.08406893163919449,
+          0.08449210971593857,
+          0.08489502221345901,
+          0.08524763584136963,
+          0.08554571866989136
+        ],
+        "expected_boundary": 5.562222957611084,
+        "confidence": 0.08554571866989136,
+        "normalized_entropy": 0.9999344944953918
+      }
+    }
+  },
+  "peak_gpu_gib": 1.625899314880371
+}

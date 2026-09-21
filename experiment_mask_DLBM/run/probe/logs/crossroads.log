@@ -1,0 +1,15 @@
+[2026-07-16 20:29:04] command=/home/lyx/miniconda3/envs/DMAD/bin/python /data1/data8tb/liangyuxuan/code/uav/train.py --scene crossroads --gpu 0 --img 256 --taps 0 1 2 3 4 5 6 7 8 9 10 11 --code_dim 64 --depth 12 --tap_align absolute --k 5 --loss topk --epochs 10 --bs 64 --lr 5e-4 --wd 5e-2 --workers 8 --seed 42 --manifest /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/crossroads/probe_train.txt --out /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt
+[Crossroads] 3 seq merged, 7886 frames, 123 batches/ep | manifest=/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/crossroads/probe_train.txt sha256=466c7967fe65554e2360ac6f7a451698421cbe248e100da0737fc7fc55d95260 | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.5003 lr=1.41e-04  (89s)
+  ep02/10 loss=0.2644 lr=3.81e-04  (92s)
+  ep03/10 loss=0.1876 lr=5.00e-04  (92s)
+  ep04/10 loss=0.1544 lr=4.75e-04  (92s)
+  ep05/10 loss=0.1345 lr=4.05e-04  (92s)
+  ep06/10 loss=0.1234 lr=3.05e-04  (92s)
+  ep07/10 loss=0.1158 lr=1.93e-04  (92s)
+  ep08/10 loss=0.1106 lr=9.34e-05  (92s)
+  ep09/10 loss=0.1075 lr=2.44e-05  (93s)
+  ep10/10 loss=0.1061 lr=3.66e-09  (93s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt/crossroads.pth
+peak_gpu_memory=13.89 GiB

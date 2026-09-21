@@ -1,0 +1,15 @@
+[2026-07-16 20:52:42] command=/home/lyx/miniconda3/envs/DMAD/bin/python /data1/data8tb/liangyuxuan/code/uav/train.py --scene solar --gpu 0 --img 256 --taps 0 1 2 3 4 5 6 7 8 9 10 11 --code_dim 64 --depth 12 --tap_align absolute --k 5 --loss topk --epochs 10 --bs 64 --lr 5e-4 --wd 5e-2 --workers 8 --seed 42 --manifest /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/solar/probe_train.txt --out /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt
+[Solar Panel Inspection] 2 seq merged, 1424 frames, 22 batches/ep | manifest=/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42/solar/probe_train.txt sha256=5ebf2807c2002a572b52a2a2b2e333f88da80b93f3a0b47bf7cc21c5de8ae41b | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.7341 lr=1.43e-04  (18s)
+  ep02/10 loss=0.4105 lr=3.87e-04  (17s)
+  ep03/10 loss=0.3300 lr=5.00e-04  (17s)
+  ep04/10 loss=0.2783 lr=4.73e-04  (17s)
+  ep05/10 loss=0.2404 lr=4.02e-04  (17s)
+  ep06/10 loss=0.2163 lr=3.01e-04  (17s)
+  ep07/10 loss=0.2005 lr=1.89e-04  (17s)
+  ep08/10 loss=0.1907 lr=9.02e-05  (17s)
+  ep09/10 loss=0.1852 lr=2.26e-05  (17s)
+  ep10/10 loss=0.1834 lr=5.40e-08  (17s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt/solar.pth
+peak_gpu_memory=13.89 GiB

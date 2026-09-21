@@ -1,0 +1,58 @@
+{
+  "stage": "probe",
+  "experiment": "mask_DLBM",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "scheduling": "dynamic_largest_subset_first",
+  "subset": "probe_train",
+  "split_root": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42",
+  "split_fingerprint_sha256": "310ed5d044673cc8ddc40e4bcbfa41e2b697f8b0d7417f1e2401f361fbb77f74",
+  "scene_manifest_sha256": {
+    "bike": "043d5c231e76ec211b8e8c11154433b51500c996f409bd0591ffa0edc265a6b0",
+    "crossroads": "466c7967fe65554e2360ac6f7a451698421cbe248e100da0737fc7fc55d95260",
+    "farmland": "8fd43547cf6b23d5aad48de33e12b98e94d1f999a2dc62b9d1ffae66e5c8ddaa",
+    "highway": "2e770c2f1903fed3ba37e16f110ed39b532f0ca1d1d91187d4421d903f033788",
+    "railway": "a2227f2b41640aa13837cbf2c9557c2b52741f5d898632fd5364a4e92e2cbf7a",
+    "solar": "5ebf2807c2002a572b52a2a2b2e333f88da80b93f3a0b47bf7cc21c5de8ae41b",
+    "vehicle": "05a618631e59a23c4f0a322000e5c120e7670f61c344253e7ec72c5dc876c248"
+  },
+  "hyperparameters": {
+    "img": 256,
+    "taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "code_dim": 64,
+    "student_depth": 12,
+    "tap_align": "absolute",
+    "topk": 5,
+    "loss": "topk",
+    "epochs": 10,
+    "batch_size": 64,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.05,
+    "workers": 8,
+    "seed": 42
+  }
+}

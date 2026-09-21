@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "version": "v001_relation_changepoint",
+  "stage": "boundary_learning_and_frozen_decision",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "scheduling": "dynamic_largest_boundary_train_first",
+  "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/probe/ckpt",
+  "split_root": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/splits/seed42",
+  "output_layout": {
+    "ckpt": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/ckpt",
+    "decision": "/data1/data8tb/liangyuxuan/code/uav/experiment_mask_DLBM/run/dlbm/v001_relation_changepoint/decision"
+  },
+  "training": {
+    "seed": 42,
+    "batch_size": 16,
+    "workers": 6,
+    "max_epochs": 30,
+    "min_epochs": 10,
+    "early_stopping_patience": 7,
+    "epoch_selection": "held-out 20% of boundary_train inside every subvideo; boundary_decision is never consulted",
+    "optimizer": "AdamW lr=5e-4 wd=1e-2; ReduceLROnPlateau",
+    "amp": true
+  },
+  "model": {
+    "feature_dim": 768,
+    "token_dim": 64,
+    "state_dim": 32,
+    "heads": 4,
+    "patches": 256,
+    "boundary_tokens_per_layer": "256 local transition + 1 global transition",
+    "masked_target": "complete next-layer cosine-distance map",
+    "boundary": "single ordered two-regime change point; L11 fixed anchor"
+  },
+  "decision_contract": "same-distribution frozen inference only; no train-decision gap is a feature or loss"
+}
