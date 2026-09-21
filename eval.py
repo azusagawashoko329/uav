@@ -61,7 +61,8 @@ def run_scene(scene_key, exp, dev, bs, agg='concat'):
     use_tap_norm = not cfg.get('no_tap_norm', False)             # baseline ckpts lack the key -> True
     teacher = build_appearance_teacher(layers=taps).to(dev).eval()
     ocbe = build_bottleneck(n_taps=len(taps), code_dim=code_dim, use_tap_norm=use_tap_norm).to(dev).eval()
-    student = build_student(n_taps=len(taps), code_dim=code_dim, depth=depth).to(dev).eval()
+    student = build_student(n_taps=len(taps), code_dim=code_dim, depth=depth, tap_indices=taps,
+                            tap_align=cfg.get('tap_align', 'relative')).to(dev).eval()
     ocbe.load_state_dict(ck['ocbe']); student.load_state_dict(ck['student'])
     tf = T.Compose([T.Resize((img, img)), T.ToTensor(), T.Normalize(teacher.img_mean, teacher.img_std)])
 

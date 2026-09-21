@@ -27,6 +27,16 @@ def topk_loss(teacher_taps, student_recons, k=5):
     return loss / len(teacher_taps)
 
 
+def per_layer_topk_dist(teacher_taps, student_recons, k=5):
+    """Per-sample top-k distance for every tapped layer, returned as ``(B, L)``."""
+    if len(teacher_taps) != len(student_recons):
+        raise ValueError(f'teacher/student tap mismatch: {len(teacher_taps)} vs {len(student_recons)}')
+    return torch.stack([
+        _per_patch_cosine_dist(a, ahat).topk(k, dim=-1).values.mean(dim=-1)
+        for a, ahat in zip(teacher_taps, student_recons)
+    ], dim=1)
+
+
 def full_loss(teacher_taps, student_recons):
     """no-topk ablation = MADViT-style FLATTEN-then-cosine: flatten each tap's (B,P,D) feature map to a
     single (B, P*D) vector and take ONE cosine distance (teacher vs student) — NOT a per-patch mean.
