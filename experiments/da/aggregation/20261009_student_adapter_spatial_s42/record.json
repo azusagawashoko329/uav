@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Do inter-block adapters improve 4-block/12-head reverse distillation?",
   "variant": "spatial",
-  "status": "running",
+  "status": "completed",
   "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
   "scripts": [
     "scripts/run.sh"
@@ -105,85 +105,171 @@
       "failure": "ModuleNotFoundError: No module named model; fixed in c38dfa6d715f846b1b0526791814ae298aa7d344"
     },
     {
-      "run_id": "20261009T073800Z_spatial_bike_retry1",
-      "status": "running",
-      "command": "scripts/run.sh bike <gpu>",
+      "run_id": "20261009T093229Z_spatial_bike_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene bike --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
       "log": "logs/bike_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:32:29.532343+00:00",
+      "ended_at": "2026-10-09T09:50:59.530841+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_crossroads_retry1",
-      "status": "running",
-      "command": "scripts/run.sh crossroads <gpu>",
+      "run_id": "20261009T095109Z_spatial_crossroads_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene crossroads --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
       "log": "logs/crossroads_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/crossroads.json",
+        "results/crossroads_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:51:09.492096+00:00",
+      "ended_at": "2026-10-09T10:24:45.121526+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_farmland_retry1",
-      "status": "running",
-      "command": "scripts/run.sh farmland <gpu>",
+      "run_id": "20261009T092218Z_spatial_farmland_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene farmland --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
       "log": "logs/farmland_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/farmland.json",
+        "results/farmland_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:22:18.788194+00:00",
+      "ended_at": "2026-10-09T09:37:59.415529+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_highway_retry1",
-      "status": "running",
-      "command": "scripts/run.sh highway <gpu>",
+      "run_id": "20261009T090707Z_spatial_highway_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene highway --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
       "log": "logs/highway_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/highway.json",
+        "results/highway_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:07:07.393848+00:00",
+      "ended_at": "2026-10-09T09:22:04.949278+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_railway_retry1",
-      "status": "running",
-      "command": "scripts/run.sh railway <gpu>",
+      "run_id": "20261009T095217Z_spatial_railway_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene railway --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
       "log": "logs/railway_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/railway.json",
+        "results/railway_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:52:17.008597+00:00",
+      "ended_at": "2026-10-09T09:54:25.713880+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_solar_retry1",
-      "status": "running",
-      "command": "scripts/run.sh solar <gpu>",
+      "run_id": "20261009T093807Z_spatial_solar_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene solar --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
       "log": "logs/solar_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/solar.json",
+        "results/solar_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:38:07.161554+00:00",
+      "ended_at": "2026-10-09T09:43:04.250412+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     },
     {
-      "run_id": "20261009T073800Z_spatial_vehicle_retry1",
-      "status": "running",
-      "command": "scripts/run.sh vehicle <gpu>",
+      "run_id": "20261009T094317Z_spatial_vehicle_retry1",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/run_student_adapter.py --scene vehicle --adapter spatial --seed 42 --epochs 15 --batch 64 --workers 8 --gpu <allocated_gpu> --output experiments/da/aggregation/20261009_student_adapter_spatial_s42",
       "source_commit": "c38dfa6d715f846b1b0526791814ae298aa7d344",
       "seed": 42,
-      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
-      "split_fingerprint": "recorded in results json",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
       "log": "logs/vehicle_retry1.log",
-      "outputs": []
+      "outputs": [
+        "results/vehicle.json",
+        "results/vehicle_scores.csv"
+      ],
+      "started_at": "2026-10-09T09:43:17.269972+00:00",
+      "ended_at": "2026-10-09T09:52:08.758684+00:00",
+      "timestamp_provenance": "inferred from log mtime minus logged elapsed_s; approximate",
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "torch": "2.1.0+cu121",
+        "torchvision": "0.16.0+cu121",
+        "sklearn": "1.2.2"
+      }
     }
   ],
-  "result_summary": null,
+  "result_summary": "Seven-scene macro mean frame AUC=83.93755709 (seed 42); direct comparison in ../20261009_student_adapter_results_s42.md. Completed means process ended, not method validated.",
   "limitations": [
-    "Single seed 42; cross-seed robustness is not established."
+    "Single seed 42; no robustness or significance claim.",
+    "No trained checkpoint retained; saved frame scores reproduce reported AUC.",
+    "Only trainable OCBE+student parameter counts are measured; no end-to-end latency/FLOPs."
   ]
 }

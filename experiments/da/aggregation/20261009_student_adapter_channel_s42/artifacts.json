@@ -1,4 +1,495 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/highway.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_highway",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "channel",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/highway_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T082047Z_channel_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "channel",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 1122,
+      "sha256": "c2cf7160b45153af117078f3d2e90427015bf9b835d14deb5df10a2d689f11f8",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T082047Z_channel_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "channel",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 321,
+      "sha256": "33a8006e3de944196e2b3260d0eb5224c7bacbd22fd81421446cceaf1bd78708",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T082047Z_channel_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "channel",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 137685,
+      "sha256": "dc7941e4668dda7532dabb9551c6acde0552387d602f2a760797e7f5e11b70f4",
+      "storage": "git"
+    },
+    {
+      "path": "logs/farmland.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_farmland",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "channel",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/farmland_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T083448Z_channel_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "channel",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 1136,
+      "sha256": "cdbfd55a0ebce192dd7ad622e452b57f9607b00123b18179375f45d712db10f4",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T083448Z_channel_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "channel",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "defc0cf1e5f007b8f2a95c7abc7705767861fb3bb0df344c93c2fddd64ba57ca",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T083448Z_channel_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "channel",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 117784,
+      "sha256": "f7cde1e06495e9b9aec08dd103f6cc5bde5af65059ab7bdb3347902a0c7940e4",
+      "storage": "git"
+    },
+    {
+      "path": "logs/bike.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_bike",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "channel",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/bike_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T084009Z_channel_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "channel",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 1120,
+      "sha256": "a4d81783748dc02e6d9760f920c2b62d6b8b70b8fc34b47dde7e503446ecd577",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T084009Z_channel_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "channel",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 323,
+      "sha256": "9b300af3e7c7c1922d42e8d7c786ffede105e03f4feae07ed997e44c8fe44e81",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T084009Z_channel_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "channel",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 909214,
+      "sha256": "a41fcbfad59d8dc4730ffb26087f036cd07c02462ecda9a3bff0a936e5883a19",
+      "storage": "git"
+    },
+    {
+      "path": "logs/solar.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_solar",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "channel",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/solar_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085038Z_channel_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "channel",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 1127,
+      "sha256": "5a76eb24cdf419195a96d3a59701e54af11ad931ee3aba1076fabe1c54049481",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085038Z_channel_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "channel",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 320,
+      "sha256": "712f5aea485156bae564af7d5418043e7a3724a87489823d5bad302e3962bfc1",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085038Z_channel_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "channel",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 118990,
+      "sha256": "0e9128af11d6b7c9e56b4e2750f75c64c3e7820d6d775291b1f9a6666c75237f",
+      "storage": "git"
+    },
+    {
+      "path": "logs/vehicle.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_vehicle",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "channel",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/vehicle_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085547Z_channel_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "channel",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 1134,
+      "sha256": "f8af184eea4f15b0618319d5979bfaaa631c4bb576803b5334aba02c23aa1e2a",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085547Z_channel_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "channel",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "a448114d79f2d1b8d0bce3c8007f35e08613fbf9b83b9e9826edb08994d5650b",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085547Z_channel_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "channel",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 128391,
+      "sha256": "d8839f69f762c523bd8b227d2d75868dfc968224f37c06e0ce63224d22f5f5bc",
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_crossroads",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "channel",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085849Z_channel_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "channel",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 1139,
+      "sha256": "5af7027dc92ba0fccb2dc504aa61d8668a0917cca8fdeae0f4939fa5a3dd17a8",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085849Z_channel_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "channel",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 327,
+      "sha256": "568d434be02876186bb58187aa2c09a05fe1a59983b09c29cfa9ab31a07669e3",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T085849Z_channel_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "channel",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 305197,
+      "sha256": "b3aee3ec6a3d6e1166aaf63e71e09db07708504851e5d485a35a40d58277f066",
+      "storage": "git"
+    },
+    {
+      "path": "logs/railway.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_channel_railway",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "channel",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/railway_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090446Z_channel_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "channel",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 1120,
+      "sha256": "d03de308e915350db443b0de9557ecbdfb0d4fdef7d24cd54dfaa3005dd20897",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090446Z_channel_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "channel",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 319,
+      "sha256": "5283468c08fc86a9e20c66cdef89671b5fe7dac090210b419ae43c9ff361a7f1",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090446Z_channel_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "channel",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 42843,
+      "sha256": "017d001741646e9b1412c2ee5a4bc74389589e472b996e429dc8d44a57a5b02d",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "scene_summary",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "results/highway.json",
+        "results/farmland.json",
+        "results/bike.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/crossroads.json",
+        "results/railway.json"
+      ],
+      "status": "completed",
+      "size_bytes": 362,
+      "sha256": "d9bf945555f017ed23bc6cbe54a1e510bfa09358db654fe38347c8d0c1bf82dd",
+      "storage": "git"
+    },
+    {
+      "path": "../20261009_student_adapter_comparison_s42.csv",
+      "kind": "cross_variant_metric_table",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "creation_method": "script",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "20261009_student_adapter_none_s42/results/summary.csv",
+        "20261009_student_adapter_channel_s42/results/summary.csv",
+        "20261009_student_adapter_spatial_s42/results/summary.csv"
+      ],
+      "status": "completed",
+      "size_bytes": 603,
+      "sha256": "852a4bea9642bc1b5d7814e8fbad0ad050963cb0a3635661e7570e806c40423f",
+      "storage": "git"
+    },
+    {
+      "path": "../20261009_student_adapter_results_s42.md",
+      "kind": "review_report",
+      "producer_script": null,
+      "creation_method": "manual review of verified comparison CSV",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "20261009_student_adapter_none_s42/results/summary.csv",
+        "20261009_student_adapter_channel_s42/results/summary.csv",
+        "20261009_student_adapter_spatial_s42/results/summary.csv"
+      ],
+      "status": "completed",
+      "size_bytes": 4138,
+      "sha256": "55107eea2aebcfe8e92bd560fb2e927b7580d6e48f19296240edcd210ae96020",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "variant_report",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "results/highway.json",
+        "results/farmland.json",
+        "results/bike.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/crossroads.json",
+        "results/railway.json"
+      ],
+      "status": "completed",
+      "size_bytes": 630,
+      "sha256": "10eb1e2d75991e700f121fe4667f604e830a86f4827dac70f6e3f1627b5b0aa4",
+      "storage": "git"
+    }
+  ]
 }

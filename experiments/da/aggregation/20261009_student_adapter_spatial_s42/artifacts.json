@@ -1,4 +1,495 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/highway.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_highway",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "spatial",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/highway_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090707Z_spatial_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "spatial",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 1135,
+      "sha256": "145901c3fa2e7f9b1087d3b6cba60c21075540b3463a1fb0fe315602c46dd24d",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090707Z_spatial_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "spatial",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "93f27b744d2bb6d1c3b0ece93a563ff0e013716cfcb6fbd090ca3ac2a6c0bb47",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T090707Z_spatial_highway_retry1",
+      "inputs": {
+        "scene": "highway",
+        "adapter": "spatial",
+        "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+      },
+      "status": "completed",
+      "size_bytes": 137703,
+      "sha256": "0718111480b5bf14554fe1c6ce33e3b995a5a172d4d6fef3e871cf21af516682",
+      "storage": "git"
+    },
+    {
+      "path": "logs/farmland.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_farmland",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "spatial",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/farmland_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T092218Z_spatial_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "spatial",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 1136,
+      "sha256": "d9ac3302ed01f22e3908bc4d986fe23600988ac70c03fba1cdc0b16e9eb21333",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T092218Z_spatial_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "spatial",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "53f1d7d16660f6270a1c861963ed464707d7074c273d4545152b8861ead24132",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T092218Z_spatial_farmland_retry1",
+      "inputs": {
+        "scene": "farmland",
+        "adapter": "spatial",
+        "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+      },
+      "status": "completed",
+      "size_bytes": 117714,
+      "sha256": "c5ef2aa1af1542f76cabdad179678e74a681cba38ab8681912728e886f5a07ba",
+      "storage": "git"
+    },
+    {
+      "path": "logs/bike.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_bike",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "spatial",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/bike_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093229Z_spatial_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "spatial",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 1119,
+      "sha256": "d429b2d9600a9f8aec0dcde2b0cc718d5ff374daafc21bce3d059cce83555d34",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093229Z_spatial_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "spatial",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "ac0fbe158e8cd966dae50dedb19440a6f45c853f47beb6a4f69bcbc32acb739d",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093229Z_spatial_bike_retry1",
+      "inputs": {
+        "scene": "bike",
+        "adapter": "spatial",
+        "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+      },
+      "status": "completed",
+      "size_bytes": 909183,
+      "sha256": "46253e44001fec096a1f7ad10e56860dd42c6c54dd3394d89754e92df9493570",
+      "storage": "git"
+    },
+    {
+      "path": "logs/solar.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_solar",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "spatial",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/solar_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093807Z_spatial_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "spatial",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 1127,
+      "sha256": "b42eab86723c8c3f8f288d4142c813b0b0538f7f90cbc764c237f6c602744bde",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093807Z_spatial_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "spatial",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 320,
+      "sha256": "cfabcc35ff52378d2d7c3ce4f43ec945953a44e22490d0c10cf4a8396498adf0",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T093807Z_spatial_solar_retry1",
+      "inputs": {
+        "scene": "solar",
+        "adapter": "spatial",
+        "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+      },
+      "status": "completed",
+      "size_bytes": 119030,
+      "sha256": "11a82df828ea981116e66608854b768fbff36c1191f6fe0042204d0e0c8301f7",
+      "storage": "git"
+    },
+    {
+      "path": "logs/vehicle.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_vehicle",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "spatial",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/vehicle_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T094317Z_spatial_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "spatial",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 1134,
+      "sha256": "a162648e670375273a8617070dc7e0ccebafb69896c23fcb45d89f0daa4cdbfd",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T094317Z_spatial_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "spatial",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 322,
+      "sha256": "4af2c8fb24f303a2111de7bab2faf7ebc21c27d791c0b8bf4e41dd25891aa633",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T094317Z_spatial_vehicle_retry1",
+      "inputs": {
+        "scene": "vehicle",
+        "adapter": "spatial",
+        "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "status": "completed",
+      "size_bytes": 128451,
+      "sha256": "8f12d467de59fc850d8c9b29992fb6c28bd40a23f3318b15eb816e892e07edf4",
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_crossroads",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "spatial",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095109Z_spatial_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "spatial",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 1138,
+      "sha256": "528347caee79a3abfd61f7b671b6ee988e05a3db57cdf3db3648864125d73aa4",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095109Z_spatial_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "spatial",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 326,
+      "sha256": "0cd8a55a8ea3a38fb1ffe25abc2cae50b79a4c072f615fd6665808f1a37aae54",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095109Z_spatial_crossroads_retry1",
+      "inputs": {
+        "scene": "crossroads",
+        "adapter": "spatial",
+        "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+      },
+      "status": "completed",
+      "size_bytes": 305215,
+      "sha256": "c860aa69938c3acb3df8f5de18171ac77c06957e9f4ca4bdf146b822ba742ce3",
+      "storage": "git"
+    },
+    {
+      "path": "logs/railway.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T073403Z_spatial_railway",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "spatial",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "failed",
+      "size_bytes": 261,
+      "sha256": "f15e98f4c6867da48fa133d44b8c81c14b6af378d7e9ae95d3517e7e96e8caf2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/railway_retry1.log",
+      "kind": "train_log",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095217Z_spatial_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "spatial",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 1122,
+      "sha256": "970ee451f0d4f36fed92675ead6094dc4203d3d2dac0669a2bbd8d2fe1f389a2",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "metrics",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095217Z_spatial_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "spatial",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 321,
+      "sha256": "4bf2dd1b688cc9d7cdf965db42fb89181d69b4ae8344df1df9cdfdb2ff83571c",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_student_adapter.py",
+      "run_id": "20261009T095217Z_spatial_railway_retry1",
+      "inputs": {
+        "scene": "railway",
+        "adapter": "spatial",
+        "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+      },
+      "status": "completed",
+      "size_bytes": 42853,
+      "sha256": "15f2a30099185ca91890a029d150bee004d0f89d388db5504e52e6901ac03f05",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "scene_summary",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "results/highway.json",
+        "results/farmland.json",
+        "results/bike.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/crossroads.json",
+        "results/railway.json"
+      ],
+      "status": "completed",
+      "size_bytes": 362,
+      "sha256": "f6889fb3e0b7d999baa9bc4f441e3bd7b5430d07795bb8ee1648ba6492b0634d",
+      "storage": "git"
+    },
+    {
+      "path": "../20261009_student_adapter_comparison_s42.csv",
+      "kind": "cross_variant_metric_table",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "creation_method": "script",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "20261009_student_adapter_none_s42/results/summary.csv",
+        "20261009_student_adapter_channel_s42/results/summary.csv",
+        "20261009_student_adapter_spatial_s42/results/summary.csv"
+      ],
+      "status": "completed",
+      "size_bytes": 603,
+      "sha256": "852a4bea9642bc1b5d7814e8fbad0ad050963cb0a3635661e7570e806c40423f",
+      "storage": "git"
+    },
+    {
+      "path": "../20261009_student_adapter_results_s42.md",
+      "kind": "review_report",
+      "producer_script": null,
+      "creation_method": "manual review of verified comparison CSV",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "20261009_student_adapter_none_s42/results/summary.csv",
+        "20261009_student_adapter_channel_s42/results/summary.csv",
+        "20261009_student_adapter_spatial_s42/results/summary.csv"
+      ],
+      "status": "completed",
+      "size_bytes": 4138,
+      "sha256": "55107eea2aebcfe8e92bd560fb2e927b7580d6e48f19296240edcd210ae96020",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "variant_report",
+      "producer_script": "scripts/summarize_student_adapter.py",
+      "run_id": "analysis_20261009_student_adapter_s42",
+      "inputs": [
+        "results/highway.json",
+        "results/farmland.json",
+        "results/bike.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/crossroads.json",
+        "results/railway.json"
+      ],
+      "status": "completed",
+      "size_bytes": 630,
+      "sha256": "aec9c962246f5377598efd4dc6af8b3922b60e4e8ff30571eada598f60c6ef9b",
+      "storage": "git"
+    }
+  ]
 }

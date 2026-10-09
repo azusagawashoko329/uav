@@ -17,9 +17,9 @@
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
 | [20260928_agg_explore](da/aggregation/20260928_agg_explore/RECORD.md) | `unknown` | [loss_compare.csv](da/aggregation/20260928_agg_explore/loss_compare.csv) | 10 | 0 |
-| [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261009_student_adapter_spatial_s42](da/aggregation/20261009_student_adapter_spatial_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261009_student_adapter_spatial_s42](da/aggregation/20261009_student_adapter_spatial_s42/README.md) | `completed` | 未找到 | 1 |  |
 
 ## da / appearance
 

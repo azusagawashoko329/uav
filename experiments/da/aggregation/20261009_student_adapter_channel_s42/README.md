@@ -10,6 +10,6 @@
 
 对照：与同日 `none/channel/spatial` 另两目录比较。旧 `20260928_agg_explore` 只有历史单种子 loss 对照，运行时源码未知，不作配对主对照。
 
-脚本：`scripts/run.sh SCENE GPU` 调用共享 `scripts/run_student_adapter.py`；目录内 `record.json` 和 `config.json` 是准绳。正式运行前先提交源码并记录完整 `source_commit`。输出写入 `logs/`、`results/`。当前状态：计划，尚未训练。
+脚本：`scripts/run.sh SCENE GPU` 调用共享 `scripts/run_student_adapter.py`；目录内 `record.json` 和 `config.json` 是准绳。正式运行前先提交源码并记录完整 `source_commit`。输出写入 `logs/`、`results/`。当前状态：七场景运行完成，均值 AUC=84.11；详细逐场景比较见 [汇总报告](../20261009_student_adapter_results_s42.md)。
 
 限制：只有 seed=42；不能由单次 AUC 波动断言稳健增益。训练参数量、整条管线计算量与推理延迟分开报告。
