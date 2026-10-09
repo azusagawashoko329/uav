@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "Drone-Anomaly",
+  "scenes": [
+    "highway",
+    "farmland",
+    "bike",
+    "solar",
+    "vehicle",
+    "crossroads",
+    "railway"
+  ],
+  "data_root_env": "UAV_DA_ROOT",
+  "split": "Each scene: all sequence*/train/*/*.jpg for normal-only training; all sequence*/test/*/*.jpg for frame-level evaluation; paired .npy labels only in evaluation.",
+  "teacher": "frozen DINOv3 ViT-B/16, 12 patch outputs L0..L11",
+  "ocbe": {
+    "input_taps": 12,
+    "code_dim": 64,
+    "tap_norm": true
+  },
+  "student": {
+    "blocks": 4,
+    "heads": 12,
+    "heads_per_block": 3,
+    "reverse_alignment": true,
+    "adapter": "channel",
+    "adapter_positions": "after blocks 0,1,2",
+    "adapter_hidden": 96,
+    "adapter_residual_zero_init": true
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 15,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "lr_schedule": "OneCycleLR",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "image_size": 256,
+    "topk": 5,
+    "loss": "group_balanced_topk, alpha=0.5"
+  },
+  "evaluation": {
+    "score": "mean over 12 teacher-head top-5 patch cosine distances; larger means more anomalous",
+    "metric": "ROC AUC x100, all test frames concatenated within each scene; macro mean over seven scene AUCs",
+    "labels": "paired <video>.npy; exact length match required"
+  },
+  "environment": {
+    "python": "DMAD",
+    "cuda_required": true
+  }
+}

@@ -1,10 +1,10 @@
 # 实验导航
 
-共 61 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 64 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
-| `da` | `aggregation` | 1 | [查看](#da-aggregation) |
+| `da` | `aggregation` | 4 | [查看](#da-aggregation) |
 | `da` | `appearance` | 23 | [查看](#da-appearance) |
 | `da` | `audit` | 1 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
@@ -17,6 +17,9 @@
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
 | [20260928_agg_explore](da/aggregation/20260928_agg_explore/RECORD.md) | `unknown` | [loss_compare.csv](da/aggregation/20260928_agg_explore/loss_compare.csv) | 10 | 0 |
+| [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261009_student_adapter_spatial_s42](da/aggregation/20261009_student_adapter_spatial_s42/README.md) | `planned` | 未找到 | 1 |  |
 
 ## da / appearance
 
