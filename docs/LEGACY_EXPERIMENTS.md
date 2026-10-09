@@ -6,7 +6,7 @@
 
 | 分支/标签 | 本地头提交 | 可确认内容 |
 |---|---|---|
-| `origin/main` / `behavior-baseline` | `25cffaf` | 2026-06 行为分支基线；`origin/main` 是本地保存的远端跟踪引用，不能证明新 GitHub 仓库已有该提交。 |
+| 整理前的本地 `origin/main` 引用 / `behavior-baseline` | `25cffaf` | 2026-06 行为分支基线；这是整理前保存在本机的引用，不能证明新 GitHub 仓库已有该提交。后续推送可能使 `origin/main` 指向新提交。 |
 | `research/next` | `9cba699`（整理前） | 融合、审计、开发日志及早期外观实验；本次文档整理从此分支继续。 |
 | `master` | `fd6cce0` | LAA adapter 与相关笔记/实验；从 `9cba699` 分叉。 |
 | `explore/distill-layer-boundary` | `1a68d0c` | DLBM v001–v022、mask DLBM v001、边界探针与测试；从 `9cba699` 分叉。 |
