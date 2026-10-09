@@ -26,7 +26,7 @@ def main():
     ap.add_argument('--scenes', default='crossroads,vehicle')
     ap.add_argument('--gpu', type=int, default=0)
     ap.add_argument('--bs', type=int, default=32)
-    ap.add_argument('--out', default=os.path.join(_ROOT, 'experiments/fusion/scores'))
+    ap.add_argument('--out', default=os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores'))
     ap.add_argument('--train', action='store_true', help='额外 dump train 正常帧分数作 CDF 锚(百分位标准化/融合用)')
     a = ap.parse_args()
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')

@@ -1,6 +1,6 @@
 """把 logz 预处理接进门控融合,全 7 场景对比 base。
 行为分:从 behavior/cache 重算(base=每维z-score / logz=计数维log1p后z-score)→ 联合 K=8 kNN-OOD。
-外观分:读 experiments/fusion/scores/app_<scene>.npz。
+外观分:读 experiments/da/fusion/legacy_score_dump/scores/app_<scene>.npz。
 融合:门控 w_beh = wmax·(1−2|p_app−0.5|),fused=(1−w)·p_app + w·p_beh,p=test 自身平均秩。
 口径:每场景 concat-micro AUC(MADViT 可比)。Env: DMAD。例: python fusion/gate_logz.py
 """
@@ -12,7 +12,7 @@ from sklearn.metrics import roc_auc_score
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _spec = importlib.util.spec_from_file_location('l1', os.path.join(_ROOT, 'behavior', 'l1.py'))
 l1 = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(l1)
-D = os.path.join(_ROOT, 'experiments/fusion/scores')
+D = os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores')
 SCENES = ['highway', 'farmland', 'bike', 'solar', 'vehicle', 'crossroads', 'railway']
 K = l1.K
 

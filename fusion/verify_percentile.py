@@ -1,5 +1,5 @@
 """验证 per-scene 百分位标准化(用 train 正常分布的经验 CDF)是否改变各分支单场景 AUC。
-读 experiments/fusion/scores/{app,beh}_<scene>.npz(test scores+labels)与 *_train.npz(train CDF 锚),
+读 experiments/da/fusion/legacy_score_dump/scores/{app,beh}_<scene>.npz(test scores+labels)与 *_train.npz(train CDF 锚),
 对比"原始分数 AUC" vs "train-CDF 百分位后 AUC"。纯 numpy/sklearn,无模型。Env: base 或 DMAD。
 例: python fusion/verify_percentile.py
 """
@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-D = os.path.join(_ROOT, 'experiments/fusion/scores')
+D = os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores')
 
 
 def cdf(test_s, train_s):

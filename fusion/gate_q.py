@@ -12,7 +12,7 @@ from sklearn.metrics import roc_auc_score
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _spec = importlib.util.spec_from_file_location('l1', os.path.join(_ROOT, 'behavior', 'l1.py'))
 l1 = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(l1)
-D = os.path.join(_ROOT, 'experiments/fusion/scores')
+D = os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores')
 SCENES = ['highway', 'farmland', 'bike', 'solar', 'vehicle', 'crossroads', 'railway']
 K, J0 = l1.K, 0.1
 

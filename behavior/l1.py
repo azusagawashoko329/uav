@@ -28,7 +28,7 @@ _spec = importlib.util.spec_from_file_location(
 _dm = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_dm)
 build_vehicle_detector = _dm.build_vehicle_detector
 
-DATA_ROOT = '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly'
+DATA_ROOT = os.environ.get('UAV_DA_ROOT', '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly')
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cache')
 SCENES = {'bike': 'Bike Roundabout', 'crossroads': 'Crossroads', 'farmland': 'Farmland Inspection',
           'highway': 'Highway', 'railway': 'Railway Inspection', 'solar': 'Solar Panel Inspection',

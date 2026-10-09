@@ -22,6 +22,7 @@ import torchvision.transforms as T
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _ROOT)
+from scripts.experiment_paths import require_experiment
 from model import build_appearance_teacher, build_bottleneck, build_student, topk_loss
 import train as _train                      # 复用 FrameDataset / SCENES / DATA_ROOT(顶层只 import model+torch,安全)
 _spec = importlib.util.spec_from_file_location('l1', os.path.join(_ROOT, 'behavior', 'l1.py'))
@@ -82,6 +83,9 @@ def fresh_feats(det, sub, cache_dir):
 
 # ----------------------------------------------------------------------------- 外观分支(策略不变)
 def train_appearance(scene_key, teacher, dev, a):
+    target = os.path.join('experiments', a.exp, 'ckpt', scene_key, f'{scene_key}.pth')
+    if os.path.exists(target):
+        raise FileExistsError(f'checkpoint already exists: {target}; use a new experiment ID')
     scene = l1.SCENES[scene_key]
     ocbe = build_bottleneck(n_taps=len(a.taps), code_dim=a.code_dim, use_tap_norm=not a.no_tap_norm).to(dev)
     student = build_student(n_taps=len(a.taps), code_dim=a.code_dim, depth=a.depth).to(dev)
@@ -111,12 +115,17 @@ def train_appearance(scene_key, teacher, dev, a):
                no_tap_norm=a.no_tap_norm, loss='topk', seed=a.seed)
     out = os.path.join('experiments', a.exp, 'ckpt', scene_key); os.makedirs(out, exist_ok=True)
     p = os.path.join(out, f'{scene_key}.pth')
+    if os.path.exists(p):
+        raise FileExistsError(f'checkpoint already exists: {p}; use a new experiment ID')
     torch.save({'ocbe': ocbe.state_dict(), 'student': student.state_dict(), 'cfg': cfg, 'scene': scene}, p)
     print(f'  [外观] saved {p}', flush=True)
 
 
 # ----------------------------------------------------------------------------- 行为分支(从头检测)
 def fit_behavior(scene_key, det, a):
+    target = os.path.join('experiments', a.exp, 'ckpt', scene_key, f'{scene_key}.npz')
+    if os.path.exists(target):
+        raise FileExistsError(f'behavior state already exists: {target}; use a new experiment ID')
     scene = l1.SCENES[scene_key]
     cache_dir = os.path.join('experiments', a.exp, 'det_cache')
     t0 = time.time()
@@ -130,6 +139,8 @@ def fit_behavior(scene_key, det, a):
     Xproc, mu, sd = logz_fit(Xtr)
     out = os.path.join('experiments', a.exp, 'ckpt', scene_key); os.makedirs(out, exist_ok=True)
     p = os.path.join(out, f'{scene_key}.npz')
+    if os.path.exists(p):
+        raise FileExistsError(f'behavior state already exists: {p}; use a new experiment ID')
     np.savez(p, Xtr_proc=Xproc, mu=mu, sd=sd, q=q, jitter=jit, K=l1.K,
              logz_cols=np.array(LOGZ_COLS), D0=l1.D0, R0=l1.R0, feats=np.array(l1.FEATS))
     print(f'  [行为] {len(Xtr)} 正常描述子(从头检测 {time.time()-t0:.0f}s)| jitter={jit:.3f} q={q:.3f} | saved {p}', flush=True)
@@ -139,7 +150,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--scenes', default='all', help='all 或 逗号分隔(railway,highway,...)')
     ap.add_argument('--only', default='both', choices=['both', 'appearance', 'behavior'])
-    ap.add_argument('--exp', default=None, help='默认 <YYYYMMDD>_all_model')
+    ap.add_argument('--exp', required=True, help='registered da/fusion/<id> path')
     ap.add_argument('--seed', type=int, default=42)
     ap.add_argument('--gpu', type=int, default=0)
     ap.add_argument('--img', type=int, default=256)
@@ -156,8 +167,7 @@ def main():
     ap.add_argument('--conf', type=float, default=0.25, help='检测置信阈(行为分支)')
     ap.add_argument('--max_steps', type=int, default=0, help='>0 限制每 epoch batch 数(smoke test)')
     a = ap.parse_args()
-    if a.exp is None:
-        a.exp = datetime.date.today().strftime('%Y%m%d') + '_all_model'
+    require_experiment(a.exp, dataset='da', family='fusion')
     scenes = ALL if a.scenes == 'all' else a.scenes.split(',')
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
 

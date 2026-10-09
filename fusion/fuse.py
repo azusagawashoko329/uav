@@ -1,5 +1,5 @@
 """全场景晚融合:两分支各自 test-rank → mean(逐帧平均)→ 每场景 concat AUC,对比纯外观。
-读 experiments/fusion/scores/{app,beh}_<scene>.npz(test 帧分数+标签)。
+读 experiments/da/fusion/legacy_score_dump/scores/{app,beh}_<scene>.npz(test 帧分数+标签)。
 默认全 7 场景都融合(有行为分数就 mean,无则退化为纯外观);融合分落盘 fused_<scene>.npz。
 注:test-rank 是 transductive 的无标签后处理(用整场景 test 分数排序,不碰标签),离线评测口径下成立。
 Env: base/DMAD。例: python fusion/fuse.py
@@ -9,7 +9,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-D = os.path.join(_ROOT, 'experiments/fusion/scores')
+D = os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores')
 SCENES = ['highway', 'farmland', 'bike', 'solar', 'vehicle', 'crossroads', 'railway']  # 与 report 同序
 
 

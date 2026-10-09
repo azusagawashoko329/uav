@@ -17,8 +17,9 @@ import torchvision.transforms as T
 from sklearn.metrics import roc_auc_score, roc_curve
 
 from model import build_appearance_teacher, build_bottleneck, build_student, anomaly_readouts
+from scripts.experiment_paths import require_experiment
 
-DATA_ROOT = '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly'
+DATA_ROOT = os.environ.get('UAV_DA_ROOT', '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly')
 SCENES = {
     'bike': 'Bike Roundabout', 'crossroads': 'Crossroads', 'farmland': 'Farmland Inspection',
     'highway': 'Highway', 'railway': 'Railway Inspection', 'solar': 'Solar Panel Inspection',
@@ -96,6 +97,10 @@ def main():
     ap.add_argument('--agg', default='concat', choices=['concat', 'mean'],
                     help="concat = global micro-AUC (MADViT-matched); mean = per-video AUC averaged (ASTT-style macro)")
     a = ap.parse_args()
+    require_experiment(a.exp, dataset='da')
+    outp = os.path.join('experiments', a.exp, 'results.csv' if a.agg == 'concat' else f'results_{a.agg}.csv')
+    if os.path.exists(outp):
+        raise FileExistsError(f'result already exists: {outp}; use a new run ID or experiment')
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
     scenes = a.scenes.split(',')
 
@@ -109,7 +114,6 @@ def main():
         print(f'[{sc}] ({a.agg}) {nvid} test vids, {npos}/{ntot} anom, k={k} | '
               + ' '.join(f'{rd}={res[rd][0]:.2f}(eer{res[rd][1]:.3f})' for rd in READOUTS), flush=True)
 
-    outp = os.path.join('experiments', a.exp, 'results.csv' if a.agg == 'concat' else f'results_{a.agg}.csv')
     with open(outp, 'w') as f:
         f.write('scene,' + ','.join(f'{r}_AUC,{r}_EER' for r in READOUTS) + '\n')
         for sc in scenes:

@@ -1,15 +1,17 @@
-"""双卡动态调度全量训练 → 评估 → README(固定 seed,工程级完全重头)。
+"""双卡动态调度全量训练 → 评估 → run_summary.md(固定 seed)。
 
 调度:场景队列 + 每张卡一个 worker,谁空谁取下一个(不让卡空着);每场景一个子进程跑 train_fusion
 (两分支:外观梯度训练 + 行为从头重跑检测建点云,固定 --seed),stdout 落 logs/<scene>.log。
-全部训练完成后跑 eval_fusion 出 7 场景融合表(logs/eval.log + results_fusion.csv),最后写 README.md。
+全部训练完成后跑 eval_fusion 出 7 场景融合表(logs/eval.log + results_fusion.csv),最后写 run_summary.md。
 
-产物:experiments/<YYYYMMDD>_all_model/{ckpt/<scene>/<scene>.{pth,npz}, det_cache/, logs/, README.md, results_fusion.csv}
-Env: DMAD。例: python fusion/run_all.py --gpus 0 1 --seed 42
+产物:experiments/da/fusion/<id>/{ckpt/<scene>/<scene>.{pth,npz}, det_cache/, logs/, run_summary.md, results_fusion.csv}
+Env: DMAD。先创建实验目录,再传 --exp da/fusion/<id>。
 """
 import argparse, os, sys, subprocess, threading, queue, time, datetime
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _ROOT)
+from scripts.experiment_paths import require_experiment
 SCENES = ['crossroads', 'vehicle', 'bike', 'highway', 'farmland', 'solar', 'railway']  # 重→轻,利于双卡均衡
 
 
@@ -49,7 +51,7 @@ def write_readme(exp, results, epochs, seed):
     t = [f'# {exp} — 双分支统一训练(外观 RD + 行为 检测/描述子/kNN)', '',
          f'一个脚本、一个环境(DMAD: timm DINOv3 + ultralytics YOLO)同时产出两分支产物,**固定 seed={seed} 可复现**;'
          '行为分支的目标检测**从头重跑**(不读旧 `behavior/cache`,检测只缓存到本实验 `det_cache/`)。'
-         '完整前向与融合见 [../../fusion/PIPELINE.md](../../fusion/PIPELINE.md)。', '',
+         '完整前向与融合见仓库根目录 `fusion/PIPELINE.md`。', '',
          '## 训练配置(策略与历史一致)',
          f'- **外观**:DINOv3 ViT-B/16 frozen,taps=[5,7,9,11],OCBE code_dim=64,student depth=12,'
          f'top-k(k=5)重建损失,img=256,**{epochs} epoch**,bs=64,AdamW lr=5e-4 wd=5e-2 OneCycleLR,seed={seed}。',
@@ -67,20 +69,23 @@ def write_readme(exp, results, epochs, seed):
     if results:
         t += ['', '## 训练耗时', '| 场景 | GPU | 秒 | rc |', '|---|---|---|---|']
         t += [f'| {sk} | {g} | {s:.0f} | {rc} |' for sk, (g, s, rc) in results.items()]
-    with open(os.path.join(base, 'README.md'), 'w') as f:
+    with open(os.path.join(base, 'run_summary.md'), 'w') as f:
         f.write('\n'.join(t) + '\n')
-    print(f'wrote {os.path.join(base, "README.md")}', flush=True)
+    print(f'wrote {os.path.join(base, "run_summary.md")}', flush=True)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--gpus', nargs='+', type=int, default=[0, 1])
-    ap.add_argument('--exp', default=None)
+    ap.add_argument('--exp', required=True, help='registered da/fusion/<id> path')
     ap.add_argument('--seed', type=int, default=42)
     ap.add_argument('--epochs', type=int, default=15)
     ap.add_argument('--scenes', default='all')
     a = ap.parse_args()
-    exp = a.exp or datetime.date.today().strftime('%Y%m%d') + '_all_model'
+    exp = a.exp
+    base = require_experiment(exp, dataset='da', family='fusion')
+    if (base / 'results_fusion.csv').exists() or any((base / 'ckpt').rglob('*.pth')):
+        raise FileExistsError(f'experiment already has results or checkpoints: {base}')
     scenes = SCENES if a.scenes == 'all' else a.scenes.split(',')
     logdir = os.path.join(_ROOT, 'experiments', exp, 'logs'); os.makedirs(logdir, exist_ok=True)
     env = os.environ.copy(); env['HF_HUB_OFFLINE'] = '1'

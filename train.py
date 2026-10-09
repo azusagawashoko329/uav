@@ -10,8 +10,8 @@ native resolution is 256 (-> 256 patches); use --img 224 for an apples-to-apples
 old DeiT pipeline (-> 196 patches). The pipeline is patch-count-agnostic either way.
 
 Example:
-  python train.py --scene railway --gpu 0
-  python train.py --scene crossroads --epochs 15 --img 256 --gpu 1   # merges sequence1+2+3
+  python train.py --scene railway --gpu 0 --exp da/appearance/<experiment-id>
+  python train.py --scene crossroads --epochs 15 --img 256 --gpu 1 --exp da/appearance/<experiment-id>
 """
 import argparse, os, glob, time
 import torch
@@ -20,8 +20,9 @@ from PIL import Image
 import torchvision.transforms as T
 
 from model import build_appearance_teacher, build_bottleneck, build_student, topk_loss, full_loss
+from scripts.experiment_paths import require_experiment
 
-DATA_ROOT = '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly'
+DATA_ROOT = os.environ.get('UAV_DA_ROOT', '/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly')
 SCENES = {
     'bike': 'Bike Roundabout', 'crossroads': 'Crossroads', 'farmland': 'Farmland Inspection',
     'highway': 'Highway', 'railway': 'Railway Inspection', 'solar': 'Solar Panel Inspection',
@@ -63,9 +64,14 @@ def main():
     ap.add_argument('--wd', type=float, default=5e-2, help='AdamW weight decay')
     ap.add_argument('--workers', type=int, default=8)
     ap.add_argument('--max_steps', type=int, default=0, help='>0 limits batches/epoch (smoke test)')
-    ap.add_argument('--exp', default='default', help='experiment name -> experiments/<exp>/ckpt/<scene>.pth')
+    ap.add_argument('--exp', required=True, help='registered path below experiments/, e.g. da/appearance/<id>')
     ap.add_argument('--out', default=None, help='override ckpt dir (default: experiments/<exp>/ckpt)')
     a = ap.parse_args()
+    require_experiment(a.exp, dataset='da')
+    ckpt_dir = a.out or os.path.join('experiments', a.exp, 'ckpt')
+    ckpt = os.path.join(ckpt_dir, f'{a.scene}.pth')
+    if os.path.exists(ckpt):
+        raise FileExistsError(f'checkpoint already exists: {ckpt}; use a new experiment ID')
 
     scene = SCENES.get(a.scene, a.scene)
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
@@ -104,9 +110,7 @@ def main():
             tot += loss.item() * x.size(0); n += x.size(0)
         print(f'  ep{ep+1:02d}/{a.epochs} loss={tot/max(n,1):.4f} lr={sched.get_last_lr()[0]:.2e}  ({time.time()-t0:.0f}s)', flush=True)
 
-    ckpt_dir = a.out or os.path.join('experiments', a.exp, 'ckpt')
     os.makedirs(ckpt_dir, exist_ok=True)
-    ckpt = os.path.join(ckpt_dir, f'{a.scene}.pth')
     torch.save({'ocbe': ocbe.state_dict(), 'student': student.state_dict(), 'cfg': vars(a),
                 'scene': scene}, ckpt)
     print(f'saved {ckpt}', flush=True)

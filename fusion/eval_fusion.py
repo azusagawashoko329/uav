@@ -20,6 +20,7 @@ from sklearn.metrics import roc_auc_score
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _ROOT)
+from scripts.experiment_paths import require_experiment
 from model import build_appearance_teacher, build_bottleneck, build_student
 import eval as _eval                          # 复用 score_video
 _spec = importlib.util.spec_from_file_location('l1', os.path.join(_ROOT, 'behavior', 'l1.py'))
@@ -116,14 +117,16 @@ def run_scene(sk, exp, det, dev, bs):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--exp', default=None, help='默认 <YYYYMMDD>_all_model')
+    ap.add_argument('--exp', required=True, help='registered da/fusion/<id> path')
     ap.add_argument('--scenes', default='all')
     ap.add_argument('--gpu', type=int, default=0)
     ap.add_argument('--bs', type=int, default=32)
     ap.add_argument('--conf', type=float, default=0.25)
     a = ap.parse_args()
-    if a.exp is None:
-        a.exp = datetime.date.today().strftime('%Y%m%d') + '_all_model'
+    require_experiment(a.exp, dataset='da', family='fusion')
+    outp = os.path.join('experiments', a.exp, 'results_fusion.csv')
+    if os.path.exists(outp):
+        raise FileExistsError(f'result already exists: {outp}; use a new run ID or experiment')
     scenes = ALL if a.scenes == 'all' else a.scenes.split(',')
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
     det = l1.build_vehicle_detector(conf=a.conf, device=f'cuda:{a.gpu}')
@@ -140,7 +143,6 @@ def main():
         print(f'{sk:>11s}{auc_a:9.2f}{bsv}{q:7.3f}{auc_f:9.2f}{auc_f-auc_a:+8.2f}', flush=True)
     if A:
         print(f'{"均值":>10s}{np.mean(A):9.2f}{"":9s}{"":7s}{np.mean(Fz):9.2f}{np.mean(Fz)-np.mean(A):+8.2f}')
-        outp = os.path.join('experiments', a.exp, 'results_fusion.csv')
         with open(outp, 'w') as f:
             f.write('scene,appearance,behavior,q,fused\n')
             for sk, aa, ab, q, af in rows:

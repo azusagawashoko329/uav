@@ -22,7 +22,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--scenes', default='crossroads,vehicle')
     ap.add_argument('--gpu', type=int, default=0)
-    ap.add_argument('--out', default=os.path.join(_ROOT, 'experiments/fusion/scores'))
+    ap.add_argument('--out', default=os.path.join(_ROOT, 'experiments/da/fusion/legacy_score_dump/scores'))
     ap.add_argument('--train', action='store_true', help='额外 dump train 正常帧分数(leave-self-out)作 CDF 锚')
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)

@@ -11,6 +11,7 @@ from sklearn.metrics import roc_auc_score
 
 import eval as E
 from model import build_appearance_teacher, build_bottleneck, build_student
+from scripts.experiment_paths import require_experiment
 
 
 def run_scene(scene_key, exp, dev, bs):
@@ -46,16 +47,19 @@ def run_scene(scene_key, exp, dev, bs):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--exp', default='20260611_rd_baseline')
+    ap.add_argument('--exp', default='da/appearance/20260611_rd_baseline')
     ap.add_argument('--gpu', type=int, default=0)
     ap.add_argument('--bs', type=int, default=32)
     ap.add_argument('--scenes', default=E.ALL_SCENES)
     a = ap.parse_args()
+    require_experiment(a.exp, dataset='da')
+    outp = os.path.join('experiments', a.exp, 'results_perseq.csv')
+    if os.path.exists(outp):
+        raise FileExistsError(f'result already exists: {outp}; use a new run ID or experiment')
     dev = torch.device(f'cuda:{a.gpu}' if torch.cuda.is_available() else 'cpu')
     all_rows = []
     for sc in a.scenes.split(','):
         all_rows += run_scene(sc, a.exp, dev, a.bs)
-    outp = os.path.join('experiments', a.exp, 'results_perseq.csv')
     with open(outp, 'w') as f:
         f.write('scene,sequence,subvideo,frames,anom,topk_AUC,max_AUC,mean_AUC\n')
         for r in all_rows:
