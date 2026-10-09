@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "20260928_agg_explore",
+  "dataset": "da",
+  "question": "Compare adjacent teacher-layer aggregation and raw12 training losses",
+  "variant": "legacy_mixed",
+  "status": "unknown",
+  "source_commit": null,
+  "scripts": [
+    "scripts/probe_e2e.py",
+    "scripts/run_full_scenes.sh",
+    "scripts/summarize.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20260928T075033Z_raw12_partial",
+      "status": "unknown",
+      "command": null,
+      "source_commit": null,
+      "outputs": ["raw_raw12.txt", "logs/raw12_bike.log", "logs/raw12_crossroads.log", "logs/raw12_farmland.log"]
+    },
+    {
+      "run_id": "legacy_raw12_loss_comparison",
+      "status": "unknown",
+      "command": null,
+      "source_commit": null,
+      "outputs": ["loss_compare.csv", "logs/"]
+    }
+  ],
+  "result_summary": "loss_compare.csv has seven-scene mean AUC 84.66 (mean loss) and 85.01 (group_balanced), single seed 42; original three-variant study incomplete",
+  "limitations": [
+    "The exact runtime source commit and shell commands are not recoverable from the recorded files.",
+    "raw_raw12.txt contains only three scenes; the seven-scene comparison is a different loss study.",
+    "No checkpoint is retained and no multi-seed evaluation is recorded."
+  ]
+}
