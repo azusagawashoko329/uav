@@ -1,0 +1,145 @@
+{
+  "scene": "farmland",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/04",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/03"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.23345153530438742,
+        "normal_delta_median": 0.06559384614229202,
+        "pseudo_flip": 0.14716311792532602,
+        "pseudo_delta_median": 0.07974586387475331
+      },
+      "M": {
+        "normal_flip": 0.08835697422424953,
+        "normal_delta_median": 0.010655214389165243,
+        "pseudo_flip": 0.04609929025173187,
+        "pseudo_delta_median": 0.009527971347173056
+      },
+      "S": {
+        "normal_flip": 0.07653664300839107,
+        "normal_delta_median": -0.00862017273902893,
+        "pseudo_flip": 0.03516548437376817,
+        "pseudo_delta_median": -0.012358772257963816
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.2222222222222222,
+          "comparable_fraction": 0.3333333333333333,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/01",
+              "real_normal_flip": 0.11613475531339645,
+              "real_pseudo_delta": 0.011764898896217346,
+              "pareto_evidence": 0.3333333333333333
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/03",
+              "real_normal_flip": 0.07003545761108398,
+              "real_pseudo_delta": 0.007054150104522705,
+              "pareto_evidence": 0.0
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/04",
+              "real_normal_flip": 0.07890070974826813,
+              "real_pseudo_delta": 0.009764865040779114,
+              "pareto_evidence": 0.3333333333333333
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.5095238095238095,
+          "comparable_fraction": 0.5666666666666667,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/01",
+              "real_normal_flip": 0.09308510273694992,
+              "real_pseudo_delta": -0.011076860129833221,
+              "pareto_evidence": 0.5285714285714286
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/03",
+              "real_normal_flip": 0.05585106462240219,
+              "real_pseudo_delta": -0.016919322311878204,
+              "pareto_evidence": 0.44285714285714284
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/04",
+              "real_normal_flip": 0.08067376166582108,
+              "real_pseudo_delta": -0.009080134332180023,
+              "pareto_evidence": 0.5571428571428572
+            }
+          ]
+        }
+      },
+      "boundary": 0
+    }
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.21808511018753052,
+        "normal_delta_median": 0.06394348293542862,
+        "pseudo_flip": 0.09574468433856964,
+        "pseudo_delta_median": 0.09447174519300461
+      },
+      "M": {
+        "normal_flip": 0.11081559956073761,
+        "normal_delta_median": 0.009798809885978699,
+        "pseudo_flip": 0.040780141949653625,
+        "pseudo_delta_median": 0.008667759597301483
+      },
+      "S": {
+        "normal_flip": 0.0904255285859108,
+        "normal_delta_median": -0.00860709697008133,
+        "pseudo_flip": 0.01773049682378769,
+        "pseudo_delta_median": -0.01728491485118866
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.3333333333333333,
+          "comparable_fraction": 0.3333333333333333,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/02",
+              "real_normal_flip": 0.11081559956073761,
+              "real_pseudo_delta": 0.008667759597301483,
+              "pareto_evidence": 0.3333333333333333
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.6857142857142857,
+          "comparable_fraction": 0.7142857142857143,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Farmland Inspection/sequence1/train/02",
+              "real_normal_flip": 0.0904255285859108,
+              "real_pseudo_delta": -0.01728491485118866,
+              "pareto_evidence": 0.6857142857142857
+            }
+          ]
+        }
+      },
+      "boundary": 0
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "id": "ablations",
+  "path": "experiments/da/appearance/ablations",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": true,
+  "original_path": null,
+  "status": "unknown",
+  "source_commit": null,
+  "source_ref": null,
+  "scripts": [
+    "scripts/run_ablations.sh"
+  ],
+  "evidence": [
+    "logs/ablations_run.log"
+  ],
+  "weight_files_local": 0,
+  "review_markers": [],
+  "result_summary": null,
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "ablations_run",
+      "status": "unknown",
+      "evidence": [
+        "logs/ablations_run.log"
+      ]
+    }
+  ]
+}

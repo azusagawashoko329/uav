@@ -1,0 +1,171 @@
+{
+  "scene": "bike",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.29609929770231247,
+        "normal_delta_median": 0.047671605832874775,
+        "pseudo_flip": 0.09308510646224022,
+        "pseudo_delta_median": 0.07589331082999706
+      },
+      "M": {
+        "normal_flip": 0.142508864402771,
+        "normal_delta_median": 0.013079166412353516,
+        "pseudo_flip": 0.04942375887185335,
+        "pseudo_delta_median": 0.01675467286258936
+      },
+      "S": {
+        "normal_flip": 0.07380319200456142,
+        "normal_delta_median": -0.0034943874925374985,
+        "pseudo_flip": 0.016400709049776196,
+        "pseudo_delta_median": -0.013081347569823265
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.25,
+          "comparable_fraction": 0.25,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+              "real_normal_flip": 0.1631205677986145,
+              "real_pseudo_delta": 0.016588591039180756,
+              "pareto_evidence": 0.5
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+              "real_normal_flip": 0.12943261861801147,
+              "real_pseudo_delta": 0.017646975815296173,
+              "pareto_evidence": 0.0
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+              "real_normal_flip": 0.10815602540969849,
+              "real_pseudo_delta": 0.015894319862127304,
+              "pareto_evidence": 0.16666666666666666
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+              "real_normal_flip": 0.16932624578475952,
+              "real_pseudo_delta": 0.016888804733753204,
+              "pareto_evidence": 0.3333333333333333
+            }
+          ]
+        },
+        "S": {
+          "evidence": -0.10357142857142856,
+          "comparable_fraction": 0.27499999999999997,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+              "real_normal_flip": 0.06914893537759781,
+              "real_pseudo_delta": -0.013484708964824677,
+              "pareto_evidence": 0.04285714285714286
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+              "real_normal_flip": 0.06294326484203339,
+              "real_pseudo_delta": -0.013450182974338531,
+              "pareto_evidence": -0.2714285714285714
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+              "real_normal_flip": 0.07358156144618988,
+              "real_pseudo_delta": -0.013434275984764099,
+              "pareto_evidence": -0.14285714285714285
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+              "real_normal_flip": 0.08953900635242462,
+              "real_pseudo_delta": -0.011956222355365753,
+              "pareto_evidence": -0.04285714285714286
+            }
+          ]
+        }
+      },
+      "boundary": 4
+    }
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.2681737542152405,
+        "normal_delta_median": 0.045488737523555756,
+        "pseudo_flip": 0.08023049682378769,
+        "pseudo_delta_median": 0.07911452651023865
+      },
+      "M": {
+        "normal_flip": 0.12765957787632942,
+        "normal_delta_median": 0.012386128306388855,
+        "pseudo_flip": 0.0363475177437067,
+        "pseudo_delta_median": 0.017103474587202072
+      },
+      "S": {
+        "normal_flip": 0.07712765969336033,
+        "normal_delta_median": -0.004544194787740707,
+        "pseudo_flip": 0.011081560049206018,
+        "pseudo_delta_median": -0.015012763440608978
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.25,
+          "comparable_fraction": 0.25,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "real_normal_flip": 0.13652482628822327,
+              "real_pseudo_delta": 0.016853511333465576,
+              "pareto_evidence": 0.3333333333333333
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "real_normal_flip": 0.11879432946443558,
+              "real_pseudo_delta": 0.017353437840938568,
+              "pareto_evidence": 0.16666666666666666
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.14285714285714285,
+          "comparable_fraction": 0.3857142857142857,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "real_normal_flip": 0.05496453866362572,
+              "real_pseudo_delta": -0.015875808894634247,
+              "pareto_evidence": -0.17142857142857143
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "real_normal_flip": 0.09929078072309494,
+              "real_pseudo_delta": -0.01414971798658371,
+              "pareto_evidence": 0.45714285714285713
+            }
+          ]
+        }
+      },
+      "boundary": 4
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "id": "_small_v010_matcher",
+  "path": "experiments/da/boundary/dlbm/diagnostics/_small_v010_matcher",
+  "dataset": "da",
+  "family": "boundary",
+  "legacy": true,
+  "original_path": "experiment_DLBM/run/boundary/_small_v010_matcher",
+  "status": "unknown",
+  "source_commit": null,
+  "source_ref": "explore/distill-layer-boundary@1a68d0c",
+  "scripts": [],
+  "evidence": [
+    "bike/result.json",
+    "crossroads/result.json",
+    "highway/result.json",
+    "logs/crossroads.log",
+    "logs/highway.log"
+  ],
+  "weight_files_local": 3,
+  "review_markers": [],
+  "result_summary": "历史结果证据：bike/result.json, crossroads/result.json, highway/result.json；未在迁移时重新计算指标。",
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "crossroads",
+      "status": "unknown",
+      "evidence": [
+        "logs/crossroads.log"
+      ]
+    },
+    {
+      "run_id": "highway",
+      "status": "unknown",
+      "evidence": [
+        "logs/highway.log"
+      ]
+    }
+  ]
+}

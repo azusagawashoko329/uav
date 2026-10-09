@@ -1,0 +1,416 @@
+{
+  "format_version": 3,
+  "scene": "crossroads",
+  "method": "coarse_exact_suffix_micro_adaptation",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/crossroads.pth",
+  "args": {
+    "scene": "crossroads",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v003_micro_adapt_target_probe/scenes/crossroads",
+    "gpu": 1,
+    "seed": 42,
+    "boundaries": [
+      0,
+      4,
+      8,
+      11
+    ],
+    "epochs": 5,
+    "milestones": [
+      1,
+      3,
+      5
+    ],
+    "max_frames_per_video": 48,
+    "train_bs": 8,
+    "eval_bs": 8,
+    "workers": 4,
+    "topk": 5,
+    "lr": 0.0005,
+    "wd": 0.05,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15
+  },
+  "split": {
+    "support_frames": 336,
+    "query_frames": 144,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01"
+      ]
+    }
+  },
+  "boundaries": {
+    "0": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "train_history": [
+        {
+          "epoch": 1,
+          "loss": 0.20337542962460292
+        },
+        {
+          "epoch": 2,
+          "loss": 0.12416904224526315
+        },
+        {
+          "epoch": 3,
+          "loss": 0.11414810749036926
+        },
+        {
+          "epoch": 4,
+          "loss": 0.10895291378810293
+        },
+        {
+          "epoch": 5,
+          "loss": 0.10739298448676154
+        }
+      ],
+      "milestones": {
+        "0": {
+          "pairwise_risk": 0.6219841837882996,
+          "normal_score": 0.08652760833501816,
+          "pseudo_score": 0.235087051987648,
+          "normal_layer_scores": [
+            0.05639239028096199,
+            0.06577515602111816,
+            0.06578894704580307,
+            0.0734647884964943,
+            0.09084644913673401,
+            0.10474980622529984,
+            0.12487930804491043,
+            0.12233975529670715,
+            0.11754238605499268,
+            0.10841149836778641,
+            0.08736781030893326,
+            0.02077288180589676
+          ]
+        },
+        "1": {
+          "pairwise_risk": 0.6397005319595337,
+          "normal_score": 0.1536271572113037,
+          "pseudo_score": 0.2640494108200073,
+          "normal_layer_scores": [
+            0.11658827215433121,
+            0.13408690690994263,
+            0.12081417441368103,
+            0.12905389070510864,
+            0.15885543823242188,
+            0.18137621879577637,
+            0.2105526477098465,
+            0.21106143295764923,
+            0.2063305377960205,
+            0.18890656530857086,
+            0.1487366110086441,
+            0.037163060158491135
+          ]
+        },
+        "3": {
+          "pairwise_risk": 0.6346608400344849,
+          "normal_score": 0.13055366277694702,
+          "pseudo_score": 0.2517467141151428,
+          "normal_layer_scores": [
+            0.09354841709136963,
+            0.10859057307243347,
+            0.10108896344900131,
+            0.10916396975517273,
+            0.13609470427036285,
+            0.15451546013355255,
+            0.18394142389297485,
+            0.18335503339767456,
+            0.17774957418441772,
+            0.16200405359268188,
+            0.12520676851272583,
+            0.031384967267513275
+          ]
+        },
+        "5": {
+          "pairwise_risk": 0.6359477639198303,
+          "normal_score": 0.13311760127544403,
+          "pseudo_score": 0.25155094265937805,
+          "normal_layer_scores": [
+            0.1004396602511406,
+            0.11464664340019226,
+            0.10385337471961975,
+            0.11192957311868668,
+            0.13684767484664917,
+            0.15586857497692108,
+            0.18549984693527222,
+            0.18566486239433289,
+            0.18023644387722015,
+            0.16351740062236786,
+            0.12736769020557404,
+            0.03153928369283676
+          ]
+        }
+      }
+    },
+    "4": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "train_history": [
+        {
+          "epoch": 1,
+          "loss": 0.22423369082666578
+        },
+        {
+          "epoch": 2,
+          "loss": 0.13895084921802794
+        },
+        {
+          "epoch": 3,
+          "loss": 0.12643954477139882
+        },
+        {
+          "epoch": 4,
+          "loss": 0.12173897063448316
+        },
+        {
+          "epoch": 5,
+          "loss": 0.11833381120647703
+        }
+      ],
+      "milestones": {
+        "0": {
+          "pairwise_risk": 0.6048678159713745,
+          "normal_score": 0.13223201036453247,
+          "pseudo_score": 0.318783164024353,
+          "normal_layer_scores": [
+            0.15691787004470825,
+            0.15073543787002563,
+            0.16985361278057098,
+            0.16255782544612885,
+            0.14786645770072937,
+            0.1347580999135971,
+            0.10798745602369308,
+            0.02717929519712925
+          ]
+        },
+        "1": {
+          "pairwise_risk": 0.6211850047111511,
+          "normal_score": 0.16910530626773834,
+          "pseudo_score": 0.3196733593940735,
+          "normal_layer_scores": [
+            0.18811802566051483,
+            0.19257572293281555,
+            0.21307885646820068,
+            0.2106170356273651,
+            0.19970674812793732,
+            0.17624446749687195,
+            0.13729768991470337,
+            0.03520379588007927
+          ]
+        },
+        "3": {
+          "pairwise_risk": 0.6173535585403442,
+          "normal_score": 0.1487107276916504,
+          "pseudo_score": 0.3076409101486206,
+          "normal_layer_scores": [
+            0.16377578675746918,
+            0.1654987931251526,
+            0.18720287084579468,
+            0.18764008581638336,
+            0.17539308965206146,
+            0.15810294449329376,
+            0.12141994386911392,
+            0.030652357265353203
+          ]
+        },
+        "5": {
+          "pairwise_risk": 0.6164634227752686,
+          "normal_score": 0.14759314060211182,
+          "pseudo_score": 0.30849573016166687,
+          "normal_layer_scores": [
+            0.1567709743976593,
+            0.1632535457611084,
+            0.18803457915782928,
+            0.18670183420181274,
+            0.17620569467544556,
+            0.1580144613981247,
+            0.12116249650716782,
+            0.030601568520069122
+          ]
+        }
+      }
+    },
+    "8": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "train_history": [
+        {
+          "epoch": 1,
+          "loss": 0.24772743455001286
+        },
+        {
+          "epoch": 2,
+          "loss": 0.14051398351078942
+        },
+        {
+          "epoch": 3,
+          "loss": 0.11411118560603686
+        },
+        {
+          "epoch": 4,
+          "loss": 0.10502255175794874
+        },
+        {
+          "epoch": 5,
+          "loss": 0.09825690445445832
+        }
+      ],
+      "milestones": {
+        "0": {
+          "pairwise_risk": 0.6216500997543335,
+          "normal_score": 0.2501136064529419,
+          "pseudo_score": 0.3999316394329071,
+          "normal_layer_scores": [
+            0.38230741024017334,
+            0.32209742069244385,
+            0.24157439172267914,
+            0.05447504669427872
+          ]
+        },
+        "1": {
+          "pairwise_risk": 0.617546796798706,
+          "normal_score": 0.1824524998664856,
+          "pseudo_score": 0.3410853147506714,
+          "normal_layer_scores": [
+            0.28876638412475586,
+            0.23149912059307098,
+            0.16580438613891602,
+            0.04374008998274803
+          ]
+        },
+        "3": {
+          "pairwise_risk": 0.6098582148551941,
+          "normal_score": 0.13061130046844482,
+          "pseudo_score": 0.30628716945648193,
+          "normal_layer_scores": [
+            0.20477627217769623,
+            0.16493543982505798,
+            0.12075039744377136,
+            0.03198304399847984
+          ]
+        },
+        "5": {
+          "pairwise_risk": 0.6102867126464844,
+          "normal_score": 0.12487620860338211,
+          "pseudo_score": 0.29965338110923767,
+          "normal_layer_scores": [
+            0.19564026594161987,
+            0.15715724229812622,
+            0.11550775170326233,
+            0.031199583783745766
+          ]
+        }
+      }
+    },
+    "11": {
+      "boundary": 11,
+      "selected_taps": [
+        11
+      ],
+      "train_history": [
+        {
+          "epoch": 1,
+          "loss": 0.08693530108957064
+        },
+        {
+          "epoch": 2,
+          "loss": 0.05728663983089583
+        },
+        {
+          "epoch": 3,
+          "loss": 0.04489866990063872
+        },
+        {
+          "epoch": 4,
+          "loss": 0.03733991370314643
+        },
+        {
+          "epoch": 5,
+          "loss": 0.03312878838429848
+        }
+      ],
+      "milestones": {
+        "0": {
+          "pairwise_risk": 0.6923205852508545,
+          "normal_score": 0.10579416155815125,
+          "pseudo_score": 0.10746029019355774,
+          "normal_layer_scores": [
+            0.10579416155815125
+          ]
+        },
+        "1": {
+          "pairwise_risk": 0.6884753108024597,
+          "normal_score": 0.06974206864833832,
+          "pseudo_score": 0.07914144545793533,
+          "normal_layer_scores": [
+            0.06974206864833832
+          ]
+        },
+        "3": {
+          "pairwise_risk": 0.6844350099563599,
+          "normal_score": 0.05226488783955574,
+          "pseudo_score": 0.06981310248374939,
+          "normal_layer_scores": [
+            0.05226488783955574
+          ]
+        },
+        "5": {
+          "pairwise_risk": 0.6853501200675964,
+          "normal_score": 0.045836832374334335,
+          "pseudo_score": 0.061534591019153595,
+          "normal_layer_scores": [
+            0.045836832374334335
+          ]
+        }
+      }
+    }
+  },
+  "best_boundary_by_milestone": {
+    "0": 4,
+    "1": 8,
+    "3": 8,
+    "5": 8
+  },
+  "peak_gpu_gib": 3.6724371910095215
+}

@@ -1,0 +1,19 @@
+{
+  "stage": "probe",
+  "scenes": ["bike", "crossroads", "farmland", "highway", "railway", "solar", "vehicle"],
+  "gpus": [0, 1],
+  "scheduling": "dynamic_longest_first",
+  "seed": 42,
+  "epochs": 10,
+  "img": 256,
+  "taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "code_dim": 64,
+  "student_depth": 12,
+  "tap_align": "absolute",
+  "k": 5,
+  "loss": "topk",
+  "batch_size": 64,
+  "learning_rate": 0.0005,
+  "weight_decay": 0.05,
+  "workers": 8
+}

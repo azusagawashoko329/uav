@@ -1,0 +1,13 @@
+[2026-07-14 15:51:37] start scene=highway gpu=0 version=DLBM_v004_mask_localization_target_probe
+[highway] support=192 query=96 boundaries=[0, 4, 8, 11] micro=5 localizer=20
+  cached L0
+  cached L4
+  cached L8
+  cached L11
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  localizer ep05 train=0.2174 choice=L0 aucs=L0:0.8767,L4:0.8707,L8:0.7940,L11:0.5556
+  localizer ep10 train=0.2247 choice=L0 aucs=L0:0.8280,L4:0.7941,L8:0.7934,L11:0.5556
+  localizer ep20 train=0.1965 choice=L0 aucs=L0:0.7780,L4:0.7744,L8:0.6946,L11:0.5556
+  final choice=L0 peak=3.67 GiB
+[2026-07-14 15:53:19] end scene=highway exit=0

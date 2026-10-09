@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "dlbm_v016_crossfit_order_novelty",
+  "path": "experiments/da/boundary/dlbm/runs/dlbm_v016_crossfit_order_novelty",
+  "dataset": "da",
+  "family": "boundary",
+  "legacy": true,
+  "original_path": "experiment_DLBM/run/boundary/DLBM_v016_crossfit_order_novelty",
+  "status": "completed",
+  "source_commit": null,
+  "source_ref": "explore/distill-layer-boundary@1a68d0c",
+  "scripts": [
+    "scripts/launch_crossfit_order_v016_three.sh"
+  ],
+  "evidence": [
+    "launcher.log",
+    "logs/bike.log",
+    "logs/crossroads.log",
+    "logs/highway.log",
+    "scenes/bike/result.json",
+    "scenes/crossroads/result.json",
+    "scenes/highway/result.json"
+  ],
+  "weight_files_local": 3,
+  "review_markers": [],
+  "result_summary": "历史结果证据：scenes/bike/result.json, scenes/crossroads/result.json, scenes/highway/result.json；未在迁移时重新计算指标。",
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "bike",
+      "status": "completed",
+      "evidence": [
+        "status/bike.done"
+      ]
+    },
+    {
+      "run_id": "crossroads",
+      "status": "completed",
+      "evidence": [
+        "status/crossroads.done"
+      ]
+    },
+    {
+      "run_id": "highway",
+      "status": "completed",
+      "evidence": [
+        "status/highway.done"
+      ]
+    }
+  ]
+}

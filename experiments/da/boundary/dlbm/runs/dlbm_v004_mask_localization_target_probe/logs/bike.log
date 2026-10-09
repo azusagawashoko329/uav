@@ -1,0 +1,13 @@
+[2026-07-14 15:52:18] start scene=bike gpu=1 version=DLBM_v004_mask_localization_target_probe
+[bike] support=192 query=96 boundaries=[0, 4, 8, 11] micro=5 localizer=20
+  cached L0
+  cached L4
+  cached L8
+  cached L11
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  localizer ep05 train=0.1857 choice=L0 aucs=L0:0.9680,L4:0.9674,L8:0.9142,L11:0.2119
+  localizer ep10 train=0.1972 choice=L0 aucs=L0:0.9739,L4:0.9673,L8:0.8986,L11:0.2119
+  localizer ep20 train=0.1648 choice=L0 aucs=L0:0.9654,L4:0.9524,L8:0.9134,L11:0.2119
+  final choice=L0 peak=3.67 GiB
+[2026-07-14 15:53:46] end scene=bike exit=0

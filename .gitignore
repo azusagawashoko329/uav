@@ -16,11 +16,13 @@ __pycache__/
 *.mp4
 *.avi
 *.mov
+*.npy
+**/visualizations/
 
 # Local detection caches and generated score caches
 behavior/cache/
-experiments/fusion/scores/
-experiments/*/det_cache/
+**/det_cache/
+*.pkl
 
 # Runtime-only scheduler state (keep logs, metrics, config and reviews)
 **/.queue*

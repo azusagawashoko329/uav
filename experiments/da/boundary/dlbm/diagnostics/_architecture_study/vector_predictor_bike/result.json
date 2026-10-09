@@ -1,0 +1,154 @@
+{
+  "scene": "bike",
+  "method": "channel_preserving_vector_cross_layer_predictor",
+  "args": {
+    "scene": "bike",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_architecture_study/vector_predictor_bike",
+    "gpu": 0,
+    "seed": 42,
+    "max_frames_per_video": 48,
+    "cache_bs": 2,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 32,
+    "epochs": 10,
+    "steps_per_epoch": 44,
+    "frame_batch": 4,
+    "eval_bs": 4,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.0018464940539243717,
+      "grad_norm": 0.002368184956139885,
+      "query": {
+        "normal_aligned_loss": 0.0001790638264841012,
+        "normal_aligned_mae": 0.013751682553750774,
+        "normal_zero_loss": 7.352203738264507e-05,
+        "normal_roll_loss": 0.000218879244736551,
+        "normal_roll_mae": 0.015475166379474103,
+        "pseudo_aligned_loss": 0.00020096139511830793,
+        "pseudo_aligned_mae": 0.014534726932955285,
+        "pseudo_zero_loss": 9.423684423381928e-05,
+        "pseudo_roll_loss": 0.00023963341118360404,
+        "pseudo_roll_mae": 0.01615799986757338,
+        "normal_roll_ratio": 1.222353219152194,
+        "pseudo_over_normal": 1.1222891807025634,
+        "normal_over_zero": 2.4355123015996476
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 9.938978787844958e-05,
+      "grad_norm": 0.000277235594281096
+    },
+    {
+      "epoch": 3,
+      "train_loss": 7.744089800160674e-05,
+      "grad_norm": 0.00011253829325141851
+    },
+    {
+      "epoch": 4,
+      "train_loss": 7.679073215430518e-05,
+      "grad_norm": 0.00016883769475581093
+    },
+    {
+      "epoch": 5,
+      "train_loss": 7.66030562689676e-05,
+      "grad_norm": 0.00010754215021403401,
+      "query": {
+        "normal_aligned_loss": 7.378738064289792e-05,
+        "normal_aligned_mae": 0.009076638690506419,
+        "normal_zero_loss": 7.352203738264507e-05,
+        "normal_roll_loss": 8.312556868380246e-05,
+        "normal_roll_mae": 0.009721885823334256,
+        "pseudo_aligned_loss": 9.448201641741132e-05,
+        "pseudo_aligned_mae": 0.009993944821568826,
+        "pseudo_zero_loss": 9.423684423381928e-05,
+        "pseudo_roll_loss": 0.00010357704953397236,
+        "pseudo_roll_mae": 0.010591193878402313,
+        "normal_roll_ratio": 1.1265553534973374,
+        "pseudo_over_normal": 1.2804630763987592,
+        "normal_over_zero": 1.003609030294847
+      }
+    },
+    {
+      "epoch": 6,
+      "train_loss": 7.630727255177176e-05,
+      "grad_norm": 0.0001766937574426596
+    },
+    {
+      "epoch": 7,
+      "train_loss": 7.631940587254411e-05,
+      "grad_norm": 7.456384938367674e-05
+    },
+    {
+      "epoch": 8,
+      "train_loss": 7.607411697046535e-05,
+      "grad_norm": 0.00011235662180876137
+    },
+    {
+      "epoch": 9,
+      "train_loss": 7.615532641383734e-05,
+      "grad_norm": 9.873960871945283e-05
+    },
+    {
+      "epoch": 10,
+      "train_loss": 7.651256055396516e-05,
+      "grad_norm": 0.00013982351728455714,
+      "query": {
+        "normal_aligned_loss": 7.344305110261e-05,
+        "normal_aligned_mae": 0.00905128630499045,
+        "normal_zero_loss": 7.352203738264507e-05,
+        "normal_roll_loss": 7.919847121229395e-05,
+        "normal_roll_mae": 0.009463982617792984,
+        "pseudo_aligned_loss": 9.408437866416837e-05,
+        "pseudo_aligned_mae": 0.009966436385487517,
+        "pseudo_zero_loss": 9.423684423381928e-05,
+        "pseudo_roll_loss": 9.969600462985302e-05,
+        "pseudo_roll_mae": 0.010348213370889425,
+        "normal_roll_ratio": 1.0783657544624996,
+        "pseudo_over_normal": 1.2810521519962401,
+        "normal_over_zero": 0.9989256788461399
+      }
+    }
+  ],
+  "final_query": {
+    "normal_aligned_loss": 7.344305110261e-05,
+    "normal_aligned_mae": 0.00905128630499045,
+    "normal_zero_loss": 7.352203738264507e-05,
+    "normal_roll_loss": 7.919847121229395e-05,
+    "normal_roll_mae": 0.009463982617792984,
+    "pseudo_aligned_loss": 9.408437866416837e-05,
+    "pseudo_aligned_mae": 0.009966436385487517,
+    "pseudo_zero_loss": 9.423684423381928e-05,
+    "pseudo_roll_loss": 9.969600462985302e-05,
+    "pseudo_roll_mae": 0.010348213370889425,
+    "normal_roll_ratio": 1.0783657544624996,
+    "pseudo_over_normal": 1.2810521519962401,
+    "normal_over_zero": 0.9989256788461399
+  },
+  "parameters": 161568,
+  "peak_gpu_gib": 0.8889627456665039
+}

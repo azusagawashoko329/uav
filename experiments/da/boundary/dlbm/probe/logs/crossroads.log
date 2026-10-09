@@ -1,0 +1,16 @@
+[2026-07-14 12:52:03] start scene=crossroads gpu=0 seed=42 probe_epochs=10
+[Crossroads] 3 seq merged, 15772 frames, 246 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.4146 lr=1.40e-04  (278s)
+  ep02/10 loss=0.2003 lr=3.81e-04  (278s)
+  ep03/10 loss=0.1565 lr=5.00e-04  (282s)
+  ep04/10 loss=0.1394 lr=4.75e-04  (275s)
+  ep05/10 loss=0.1163 lr=4.06e-04  (275s)
+  ep06/10 loss=0.1060 lr=3.05e-04  (275s)
+  ep07/10 loss=0.0995 lr=1.94e-04  (284s)
+  ep08/10 loss=0.0948 lr=9.38e-05  (278s)
+  ep09/10 loss=0.0919 lr=2.46e-05  (275s)
+  ep10/10 loss=0.0906 lr=2.42e-09  (274s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/crossroads.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 13:38:31] end scene=crossroads exit=0

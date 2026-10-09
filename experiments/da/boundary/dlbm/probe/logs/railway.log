@@ -1,0 +1,16 @@
+[2026-07-14 13:57:25] start scene=railway gpu=1 seed=42 probe_epochs=10
+[Railway Inspection] 1 seq merged, 1206 frames, 18 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.7547 lr=1.44e-04  (20s)
+  ep02/10 loss=0.3899 lr=3.88e-04  (18s)
+  ep03/10 loss=0.2994 lr=5.00e-04  (18s)
+  ep04/10 loss=0.2444 lr=4.72e-04  (18s)
+  ep05/10 loss=0.2115 lr=4.01e-04  (18s)
+  ep06/10 loss=0.1892 lr=3.00e-04  (18s)
+  ep07/10 loss=0.1728 lr=1.88e-04  (18s)
+  ep08/10 loss=0.1624 lr=8.93e-05  (18s)
+  ep09/10 loss=0.1580 lr=2.21e-05  (18s)
+  ep10/10 loss=0.1564 lr=7.97e-08  (18s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/railway.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 14:00:36] end scene=railway exit=0

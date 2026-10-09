@@ -1,0 +1,1583 @@
+{
+  "format_version": 20,
+  "scene": "bike",
+  "method": "joint_normal_pseudo_pair_set_episode_dlbm",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/bike.pth",
+  "probe_sha256": "d92acf912b6705be630547a65c7e85ab6ec703f26b10625eb3eba81d89eac961",
+  "probe_mutated": false,
+  "args": {
+    "scene": "bike",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v020_joint_episode/scenes/bike",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "pseudo_mode": "multi",
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_batch": 24,
+    "predictor_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_bike/predictor.pth",
+    "epochs": 10,
+    "steps_per_epoch": 20,
+    "episode_frames": 32,
+    "pair_samples": 256,
+    "eval_pairs": 2048,
+    "eval_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      1,
+      3,
+      5,
+      10
+    ]
+  },
+  "videos": {
+    "support": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+    ],
+    "query": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+    ]
+  },
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 1.5979301224433584e-05,
+    "normal_aligned_mae": 0.0043500622268766165,
+    "normal_independent_layer_roll_smooth_l1": 2.0475059955060715e-05,
+    "normal_independent_layer_roll_mae": 0.004964140243828297,
+    "pseudo_aligned_smooth_l1": 7.448155702149961e-05,
+    "pseudo_aligned_mae": 0.005646898411214352,
+    "pseudo_independent_layer_roll_smooth_l1": 0.0001462268592149485,
+    "pseudo_independent_layer_roll_mae": 0.007244173553772271,
+    "normal_roll_loss_ratio": 1.2813488942653368,
+    "pseudo_over_normal_loss_ratio": 4.661127290573355
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6498769462108612,
+      "grad_norm": 1.1591239139437675,
+      "M_null_normal_flip_rate": 0.12434895833333333,
+      "M_null_pseudo_flip_rate": 0.038411458333333336,
+      "M_null_joint_rate": 0.115234375,
+      "M_null_episode_probability": 0.3507760167121887,
+      "M_null_pair_probability": 0.5026515523592631,
+      "component_loss_0": 0.7133226186037064,
+      "component_loss_1": 0.7048459023237228,
+      "component_loss_2": 0.6933539122343063,
+      "component_loss_3": 0.5013795599341393,
+      "S_real_normal_flip_rate": 0.06901041666666667,
+      "S_real_pseudo_flip_rate": 0.018229166666666668,
+      "S_real_joint_rate": 0.06901041666666667,
+      "S_real_episode_probability": 0.2936897948384285,
+      "S_real_pair_probability": 0.49996330837408703,
+      "M_real_normal_flip_rate": 0.1376953125,
+      "M_real_pseudo_flip_rate": 0.052734375,
+      "M_real_joint_rate": 0.1318359375,
+      "M_real_episode_probability": 0.35887356102466583,
+      "M_real_pair_probability": 0.502326175570488,
+      "S_null_normal_flip_rate": 0.123046875,
+      "S_null_pseudo_flip_rate": 0.0380859375,
+      "S_null_joint_rate": 0.119140625,
+      "S_null_episode_probability": 0.3885383829474449,
+      "S_null_pair_probability": 0.5099928826093674,
+      "task_precision": [
+        1.0198155641555786,
+        1.0188807249069214,
+        1.0199295282363892,
+        1.020430326461792
+      ],
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": 0.0007125288248062134,
+          "S": -0.0003163255751132965
+        },
+        "probabilities": {
+          "D": 0.33321017026901245,
+          "MD": 0.33344766497612,
+          "ALL": 0.33334219455718994
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.0007125288248062134,
+          "ALL": 0.00039620324969291687
+        },
+        "task_precision": [
+          1.0198155641555786,
+          1.0188807249069214,
+          1.0199295282363892,
+          1.020430326461792
+        ],
+        "M": {
+          "evidence": 0.0007125288248062134,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.13652481138706207,
+                "pseudo_flip_rate": 0.04343971610069275,
+                "joint_rate": 0.13031914830207825,
+                "episode_probability": 0.17069627344608307,
+                "pair_probability": 0.5067533254623413
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.11879432201385498,
+                "pseudo_flip_rate": 0.029255317524075508,
+                "joint_rate": 0.11436169594526291,
+                "episode_probability": 0.16932612657546997,
+                "pair_probability": 0.5036401152610779
+              }
+            ],
+            "normal_flip_rate": 0.12765956670045853,
+            "pseudo_flip_rate": 0.03634751681238413,
+            "joint_rate": 0.12234042212367058,
+            "episode_probability": 0.17001120001077652,
+            "pair_probability": 0.5051967203617096
+          },
+          "null_episode_probability": 0.1692986711859703,
+          "null_pair_probability": 0.5047708551088969,
+          "null_joint_rate": 0.09537529231359561,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": -0.0003163255751132965,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.05496453866362572,
+                "pseudo_flip_rate": 0.011524822562932968,
+                "joint_rate": 0.05407801270484924,
+                "episode_probability": 0.16964216530323029,
+                "pair_probability": 0.49698659777641296
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.09929077327251434,
+                "pseudo_flip_rate": 0.010638297535479069,
+                "joint_rate": 0.09751772880554199,
+                "episode_probability": 0.16913384199142456,
+                "pair_probability": 0.502648115158081
+              }
+            ],
+            "normal_flip_rate": 0.07712765596807003,
+            "pseudo_flip_rate": 0.011081560049206018,
+            "joint_rate": 0.07579787075519562,
+            "episode_probability": 0.16938800364732742,
+            "pair_probability": 0.499817356467247
+          },
+          "null_episode_probability": 0.16970432922244072,
+          "null_pair_probability": 0.5038176719099283,
+          "null_joint_rate": 0.09510748868342489,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.6009405583143235,
+      "grad_norm": 0.6266472816467286,
+      "M_real_normal_flip_rate": 0.1484375,
+      "M_real_pseudo_flip_rate": 0.06640625,
+      "M_real_joint_rate": 0.140625,
+      "M_real_episode_probability": 0.12189961783587933,
+      "M_real_pair_probability": 0.5021196901798248,
+      "component_loss_0": 0.7008105009794235,
+      "component_loss_1": 0.6969736531376839,
+      "component_loss_2": 0.6951197922229767,
+      "component_loss_3": 0.35573180913925173,
+      "S_real_normal_flip_rate": 0.08203125,
+      "S_real_pseudo_flip_rate": 0.0166015625,
+      "S_real_joint_rate": 0.0791015625,
+      "S_real_episode_probability": 0.12343345396220684,
+      "S_real_pair_probability": 0.4960383325815201,
+      "M_null_normal_flip_rate": 0.138671875,
+      "M_null_pseudo_flip_rate": 0.028645833333333332,
+      "M_null_joint_rate": 0.13151041666666666,
+      "M_null_episode_probability": 0.10497422019640605,
+      "M_null_pair_probability": 0.5002451439698538,
+      "S_null_normal_flip_rate": 0.10026041666666667,
+      "S_null_pseudo_flip_rate": 0.01953125,
+      "S_null_joint_rate": 0.09895833333333333,
+      "S_null_episode_probability": 0.09741334989666939,
+      "S_null_pair_probability": 0.5012330810228983,
+      "task_precision": [
+        1.0408248901367188,
+        1.0388399362564087,
+        1.0408058166503906,
+        1.043291449546814
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5835879296064377,
+      "grad_norm": 0.6627908110618591,
+      "M_null_normal_flip_rate": 0.12276785714285714,
+      "M_null_pseudo_flip_rate": 0.026785714285714284,
+      "M_null_joint_rate": 0.11551339285714286,
+      "M_null_episode_probability": 0.104737360562597,
+      "M_null_pair_probability": 0.49886752877916607,
+      "component_loss_0": 0.6949160158634186,
+      "component_loss_1": 0.691308256983757,
+      "component_loss_2": 0.6933795094490052,
+      "component_loss_3": 0.3315585978329182,
+      "S_null_normal_flip_rate": 0.0947265625,
+      "S_null_pseudo_flip_rate": 0.02001953125,
+      "S_null_joint_rate": 0.09130859375,
+      "S_null_episode_probability": 0.1025268929079175,
+      "S_null_pair_probability": 0.5000855065882206,
+      "M_real_normal_flip_rate": 0.12369791666666667,
+      "M_real_pseudo_flip_rate": 0.053385416666666664,
+      "M_real_joint_rate": 0.1171875,
+      "M_real_episode_probability": 0.09929580489794414,
+      "M_real_pair_probability": 0.5019010504086813,
+      "S_real_normal_flip_rate": 0.08203125,
+      "S_real_pseudo_flip_rate": 0.009765625,
+      "S_real_joint_rate": 0.080078125,
+      "S_real_episode_probability": 0.10714412853121758,
+      "S_real_pair_probability": 0.5020500421524048,
+      "task_precision": [
+        1.0613492727279663,
+        1.058815836906433,
+        1.0611162185668945,
+        1.0657844543457031
+      ],
+      "query": {
+        "boundary": 8,
+        "selected_taps": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": -0.0008155492444833073,
+          "S": -0.00031897961162030697
+        },
+        "probabilities": {
+          "D": 0.33355003595352173,
+          "MD": 0.3332781195640564,
+          "ALL": 0.3331718444824219
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.0008155492250807583,
+          "ALL": -0.0011345287784934044
+        },
+        "task_precision": [
+          1.0613492727279663,
+          1.058815836906433,
+          1.0611162185668945,
+          1.0657844543457031
+        ],
+        "M": {
+          "evidence": -0.0008155492444833073,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.13652481138706207,
+                "pseudo_flip_rate": 0.04343971610069275,
+                "joint_rate": 0.13031914830207825,
+                "episode_probability": 0.10438526421785355,
+                "pair_probability": 0.4989016354084015
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.11879432201385498,
+                "pseudo_flip_rate": 0.029255317524075508,
+                "joint_rate": 0.11436169594526291,
+                "episode_probability": 0.1043795496225357,
+                "pair_probability": 0.4963059425354004
+              }
+            ],
+            "normal_flip_rate": 0.12765956670045853,
+            "pseudo_flip_rate": 0.03634751681238413,
+            "joint_rate": 0.12234042212367058,
+            "episode_probability": 0.10438240692019463,
+            "pair_probability": 0.49760378897190094
+          },
+          "null_episode_probability": 0.10519795616467793,
+          "null_pair_probability": 0.49683381865421933,
+          "null_joint_rate": 0.09537529231359561,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": -0.00031897961162030697,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.05496453866362572,
+                "pseudo_flip_rate": 0.011524822562932968,
+                "joint_rate": 0.05407801270484924,
+                "episode_probability": 0.1038677990436554,
+                "pair_probability": 0.4993869364261627
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.09929077327251434,
+                "pseudo_flip_rate": 0.010638297535479069,
+                "joint_rate": 0.09751772880554199,
+                "episode_probability": 0.10381248593330383,
+                "pair_probability": 0.5004619359970093
+              }
+            ],
+            "normal_flip_rate": 0.07712765596807003,
+            "pseudo_flip_rate": 0.011081560049206018,
+            "joint_rate": 0.07579787075519562,
+            "episode_probability": 0.10384014248847961,
+            "pair_probability": 0.499924436211586
+          },
+          "null_episode_probability": 0.10415912210009992,
+          "null_pair_probability": 0.49916758574545383,
+          "null_joint_rate": 0.09510748868342489,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 0.5624714687466621,
+      "grad_norm": 0.5073236793279647,
+      "M_null_normal_flip_rate": 0.130859375,
+      "M_null_pseudo_flip_rate": 0.027994791666666668,
+      "M_null_joint_rate": 0.12890625,
+      "M_null_episode_probability": 0.10358757649858792,
+      "M_null_pair_probability": 0.4988519301017125,
+      "component_loss_0": 0.6956547200679779,
+      "component_loss_1": 0.6344014570116997,
+      "component_loss_2": 0.6932734936475754,
+      "component_loss_3": 0.3361807927489281,
+      "S_real_normal_flip_rate": 0.07486979166666667,
+      "S_real_pseudo_flip_rate": 0.016276041666666668,
+      "S_real_joint_rate": 0.07421875,
+      "S_real_episode_probability": 0.10297424842913945,
+      "S_real_pair_probability": 0.5001235554615656,
+      "M_real_normal_flip_rate": 0.123046875,
+      "M_real_pseudo_flip_rate": 0.03515625,
+      "M_real_joint_rate": 0.1181640625,
+      "M_real_episode_probability": 0.10080463625490665,
+      "M_real_pair_probability": 0.49911537021398544,
+      "S_null_normal_flip_rate": 0.103515625,
+      "S_null_pseudo_flip_rate": 0.01171875,
+      "S_null_joint_rate": 0.1025390625,
+      "S_null_episode_probability": 0.10039745457470417,
+      "S_null_pair_probability": 0.49819979071617126,
+      "task_precision": [
+        1.0822443962097168,
+        1.080528974533081,
+        1.0816987752914429,
+        1.0888049602508545
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": 0.5691105902194977,
+      "grad_norm": 0.457535320520401,
+      "M_real_normal_flip_rate": 0.12044270833333333,
+      "M_real_pseudo_flip_rate": 0.043619791666666664,
+      "M_real_joint_rate": 0.11653645833333333,
+      "M_real_episode_probability": 0.10389891266822815,
+      "M_real_pair_probability": 0.5022875815629959,
+      "component_loss_0": 0.6939249843358993,
+      "component_loss_1": 0.6931711316108704,
+      "component_loss_2": 0.6916380017995835,
+      "component_loss_3": 0.33189705163240435,
+      "S_null_normal_flip_rate": 0.125,
+      "S_null_pseudo_flip_rate": 0.026692708333333332,
+      "S_null_joint_rate": 0.11979166666666667,
+      "S_null_episode_probability": 0.10312021151185036,
+      "S_null_pair_probability": 0.502753754456838,
+      "M_null_normal_flip_rate": 0.091796875,
+      "M_null_pseudo_flip_rate": 0.025390625,
+      "M_null_joint_rate": 0.0859375,
+      "M_null_episode_probability": 0.10532407462596893,
+      "M_null_pair_probability": 0.5028312280774117,
+      "S_real_normal_flip_rate": 0.07421875,
+      "S_real_pseudo_flip_rate": 0.0146484375,
+      "S_real_joint_rate": 0.07421875,
+      "S_real_episode_probability": 0.10505804046988487,
+      "S_real_pair_probability": 0.5031457021832466,
+      "task_precision": [
+        1.102940559387207,
+        1.101202130317688,
+        1.102224588394165,
+        1.1119526624679565
+      ],
+      "query": {
+        "boundary": 8,
+        "selected_taps": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": -0.0015336517244577408,
+          "S": -0.0007666477467864752
+        },
+        "probabilities": {
+          "D": 0.33375945687294006,
+          "MD": 0.33324795961380005,
+          "ALL": 0.3329925835132599
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.0015336517244577408,
+          "ALL": -0.002300299471244216
+        },
+        "task_precision": [
+          1.102940559387207,
+          1.101202130317688,
+          1.102224588394165,
+          1.1119526624679565
+        ],
+        "M": {
+          "evidence": -0.0015336517244577408,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.13652481138706207,
+                "pseudo_flip_rate": 0.04343971610069275,
+                "joint_rate": 0.13031914830207825,
+                "episode_probability": 0.09910925477743149,
+                "pair_probability": 0.4928332269191742
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.11879432201385498,
+                "pseudo_flip_rate": 0.029255317524075508,
+                "joint_rate": 0.11436169594526291,
+                "episode_probability": 0.10012304037809372,
+                "pair_probability": 0.4971044957637787
+              }
+            ],
+            "normal_flip_rate": 0.12765956670045853,
+            "pseudo_flip_rate": 0.03634751681238413,
+            "joint_rate": 0.12234042212367058,
+            "episode_probability": 0.0996161475777626,
+            "pair_probability": 0.49496886134147644
+          },
+          "null_episode_probability": 0.10114979930222034,
+          "null_pair_probability": 0.49843451877435047,
+          "null_joint_rate": 0.09537529231359561,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": -0.0007666477467864752,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.05496453866362572,
+                "pseudo_flip_rate": 0.011524822562932968,
+                "joint_rate": 0.05407801270484924,
+                "episode_probability": 0.09892623871564865,
+                "pair_probability": 0.49245592951774597
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.09929077327251434,
+                "pseudo_flip_rate": 0.010638297535479069,
+                "joint_rate": 0.09751772880554199,
+                "episode_probability": 0.0990326851606369,
+                "pair_probability": 0.49406149983406067
+              }
+            ],
+            "normal_flip_rate": 0.07712765596807003,
+            "pseudo_flip_rate": 0.011081560049206018,
+            "joint_rate": 0.07579787075519562,
+            "episode_probability": 0.09897946193814278,
+            "pair_probability": 0.4932587146759033
+          },
+          "null_episode_probability": 0.09974610968492925,
+          "null_pair_probability": 0.49662550911307335,
+          "null_joint_rate": 0.09510748868342489,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 0.5662690997123718,
+      "grad_norm": 0.440330958366394,
+      "M_real_normal_flip_rate": 0.1552734375,
+      "M_real_pseudo_flip_rate": 0.05859375,
+      "M_real_joint_rate": 0.146484375,
+      "M_real_episode_probability": 0.10875239409506321,
+      "M_real_pair_probability": 0.4954405277967453,
+      "component_loss_0": 0.6949957609176636,
+      "component_loss_1": 0.6767049640417099,
+      "component_loss_2": 0.6956253767013549,
+      "component_loss_3": 0.3562460333108902,
+      "S_null_normal_flip_rate": 0.103515625,
+      "S_null_pseudo_flip_rate": 0.013020833333333334,
+      "S_null_joint_rate": 0.10091145833333333,
+      "S_null_episode_probability": 0.11174809311827023,
+      "S_null_pair_probability": 0.49853768944740295,
+      "M_null_normal_flip_rate": 0.140625,
+      "M_null_pseudo_flip_rate": 0.026041666666666668,
+      "M_null_joint_rate": 0.13802083333333334,
+      "M_null_episode_probability": 0.11171044036746025,
+      "M_null_pair_probability": 0.49775242308775586,
+      "S_real_normal_flip_rate": 0.068359375,
+      "S_real_pseudo_flip_rate": 0.0146484375,
+      "S_real_joint_rate": 0.068359375,
+      "S_real_episode_probability": 0.10998321883380413,
+      "S_real_pair_probability": 0.48855649679899216,
+      "task_precision": [
+        1.1232259273529053,
+        1.1204766035079956,
+        1.1222137212753296,
+        1.1345665454864502
+      ]
+    },
+    {
+      "epoch": 7,
+      "loss": 0.5379187822341919,
+      "grad_norm": 0.4249754771590233,
+      "M_real_normal_flip_rate": 0.130859375,
+      "M_real_pseudo_flip_rate": 0.046875,
+      "M_real_joint_rate": 0.1220703125,
+      "M_real_episode_probability": 0.09272104315459728,
+      "M_real_pair_probability": 0.49995728582143784,
+      "component_loss_0": 0.6932689607143402,
+      "component_loss_1": 0.6616426810622216,
+      "component_loss_2": 0.6923454463481903,
+      "component_loss_3": 0.29815545231103896,
+      "S_null_normal_flip_rate": 0.0734375,
+      "S_null_pseudo_flip_rate": 0.0171875,
+      "S_null_joint_rate": 0.06953125,
+      "S_null_episode_probability": 0.10047152787446975,
+      "S_null_pair_probability": 0.49920742511749266,
+      "M_null_normal_flip_rate": 0.09635416666666667,
+      "M_null_pseudo_flip_rate": 0.024739583333333332,
+      "M_null_joint_rate": 0.09114583333333333,
+      "M_null_episode_probability": 0.10999045396844546,
+      "M_null_pair_probability": 0.502309595545133,
+      "S_real_normal_flip_rate": 0.075,
+      "S_real_pseudo_flip_rate": 0.01796875,
+      "S_real_joint_rate": 0.07265625,
+      "S_real_episode_probability": 0.0975357562303543,
+      "S_real_pair_probability": 0.4991414546966553,
+      "task_precision": [
+        1.1431154012680054,
+        1.140315055847168,
+        1.1418603658676147,
+        1.1581403017044067
+      ]
+    },
+    {
+      "epoch": 8,
+      "loss": 0.5214964777231217,
+      "grad_norm": 0.4437984064221382,
+      "M_real_normal_flip_rate": 0.13392857142857142,
+      "M_real_pseudo_flip_rate": 0.04743303571428571,
+      "M_real_joint_rate": 0.12779017857142858,
+      "M_real_episode_probability": 0.08912130338805062,
+      "M_real_pair_probability": 0.49891928264072966,
+      "component_loss_0": 0.693946173787117,
+      "component_loss_1": 0.601275372505188,
+      "component_loss_2": 0.6926128923892975,
+      "component_loss_3": 0.3220880292356014,
+      "S_null_normal_flip_rate": 0.1015625,
+      "S_null_pseudo_flip_rate": 0.0185546875,
+      "S_null_joint_rate": 0.1005859375,
+      "S_null_episode_probability": 0.08624369464814663,
+      "S_null_pair_probability": 0.5016652047634125,
+      "S_real_normal_flip_rate": 0.0703125,
+      "S_real_pseudo_flip_rate": 0.014322916666666666,
+      "S_real_joint_rate": 0.06901041666666667,
+      "S_real_episode_probability": 0.0962328165769577,
+      "S_real_pair_probability": 0.49662478268146515,
+      "M_null_normal_flip_rate": 0.08333333333333333,
+      "M_null_pseudo_flip_rate": 0.022135416666666668,
+      "M_null_joint_rate": 0.08072916666666667,
+      "M_null_episode_probability": 0.09459938108921051,
+      "M_null_pair_probability": 0.49922194083531696,
+      "task_precision": [
+        1.1624107360839844,
+        1.1630523204803467,
+        1.1611367464065552,
+        1.1820191144943237
+      ]
+    },
+    {
+      "epoch": 9,
+      "loss": 0.5146539345383644,
+      "grad_norm": 0.6900086164474487,
+      "M_real_normal_flip_rate": 0.11263020833333333,
+      "M_real_pseudo_flip_rate": 0.044921875,
+      "M_real_joint_rate": 0.109375,
+      "M_real_episode_probability": 0.1007339283823967,
+      "M_real_pair_probability": 0.5021181454261144,
+      "component_loss_0": 0.6944361895322799,
+      "component_loss_1": 0.6047946289181709,
+      "component_loss_2": 0.6945678293704987,
+      "component_loss_3": 0.31400992423295976,
+      "S_null_normal_flip_rate": 0.08359375,
+      "S_null_pseudo_flip_rate": 0.0171875,
+      "S_null_joint_rate": 0.08203125,
+      "S_null_episode_probability": 0.10140970349311829,
+      "S_null_pair_probability": 0.4991437256336212,
+      "M_null_normal_flip_rate": 0.12890625,
+      "M_null_pseudo_flip_rate": 0.044921875,
+      "M_null_joint_rate": 0.126953125,
+      "M_null_episode_probability": 0.10175542533397675,
+      "M_null_pair_probability": 0.5030686408281326,
+      "S_real_normal_flip_rate": 0.06796875,
+      "S_real_pseudo_flip_rate": 0.01640625,
+      "S_real_joint_rate": 0.06484375,
+      "S_real_episode_probability": 0.09980827569961548,
+      "S_real_pair_probability": 0.4990648448467255,
+      "task_precision": [
+        1.1805381774902344,
+        1.1853511333465576,
+        1.1791268587112427,
+        1.205041766166687
+      ]
+    },
+    {
+      "epoch": 10,
+      "loss": 0.518839393556118,
+      "grad_norm": 0.7401283398270607,
+      "M_real_normal_flip_rate": 0.1357421875,
+      "M_real_pseudo_flip_rate": 0.0419921875,
+      "M_real_joint_rate": 0.130859375,
+      "M_real_episode_probability": 0.09837642312049866,
+      "M_real_pair_probability": 0.49597519636154175,
+      "component_loss_0": 0.7015233516693116,
+      "component_loss_1": 0.5788456812500954,
+      "component_loss_2": 0.6962154746055603,
+      "component_loss_3": 0.3636937141418457,
+      "S_real_normal_flip_rate": 0.078125,
+      "S_real_pseudo_flip_rate": 0.013671875,
+      "S_real_joint_rate": 0.078125,
+      "S_real_episode_probability": 0.10215054824948311,
+      "S_real_pair_probability": 0.4964907318353653,
+      "S_null_normal_flip_rate": 0.11474609375,
+      "S_null_pseudo_flip_rate": 0.03466796875,
+      "S_null_joint_rate": 0.10986328125,
+      "S_null_episode_probability": 0.11057476233690977,
+      "S_null_pair_probability": 0.49952978640794754,
+      "M_null_normal_flip_rate": 0.13020833333333334,
+      "M_null_pseudo_flip_rate": 0.02734375,
+      "M_null_joint_rate": 0.126953125,
+      "M_null_episode_probability": 0.11271430800358455,
+      "M_null_pair_probability": 0.49748559296131134,
+      "task_precision": [
+        1.1979159116744995,
+        1.2097588777542114,
+        1.1968128681182861,
+        1.2277880907058716
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": -8.26188673575673e-05,
+          "S": 0.000679417047649622
+        },
+        "probabilities": {
+          "D": 0.3332761824131012,
+          "MD": 0.33324864506721497,
+          "ALL": 0.33347514271736145
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -8.261886978289112e-05,
+          "ALL": 0.0005967981996946037
+        },
+        "task_precision": [
+          1.1979159116744995,
+          1.2097588777542114,
+          1.1968128681182861,
+          1.2277880907058716
+        ],
+        "M": {
+          "evidence": -8.26188673575673e-05,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.13652481138706207,
+                "pseudo_flip_rate": 0.04343971610069275,
+                "joint_rate": 0.13031914830207825,
+                "episode_probability": 0.1135266050696373,
+                "pair_probability": 0.4977201521396637
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.11879432201385498,
+                "pseudo_flip_rate": 0.029255317524075508,
+                "joint_rate": 0.11436169594526291,
+                "episode_probability": 0.11376649141311646,
+                "pair_probability": 0.4992341697216034
+              }
+            ],
+            "normal_flip_rate": 0.12765956670045853,
+            "pseudo_flip_rate": 0.03634751681238413,
+            "joint_rate": 0.12234042212367058,
+            "episode_probability": 0.11364654824137688,
+            "pair_probability": 0.49847716093063354
+          },
+          "null_episode_probability": 0.11372916710873444,
+          "null_pair_probability": 0.4987019896507263,
+          "null_joint_rate": 0.09537529231359561,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": 0.000679417047649622,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_flip_rate": 0.05496453866362572,
+                "pseudo_flip_rate": 0.011524822562932968,
+                "joint_rate": 0.05407801270484924,
+                "episode_probability": 0.1137901246547699,
+                "pair_probability": 0.5045031905174255
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_flip_rate": 0.09929077327251434,
+                "pseudo_flip_rate": 0.010638297535479069,
+                "joint_rate": 0.09751772880554199,
+                "episode_probability": 0.11543731391429901,
+                "pair_probability": 0.5081520676612854
+              }
+            ],
+            "normal_flip_rate": 0.07712765596807003,
+            "pseudo_flip_rate": 0.011081560049206018,
+            "joint_rate": 0.07579787075519562,
+            "episode_probability": 0.11461371928453445,
+            "pair_probability": 0.5063276290893555
+          },
+          "null_episode_probability": 0.11393430223688483,
+          "null_pair_probability": 0.5022895913571119,
+          "null_joint_rate": 0.09510748868342489,
+          "null_count": 16
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "1": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": 0.0007125288248062134,
+        "S": -0.0003163255751132965
+      },
+      "probabilities": {
+        "D": 0.33321017026901245,
+        "MD": 0.33344766497612,
+        "ALL": 0.33334219455718994
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.0007125288248062134,
+        "ALL": 0.00039620324969291687
+      },
+      "task_precision": [
+        1.0198155641555786,
+        1.0188807249069214,
+        1.0199295282363892,
+        1.020430326461792
+      ],
+      "M": {
+        "evidence": 0.0007125288248062134,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.13652481138706207,
+              "pseudo_flip_rate": 0.04343971610069275,
+              "joint_rate": 0.13031914830207825,
+              "episode_probability": 0.17069627344608307,
+              "pair_probability": 0.5067533254623413
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.11879432201385498,
+              "pseudo_flip_rate": 0.029255317524075508,
+              "joint_rate": 0.11436169594526291,
+              "episode_probability": 0.16932612657546997,
+              "pair_probability": 0.5036401152610779
+            }
+          ],
+          "normal_flip_rate": 0.12765956670045853,
+          "pseudo_flip_rate": 0.03634751681238413,
+          "joint_rate": 0.12234042212367058,
+          "episode_probability": 0.17001120001077652,
+          "pair_probability": 0.5051967203617096
+        },
+        "null_episode_probability": 0.1692986711859703,
+        "null_pair_probability": 0.5047708551088969,
+        "null_joint_rate": 0.09537529231359561,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": -0.0003163255751132965,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.05496453866362572,
+              "pseudo_flip_rate": 0.011524822562932968,
+              "joint_rate": 0.05407801270484924,
+              "episode_probability": 0.16964216530323029,
+              "pair_probability": 0.49698659777641296
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.09929077327251434,
+              "pseudo_flip_rate": 0.010638297535479069,
+              "joint_rate": 0.09751772880554199,
+              "episode_probability": 0.16913384199142456,
+              "pair_probability": 0.502648115158081
+            }
+          ],
+          "normal_flip_rate": 0.07712765596807003,
+          "pseudo_flip_rate": 0.011081560049206018,
+          "joint_rate": 0.07579787075519562,
+          "episode_probability": 0.16938800364732742,
+          "pair_probability": 0.499817356467247
+        },
+        "null_episode_probability": 0.16970432922244072,
+        "null_pair_probability": 0.5038176719099283,
+        "null_joint_rate": 0.09510748868342489,
+        "null_count": 16
+      }
+    },
+    "3": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": -0.0008155492444833073,
+        "S": -0.00031897961162030697
+      },
+      "probabilities": {
+        "D": 0.33355003595352173,
+        "MD": 0.3332781195640564,
+        "ALL": 0.3331718444824219
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.0008155492250807583,
+        "ALL": -0.0011345287784934044
+      },
+      "task_precision": [
+        1.0613492727279663,
+        1.058815836906433,
+        1.0611162185668945,
+        1.0657844543457031
+      ],
+      "M": {
+        "evidence": -0.0008155492444833073,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.13652481138706207,
+              "pseudo_flip_rate": 0.04343971610069275,
+              "joint_rate": 0.13031914830207825,
+              "episode_probability": 0.10438526421785355,
+              "pair_probability": 0.4989016354084015
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.11879432201385498,
+              "pseudo_flip_rate": 0.029255317524075508,
+              "joint_rate": 0.11436169594526291,
+              "episode_probability": 0.1043795496225357,
+              "pair_probability": 0.4963059425354004
+            }
+          ],
+          "normal_flip_rate": 0.12765956670045853,
+          "pseudo_flip_rate": 0.03634751681238413,
+          "joint_rate": 0.12234042212367058,
+          "episode_probability": 0.10438240692019463,
+          "pair_probability": 0.49760378897190094
+        },
+        "null_episode_probability": 0.10519795616467793,
+        "null_pair_probability": 0.49683381865421933,
+        "null_joint_rate": 0.09537529231359561,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": -0.00031897961162030697,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.05496453866362572,
+              "pseudo_flip_rate": 0.011524822562932968,
+              "joint_rate": 0.05407801270484924,
+              "episode_probability": 0.1038677990436554,
+              "pair_probability": 0.4993869364261627
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.09929077327251434,
+              "pseudo_flip_rate": 0.010638297535479069,
+              "joint_rate": 0.09751772880554199,
+              "episode_probability": 0.10381248593330383,
+              "pair_probability": 0.5004619359970093
+            }
+          ],
+          "normal_flip_rate": 0.07712765596807003,
+          "pseudo_flip_rate": 0.011081560049206018,
+          "joint_rate": 0.07579787075519562,
+          "episode_probability": 0.10384014248847961,
+          "pair_probability": 0.499924436211586
+        },
+        "null_episode_probability": 0.10415912210009992,
+        "null_pair_probability": 0.49916758574545383,
+        "null_joint_rate": 0.09510748868342489,
+        "null_count": 16
+      }
+    },
+    "5": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": -0.0015336517244577408,
+        "S": -0.0007666477467864752
+      },
+      "probabilities": {
+        "D": 0.33375945687294006,
+        "MD": 0.33324795961380005,
+        "ALL": 0.3329925835132599
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.0015336517244577408,
+        "ALL": -0.002300299471244216
+      },
+      "task_precision": [
+        1.102940559387207,
+        1.101202130317688,
+        1.102224588394165,
+        1.1119526624679565
+      ],
+      "M": {
+        "evidence": -0.0015336517244577408,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.13652481138706207,
+              "pseudo_flip_rate": 0.04343971610069275,
+              "joint_rate": 0.13031914830207825,
+              "episode_probability": 0.09910925477743149,
+              "pair_probability": 0.4928332269191742
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.11879432201385498,
+              "pseudo_flip_rate": 0.029255317524075508,
+              "joint_rate": 0.11436169594526291,
+              "episode_probability": 0.10012304037809372,
+              "pair_probability": 0.4971044957637787
+            }
+          ],
+          "normal_flip_rate": 0.12765956670045853,
+          "pseudo_flip_rate": 0.03634751681238413,
+          "joint_rate": 0.12234042212367058,
+          "episode_probability": 0.0996161475777626,
+          "pair_probability": 0.49496886134147644
+        },
+        "null_episode_probability": 0.10114979930222034,
+        "null_pair_probability": 0.49843451877435047,
+        "null_joint_rate": 0.09537529231359561,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": -0.0007666477467864752,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.05496453866362572,
+              "pseudo_flip_rate": 0.011524822562932968,
+              "joint_rate": 0.05407801270484924,
+              "episode_probability": 0.09892623871564865,
+              "pair_probability": 0.49245592951774597
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.09929077327251434,
+              "pseudo_flip_rate": 0.010638297535479069,
+              "joint_rate": 0.09751772880554199,
+              "episode_probability": 0.0990326851606369,
+              "pair_probability": 0.49406149983406067
+            }
+          ],
+          "normal_flip_rate": 0.07712765596807003,
+          "pseudo_flip_rate": 0.011081560049206018,
+          "joint_rate": 0.07579787075519562,
+          "episode_probability": 0.09897946193814278,
+          "pair_probability": 0.4932587146759033
+        },
+        "null_episode_probability": 0.09974610968492925,
+        "null_pair_probability": 0.49662550911307335,
+        "null_joint_rate": 0.09510748868342489,
+        "null_count": 16
+      }
+    },
+    "10": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": -8.26188673575673e-05,
+        "S": 0.000679417047649622
+      },
+      "probabilities": {
+        "D": 0.3332761824131012,
+        "MD": 0.33324864506721497,
+        "ALL": 0.33347514271736145
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -8.261886978289112e-05,
+        "ALL": 0.0005967981996946037
+      },
+      "task_precision": [
+        1.1979159116744995,
+        1.2097588777542114,
+        1.1968128681182861,
+        1.2277880907058716
+      ],
+      "M": {
+        "evidence": -8.26188673575673e-05,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.13652481138706207,
+              "pseudo_flip_rate": 0.04343971610069275,
+              "joint_rate": 0.13031914830207825,
+              "episode_probability": 0.1135266050696373,
+              "pair_probability": 0.4977201521396637
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.11879432201385498,
+              "pseudo_flip_rate": 0.029255317524075508,
+              "joint_rate": 0.11436169594526291,
+              "episode_probability": 0.11376649141311646,
+              "pair_probability": 0.4992341697216034
+            }
+          ],
+          "normal_flip_rate": 0.12765956670045853,
+          "pseudo_flip_rate": 0.03634751681238413,
+          "joint_rate": 0.12234042212367058,
+          "episode_probability": 0.11364654824137688,
+          "pair_probability": 0.49847716093063354
+        },
+        "null_episode_probability": 0.11372916710873444,
+        "null_pair_probability": 0.4987019896507263,
+        "null_joint_rate": 0.09537529231359561,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": 0.000679417047649622,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_flip_rate": 0.05496453866362572,
+              "pseudo_flip_rate": 0.011524822562932968,
+              "joint_rate": 0.05407801270484924,
+              "episode_probability": 0.1137901246547699,
+              "pair_probability": 0.5045031905174255
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_flip_rate": 0.09929077327251434,
+              "pseudo_flip_rate": 0.010638297535479069,
+              "joint_rate": 0.09751772880554199,
+              "episode_probability": 0.11543731391429901,
+              "pair_probability": 0.5081520676612854
+            }
+          ],
+          "normal_flip_rate": 0.07712765596807003,
+          "pseudo_flip_rate": 0.011081560049206018,
+          "joint_rate": 0.07579787075519562,
+          "episode_probability": 0.11461371928453445,
+          "pair_probability": 0.5063276290893555
+        },
+        "null_episode_probability": 0.11393430223688483,
+        "null_pair_probability": 0.5022895913571119,
+        "null_joint_rate": 0.09510748868342489,
+        "null_count": 16
+      }
+    }
+  },
+  "query_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": -8.26188673575673e-05,
+      "S": 0.000679417047649622
+    },
+    "probabilities": {
+      "D": 0.3332761824131012,
+      "MD": 0.33324864506721497,
+      "ALL": 0.33347514271736145
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -8.261886978289112e-05,
+      "ALL": 0.0005967981996946037
+    },
+    "task_precision": [
+      1.1979159116744995,
+      1.2097588777542114,
+      1.1968128681182861,
+      1.2277880907058716
+    ],
+    "M": {
+      "evidence": -8.26188673575673e-05,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_flip_rate": 0.13652481138706207,
+            "pseudo_flip_rate": 0.04343971610069275,
+            "joint_rate": 0.13031914830207825,
+            "episode_probability": 0.1135266050696373,
+            "pair_probability": 0.4977201521396637
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_flip_rate": 0.11879432201385498,
+            "pseudo_flip_rate": 0.029255317524075508,
+            "joint_rate": 0.11436169594526291,
+            "episode_probability": 0.11376649141311646,
+            "pair_probability": 0.4992341697216034
+          }
+        ],
+        "normal_flip_rate": 0.12765956670045853,
+        "pseudo_flip_rate": 0.03634751681238413,
+        "joint_rate": 0.12234042212367058,
+        "episode_probability": 0.11364654824137688,
+        "pair_probability": 0.49847716093063354
+      },
+      "null_episode_probability": 0.11372916710873444,
+      "null_pair_probability": 0.4987019896507263,
+      "null_joint_rate": 0.09537529231359561,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": 0.000679417047649622,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_flip_rate": 0.05496453866362572,
+            "pseudo_flip_rate": 0.011524822562932968,
+            "joint_rate": 0.05407801270484924,
+            "episode_probability": 0.1137901246547699,
+            "pair_probability": 0.5045031905174255
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_flip_rate": 0.09929077327251434,
+            "pseudo_flip_rate": 0.010638297535479069,
+            "joint_rate": 0.09751772880554199,
+            "episode_probability": 0.11543731391429901,
+            "pair_probability": 0.5081520676612854
+          }
+        ],
+        "normal_flip_rate": 0.07712765596807003,
+        "pseudo_flip_rate": 0.011081560049206018,
+        "joint_rate": 0.07579787075519562,
+        "episode_probability": 0.11461371928453445,
+        "pair_probability": 0.5063276290893555
+      },
+      "null_episode_probability": 0.11393430223688483,
+      "null_pair_probability": 0.5022895913571119,
+      "null_joint_rate": 0.09510748868342489,
+      "null_count": 16
+    }
+  },
+  "support_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": 3.004012008507584e-05,
+      "S": -7.368612568825483e-05
+    },
+    "probabilities": {
+      "D": 0.3333348333835602,
+      "MD": 0.33334484696388245,
+      "ALL": 0.333320289850235
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": 3.0040120691410266e-05,
+      "ALL": -4.3646003177855164e-05
+    },
+    "task_precision": [
+      1.1979159116744995,
+      1.2097588777542114,
+      1.1968128681182861,
+      1.2277880907058716
+    ],
+    "M": {
+      "evidence": 3.004012008507584e-05,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_flip_rate": 0.1631205677986145,
+            "pseudo_flip_rate": 0.04964538663625717,
+            "joint_rate": 0.15514184534549713,
+            "episode_probability": 0.11427241563796997,
+            "pair_probability": 0.49747899174690247
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_flip_rate": 0.12943261861801147,
+            "pseudo_flip_rate": 0.0452127642929554,
+            "joint_rate": 0.1249999925494194,
+            "episode_probability": 0.11397039890289307,
+            "pair_probability": 0.4993947148323059
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_flip_rate": 0.10815602540969849,
+            "pseudo_flip_rate": 0.040780141949653625,
+            "joint_rate": 0.10460992902517319,
+            "episode_probability": 0.11365483701229095,
+            "pair_probability": 0.5021378397941589
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_flip_rate": 0.16932623088359833,
+            "pseudo_flip_rate": 0.062056735157966614,
+            "joint_rate": 0.1631205677986145,
+            "episode_probability": 0.11399674415588379,
+            "pair_probability": 0.4963940382003784
+          }
+        ],
+        "normal_flip_rate": 0.1425088606774807,
+        "pseudo_flip_rate": 0.0494237570092082,
+        "joint_rate": 0.13696808367967606,
+        "episode_probability": 0.11397359892725945,
+        "pair_probability": 0.49885139614343643
+      },
+      "null_episode_probability": 0.11394355880717437,
+      "null_pair_probability": 0.5003204556802908,
+      "null_joint_rate": 0.11162824695929885,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": -7.368612568825483e-05,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_flip_rate": 0.06914893537759781,
+            "pseudo_flip_rate": 0.01595744676887989,
+            "joint_rate": 0.06826240569353104,
+            "episode_probability": 0.11376753449440002,
+            "pair_probability": 0.49852561950683594
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_flip_rate": 0.06294325739145279,
+            "pseudo_flip_rate": 0.012411346659064293,
+            "joint_rate": 0.06294325739145279,
+            "episode_probability": 0.11391047388315201,
+            "pair_probability": 0.5020285248756409
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_flip_rate": 0.07358156144618988,
+            "pseudo_flip_rate": 0.014184396713972092,
+            "joint_rate": 0.07269503176212311,
+            "episode_probability": 0.11388162523508072,
+            "pair_probability": 0.5036056637763977
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_flip_rate": 0.08953900635242462,
+            "pseudo_flip_rate": 0.023049645125865936,
+            "joint_rate": 0.08599290251731873,
+            "episode_probability": 0.1138068437576294,
+            "pair_probability": 0.4973721206188202
+          }
+        ],
+        "normal_flip_rate": 0.07380319014191628,
+        "pseudo_flip_rate": 0.016400708816945553,
+        "joint_rate": 0.07247339934110641,
+        "episode_probability": 0.11384161934256554,
+        "pair_probability": 0.5003829821944237
+      },
+      "null_episode_probability": 0.11391530546825379,
+      "null_pair_probability": 0.5005145967006683,
+      "null_joint_rate": 0.1075326872523874,
+      "null_count": 16
+    }
+  },
+  "full_scene_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": -7.512875729143165e-06,
+      "S": 0.0001773482654243569
+    },
+    "probabilities": {
+      "D": 0.33331528306007385,
+      "MD": 0.3333127796649933,
+      "ALL": 0.3333719074726105
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -7.512875527027063e-06,
+      "ALL": 0.0001698353880783543
+    },
+    "task_precision": [
+      1.1979159116744995,
+      1.2097588777542114,
+      1.1968128681182861,
+      1.2277880907058716
+    ],
+    "M": {
+      "evidence": -7.512875729143165e-06,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_flip_rate": 0.13652481138706207,
+            "pseudo_flip_rate": 0.04343971610069275,
+            "joint_rate": 0.13031914830207825,
+            "episode_probability": 0.1135266050696373,
+            "pair_probability": 0.4977201521396637
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_flip_rate": 0.11879432201385498,
+            "pseudo_flip_rate": 0.029255317524075508,
+            "joint_rate": 0.11436169594526291,
+            "episode_probability": 0.11376649141311646,
+            "pair_probability": 0.4992341697216034
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_flip_rate": 0.1631205677986145,
+            "pseudo_flip_rate": 0.04964538663625717,
+            "joint_rate": 0.15514184534549713,
+            "episode_probability": 0.11427241563796997,
+            "pair_probability": 0.49747899174690247
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_flip_rate": 0.12943261861801147,
+            "pseudo_flip_rate": 0.0452127642929554,
+            "joint_rate": 0.1249999925494194,
+            "episode_probability": 0.11397039890289307,
+            "pair_probability": 0.4993947148323059
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_flip_rate": 0.10815602540969849,
+            "pseudo_flip_rate": 0.040780141949653625,
+            "joint_rate": 0.10460992902517319,
+            "episode_probability": 0.11365483701229095,
+            "pair_probability": 0.5021378397941589
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_flip_rate": 0.16932623088359833,
+            "pseudo_flip_rate": 0.062056735157966614,
+            "joint_rate": 0.1631205677986145,
+            "episode_probability": 0.11399674415588379,
+            "pair_probability": 0.4963940382003784
+          }
+        ],
+        "normal_flip_rate": 0.1375590960184733,
+        "pseudo_flip_rate": 0.04506501027693351,
+        "joint_rate": 0.1320921964943409,
+        "episode_probability": 0.11386458203196526,
+        "pair_probability": 0.49872665107250214
+      },
+      "null_episode_probability": 0.1138720949076944,
+      "null_pair_probability": 0.4997809670037694,
+      "null_joint_rate": 0.10621059541073112,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": 0.0001773482654243569,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_flip_rate": 0.05496453866362572,
+            "pseudo_flip_rate": 0.011524822562932968,
+            "joint_rate": 0.05407801270484924,
+            "episode_probability": 0.1137901246547699,
+            "pair_probability": 0.5045031905174255
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_flip_rate": 0.09929077327251434,
+            "pseudo_flip_rate": 0.010638297535479069,
+            "joint_rate": 0.09751772880554199,
+            "episode_probability": 0.11543731391429901,
+            "pair_probability": 0.5081520676612854
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_flip_rate": 0.06914893537759781,
+            "pseudo_flip_rate": 0.01595744676887989,
+            "joint_rate": 0.06826240569353104,
+            "episode_probability": 0.11376753449440002,
+            "pair_probability": 0.49852561950683594
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_flip_rate": 0.06294325739145279,
+            "pseudo_flip_rate": 0.012411346659064293,
+            "joint_rate": 0.06294325739145279,
+            "episode_probability": 0.11391047388315201,
+            "pair_probability": 0.5020285248756409
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_flip_rate": 0.07358156144618988,
+            "pseudo_flip_rate": 0.014184396713972092,
+            "joint_rate": 0.07269503176212311,
+            "episode_probability": 0.11388162523508072,
+            "pair_probability": 0.5036056637763977
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_flip_rate": 0.08953900635242462,
+            "pseudo_flip_rate": 0.023049645125865936,
+            "joint_rate": 0.08599290251731873,
+            "episode_probability": 0.1138068437576294,
+            "pair_probability": 0.4973721206188202
+          }
+        ],
+        "normal_flip_rate": 0.07491134541730086,
+        "pseudo_flip_rate": 0.014627659227699041,
+        "joint_rate": 0.07358155647913615,
+        "episode_probability": 0.1140989859898885,
+        "pair_probability": 0.5023645311594009
+      },
+      "null_episode_probability": 0.11392163772446415,
+      "null_pair_probability": 0.5011062615861495,
+      "null_joint_rate": 0.10339095439606656,
+      "null_count": 16
+    }
+  }
+}

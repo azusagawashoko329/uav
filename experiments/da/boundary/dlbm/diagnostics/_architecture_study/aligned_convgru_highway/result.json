@@ -1,0 +1,142 @@
+{
+  "scene": "highway",
+  "method": "normal_only_aligned_cross_layer_convgru_probe",
+  "args": {
+    "scene": "highway",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_highway",
+    "gpu": 1,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 16,
+    "epochs": 10,
+    "steps_per_epoch": 44,
+    "frame_batch": 24,
+    "eval_bs": 24,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02"
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_smooth_l1": 0.00043014914395329964,
+      "grad_norm": 0.009609768168461002,
+      "query": {
+        "normal_aligned_smooth_l1": 0.00043546956294449046,
+        "normal_aligned_mae": 0.023551381193101406,
+        "normal_independent_layer_roll_smooth_l1": 0.00044021481880918145,
+        "normal_independent_layer_roll_mae": 0.02357439324259758,
+        "pseudo_aligned_smooth_l1": 0.00096297194249928,
+        "pseudo_aligned_mae": 0.025375905446708202,
+        "pseudo_independent_layer_roll_smooth_l1": 0.0010412440751679242,
+        "pseudo_independent_layer_roll_mae": 0.02638650918379426,
+        "normal_roll_loss_ratio": 1.0108968714888023,
+        "pseudo_over_normal_loss_ratio": 2.211341559644274
+      }
+    },
+    {
+      "epoch": 2,
+      "train_smooth_l1": 0.00014812781459609553,
+      "grad_norm": 0.0014153630776986988
+    },
+    {
+      "epoch": 3,
+      "train_smooth_l1": 0.00012678705223317428,
+      "grad_norm": 0.0010755896199208853
+    },
+    {
+      "epoch": 4,
+      "train_smooth_l1": 0.00010368953619697343,
+      "grad_norm": 0.0005621387664921878
+    },
+    {
+      "epoch": 5,
+      "train_smooth_l1": 8.99625267100584e-05,
+      "grad_norm": 0.0006483528579172508,
+      "query": {
+        "normal_aligned_smooth_l1": 0.0001722779416013509,
+        "normal_aligned_mae": 0.01451489981263876,
+        "normal_independent_layer_roll_smooth_l1": 0.00018474234821042046,
+        "normal_independent_layer_roll_mae": 0.01517750439234078,
+        "pseudo_aligned_smooth_l1": 0.0007298844866454601,
+        "pseudo_aligned_mae": 0.019449243787676096,
+        "pseudo_independent_layer_roll_smooth_l1": 0.001057194749591872,
+        "pseudo_independent_layer_roll_mae": 0.024726119823753834,
+        "normal_roll_loss_ratio": 1.0723505661445156,
+        "pseudo_over_normal_loss_ratio": 4.236668257474332
+      }
+    },
+    {
+      "epoch": 6,
+      "train_smooth_l1": 8.274916548213118e-05,
+      "grad_norm": 0.0011417401150207627
+    },
+    {
+      "epoch": 7,
+      "train_smooth_l1": 7.878049522828819e-05,
+      "grad_norm": 0.0012334513223984025
+    },
+    {
+      "epoch": 8,
+      "train_smooth_l1": 7.343876528797078e-05,
+      "grad_norm": 0.0008663358398321593
+    },
+    {
+      "epoch": 9,
+      "train_smooth_l1": 7.10351821246811e-05,
+      "grad_norm": 0.001145690606129144
+    },
+    {
+      "epoch": 10,
+      "train_smooth_l1": 6.82010951012754e-05,
+      "grad_norm": 0.0016070777515282812,
+      "query": {
+        "normal_aligned_smooth_l1": 0.00014231067325454205,
+        "normal_aligned_mae": 0.013376219663769007,
+        "normal_independent_layer_roll_smooth_l1": 0.00016906391101656482,
+        "normal_independent_layer_roll_mae": 0.014623990282416344,
+        "pseudo_aligned_smooth_l1": 0.0006481583113782108,
+        "pseudo_aligned_mae": 0.017952256835997105,
+        "pseudo_independent_layer_roll_smooth_l1": 0.001305253099417314,
+        "pseudo_independent_layer_roll_mae": 0.028948734048753977,
+        "normal_roll_loss_ratio": 1.1879917869137682,
+        "pseudo_over_normal_loss_ratio": 4.554530567211155
+      }
+    }
+  ],
+  "final_query": {
+    "normal_aligned_smooth_l1": 0.00014231067325454205,
+    "normal_aligned_mae": 0.013376219663769007,
+    "normal_independent_layer_roll_smooth_l1": 0.00016906391101656482,
+    "normal_independent_layer_roll_mae": 0.014623990282416344,
+    "pseudo_aligned_smooth_l1": 0.0006481583113782108,
+    "pseudo_aligned_mae": 0.017952256835997105,
+    "pseudo_independent_layer_roll_smooth_l1": 0.001305253099417314,
+    "pseudo_independent_layer_roll_mae": 0.028948734048753977,
+    "normal_roll_loss_ratio": 1.1879917869137682,
+    "pseudo_over_normal_loss_ratio": 4.554530567211155
+  },
+  "parameters": 19073
+}

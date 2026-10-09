@@ -1,0 +1,62 @@
+{
+  "scene": "railway",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/03"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Railway Inspection/sequence1/train/01"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.15026595443487167,
+        "normal_delta_median": 0.10762215033173561,
+        "pseudo_flip": 0.21764183789491653,
+        "pseudo_delta_median": 0.3436264097690582
+      },
+      "M": {
+        "normal_flip": 0.06560283526778221,
+        "normal_delta_median": 0.025900274515151978,
+        "pseudo_flip": 0.06515957415103912,
+        "pseudo_delta_median": 0.00803375244140625
+      },
+      "S": {
+        "normal_flip": 0.0381205677986145,
+        "normal_delta_median": -0.02055448293685913,
+        "pseudo_flip": 0.038563829846680164,
+        "pseudo_delta_median": -0.08725409209728241
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.1427304893732071,
+        "normal_delta_median": 0.12536469101905823,
+        "pseudo_flip": 0.15159574151039124,
+        "pseudo_delta_median": 0.2796950936317444
+      },
+      "M": {
+        "normal_flip": 0.11613475531339645,
+        "normal_delta_median": 0.02479630708694458,
+        "pseudo_flip": 0.058510638773441315,
+        "pseudo_delta_median": 0.023107171058654785
+      },
+      "S": {
+        "normal_flip": 0.01595744676887989,
+        "normal_delta_median": -0.02325388789176941,
+        "pseudo_flip": 0.012411347590386868,
+        "pseudo_delta_median": -0.07137501239776611
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  }
+}

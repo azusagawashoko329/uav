@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "20260619_leakage_audit",
+  "path": "experiments/da/audit/20260619_leakage_audit",
+  "dataset": "da",
+  "family": "audit",
+  "legacy": true,
+  "original_path": "audit",
+  "status": "unknown",
+  "source_commit": null,
+  "source_ref": null,
+  "scripts": [
+    "scripts/cloud_dist.py",
+    "scripts/desc_dist.py",
+    "scripts/loso_preproc.py",
+    "scripts/norm_protocols.py"
+  ],
+  "evidence": [
+    "REPORT.md"
+  ],
+  "weight_files_local": 0,
+  "review_markers": [],
+  "result_summary": "历史结果证据：REPORT.md；未在迁移时重新计算指标。",
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": []
+}

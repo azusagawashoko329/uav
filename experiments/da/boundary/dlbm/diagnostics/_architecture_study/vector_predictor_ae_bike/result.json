@@ -1,0 +1,178 @@
+{
+  "scene": "bike",
+  "method": "channel_preserving_vector_cross_layer_predictor",
+  "args": {
+    "scene": "bike",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_architecture_study/vector_predictor_ae_bike",
+    "gpu": 0,
+    "seed": 42,
+    "max_frames_per_video": 48,
+    "cache_bs": 2,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 32,
+    "encoder_epochs": 5,
+    "encoder_steps": 44,
+    "epochs": 10,
+    "steps_per_epoch": 44,
+    "frame_batch": 4,
+    "eval_bs": 4,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "encoder_history": [
+    {
+      "epoch": 1,
+      "loss": 0.9545447013594888
+    },
+    {
+      "epoch": 2,
+      "loss": 0.8947705965150486
+    },
+    {
+      "epoch": 3,
+      "loss": 0.8651888275688345
+    },
+    {
+      "epoch": 4,
+      "loss": 0.8452046635476026
+    },
+    {
+      "epoch": 5,
+      "loss": 0.8235610940239646
+    }
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.8912043449553576,
+      "grad_norm": 0.0999454412270676,
+      "query": {
+        "normal_aligned_loss": 0.8820339242617289,
+        "normal_aligned_cosine": 0.11796611330161492,
+        "normal_zero_loss": 1.0,
+        "normal_roll_loss": 0.8941278035442034,
+        "normal_roll_cosine": 0.10587223401914041,
+        "pseudo_aligned_loss": 0.8842184965809187,
+        "pseudo_aligned_cosine": 0.11578153166919947,
+        "pseudo_zero_loss": 1.0,
+        "pseudo_roll_loss": 0.8955231557289759,
+        "pseudo_roll_cosine": 0.10447686569144328,
+        "normal_roll_ratio": 1.0137113538944629,
+        "pseudo_over_normal": 1.0024767441014453,
+        "normal_over_zero": 0.8820339242617289
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.8595201454379342,
+      "grad_norm": 0.03879078016193076
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.8505671972578223,
+      "grad_norm": 0.03693030490963296
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.8459238924763419,
+      "grad_norm": 0.03653000130064108
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.8427565490657632,
+      "grad_norm": 0.04251843060112812,
+      "query": {
+        "normal_aligned_loss": 0.8634333163499832,
+        "normal_aligned_cosine": 0.1365667221446832,
+        "normal_zero_loss": 1.0,
+        "normal_roll_loss": 0.897355409959952,
+        "normal_roll_cosine": 0.10264462915559609,
+        "pseudo_aligned_loss": 0.8663017203410467,
+        "pseudo_aligned_cosine": 0.13369831753273806,
+        "pseudo_zero_loss": 1.0,
+        "pseudo_roll_loss": 0.8987589627504349,
+        "pseudo_roll_cosine": 0.10124107201894124,
+        "normal_roll_ratio": 1.0392874504233502,
+        "pseudo_over_normal": 1.0033220909324987,
+        "normal_over_zero": 0.8634333163499832
+      }
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.8414029031991959,
+      "grad_norm": 0.040705332828854975
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.8389786400578239,
+      "grad_norm": 0.03917475315657529
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.8385921364480798,
+      "grad_norm": 0.04704135474325581
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.8369761935689233,
+      "grad_norm": 0.04062880063429475
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.8362272124398838,
+      "grad_norm": 0.04640737065876072,
+      "query": {
+        "normal_aligned_loss": 0.8590252076586088,
+        "normal_aligned_cosine": 0.14097481841842333,
+        "normal_zero_loss": 1.0,
+        "normal_roll_loss": 0.9005762860178947,
+        "normal_roll_cosine": 0.0994237366442879,
+        "pseudo_aligned_loss": 0.8623491302132607,
+        "pseudo_aligned_cosine": 0.13765089896818003,
+        "pseudo_zero_loss": 1.0,
+        "pseudo_roll_loss": 0.9020083546638489,
+        "pseudo_roll_cosine": 0.09799166986097892,
+        "normal_roll_ratio": 1.0483700338346753,
+        "pseudo_over_normal": 1.003869412125532,
+        "normal_over_zero": 0.8590252076586088
+      }
+    }
+  ],
+  "final_query": {
+    "normal_aligned_loss": 0.8590252076586088,
+    "normal_aligned_cosine": 0.14097481841842333,
+    "normal_zero_loss": 1.0,
+    "normal_roll_loss": 0.9005762860178947,
+    "normal_roll_cosine": 0.0994237366442879,
+    "pseudo_aligned_loss": 0.8623491302132607,
+    "pseudo_aligned_cosine": 0.13765089896818003,
+    "pseudo_zero_loss": 1.0,
+    "pseudo_roll_loss": 0.9020083546638489,
+    "pseudo_roll_cosine": 0.09799166986097892,
+    "normal_roll_ratio": 1.0483700338346753,
+    "pseudo_over_normal": 1.003869412125532,
+    "normal_over_zero": 0.8590252076586088
+  },
+  "parameters": 161568,
+  "peak_gpu_gib": 0.8227443695068359
+}

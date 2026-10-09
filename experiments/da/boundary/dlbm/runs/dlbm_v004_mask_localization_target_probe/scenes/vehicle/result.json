@@ -1,0 +1,505 @@
+{
+  "format_version": 4,
+  "scene": "vehicle",
+  "method": "coarse_micro_adapted_shared_patch_localization_target",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/vehicle.pth",
+  "args": {
+    "scene": "vehicle",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v004_mask_localization_target_probe/scenes/vehicle",
+    "gpu": 0,
+    "seed": 42,
+    "boundaries": [
+      0,
+      4,
+      8,
+      11
+    ],
+    "micro_epochs": 5,
+    "localizer_epochs": 20,
+    "milestones": [
+      5,
+      10,
+      20
+    ],
+    "steps_per_epoch": 64,
+    "max_frames_per_video": 48,
+    "train_bs": 8,
+    "eval_bs": 8,
+    "localizer_bs": 8,
+    "workers": 4,
+    "topk": 5,
+    "lr": 0.0005,
+    "wd": 0.05,
+    "localizer_lr": 0.001,
+    "localizer_wd": 0.01,
+    "grad_clip": 1.0,
+    "model_dim": 16,
+    "localizer_depth": 1,
+    "heads": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15
+  },
+  "split": {
+    "support_frames": 144,
+    "query_frames": 48,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/01"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "adaptation": {
+    "0": [
+      {
+        "epoch": 1,
+        "loss": 0.24339003612597784
+      },
+      {
+        "epoch": 2,
+        "loss": 0.13843533686465687
+      },
+      {
+        "epoch": 3,
+        "loss": 0.11518071136540836
+      },
+      {
+        "epoch": 4,
+        "loss": 0.10564954496092266
+      },
+      {
+        "epoch": 5,
+        "loss": 0.10136911852492227
+      }
+    ],
+    "4": [
+      {
+        "epoch": 1,
+        "loss": 0.2831621675027741
+      },
+      {
+        "epoch": 2,
+        "loss": 0.15647536681758034
+      },
+      {
+        "epoch": 3,
+        "loss": 0.12608283799555567
+      },
+      {
+        "epoch": 4,
+        "loss": 0.11366617845164405
+      },
+      {
+        "epoch": 5,
+        "loss": 0.10811695042583677
+      }
+    ],
+    "8": [
+      {
+        "epoch": 1,
+        "loss": 0.29769302076763576
+      },
+      {
+        "epoch": 2,
+        "loss": 0.1523769295050038
+      },
+      {
+        "epoch": 3,
+        "loss": 0.1167706809937954
+      },
+      {
+        "epoch": 4,
+        "loss": 0.10021554678678513
+      },
+      {
+        "epoch": 5,
+        "loss": 0.0919661708176136
+      }
+    ],
+    "11": [
+      {
+        "epoch": 1,
+        "loss": 0.11627985371483697
+      },
+      {
+        "epoch": 2,
+        "loss": 0.07983076779378785
+      },
+      {
+        "epoch": 3,
+        "loss": 0.058020529647668205
+      },
+      {
+        "epoch": 4,
+        "loss": 0.04840630955166287
+      },
+      {
+        "epoch": 5,
+        "loss": 0.04122538450691435
+      }
+    ]
+  },
+  "localizer_history": [
+    {
+      "epoch": 1,
+      "train_bce": 0.31432313728146255,
+      "grad_norm": 0.3401568819535896
+    },
+    {
+      "epoch": 2,
+      "train_bce": 0.2415928947739303,
+      "grad_norm": 0.9487877246574499
+    },
+    {
+      "epoch": 3,
+      "train_bce": 0.20656307705212384,
+      "grad_norm": 2.0096555284108035
+    },
+    {
+      "epoch": 4,
+      "train_bce": 0.2007832283852622,
+      "grad_norm": 2.643608930375194
+    },
+    {
+      "epoch": 5,
+      "train_bce": 0.18710534868296236,
+      "grad_norm": 2.080045509908814,
+      "query": {
+        "0": {
+          "soft_bce": 0.7039215564727783,
+          "patch_auc": 0.8964035517479549,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.6363152265548706,
+          "negative_logit": -0.1207997053861618
+        },
+        "4": {
+          "soft_bce": 0.7628114819526672,
+          "patch_auc": 0.8774949098747963,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.6646930575370789,
+          "negative_logit": 0.05883012339472771
+        },
+        "8": {
+          "soft_bce": 0.7288300395011902,
+          "patch_auc": 0.8535422034848714,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.4223649203777313,
+          "negative_logit": 0.03890097886323929
+        },
+        "11": {
+          "soft_bce": 0.29308244585990906,
+          "patch_auc": 0.3526959354223579,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": -2.6876769065856934,
+          "negative_logit": -2.6653966903686523
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "train_bce": 0.19437268108595163,
+      "grad_norm": 2.00992373607005
+    },
+    {
+      "epoch": 7,
+      "train_bce": 0.20810656750109047,
+      "grad_norm": 2.5403941765107447
+    },
+    {
+      "epoch": 8,
+      "train_bce": 0.1847620530752465,
+      "grad_norm": 1.5541194502147846
+    },
+    {
+      "epoch": 9,
+      "train_bce": 0.19036210468038917,
+      "grad_norm": 2.181593669069116
+    },
+    {
+      "epoch": 10,
+      "train_bce": 0.16398113372270018,
+      "grad_norm": 1.4997317206580192,
+      "query": {
+        "0": {
+          "soft_bce": 0.5857256650924683,
+          "patch_auc": 0.8435927534581699,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.2702169716358185,
+          "negative_logit": -0.3913806080818176
+        },
+        "4": {
+          "soft_bce": 0.6623193621635437,
+          "patch_auc": 0.7893408426850815,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.30557698011398315,
+          "negative_logit": -0.14775051176548004
+        },
+        "8": {
+          "soft_bce": 0.45371535420417786,
+          "patch_auc": 0.8533679928355288,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": -0.19177737832069397,
+          "negative_logit": -0.8604183793067932
+        },
+        "11": {
+          "soft_bce": 0.2898879945278168,
+          "patch_auc": 0.3526965566049193,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": -2.4212751388549805,
+          "negative_logit": -2.405104637145996
+        }
+      }
+    },
+    {
+      "epoch": 11,
+      "train_bce": 0.20563119498547167,
+      "grad_norm": 1.7428338285244536
+    },
+    {
+      "epoch": 12,
+      "train_bce": 0.22879126155748963,
+      "grad_norm": 3.5482418154133484
+    },
+    {
+      "epoch": 13,
+      "train_bce": 0.1641932149650529,
+      "grad_norm": 1.7250802434282377
+    },
+    {
+      "epoch": 14,
+      "train_bce": 0.1849177135154605,
+      "grad_norm": 1.5601364737958647
+    },
+    {
+      "epoch": 15,
+      "train_bce": 0.1706601696787402,
+      "grad_norm": 1.6290123761355062
+    },
+    {
+      "epoch": 16,
+      "train_bce": 0.18257178890053183,
+      "grad_norm": 2.3376984010392334
+    },
+    {
+      "epoch": 17,
+      "train_bce": 0.17202962620649487,
+      "grad_norm": 1.7025813201325946
+    },
+    {
+      "epoch": 18,
+      "train_bce": 0.17176060692872852,
+      "grad_norm": 1.4590884229110088
+    },
+    {
+      "epoch": 19,
+      "train_bce": 0.18136338202748448,
+      "grad_norm": 1.5874056896718685
+    },
+    {
+      "epoch": 20,
+      "train_bce": 0.16485346504487097,
+      "grad_norm": 1.31108391736052,
+      "query": {
+        "0": {
+          "soft_bce": 0.6213497519493103,
+          "patch_auc": 0.8045909366855326,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.5220313668251038,
+          "negative_logit": -0.4995917081832886
+        },
+        "4": {
+          "soft_bce": 0.7198267579078674,
+          "patch_auc": 0.7411679797534241,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.552956759929657,
+          "negative_logit": -0.16361884772777557
+        },
+        "8": {
+          "soft_bce": 0.6304699778556824,
+          "patch_auc": 0.6855130971063018,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": 0.1655392199754715,
+          "negative_logit": -0.2959771156311035
+        },
+        "11": {
+          "soft_bce": 0.28940024971961975,
+          "patch_auc": 0.3526973020239929,
+          "positive_patch_fraction": 0.121337890625,
+          "mean_soft_overlap": 0.08417161554098129,
+          "positive_logit": -2.459319829940796,
+          "negative_logit": -2.453146457672119
+        }
+      }
+    }
+  ],
+  "milestone_metrics": {
+    "5": {
+      "0": {
+        "soft_bce": 0.7039215564727783,
+        "patch_auc": 0.8964035517479549,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.6363152265548706,
+        "negative_logit": -0.1207997053861618
+      },
+      "4": {
+        "soft_bce": 0.7628114819526672,
+        "patch_auc": 0.8774949098747963,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.6646930575370789,
+        "negative_logit": 0.05883012339472771
+      },
+      "8": {
+        "soft_bce": 0.7288300395011902,
+        "patch_auc": 0.8535422034848714,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.4223649203777313,
+        "negative_logit": 0.03890097886323929
+      },
+      "11": {
+        "soft_bce": 0.29308244585990906,
+        "patch_auc": 0.3526959354223579,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": -2.6876769065856934,
+        "negative_logit": -2.6653966903686523
+      }
+    },
+    "10": {
+      "0": {
+        "soft_bce": 0.5857256650924683,
+        "patch_auc": 0.8435927534581699,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.2702169716358185,
+        "negative_logit": -0.3913806080818176
+      },
+      "4": {
+        "soft_bce": 0.6623193621635437,
+        "patch_auc": 0.7893408426850815,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.30557698011398315,
+        "negative_logit": -0.14775051176548004
+      },
+      "8": {
+        "soft_bce": 0.45371535420417786,
+        "patch_auc": 0.8533679928355288,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": -0.19177737832069397,
+        "negative_logit": -0.8604183793067932
+      },
+      "11": {
+        "soft_bce": 0.2898879945278168,
+        "patch_auc": 0.3526965566049193,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": -2.4212751388549805,
+        "negative_logit": -2.405104637145996
+      }
+    },
+    "20": {
+      "0": {
+        "soft_bce": 0.6213497519493103,
+        "patch_auc": 0.8045909366855326,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.5220313668251038,
+        "negative_logit": -0.4995917081832886
+      },
+      "4": {
+        "soft_bce": 0.7198267579078674,
+        "patch_auc": 0.7411679797534241,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.552956759929657,
+        "negative_logit": -0.16361884772777557
+      },
+      "8": {
+        "soft_bce": 0.6304699778556824,
+        "patch_auc": 0.6855130971063018,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": 0.1655392199754715,
+        "negative_logit": -0.2959771156311035
+      },
+      "11": {
+        "soft_bce": 0.28940024971961975,
+        "patch_auc": 0.3526973020239929,
+        "positive_patch_fraction": 0.121337890625,
+        "mean_soft_overlap": 0.08417161554098129,
+        "positive_logit": -2.459319829940796,
+        "negative_logit": -2.453146457672119
+      }
+    }
+  },
+  "final_metrics": {
+    "0": {
+      "soft_bce": 0.6213497519493103,
+      "patch_auc": 0.8045909366855326,
+      "positive_patch_fraction": 0.121337890625,
+      "mean_soft_overlap": 0.08417161554098129,
+      "positive_logit": 0.5220313668251038,
+      "negative_logit": -0.4995917081832886
+    },
+    "4": {
+      "soft_bce": 0.7198267579078674,
+      "patch_auc": 0.7411679797534241,
+      "positive_patch_fraction": 0.121337890625,
+      "mean_soft_overlap": 0.08417161554098129,
+      "positive_logit": 0.552956759929657,
+      "negative_logit": -0.16361884772777557
+    },
+    "8": {
+      "soft_bce": 0.6304699778556824,
+      "patch_auc": 0.6855130971063018,
+      "positive_patch_fraction": 0.121337890625,
+      "mean_soft_overlap": 0.08417161554098129,
+      "positive_logit": 0.1655392199754715,
+      "negative_logit": -0.2959771156311035
+    },
+    "11": {
+      "soft_bce": 0.28940024971961975,
+      "patch_auc": 0.3526973020239929,
+      "positive_patch_fraction": 0.121337890625,
+      "mean_soft_overlap": 0.08417161554098129,
+      "positive_logit": -2.459319829940796,
+      "negative_logit": -2.453146457672119
+    }
+  },
+  "best_boundary": 0,
+  "selected_taps": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "peak_gpu_gib": 3.6728262901306152
+}

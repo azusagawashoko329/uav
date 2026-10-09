@@ -1,0 +1,16 @@
+[2026-07-14 12:52:03] start scene=farmland gpu=1 seed=42 probe_epochs=10
+[Farmland Inspection] 1 seq merged, 9548 frames, 149 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.4032 lr=1.40e-04  (140s)
+  ep02/10 loss=0.1960 lr=3.81e-04  (139s)
+  ep03/10 loss=0.1404 lr=5.00e-04  (140s)
+  ep04/10 loss=0.1162 lr=4.75e-04  (140s)
+  ep05/10 loss=0.1040 lr=4.05e-04  (140s)
+  ep06/10 loss=0.0968 lr=3.05e-04  (139s)
+  ep07/10 loss=0.0918 lr=1.94e-04  (140s)
+  ep08/10 loss=0.0883 lr=9.35e-05  (139s)
+  ep09/10 loss=0.0862 lr=2.44e-05  (139s)
+  ep10/10 loss=0.0852 lr=3.13e-09  (139s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/farmland.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 13:15:31] end scene=farmland exit=0

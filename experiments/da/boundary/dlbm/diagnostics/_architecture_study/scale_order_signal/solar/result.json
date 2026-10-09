@@ -1,0 +1,63 @@
+{
+  "scene": "solar",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/03"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.2411347528298696,
+        "normal_delta_median": 0.1116180345416069,
+        "pseudo_flip": 0.17346335450808206,
+        "pseudo_delta_median": 0.18016917010148367
+      },
+      "M": {
+        "normal_flip": 0.10460992902517319,
+        "normal_delta_median": 0.009902444978555044,
+        "pseudo_flip": 0.08185579131046931,
+        "pseudo_delta_median": 0.007982373237609863
+      },
+      "S": {
+        "normal_flip": 0.06146572157740593,
+        "normal_delta_median": -0.02182031174500783,
+        "pseudo_flip": 0.05910165297488371,
+        "pseudo_delta_median": -0.038222541411717735
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.28280141949653625,
+        "normal_delta_median": 0.12573853135108948,
+        "pseudo_flip": 0.23138298094272614,
+        "pseudo_delta_median": 0.15207672119140625
+      },
+      "M": {
+        "normal_flip": 0.07269503176212311,
+        "normal_delta_median": 0.008939355611801147,
+        "pseudo_flip": 0.11968085169792175,
+        "pseudo_delta_median": 0.009923547506332397
+      },
+      "S": {
+        "normal_flip": 0.052304964512586594,
+        "normal_delta_median": -0.02639058232307434,
+        "pseudo_flip": 0.048758864402770996,
+        "pseudo_delta_median": -0.035173043608665466
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  }
+}

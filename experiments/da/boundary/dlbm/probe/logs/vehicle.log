@@ -1,0 +1,16 @@
+[2026-07-14 13:38:31] start scene=vehicle gpu=0 seed=42 probe_epochs=10
+[Vehicle Roundabout] 2 seq merged, 5266 frames, 82 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.5310 lr=1.41e-04  (93s)
+  ep02/10 loss=0.2686 lr=3.82e-04  (92s)
+  ep03/10 loss=0.1749 lr=5.00e-04  (92s)
+  ep04/10 loss=0.1359 lr=4.75e-04  (92s)
+  ep05/10 loss=0.1579 lr=4.05e-04  (95s)
+  ep06/10 loss=0.1116 lr=3.04e-04  (96s)
+  ep07/10 loss=0.1031 lr=1.93e-04  (96s)
+  ep08/10 loss=0.0979 lr=9.31e-05  (96s)
+  ep09/10 loss=0.0951 lr=2.42e-05  (96s)
+  ep10/10 loss=0.0940 lr=5.74e-09  (96s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/vehicle.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 13:54:26] end scene=vehicle exit=0

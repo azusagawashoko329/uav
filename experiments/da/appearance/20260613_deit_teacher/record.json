@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "id": "20260613_deit_teacher",
+  "path": "experiments/da/appearance/20260613_deit_teacher",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": true,
+  "original_path": "experiments/20260613_deit_teacher",
+  "status": "completed",
+  "source_commit": null,
+  "source_ref": null,
+  "scripts": [
+    "scripts/eval_deit.py",
+    "scripts/train_deit.py"
+  ],
+  "evidence": [
+    "README.md",
+    "logs/eval_gpu0.log",
+    "logs/eval_gpu1.log",
+    "logs/eval_solar_bike.log",
+    "logs/retrain_solar_bike.log",
+    "logs/train_gpu0.log",
+    "logs/train_gpu1.log",
+    "results.csv"
+  ],
+  "weight_files_local": 7,
+  "review_markers": [],
+  "result_summary": "历史结果证据：results.csv；未在迁移时重新计算指标。",
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "eval_gpu0",
+      "status": "unknown",
+      "evidence": [
+        "logs/eval_gpu0.log"
+      ]
+    },
+    {
+      "run_id": "eval_gpu1",
+      "status": "unknown",
+      "evidence": [
+        "logs/eval_gpu1.log"
+      ]
+    },
+    {
+      "run_id": "eval_solar_bike",
+      "status": "unknown",
+      "evidence": [
+        "logs/eval_solar_bike.log"
+      ]
+    },
+    {
+      "run_id": "retrain_solar_bike",
+      "status": "unknown",
+      "evidence": [
+        "logs/retrain_solar_bike.log"
+      ]
+    },
+    {
+      "run_id": "train_gpu0",
+      "status": "unknown",
+      "evidence": [
+        "logs/train_gpu0.log"
+      ]
+    },
+    {
+      "run_id": "train_gpu1",
+      "status": "unknown",
+      "evidence": [
+        "logs/train_gpu1.log"
+      ]
+    }
+  ]
+}

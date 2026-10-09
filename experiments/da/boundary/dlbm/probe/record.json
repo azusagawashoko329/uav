@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "id": "probe",
+  "path": "experiments/da/boundary/dlbm/probe",
+  "dataset": "da",
+  "family": "boundary",
+  "legacy": true,
+  "original_path": "experiment_DLBM/run/probe",
+  "status": "completed",
+  "source_commit": null,
+  "source_ref": "explore/distill-layer-boundary@1a68d0c",
+  "scripts": [],
+  "evidence": [
+    "config.json",
+    "launcher.log",
+    "logs/bike.log",
+    "logs/crossroads.log",
+    "logs/farmland.log",
+    "logs/highway.log",
+    "logs/railway.log",
+    "logs/solar.log",
+    "logs/vehicle.log"
+  ],
+  "weight_files_local": 7,
+  "review_markers": [],
+  "result_summary": null,
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "bike",
+      "status": "completed",
+      "evidence": [
+        "status/bike.done"
+      ]
+    },
+    {
+      "run_id": "crossroads",
+      "status": "completed",
+      "evidence": [
+        "status/crossroads.done"
+      ]
+    },
+    {
+      "run_id": "farmland",
+      "status": "completed",
+      "evidence": [
+        "status/farmland.done"
+      ]
+    },
+    {
+      "run_id": "highway",
+      "status": "completed",
+      "evidence": [
+        "status/highway.done"
+      ]
+    },
+    {
+      "run_id": "railway",
+      "status": "completed",
+      "evidence": [
+        "status/railway.done"
+      ]
+    },
+    {
+      "run_id": "solar",
+      "status": "completed",
+      "evidence": [
+        "status/solar.done"
+      ]
+    },
+    {
+      "run_id": "vehicle",
+      "status": "completed",
+      "evidence": [
+        "status/vehicle.done"
+      ]
+    }
+  ]
+}

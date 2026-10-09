@@ -1,0 +1,65 @@
+{
+  "scene": "highway",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.27570922672748566,
+        "normal_delta_median": 0.08861007913947105,
+        "pseudo_flip": 0.22717197984457016,
+        "pseudo_delta_median": 0.2551746256649494
+      },
+      "M": {
+        "normal_flip": 0.13541666977107525,
+        "normal_delta_median": 0.005563069134950638,
+        "pseudo_flip": 0.07047872245311737,
+        "pseudo_delta_median": -0.021088402718305588
+      },
+      "S": {
+        "normal_flip": 0.05851063970476389,
+        "normal_delta_median": -0.01792157255113125,
+        "pseudo_flip": 0.0186170213855803,
+        "pseudo_delta_median": -0.06504969671368599
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.21409574896097183,
+        "normal_delta_median": 0.0527420025318861,
+        "pseudo_flip": 0.23847517371177673,
+        "pseudo_delta_median": 0.286956787109375
+      },
+      "M": {
+        "normal_flip": 0.09884751960635185,
+        "normal_delta_median": 0.011782649904489517,
+        "pseudo_flip": 0.0744680855423212,
+        "pseudo_delta_median": -0.033367544412612915
+      },
+      "S": {
+        "normal_flip": 0.03679077886044979,
+        "normal_delta_median": -0.007691439241170883,
+        "pseudo_flip": 0.02969858143478632,
+        "pseudo_delta_median": -0.06956912577152252
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  }
+}

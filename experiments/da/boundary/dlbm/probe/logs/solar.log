@@ -1,0 +1,16 @@
+[2026-07-14 13:54:26] start scene=solar gpu=0 seed=42 probe_epochs=10
+[Solar Panel Inspection] 2 seq merged, 2848 frames, 44 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.6177 lr=1.42e-04  (56s)
+  ep02/10 loss=0.3498 lr=3.83e-04  (45s)
+  ep03/10 loss=0.2621 lr=5.00e-04  (56s)
+  ep04/10 loss=0.2112 lr=4.74e-04  (46s)
+  ep05/10 loss=0.1802 lr=4.04e-04  (56s)
+  ep06/10 loss=0.1624 lr=3.03e-04  (45s)
+  ep07/10 loss=0.1512 lr=1.92e-04  (56s)
+  ep08/10 loss=0.1444 lr=9.21e-05  (46s)
+  ep09/10 loss=0.1408 lr=2.37e-05  (58s)
+  ep10/10 loss=0.1394 lr=1.50e-08  (49s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/solar.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 14:03:12] end scene=solar exit=0

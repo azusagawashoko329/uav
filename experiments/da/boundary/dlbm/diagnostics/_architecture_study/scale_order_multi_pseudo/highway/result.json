@@ -1,0 +1,171 @@
+{
+  "scene": "highway",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.27570922672748566,
+        "normal_delta_median": 0.08861007913947105,
+        "pseudo_flip": 0.13585993088781834,
+        "pseudo_delta_median": 0.11236323975026608
+      },
+      "M": {
+        "normal_flip": 0.13541666977107525,
+        "normal_delta_median": 0.005563069134950638,
+        "pseudo_flip": 0.04831560328602791,
+        "pseudo_delta_median": 0.0028640776872634888
+      },
+      "S": {
+        "normal_flip": 0.05851063970476389,
+        "normal_delta_median": -0.01792157255113125,
+        "pseudo_flip": 0.01706560282036662,
+        "pseudo_delta_median": -0.02683480642735958
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.20833333333333331,
+          "comparable_fraction": 0.20833333333333331,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+              "real_normal_flip": 0.10106383264064789,
+              "real_pseudo_delta": 0.002727508544921875,
+              "pareto_evidence": 0.16666666666666666
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+              "real_normal_flip": 0.08599290996789932,
+              "real_pseudo_delta": 0.006343856453895569,
+              "pareto_evidence": 0.16666666666666666
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+              "real_normal_flip": 0.17198581993579865,
+              "real_pseudo_delta": -0.0009296387434005737,
+              "pareto_evidence": 0.16666666666666666
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+              "real_normal_flip": 0.18262411653995514,
+              "real_pseudo_delta": 0.003314584493637085,
+              "pareto_evidence": 0.3333333333333333
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.16428571428571428,
+          "comparable_fraction": 0.2571428571428571,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+              "real_normal_flip": 0.06560283899307251,
+              "real_pseudo_delta": -0.01943691074848175,
+              "pareto_evidence": 0.38571428571428573
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+              "real_normal_flip": 0.07535461336374283,
+              "real_pseudo_delta": -0.014426924288272858,
+              "pareto_evidence": 0.3
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+              "real_normal_flip": 0.050531916320323944,
+              "real_pseudo_delta": -0.03758011758327484,
+              "pareto_evidence": 0.014285714285714285
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+              "real_normal_flip": 0.042553190141916275,
+              "real_pseudo_delta": -0.035895273089408875,
+              "pareto_evidence": -0.04285714285714286
+            }
+          ]
+        }
+      },
+      "boundary": 4
+    }
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.21409574896097183,
+        "normal_delta_median": 0.0527420025318861,
+        "pseudo_flip": 0.09131205454468727,
+        "pseudo_delta_median": 0.08110695332288742
+      },
+      "M": {
+        "normal_flip": 0.09884751960635185,
+        "normal_delta_median": 0.011782649904489517,
+        "pseudo_flip": 0.03324468154460192,
+        "pseudo_delta_median": 0.006249807775020599
+      },
+      "S": {
+        "normal_flip": 0.03679077886044979,
+        "normal_delta_median": -0.007691439241170883,
+        "pseudo_flip": 0.01285460963845253,
+        "pseudo_delta_median": -0.01551506295800209
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.3333333333333333,
+          "comparable_fraction": 0.3333333333333333,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "real_normal_flip": 0.09131205826997757,
+              "real_pseudo_delta": 0.007169716060161591,
+              "pareto_evidence": 0.3333333333333333
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "real_normal_flip": 0.10638298094272614,
+              "real_pseudo_delta": 0.005329899489879608,
+              "pareto_evidence": 0.3333333333333333
+            }
+          ]
+        },
+        "S": {
+          "evidence": -0.04285714285714286,
+          "comparable_fraction": 0.2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "real_normal_flip": 0.03989361599087715,
+              "real_pseudo_delta": -0.014262132346630096,
+              "pareto_evidence": -0.05714285714285714
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "real_normal_flip": 0.03368794173002243,
+              "real_pseudo_delta": -0.016767993569374084,
+              "pareto_evidence": -0.02857142857142857
+            }
+          ]
+        }
+      },
+      "boundary": 4
+    }
+  }
+}

@@ -1,0 +1,13 @@
+[2026-07-14 15:50:12] start scene=crossroads gpu=1 version=DLBM_v004_mask_localization_target_probe
+[crossroads] support=336 query=144 boundaries=[0, 4, 8, 11] micro=5 localizer=20
+  cached L0
+  cached L4
+  cached L8
+  cached L11
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  localizer ep05 train=0.2208 choice=L0 aucs=L0:0.9232,L4:0.9153,L8:0.8419,L11:0.2804
+  localizer ep10 train=0.1961 choice=L0 aucs=L0:0.9185,L4:0.9063,L8:0.8398,L11:0.2804
+  localizer ep20 train=0.1994 choice=L0 aucs=L0:0.9238,L4:0.9135,L8:0.8457,L11:0.2804
+  final choice=L0 peak=3.67 GiB
+[2026-07-14 15:52:18] end scene=crossroads exit=0

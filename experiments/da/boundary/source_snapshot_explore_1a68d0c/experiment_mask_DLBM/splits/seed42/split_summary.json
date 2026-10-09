@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "strategy": "per_subvideo_seeded_four_folds__fold01_probe__fold2_boundary_train__fold3_boundary_decision",
+  "seed": 42,
+  "ratios": {
+    "probe_train": "1/2",
+    "boundary_train": "1/4",
+    "boundary_decision": "1/4"
+  },
+  "overlap": false,
+  "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+  "scenes": {
+    "bike": {
+      "folder": "Bike Roundabout",
+      "total_frames": 7950,
+      "split_counts": {
+        "probe_train": 3975,
+        "boundary_train": 1988,
+        "boundary_decision": 1987
+      },
+      "subvideos": [
+        {
+          "path": "Bike Roundabout/sequence1/train/01",
+          "frames": 900,
+          "seed": 13427259324668857944,
+          "split_counts": {
+            "probe_train": 450,
+            "boundary_train": 225,
+            "boundary_decision": 225
+          }
+        },
+        {
+          "path": "Bike Roundabout/sequence1/train/02",
+          "frames": 1800,
+          "seed": 12129430919256872719,
+          "split_counts": {
+            "probe_train": 900,
+            "boundary_train": 450,
+            "boundary_decision": 450
+          }
+        },
+        {
+          "path": "Bike Roundabout/sequence1/train/03",
+          "frames": 1800,
+          "seed": 4853284078527953197,
+          "split_counts": {
+            "probe_train": 900,
+            "boundary_train": 450,
+            "boundary_decision": 450
+          }
+        },
+        {
+          "path": "Bike Roundabout/sequence1/train/04",
+          "frames": 900,
+          "seed": 18219720044262723115,
+          "split_counts": {
+            "probe_train": 450,
+            "boundary_train": 225,
+            "boundary_decision": 225
+          }
+        },
+        {
+          "path": "Bike Roundabout/sequence1/train/05",
+          "frames": 1050,
+          "seed": 4193079115811280005,
+          "split_counts": {
+            "probe_train": 525,
+            "boundary_train": 263,
+            "boundary_decision": 262
+          }
+        },
+        {
+          "path": "Bike Roundabout/sequence1/train/06",
+          "frames": 1500,
+          "seed": 709623918573973947,
+          "split_counts": {
+            "probe_train": 750,
+            "boundary_train": 375,
+            "boundary_decision": 375
+          }
+        }
+      ],
+      "dataset_paths_sha256": "213272a0a3720db97ea10332cb239dc4d40761517bd0fc1cc54b9d43a7551283"
+    },
+    "crossroads": {
+      "folder": "Crossroads",
+      "total_frames": 15772,
+      "split_counts": {
+        "probe_train": 7886,
+        "boundary_train": 3946,
+        "boundary_decision": 3940
+      },
+      "subvideos": [
+        {
+          "path": "Crossroads/sequence1/train/01",
+          "frames": 510,
+          "seed": 12035339332118152015,
+          "split_counts": {
+            "probe_train": 255,
+            "boundary_train": 128,
+            "boundary_decision": 127
+          }
+        },
+        {
+          "path": "Crossroads/sequence2/train/01",
+          "frames": 2468,
+          "seed": 13176872618545678486,
+          "split_counts": {
+            "probe_train": 1234,
+            "boundary_train": 617,
+            "boundary_decision": 617
+          }
+        },
+        {
+          "path": "Crossroads/sequence2/train/02",
+          "frames": 2468,
+          "seed": 9813774380761347403,
+          "split_counts": {
+            "probe_train": 1234,
+            "boundary_train": 617,
+            "boundary_decision": 617
+          }
+        },
+        {
+          "path": "Crossroads/sequence2/train/03",
+          "frames": 2468,
+          "seed": 10555380716100593865,
+          "split_counts": {
+            "probe_train": 1234,
+            "boundary_train": 617,
+            "boundary_decision": 617
+          }
+        },
+        {
+          "path": "Crossroads/sequence2/train/04",
+          "frames": 2468,
+          "seed": 9816018288957064090,
+          "split_counts": {
+            "probe_train": 1234,
+            "boundary_train": 617,
+            "boundary_decision": 617
+          }
+        },
+        {
+          "path": "Crossroads/sequence3/train/01",
+          "frames": 1078,
+          "seed": 11275477962979839623,
+          "split_counts": {
+            "probe_train": 539,
+            "boundary_train": 270,
+            "boundary_decision": 269
+          }
+        },
+        {
+          "path": "Crossroads/sequence3/train/02",
+          "frames": 1078,
+          "seed": 1084409861434571206,
+          "split_counts": {
+            "probe_train": 539,
+            "boundary_train": 270,
+            "boundary_decision": 269
+          }
+        },
+        {
+          "path": "Crossroads/sequence3/train/03",
+          "frames": 1078,
+          "seed": 16020754621481405142,
+          "split_counts": {
+            "probe_train": 539,
+            "boundary_train": 270,
+            "boundary_decision": 269
+          }
+        },
+        {
+          "path": "Crossroads/sequence3/train/04",
+          "frames": 1078,
+          "seed": 14590380870076897420,
+          "split_counts": {
+            "probe_train": 539,
+            "boundary_train": 270,
+            "boundary_decision": 269
+          }
+        },
+        {
+          "path": "Crossroads/sequence3/train/05",
+          "frames": 1078,
+          "seed": 11613556288324195556,
+          "split_counts": {
+            "probe_train": 539,
+            "boundary_train": 270,
+            "boundary_decision": 269
+          }
+        }
+      ],
+      "dataset_paths_sha256": "75cff6f70f37f0c97788328d3e4633a6682294ac7f0decb82500b37f286850dd"
+    },
+    "farmland": {
+      "folder": "Farmland Inspection",
+      "total_frames": 9548,
+      "split_counts": {
+        "probe_train": 4772,
+        "boundary_train": 2388,
+        "boundary_decision": 2388
+      },
+      "subvideos": [
+        {
+          "path": "Farmland Inspection/sequence1/train/01",
+          "frames": 2387,
+          "seed": 16524028335601413900,
+          "split_counts": {
+            "probe_train": 1193,
+            "boundary_train": 597,
+            "boundary_decision": 597
+          }
+        },
+        {
+          "path": "Farmland Inspection/sequence1/train/02",
+          "frames": 2387,
+          "seed": 10220910474650336481,
+          "split_counts": {
+            "probe_train": 1193,
+            "boundary_train": 597,
+            "boundary_decision": 597
+          }
+        },
+        {
+          "path": "Farmland Inspection/sequence1/train/03",
+          "frames": 2387,
+          "seed": 4761874695035934611,
+          "split_counts": {
+            "probe_train": 1193,
+            "boundary_train": 597,
+            "boundary_decision": 597
+          }
+        },
+        {
+          "path": "Farmland Inspection/sequence1/train/04",
+          "frames": 2387,
+          "seed": 6391250130510012338,
+          "split_counts": {
+            "probe_train": 1193,
+            "boundary_train": 597,
+            "boundary_decision": 597
+          }
+        }
+      ],
+      "dataset_paths_sha256": "ae0a10a7e89dfd97c33a57a4e1164c7d29c59f68cd1cdd1468616d491106d75b"
+    },
+    "highway": {
+      "folder": "Highway",
+      "total_frames": 9045,
+      "split_counts": {
+        "probe_train": 4525,
+        "boundary_train": 2260,
+        "boundary_decision": 2260
+      },
+      "subvideos": [
+        {
+          "path": "Highway/sequence1/train/01",
+          "frames": 4440,
+          "seed": 2173700582738534052,
+          "split_counts": {
+            "probe_train": 2220,
+            "boundary_train": 1110,
+            "boundary_decision": 1110
+          }
+        },
+        {
+          "path": "Highway/sequence1/train/02",
+          "frames": 2217,
+          "seed": 4225604286815007807,
+          "split_counts": {
+            "probe_train": 1109,
+            "boundary_train": 554,
+            "boundary_decision": 554
+          }
+        },
+        {
+          "path": "Highway/sequence2/train/01",
+          "frames": 317,
+          "seed": 14821701263895979834,
+          "split_counts": {
+            "probe_train": 159,
+            "boundary_train": 79,
+            "boundary_decision": 79
+          }
+        },
+        {
+          "path": "Highway/sequence2/train/02",
+          "frames": 981,
+          "seed": 9733041848989823451,
+          "split_counts": {
+            "probe_train": 491,
+            "boundary_train": 245,
+            "boundary_decision": 245
+          }
+        },
+        {
+          "path": "Highway/sequence3/train/01",
+          "frames": 545,
+          "seed": 8224974970458651994,
+          "split_counts": {
+            "probe_train": 273,
+            "boundary_train": 136,
+            "boundary_decision": 136
+          }
+        },
+        {
+          "path": "Highway/sequence3/train/02",
+          "frames": 545,
+          "seed": 15589574015849096433,
+          "split_counts": {
+            "probe_train": 273,
+            "boundary_train": 136,
+            "boundary_decision": 136
+          }
+        }
+      ],
+      "dataset_paths_sha256": "712ab99cf62bb29ed5df63685d3514294efb46be33d9309626fbc2116545cac3"
+    },
+    "railway": {
+      "folder": "Railway Inspection",
+      "total_frames": 1206,
+      "split_counts": {
+        "probe_train": 603,
+        "boundary_train": 302,
+        "boundary_decision": 301
+      },
+      "subvideos": [
+        {
+          "path": "Railway Inspection/sequence1/train/01",
+          "frames": 300,
+          "seed": 10134845225034198696,
+          "split_counts": {
+            "probe_train": 150,
+            "boundary_train": 75,
+            "boundary_decision": 75
+          }
+        },
+        {
+          "path": "Railway Inspection/sequence1/train/02",
+          "frames": 402,
+          "seed": 2550663150722779704,
+          "split_counts": {
+            "probe_train": 201,
+            "boundary_train": 101,
+            "boundary_decision": 100
+          }
+        },
+        {
+          "path": "Railway Inspection/sequence1/train/03",
+          "frames": 504,
+          "seed": 11592852671105155349,
+          "split_counts": {
+            "probe_train": 252,
+            "boundary_train": 126,
+            "boundary_decision": 126
+          }
+        }
+      ],
+      "dataset_paths_sha256": "dca75af54072ddffaa63f83e60464e8002df09a85f8e63cdbdcc23f8a35eb2bf"
+    },
+    "solar": {
+      "folder": "Solar Panel Inspection",
+      "total_frames": 2848,
+      "split_counts": {
+        "probe_train": 1424,
+        "boundary_train": 712,
+        "boundary_decision": 712
+      },
+      "subvideos": [
+        {
+          "path": "Solar Panel Inspection/sequence1/train/01",
+          "frames": 772,
+          "seed": 7961879248067197442,
+          "split_counts": {
+            "probe_train": 386,
+            "boundary_train": 193,
+            "boundary_decision": 193
+          }
+        },
+        {
+          "path": "Solar Panel Inspection/sequence1/train/02",
+          "frames": 772,
+          "seed": 4658684962999026259,
+          "split_counts": {
+            "probe_train": 386,
+            "boundary_train": 193,
+            "boundary_decision": 193
+          }
+        },
+        {
+          "path": "Solar Panel Inspection/sequence1/train/03",
+          "frames": 772,
+          "seed": 316398309158450244,
+          "split_counts": {
+            "probe_train": 386,
+            "boundary_train": 193,
+            "boundary_decision": 193
+          }
+        },
+        {
+          "path": "Solar Panel Inspection/sequence2/train/01",
+          "frames": 532,
+          "seed": 12091855953542734378,
+          "split_counts": {
+            "probe_train": 266,
+            "boundary_train": 133,
+            "boundary_decision": 133
+          }
+        }
+      ],
+      "dataset_paths_sha256": "ae2a8d49a2ee4b783fcd84148019c0f65b10af69ac6f1d0faf83f0b42b484a77"
+    },
+    "vehicle": {
+      "folder": "Vehicle Roundabout",
+      "total_frames": 5266,
+      "split_counts": {
+        "probe_train": 2632,
+        "boundary_train": 1318,
+        "boundary_decision": 1316
+      },
+      "subvideos": [
+        {
+          "path": "Vehicle Roundabout/sequence1/train/01",
+          "frames": 923,
+          "seed": 2391193131520659071,
+          "split_counts": {
+            "probe_train": 461,
+            "boundary_train": 231,
+            "boundary_decision": 231
+          }
+        },
+        {
+          "path": "Vehicle Roundabout/sequence1/train/02",
+          "frames": 923,
+          "seed": 18396000754442512928,
+          "split_counts": {
+            "probe_train": 461,
+            "boundary_train": 231,
+            "boundary_decision": 231
+          }
+        },
+        {
+          "path": "Vehicle Roundabout/sequence2/train/01",
+          "frames": 1710,
+          "seed": 7197750102626645245,
+          "split_counts": {
+            "probe_train": 855,
+            "boundary_train": 428,
+            "boundary_decision": 427
+          }
+        },
+        {
+          "path": "Vehicle Roundabout/sequence2/train/02",
+          "frames": 1710,
+          "seed": 9698694852688433230,
+          "split_counts": {
+            "probe_train": 855,
+            "boundary_train": 428,
+            "boundary_decision": 427
+          }
+        }
+      ],
+      "dataset_paths_sha256": "d43708e8baefc1f1cc0eddc03beab6f3063a18e1b2cd5852f5a75438a20f6f32"
+    }
+  },
+  "manifests": {
+    "bike": {
+      "probe_train": {
+        "path": "bike/probe_train.txt",
+        "frames": 3975,
+        "sha256": "043d5c231e76ec211b8e8c11154433b51500c996f409bd0591ffa0edc265a6b0"
+      },
+      "boundary_train": {
+        "path": "bike/boundary_train.txt",
+        "frames": 1988,
+        "sha256": "f780168b11c731700616cfe9ef05f2ddba09cc29c3923a998fa5b6009daff59c"
+      },
+      "boundary_decision": {
+        "path": "bike/boundary_decision.txt",
+        "frames": 1987,
+        "sha256": "9d427ed248b3498c595eebc47c23f51ecd0a6c997e2aaf888266eec69f9c30a4"
+      }
+    },
+    "crossroads": {
+      "probe_train": {
+        "path": "crossroads/probe_train.txt",
+        "frames": 7886,
+        "sha256": "466c7967fe65554e2360ac6f7a451698421cbe248e100da0737fc7fc55d95260"
+      },
+      "boundary_train": {
+        "path": "crossroads/boundary_train.txt",
+        "frames": 3946,
+        "sha256": "f1cde1181e465571cb3988e63a08f2bd57a762a26c1fd1779da2e89139731669"
+      },
+      "boundary_decision": {
+        "path": "crossroads/boundary_decision.txt",
+        "frames": 3940,
+        "sha256": "cb0f88c5b367c17bfa6c830938bd6d5fc4664f07295b814148a6a4225d7eb654"
+      }
+    },
+    "farmland": {
+      "probe_train": {
+        "path": "farmland/probe_train.txt",
+        "frames": 4772,
+        "sha256": "8fd43547cf6b23d5aad48de33e12b98e94d1f999a2dc62b9d1ffae66e5c8ddaa"
+      },
+      "boundary_train": {
+        "path": "farmland/boundary_train.txt",
+        "frames": 2388,
+        "sha256": "07b5ad3e1b0b0c3143dbf525f80095a43a37a320dede0cbe795f9f86ed9b890a"
+      },
+      "boundary_decision": {
+        "path": "farmland/boundary_decision.txt",
+        "frames": 2388,
+        "sha256": "595def21075c3e4617947a66268a87185554031999224f16140f90c98a449683"
+      }
+    },
+    "highway": {
+      "probe_train": {
+        "path": "highway/probe_train.txt",
+        "frames": 4525,
+        "sha256": "2e770c2f1903fed3ba37e16f110ed39b532f0ca1d1d91187d4421d903f033788"
+      },
+      "boundary_train": {
+        "path": "highway/boundary_train.txt",
+        "frames": 2260,
+        "sha256": "f4894576193d096a0d7c02967af8135dc211b40ff73520d1a2fb9f0d5f730e68"
+      },
+      "boundary_decision": {
+        "path": "highway/boundary_decision.txt",
+        "frames": 2260,
+        "sha256": "efc9b70678f04f9103de686430b424681796e6dce3c01e051e4ebf71f056abe5"
+      }
+    },
+    "railway": {
+      "probe_train": {
+        "path": "railway/probe_train.txt",
+        "frames": 603,
+        "sha256": "a2227f2b41640aa13837cbf2c9557c2b52741f5d898632fd5364a4e92e2cbf7a"
+      },
+      "boundary_train": {
+        "path": "railway/boundary_train.txt",
+        "frames": 302,
+        "sha256": "22b83c1b164e8a8ab23f9e2a0d579c96f2fb2c171ac12fb205892bbf90193c58"
+      },
+      "boundary_decision": {
+        "path": "railway/boundary_decision.txt",
+        "frames": 301,
+        "sha256": "52b0a8a4727978d1894a5e535ca3d63e852bcd382cb0481a7762642db538b7fa"
+      }
+    },
+    "solar": {
+      "probe_train": {
+        "path": "solar/probe_train.txt",
+        "frames": 1424,
+        "sha256": "5ebf2807c2002a572b52a2a2b2e333f88da80b93f3a0b47bf7cc21c5de8ae41b"
+      },
+      "boundary_train": {
+        "path": "solar/boundary_train.txt",
+        "frames": 712,
+        "sha256": "dc906771063283a32e79aeaa136164fe14957153ad48d19c95a1ed671c6c7cac"
+      },
+      "boundary_decision": {
+        "path": "solar/boundary_decision.txt",
+        "frames": 712,
+        "sha256": "a18b1b5296ff6166ec20f21c29ee8e6766f11455d8c6b980a64f71e469a64cba"
+      }
+    },
+    "vehicle": {
+      "probe_train": {
+        "path": "vehicle/probe_train.txt",
+        "frames": 2632,
+        "sha256": "05a618631e59a23c4f0a322000e5c120e7670f61c344253e7ec72c5dc876c248"
+      },
+      "boundary_train": {
+        "path": "vehicle/boundary_train.txt",
+        "frames": 1318,
+        "sha256": "c9066a7a40de14cc74b50b745ccfa1dcd61d8d360dae424bd1815b560fb82127"
+      },
+      "boundary_decision": {
+        "path": "vehicle/boundary_decision.txt",
+        "frames": 1316,
+        "sha256": "f9248c203a7b54daba7b3df983fae9329f0cb23e4de529b5ac412645116e6a0b"
+      }
+    }
+  },
+  "split_fingerprint_sha256": "310ed5d044673cc8ddc40e4bcbfa41e2b697f8b0d7417f1e2401f361fbb77f74"
+}

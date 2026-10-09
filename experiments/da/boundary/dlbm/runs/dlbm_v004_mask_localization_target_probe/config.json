@@ -1,0 +1,19 @@
+{
+  "version": "DLBM_v004_mask_localization_target_probe",
+  "purpose": "validate learned spatial opening target before DLBM fitting",
+  "final_training": false,
+  "seed": 42,
+  "gpus": [0, 1],
+  "boundaries": [0, 4, 8, 11],
+  "micro_epochs": 5,
+  "localizer_epochs": 20,
+  "localizer_milestones": [5, 10, 20],
+  "steps_per_epoch": 64,
+  "max_frames_per_video": 48,
+  "batch_size": 8,
+  "probe_learning_rate": 0.0005,
+  "probe_weight_decay": 0.05,
+  "localizer_learning_rate": 0.001,
+  "localizer_weight_decay": 0.01,
+  "topk": 5
+}

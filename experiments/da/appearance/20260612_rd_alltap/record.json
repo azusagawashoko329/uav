@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "id": "20260612_rd_alltap",
+  "path": "experiments/da/appearance/20260612_rd_alltap",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": true,
+  "original_path": "experiments/20260612_rd_alltap",
+  "status": "completed",
+  "source_commit": null,
+  "source_ref": null,
+  "scripts": [
+    "scripts/run.sh"
+  ],
+  "evidence": [
+    "README.md",
+    "logs/bike.log",
+    "logs/crossroads.log",
+    "logs/farmland.log",
+    "logs/highway.log",
+    "logs/railway.log",
+    "logs/solar.log",
+    "logs/vehicle.log",
+    "results.csv"
+  ],
+  "weight_files_local": 7,
+  "review_markers": [],
+  "result_summary": "历史结果证据：results.csv；未在迁移时重新计算指标。",
+  "limitations": [
+    "Exact runtime source commit is unverified; source_ref is an archival snapshot, not a verified run commit."
+  ],
+  "runs": [
+    {
+      "run_id": "bike",
+      "status": "unknown",
+      "evidence": [
+        "logs/bike.log"
+      ]
+    },
+    {
+      "run_id": "crossroads",
+      "status": "unknown",
+      "evidence": [
+        "logs/crossroads.log"
+      ]
+    },
+    {
+      "run_id": "farmland",
+      "status": "unknown",
+      "evidence": [
+        "logs/farmland.log"
+      ]
+    },
+    {
+      "run_id": "highway",
+      "status": "unknown",
+      "evidence": [
+        "logs/highway.log"
+      ]
+    },
+    {
+      "run_id": "railway",
+      "status": "unknown",
+      "evidence": [
+        "logs/railway.log"
+      ]
+    },
+    {
+      "run_id": "solar",
+      "status": "unknown",
+      "evidence": [
+        "logs/solar.log"
+      ]
+    },
+    {
+      "run_id": "vehicle",
+      "status": "unknown",
+      "evidence": [
+        "logs/vehicle.log"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[2026-07-14 15:27:56] start scene=railway gpu=1 version=DLBM_v002_exact_suffix_gain epochs=30
+[railway] cache support=96/2 videos query=48/1 videos
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  ep01/30 train=1.758e-03
+  ep05/30 train=1.558e-05 val=4.277e-05 corr=0.9918513186856456 boundary=L5 oracle=L5
+  ep10/30 train=1.900e-05 val=4.118e-05 corr=0.9867676686117393 boundary=L6 oracle=L5
+  ep15/30 train=2.936e-05
+  ep20/30 train=1.942e-05 val=3.788e-05 corr=0.9780542090747958 boundary=L5 oracle=L5
+  ep25/30 train=1.422e-05
+  ep30/30 train=2.529e-05 val=7.769e-05 corr=0.9735665328091758 boundary=L6 oracle=L5
+  final boundary=L6 oracle=L5 sensitivity=3.349e-05
+  cache_peak_gpu_memory=1.61 GiB
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v002_exact_suffix_gain/scenes/railway
+[2026-07-14 15:29:19] end scene=railway exit=0

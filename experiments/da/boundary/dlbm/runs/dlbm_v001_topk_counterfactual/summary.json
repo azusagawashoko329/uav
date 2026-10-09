@@ -1,0 +1,90 @@
+{
+  "status": "failed_review",
+  "reason": "unstable/saturated gain target; coarse sanity 2/7",
+  "rows": [
+    {
+      "scene": "bike",
+      "boundary": 4,
+      "selected_taps": "4 5 6 7 8 9 10 11",
+      "episode_boundaries": "3 10 10 4",
+      "evaluator_auc": 0.9901258680555556,
+      "evaluator_loss": 0.03249858319759369,
+      "exact_sign_agreement": null,
+      "exact_pearson": null,
+      "coarse_gate_boundary_external_only": 8,
+      "coarse_exact_match": false
+    },
+    {
+      "scene": "crossroads",
+      "boundary": 11,
+      "selected_taps": "11",
+      "episode_boundaries": "0 9 6 11",
+      "evaluator_auc": 1.0,
+      "evaluator_loss": 0.042970526963472366,
+      "exact_sign_agreement": 0.3333333333333333,
+      "exact_pearson": 0.9593906295160031,
+      "coarse_gate_boundary_external_only": 4,
+      "coarse_exact_match": false
+    },
+    {
+      "scene": "farmland",
+      "boundary": 11,
+      "selected_taps": "11",
+      "episode_boundaries": "2 10 11 5",
+      "evaluator_auc": 0.9895833333333334,
+      "evaluator_loss": 0.20089974999427795,
+      "exact_sign_agreement": 1.0,
+      "exact_pearson": 0.9999816697641564,
+      "coarse_gate_boundary_external_only": 8,
+      "coarse_exact_match": false
+    },
+    {
+      "scene": "highway",
+      "boundary": 11,
+      "selected_taps": "11",
+      "episode_boundaries": "6 10 8 11",
+      "evaluator_auc": 0.9919704861111112,
+      "evaluator_loss": 0.12173335254192352,
+      "exact_sign_agreement": null,
+      "exact_pearson": null,
+      "coarse_gate_boundary_external_only": 0,
+      "coarse_exact_match": false
+    },
+    {
+      "scene": "railway",
+      "boundary": 8,
+      "selected_taps": "8 9 10 11",
+      "episode_boundaries": "10 7 8 8",
+      "evaluator_auc": 1.0,
+      "evaluator_loss": 0.050732046365737915,
+      "exact_sign_agreement": 0.3333333333333333,
+      "exact_pearson": 0.2532286476483026,
+      "coarse_gate_boundary_external_only": 8,
+      "coarse_exact_match": true
+    },
+    {
+      "scene": "solar",
+      "boundary": 0,
+      "selected_taps": "0 1 2 3 4 5 6 7 8 9 10 11",
+      "episode_boundaries": "10 0 9 11",
+      "evaluator_auc": 0.9769965277777778,
+      "evaluator_loss": 0.2435683012008667,
+      "exact_sign_agreement": 1.0,
+      "exact_pearson": 0.9999222805770335,
+      "coarse_gate_boundary_external_only": 8,
+      "coarse_exact_match": false
+    },
+    {
+      "scene": "vehicle",
+      "boundary": 8,
+      "selected_taps": "8 9 10 11",
+      "episode_boundaries": "9 8 5 9",
+      "evaluator_auc": 1.0,
+      "evaluator_loss": 0.26539137959480286,
+      "exact_sign_agreement": 0.75,
+      "exact_pearson": 0.9968254353223472,
+      "coarse_gate_boundary_external_only": 8,
+      "coarse_exact_match": true
+    }
+  ]
+}

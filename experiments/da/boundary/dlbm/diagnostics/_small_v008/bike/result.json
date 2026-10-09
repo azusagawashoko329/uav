@@ -1,0 +1,473 @@
+{
+  "format_version": 8,
+  "scene": "bike",
+  "method": "neural_opening_order_with_structural_layer_null",
+  "probe_checkpoint": "experiment_DLBM/run/probe/ckpt/bike.pth",
+  "probe_mutated": false,
+  "args": {
+    "scene": "bike",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_small_v008/bike",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "model_dim": 32,
+    "heads": 4,
+    "epochs": 10,
+    "steps_per_epoch": 44,
+    "frame_batch": 48,
+    "pair_samples": 512,
+    "eval_pairs": 4096,
+    "max_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      5,
+      10
+    ]
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6155878305435181,
+      "grad_norm": 0.6959739904850721,
+      "null_fraction": 0.4318181818181818,
+      "normal_rank": 0.6894312528046694,
+      "normal_flip": 0.6996879279613495,
+      "pseudo_rank": 0.4754493128169667,
+      "pseudo_flip": 0.5977828299457376,
+      "normal_flip_rate": 0.11044034090909091,
+      "pseudo_flip_rate": 0.04629794034090909
+    },
+    {
+      "epoch": 2,
+      "loss": 0.46535191414031113,
+      "grad_norm": 1.4765259007161313,
+      "null_fraction": 0.5,
+      "normal_rank": 0.6892295466227965,
+      "normal_flip": 0.685808007012714,
+      "pseudo_rank": 0.21921029043468562,
+      "pseudo_flip": 0.2671597989445383,
+      "normal_flip_rate": 0.11376953125,
+      "pseudo_flip_rate": 0.04758522727272727
+    },
+    {
+      "epoch": 3,
+      "loss": 0.38467446105046704,
+      "grad_norm": 4.000383963639086,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.6850490962917154,
+      "normal_flip": 0.5343586748296564,
+      "pseudo_rank": 0.19333150881257924,
+      "pseudo_flip": 0.12595855372703887,
+      "normal_flip_rate": 0.11221590909090909,
+      "pseudo_flip_rate": 0.048650568181818184
+    },
+    {
+      "epoch": 4,
+      "loss": 0.3472773473371159,
+      "grad_norm": 8.99406948414716,
+      "null_fraction": 0.5,
+      "normal_rank": 0.68201783163981,
+      "normal_flip": 0.4134975539689714,
+      "pseudo_rank": 0.17204098403453827,
+      "pseudo_flip": 0.12155301449820399,
+      "normal_flip_rate": 0.10986328125,
+      "pseudo_flip_rate": 0.04123757102272727
+    },
+    {
+      "epoch": 5,
+      "loss": 0.32471623813564127,
+      "grad_norm": 11.516001519831745,
+      "null_fraction": 0.6363636363636364,
+      "normal_rank": 0.6804806766184893,
+      "normal_flip": 0.36026133833961055,
+      "pseudo_rank": 0.1665630994195288,
+      "pseudo_flip": 0.09155982813205231,
+      "normal_flip_rate": 0.1162109375,
+      "pseudo_flip_rate": 0.04407848011363636,
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.29519763588905334,
+          "actual_normal_flip": 0.12677304446697235,
+          "predicted_pseudo_flip": 0.09803473949432373,
+          "actual_pseudo_flip": 0.05762410908937454,
+          "predicted_normal_null_median": 0.26033204793930054,
+          "actual_normal_null_median": 0.09086878597736359,
+          "normal_gain": 0.03486558794975281,
+          "actual_normal_gain": 0.035904258489608765,
+          "predicted_pseudo_null_median": 0.08163651078939438,
+          "actual_pseudo_null_median": 0.03989361599087715,
+          "pseudo_gain": 0.016398228704929352,
+          "actual_pseudo_gain": 0.01773049309849739,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.2442299723625183,
+          "actual_normal_flip": 0.07712765783071518,
+          "predicted_pseudo_flip": 0.06208387017250061,
+          "actual_pseudo_flip": 0.021276595070958138,
+          "predicted_normal_null_median": 0.24004021286964417,
+          "actual_normal_null_median": 0.08111701905727386,
+          "normal_gain": 0.0041897594928741455,
+          "actual_normal_gain": -0.003989361226558685,
+          "predicted_pseudo_null_median": 0.0715159922838211,
+          "actual_pseudo_null_median": 0.03324468061327934,
+          "pseudo_gain": -0.009432122111320496,
+          "actual_pseudo_gain": -0.011968085542321205,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.03486558794975281,
+          "L0": 0.03905534744262695
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 0.32376284626397217,
+      "grad_norm": 10.286323861642318,
+      "null_fraction": 0.45454545454545453,
+      "normal_rank": 0.6816870759833943,
+      "normal_flip": 0.3620743321424181,
+      "pseudo_rank": 0.16253367337313565,
+      "pseudo_flip": 0.08875630084763873,
+      "normal_flip_rate": 0.10799893465909091,
+      "pseudo_flip_rate": 0.04660866477272727
+    },
+    {
+      "epoch": 7,
+      "loss": 0.29795151576399803,
+      "grad_norm": 10.138453537767584,
+      "null_fraction": 0.6136363636363636,
+      "normal_rank": 0.6774345257065513,
+      "normal_flip": 0.2726723290979862,
+      "pseudo_rank": 0.16529640995643355,
+      "pseudo_flip": 0.07640280972488901,
+      "normal_flip_rate": 0.10213955965909091,
+      "pseudo_flip_rate": 0.04407848011363636
+    },
+    {
+      "epoch": 8,
+      "loss": 0.2831518992104314,
+      "grad_norm": 10.655515538020568,
+      "null_fraction": 0.4772727272727273,
+      "normal_rank": 0.67332954027436,
+      "normal_flip": 0.24007180383936924,
+      "pseudo_rank": 0.15389592352915893,
+      "pseudo_flip": 0.06531031836162914,
+      "normal_flip_rate": 0.10302734375,
+      "pseudo_flip_rate": 0.04128196022727273
+    },
+    {
+      "epoch": 9,
+      "loss": 0.2823952819136056,
+      "grad_norm": 13.920946776866913,
+      "null_fraction": 0.4772727272727273,
+      "normal_rank": 0.6707891862500798,
+      "normal_flip": 0.24491052820601247,
+      "pseudo_rank": 0.1508053502237255,
+      "pseudo_flip": 0.06307604297233577,
+      "normal_flip_rate": 0.10799893465909091,
+      "pseudo_flip_rate": 0.042302911931818184
+    },
+    {
+      "epoch": 10,
+      "loss": 0.2877639352597974,
+      "grad_norm": 15.929390479217876,
+      "null_fraction": 0.45454545454545453,
+      "normal_rank": 0.6676786176183007,
+      "normal_flip": 0.28393787060948933,
+      "pseudo_rank": 0.14099193906242197,
+      "pseudo_flip": 0.05844731204508042,
+      "normal_flip_rate": 0.10862038352272728,
+      "pseudo_flip_rate": 0.040482954545454544,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.18239225447177887,
+          "actual_normal_flip": 0.12677304446697235,
+          "predicted_pseudo_flip": 0.0835920125246048,
+          "actual_pseudo_flip": 0.05762410908937454,
+          "predicted_normal_null_median": 0.15295983850955963,
+          "actual_normal_null_median": 0.09086878597736359,
+          "normal_gain": 0.02943241596221924,
+          "actual_normal_gain": 0.035904258489608765,
+          "predicted_pseudo_null_median": 0.06581728160381317,
+          "actual_pseudo_null_median": 0.03989361599087715,
+          "pseudo_gain": 0.017774730920791626,
+          "actual_pseudo_gain": 0.01773049309849739,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.13310638070106506,
+          "actual_normal_flip": 0.07712765783071518,
+          "predicted_pseudo_flip": 0.04853476211428642,
+          "actual_pseudo_flip": 0.021276595070958138,
+          "predicted_normal_null_median": 0.13938428461551666,
+          "actual_normal_null_median": 0.08111701905727386,
+          "normal_gain": -0.006277903914451599,
+          "actual_normal_gain": -0.003989361226558685,
+          "predicted_pseudo_null_median": 0.0584736242890358,
+          "actual_pseudo_null_median": 0.03324468061327934,
+          "pseudo_gain": -0.009938862174749374,
+          "actual_pseudo_gain": -0.011968085542321205,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.02943241596221924,
+          "L0": 0.02315451204776764
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "5": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.29519763588905334,
+        "actual_normal_flip": 0.12677304446697235,
+        "predicted_pseudo_flip": 0.09803473949432373,
+        "actual_pseudo_flip": 0.05762410908937454,
+        "predicted_normal_null_median": 0.26033204793930054,
+        "actual_normal_null_median": 0.09086878597736359,
+        "normal_gain": 0.03486558794975281,
+        "actual_normal_gain": 0.035904258489608765,
+        "predicted_pseudo_null_median": 0.08163651078939438,
+        "actual_pseudo_null_median": 0.03989361599087715,
+        "pseudo_gain": 0.016398228704929352,
+        "actual_pseudo_gain": 0.01773049309849739,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.2442299723625183,
+        "actual_normal_flip": 0.07712765783071518,
+        "predicted_pseudo_flip": 0.06208387017250061,
+        "actual_pseudo_flip": 0.021276595070958138,
+        "predicted_normal_null_median": 0.24004021286964417,
+        "actual_normal_null_median": 0.08111701905727386,
+        "normal_gain": 0.0041897594928741455,
+        "actual_normal_gain": -0.003989361226558685,
+        "predicted_pseudo_null_median": 0.0715159922838211,
+        "actual_pseudo_null_median": 0.03324468061327934,
+        "pseudo_gain": -0.009432122111320496,
+        "actual_pseudo_gain": -0.011968085542321205,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.03486558794975281,
+        "L0": 0.03905534744262695
+      }
+    },
+    "10": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.18239225447177887,
+        "actual_normal_flip": 0.12677304446697235,
+        "predicted_pseudo_flip": 0.0835920125246048,
+        "actual_pseudo_flip": 0.05762410908937454,
+        "predicted_normal_null_median": 0.15295983850955963,
+        "actual_normal_null_median": 0.09086878597736359,
+        "normal_gain": 0.02943241596221924,
+        "actual_normal_gain": 0.035904258489608765,
+        "predicted_pseudo_null_median": 0.06581728160381317,
+        "actual_pseudo_null_median": 0.03989361599087715,
+        "pseudo_gain": 0.017774730920791626,
+        "actual_pseudo_gain": 0.01773049309849739,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.13310638070106506,
+        "actual_normal_flip": 0.07712765783071518,
+        "predicted_pseudo_flip": 0.04853476211428642,
+        "actual_pseudo_flip": 0.021276595070958138,
+        "predicted_normal_null_median": 0.13938428461551666,
+        "actual_normal_null_median": 0.08111701905727386,
+        "normal_gain": -0.006277903914451599,
+        "actual_normal_gain": -0.003989361226558685,
+        "predicted_pseudo_null_median": 0.0584736242890358,
+        "actual_pseudo_null_median": 0.03324468061327934,
+        "pseudo_gain": -0.009938862174749374,
+        "actual_pseudo_gain": -0.011968085542321205,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.02943241596221924,
+        "L0": 0.02315451204776764
+      }
+    }
+  },
+  "final_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "middle": {
+      "predicted_normal_flip": 0.18239225447177887,
+      "actual_normal_flip": 0.12677304446697235,
+      "predicted_pseudo_flip": 0.0835920125246048,
+      "actual_pseudo_flip": 0.05762410908937454,
+      "predicted_normal_null_median": 0.15295983850955963,
+      "actual_normal_null_median": 0.09086878597736359,
+      "normal_gain": 0.02943241596221924,
+      "actual_normal_gain": 0.035904258489608765,
+      "predicted_pseudo_null_median": 0.06581728160381317,
+      "actual_pseudo_null_median": 0.03989361599087715,
+      "pseudo_gain": 0.017774730920791626,
+      "actual_pseudo_gain": 0.01773049309849739,
+      "null_count": 6
+    },
+    "shallow": {
+      "predicted_normal_flip": 0.13310638070106506,
+      "actual_normal_flip": 0.07712765783071518,
+      "predicted_pseudo_flip": 0.04853476211428642,
+      "actual_pseudo_flip": 0.021276595070958138,
+      "predicted_normal_null_median": 0.13938428461551666,
+      "actual_normal_null_median": 0.08111701905727386,
+      "normal_gain": -0.006277903914451599,
+      "actual_normal_gain": -0.003989361226558685,
+      "predicted_pseudo_null_median": 0.0584736242890358,
+      "actual_pseudo_null_median": 0.03324468061327934,
+      "pseudo_gain": -0.009938862174749374,
+      "actual_pseudo_gain": -0.011968085542321205,
+      "null_count": 16
+    },
+    "utilities": {
+      "L8": 0.0,
+      "L4": 0.02943241596221924,
+      "L0": 0.02315451204776764
+    }
+  },
+  "support_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "middle": {
+      "predicted_normal_flip": 0.21878623962402344,
+      "actual_normal_flip": 0.14206558465957642,
+      "predicted_pseudo_flip": 0.08940707892179489,
+      "actual_pseudo_flip": 0.06538119912147522,
+      "predicted_normal_null_median": 0.17795726656913757,
+      "actual_normal_null_median": 0.10239361226558685,
+      "normal_gain": 0.040828973054885864,
+      "actual_normal_gain": 0.03967197239398956,
+      "predicted_pseudo_null_median": 0.0619734451174736,
+      "actual_pseudo_null_median": 0.03701241314411163,
+      "pseudo_gain": 0.02743363380432129,
+      "actual_pseudo_gain": 0.028368785977363586,
+      "null_count": 6
+    },
+    "shallow": {
+      "predicted_normal_flip": 0.13991346955299377,
+      "actual_normal_flip": 0.07513297349214554,
+      "predicted_pseudo_flip": 0.05788635462522507,
+      "actual_pseudo_flip": 0.024157799780368805,
+      "predicted_normal_null_median": 0.16784484684467316,
+      "actual_normal_null_median": 0.10372340679168701,
+      "normal_gain": -0.027931377291679382,
+      "actual_normal_gain": -0.028590433299541473,
+      "predicted_pseudo_null_median": 0.06726285815238953,
+      "actual_pseudo_null_median": 0.038342200219631195,
+      "pseudo_gain": -0.00937650352716446,
+      "actual_pseudo_gain": -0.01418440043926239,
+      "null_count": 16
+    },
+    "utilities": {
+      "L8": 0.0,
+      "L4": 0.040828973054885864,
+      "L0": 0.012897595763206482
+    }
+  },
+  "model_parameters": 21188,
+  "peak_gpu_gib": 0.8367443084716797
+}

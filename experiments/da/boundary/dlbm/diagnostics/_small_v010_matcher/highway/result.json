@@ -1,0 +1,3115 @@
+{
+  "format_version": 10,
+  "scene": "highway",
+  "method": "frozen_predictive_innovation_same_frame_retrieval",
+  "probe_checkpoint": "experiment_DLBM/run/probe/ckpt/highway.pth",
+  "probe_sha256": "20aa83be834b160407bec87df16459c52d19705a6ac36da4a9100bb0a262f949",
+  "probe_mutated": false,
+  "args": {
+    "scene": "highway",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_small_v010_matcher/highway",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_epochs": 10,
+    "predictor_steps": 44,
+    "predictor_batch": 24,
+    "matcher_epochs": 30,
+    "matcher_steps": 45,
+    "episode_frames": 48,
+    "predictor_lr": 0.001,
+    "matcher_lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      5,
+      10,
+      20,
+      30
+    ]
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02"
+      ]
+    }
+  },
+  "predictor_history": [
+    {
+      "epoch": 1,
+      "loss": 0.0004191323870062743
+    },
+    {
+      "epoch": 2,
+      "loss": 0.00014770769551184705
+    },
+    {
+      "epoch": 3,
+      "loss": 0.00012304670615941922
+    },
+    {
+      "epoch": 4,
+      "loss": 0.00010141961402868301
+    },
+    {
+      "epoch": 5,
+      "loss": 8.837092090371615e-05
+    },
+    {
+      "epoch": 6,
+      "loss": 8.15671663241863e-05
+    },
+    {
+      "epoch": 7,
+      "loss": 7.606573159467767e-05
+    },
+    {
+      "epoch": 8,
+      "loss": 7.305453221885149e-05
+    },
+    {
+      "epoch": 9,
+      "loss": 7.062425108663525e-05
+    },
+    {
+      "epoch": 10,
+      "loss": 6.849328879483933e-05
+    }
+  ],
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 0.00012946784045198,
+    "normal_aligned_mae": 0.012732583796605468,
+    "normal_independent_layer_roll_smooth_l1": 0.00015719819566584192,
+    "normal_independent_layer_roll_mae": 0.014071533223614097,
+    "pseudo_aligned_smooth_l1": 0.0006389861373463646,
+    "pseudo_aligned_mae": 0.017505266703665257,
+    "pseudo_independent_layer_roll_smooth_l1": 0.001298317249165848,
+    "pseudo_independent_layer_roll_mae": 0.028782960027456284,
+    "normal_roll_loss_ratio": 1.2141872075494082,
+    "pseudo_over_normal_loss_ratio": 4.935481545962499
+  },
+  "predictor_query_after_matcher": {
+    "normal_aligned_smooth_l1": 0.00012946784045198,
+    "normal_aligned_mae": 0.012732583796605468,
+    "normal_independent_layer_roll_smooth_l1": 0.00015719819566584192,
+    "normal_independent_layer_roll_mae": 0.014071533223614097,
+    "pseudo_aligned_smooth_l1": 0.0006389861373463646,
+    "pseudo_aligned_mae": 0.017505266703665257,
+    "pseudo_independent_layer_roll_smooth_l1": 0.001298317249165848,
+    "pseudo_independent_layer_roll_mae": 0.028782960027456284,
+    "normal_roll_loss_ratio": 1.2141872075494082,
+    "pseudo_over_normal_loss_ratio": 4.935481545962499
+  },
+  "matcher_history": [
+    {
+      "epoch": 1,
+      "loss": 3.871447462505764,
+      "D_normal_loss": 3.871032953262329,
+      "D_pseudo_loss": 3.8720956643422446,
+      "grad_norm": 0.11948020607233048,
+      "M_normal_loss": 3.8705538590749105,
+      "M_pseudo_loss": 3.8731783707936605,
+      "S_normal_loss": 3.8713709354400634,
+      "S_pseudo_loss": 3.870453055699666
+    },
+    {
+      "epoch": 2,
+      "loss": 3.871395312415229,
+      "D_normal_loss": 3.8713667392730713,
+      "D_pseudo_loss": 3.872071711222331,
+      "grad_norm": 0.03770364572087096,
+      "M_normal_loss": 3.870974047978719,
+      "M_pseudo_loss": 3.8719017187754314,
+      "S_normal_loss": 3.8709291934967043,
+      "S_pseudo_loss": 3.871128479639689
+    },
+    {
+      "epoch": 3,
+      "loss": 3.860873889923096,
+      "D_normal_loss": 3.869794829686483,
+      "D_pseudo_loss": 3.865541410446167,
+      "grad_norm": 0.5002841344310178,
+      "M_normal_loss": 3.8666659037272137,
+      "M_pseudo_loss": 3.837058925628662,
+      "S_normal_loss": 3.871510934829712,
+      "S_pseudo_loss": 3.8546714305877687
+    },
+    {
+      "epoch": 4,
+      "loss": 3.8682175159454344,
+      "D_normal_loss": 3.8715498129526775,
+      "D_pseudo_loss": 3.8554163297017414,
+      "grad_norm": 0.9229238114733663,
+      "M_normal_loss": 3.8737807750701903,
+      "M_pseudo_loss": 3.858738644917806,
+      "S_normal_loss": 3.8863932609558107,
+      "S_pseudo_loss": 3.86342617670695
+    },
+    {
+      "epoch": 5,
+      "loss": 3.8505063904656303,
+      "D_normal_loss": 3.862261946996053,
+      "D_pseudo_loss": 3.853519662221273,
+      "grad_norm": 0.897361322823498,
+      "M_normal_loss": 3.8695359388987223,
+      "M_pseudo_loss": 3.860503339767456,
+      "S_normal_loss": 3.8683870156606037,
+      "S_pseudo_loss": 3.7888304074605306,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.10467913001775742,
+          0.12432223558425903,
+          0.11985445767641068
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.8718652725219727,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09404750913381577,
+                  "normalized_information": -0.00017158348055090755
+                },
+                "pseudo": {
+                  "loss": 3.862575054168701,
+                  "top1": 0.03125,
+                  "mrr": 0.12366300076246262,
+                  "normalized_information": 0.0022282449062913656
+                },
+                "joint_mrr": 0.10885525494813919
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.877882957458496,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09291404485702515,
+                  "normalized_information": -0.0017260584281757474
+                },
+                "pseudo": {
+                  "loss": 3.8649590015411377,
+                  "top1": 0.03125,
+                  "mrr": 0.10809197276830673,
+                  "normalized_information": 0.001612429041415453
+                },
+                "joint_mrr": 0.10050300881266594
+              }
+            ],
+            "normal_loss": 3.8748741149902344,
+            "normal_loss_std": 0.0030088424682617188,
+            "normal_top1": 0.02083333395421505,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.09348077699542046,
+            "normal_mrr_std": 0.0005667321383953094,
+            "normal_normalized_information": -0.0009488209543633275,
+            "normal_normalized_information_std": 0.0007772374738124199,
+            "pseudo_loss": 3.8637670278549194,
+            "pseudo_loss_std": 0.0011919736862182617,
+            "pseudo_top1": 0.03125,
+            "pseudo_top1_std": 0.0,
+            "pseudo_mrr": 0.11587748676538467,
+            "pseudo_mrr_std": 0.007785513997077942,
+            "pseudo_normalized_information": 0.0019203369738534093,
+            "pseudo_normalized_information_std": 0.00030790793243795633,
+            "joint_mrr": 0.10467913188040257
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.679169178009033,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.13490138947963715,
+                  "normalized_information": 0.049605242908000946
+                },
+                "pseudo": {
+                  "loss": 3.8238816261291504,
+                  "top1": 0.03125,
+                  "mrr": 0.10620766878128052,
+                  "normalized_information": 0.012223444879055023
+                },
+                "joint_mrr": 0.12055452913045883
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.686929702758789,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.12769824266433716,
+                  "normalized_information": 0.04760055989027023
+                },
+                "pseudo": {
+                  "loss": 3.721715211868286,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.1284816414117813,
+                  "normalized_information": 0.038614846765995026
+                },
+                "joint_mrr": 0.12808994203805923
+              }
+            ],
+            "normal_loss": 3.683049440383911,
+            "normal_loss_std": 0.0038802623748779297,
+            "normal_top1": 0.0416666679084301,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.13129981607198715,
+            "normal_mrr_std": 0.003601573407649994,
+            "normal_normalized_information": 0.04860290139913559,
+            "normal_normalized_information_std": 0.0010023415088653564,
+            "pseudo_loss": 3.7727984189987183,
+            "pseudo_loss_std": 0.05108320713043213,
+            "pseudo_top1": 0.0416666679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.11734465509653091,
+            "pseudo_mrr_std": 0.011136986315250397,
+            "pseudo_normalized_information": 0.025419145822525024,
+            "pseudo_normalized_information_std": 0.013195700943470001,
+            "joint_mrr": 0.12432223558425903
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.881225109100342,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09521203488111496,
+                  "normalized_information": -0.0025893955025821924
+                },
+                "pseudo": {
+                  "loss": 3.6848816871643066,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.1486368179321289,
+                  "normalized_information": 0.048129599541425705
+                },
+                "joint_mrr": 0.12192442640662193
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.8702034950256348,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09279479086399078,
+                  "normalized_information": 0.0002576831611804664
+                },
+                "pseudo": {
+                  "loss": 3.6547443866729736,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.14277419447898865,
+                  "normalized_information": 0.05591459944844246
+                },
+                "joint_mrr": 0.11778449267148972
+              }
+            ],
+            "normal_loss": 3.8757143020629883,
+            "normal_loss_std": 0.005510807037353516,
+            "normal_top1": 0.02083333395421505,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.09400341287255287,
+            "normal_mrr_std": 0.001208622008562088,
+            "normal_normalized_information": -0.001165856170700863,
+            "normal_normalized_information_std": 0.0014235393318813294,
+            "pseudo_loss": 3.66981303691864,
+            "pseudo_loss_std": 0.015068650245666504,
+            "pseudo_top1": 0.04687500186264515,
+            "pseudo_top1_std": 0.00520833395421505,
+            "pseudo_mrr": 0.14570550620555878,
+            "pseudo_mrr_std": 0.0029313117265701294,
+            "pseudo_normalized_information": 0.05202209949493408,
+            "pseudo_normalized_information_std": 0.003892499953508377,
+            "joint_mrr": 0.11985445953905582
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "scale": "S",
+            "boundary": 0,
+            "evidence": {
+              "D": 0.10885525494813919,
+              "M": 0.12055452913045883,
+              "S": 0.12192442640662193
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.10050300881266594,
+              "M": 0.12808994203805923,
+              "S": 0.11778449267148972
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.865954452090793,
+      "D_normal_loss": 3.8529695828755695,
+      "D_pseudo_loss": 3.8372132142384845,
+      "grad_norm": 1.7636669700758325,
+      "M_normal_loss": 3.8699027856190997,
+      "M_pseudo_loss": 3.8378605683644613,
+      "S_normal_loss": 3.883600918451945,
+      "S_pseudo_loss": 3.914179563522339
+    },
+    {
+      "epoch": 7,
+      "loss": 3.862291786405775,
+      "D_normal_loss": 3.89671311378479,
+      "D_pseudo_loss": 3.8065701484680177,
+      "grad_norm": 4.024572313825289,
+      "M_normal_loss": 3.868891779581706,
+      "M_pseudo_loss": 3.8532124360402427,
+      "S_normal_loss": 3.8575340270996095,
+      "S_pseudo_loss": 3.8908292929331463
+    },
+    {
+      "epoch": 8,
+      "loss": 3.8557575967576767,
+      "D_normal_loss": 3.855468924840291,
+      "D_pseudo_loss": 3.8200469175974527,
+      "grad_norm": 3.022519359406498,
+      "M_normal_loss": 3.8760127067565917,
+      "M_pseudo_loss": 3.8295604387919107,
+      "S_normal_loss": 3.8666018803914386,
+      "S_pseudo_loss": 3.886854616800944
+    },
+    {
+      "epoch": 9,
+      "loss": 3.8159673902723523,
+      "D_normal_loss": 3.83809118270874,
+      "D_pseudo_loss": 3.7813024520874023,
+      "grad_norm": 2.2772928376992545,
+      "M_normal_loss": 3.8622596899668378,
+      "M_pseudo_loss": 3.8550822416941326,
+      "S_normal_loss": 3.86566268603007,
+      "S_pseudo_loss": 3.693406089146932
+    },
+    {
+      "epoch": 10,
+      "loss": 3.7876769330766464,
+      "D_normal_loss": 3.8171547571818034,
+      "D_pseudo_loss": 3.7737321853637695,
+      "grad_norm": 3.1174725582202276,
+      "M_normal_loss": 3.863086779912313,
+      "M_pseudo_loss": 3.803594970703125,
+      "S_normal_loss": 3.8607595443725584,
+      "S_pseudo_loss": 3.6077332496643066,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.10498388856649399,
+          0.1670103371143341,
+          0.1313009113073349
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.838961601257324,
+                  "top1": 0.03125,
+                  "mrr": 0.11052393913269043,
+                  "normalized_information": 0.008328019641339779
+                },
+                "pseudo": {
+                  "loss": 3.9709115028381348,
+                  "top1": 0.03125,
+                  "mrr": 0.11186250299215317,
+                  "normalized_information": -0.02575698494911194
+                },
+                "joint_mrr": 0.1111932210624218
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.8584043979644775,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09651920944452286,
+                  "normalized_information": 0.003305599559098482
+                },
+                "pseudo": {
+                  "loss": 4.069248199462891,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.1010299101471901,
+                  "normalized_information": -0.051159102469682693
+                },
+                "joint_mrr": 0.09877455979585648
+              }
+            ],
+            "normal_loss": 3.848682999610901,
+            "normal_loss_std": 0.00972139835357666,
+            "normal_top1": 0.026041666977107525,
+            "normal_top1_std": 0.005208333022892475,
+            "normal_mrr": 0.10352157428860664,
+            "normal_mrr_std": 0.007002364844083786,
+            "normal_normalized_information": 0.0058168096002191305,
+            "normal_normalized_information_std": 0.0025112100411206484,
+            "pseudo_loss": 4.020079851150513,
+            "pseudo_loss_std": 0.04916834831237793,
+            "pseudo_top1": 0.026041666977107525,
+            "pseudo_top1_std": 0.005208333022892475,
+            "pseudo_mrr": 0.10644620656967163,
+            "pseudo_mrr_std": 0.005416296422481537,
+            "pseudo_normalized_information": -0.038458043709397316,
+            "pseudo_normalized_information_std": 0.012701058760285378,
+            "joint_mrr": 0.10498389042913914
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.666691780090332,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.15832893550395966,
+                  "normalized_information": 0.05282837525010109
+                },
+                "pseudo": {
+                  "loss": 3.3796029090881348,
+                  "top1": 0.0625,
+                  "mrr": 0.18047907948493958,
+                  "normalized_information": 0.12698853015899658
+                },
+                "joint_mrr": 0.16940400749444962
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.724661350250244,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.15929369628429413,
+                  "normalized_information": 0.03785380348563194
+                },
+                "pseudo": {
+                  "loss": 3.540672779083252,
+                  "top1": 0.0729166716337204,
+                  "mrr": 0.16993966698646545,
+                  "normalized_information": 0.08538132160902023
+                },
+                "joint_mrr": 0.1646166816353798
+              }
+            ],
+            "normal_loss": 3.695676565170288,
+            "normal_loss_std": 0.028984785079956055,
+            "normal_top1": 0.0416666679084301,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.1588113158941269,
+            "normal_mrr_std": 0.00048238039016723633,
+            "normal_normalized_information": 0.045341089367866516,
+            "normal_normalized_information_std": 0.007487285882234573,
+            "pseudo_loss": 3.4601378440856934,
+            "pseudo_loss_std": 0.0805349349975586,
+            "pseudo_top1": 0.0677083358168602,
+            "pseudo_top1_std": 0.005208335816860199,
+            "pseudo_mrr": 0.17520937323570251,
+            "pseudo_mrr_std": 0.0052697062492370605,
+            "pseudo_normalized_information": 0.10618492588400841,
+            "pseudo_normalized_information_std": 0.020803604274988174,
+            "joint_mrr": 0.1670103445649147
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.8479299545288086,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.10007345676422119,
+                  "normalized_information": 0.0060113342478871346
+                },
+                "pseudo": {
+                  "loss": 3.5456314086914062,
+                  "top1": 0.0625,
+                  "mrr": 0.17200249433517456,
+                  "normalized_information": 0.08410041779279709
+                },
+                "joint_mrr": 0.13603797554969788
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.85990047454834,
+                  "top1": 0.03125,
+                  "mrr": 0.10506759583950043,
+                  "normalized_information": 0.0029191363137215376
+                },
+                "pseudo": {
+                  "loss": 3.727199077606201,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.14806009829044342,
+                  "normalized_information": 0.0371982641518116
+                },
+                "joint_mrr": 0.12656384706497192
+              }
+            ],
+            "normal_loss": 3.853915214538574,
+            "normal_loss_std": 0.005985260009765625,
+            "normal_top1": 0.026041666977107525,
+            "normal_top1_std": 0.005208333022892475,
+            "normal_mrr": 0.10257052630186081,
+            "normal_mrr_std": 0.002497069537639618,
+            "normal_normalized_information": 0.004465235280804336,
+            "normal_normalized_information_std": 0.0015460989670827985,
+            "pseudo_loss": 3.6364152431488037,
+            "pseudo_loss_std": 0.09078383445739746,
+            "pseudo_top1": 0.0572916679084301,
+            "pseudo_top1_std": 0.0052083320915699005,
+            "pseudo_mrr": 0.160031296312809,
+            "pseudo_mrr_std": 0.01197119802236557,
+            "pseudo_normalized_information": 0.060649340972304344,
+            "pseudo_normalized_information_std": 0.023451076820492744,
+            "joint_mrr": 0.1313009113073349
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.1111932210624218,
+              "M": 0.16940400749444962,
+              "S": 0.13603797554969788
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.09877455979585648,
+              "M": 0.1646166816353798,
+              "S": 0.12656384706497192
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 11,
+      "loss": 3.801346715291341,
+      "D_normal_loss": 3.7945517857869464,
+      "D_pseudo_loss": 3.703200419743856,
+      "grad_norm": 5.256820103857252,
+      "M_normal_loss": 3.8790719509124756,
+      "M_pseudo_loss": 3.8241273085276286,
+      "S_normal_loss": 3.8646000544230144,
+      "S_pseudo_loss": 3.7425288836161297
+    },
+    {
+      "epoch": 12,
+      "loss": 3.8372178024715846,
+      "D_normal_loss": 3.857277997334798,
+      "D_pseudo_loss": 3.8774285475413004,
+      "grad_norm": 3.0901295473178227,
+      "M_normal_loss": 3.864365514119466,
+      "M_pseudo_loss": 3.8448649247487388,
+      "S_normal_loss": 3.885342168807983,
+      "S_pseudo_loss": 3.69402764638265
+    },
+    {
+      "epoch": 13,
+      "loss": 3.7736977153354223,
+      "D_normal_loss": 3.740255832672119,
+      "D_pseudo_loss": 3.6963355700174967,
+      "grad_norm": 5.745042196909586,
+      "M_normal_loss": 3.851149876912435,
+      "M_pseudo_loss": 3.8197083473205566,
+      "S_normal_loss": 3.8620670954386394,
+      "S_pseudo_loss": 3.6726694901784263
+    },
+    {
+      "epoch": 14,
+      "loss": 3.750876029332479,
+      "D_normal_loss": 3.7586024443308514,
+      "D_pseudo_loss": 3.7313453515370685,
+      "grad_norm": 5.567850550678041,
+      "M_normal_loss": 3.8318180561065676,
+      "M_pseudo_loss": 3.7577956994374593,
+      "S_normal_loss": 3.8646699746449786,
+      "S_pseudo_loss": 3.561024538675944
+    },
+    {
+      "epoch": 15,
+      "loss": 3.7678928799099394,
+      "D_normal_loss": 3.720472240447998,
+      "D_pseudo_loss": 3.6885543346405028,
+      "grad_norm": 7.020033238993751,
+      "M_normal_loss": 3.828668800989787,
+      "M_pseudo_loss": 3.806085745493571,
+      "S_normal_loss": 3.879602877298991,
+      "S_pseudo_loss": 3.6839733759562177
+    },
+    {
+      "epoch": 16,
+      "loss": 3.7260166009267173,
+      "D_normal_loss": 3.6928938388824464,
+      "D_pseudo_loss": 3.6137593110402424,
+      "grad_norm": 6.623879516124726,
+      "M_normal_loss": 3.8433826764424643,
+      "M_pseudo_loss": 3.8536630630493165,
+      "S_normal_loss": 3.8412949562072756,
+      "S_pseudo_loss": 3.511105759938558
+    },
+    {
+      "epoch": 17,
+      "loss": 3.8353800614674887,
+      "D_normal_loss": 3.699610201517741,
+      "D_pseudo_loss": 3.7045709609985353,
+      "grad_norm": 9.703401478131612,
+      "M_normal_loss": 3.956355349222819,
+      "M_pseudo_loss": 3.9965763886769614,
+      "S_normal_loss": 3.8541037877400717,
+      "S_pseudo_loss": 3.801063553492228
+    },
+    {
+      "epoch": 18,
+      "loss": 3.7466995981004505,
+      "D_normal_loss": 3.7594993114471436,
+      "D_pseudo_loss": 3.666461435953776,
+      "grad_norm": 5.968728302584754,
+      "M_normal_loss": 3.850470781326294,
+      "M_pseudo_loss": 3.836360740661621,
+      "S_normal_loss": 3.8565591176350913,
+      "S_pseudo_loss": 3.510846169789632
+    },
+    {
+      "epoch": 19,
+      "loss": 3.7710424264272056,
+      "D_normal_loss": 3.751168711980184,
+      "D_pseudo_loss": 3.6856715202331545,
+      "grad_norm": 7.4501459333631725,
+      "M_normal_loss": 3.7918647925059,
+      "M_pseudo_loss": 3.8015654563903807,
+      "S_normal_loss": 3.8729581356048586,
+      "S_pseudo_loss": 3.7230259577433267
+    },
+    {
+      "epoch": 20,
+      "loss": 3.7171628104315864,
+      "D_normal_loss": 3.7378116607666017,
+      "D_pseudo_loss": 3.6690630118052163,
+      "grad_norm": 8.89019651942783,
+      "M_normal_loss": 3.823691177368164,
+      "M_pseudo_loss": 3.8296966870625813,
+      "S_normal_loss": 3.842522716522217,
+      "S_pseudo_loss": 3.400191640853882,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.12059654295444489,
+          0.16876420378684998,
+          0.15741479396820068
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.7912886142730713,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.12792742252349854,
+                  "normalized_information": 0.020642798393964767
+                },
+                "pseudo": {
+                  "loss": 4.003321170806885,
+                  "top1": 0.03125,
+                  "mrr": 0.11436979472637177,
+                  "normalized_information": -0.034128978848457336
+                },
+                "joint_mrr": 0.12114860862493515
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.807110548019409,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.13414853811264038,
+                  "normalized_information": 0.01655571162700653
+                },
+                "pseudo": {
+                  "loss": 4.569388389587402,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.10594042390584946,
+                  "normalized_information": -0.18035419285297394
+                },
+                "joint_mrr": 0.12004448100924492
+              }
+            ],
+            "normal_loss": 3.7991995811462402,
+            "normal_loss_std": 0.007910966873168945,
+            "normal_top1": 0.0520833358168602,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.13103798031806946,
+            "normal_mrr_std": 0.003110557794570923,
+            "normal_normalized_information": 0.01859925501048565,
+            "normal_normalized_information_std": 0.0020435433834791183,
+            "pseudo_loss": 4.2863547801971436,
+            "pseudo_loss_std": 0.2830336093902588,
+            "pseudo_top1": 0.026041666977107525,
+            "pseudo_top1_std": 0.005208333022892475,
+            "pseudo_mrr": 0.11015510931611061,
+            "pseudo_mrr_std": 0.004214685410261154,
+            "pseudo_normalized_information": -0.10724158585071564,
+            "pseudo_normalized_information_std": 0.0731126070022583,
+            "joint_mrr": 0.12059654481709003
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.6946425437927246,
+                  "top1": 0.0625,
+                  "mrr": 0.15047720074653625,
+                  "normalized_information": 0.045608196407556534
+                },
+                "pseudo": {
+                  "loss": 3.169452667236328,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.22606298327445984,
+                  "normalized_information": 0.18127407133579254
+                },
+                "joint_mrr": 0.18827009201049805
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.775786876678467,
+                  "top1": 0.03125,
+                  "mrr": 0.11433945596218109,
+                  "normalized_information": 0.024647172540426254
+                },
+                "pseudo": {
+                  "loss": 3.3728857040405273,
+                  "top1": 0.0729166716337204,
+                  "mrr": 0.18417717516422272,
+                  "normalized_information": 0.12872371077537537
+                },
+                "joint_mrr": 0.1492583155632019
+              }
+            ],
+            "normal_loss": 3.7352147102355957,
+            "normal_loss_std": 0.040572166442871094,
+            "normal_top1": 0.046875,
+            "normal_top1_std": 0.015625,
+            "normal_mrr": 0.13240832835435867,
+            "normal_mrr_std": 0.018068872392177582,
+            "normal_normalized_information": 0.035127684473991394,
+            "normal_normalized_information_std": 0.01048051193356514,
+            "pseudo_loss": 3.2711691856384277,
+            "pseudo_loss_std": 0.10171651840209961,
+            "pseudo_top1": 0.0781250037252903,
+            "pseudo_top1_std": 0.0052083320915699005,
+            "pseudo_mrr": 0.20512007921934128,
+            "pseudo_mrr_std": 0.02094290405511856,
+            "pseudo_normalized_information": 0.15499889105558395,
+            "pseudo_normalized_information_std": 0.026275180280208588,
+            "joint_mrr": 0.16876420378684998
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.8241090774536133,
+                  "top1": 0.010416666977107525,
+                  "mrr": 0.09504488110542297,
+                  "normalized_information": 0.012164690531790257
+                },
+                "pseudo": {
+                  "loss": 3.3309812545776367,
+                  "top1": 0.09375,
+                  "mrr": 0.23685918748378754,
+                  "normalized_information": 0.1395483762025833
+                },
+                "joint_mrr": 0.16595203429460526
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.845754623413086,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09331701695919037,
+                  "normalized_information": 0.0065732612274587154
+                },
+                "pseudo": {
+                  "loss": 3.454939842224121,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.20443809032440186,
+                  "normalized_information": 0.10752766579389572
+                },
+                "joint_mrr": 0.1488775536417961
+              }
+            ],
+            "normal_loss": 3.8349318504333496,
+            "normal_loss_std": 0.010822772979736328,
+            "normal_top1": 0.015625000465661287,
+            "normal_top1_std": 0.0052083334885537624,
+            "normal_mrr": 0.09418094903230667,
+            "normal_mrr_std": 0.0008639320731163025,
+            "normal_normalized_information": 0.009368975879624486,
+            "normal_normalized_information_std": 0.0027957146521657705,
+            "pseudo_loss": 3.392960548400879,
+            "pseudo_loss_std": 0.06197929382324219,
+            "pseudo_top1": 0.0885416679084301,
+            "pseudo_top1_std": 0.0052083320915699005,
+            "pseudo_mrr": 0.2206486389040947,
+            "pseudo_mrr_std": 0.01621054857969284,
+            "pseudo_normalized_information": 0.12353802099823952,
+            "pseudo_normalized_information_std": 0.016010355204343796,
+            "joint_mrr": 0.15741479396820068
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.12114860862493515,
+              "M": 0.18827009201049805,
+              "S": 0.16595203429460526
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.12004448100924492,
+              "M": 0.1492583155632019,
+              "S": 0.1488775536417961
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 21,
+      "loss": 3.6970301469167075,
+      "D_normal_loss": 3.724687703450521,
+      "D_pseudo_loss": 3.6886328856150308,
+      "grad_norm": 9.121298717127907,
+      "M_normal_loss": 3.7941226164499917,
+      "M_pseudo_loss": 3.677900727589925,
+      "S_normal_loss": 3.834645938873291,
+      "S_pseudo_loss": 3.4621908982594807
+    },
+    {
+      "epoch": 22,
+      "loss": 3.6912008868323434,
+      "D_normal_loss": 3.7218716939290366,
+      "D_pseudo_loss": 3.633704741795858,
+      "grad_norm": 8.876381799909804,
+      "M_normal_loss": 3.7455532709757486,
+      "M_pseudo_loss": 3.6453086058298747,
+      "S_normal_loss": 3.8359621365865073,
+      "S_pseudo_loss": 3.5648048559824628
+    },
+    {
+      "epoch": 23,
+      "loss": 3.6911658816867403,
+      "D_normal_loss": 3.777930561701457,
+      "D_pseudo_loss": 3.7446646690368652,
+      "grad_norm": 7.931595324145423,
+      "M_normal_loss": 3.792664337158203,
+      "M_pseudo_loss": 3.5530258337656657,
+      "S_normal_loss": 3.848469543457031,
+      "S_pseudo_loss": 3.430240345001221
+    },
+    {
+      "epoch": 24,
+      "loss": 3.695118639204237,
+      "D_normal_loss": 3.7800803184509277,
+      "D_pseudo_loss": 3.782757631937663,
+      "grad_norm": 11.18171135187149,
+      "M_normal_loss": 3.7153140703837075,
+      "M_pseudo_loss": 3.6893550237019856,
+      "S_normal_loss": 3.8298327763875326,
+      "S_pseudo_loss": 3.3733720461527508
+    },
+    {
+      "epoch": 25,
+      "loss": 3.7787590238783095,
+      "D_normal_loss": 3.7699455420176187,
+      "D_pseudo_loss": 3.736523151397705,
+      "grad_norm": 15.758329204718272,
+      "M_normal_loss": 3.9087175210316976,
+      "M_pseudo_loss": 3.6514549096425375,
+      "S_normal_loss": 3.867323160171509,
+      "S_pseudo_loss": 3.7385899384816486
+    },
+    {
+      "epoch": 26,
+      "loss": 3.697343757417467,
+      "D_normal_loss": 3.7003366470336916,
+      "D_pseudo_loss": 3.5947878042856853,
+      "grad_norm": 10.560520990689595,
+      "M_normal_loss": 3.8737165609995525,
+      "M_pseudo_loss": 3.748538637161255,
+      "S_normal_loss": 3.8020023822784426,
+      "S_pseudo_loss": 3.464680465062459
+    },
+    {
+      "epoch": 27,
+      "loss": 3.777646859486898,
+      "D_normal_loss": 3.7892577171325685,
+      "D_pseudo_loss": 3.7483143329620363,
+      "grad_norm": 9.96524225473404,
+      "M_normal_loss": 3.839710060755412,
+      "M_pseudo_loss": 3.6864030679066975,
+      "S_normal_loss": 3.8751258214314777,
+      "S_pseudo_loss": 3.727070124944051
+    },
+    {
+      "epoch": 28,
+      "loss": 3.6700661818186444,
+      "D_normal_loss": 3.790312083562215,
+      "D_pseudo_loss": 3.6431318442026774,
+      "grad_norm": 7.95543831454383,
+      "M_normal_loss": 3.7440056800842285,
+      "M_pseudo_loss": 3.7148375193277996,
+      "S_normal_loss": 3.7233094374338784,
+      "S_pseudo_loss": 3.4048005898793536
+    },
+    {
+      "epoch": 29,
+      "loss": 3.6589640458424886,
+      "D_normal_loss": 3.749589745203654,
+      "D_pseudo_loss": 3.6480514367421466,
+      "grad_norm": 9.132316064834594,
+      "M_normal_loss": 3.7206111272176106,
+      "M_pseudo_loss": 3.6424204031626384,
+      "S_normal_loss": 3.832813056310018,
+      "S_pseudo_loss": 3.3602983633677166
+    },
+    {
+      "epoch": 30,
+      "loss": 3.683037217458089,
+      "D_normal_loss": 3.652103392283122,
+      "D_pseudo_loss": 3.663845936457316,
+      "grad_norm": 10.286303400993347,
+      "M_normal_loss": 3.8553503195444745,
+      "M_pseudo_loss": 3.750050147374471,
+      "S_normal_loss": 3.7874708652496336,
+      "S_pseudo_loss": 3.389402675628662,
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.14105862379074097,
+          0.16867460310459137,
+          0.18281415104866028
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.6694841384887695,
+                  "top1": 0.0729166716337204,
+                  "mrr": 0.1659817099571228,
+                  "normalized_information": 0.052107058465480804
+                },
+                "pseudo": {
+                  "loss": 3.847123622894287,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.1359780728816986,
+                  "normalized_information": 0.006219624076038599
+                },
+                "joint_mrr": 0.1509798914194107
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.700288772583008,
+                  "top1": 0.03125,
+                  "mrr": 0.13600748777389526,
+                  "normalized_information": 0.044149674475193024
+                },
+                "pseudo": {
+                  "loss": 4.026065349578857,
+                  "top1": 0.03125,
+                  "mrr": 0.1262671947479248,
+                  "normalized_information": -0.04000420495867729
+                },
+                "joint_mrr": 0.13113734126091003
+              }
+            ],
+            "normal_loss": 3.6848864555358887,
+            "normal_loss_std": 0.01540231704711914,
+            "normal_top1": 0.0520833358168602,
+            "normal_top1_std": 0.0208333358168602,
+            "normal_mrr": 0.15099459886550903,
+            "normal_mrr_std": 0.01498711109161377,
+            "normal_normalized_information": 0.048128366470336914,
+            "normal_normalized_information_std": 0.00397869199514389,
+            "pseudo_loss": 3.9365944862365723,
+            "pseudo_loss_std": 0.08947086334228516,
+            "pseudo_top1": 0.0416666679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.1311226338148117,
+            "pseudo_mrr_std": 0.004855439066886902,
+            "pseudo_normalized_information": -0.016892290441319346,
+            "pseudo_normalized_information_std": 0.023111914517357945,
+            "joint_mrr": 0.14105861634016037
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.53983211517334,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.17907141149044037,
+                  "normalized_information": 0.08559848368167877
+                },
+                "pseudo": {
+                  "loss": 3.2497332096099854,
+                  "top1": 0.03125,
+                  "mrr": 0.1782473921775818,
+                  "normalized_information": 0.16053618490695953
+                },
+                "joint_mrr": 0.17865940183401108
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.618556499481201,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.1170191690325737,
+                  "normalized_information": 0.065262570977211
+                },
+                "pseudo": {
+                  "loss": 3.378383159637451,
+                  "top1": 0.1041666716337204,
+                  "mrr": 0.20036041736602783,
+                  "normalized_information": 0.1273036152124405
+                },
+                "joint_mrr": 0.15868979319930077
+              }
+            ],
+            "normal_loss": 3.5791943073272705,
+            "normal_loss_std": 0.039362192153930664,
+            "normal_top1": 0.052083334885537624,
+            "normal_top1_std": 0.031250000931322575,
+            "normal_mrr": 0.14804529026150703,
+            "normal_mrr_std": 0.031026121228933334,
+            "normal_normalized_information": 0.07543052732944489,
+            "normal_normalized_information_std": 0.010167956352233887,
+            "pseudo_loss": 3.3140581846237183,
+            "pseudo_loss_std": 0.06432497501373291,
+            "pseudo_top1": 0.0677083358168602,
+            "pseudo_top1_std": 0.0364583358168602,
+            "pseudo_mrr": 0.1893039047718048,
+            "pseudo_mrr_std": 0.011056512594223022,
+            "pseudo_normalized_information": 0.1439199000597,
+            "pseudo_normalized_information_std": 0.01661628484725952,
+            "joint_mrr": 0.16867459751665592
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+                "normal": {
+                  "loss": 3.747633457183838,
+                  "top1": 0.03125,
+                  "mrr": 0.13369140028953552,
+                  "normalized_information": 0.031919702887535095
+                },
+                "pseudo": {
+                  "loss": 3.179625988006592,
+                  "top1": 0.1145833358168602,
+                  "mrr": 0.2524203956127167,
+                  "normalized_information": 0.17864611744880676
+                },
+                "joint_mrr": 0.1930558979511261
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+                "normal": {
+                  "loss": 3.780327796936035,
+                  "top1": 0.0625,
+                  "mrr": 0.16547930240631104,
+                  "normalized_information": 0.02347417362034321
+                },
+                "pseudo": {
+                  "loss": 3.2010555267333984,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.17966552078723907,
+                  "normalized_information": 0.1731104999780655
+                },
+                "joint_mrr": 0.17257241159677505
+              }
+            ],
+            "normal_loss": 3.7639806270599365,
+            "normal_loss_std": 0.016347169876098633,
+            "normal_top1": 0.046875,
+            "normal_top1_std": 0.015625,
+            "normal_mrr": 0.14958535134792328,
+            "normal_mrr_std": 0.015893951058387756,
+            "normal_normalized_information": 0.027696938253939152,
+            "normal_normalized_information_std": 0.0042227646335959435,
+            "pseudo_loss": 3.190340757369995,
+            "pseudo_loss_std": 0.01071476936340332,
+            "pseudo_top1": 0.07812500186264515,
+            "pseudo_top1_std": 0.03645833395421505,
+            "pseudo_mrr": 0.21604295819997787,
+            "pseudo_mrr_std": 0.0363774374127388,
+            "pseudo_normalized_information": 0.17587830871343613,
+            "pseudo_normalized_information_std": 0.002767808735370636,
+            "joint_mrr": 0.18281415477395058
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "scale": "S",
+            "boundary": 0,
+            "evidence": {
+              "D": 0.1509798914194107,
+              "M": 0.17865940183401108,
+              "S": 0.1930558979511261
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "scale": "S",
+            "boundary": 0,
+            "evidence": {
+              "D": 0.13113734126091003,
+              "M": 0.15868979319930077,
+              "S": 0.17257241159677505
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    }
+  ],
+  "milestones": {
+    "5": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.10467913001775742,
+        0.12432223558425903,
+        0.11985445767641068
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.8718652725219727,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09404750913381577,
+                "normalized_information": -0.00017158348055090755
+              },
+              "pseudo": {
+                "loss": 3.862575054168701,
+                "top1": 0.03125,
+                "mrr": 0.12366300076246262,
+                "normalized_information": 0.0022282449062913656
+              },
+              "joint_mrr": 0.10885525494813919
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.877882957458496,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09291404485702515,
+                "normalized_information": -0.0017260584281757474
+              },
+              "pseudo": {
+                "loss": 3.8649590015411377,
+                "top1": 0.03125,
+                "mrr": 0.10809197276830673,
+                "normalized_information": 0.001612429041415453
+              },
+              "joint_mrr": 0.10050300881266594
+            }
+          ],
+          "normal_loss": 3.8748741149902344,
+          "normal_loss_std": 0.0030088424682617188,
+          "normal_top1": 0.02083333395421505,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.09348077699542046,
+          "normal_mrr_std": 0.0005667321383953094,
+          "normal_normalized_information": -0.0009488209543633275,
+          "normal_normalized_information_std": 0.0007772374738124199,
+          "pseudo_loss": 3.8637670278549194,
+          "pseudo_loss_std": 0.0011919736862182617,
+          "pseudo_top1": 0.03125,
+          "pseudo_top1_std": 0.0,
+          "pseudo_mrr": 0.11587748676538467,
+          "pseudo_mrr_std": 0.007785513997077942,
+          "pseudo_normalized_information": 0.0019203369738534093,
+          "pseudo_normalized_information_std": 0.00030790793243795633,
+          "joint_mrr": 0.10467913188040257
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.679169178009033,
+                "top1": 0.0416666679084301,
+                "mrr": 0.13490138947963715,
+                "normalized_information": 0.049605242908000946
+              },
+              "pseudo": {
+                "loss": 3.8238816261291504,
+                "top1": 0.03125,
+                "mrr": 0.10620766878128052,
+                "normalized_information": 0.012223444879055023
+              },
+              "joint_mrr": 0.12055452913045883
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.686929702758789,
+                "top1": 0.0416666679084301,
+                "mrr": 0.12769824266433716,
+                "normalized_information": 0.04760055989027023
+              },
+              "pseudo": {
+                "loss": 3.721715211868286,
+                "top1": 0.0520833358168602,
+                "mrr": 0.1284816414117813,
+                "normalized_information": 0.038614846765995026
+              },
+              "joint_mrr": 0.12808994203805923
+            }
+          ],
+          "normal_loss": 3.683049440383911,
+          "normal_loss_std": 0.0038802623748779297,
+          "normal_top1": 0.0416666679084301,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.13129981607198715,
+          "normal_mrr_std": 0.003601573407649994,
+          "normal_normalized_information": 0.04860290139913559,
+          "normal_normalized_information_std": 0.0010023415088653564,
+          "pseudo_loss": 3.7727984189987183,
+          "pseudo_loss_std": 0.05108320713043213,
+          "pseudo_top1": 0.0416666679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.11734465509653091,
+          "pseudo_mrr_std": 0.011136986315250397,
+          "pseudo_normalized_information": 0.025419145822525024,
+          "pseudo_normalized_information_std": 0.013195700943470001,
+          "joint_mrr": 0.12432223558425903
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.881225109100342,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09521203488111496,
+                "normalized_information": -0.0025893955025821924
+              },
+              "pseudo": {
+                "loss": 3.6848816871643066,
+                "top1": 0.0520833358168602,
+                "mrr": 0.1486368179321289,
+                "normalized_information": 0.048129599541425705
+              },
+              "joint_mrr": 0.12192442640662193
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.8702034950256348,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09279479086399078,
+                "normalized_information": 0.0002576831611804664
+              },
+              "pseudo": {
+                "loss": 3.6547443866729736,
+                "top1": 0.0416666679084301,
+                "mrr": 0.14277419447898865,
+                "normalized_information": 0.05591459944844246
+              },
+              "joint_mrr": 0.11778449267148972
+            }
+          ],
+          "normal_loss": 3.8757143020629883,
+          "normal_loss_std": 0.005510807037353516,
+          "normal_top1": 0.02083333395421505,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.09400341287255287,
+          "normal_mrr_std": 0.001208622008562088,
+          "normal_normalized_information": -0.001165856170700863,
+          "normal_normalized_information_std": 0.0014235393318813294,
+          "pseudo_loss": 3.66981303691864,
+          "pseudo_loss_std": 0.015068650245666504,
+          "pseudo_top1": 0.04687500186264515,
+          "pseudo_top1_std": 0.00520833395421505,
+          "pseudo_mrr": 0.14570550620555878,
+          "pseudo_mrr_std": 0.0029313117265701294,
+          "pseudo_normalized_information": 0.05202209949493408,
+          "pseudo_normalized_information_std": 0.003892499953508377,
+          "joint_mrr": 0.11985445953905582
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+          "scale": "S",
+          "boundary": 0,
+          "evidence": {
+            "D": 0.10885525494813919,
+            "M": 0.12055452913045883,
+            "S": 0.12192442640662193
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.10050300881266594,
+            "M": 0.12808994203805923,
+            "S": 0.11778449267148972
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "10": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.10498388856649399,
+        0.1670103371143341,
+        0.1313009113073349
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.838961601257324,
+                "top1": 0.03125,
+                "mrr": 0.11052393913269043,
+                "normalized_information": 0.008328019641339779
+              },
+              "pseudo": {
+                "loss": 3.9709115028381348,
+                "top1": 0.03125,
+                "mrr": 0.11186250299215317,
+                "normalized_information": -0.02575698494911194
+              },
+              "joint_mrr": 0.1111932210624218
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.8584043979644775,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09651920944452286,
+                "normalized_information": 0.003305599559098482
+              },
+              "pseudo": {
+                "loss": 4.069248199462891,
+                "top1": 0.02083333395421505,
+                "mrr": 0.1010299101471901,
+                "normalized_information": -0.051159102469682693
+              },
+              "joint_mrr": 0.09877455979585648
+            }
+          ],
+          "normal_loss": 3.848682999610901,
+          "normal_loss_std": 0.00972139835357666,
+          "normal_top1": 0.026041666977107525,
+          "normal_top1_std": 0.005208333022892475,
+          "normal_mrr": 0.10352157428860664,
+          "normal_mrr_std": 0.007002364844083786,
+          "normal_normalized_information": 0.0058168096002191305,
+          "normal_normalized_information_std": 0.0025112100411206484,
+          "pseudo_loss": 4.020079851150513,
+          "pseudo_loss_std": 0.04916834831237793,
+          "pseudo_top1": 0.026041666977107525,
+          "pseudo_top1_std": 0.005208333022892475,
+          "pseudo_mrr": 0.10644620656967163,
+          "pseudo_mrr_std": 0.005416296422481537,
+          "pseudo_normalized_information": -0.038458043709397316,
+          "pseudo_normalized_information_std": 0.012701058760285378,
+          "joint_mrr": 0.10498389042913914
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.666691780090332,
+                "top1": 0.0416666679084301,
+                "mrr": 0.15832893550395966,
+                "normalized_information": 0.05282837525010109
+              },
+              "pseudo": {
+                "loss": 3.3796029090881348,
+                "top1": 0.0625,
+                "mrr": 0.18047907948493958,
+                "normalized_information": 0.12698853015899658
+              },
+              "joint_mrr": 0.16940400749444962
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.724661350250244,
+                "top1": 0.0416666679084301,
+                "mrr": 0.15929369628429413,
+                "normalized_information": 0.03785380348563194
+              },
+              "pseudo": {
+                "loss": 3.540672779083252,
+                "top1": 0.0729166716337204,
+                "mrr": 0.16993966698646545,
+                "normalized_information": 0.08538132160902023
+              },
+              "joint_mrr": 0.1646166816353798
+            }
+          ],
+          "normal_loss": 3.695676565170288,
+          "normal_loss_std": 0.028984785079956055,
+          "normal_top1": 0.0416666679084301,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.1588113158941269,
+          "normal_mrr_std": 0.00048238039016723633,
+          "normal_normalized_information": 0.045341089367866516,
+          "normal_normalized_information_std": 0.007487285882234573,
+          "pseudo_loss": 3.4601378440856934,
+          "pseudo_loss_std": 0.0805349349975586,
+          "pseudo_top1": 0.0677083358168602,
+          "pseudo_top1_std": 0.005208335816860199,
+          "pseudo_mrr": 0.17520937323570251,
+          "pseudo_mrr_std": 0.0052697062492370605,
+          "pseudo_normalized_information": 0.10618492588400841,
+          "pseudo_normalized_information_std": 0.020803604274988174,
+          "joint_mrr": 0.1670103445649147
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.8479299545288086,
+                "top1": 0.02083333395421505,
+                "mrr": 0.10007345676422119,
+                "normalized_information": 0.0060113342478871346
+              },
+              "pseudo": {
+                "loss": 3.5456314086914062,
+                "top1": 0.0625,
+                "mrr": 0.17200249433517456,
+                "normalized_information": 0.08410041779279709
+              },
+              "joint_mrr": 0.13603797554969788
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.85990047454834,
+                "top1": 0.03125,
+                "mrr": 0.10506759583950043,
+                "normalized_information": 0.0029191363137215376
+              },
+              "pseudo": {
+                "loss": 3.727199077606201,
+                "top1": 0.0520833358168602,
+                "mrr": 0.14806009829044342,
+                "normalized_information": 0.0371982641518116
+              },
+              "joint_mrr": 0.12656384706497192
+            }
+          ],
+          "normal_loss": 3.853915214538574,
+          "normal_loss_std": 0.005985260009765625,
+          "normal_top1": 0.026041666977107525,
+          "normal_top1_std": 0.005208333022892475,
+          "normal_mrr": 0.10257052630186081,
+          "normal_mrr_std": 0.002497069537639618,
+          "normal_normalized_information": 0.004465235280804336,
+          "normal_normalized_information_std": 0.0015460989670827985,
+          "pseudo_loss": 3.6364152431488037,
+          "pseudo_loss_std": 0.09078383445739746,
+          "pseudo_top1": 0.0572916679084301,
+          "pseudo_top1_std": 0.0052083320915699005,
+          "pseudo_mrr": 0.160031296312809,
+          "pseudo_mrr_std": 0.01197119802236557,
+          "pseudo_normalized_information": 0.060649340972304344,
+          "pseudo_normalized_information_std": 0.023451076820492744,
+          "joint_mrr": 0.1313009113073349
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.1111932210624218,
+            "M": 0.16940400749444962,
+            "S": 0.13603797554969788
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.09877455979585648,
+            "M": 0.1646166816353798,
+            "S": 0.12656384706497192
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "20": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.12059654295444489,
+        0.16876420378684998,
+        0.15741479396820068
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.7912886142730713,
+                "top1": 0.0520833358168602,
+                "mrr": 0.12792742252349854,
+                "normalized_information": 0.020642798393964767
+              },
+              "pseudo": {
+                "loss": 4.003321170806885,
+                "top1": 0.03125,
+                "mrr": 0.11436979472637177,
+                "normalized_information": -0.034128978848457336
+              },
+              "joint_mrr": 0.12114860862493515
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.807110548019409,
+                "top1": 0.0520833358168602,
+                "mrr": 0.13414853811264038,
+                "normalized_information": 0.01655571162700653
+              },
+              "pseudo": {
+                "loss": 4.569388389587402,
+                "top1": 0.02083333395421505,
+                "mrr": 0.10594042390584946,
+                "normalized_information": -0.18035419285297394
+              },
+              "joint_mrr": 0.12004448100924492
+            }
+          ],
+          "normal_loss": 3.7991995811462402,
+          "normal_loss_std": 0.007910966873168945,
+          "normal_top1": 0.0520833358168602,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.13103798031806946,
+          "normal_mrr_std": 0.003110557794570923,
+          "normal_normalized_information": 0.01859925501048565,
+          "normal_normalized_information_std": 0.0020435433834791183,
+          "pseudo_loss": 4.2863547801971436,
+          "pseudo_loss_std": 0.2830336093902588,
+          "pseudo_top1": 0.026041666977107525,
+          "pseudo_top1_std": 0.005208333022892475,
+          "pseudo_mrr": 0.11015510931611061,
+          "pseudo_mrr_std": 0.004214685410261154,
+          "pseudo_normalized_information": -0.10724158585071564,
+          "pseudo_normalized_information_std": 0.0731126070022583,
+          "joint_mrr": 0.12059654481709003
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.6946425437927246,
+                "top1": 0.0625,
+                "mrr": 0.15047720074653625,
+                "normalized_information": 0.045608196407556534
+              },
+              "pseudo": {
+                "loss": 3.169452667236328,
+                "top1": 0.0833333358168602,
+                "mrr": 0.22606298327445984,
+                "normalized_information": 0.18127407133579254
+              },
+              "joint_mrr": 0.18827009201049805
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.775786876678467,
+                "top1": 0.03125,
+                "mrr": 0.11433945596218109,
+                "normalized_information": 0.024647172540426254
+              },
+              "pseudo": {
+                "loss": 3.3728857040405273,
+                "top1": 0.0729166716337204,
+                "mrr": 0.18417717516422272,
+                "normalized_information": 0.12872371077537537
+              },
+              "joint_mrr": 0.1492583155632019
+            }
+          ],
+          "normal_loss": 3.7352147102355957,
+          "normal_loss_std": 0.040572166442871094,
+          "normal_top1": 0.046875,
+          "normal_top1_std": 0.015625,
+          "normal_mrr": 0.13240832835435867,
+          "normal_mrr_std": 0.018068872392177582,
+          "normal_normalized_information": 0.035127684473991394,
+          "normal_normalized_information_std": 0.01048051193356514,
+          "pseudo_loss": 3.2711691856384277,
+          "pseudo_loss_std": 0.10171651840209961,
+          "pseudo_top1": 0.0781250037252903,
+          "pseudo_top1_std": 0.0052083320915699005,
+          "pseudo_mrr": 0.20512007921934128,
+          "pseudo_mrr_std": 0.02094290405511856,
+          "pseudo_normalized_information": 0.15499889105558395,
+          "pseudo_normalized_information_std": 0.026275180280208588,
+          "joint_mrr": 0.16876420378684998
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.8241090774536133,
+                "top1": 0.010416666977107525,
+                "mrr": 0.09504488110542297,
+                "normalized_information": 0.012164690531790257
+              },
+              "pseudo": {
+                "loss": 3.3309812545776367,
+                "top1": 0.09375,
+                "mrr": 0.23685918748378754,
+                "normalized_information": 0.1395483762025833
+              },
+              "joint_mrr": 0.16595203429460526
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.845754623413086,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09331701695919037,
+                "normalized_information": 0.0065732612274587154
+              },
+              "pseudo": {
+                "loss": 3.454939842224121,
+                "top1": 0.0833333358168602,
+                "mrr": 0.20443809032440186,
+                "normalized_information": 0.10752766579389572
+              },
+              "joint_mrr": 0.1488775536417961
+            }
+          ],
+          "normal_loss": 3.8349318504333496,
+          "normal_loss_std": 0.010822772979736328,
+          "normal_top1": 0.015625000465661287,
+          "normal_top1_std": 0.0052083334885537624,
+          "normal_mrr": 0.09418094903230667,
+          "normal_mrr_std": 0.0008639320731163025,
+          "normal_normalized_information": 0.009368975879624486,
+          "normal_normalized_information_std": 0.0027957146521657705,
+          "pseudo_loss": 3.392960548400879,
+          "pseudo_loss_std": 0.06197929382324219,
+          "pseudo_top1": 0.0885416679084301,
+          "pseudo_top1_std": 0.0052083320915699005,
+          "pseudo_mrr": 0.2206486389040947,
+          "pseudo_mrr_std": 0.01621054857969284,
+          "pseudo_normalized_information": 0.12353802099823952,
+          "pseudo_normalized_information_std": 0.016010355204343796,
+          "joint_mrr": 0.15741479396820068
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.12114860862493515,
+            "M": 0.18827009201049805,
+            "S": 0.16595203429460526
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.12004448100924492,
+            "M": 0.1492583155632019,
+            "S": 0.1488775536417961
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "30": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.14105862379074097,
+        0.16867460310459137,
+        0.18281415104866028
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.6694841384887695,
+                "top1": 0.0729166716337204,
+                "mrr": 0.1659817099571228,
+                "normalized_information": 0.052107058465480804
+              },
+              "pseudo": {
+                "loss": 3.847123622894287,
+                "top1": 0.0520833358168602,
+                "mrr": 0.1359780728816986,
+                "normalized_information": 0.006219624076038599
+              },
+              "joint_mrr": 0.1509798914194107
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.700288772583008,
+                "top1": 0.03125,
+                "mrr": 0.13600748777389526,
+                "normalized_information": 0.044149674475193024
+              },
+              "pseudo": {
+                "loss": 4.026065349578857,
+                "top1": 0.03125,
+                "mrr": 0.1262671947479248,
+                "normalized_information": -0.04000420495867729
+              },
+              "joint_mrr": 0.13113734126091003
+            }
+          ],
+          "normal_loss": 3.6848864555358887,
+          "normal_loss_std": 0.01540231704711914,
+          "normal_top1": 0.0520833358168602,
+          "normal_top1_std": 0.0208333358168602,
+          "normal_mrr": 0.15099459886550903,
+          "normal_mrr_std": 0.01498711109161377,
+          "normal_normalized_information": 0.048128366470336914,
+          "normal_normalized_information_std": 0.00397869199514389,
+          "pseudo_loss": 3.9365944862365723,
+          "pseudo_loss_std": 0.08947086334228516,
+          "pseudo_top1": 0.0416666679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.1311226338148117,
+          "pseudo_mrr_std": 0.004855439066886902,
+          "pseudo_normalized_information": -0.016892290441319346,
+          "pseudo_normalized_information_std": 0.023111914517357945,
+          "joint_mrr": 0.14105861634016037
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.53983211517334,
+                "top1": 0.0833333358168602,
+                "mrr": 0.17907141149044037,
+                "normalized_information": 0.08559848368167877
+              },
+              "pseudo": {
+                "loss": 3.2497332096099854,
+                "top1": 0.03125,
+                "mrr": 0.1782473921775818,
+                "normalized_information": 0.16053618490695953
+              },
+              "joint_mrr": 0.17865940183401108
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.618556499481201,
+                "top1": 0.02083333395421505,
+                "mrr": 0.1170191690325737,
+                "normalized_information": 0.065262570977211
+              },
+              "pseudo": {
+                "loss": 3.378383159637451,
+                "top1": 0.1041666716337204,
+                "mrr": 0.20036041736602783,
+                "normalized_information": 0.1273036152124405
+              },
+              "joint_mrr": 0.15868979319930077
+            }
+          ],
+          "normal_loss": 3.5791943073272705,
+          "normal_loss_std": 0.039362192153930664,
+          "normal_top1": 0.052083334885537624,
+          "normal_top1_std": 0.031250000931322575,
+          "normal_mrr": 0.14804529026150703,
+          "normal_mrr_std": 0.031026121228933334,
+          "normal_normalized_information": 0.07543052732944489,
+          "normal_normalized_information_std": 0.010167956352233887,
+          "pseudo_loss": 3.3140581846237183,
+          "pseudo_loss_std": 0.06432497501373291,
+          "pseudo_top1": 0.0677083358168602,
+          "pseudo_top1_std": 0.0364583358168602,
+          "pseudo_mrr": 0.1893039047718048,
+          "pseudo_mrr_std": 0.011056512594223022,
+          "pseudo_normalized_information": 0.1439199000597,
+          "pseudo_normalized_information_std": 0.01661628484725952,
+          "joint_mrr": 0.16867459751665592
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+              "normal": {
+                "loss": 3.747633457183838,
+                "top1": 0.03125,
+                "mrr": 0.13369140028953552,
+                "normalized_information": 0.031919702887535095
+              },
+              "pseudo": {
+                "loss": 3.179625988006592,
+                "top1": 0.1145833358168602,
+                "mrr": 0.2524203956127167,
+                "normalized_information": 0.17864611744880676
+              },
+              "joint_mrr": 0.1930558979511261
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+              "normal": {
+                "loss": 3.780327796936035,
+                "top1": 0.0625,
+                "mrr": 0.16547930240631104,
+                "normalized_information": 0.02347417362034321
+              },
+              "pseudo": {
+                "loss": 3.2010555267333984,
+                "top1": 0.0416666679084301,
+                "mrr": 0.17966552078723907,
+                "normalized_information": 0.1731104999780655
+              },
+              "joint_mrr": 0.17257241159677505
+            }
+          ],
+          "normal_loss": 3.7639806270599365,
+          "normal_loss_std": 0.016347169876098633,
+          "normal_top1": 0.046875,
+          "normal_top1_std": 0.015625,
+          "normal_mrr": 0.14958535134792328,
+          "normal_mrr_std": 0.015893951058387756,
+          "normal_normalized_information": 0.027696938253939152,
+          "normal_normalized_information_std": 0.0042227646335959435,
+          "pseudo_loss": 3.190340757369995,
+          "pseudo_loss_std": 0.01071476936340332,
+          "pseudo_top1": 0.07812500186264515,
+          "pseudo_top1_std": 0.03645833395421505,
+          "pseudo_mrr": 0.21604295819997787,
+          "pseudo_mrr_std": 0.0363774374127388,
+          "pseudo_normalized_information": 0.17587830871343613,
+          "pseudo_normalized_information_std": 0.002767808735370636,
+          "joint_mrr": 0.18281415477395058
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+          "scale": "S",
+          "boundary": 0,
+          "evidence": {
+            "D": 0.1509798914194107,
+            "M": 0.17865940183401108,
+            "S": 0.1930558979511261
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+          "scale": "S",
+          "boundary": 0,
+          "evidence": {
+            "D": 0.13113734126091003,
+            "M": 0.15868979319930077,
+            "S": 0.17257241159677505
+          }
+        }
+      ],
+      "permuted_opening": false
+    }
+  },
+  "query_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.14105862379074097,
+      0.16867460310459137,
+      0.18281415104866028
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.6694841384887695,
+              "top1": 0.0729166716337204,
+              "mrr": 0.1659817099571228,
+              "normalized_information": 0.052107058465480804
+            },
+            "pseudo": {
+              "loss": 3.847123622894287,
+              "top1": 0.0520833358168602,
+              "mrr": 0.1359780728816986,
+              "normalized_information": 0.006219624076038599
+            },
+            "joint_mrr": 0.1509798914194107
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.700288772583008,
+              "top1": 0.03125,
+              "mrr": 0.13600748777389526,
+              "normalized_information": 0.044149674475193024
+            },
+            "pseudo": {
+              "loss": 4.026065349578857,
+              "top1": 0.03125,
+              "mrr": 0.1262671947479248,
+              "normalized_information": -0.04000420495867729
+            },
+            "joint_mrr": 0.13113734126091003
+          }
+        ],
+        "normal_loss": 3.6848864555358887,
+        "normal_loss_std": 0.01540231704711914,
+        "normal_top1": 0.0520833358168602,
+        "normal_top1_std": 0.0208333358168602,
+        "normal_mrr": 0.15099459886550903,
+        "normal_mrr_std": 0.01498711109161377,
+        "normal_normalized_information": 0.048128366470336914,
+        "normal_normalized_information_std": 0.00397869199514389,
+        "pseudo_loss": 3.9365944862365723,
+        "pseudo_loss_std": 0.08947086334228516,
+        "pseudo_top1": 0.0416666679084301,
+        "pseudo_top1_std": 0.0104166679084301,
+        "pseudo_mrr": 0.1311226338148117,
+        "pseudo_mrr_std": 0.004855439066886902,
+        "pseudo_normalized_information": -0.016892290441319346,
+        "pseudo_normalized_information_std": 0.023111914517357945,
+        "joint_mrr": 0.14105861634016037
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.53983211517334,
+              "top1": 0.0833333358168602,
+              "mrr": 0.17907141149044037,
+              "normalized_information": 0.08559848368167877
+            },
+            "pseudo": {
+              "loss": 3.2497332096099854,
+              "top1": 0.03125,
+              "mrr": 0.1782473921775818,
+              "normalized_information": 0.16053618490695953
+            },
+            "joint_mrr": 0.17865940183401108
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.618556499481201,
+              "top1": 0.02083333395421505,
+              "mrr": 0.1170191690325737,
+              "normalized_information": 0.065262570977211
+            },
+            "pseudo": {
+              "loss": 3.378383159637451,
+              "top1": 0.1041666716337204,
+              "mrr": 0.20036041736602783,
+              "normalized_information": 0.1273036152124405
+            },
+            "joint_mrr": 0.15868979319930077
+          }
+        ],
+        "normal_loss": 3.5791943073272705,
+        "normal_loss_std": 0.039362192153930664,
+        "normal_top1": 0.052083334885537624,
+        "normal_top1_std": 0.031250000931322575,
+        "normal_mrr": 0.14804529026150703,
+        "normal_mrr_std": 0.031026121228933334,
+        "normal_normalized_information": 0.07543052732944489,
+        "normal_normalized_information_std": 0.010167956352233887,
+        "pseudo_loss": 3.3140581846237183,
+        "pseudo_loss_std": 0.06432497501373291,
+        "pseudo_top1": 0.0677083358168602,
+        "pseudo_top1_std": 0.0364583358168602,
+        "pseudo_mrr": 0.1893039047718048,
+        "pseudo_mrr_std": 0.011056512594223022,
+        "pseudo_normalized_information": 0.1439199000597,
+        "pseudo_normalized_information_std": 0.01661628484725952,
+        "joint_mrr": 0.16867459751665592
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.747633457183838,
+              "top1": 0.03125,
+              "mrr": 0.13369140028953552,
+              "normalized_information": 0.031919702887535095
+            },
+            "pseudo": {
+              "loss": 3.179625988006592,
+              "top1": 0.1145833358168602,
+              "mrr": 0.2524203956127167,
+              "normalized_information": 0.17864611744880676
+            },
+            "joint_mrr": 0.1930558979511261
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.780327796936035,
+              "top1": 0.0625,
+              "mrr": 0.16547930240631104,
+              "normalized_information": 0.02347417362034321
+            },
+            "pseudo": {
+              "loss": 3.2010555267333984,
+              "top1": 0.0416666679084301,
+              "mrr": 0.17966552078723907,
+              "normalized_information": 0.1731104999780655
+            },
+            "joint_mrr": 0.17257241159677505
+          }
+        ],
+        "normal_loss": 3.7639806270599365,
+        "normal_loss_std": 0.016347169876098633,
+        "normal_top1": 0.046875,
+        "normal_top1_std": 0.015625,
+        "normal_mrr": 0.14958535134792328,
+        "normal_mrr_std": 0.015893951058387756,
+        "normal_normalized_information": 0.027696938253939152,
+        "normal_normalized_information_std": 0.0042227646335959435,
+        "pseudo_loss": 3.190340757369995,
+        "pseudo_loss_std": 0.01071476936340332,
+        "pseudo_top1": 0.07812500186264515,
+        "pseudo_top1_std": 0.03645833395421505,
+        "pseudo_mrr": 0.21604295819997787,
+        "pseudo_mrr_std": 0.0363774374127388,
+        "pseudo_normalized_information": 0.17587830871343613,
+        "pseudo_normalized_information_std": 0.002767808735370636,
+        "joint_mrr": 0.18281415477395058
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.1509798914194107,
+          "M": 0.17865940183401108,
+          "S": 0.1930558979511261
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.13113734126091003,
+          "M": 0.15868979319930077,
+          "S": 0.17257241159677505
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "support_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.1291721761226654,
+      0.147986501455307,
+      0.17452317476272583
+    ],
+    "scales": {
+      "D": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+            "normal": {
+              "loss": 4.204620361328125,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09290210902690887,
+              "normalized_information": -0.08612813800573349
+            },
+            "pseudo": {
+              "loss": 4.219581604003906,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09313810616731644,
+              "normalized_information": -0.08999288827180862
+            },
+            "joint_mrr": 0.09302010759711266
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+            "normal": {
+              "loss": 3.9394826889038086,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09287795424461365,
+              "normalized_information": -0.01763836294412613
+            },
+            "pseudo": {
+              "loss": 3.982391357421875,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09308266639709473,
+              "normalized_information": -0.028722435235977173
+            },
+            "joint_mrr": 0.09298031032085419
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+            "normal": {
+              "loss": 3.6843929290771484,
+              "top1": 0.0729166641831398,
+              "mrr": 0.17324809730052948,
+              "normalized_information": 0.04825585335493088
+            },
+            "pseudo": {
+              "loss": 3.7227420806884766,
+              "top1": 0.0416666679084301,
+              "mrr": 0.15238255262374878,
+              "normalized_information": 0.038349587470293045
+            },
+            "joint_mrr": 0.16281532496213913
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+            "normal": {
+              "loss": 3.4591856002807617,
+              "top1": 0.0729166716337204,
+              "mrr": 0.18360090255737305,
+              "normalized_information": 0.10643091052770615
+            },
+            "pseudo": {
+              "loss": 4.0532026290893555,
+              "top1": 0.0416666679084301,
+              "mrr": 0.15214499831199646,
+              "normalized_information": -0.04701424390077591
+            },
+            "joint_mrr": 0.16787295043468475
+          }
+        ],
+        "normal_loss": 3.821920394897461,
+        "normal_loss_std": 0.27873396472202777,
+        "normal_top1": 0.046875000931322575,
+        "normal_top1_std": 0.026041666977107657,
+        "normal_mrr": 0.13565726578235626,
+        "normal_mrr_std": 0.04292358281372998,
+        "normal_normalized_information": 0.012730065733194351,
+        "normal_normalized_information_std": 0.07200193714089709,
+        "pseudo_loss": 3.9944794178009033,
+        "pseudo_loss_std": 0.17895998949631123,
+        "pseudo_top1": 0.031250000931322575,
+        "pseudo_top1_std": 0.010416666977107525,
+        "pseudo_mrr": 0.1226870808750391,
+        "pseudo_mrr_std": 0.029576820336881072,
+        "pseudo_normalized_information": -0.031844994984567165,
+        "pseudo_normalized_information_std": 0.04622854473110203,
+        "joint_mrr": 0.12917217332869768
+      },
+      "M": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+            "normal": {
+              "loss": 3.715564727783203,
+              "top1": 0.0729166641831398,
+              "mrr": 0.16919055581092834,
+              "normalized_information": 0.04020362347364426
+            },
+            "pseudo": {
+              "loss": 3.4211578369140625,
+              "top1": 0.0833333358168602,
+              "mrr": 0.19186952710151672,
+              "normalized_information": 0.11625415831804276
+            },
+            "joint_mrr": 0.18053004145622253
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+            "normal": {
+              "loss": 3.7331478595733643,
+              "top1": 0.0520833358168602,
+              "mrr": 0.14819782972335815,
+              "normalized_information": 0.03566158935427666
+            },
+            "pseudo": {
+              "loss": 3.343886375427246,
+              "top1": 0.03125,
+              "mrr": 0.17263078689575195,
+              "normalized_information": 0.1362147480249405
+            },
+            "joint_mrr": 0.16041430830955505
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+            "normal": {
+              "loss": 3.665339231491089,
+              "top1": 0.02083333395421505,
+              "mrr": 0.11777487397193909,
+              "normalized_information": 0.053177762776613235
+            },
+            "pseudo": {
+              "loss": 3.865360975265503,
+              "top1": 0.03125,
+              "mrr": 0.11087401211261749,
+              "normalized_information": 0.001508592045865953
+            },
+            "joint_mrr": 0.11432444304227829
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+            "normal": {
+              "loss": 3.7583322525024414,
+              "top1": 0.0520833358168602,
+              "mrr": 0.13612574338912964,
+              "normalized_information": 0.02915601246058941
+            },
+            "pseudo": {
+              "loss": 3.773808479309082,
+              "top1": 0.0520833358168602,
+              "mrr": 0.13722869753837585,
+              "normalized_information": 0.0251582283526659
+            },
+            "joint_mrr": 0.13667722046375275
+          }
+        ],
+        "normal_loss": 3.7180960178375244,
+        "normal_loss_std": 0.034041145892117056,
+        "normal_top1": 0.04947916744276881,
+        "normal_top1_std": 0.018597469018324,
+        "normal_mrr": 0.1428222507238388,
+        "normal_mrr_std": 0.018684208943525852,
+        "normal_normalized_information": 0.03954974701628089,
+        "normal_normalized_information_std": 0.008793433004295567,
+        "pseudo_loss": 3.6010534167289734,
+        "pseudo_loss_std": 0.2225983512491869,
+        "pseudo_top1": 0.0494791679084301,
+        "pseudo_top1_std": 0.02131602390535669,
+        "pseudo_mrr": 0.1531507559120655,
+        "pseudo_mrr_std": 0.03130275490546243,
+        "pseudo_normalized_information": 0.06978393168537878,
+        "pseudo_normalized_information_std": 0.05750111025811125,
+        "joint_mrr": 0.14798650331795216
+      },
+      "S": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+            "normal": {
+              "loss": 3.801281690597534,
+              "top1": 0.0416666679084301,
+              "mrr": 0.12183959037065506,
+              "normalized_information": 0.018061410635709763
+            },
+            "pseudo": {
+              "loss": 3.232391595840454,
+              "top1": 0.1041666716337204,
+              "mrr": 0.2246447056531906,
+              "normalized_information": 0.1650158315896988
+            },
+            "joint_mrr": 0.17324214801192284
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+            "normal": {
+              "loss": 3.594197988510132,
+              "top1": 0.03125,
+              "mrr": 0.14620602130889893,
+              "normalized_information": 0.07155480980873108
+            },
+            "pseudo": {
+              "loss": 3.0084097385406494,
+              "top1": 0.09375,
+              "mrr": 0.2598652243614197,
+              "normalized_information": 0.22287432849407196
+            },
+            "joint_mrr": 0.2030356228351593
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+            "normal": {
+              "loss": 3.748037815093994,
+              "top1": 0.0416666679084301,
+              "mrr": 0.14971418678760529,
+              "normalized_information": 0.03181524947285652
+            },
+            "pseudo": {
+              "loss": 3.392000436782837,
+              "top1": 0.0520833358168602,
+              "mrr": 0.15566782653331757,
+              "normalized_information": 0.12378603219985962
+            },
+            "joint_mrr": 0.15269100666046143
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+            "normal": {
+              "loss": 3.7831671237945557,
+              "top1": 0.03125,
+              "mrr": 0.14049012959003448,
+              "normalized_information": 0.022740723565220833
+            },
+            "pseudo": {
+              "loss": 3.2300827503204346,
+              "top1": 0.0729166716337204,
+              "mrr": 0.197757750749588,
+              "normalized_information": 0.16561225056648254
+            },
+            "joint_mrr": 0.16912394016981125
+          }
+        ],
+        "normal_loss": 3.731671154499054,
+        "normal_loss_std": 0.0816458825288342,
+        "normal_top1": 0.03645833395421505,
+        "normal_top1_std": 0.00520833395421505,
+        "normal_mrr": 0.13956248201429844,
+        "normal_mrr_std": 0.010748896948063729,
+        "normal_normalized_information": 0.03604304837062955,
+        "normal_normalized_information_std": 0.021090582168441493,
+        "pseudo_loss": 3.2157211303710938,
+        "pseudo_loss_std": 0.13650692985908783,
+        "pseudo_top1": 0.08072916977107525,
+        "pseudo_top1_std": 0.020002983799239853,
+        "pseudo_mrr": 0.20948387682437897,
+        "pseudo_mrr_std": 0.03808477455649615,
+        "pseudo_normalized_information": 0.16932211071252823,
+        "pseudo_normalized_information_std": 0.03526216661600909,
+        "joint_mrr": 0.1745231794193387
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.09302010759711266,
+          "M": 0.18053004145622253,
+          "S": 0.17324214801192284
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.09298031032085419,
+          "M": 0.16041430830955505,
+          "S": 0.2030356228351593
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "scale": "D",
+        "boundary": 8,
+        "evidence": {
+          "D": 0.16281532496213913,
+          "M": 0.11432444304227829,
+          "S": 0.15269100666046143
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.16787295043468475,
+          "M": 0.13667722046375275,
+          "S": 0.16912394016981125
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "permuted_query_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.10457316786050797,
+      0.12640157341957092,
+      0.13592205941677094
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.980114459991455,
+              "top1": 0.010416666977107525,
+              "mrr": 0.08527815341949463,
+              "normalized_information": -0.028134271502494812
+            },
+            "pseudo": {
+              "loss": 4.653635025024414,
+              "top1": 0.02083333395421505,
+              "mrr": 0.1019812673330307,
+              "normalized_information": -0.20211660861968994
+            },
+            "joint_mrr": 0.09362971037626266
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.9559364318847656,
+              "top1": 0.02083333395421505,
+              "mrr": 0.11075081676244736,
+              "normalized_information": -0.02188865840435028
+            },
+            "pseudo": {
+              "loss": 4.561881065368652,
+              "top1": 0.03125,
+              "mrr": 0.12028244137763977,
+              "normalized_information": -0.17841492593288422
+            },
+            "joint_mrr": 0.11551662907004356
+          }
+        ],
+        "normal_loss": 3.9680254459381104,
+        "normal_loss_std": 0.012089014053344727,
+        "normal_top1": 0.015625000465661287,
+        "normal_top1_std": 0.0052083334885537624,
+        "normal_mrr": 0.09801448509097099,
+        "normal_mrr_std": 0.012736331671476364,
+        "normal_normalized_information": -0.025011464953422546,
+        "normal_normalized_information_std": 0.0031228065490722656,
+        "pseudo_loss": 4.607758045196533,
+        "pseudo_loss_std": 0.04587697982788086,
+        "pseudo_top1": 0.026041666977107525,
+        "pseudo_top1_std": 0.005208333022892475,
+        "pseudo_mrr": 0.11113185435533524,
+        "pseudo_mrr_std": 0.009150587022304535,
+        "pseudo_normalized_information": -0.19026576727628708,
+        "pseudo_normalized_information_std": 0.011850841343402863,
+        "joint_mrr": 0.10457316972315311
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.979691982269287,
+              "top1": 0.010416666977107525,
+              "mrr": 0.10057864338159561,
+              "normalized_information": -0.02802513912320137
+            },
+            "pseudo": {
+              "loss": 5.325016021728516,
+              "top1": 0.0625,
+              "mrr": 0.15682180225849152,
+              "normalized_information": -0.37554624676704407
+            },
+            "joint_mrr": 0.12870022282004356
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.906846046447754,
+              "top1": 0.02083333395421505,
+              "mrr": 0.10299745202064514,
+              "normalized_information": -0.009207738563418388
+            },
+            "pseudo": {
+              "loss": 4.571440696716309,
+              "top1": 0.0416666679084301,
+              "mrr": 0.1452084183692932,
+              "normalized_information": -0.18088434636592865
+            },
+            "joint_mrr": 0.12410293519496918
+          }
+        ],
+        "normal_loss": 3.9432690143585205,
+        "normal_loss_std": 0.0364229679107666,
+        "normal_top1": 0.015625000465661287,
+        "normal_top1_std": 0.0052083334885537624,
+        "normal_mrr": 0.10178804770112038,
+        "normal_mrr_std": 0.001209404319524765,
+        "normal_normalized_information": -0.01861643884330988,
+        "normal_normalized_information_std": 0.009408700279891491,
+        "pseudo_loss": 4.948228359222412,
+        "pseudo_loss_std": 0.3767876625061035,
+        "pseudo_top1": 0.05208333395421505,
+        "pseudo_top1_std": 0.01041666604578495,
+        "pseudo_mrr": 0.15101511031389236,
+        "pseudo_mrr_std": 0.005806691944599152,
+        "pseudo_normalized_information": -0.27821529656648636,
+        "pseudo_normalized_information_std": 0.09733095020055771,
+        "joint_mrr": 0.12640157900750637
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.7814879417419434,
+              "top1": 0.03125,
+              "mrr": 0.13907605409622192,
+              "normalized_information": 0.023174487054347992
+            },
+            "pseudo": {
+              "loss": 5.838602542877197,
+              "top1": 0.03125,
+              "mrr": 0.10928839445114136,
+              "normalized_information": -0.5082147717475891
+            },
+            "joint_mrr": 0.12418222427368164
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.8051748275756836,
+              "top1": 0.0416666679084301,
+              "mrr": 0.151178240776062,
+              "normalized_information": 0.01705574430525303
+            },
+            "pseudo": {
+              "loss": 5.700475215911865,
+              "top1": 0.0625,
+              "mrr": 0.14414553344249725,
+              "normalized_information": -0.47253403067588806
+            },
+            "joint_mrr": 0.14766188710927963
+          }
+        ],
+        "normal_loss": 3.7933313846588135,
+        "normal_loss_std": 0.011843442916870117,
+        "normal_top1": 0.03645833395421505,
+        "normal_top1_std": 0.00520833395421505,
+        "normal_mrr": 0.14512714743614197,
+        "normal_mrr_std": 0.006051093339920044,
+        "normal_normalized_information": 0.02011511567980051,
+        "normal_normalized_information_std": 0.0030593713745474815,
+        "pseudo_loss": 5.769538879394531,
+        "pseudo_loss_std": 0.06906366348266602,
+        "pseudo_top1": 0.046875,
+        "pseudo_top1_std": 0.015625,
+        "pseudo_mrr": 0.1267169639468193,
+        "pseudo_mrr_std": 0.017428569495677948,
+        "pseudo_normalized_information": -0.4903744012117386,
+        "pseudo_normalized_information_std": 0.017840370535850525,
+        "joint_mrr": 0.13592205569148064
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.09362971037626266,
+          "M": 0.12870022282004356,
+          "S": 0.12418222427368164
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.11551662907004356,
+          "M": 0.12410293519496918,
+          "S": 0.14766188710927963
+        }
+      }
+    ],
+    "permuted_opening": true
+  },
+  "shifted_query_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.13305310904979706,
+      0.14710475504398346,
+      0.11350324004888535
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.659356117248535,
+              "top1": 0.0520833358168602,
+              "mrr": 0.14270099997520447,
+              "normalized_information": 0.054723307490348816
+            },
+            "pseudo": {
+              "loss": 4.6507134437561035,
+              "top1": 0.0520833358168602,
+              "mrr": 0.12608274817466736,
+              "normalized_information": -0.20136190950870514
+            },
+            "joint_mrr": 0.1343918740749359
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.645850896835327,
+              "top1": 0.02083333395421505,
+              "mrr": 0.14708110690116882,
+              "normalized_information": 0.05821194499731064
+            },
+            "pseudo": {
+              "loss": 4.833310127258301,
+              "top1": 0.0416666679084301,
+              "mrr": 0.11634759604930878,
+              "normalized_information": -0.24852986633777618
+            },
+            "joint_mrr": 0.1317143514752388
+          }
+        ],
+        "normal_loss": 3.652603507041931,
+        "normal_loss_std": 0.006752610206604004,
+        "normal_top1": 0.036458334885537624,
+        "normal_top1_std": 0.015625000931322575,
+        "normal_mrr": 0.14489105343818665,
+        "normal_mrr_std": 0.0021900534629821777,
+        "normal_normalized_information": 0.05646762624382973,
+        "normal_normalized_information_std": 0.0017443187534809113,
+        "pseudo_loss": 4.742011785507202,
+        "pseudo_loss_std": 0.09129834175109863,
+        "pseudo_top1": 0.04687500186264515,
+        "pseudo_top1_std": 0.00520833395421505,
+        "pseudo_mrr": 0.12121517211198807,
+        "pseudo_mrr_std": 0.004867576062679291,
+        "pseudo_normalized_information": -0.22494588792324066,
+        "pseudo_normalized_information_std": 0.023583978414535522,
+        "joint_mrr": 0.13305311277508736
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.623976707458496,
+              "top1": 0.0729166716337204,
+              "mrr": 0.16596932709217072,
+              "normalized_information": 0.06386243551969528
+            },
+            "pseudo": {
+              "loss": 4.741000175476074,
+              "top1": 0.0625,
+              "mrr": 0.14103294909000397,
+              "normalized_information": -0.22468456625938416
+            },
+            "joint_mrr": 0.15350113809108734
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.8496432304382324,
+              "top1": 0.0520833358168602,
+              "mrr": 0.15149708092212677,
+              "normalized_information": 0.005568764638155699
+            },
+            "pseudo": {
+              "loss": 4.505023956298828,
+              "top1": 0.0416666679084301,
+              "mrr": 0.12991967797279358,
+              "normalized_information": -0.16372771561145782
+            },
+            "joint_mrr": 0.14070837944746017
+          }
+        ],
+        "normal_loss": 3.7368099689483643,
+        "normal_loss_std": 0.11283326148986816,
+        "normal_top1": 0.0625000037252903,
+        "normal_top1_std": 0.0104166679084301,
+        "normal_mrr": 0.15873320400714874,
+        "normal_mrr_std": 0.007236123085021973,
+        "normal_normalized_information": 0.03471560007892549,
+        "normal_normalized_information_std": 0.02914683544076979,
+        "pseudo_loss": 4.623012065887451,
+        "pseudo_loss_std": 0.11798810958862305,
+        "pseudo_top1": 0.05208333395421505,
+        "pseudo_top1_std": 0.01041666604578495,
+        "pseudo_mrr": 0.13547631353139877,
+        "pseudo_mrr_std": 0.005556635558605194,
+        "pseudo_normalized_information": -0.194206140935421,
+        "pseudo_normalized_information_std": 0.030478425323963165,
+        "joint_mrr": 0.14710475876927376
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+            "normal": {
+              "loss": 3.813035726547241,
+              "top1": 0.03125,
+              "mrr": 0.11897488683462143,
+              "normalized_information": 0.015025133267045021
+            },
+            "pseudo": {
+              "loss": 4.344571590423584,
+              "top1": 0.0416666679084301,
+              "mrr": 0.1286499798297882,
+              "normalized_information": -0.12228002399206161
+            },
+            "joint_mrr": 0.12381243333220482
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+            "normal": {
+              "loss": 3.808521270751953,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09908302128314972,
+              "normalized_information": 0.01619129814207554
+            },
+            "pseudo": {
+              "loss": 4.368870735168457,
+              "top1": 0.02083333395421505,
+              "mrr": 0.10730506479740143,
+              "normalized_information": -0.12855692207813263
+            },
+            "joint_mrr": 0.10319404304027557
+          }
+        ],
+        "normal_loss": 3.810778498649597,
+        "normal_loss_std": 0.002257227897644043,
+        "normal_top1": 0.026041666977107525,
+        "normal_top1_std": 0.005208333022892475,
+        "normal_mrr": 0.10902895405888557,
+        "normal_mrr_std": 0.009945932775735855,
+        "normal_normalized_information": 0.01560821570456028,
+        "normal_normalized_information_std": 0.0005830824375152588,
+        "pseudo_loss": 4.3567211627960205,
+        "pseudo_loss_std": 0.012149572372436523,
+        "pseudo_top1": 0.031250000931322575,
+        "pseudo_top1_std": 0.010416666977107525,
+        "pseudo_mrr": 0.11797752231359482,
+        "pseudo_mrr_std": 0.01067245751619339,
+        "pseudo_normalized_information": -0.12541847303509712,
+        "pseudo_normalized_information_std": 0.003138449043035507,
+        "joint_mrr": 0.1135032381862402
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.1343918740749359,
+          "M": 0.15350113809108734,
+          "S": 0.12381243333220482
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.1317143514752388,
+          "M": 0.14070837944746017,
+          "S": 0.10319404304027557
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "predictor_parameters": 19073,
+  "matcher_parameters": 46807,
+  "peak_gpu_gib": 0.8367443084716797
+}

@@ -1,0 +1,1839 @@
+{
+  "format_version": 20,
+  "scene": "crossroads",
+  "method": "joint_normal_pseudo_pair_set_episode_dlbm",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/crossroads.pth",
+  "probe_sha256": "7669c14be5830cb1b2d2c16b8ba907a128d42bb540c66da08e7a886abcf86160",
+  "probe_mutated": false,
+  "args": {
+    "scene": "crossroads",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v020_joint_episode/scenes/crossroads",
+    "gpu": 1,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "pseudo_mode": "multi",
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_batch": 24,
+    "predictor_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_crossroads/predictor.pth",
+    "epochs": 10,
+    "steps_per_epoch": 20,
+    "episode_frames": 32,
+    "pair_samples": 256,
+    "eval_pairs": 2048,
+    "eval_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      1,
+      3,
+      5,
+      10
+    ]
+  },
+  "videos": {
+    "support": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02"
+    ],
+    "query": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01"
+    ]
+  },
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 4.255010935594328e-05,
+    "normal_aligned_mae": 0.007071108945334951,
+    "normal_independent_layer_roll_smooth_l1": 7.389612195159619e-05,
+    "normal_independent_layer_roll_mae": 0.009428096159050861,
+    "pseudo_aligned_smooth_l1": 7.701468227120738e-05,
+    "pseudo_aligned_mae": 0.007952746391917268,
+    "pseudo_independent_layer_roll_smooth_l1": 0.00016603144710340226,
+    "pseudo_independent_layer_roll_mae": 0.011273129067073265,
+    "normal_roll_loss_ratio": 1.7366846541670424,
+    "pseudo_over_normal_loss_ratio": 1.8099761301894324
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6490337938070297,
+      "grad_norm": 0.8871349155902862,
+      "M_null_normal_flip_rate": 0.09635416666666667,
+      "M_null_pseudo_flip_rate": 0.059895833333333336,
+      "M_null_joint_rate": 0.08333333333333333,
+      "M_null_episode_probability": 0.35878421862920123,
+      "M_null_pair_probability": 0.4999542385339737,
+      "component_loss_0": 0.7076046884059906,
+      "component_loss_1": 0.7141449868679046,
+      "component_loss_2": 0.6936796844005585,
+      "component_loss_3": 0.4946893185377121,
+      "S_real_normal_flip_rate": 0.044921875,
+      "S_real_pseudo_flip_rate": 0.028645833333333332,
+      "S_real_joint_rate": 0.042317708333333336,
+      "S_real_episode_probability": 0.3025114859143893,
+      "S_real_pair_probability": 0.49706806739171344,
+      "M_real_normal_flip_rate": 0.099609375,
+      "M_real_pseudo_flip_rate": 0.0703125,
+      "M_real_joint_rate": 0.0830078125,
+      "M_real_episode_probability": 0.3738662824034691,
+      "M_real_pair_probability": 0.5030849725008011,
+      "S_null_normal_flip_rate": 0.0625,
+      "S_null_pseudo_flip_rate": 0.0556640625,
+      "S_null_joint_rate": 0.056640625,
+      "S_null_episode_probability": 0.4015527591109276,
+      "S_null_pair_probability": 0.5027607306838036,
+      "task_precision": [
+        1.0202624797821045,
+        1.0200684070587158,
+        1.0203683376312256,
+        1.020870327949524
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": 6.767362356185913e-05,
+          "S": 0.00032142115135988525
+        },
+        "probabilities": {
+          "D": 0.33328258991241455,
+          "MD": 0.33330512046813965,
+          "ALL": 0.3334122896194458
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 6.767362356185913e-05,
+          "ALL": 0.00038909478462301195
+        },
+        "task_precision": [
+          1.0202624797821045,
+          1.0200684070587158,
+          1.0203683376312256,
+          1.020870327949524
+        ],
+        "M": {
+          "evidence": 6.767362356185913e-05,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.07003545761108398,
+                "pseudo_flip_rate": 0.06737588346004486,
+                "joint_rate": 0.06471630930900574,
+                "episode_probability": 0.17475348711013794,
+                "pair_probability": 0.4980201721191406
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.17641843855381012,
+                "pseudo_flip_rate": 0.05762411281466484,
+                "joint_rate": 0.16489361226558685,
+                "episode_probability": 0.17514722049236298,
+                "pair_probability": 0.497478723526001
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.15868793427944183,
+                "pseudo_flip_rate": 0.07358156144618988,
+                "joint_rate": 0.14716312289237976,
+                "episode_probability": 0.1754557192325592,
+                "pair_probability": 0.50106281042099
+              }
+            ],
+            "normal_flip_rate": 0.13504727681477866,
+            "pseudo_flip_rate": 0.0661938525736332,
+            "joint_rate": 0.12559101482232413,
+            "episode_probability": 0.17511880894502005,
+            "pair_probability": 0.4988539020220439
+          },
+          "null_episode_probability": 0.1750511353214582,
+          "null_pair_probability": 0.49666342470381,
+          "null_joint_rate": 0.08476162143051624,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": 0.00032142115135988525,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.0381205677986145,
+                "pseudo_flip_rate": 0.03989361599087715,
+                "joint_rate": 0.036347515881061554,
+                "episode_probability": 0.17544551193714142,
+                "pair_probability": 0.49838048219680786
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.10904254764318466,
+                "pseudo_flip_rate": 0.036347515881061554,
+                "joint_rate": 0.10017730295658112,
+                "episode_probability": 0.175492525100708,
+                "pair_probability": 0.4958646893501282
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.11258865147829056,
+                "pseudo_flip_rate": 0.024822693318128586,
+                "joint_rate": 0.10904254764318466,
+                "episode_probability": 0.1757964789867401,
+                "pair_probability": 0.4970203936100006
+              }
+            ],
+            "normal_flip_rate": 0.08658392230669658,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.08185578882694244,
+            "episode_probability": 0.1755781720081965,
+            "pair_probability": 0.4970885217189789
+          },
+          "null_episode_probability": 0.17525675085683662,
+          "null_pair_probability": 0.4988787801315387,
+          "null_joint_rate": 0.082483744675604,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.5738574743270874,
+      "grad_norm": 0.49437609910964964,
+      "M_real_normal_flip_rate": 0.1103515625,
+      "M_real_pseudo_flip_rate": 0.0703125,
+      "M_real_joint_rate": 0.087890625,
+      "M_real_episode_probability": 0.11777254566550255,
+      "M_real_pair_probability": 0.49140600115060806,
+      "component_loss_0": 0.6856912940740585,
+      "component_loss_1": 0.6942211091518402,
+      "component_loss_2": 0.693759760260582,
+      "component_loss_3": 0.2711061380803585,
+      "S_real_normal_flip_rate": 0.076171875,
+      "S_real_pseudo_flip_rate": 0.025390625,
+      "S_real_joint_rate": 0.072265625,
+      "S_real_episode_probability": 0.12133816443383694,
+      "S_real_pair_probability": 0.494817890226841,
+      "M_null_normal_flip_rate": 0.07877604166666667,
+      "M_null_pseudo_flip_rate": 0.046875,
+      "M_null_joint_rate": 0.07682291666666667,
+      "M_null_episode_probability": 0.09634697437286377,
+      "M_null_pair_probability": 0.4918453594048818,
+      "S_null_normal_flip_rate": 0.06510416666666667,
+      "S_null_pseudo_flip_rate": 0.035807291666666664,
+      "S_null_joint_rate": 0.0625,
+      "S_null_episode_probability": 0.08452080686887105,
+      "S_null_pair_probability": 0.49505233267943066,
+      "task_precision": [
+        1.0413631200790405,
+        1.0410895347595215,
+        1.0411279201507568,
+        1.0441441535949707
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5539027780294419,
+      "grad_norm": 0.4556399956345558,
+      "M_null_normal_flip_rate": 0.08637152777777778,
+      "M_null_pseudo_flip_rate": 0.041666666666666664,
+      "M_null_joint_rate": 0.07682291666666667,
+      "M_null_episode_probability": 0.05902967477838198,
+      "M_null_pair_probability": 0.5022966729270087,
+      "component_loss_0": 0.6819124579429626,
+      "component_loss_1": 0.6888441652059555,
+      "component_loss_2": 0.6899259597063064,
+      "component_loss_3": 0.23986128345131874,
+      "S_real_normal_flip_rate": 0.05234375,
+      "S_real_pseudo_flip_rate": 0.0328125,
+      "S_real_joint_rate": 0.0515625,
+      "S_real_episode_probability": 0.05968693271279335,
+      "S_real_pair_probability": 0.4972236454486847,
+      "S_null_normal_flip_rate": 0.0546875,
+      "S_null_pseudo_flip_rate": 0.0234375,
+      "S_null_joint_rate": 0.04921875,
+      "S_null_episode_probability": 0.05851086303591728,
+      "S_null_pair_probability": 0.49875928163528443,
+      "M_real_normal_flip_rate": 0.15234375,
+      "M_real_pseudo_flip_rate": 0.1328125,
+      "M_real_joint_rate": 0.09765625,
+      "M_real_episode_probability": 0.05723903700709343,
+      "M_real_pair_probability": 0.5070457458496094,
+      "task_precision": [
+        1.062538504600525,
+        1.061729073524475,
+        1.0618306398391724,
+        1.0677125453948975
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": 0.0002603437751531601,
+          "S": 0.00020421350685258938
+        },
+        "probabilities": {
+          "D": 0.33325278759002686,
+          "MD": 0.33333954215049744,
+          "ALL": 0.3334076404571533
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.0002603437751531601,
+          "ALL": 0.0004645572626031935
+        },
+        "task_precision": [
+          1.062538504600525,
+          1.061729073524475,
+          1.0618306398391724,
+          1.0677125453948975
+        ],
+        "M": {
+          "evidence": 0.0002603437751531601,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.07003545761108398,
+                "pseudo_flip_rate": 0.06737588346004486,
+                "joint_rate": 0.06471630930900574,
+                "episode_probability": 0.06038263067603111,
+                "pair_probability": 0.4913099408149719
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.17641843855381012,
+                "pseudo_flip_rate": 0.05762411281466484,
+                "joint_rate": 0.16489361226558685,
+                "episode_probability": 0.06046079844236374,
+                "pair_probability": 0.4969068765640259
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.15868793427944183,
+                "pseudo_flip_rate": 0.07358156144618988,
+                "joint_rate": 0.14716312289237976,
+                "episode_probability": 0.06036185845732689,
+                "pair_probability": 0.503710150718689
+              }
+            ],
+            "normal_flip_rate": 0.13504727681477866,
+            "pseudo_flip_rate": 0.0661938525736332,
+            "joint_rate": 0.12559101482232413,
+            "episode_probability": 0.06040176252524058,
+            "pair_probability": 0.49730898936589557
+          },
+          "null_episode_probability": 0.06014141875008742,
+          "null_pair_probability": 0.4986944827768538,
+          "null_joint_rate": 0.08476162143051624,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": 0.00020421350685258938,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.0381205677986145,
+                "pseudo_flip_rate": 0.03989361599087715,
+                "joint_rate": 0.036347515881061554,
+                "episode_probability": 0.0604306235909462,
+                "pair_probability": 0.4879065752029419
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.10904254764318466,
+                "pseudo_flip_rate": 0.036347515881061554,
+                "joint_rate": 0.10017730295658112,
+                "episode_probability": 0.06128479540348053,
+                "pair_probability": 0.4932645857334137
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.11258865147829056,
+                "pseudo_flip_rate": 0.024822693318128586,
+                "joint_rate": 0.10904254764318466,
+                "episode_probability": 0.06005822494626045,
+                "pair_probability": 0.5088425278663635
+              }
+            ],
+            "normal_flip_rate": 0.08658392230669658,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.08185578882694244,
+            "episode_probability": 0.06059121464689573,
+            "pair_probability": 0.49667122960090637
+          },
+          "null_episode_probability": 0.06038700114004314,
+          "null_pair_probability": 0.49834420283635456,
+          "null_joint_rate": 0.082483744675604,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 0.5477342545986176,
+      "grad_norm": 0.450712089240551,
+      "M_null_normal_flip_rate": 0.08203125,
+      "M_null_pseudo_flip_rate": 0.047309027777777776,
+      "M_null_joint_rate": 0.06987847222222222,
+      "M_null_episode_probability": 0.06023049685690138,
+      "M_null_pair_probability": 0.49527283509572345,
+      "component_loss_0": 0.6858191579580307,
+      "component_loss_1": 0.6824600726366044,
+      "component_loss_2": 0.6859417766332626,
+      "component_loss_3": 0.253110683336854,
+      "S_null_normal_flip_rate": 0.07682291666666667,
+      "S_null_pseudo_flip_rate": 0.061197916666666664,
+      "S_null_joint_rate": 0.064453125,
+      "S_null_episode_probability": 0.059895853201548256,
+      "S_null_pair_probability": 0.4937686224778493,
+      "S_real_normal_flip_rate": 0.06640625,
+      "S_real_pseudo_flip_rate": 0.0302734375,
+      "S_real_joint_rate": 0.0625,
+      "S_real_episode_probability": 0.06299447361379862,
+      "S_real_pair_probability": 0.49875450134277344,
+      "M_real_normal_flip_rate": 0.16015625,
+      "M_real_pseudo_flip_rate": 0.14453125,
+      "M_real_joint_rate": 0.1171875,
+      "M_real_episode_probability": 0.05689810588955879,
+      "M_real_pair_probability": 0.5010514259338379,
+      "task_precision": [
+        1.0832322835922241,
+        1.0826982259750366,
+        1.0824947357177734,
+        1.0911096334457397
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": 0.522954846918583,
+      "grad_norm": 0.4957461699843407,
+      "M_real_normal_flip_rate": 0.10286458333333333,
+      "M_real_pseudo_flip_rate": 0.045572916666666664,
+      "M_real_joint_rate": 0.095703125,
+      "M_real_episode_probability": 0.0833424652616183,
+      "M_real_pair_probability": 0.4908598264058431,
+      "component_loss_0": 0.6545886039733887,
+      "component_loss_1": 0.6671909540891647,
+      "component_loss_2": 0.6688059121370316,
+      "component_loss_3": 0.2540383588522673,
+      "S_null_normal_flip_rate": 0.07890625,
+      "S_null_pseudo_flip_rate": 0.0578125,
+      "S_null_joint_rate": 0.0671875,
+      "S_null_episode_probability": 0.0768241599202156,
+      "S_null_pair_probability": 0.48328818678855895,
+      "M_null_normal_flip_rate": 0.0859375,
+      "M_null_pseudo_flip_rate": 0.046875,
+      "M_null_joint_rate": 0.072265625,
+      "M_null_episode_probability": 0.07921684347093105,
+      "M_null_pair_probability": 0.47072897106409073,
+      "S_real_normal_flip_rate": 0.0421875,
+      "S_real_pseudo_flip_rate": 0.03125,
+      "S_real_joint_rate": 0.03984375,
+      "S_real_episode_probability": 0.08050227612257004,
+      "S_real_pair_probability": 0.4782364428043365,
+      "task_precision": [
+        1.1047924757003784,
+        1.1037929058074951,
+        1.1035863161087036,
+        1.1139062643051147
+      ],
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": 0.0007679164409637451,
+          "S": -0.0013840931157271114
+        },
+        "probabilities": {
+          "D": 0.3333164155483246,
+          "MD": 0.33357247710227966,
+          "ALL": 0.33311110734939575
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.0007679164409637451,
+          "ALL": -0.0006161766359582543
+        },
+        "task_precision": [
+          1.1047924757003784,
+          1.1037929058074951,
+          1.1035863161087036,
+          1.1139062643051147
+        ],
+        "M": {
+          "evidence": 0.0007679164409637451,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.07003545761108398,
+                "pseudo_flip_rate": 0.06737588346004486,
+                "joint_rate": 0.06471630930900574,
+                "episode_probability": 0.06846211105585098,
+                "pair_probability": 0.445002943277359
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.17641843855381012,
+                "pseudo_flip_rate": 0.05762411281466484,
+                "joint_rate": 0.16489361226558685,
+                "episode_probability": 0.07528658956289291,
+                "pair_probability": 0.5276955366134644
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.15868793427944183,
+                "pseudo_flip_rate": 0.07358156144618988,
+                "joint_rate": 0.14716312289237976,
+                "episode_probability": 0.07483567297458649,
+                "pair_probability": 0.5433186292648315
+              }
+            ],
+            "normal_flip_rate": 0.13504727681477866,
+            "pseudo_flip_rate": 0.0661938525736332,
+            "joint_rate": 0.12559101482232413,
+            "episode_probability": 0.07286145786444347,
+            "pair_probability": 0.5053390363852183
+          },
+          "null_episode_probability": 0.07209354142347972,
+          "null_pair_probability": 0.5112559116548961,
+          "null_joint_rate": 0.08476162143051624,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": -0.0013840931157271114,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.0381205677986145,
+                "pseudo_flip_rate": 0.03989361599087715,
+                "joint_rate": 0.036347515881061554,
+                "episode_probability": 0.06619231402873993,
+                "pair_probability": 0.4880131185054779
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.10904254764318466,
+                "pseudo_flip_rate": 0.036347515881061554,
+                "joint_rate": 0.10017730295658112,
+                "episode_probability": 0.07561986893415451,
+                "pair_probability": 0.5699923634529114
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.11258865147829056,
+                "pseudo_flip_rate": 0.024822693318128586,
+                "joint_rate": 0.10904254764318466,
+                "episode_probability": 0.07467273622751236,
+                "pair_probability": 0.5741888880729675
+              }
+            ],
+            "normal_flip_rate": 0.08658392230669658,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.08185578882694244,
+            "episode_probability": 0.0721616397301356,
+            "pair_probability": 0.5440647900104523
+          },
+          "null_episode_probability": 0.07354573284586272,
+          "null_pair_probability": 0.5128033092866341,
+          "null_joint_rate": 0.082483744675604,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 0.5047621846199035,
+      "grad_norm": 0.6632659316062928,
+      "M_real_normal_flip_rate": 0.1279296875,
+      "M_real_pseudo_flip_rate": 0.052734375,
+      "M_real_joint_rate": 0.123046875,
+      "M_real_episode_probability": 0.06539758201688528,
+      "M_real_pair_probability": 0.5073532089591026,
+      "component_loss_0": 0.6456023663282394,
+      "component_loss_1": 0.6476326555013656,
+      "component_loss_2": 0.6392319709062576,
+      "component_loss_3": 0.27390421032905576,
+      "S_null_normal_flip_rate": 0.06640625,
+      "S_null_pseudo_flip_rate": 0.04140625,
+      "S_null_joint_rate": 0.06328125,
+      "S_null_episode_probability": 0.07378674149513245,
+      "S_null_pair_probability": 0.47801854014396666,
+      "M_null_normal_flip_rate": 0.07486979166666667,
+      "M_null_pseudo_flip_rate": 0.05078125,
+      "M_null_joint_rate": 0.068359375,
+      "M_null_episode_probability": 0.06647198398907979,
+      "M_null_pair_probability": 0.4525836606820424,
+      "S_real_normal_flip_rate": 0.06875,
+      "S_real_pseudo_flip_rate": 0.034375,
+      "S_real_joint_rate": 0.0671875,
+      "S_real_episode_probability": 0.06803153455257416,
+      "S_real_pair_probability": 0.5308580279350281,
+      "task_precision": [
+        1.126888632774353,
+        1.1255946159362793,
+        1.1260409355163574,
+        1.136796236038208
+      ]
+    },
+    {
+      "epoch": 7,
+      "loss": 0.5339627742767334,
+      "grad_norm": 0.6220117375254631,
+      "M_real_normal_flip_rate": 0.119140625,
+      "M_real_pseudo_flip_rate": 0.0634765625,
+      "M_real_joint_rate": 0.1025390625,
+      "M_real_episode_probability": 0.08418931439518929,
+      "M_real_pair_probability": 0.44631557166576385,
+      "component_loss_0": 0.673383179306984,
+      "component_loss_1": 0.6946154773235321,
+      "component_loss_2": 0.6733335703611374,
+      "component_loss_3": 0.2936911918222904,
+      "S_null_normal_flip_rate": 0.0673828125,
+      "S_null_pseudo_flip_rate": 0.0439453125,
+      "S_null_joint_rate": 0.06640625,
+      "S_null_episode_probability": 0.08558984287083149,
+      "S_null_pair_probability": 0.4407278820872307,
+      "M_null_normal_flip_rate": 0.109375,
+      "M_null_pseudo_flip_rate": 0.04296875,
+      "M_null_joint_rate": 0.09635416666666667,
+      "M_null_episode_probability": 0.08776977161566417,
+      "M_null_pair_probability": 0.48811447620391846,
+      "S_real_normal_flip_rate": 0.08072916666666667,
+      "S_real_pseudo_flip_rate": 0.02734375,
+      "S_real_joint_rate": 0.078125,
+      "S_real_episode_probability": 0.0924050472676754,
+      "S_real_pair_probability": 0.4650401969750722,
+      "task_precision": [
+        1.1474307775497437,
+        1.1453279256820679,
+        1.1470507383346558,
+        1.1589674949645996
+      ]
+    },
+    {
+      "epoch": 8,
+      "loss": 0.5085681587457657,
+      "grad_norm": 0.44996916353702543,
+      "M_real_normal_flip_rate": 0.08761160714285714,
+      "M_real_pseudo_flip_rate": 0.048549107142857144,
+      "M_real_joint_rate": 0.08035714285714286,
+      "M_real_episode_probability": 0.08351106622389384,
+      "M_real_pair_probability": 0.4573730783803122,
+      "component_loss_0": 0.6495468616485596,
+      "component_loss_1": 0.6948312431573868,
+      "component_loss_2": 0.6415068477392196,
+      "component_loss_3": 0.2823414750397205,
+      "S_null_normal_flip_rate": 0.1142578125,
+      "S_null_pseudo_flip_rate": 0.03125,
+      "S_null_joint_rate": 0.107421875,
+      "S_null_episode_probability": 0.08257087133824825,
+      "S_null_pair_probability": 0.4534052610397339,
+      "S_real_normal_flip_rate": 0.08658854166666667,
+      "S_real_pseudo_flip_rate": 0.037109375,
+      "S_real_joint_rate": 0.076171875,
+      "S_real_episode_probability": 0.08531148607532184,
+      "S_real_pair_probability": 0.493271271387736,
+      "M_null_normal_flip_rate": 0.07291666666666667,
+      "M_null_pseudo_flip_rate": 0.041666666666666664,
+      "M_null_joint_rate": 0.061197916666666664,
+      "M_null_episode_probability": 0.07802872856458028,
+      "M_null_pair_probability": 0.4339671532313029,
+      "task_precision": [
+        1.1682171821594238,
+        1.1635301113128662,
+        1.1682441234588623,
+        1.181555986404419
+      ]
+    },
+    {
+      "epoch": 9,
+      "loss": 0.48766671270132067,
+      "grad_norm": 0.5949942529201507,
+      "M_real_normal_flip_rate": 0.10491071428571429,
+      "M_real_pseudo_flip_rate": 0.060267857142857144,
+      "M_real_joint_rate": 0.09598214285714286,
+      "M_real_episode_probability": 0.07593127286859921,
+      "M_real_pair_probability": 0.4521212620394571,
+      "component_loss_0": 0.6387534737586975,
+      "component_loss_1": 0.6828390389680863,
+      "component_loss_2": 0.6449179023504257,
+      "component_loss_3": 0.25220063850283625,
+      "S_null_normal_flip_rate": 0.05078125,
+      "S_null_pseudo_flip_rate": 0.03515625,
+      "S_null_joint_rate": 0.04765625,
+      "S_null_episode_probability": 0.07653008699417115,
+      "S_null_pair_probability": 0.43643916249275205,
+      "M_null_normal_flip_rate": 0.08203125,
+      "M_null_pseudo_flip_rate": 0.05859375,
+      "M_null_joint_rate": 0.07421875,
+      "M_null_episode_probability": 0.07415760805209477,
+      "M_null_pair_probability": 0.4880845050017039,
+      "S_real_normal_flip_rate": 0.05546875,
+      "S_real_pseudo_flip_rate": 0.0296875,
+      "S_real_joint_rate": 0.0515625,
+      "S_real_episode_probability": 0.07654545605182647,
+      "S_real_pair_probability": 0.498447448015213,
+      "task_precision": [
+        1.1895824670791626,
+        1.1811974048614502,
+        1.1896272897720337,
+        1.205103874206543
+      ]
+    },
+    {
+      "epoch": 10,
+      "loss": 0.5315685108304024,
+      "grad_norm": 0.5311329871416092,
+      "M_real_normal_flip_rate": 0.1357421875,
+      "M_real_pseudo_flip_rate": 0.0439453125,
+      "M_real_joint_rate": 0.1279296875,
+      "M_real_episode_probability": 0.0814107721671462,
+      "M_real_pair_probability": 0.44702041894197464,
+      "component_loss_0": 0.6788918286561966,
+      "component_loss_1": 0.6993902206420899,
+      "component_loss_2": 0.6791031688451767,
+      "component_loss_3": 0.3274465546011925,
+      "S_real_normal_flip_rate": 0.052734375,
+      "S_real_pseudo_flip_rate": 0.048828125,
+      "S_real_joint_rate": 0.046875,
+      "S_real_episode_probability": 0.07137364707887173,
+      "S_real_pair_probability": 0.3634113073348999,
+      "S_null_normal_flip_rate": 0.1015625,
+      "S_null_pseudo_flip_rate": 0.0546875,
+      "S_null_joint_rate": 0.09130859375,
+      "S_null_episode_probability": 0.10282713081687689,
+      "S_null_pair_probability": 0.47228147462010384,
+      "M_null_normal_flip_rate": 0.12174479166666667,
+      "M_null_pseudo_flip_rate": 0.05859375,
+      "M_null_joint_rate": 0.107421875,
+      "M_null_episode_probability": 0.11226258551081021,
+      "M_null_pair_probability": 0.5085180848836899,
+      "task_precision": [
+        1.20819091796875,
+        1.1983693838119507,
+        1.2079014778137207,
+        1.2271811962127686
+      ],
+      "query": {
+        "boundary": 8,
+        "selected_taps": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "gate_evidence": {
+          "M": -0.004536088556051254,
+          "S": 0.00014168675988912582
+        },
+        "probabilities": {
+          "D": 0.3343263566493988,
+          "MD": 0.3328132629394531,
+          "ALL": 0.33286041021347046
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.004536088556051254,
+          "ALL": -0.0043944017961621284
+        },
+        "task_precision": [
+          1.20819091796875,
+          1.1983693838119507,
+          1.2079014778137207,
+          1.2271811962127686
+        ],
+        "M": {
+          "evidence": -0.004536088556051254,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.07003545761108398,
+                "pseudo_flip_rate": 0.06737588346004486,
+                "joint_rate": 0.06471630930900574,
+                "episode_probability": 0.09036387503147125,
+                "pair_probability": 0.4036567509174347
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.17641843855381012,
+                "pseudo_flip_rate": 0.05762411281466484,
+                "joint_rate": 0.16489361226558685,
+                "episode_probability": 0.09608631581068039,
+                "pair_probability": 0.44262710213661194
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.15868793427944183,
+                "pseudo_flip_rate": 0.07358156144618988,
+                "joint_rate": 0.14716312289237976,
+                "episode_probability": 0.09984026849269867,
+                "pair_probability": 0.46379780769348145
+              }
+            ],
+            "normal_flip_rate": 0.13504727681477866,
+            "pseudo_flip_rate": 0.0661938525736332,
+            "joint_rate": 0.12559101482232413,
+            "episode_probability": 0.09543015311161678,
+            "pair_probability": 0.4366938869158427
+          },
+          "null_episode_probability": 0.09996624166766803,
+          "null_pair_probability": 0.46827840142779875,
+          "null_joint_rate": 0.08476162143051624,
+          "null_count": 6
+        },
+        "S": {
+          "evidence": 0.00014168675988912582,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_flip_rate": 0.0381205677986145,
+                "pseudo_flip_rate": 0.03989361599087715,
+                "joint_rate": 0.036347515881061554,
+                "episode_probability": 0.08594959229230881,
+                "pair_probability": 0.3703853487968445
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_flip_rate": 0.10904254764318466,
+                "pseudo_flip_rate": 0.036347515881061554,
+                "joint_rate": 0.10017730295658112,
+                "episode_probability": 0.09925323724746704,
+                "pair_probability": 0.4576161503791809
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_flip_rate": 0.11258865147829056,
+                "pseudo_flip_rate": 0.024822693318128586,
+                "joint_rate": 0.10904254764318466,
+                "episode_probability": 0.1040131151676178,
+                "pair_probability": 0.48871442675590515
+              }
+            ],
+            "normal_flip_rate": 0.08658392230669658,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.08185578882694244,
+            "episode_probability": 0.09640531490246455,
+            "pair_probability": 0.43890530864397687
+          },
+          "null_episode_probability": 0.09626362814257543,
+          "null_pair_probability": 0.443810211494565,
+          "null_joint_rate": 0.082483744675604,
+          "null_count": 16
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "1": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": 6.767362356185913e-05,
+        "S": 0.00032142115135988525
+      },
+      "probabilities": {
+        "D": 0.33328258991241455,
+        "MD": 0.33330512046813965,
+        "ALL": 0.3334122896194458
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 6.767362356185913e-05,
+        "ALL": 0.00038909478462301195
+      },
+      "task_precision": [
+        1.0202624797821045,
+        1.0200684070587158,
+        1.0203683376312256,
+        1.020870327949524
+      ],
+      "M": {
+        "evidence": 6.767362356185913e-05,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.07003545761108398,
+              "pseudo_flip_rate": 0.06737588346004486,
+              "joint_rate": 0.06471630930900574,
+              "episode_probability": 0.17475348711013794,
+              "pair_probability": 0.4980201721191406
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.17641843855381012,
+              "pseudo_flip_rate": 0.05762411281466484,
+              "joint_rate": 0.16489361226558685,
+              "episode_probability": 0.17514722049236298,
+              "pair_probability": 0.497478723526001
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.15868793427944183,
+              "pseudo_flip_rate": 0.07358156144618988,
+              "joint_rate": 0.14716312289237976,
+              "episode_probability": 0.1754557192325592,
+              "pair_probability": 0.50106281042099
+            }
+          ],
+          "normal_flip_rate": 0.13504727681477866,
+          "pseudo_flip_rate": 0.0661938525736332,
+          "joint_rate": 0.12559101482232413,
+          "episode_probability": 0.17511880894502005,
+          "pair_probability": 0.4988539020220439
+        },
+        "null_episode_probability": 0.1750511353214582,
+        "null_pair_probability": 0.49666342470381,
+        "null_joint_rate": 0.08476162143051624,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": 0.00032142115135988525,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.0381205677986145,
+              "pseudo_flip_rate": 0.03989361599087715,
+              "joint_rate": 0.036347515881061554,
+              "episode_probability": 0.17544551193714142,
+              "pair_probability": 0.49838048219680786
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.10904254764318466,
+              "pseudo_flip_rate": 0.036347515881061554,
+              "joint_rate": 0.10017730295658112,
+              "episode_probability": 0.175492525100708,
+              "pair_probability": 0.4958646893501282
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.11258865147829056,
+              "pseudo_flip_rate": 0.024822693318128586,
+              "joint_rate": 0.10904254764318466,
+              "episode_probability": 0.1757964789867401,
+              "pair_probability": 0.4970203936100006
+            }
+          ],
+          "normal_flip_rate": 0.08658392230669658,
+          "pseudo_flip_rate": 0.03368794173002243,
+          "joint_rate": 0.08185578882694244,
+          "episode_probability": 0.1755781720081965,
+          "pair_probability": 0.4970885217189789
+        },
+        "null_episode_probability": 0.17525675085683662,
+        "null_pair_probability": 0.4988787801315387,
+        "null_joint_rate": 0.082483744675604,
+        "null_count": 16
+      }
+    },
+    "3": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": 0.0002603437751531601,
+        "S": 0.00020421350685258938
+      },
+      "probabilities": {
+        "D": 0.33325278759002686,
+        "MD": 0.33333954215049744,
+        "ALL": 0.3334076404571533
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.0002603437751531601,
+        "ALL": 0.0004645572626031935
+      },
+      "task_precision": [
+        1.062538504600525,
+        1.061729073524475,
+        1.0618306398391724,
+        1.0677125453948975
+      ],
+      "M": {
+        "evidence": 0.0002603437751531601,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.07003545761108398,
+              "pseudo_flip_rate": 0.06737588346004486,
+              "joint_rate": 0.06471630930900574,
+              "episode_probability": 0.06038263067603111,
+              "pair_probability": 0.4913099408149719
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.17641843855381012,
+              "pseudo_flip_rate": 0.05762411281466484,
+              "joint_rate": 0.16489361226558685,
+              "episode_probability": 0.06046079844236374,
+              "pair_probability": 0.4969068765640259
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.15868793427944183,
+              "pseudo_flip_rate": 0.07358156144618988,
+              "joint_rate": 0.14716312289237976,
+              "episode_probability": 0.06036185845732689,
+              "pair_probability": 0.503710150718689
+            }
+          ],
+          "normal_flip_rate": 0.13504727681477866,
+          "pseudo_flip_rate": 0.0661938525736332,
+          "joint_rate": 0.12559101482232413,
+          "episode_probability": 0.06040176252524058,
+          "pair_probability": 0.49730898936589557
+        },
+        "null_episode_probability": 0.06014141875008742,
+        "null_pair_probability": 0.4986944827768538,
+        "null_joint_rate": 0.08476162143051624,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": 0.00020421350685258938,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.0381205677986145,
+              "pseudo_flip_rate": 0.03989361599087715,
+              "joint_rate": 0.036347515881061554,
+              "episode_probability": 0.0604306235909462,
+              "pair_probability": 0.4879065752029419
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.10904254764318466,
+              "pseudo_flip_rate": 0.036347515881061554,
+              "joint_rate": 0.10017730295658112,
+              "episode_probability": 0.06128479540348053,
+              "pair_probability": 0.4932645857334137
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.11258865147829056,
+              "pseudo_flip_rate": 0.024822693318128586,
+              "joint_rate": 0.10904254764318466,
+              "episode_probability": 0.06005822494626045,
+              "pair_probability": 0.5088425278663635
+            }
+          ],
+          "normal_flip_rate": 0.08658392230669658,
+          "pseudo_flip_rate": 0.03368794173002243,
+          "joint_rate": 0.08185578882694244,
+          "episode_probability": 0.06059121464689573,
+          "pair_probability": 0.49667122960090637
+        },
+        "null_episode_probability": 0.06038700114004314,
+        "null_pair_probability": 0.49834420283635456,
+        "null_joint_rate": 0.082483744675604,
+        "null_count": 16
+      }
+    },
+    "5": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": 0.0007679164409637451,
+        "S": -0.0013840931157271114
+      },
+      "probabilities": {
+        "D": 0.3333164155483246,
+        "MD": 0.33357247710227966,
+        "ALL": 0.33311110734939575
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.0007679164409637451,
+        "ALL": -0.0006161766359582543
+      },
+      "task_precision": [
+        1.1047924757003784,
+        1.1037929058074951,
+        1.1035863161087036,
+        1.1139062643051147
+      ],
+      "M": {
+        "evidence": 0.0007679164409637451,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.07003545761108398,
+              "pseudo_flip_rate": 0.06737588346004486,
+              "joint_rate": 0.06471630930900574,
+              "episode_probability": 0.06846211105585098,
+              "pair_probability": 0.445002943277359
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.17641843855381012,
+              "pseudo_flip_rate": 0.05762411281466484,
+              "joint_rate": 0.16489361226558685,
+              "episode_probability": 0.07528658956289291,
+              "pair_probability": 0.5276955366134644
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.15868793427944183,
+              "pseudo_flip_rate": 0.07358156144618988,
+              "joint_rate": 0.14716312289237976,
+              "episode_probability": 0.07483567297458649,
+              "pair_probability": 0.5433186292648315
+            }
+          ],
+          "normal_flip_rate": 0.13504727681477866,
+          "pseudo_flip_rate": 0.0661938525736332,
+          "joint_rate": 0.12559101482232413,
+          "episode_probability": 0.07286145786444347,
+          "pair_probability": 0.5053390363852183
+        },
+        "null_episode_probability": 0.07209354142347972,
+        "null_pair_probability": 0.5112559116548961,
+        "null_joint_rate": 0.08476162143051624,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": -0.0013840931157271114,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.0381205677986145,
+              "pseudo_flip_rate": 0.03989361599087715,
+              "joint_rate": 0.036347515881061554,
+              "episode_probability": 0.06619231402873993,
+              "pair_probability": 0.4880131185054779
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.10904254764318466,
+              "pseudo_flip_rate": 0.036347515881061554,
+              "joint_rate": 0.10017730295658112,
+              "episode_probability": 0.07561986893415451,
+              "pair_probability": 0.5699923634529114
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.11258865147829056,
+              "pseudo_flip_rate": 0.024822693318128586,
+              "joint_rate": 0.10904254764318466,
+              "episode_probability": 0.07467273622751236,
+              "pair_probability": 0.5741888880729675
+            }
+          ],
+          "normal_flip_rate": 0.08658392230669658,
+          "pseudo_flip_rate": 0.03368794173002243,
+          "joint_rate": 0.08185578882694244,
+          "episode_probability": 0.0721616397301356,
+          "pair_probability": 0.5440647900104523
+        },
+        "null_episode_probability": 0.07354573284586272,
+        "null_pair_probability": 0.5128033092866341,
+        "null_joint_rate": 0.082483744675604,
+        "null_count": 16
+      }
+    },
+    "10": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "gate_evidence": {
+        "M": -0.004536088556051254,
+        "S": 0.00014168675988912582
+      },
+      "probabilities": {
+        "D": 0.3343263566493988,
+        "MD": 0.3328132629394531,
+        "ALL": 0.33286041021347046
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.004536088556051254,
+        "ALL": -0.0043944017961621284
+      },
+      "task_precision": [
+        1.20819091796875,
+        1.1983693838119507,
+        1.2079014778137207,
+        1.2271811962127686
+      ],
+      "M": {
+        "evidence": -0.004536088556051254,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.07003545761108398,
+              "pseudo_flip_rate": 0.06737588346004486,
+              "joint_rate": 0.06471630930900574,
+              "episode_probability": 0.09036387503147125,
+              "pair_probability": 0.4036567509174347
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.17641843855381012,
+              "pseudo_flip_rate": 0.05762411281466484,
+              "joint_rate": 0.16489361226558685,
+              "episode_probability": 0.09608631581068039,
+              "pair_probability": 0.44262710213661194
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.15868793427944183,
+              "pseudo_flip_rate": 0.07358156144618988,
+              "joint_rate": 0.14716312289237976,
+              "episode_probability": 0.09984026849269867,
+              "pair_probability": 0.46379780769348145
+            }
+          ],
+          "normal_flip_rate": 0.13504727681477866,
+          "pseudo_flip_rate": 0.0661938525736332,
+          "joint_rate": 0.12559101482232413,
+          "episode_probability": 0.09543015311161678,
+          "pair_probability": 0.4366938869158427
+        },
+        "null_episode_probability": 0.09996624166766803,
+        "null_pair_probability": 0.46827840142779875,
+        "null_joint_rate": 0.08476162143051624,
+        "null_count": 6
+      },
+      "S": {
+        "evidence": 0.00014168675988912582,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_flip_rate": 0.0381205677986145,
+              "pseudo_flip_rate": 0.03989361599087715,
+              "joint_rate": 0.036347515881061554,
+              "episode_probability": 0.08594959229230881,
+              "pair_probability": 0.3703853487968445
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_flip_rate": 0.10904254764318466,
+              "pseudo_flip_rate": 0.036347515881061554,
+              "joint_rate": 0.10017730295658112,
+              "episode_probability": 0.09925323724746704,
+              "pair_probability": 0.4576161503791809
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_flip_rate": 0.11258865147829056,
+              "pseudo_flip_rate": 0.024822693318128586,
+              "joint_rate": 0.10904254764318466,
+              "episode_probability": 0.1040131151676178,
+              "pair_probability": 0.48871442675590515
+            }
+          ],
+          "normal_flip_rate": 0.08658392230669658,
+          "pseudo_flip_rate": 0.03368794173002243,
+          "joint_rate": 0.08185578882694244,
+          "episode_probability": 0.09640531490246455,
+          "pair_probability": 0.43890530864397687
+        },
+        "null_episode_probability": 0.09626362814257543,
+        "null_pair_probability": 0.443810211494565,
+        "null_joint_rate": 0.082483744675604,
+        "null_count": 16
+      }
+    }
+  },
+  "query_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": -0.004536088556051254,
+      "S": 0.00014168675988912582
+    },
+    "probabilities": {
+      "D": 0.3343263566493988,
+      "MD": 0.3328132629394531,
+      "ALL": 0.33286041021347046
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.004536088556051254,
+      "ALL": -0.0043944017961621284
+    },
+    "task_precision": [
+      1.20819091796875,
+      1.1983693838119507,
+      1.2079014778137207,
+      1.2271811962127686
+    ],
+    "M": {
+      "evidence": -0.004536088556051254,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_flip_rate": 0.07003545761108398,
+            "pseudo_flip_rate": 0.06737588346004486,
+            "joint_rate": 0.06471630930900574,
+            "episode_probability": 0.09036387503147125,
+            "pair_probability": 0.4036567509174347
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_flip_rate": 0.17641843855381012,
+            "pseudo_flip_rate": 0.05762411281466484,
+            "joint_rate": 0.16489361226558685,
+            "episode_probability": 0.09608631581068039,
+            "pair_probability": 0.44262710213661194
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_flip_rate": 0.15868793427944183,
+            "pseudo_flip_rate": 0.07358156144618988,
+            "joint_rate": 0.14716312289237976,
+            "episode_probability": 0.09984026849269867,
+            "pair_probability": 0.46379780769348145
+          }
+        ],
+        "normal_flip_rate": 0.13504727681477866,
+        "pseudo_flip_rate": 0.0661938525736332,
+        "joint_rate": 0.12559101482232413,
+        "episode_probability": 0.09543015311161678,
+        "pair_probability": 0.4366938869158427
+      },
+      "null_episode_probability": 0.09996624166766803,
+      "null_pair_probability": 0.46827840142779875,
+      "null_joint_rate": 0.08476162143051624,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": 0.00014168675988912582,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_flip_rate": 0.0381205677986145,
+            "pseudo_flip_rate": 0.03989361599087715,
+            "joint_rate": 0.036347515881061554,
+            "episode_probability": 0.08594959229230881,
+            "pair_probability": 0.3703853487968445
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_flip_rate": 0.10904254764318466,
+            "pseudo_flip_rate": 0.036347515881061554,
+            "joint_rate": 0.10017730295658112,
+            "episode_probability": 0.09925323724746704,
+            "pair_probability": 0.4576161503791809
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_flip_rate": 0.11258865147829056,
+            "pseudo_flip_rate": 0.024822693318128586,
+            "joint_rate": 0.10904254764318466,
+            "episode_probability": 0.1040131151676178,
+            "pair_probability": 0.48871442675590515
+          }
+        ],
+        "normal_flip_rate": 0.08658392230669658,
+        "pseudo_flip_rate": 0.03368794173002243,
+        "joint_rate": 0.08185578882694244,
+        "episode_probability": 0.09640531490246455,
+        "pair_probability": 0.43890530864397687
+      },
+      "null_episode_probability": 0.09626362814257543,
+      "null_pair_probability": 0.443810211494565,
+      "null_joint_rate": 0.082483744675604,
+      "null_count": 16
+    }
+  },
+  "support_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": -0.001956109844502965,
+      "S": -0.0022443936073354293
+    },
+    "probabilities": {
+      "D": 0.3340176045894623,
+      "MD": 0.333364874124527,
+      "ALL": 0.33261749148368835
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.0019561098888516426,
+      "ALL": -0.00420050323009491
+    },
+    "task_precision": [
+      1.20819091796875,
+      1.1983693838119507,
+      1.2079014778137207,
+      1.2271811962127686
+    ],
+    "M": {
+      "evidence": -0.001956109844502965,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_flip_rate": 0.15868793427944183,
+            "pseudo_flip_rate": 0.12765957415103912,
+            "joint_rate": 0.11702127009630203,
+            "episode_probability": 0.1014113500714302,
+            "pair_probability": 0.48443618416786194
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_flip_rate": 0.05673758685588837,
+            "pseudo_flip_rate": 0.04787233844399452,
+            "joint_rate": 0.050531912595033646,
+            "episode_probability": 0.08743637800216675,
+            "pair_probability": 0.38003358244895935
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_flip_rate": 0.07446808367967606,
+            "pseudo_flip_rate": 0.06382978707551956,
+            "joint_rate": 0.06382978707551956,
+            "episode_probability": 0.09181538969278336,
+            "pair_probability": 0.4095234274864197
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_flip_rate": 0.10283687710762024,
+            "pseudo_flip_rate": 0.06914893537759781,
+            "joint_rate": 0.08776595443487167,
+            "episode_probability": 0.08798236399888992,
+            "pair_probability": 0.3889067769050598
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_flip_rate": 0.09751772880554199,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.0939716249704361,
+            "episode_probability": 0.0982040986418724,
+            "pair_probability": 0.4416709542274475
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_flip_rate": 0.146276593208313,
+            "pseudo_flip_rate": 0.04964538663625717,
+            "joint_rate": 0.1391843855381012,
+            "episode_probability": 0.10503488779067993,
+            "pair_probability": 0.48583951592445374
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_flip_rate": 0.09308510273694992,
+            "pseudo_flip_rate": 0.048758864402770996,
+            "joint_rate": 0.08865247666835785,
+            "episode_probability": 0.09741544723510742,
+            "pair_probability": 0.4461180567741394
+          }
+        ],
+        "normal_flip_rate": 0.10422998666763306,
+        "pseudo_flip_rate": 0.06294326111674309,
+        "joint_rate": 0.0915653444826603,
+        "episode_probability": 0.09561427363327571,
+        "pair_probability": 0.4337897854191916
+      },
+      "null_episode_probability": 0.09757038347777867,
+      "null_pair_probability": 0.4496155728896459,
+      "null_joint_rate": 0.0755656843650199,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": -0.0022443936073354293,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_flip_rate": 0.06471630930900574,
+            "pseudo_flip_rate": 0.05141843855381012,
+            "joint_rate": 0.060283686965703964,
+            "episode_probability": 0.09400270879268646,
+            "pair_probability": 0.42911043763160706
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_flip_rate": 0.020390070974826813,
+            "pseudo_flip_rate": 0.026595743373036385,
+            "joint_rate": 0.01950354501605034,
+            "episode_probability": 0.08525827527046204,
+            "pair_probability": 0.36134007573127747
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_flip_rate": 0.03989361599087715,
+            "pseudo_flip_rate": 0.036347515881061554,
+            "joint_rate": 0.03546099364757538,
+            "episode_probability": 0.08359437435865402,
+            "pair_probability": 0.3535410761833191
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_flip_rate": 0.09219858050346375,
+            "pseudo_flip_rate": 0.042553190141916275,
+            "joint_rate": 0.0797872319817543,
+            "episode_probability": 0.09414162486791611,
+            "pair_probability": 0.4338836371898651
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_flip_rate": 0.08067375421524048,
+            "pseudo_flip_rate": 0.020390070974826813,
+            "joint_rate": 0.0797872319817543,
+            "episode_probability": 0.10025186836719513,
+            "pair_probability": 0.46044692397117615
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_flip_rate": 0.08599290251731873,
+            "pseudo_flip_rate": 0.029255317524075508,
+            "joint_rate": 0.08244680613279343,
+            "episode_probability": 0.10041648149490356,
+            "pair_probability": 0.45903480052948
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_flip_rate": 0.06648936122655869,
+            "pseudo_flip_rate": 0.01950354501605034,
+            "joint_rate": 0.06560283154249191,
+            "episode_probability": 0.0975758284330368,
+            "pair_probability": 0.43538782000541687
+          }
+        ],
+        "normal_flip_rate": 0.0643363706767559,
+        "pseudo_flip_rate": 0.03229483163782528,
+        "joint_rate": 0.06041033246687481,
+        "episode_probability": 0.09360588022640773,
+        "pair_probability": 0.4189635387488774
+      },
+      "null_episode_probability": 0.09585027383374316,
+      "null_pair_probability": 0.43752032757869785,
+      "null_joint_rate": 0.07327285700843536,
+      "null_count": 16
+    }
+  },
+  "full_scene_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "gate_evidence": {
+      "M": -0.0027301034579674532,
+      "S": -0.001528569497168078
+    },
+    "probabilities": {
+      "D": 0.33411023020744324,
+      "MD": 0.33319932222366333,
+      "ALL": 0.33269038796424866
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.0027301034424453974,
+      "ALL": -0.004258672706782818
+    },
+    "task_precision": [
+      1.20819091796875,
+      1.1983693838119507,
+      1.2079014778137207,
+      1.2271811962127686
+    ],
+    "M": {
+      "evidence": -0.0027301034579674532,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_flip_rate": 0.15868793427944183,
+            "pseudo_flip_rate": 0.12765957415103912,
+            "joint_rate": 0.11702127009630203,
+            "episode_probability": 0.1014113500714302,
+            "pair_probability": 0.48443618416786194
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_flip_rate": 0.07003545761108398,
+            "pseudo_flip_rate": 0.06737588346004486,
+            "joint_rate": 0.06471630930900574,
+            "episode_probability": 0.09036387503147125,
+            "pair_probability": 0.4036567509174347
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_flip_rate": 0.05673758685588837,
+            "pseudo_flip_rate": 0.04787233844399452,
+            "joint_rate": 0.050531912595033646,
+            "episode_probability": 0.08743637800216675,
+            "pair_probability": 0.38003358244895935
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_flip_rate": 0.07446808367967606,
+            "pseudo_flip_rate": 0.06382978707551956,
+            "joint_rate": 0.06382978707551956,
+            "episode_probability": 0.09181538969278336,
+            "pair_probability": 0.4095234274864197
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_flip_rate": 0.10283687710762024,
+            "pseudo_flip_rate": 0.06914893537759781,
+            "joint_rate": 0.08776595443487167,
+            "episode_probability": 0.08798236399888992,
+            "pair_probability": 0.3889067769050598
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_flip_rate": 0.17641843855381012,
+            "pseudo_flip_rate": 0.05762411281466484,
+            "joint_rate": 0.16489361226558685,
+            "episode_probability": 0.09608631581068039,
+            "pair_probability": 0.44262710213661194
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_flip_rate": 0.09751772880554199,
+            "pseudo_flip_rate": 0.03368794173002243,
+            "joint_rate": 0.0939716249704361,
+            "episode_probability": 0.0982040986418724,
+            "pair_probability": 0.4416709542274475
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_flip_rate": 0.146276593208313,
+            "pseudo_flip_rate": 0.04964538663625717,
+            "joint_rate": 0.1391843855381012,
+            "episode_probability": 0.10503488779067993,
+            "pair_probability": 0.48583951592445374
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_flip_rate": 0.15868793427944183,
+            "pseudo_flip_rate": 0.07358156144618988,
+            "joint_rate": 0.14716312289237976,
+            "episode_probability": 0.09984026849269867,
+            "pair_probability": 0.46379780769348145
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_flip_rate": 0.09308510273694992,
+            "pseudo_flip_rate": 0.048758864402770996,
+            "joint_rate": 0.08865247666835785,
+            "episode_probability": 0.09741544723510742,
+            "pair_probability": 0.4461180567741394
+          }
+        ],
+        "normal_flip_rate": 0.11347517371177673,
+        "pseudo_flip_rate": 0.06391843855381012,
+        "joint_rate": 0.10177304558455944,
+        "episode_probability": 0.09555903747677803,
+        "pair_probability": 0.43466101586818695
+      },
+      "null_episode_probability": 0.09828914093474549,
+      "null_pair_probability": 0.45521442145109176,
+      "null_joint_rate": 0.07832446548466881,
+      "null_count": 6
+    },
+    "S": {
+      "evidence": -0.001528569497168078,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_flip_rate": 0.06471630930900574,
+            "pseudo_flip_rate": 0.05141843855381012,
+            "joint_rate": 0.060283686965703964,
+            "episode_probability": 0.09400270879268646,
+            "pair_probability": 0.42911043763160706
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_flip_rate": 0.0381205677986145,
+            "pseudo_flip_rate": 0.03989361599087715,
+            "joint_rate": 0.036347515881061554,
+            "episode_probability": 0.08594959229230881,
+            "pair_probability": 0.3703853487968445
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_flip_rate": 0.020390070974826813,
+            "pseudo_flip_rate": 0.026595743373036385,
+            "joint_rate": 0.01950354501605034,
+            "episode_probability": 0.08525827527046204,
+            "pair_probability": 0.36134007573127747
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_flip_rate": 0.03989361599087715,
+            "pseudo_flip_rate": 0.036347515881061554,
+            "joint_rate": 0.03546099364757538,
+            "episode_probability": 0.08359437435865402,
+            "pair_probability": 0.3535410761833191
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_flip_rate": 0.09219858050346375,
+            "pseudo_flip_rate": 0.042553190141916275,
+            "joint_rate": 0.0797872319817543,
+            "episode_probability": 0.09414162486791611,
+            "pair_probability": 0.4338836371898651
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_flip_rate": 0.10904254764318466,
+            "pseudo_flip_rate": 0.036347515881061554,
+            "joint_rate": 0.10017730295658112,
+            "episode_probability": 0.09925323724746704,
+            "pair_probability": 0.4576161503791809
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_flip_rate": 0.08067375421524048,
+            "pseudo_flip_rate": 0.020390070974826813,
+            "joint_rate": 0.0797872319817543,
+            "episode_probability": 0.10025186836719513,
+            "pair_probability": 0.46044692397117615
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_flip_rate": 0.08599290251731873,
+            "pseudo_flip_rate": 0.029255317524075508,
+            "joint_rate": 0.08244680613279343,
+            "episode_probability": 0.10041648149490356,
+            "pair_probability": 0.45903480052948
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_flip_rate": 0.11258865147829056,
+            "pseudo_flip_rate": 0.024822693318128586,
+            "joint_rate": 0.10904254764318466,
+            "episode_probability": 0.1040131151676178,
+            "pair_probability": 0.48871442675590515
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_flip_rate": 0.06648936122655869,
+            "pseudo_flip_rate": 0.01950354501605034,
+            "joint_rate": 0.06560283154249191,
+            "episode_probability": 0.0975758284330368,
+            "pair_probability": 0.43538782000541687
+          }
+        ],
+        "normal_flip_rate": 0.0710106361657381,
+        "pseudo_flip_rate": 0.03271276466548443,
+        "joint_rate": 0.06684396937489509,
+        "episode_probability": 0.09444571062922477,
+        "pair_probability": 0.4249460697174072
+      },
+      "null_episode_probability": 0.09597428012639285,
+      "null_pair_probability": 0.439407292753458,
+      "null_joint_rate": 0.07603612330858596,
+      "null_count": 16
+    }
+  }
+}

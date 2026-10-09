@@ -1,0 +1,63 @@
+{
+  "scene": "vehicle",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence2/train/01"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Vehicle Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.26832151412963867,
+        "normal_delta_median": 0.06282984341184299,
+        "pseudo_flip": 0.2198581596215566,
+        "pseudo_delta_median": 0.3045949439207713
+      },
+      "M": {
+        "normal_flip": 0.1285460963845253,
+        "normal_delta_median": 0.014532665411631266,
+        "pseudo_flip": 0.06619385381539662,
+        "pseudo_delta_median": -0.01833141843477885
+      },
+      "S": {
+        "normal_flip": 0.0868794322013855,
+        "normal_delta_median": -0.007271133363246918,
+        "pseudo_flip": 0.02570921927690506,
+        "pseudo_delta_median": -0.07479984561602275
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.19592198729515076,
+        "normal_delta_median": 0.08868408203125,
+        "pseudo_flip": 0.1976950317621231,
+        "pseudo_delta_median": 0.2969253361225128
+      },
+      "M": {
+        "normal_flip": 0.1285461038351059,
+        "normal_delta_median": 0.00825347751379013,
+        "pseudo_flip": 0.06294326484203339,
+        "pseudo_delta_median": -0.023466527462005615
+      },
+      "S": {
+        "normal_flip": 0.10106383264064789,
+        "normal_delta_median": -0.014624781906604767,
+        "pseudo_flip": 0.026595745235681534,
+        "pseudo_delta_median": -0.0750783383846283
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8
+  }
+}

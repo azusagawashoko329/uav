@@ -1,0 +1,13 @@
+[2026-07-14 15:53:46] start scene=solar gpu=1 version=DLBM_v004_mask_localization_target_probe
+[solar] support=144 query=48 boundaries=[0, 4, 8, 11] micro=5 localizer=20
+  cached L0
+  cached L4
+  cached L8
+  cached L11
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  localizer ep05 train=0.2254 choice=L0 aucs=L0:0.8319,L4:0.8210,L8:0.7471,L11:0.4611
+  localizer ep10 train=0.2053 choice=L0 aucs=L0:0.8432,L4:0.8400,L8:0.7464,L11:0.4611
+  localizer ep20 train=0.2108 choice=L0 aucs=L0:0.8356,L4:0.8329,L8:0.7457,L11:0.4611
+  final choice=L0 peak=3.67 GiB
+[2026-07-14 15:55:08] end scene=solar exit=0

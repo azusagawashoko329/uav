@@ -1,0 +1,14 @@
+[2026-07-14 15:07:41] start scene=crossroads gpu=0 version=DLBM_v001_topk_counterfactual
+[crossroads] support=336/7 videos query=144/3 videos device=cuda:0
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  evaluator query loss=0.0430 auc=1.0000 normal=-5.351 pseudo=5.201
+  exact sign=0.333 pearson=0.959
+  episode=0 boundary=L0 gain_range=[-1.235e-07,1.057e-07]
+  episode=1 boundary=L9 gain_range=[-1.839e-08,7.385e-08]
+  episode=2 boundary=L6 gain_range=[-1.450e-08,9.190e-09]
+  episode=3 boundary=L11 gain_range=[-2.179e-07,7.194e-08]
+  final boundary=L11 taps=[11]
+  peak_gpu_memory=1.59 GiB
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v001_topk_counterfactual/scenes/crossroads
+[2026-07-14 15:08:15] end scene=crossroads exit=0

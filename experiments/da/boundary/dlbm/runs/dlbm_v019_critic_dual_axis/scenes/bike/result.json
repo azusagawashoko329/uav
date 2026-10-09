@@ -1,0 +1,1109 @@
+{
+  "format_version": 19,
+  "scene": "bike",
+  "method": "normal_order_novelty_learned_pseudo_opening_critic_dlbm",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/bike.pth",
+  "probe_sha256": "d92acf912b6705be630547a65c7e85ab6ec703f26b10625eb3eba81d89eac961",
+  "probe_mutated": false,
+  "args": {
+    "scene": "bike",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v019_critic_dual_axis/scenes/bike",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "pseudo_mode": "multi",
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_batch": 24,
+    "predictor_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_bike/predictor.pth",
+    "epochs": 5,
+    "steps_per_epoch": 20,
+    "episode_frames": 32,
+    "pair_samples": 256,
+    "eval_pairs": 2048,
+    "eval_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      1,
+      3,
+      5
+    ]
+  },
+  "videos": {
+    "support": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+    ],
+    "query": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+    ]
+  },
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 1.5979301224433584e-05,
+    "normal_aligned_mae": 0.0043500622268766165,
+    "normal_independent_layer_roll_smooth_l1": 2.0416538063727785e-05,
+    "normal_independent_layer_roll_mae": 0.004955478245392442,
+    "pseudo_aligned_smooth_l1": 7.448155702149961e-05,
+    "pseudo_aligned_mae": 0.005646898411214352,
+    "pseudo_independent_layer_roll_smooth_l1": 0.00014650553202955052,
+    "pseudo_independent_layer_roll_mae": 0.007231135154142976,
+    "normal_roll_loss_ratio": 1.277686538164092,
+    "pseudo_over_normal_loss_ratio": 4.661127290573355
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.639518740773201,
+      "normal_order_loss": 0.6900652855634689,
+      "nuisance_loss": 0.5959402188658715,
+      "grad_norm": 1.1383798711001873,
+      "M_null_base_nll": 0.6940020152500698,
+      "M_null_critic_gap": 0.4624724936272417,
+      "S_real_base_nll": 0.6940701802571615,
+      "S_real_critic_gap": 0.6096812393516302,
+      "S_null_base_nll": 0.6960398554801941,
+      "S_null_critic_gap": 0.48321351408958435,
+      "M_real_base_nll": 0.6925030946731567,
+      "M_real_critic_gap": 0.5748621175686518,
+      "axis_precision": [
+        1.0191129446029663,
+        1.0197373628616333
+      ],
+      "query": {
+        "boundary": 8,
+        "selected_taps": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.34206023812294006,
+          "MD": 0.31882786750793457,
+          "ALL": 0.33911189436912537
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.07033555954694748,
+          "ALL": -0.008656766265630722
+        },
+        "gate_evidence": {
+          "M": -0.07033555954694748,
+          "S": 0.06167879328131676
+        },
+        "axis_precision": [
+          1.0191129446029663,
+          1.0197373628616333
+        ],
+        "M": {
+          "axes": [
+            -0.001190468668937683,
+            0.0677844534317652
+          ],
+          "normal_novelty": -0.001190468668937683,
+          "pseudo_nuisance": 0.0677844534317652,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.690013587474823,
+                "normal_opened_nll": 0.6150780916213989,
+                "critic_nll": 0.4407011866569519,
+                "critic_gap": 1.4658249616622925
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.6928793787956238,
+                "normal_opened_nll": 0.6831789016723633,
+                "critic_nll": 0.5111587047576904,
+                "critic_gap": 1.2054080963134766
+              }
+            ],
+            "normal_base_nll": 0.6914464831352234,
+            "normal_opened_nll": 0.6491284966468811,
+            "critic_nll": 0.47592994570732117,
+            "critic_gap": 1.3356165289878845
+          },
+          "null_normal_base_nll": 0.6926369518041611,
+          "null_critic_nll": 0.5437143991390864,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            -0.0012770630419254303,
+            -0.06176126189529896
+          ],
+          "normal_novelty": -0.0012770630419254303,
+          "pseudo_nuisance": -0.06176126189529896,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.6901898384094238,
+                "normal_opened_nll": 0.6532716751098633,
+                "critic_nll": 0.5694683790206909,
+                "critic_gap": 0.9801574945449829
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.6920148730278015,
+                "normal_opened_nll": 0.6760571002960205,
+                "critic_nll": 0.5912773013114929,
+                "critic_gap": 0.8904728889465332
+              }
+            ],
+            "normal_base_nll": 0.6911023557186127,
+            "normal_opened_nll": 0.6646643877029419,
+            "critic_nll": 0.5803728401660919,
+            "critic_gap": 0.9353151917457581
+          },
+          "null_normal_base_nll": 0.6923794187605381,
+          "null_critic_nll": 0.518611578270793,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.5888054877519607,
+      "normal_order_loss": 0.6792642414569855,
+      "nuisance_loss": 0.5200158178806304,
+      "grad_norm": 2.188742718100548,
+      "M_null_base_nll": 0.6921775426183429,
+      "M_null_critic_gap": 1.342700447354998,
+      "S_real_base_nll": 0.7001615166664124,
+      "S_real_critic_gap": 1.222695529460907,
+      "S_null_base_nll": 0.6986824870109558,
+      "S_null_critic_gap": 0.7368234097957611,
+      "M_real_base_nll": 0.6914572517077128,
+      "M_real_critic_gap": 1.1991419196128845,
+      "axis_precision": [
+        1.0362461805343628,
+        1.0384141206741333
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5318256929516793,
+      "normal_order_loss": 0.6589854836463929,
+      "nuisance_loss": 0.4448001831769943,
+      "grad_norm": 4.6440128400921825,
+      "M_null_base_nll": 0.6908449464374118,
+      "M_null_critic_gap": 1.5936413407325745,
+      "S_real_base_nll": 0.693895955880483,
+      "S_real_critic_gap": 1.890160083770752,
+      "S_null_base_nll": 0.6921152898243496,
+      "S_null_critic_gap": 2.134942582675389,
+      "M_real_base_nll": 0.6968203186988831,
+      "M_real_critic_gap": 2.025200366973877,
+      "axis_precision": [
+        1.0541218519210815,
+        1.0585049390792847
+      ],
+      "query": {
+        "boundary": 8,
+        "selected_taps": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.34152892231941223,
+          "MD": 0.3293233811855316,
+          "ALL": 0.32914772629737854
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.03639215975999832,
+          "ALL": -0.036925770342350006
+        },
+        "gate_evidence": {
+          "M": -0.03639215975999832,
+          "S": -0.0005336103495210409
+        },
+        "axis_precision": [
+          1.0541218519210815,
+          1.0585049390792847
+        ],
+        "M": {
+          "axes": [
+            -0.004495114088058472,
+            0.029904216527938843
+          ],
+          "normal_novelty": -0.004495114088058472,
+          "pseudo_nuisance": 0.029904216527938843,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.6804239153862,
+                "normal_opened_nll": 0.537385880947113,
+                "critic_nll": 0.4398362636566162,
+                "critic_gap": 2.2664108276367188
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.687328040599823,
+                "normal_opened_nll": 0.6736297011375427,
+                "critic_nll": 0.33272144198417664,
+                "critic_gap": 2.574768543243408
+              }
+            ],
+            "normal_base_nll": 0.6838759779930115,
+            "normal_opened_nll": 0.6055077910423279,
+            "critic_nll": 0.3862788528203964,
+            "critic_gap": 2.4205896854400635
+          },
+          "null_normal_base_nll": 0.68837109208107,
+          "null_critic_nll": 0.41618306934833527,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            -0.002626849338412285,
+            -0.002111854963004589
+          ],
+          "normal_novelty": -0.002626849338412285,
+          "pseudo_nuisance": -0.002111854963004589,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.6834858059883118,
+                "normal_opened_nll": 0.5875932574272156,
+                "critic_nll": 0.29887473583221436,
+                "critic_gap": 2.6847286224365234
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.6869680285453796,
+                "normal_opened_nll": 0.6282625198364258,
+                "critic_nll": 0.4122367203235626,
+                "critic_gap": 2.1829309463500977
+              }
+            ],
+            "normal_base_nll": 0.6852269172668457,
+            "normal_opened_nll": 0.6079278886318207,
+            "critic_nll": 0.3555557280778885,
+            "critic_gap": 2.4338297843933105
+          },
+          "null_normal_base_nll": 0.687853766605258,
+          "null_critic_nll": 0.3534438731148839,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 0.5002721011638641,
+      "normal_order_loss": 0.6562258690595627,
+      "nuisance_loss": 0.4020814746618271,
+      "grad_norm": 2.5669336304068566,
+      "M_null_base_nll": 0.6882863879203797,
+      "M_null_critic_gap": 2.193064308166504,
+      "S_real_base_nll": 0.6925937732060751,
+      "S_real_critic_gap": 2.442773958047231,
+      "S_null_base_nll": 0.6886760145425797,
+      "S_null_critic_gap": 2.2457801401615143,
+      "M_real_base_nll": 0.6845840215682983,
+      "M_real_critic_gap": 2.5455930709838865,
+      "axis_precision": [
+        1.0713104009628296,
+        1.0781217813491821
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": 0.43779837936162946,
+      "normal_order_loss": 0.6223970085382462,
+      "nuisance_loss": 0.3365227200090885,
+      "grad_norm": 2.331868793070316,
+      "M_real_base_nll": 0.6579660892486572,
+      "M_real_critic_gap": 3.2170338153839113,
+      "S_real_base_nll": 0.6626840962304009,
+      "S_real_critic_gap": 3.466586192448934,
+      "M_null_base_nll": 0.6566417574882507,
+      "M_null_critic_gap": 3.192210149765015,
+      "S_null_base_nll": 0.70074462890625,
+      "S_null_critic_gap": 3.8275535106658936,
+      "axis_precision": [
+        1.0924549102783203,
+        1.1027120351791382
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.3351275324821472,
+          "MD": 0.32730770111083984,
+          "ALL": 0.3375647962093353
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": -0.02361041121184826,
+          "ALL": 0.007246334105730057
+        },
+        "gate_evidence": {
+          "M": -0.02361041121184826,
+          "S": 0.030856745317578316
+        },
+        "axis_precision": [
+          1.0924549102783203,
+          1.1027120351791382
+        ],
+        "M": {
+          "axes": [
+            0.0008911043405532837,
+            0.02229403704404831
+          ],
+          "normal_novelty": 0.0008911043405532837,
+          "pseudo_nuisance": 0.02229403704404831,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.6181473731994629,
+                "normal_opened_nll": 0.5014986395835876,
+                "critic_nll": 0.2917115092277527,
+                "critic_gap": 4.0096435546875
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.6538022756576538,
+                "normal_opened_nll": 0.6737677454948425,
+                "critic_nll": 0.40051397681236267,
+                "critic_gap": 3.426614761352539
+              }
+            ],
+            "normal_base_nll": 0.6359748244285583,
+            "normal_opened_nll": 0.5876331925392151,
+            "critic_nll": 0.3461127430200577,
+            "critic_gap": 3.7181291580200195
+          },
+          "null_normal_base_nll": 0.6350837200880051,
+          "null_critic_nll": 0.368406780064106,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            0.02715134806931019,
+            -0.0010838024318218231
+          ],
+          "normal_novelty": 0.02715134806931019,
+          "pseudo_nuisance": -0.0010838024318218231,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal_base_nll": 0.6838123202323914,
+                "normal_opened_nll": 0.6008577942848206,
+                "critic_nll": 0.25569847226142883,
+                "critic_gap": 4.046422958374023
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal_base_nll": 0.704140841960907,
+                "normal_opened_nll": 0.633287250995636,
+                "critic_nll": 0.3922598659992218,
+                "critic_gap": 3.396322011947632
+              }
+            ],
+            "normal_base_nll": 0.6939765810966492,
+            "normal_opened_nll": 0.6170725226402283,
+            "critic_nll": 0.3239791691303253,
+            "critic_gap": 3.7213724851608276
+          },
+          "null_normal_base_nll": 0.666825233027339,
+          "null_critic_nll": 0.3228953666985035,
+          "null_count": 16
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "1": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.34206023812294006,
+        "MD": 0.31882786750793457,
+        "ALL": 0.33911189436912537
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.07033555954694748,
+        "ALL": -0.008656766265630722
+      },
+      "gate_evidence": {
+        "M": -0.07033555954694748,
+        "S": 0.06167879328131676
+      },
+      "axis_precision": [
+        1.0191129446029663,
+        1.0197373628616333
+      ],
+      "M": {
+        "axes": [
+          -0.001190468668937683,
+          0.0677844534317652
+        ],
+        "normal_novelty": -0.001190468668937683,
+        "pseudo_nuisance": 0.0677844534317652,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.690013587474823,
+              "normal_opened_nll": 0.6150780916213989,
+              "critic_nll": 0.4407011866569519,
+              "critic_gap": 1.4658249616622925
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.6928793787956238,
+              "normal_opened_nll": 0.6831789016723633,
+              "critic_nll": 0.5111587047576904,
+              "critic_gap": 1.2054080963134766
+            }
+          ],
+          "normal_base_nll": 0.6914464831352234,
+          "normal_opened_nll": 0.6491284966468811,
+          "critic_nll": 0.47592994570732117,
+          "critic_gap": 1.3356165289878845
+        },
+        "null_normal_base_nll": 0.6926369518041611,
+        "null_critic_nll": 0.5437143991390864,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          -0.0012770630419254303,
+          -0.06176126189529896
+        ],
+        "normal_novelty": -0.0012770630419254303,
+        "pseudo_nuisance": -0.06176126189529896,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.6901898384094238,
+              "normal_opened_nll": 0.6532716751098633,
+              "critic_nll": 0.5694683790206909,
+              "critic_gap": 0.9801574945449829
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.6920148730278015,
+              "normal_opened_nll": 0.6760571002960205,
+              "critic_nll": 0.5912773013114929,
+              "critic_gap": 0.8904728889465332
+            }
+          ],
+          "normal_base_nll": 0.6911023557186127,
+          "normal_opened_nll": 0.6646643877029419,
+          "critic_nll": 0.5803728401660919,
+          "critic_gap": 0.9353151917457581
+        },
+        "null_normal_base_nll": 0.6923794187605381,
+        "null_critic_nll": 0.518611578270793,
+        "null_count": 16
+      }
+    },
+    "3": {
+      "boundary": 8,
+      "selected_taps": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.34152892231941223,
+        "MD": 0.3293233811855316,
+        "ALL": 0.32914772629737854
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.03639215975999832,
+        "ALL": -0.036925770342350006
+      },
+      "gate_evidence": {
+        "M": -0.03639215975999832,
+        "S": -0.0005336103495210409
+      },
+      "axis_precision": [
+        1.0541218519210815,
+        1.0585049390792847
+      ],
+      "M": {
+        "axes": [
+          -0.004495114088058472,
+          0.029904216527938843
+        ],
+        "normal_novelty": -0.004495114088058472,
+        "pseudo_nuisance": 0.029904216527938843,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.6804239153862,
+              "normal_opened_nll": 0.537385880947113,
+              "critic_nll": 0.4398362636566162,
+              "critic_gap": 2.2664108276367188
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.687328040599823,
+              "normal_opened_nll": 0.6736297011375427,
+              "critic_nll": 0.33272144198417664,
+              "critic_gap": 2.574768543243408
+            }
+          ],
+          "normal_base_nll": 0.6838759779930115,
+          "normal_opened_nll": 0.6055077910423279,
+          "critic_nll": 0.3862788528203964,
+          "critic_gap": 2.4205896854400635
+        },
+        "null_normal_base_nll": 0.68837109208107,
+        "null_critic_nll": 0.41618306934833527,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          -0.002626849338412285,
+          -0.002111854963004589
+        ],
+        "normal_novelty": -0.002626849338412285,
+        "pseudo_nuisance": -0.002111854963004589,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.6834858059883118,
+              "normal_opened_nll": 0.5875932574272156,
+              "critic_nll": 0.29887473583221436,
+              "critic_gap": 2.6847286224365234
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.6869680285453796,
+              "normal_opened_nll": 0.6282625198364258,
+              "critic_nll": 0.4122367203235626,
+              "critic_gap": 2.1829309463500977
+            }
+          ],
+          "normal_base_nll": 0.6852269172668457,
+          "normal_opened_nll": 0.6079278886318207,
+          "critic_nll": 0.3555557280778885,
+          "critic_gap": 2.4338297843933105
+        },
+        "null_normal_base_nll": 0.687853766605258,
+        "null_critic_nll": 0.3534438731148839,
+        "null_count": 16
+      }
+    },
+    "5": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.3351275324821472,
+        "MD": 0.32730770111083984,
+        "ALL": 0.3375647962093353
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": -0.02361041121184826,
+        "ALL": 0.007246334105730057
+      },
+      "gate_evidence": {
+        "M": -0.02361041121184826,
+        "S": 0.030856745317578316
+      },
+      "axis_precision": [
+        1.0924549102783203,
+        1.1027120351791382
+      ],
+      "M": {
+        "axes": [
+          0.0008911043405532837,
+          0.02229403704404831
+        ],
+        "normal_novelty": 0.0008911043405532837,
+        "pseudo_nuisance": 0.02229403704404831,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.6181473731994629,
+              "normal_opened_nll": 0.5014986395835876,
+              "critic_nll": 0.2917115092277527,
+              "critic_gap": 4.0096435546875
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.6538022756576538,
+              "normal_opened_nll": 0.6737677454948425,
+              "critic_nll": 0.40051397681236267,
+              "critic_gap": 3.426614761352539
+            }
+          ],
+          "normal_base_nll": 0.6359748244285583,
+          "normal_opened_nll": 0.5876331925392151,
+          "critic_nll": 0.3461127430200577,
+          "critic_gap": 3.7181291580200195
+        },
+        "null_normal_base_nll": 0.6350837200880051,
+        "null_critic_nll": 0.368406780064106,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          0.02715134806931019,
+          -0.0010838024318218231
+        ],
+        "normal_novelty": 0.02715134806931019,
+        "pseudo_nuisance": -0.0010838024318218231,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal_base_nll": 0.6838123202323914,
+              "normal_opened_nll": 0.6008577942848206,
+              "critic_nll": 0.25569847226142883,
+              "critic_gap": 4.046422958374023
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal_base_nll": 0.704140841960907,
+              "normal_opened_nll": 0.633287250995636,
+              "critic_nll": 0.3922598659992218,
+              "critic_gap": 3.396322011947632
+            }
+          ],
+          "normal_base_nll": 0.6939765810966492,
+          "normal_opened_nll": 0.6170725226402283,
+          "critic_nll": 0.3239791691303253,
+          "critic_gap": 3.7213724851608276
+        },
+        "null_normal_base_nll": 0.666825233027339,
+        "null_critic_nll": 0.3228953666985035,
+        "null_count": 16
+      }
+    }
+  },
+  "query_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.3351275324821472,
+      "MD": 0.32730770111083984,
+      "ALL": 0.3375647962093353
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.02361041121184826,
+      "ALL": 0.007246334105730057
+    },
+    "gate_evidence": {
+      "M": -0.02361041121184826,
+      "S": 0.030856745317578316
+    },
+    "axis_precision": [
+      1.0924549102783203,
+      1.1027120351791382
+    ],
+    "M": {
+      "axes": [
+        0.0008911043405532837,
+        0.02229403704404831
+      ],
+      "normal_novelty": 0.0008911043405532837,
+      "pseudo_nuisance": 0.02229403704404831,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_base_nll": 0.6181473731994629,
+            "normal_opened_nll": 0.5014986395835876,
+            "critic_nll": 0.2917115092277527,
+            "critic_gap": 4.0096435546875
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_base_nll": 0.6538022756576538,
+            "normal_opened_nll": 0.6737677454948425,
+            "critic_nll": 0.40051397681236267,
+            "critic_gap": 3.426614761352539
+          }
+        ],
+        "normal_base_nll": 0.6359748244285583,
+        "normal_opened_nll": 0.5876331925392151,
+        "critic_nll": 0.3461127430200577,
+        "critic_gap": 3.7181291580200195
+      },
+      "null_normal_base_nll": 0.6350837200880051,
+      "null_critic_nll": 0.368406780064106,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.02715134806931019,
+        -0.0010838024318218231
+      ],
+      "normal_novelty": 0.02715134806931019,
+      "pseudo_nuisance": -0.0010838024318218231,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_base_nll": 0.6838123202323914,
+            "normal_opened_nll": 0.6008577942848206,
+            "critic_nll": 0.25569847226142883,
+            "critic_gap": 4.046422958374023
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_base_nll": 0.704140841960907,
+            "normal_opened_nll": 0.633287250995636,
+            "critic_nll": 0.3922598659992218,
+            "critic_gap": 3.396322011947632
+          }
+        ],
+        "normal_base_nll": 0.6939765810966492,
+        "normal_opened_nll": 0.6170725226402283,
+        "critic_nll": 0.3239791691303253,
+        "critic_gap": 3.7213724851608276
+      },
+      "null_normal_base_nll": 0.666825233027339,
+      "null_critic_nll": 0.3228953666985035,
+      "null_count": 16
+    }
+  },
+  "support_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.35984769463539124,
+      "MD": 0.3194596767425537,
+      "ALL": 0.32069265842437744
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.1190498024225235,
+      "ALL": -0.11519769579172134
+    },
+    "gate_evidence": {
+      "M": -0.1190498024225235,
+      "S": 0.0038521033711731434
+    },
+    "axis_precision": [
+      1.0924549102783203,
+      1.1027120351791382
+    ],
+    "M": {
+      "axes": [
+        0.011453365286191342,
+        0.1193077489733696
+      ],
+      "normal_novelty": 0.011453365286191342,
+      "pseudo_nuisance": 0.1193077489733696,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_base_nll": 0.6776930093765259,
+            "normal_opened_nll": 0.5948267579078674,
+            "critic_nll": 0.3052559494972229,
+            "critic_gap": 3.9547808170318604
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_base_nll": 0.6611201167106628,
+            "normal_opened_nll": 0.6689672470092773,
+            "critic_nll": 0.2848266363143921,
+            "critic_gap": 4.0099406242370605
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_base_nll": 0.7003779411315918,
+            "normal_opened_nll": 0.6292393207550049,
+            "critic_nll": 0.28598231077194214,
+            "critic_gap": 4.015342712402344
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_base_nll": 0.6560190320014954,
+            "normal_opened_nll": 0.5837171077728271,
+            "critic_nll": 0.38082876801490784,
+            "critic_gap": 3.4775023460388184
+          }
+        ],
+        "normal_base_nll": 0.673802524805069,
+        "normal_opened_nll": 0.6191876083612442,
+        "critic_nll": 0.31422341614961624,
+        "critic_gap": 3.8643916249275208
+      },
+      "null_normal_base_nll": 0.6623491595188776,
+      "null_critic_nll": 0.43353116512298584,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.0021490827202796936,
+        -0.0013642068952322006
+      ],
+      "normal_novelty": 0.0021490827202796936,
+      "pseudo_nuisance": -0.0013642068952322006,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_base_nll": 0.611716091632843,
+            "normal_opened_nll": 0.5550937056541443,
+            "critic_nll": 0.30166417360305786,
+            "critic_gap": 3.9173078536987305
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_base_nll": 0.7179211974143982,
+            "normal_opened_nll": 0.6113287806510925,
+            "critic_nll": 0.2294827699661255,
+            "critic_gap": 4.226718902587891
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_base_nll": 0.7387054562568665,
+            "normal_opened_nll": 0.6199231147766113,
+            "critic_nll": 0.2921677529811859,
+            "critic_gap": 4.023728370666504
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_base_nll": 0.6830187439918518,
+            "normal_opened_nll": 0.6045549511909485,
+            "critic_nll": 0.4027467370033264,
+            "critic_gap": 3.322711706161499
+          }
+        ],
+        "normal_base_nll": 0.6878403723239899,
+        "normal_opened_nll": 0.5977251380681992,
+        "critic_nll": 0.3065153583884239,
+        "critic_gap": 3.872616708278656
+      },
+      "null_normal_base_nll": 0.6856912896037102,
+      "null_critic_nll": 0.3051511514931917,
+      "null_count": 16
+    }
+  },
+  "full_scene_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.35152149200439453,
+      "MD": 0.3221554458141327,
+      "ALL": 0.3263230621814728
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.0872366726398468,
+      "ALL": -0.07438302040100098
+    },
+    "gate_evidence": {
+      "M": -0.0872366726398468,
+      "S": 0.012853650376200676
+    },
+    "axis_precision": [
+      1.0924549102783203,
+      1.1027120351791382
+    ],
+    "M": {
+      "axes": [
+        0.007932611637645248,
+        0.08696984499692906
+      ],
+      "normal_novelty": 0.007932611637645248,
+      "pseudo_nuisance": 0.08696984499692906,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_base_nll": 0.6181473731994629,
+            "normal_opened_nll": 0.5014986395835876,
+            "critic_nll": 0.2917115092277527,
+            "critic_gap": 4.0096435546875
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_base_nll": 0.6538022756576538,
+            "normal_opened_nll": 0.6737677454948425,
+            "critic_nll": 0.40051397681236267,
+            "critic_gap": 3.426614761352539
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_base_nll": 0.6776930093765259,
+            "normal_opened_nll": 0.5948267579078674,
+            "critic_nll": 0.3052559494972229,
+            "critic_gap": 3.9547808170318604
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_base_nll": 0.6611201167106628,
+            "normal_opened_nll": 0.6689672470092773,
+            "critic_nll": 0.2848266363143921,
+            "critic_gap": 4.0099406242370605
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_base_nll": 0.7003779411315918,
+            "normal_opened_nll": 0.6292393207550049,
+            "critic_nll": 0.28598231077194214,
+            "critic_gap": 4.015342712402344
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_base_nll": 0.6560190320014954,
+            "normal_opened_nll": 0.5837171077728271,
+            "critic_nll": 0.38082876801490784,
+            "critic_gap": 3.4775023460388184
+          }
+        ],
+        "normal_base_nll": 0.6611932913462321,
+        "normal_opened_nll": 0.6086694697539011,
+        "critic_nll": 0.32485319177309674,
+        "critic_gap": 3.815637469291687
+      },
+      "null_normal_base_nll": 0.6532606797085868,
+      "null_critic_nll": 0.4118230367700258,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.010483171169956562,
+        -0.0012707387407620563
+      ],
+      "normal_novelty": 0.010483171169956562,
+      "pseudo_nuisance": -0.0012707387407620563,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal_base_nll": 0.6838123202323914,
+            "normal_opened_nll": 0.6008577942848206,
+            "critic_nll": 0.25569847226142883,
+            "critic_gap": 4.046422958374023
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal_base_nll": 0.704140841960907,
+            "normal_opened_nll": 0.633287250995636,
+            "critic_nll": 0.3922598659992218,
+            "critic_gap": 3.396322011947632
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal_base_nll": 0.611716091632843,
+            "normal_opened_nll": 0.5550937056541443,
+            "critic_nll": 0.30166417360305786,
+            "critic_gap": 3.9173078536987305
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal_base_nll": 0.7179211974143982,
+            "normal_opened_nll": 0.6113287806510925,
+            "critic_nll": 0.2294827699661255,
+            "critic_gap": 4.226718902587891
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal_base_nll": 0.7387054562568665,
+            "normal_opened_nll": 0.6199231147766113,
+            "critic_nll": 0.2921677529811859,
+            "critic_gap": 4.023728370666504
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal_base_nll": 0.6830187439918518,
+            "normal_opened_nll": 0.6045549511909485,
+            "critic_nll": 0.4027467370033264,
+            "critic_gap": 3.322711706161499
+          }
+        ],
+        "normal_base_nll": 0.6898857752482096,
+        "normal_opened_nll": 0.6041742662588755,
+        "critic_nll": 0.31233662863572437,
+        "critic_gap": 3.82220196723938
+      },
+      "null_normal_base_nll": 0.679402604078253,
+      "null_critic_nll": 0.3110658898949623,
+      "null_count": 16
+    }
+  }
+}

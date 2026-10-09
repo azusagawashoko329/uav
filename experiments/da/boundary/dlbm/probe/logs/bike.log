@@ -1,0 +1,16 @@
+[2026-07-14 13:37:47] start scene=bike gpu=1 seed=42 probe_epochs=10
+[Bike Roundabout] 1 seq merged, 7950 frames, 124 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.4423 lr=1.41e-04  (118s)
+  ep02/10 loss=0.2070 lr=3.81e-04  (116s)
+  ep03/10 loss=0.1515 lr=5.00e-04  (116s)
+  ep04/10 loss=0.1146 lr=4.75e-04  (116s)
+  ep05/10 loss=0.0958 lr=4.05e-04  (116s)
+  ep06/10 loss=0.0843 lr=3.05e-04  (116s)
+  ep07/10 loss=0.0771 lr=1.93e-04  (116s)
+  ep08/10 loss=0.0726 lr=9.34e-05  (116s)
+  ep09/10 loss=0.0702 lr=2.44e-05  (116s)
+  ep10/10 loss=0.0692 lr=3.64e-09  (116s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/bike.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 13:57:25] end scene=bike exit=0

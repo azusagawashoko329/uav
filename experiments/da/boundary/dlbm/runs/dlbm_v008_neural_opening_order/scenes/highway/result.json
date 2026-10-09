@@ -1,0 +1,899 @@
+{
+  "format_version": 8,
+  "scene": "highway",
+  "method": "neural_opening_order_with_structural_layer_null",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/highway.pth",
+  "probe_mutated": false,
+  "args": {
+    "scene": "highway",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v008_neural_opening_order/scenes/highway",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "model_dim": 32,
+    "heads": 4,
+    "epochs": 30,
+    "steps_per_epoch": 44,
+    "frame_batch": 48,
+    "pair_samples": 512,
+    "eval_pairs": 4096,
+    "max_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      5,
+      10,
+      20,
+      30
+    ]
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/02",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence3/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence2/train/02"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Highway/sequence1/train/02"
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6221711012450132,
+      "grad_norm": 0.7434924564916979,
+      "null_fraction": 0.4318181818181818,
+      "normal_rank": 0.6871061988852241,
+      "normal_flip": 0.7010208937254819,
+      "pseudo_rank": 0.4806035343896259,
+      "pseudo_flip": 0.6199537962675095,
+      "normal_flip_rate": 0.11159446022727272,
+      "pseudo_flip_rate": 0.054154829545454544
+    },
+    {
+      "epoch": 2,
+      "loss": 0.45654661614786496,
+      "grad_norm": 2.5993553122336213,
+      "null_fraction": 0.5,
+      "normal_rank": 0.673191329294985,
+      "normal_flip": 0.6093908954750408,
+      "pseudo_rank": 0.25494191016663204,
+      "pseudo_flip": 0.28866230916570534,
+      "normal_flip_rate": 0.09335049715909091,
+      "pseudo_flip_rate": 0.04869495738636364
+    },
+    {
+      "epoch": 3,
+      "loss": 0.3694805570624091,
+      "grad_norm": 5.268155111507936,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.6599961207671599,
+      "normal_flip": 0.4008296010169116,
+      "pseudo_rank": 0.21987486325881697,
+      "pseudo_flip": 0.19722165980122305,
+      "normal_flip_rate": 0.11217151988636363,
+      "pseudo_flip_rate": 0.05197975852272727
+    },
+    {
+      "epoch": 4,
+      "loss": 0.3268811817873608,
+      "grad_norm": 7.9732861112464555,
+      "null_fraction": 0.5,
+      "normal_rank": 0.6532496213912964,
+      "normal_flip": 0.3086644091050733,
+      "pseudo_rank": 0.19056713208556175,
+      "pseudo_flip": 0.15504355339164083,
+      "normal_flip_rate": 0.10413707386363637,
+      "pseudo_flip_rate": 0.052734375
+    },
+    {
+      "epoch": 5,
+      "loss": 0.2862468802116134,
+      "grad_norm": 8.335143593224613,
+      "null_fraction": 0.6363636363636364,
+      "normal_rank": 0.62302565574646,
+      "normal_flip": 0.23922944644635374,
+      "pseudo_rank": 0.1844392324035818,
+      "pseudo_flip": 0.09829318481074138,
+      "normal_flip_rate": 0.10471413352272728,
+      "pseudo_flip_rate": 0.05029296875,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.19609807431697845,
+          "actual_normal_flip": 0.09884750843048096,
+          "predicted_pseudo_flip": 0.1286950707435608,
+          "actual_pseudo_flip": 0.07446808367967606,
+          "predicted_normal_null_median": 0.15654250979423523,
+          "actual_normal_null_median": 0.06471630930900574,
+          "normal_gain": 0.039555564522743225,
+          "actual_normal_gain": 0.03413119912147522,
+          "predicted_pseudo_null_median": 0.11186976730823517,
+          "actual_pseudo_null_median": 0.04964538663625717,
+          "pseudo_gain": 0.016825303435325623,
+          "actual_pseudo_gain": 0.024822697043418884,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.10837048292160034,
+          "actual_normal_flip": 0.03679078072309494,
+          "predicted_pseudo_flip": 0.09915831685066223,
+          "actual_pseudo_flip": 0.029698580503463745,
+          "predicted_normal_null_median": 0.12165766954421997,
+          "actual_normal_null_median": 0.05452127754688263,
+          "normal_gain": -0.013287186622619629,
+          "actual_normal_gain": -0.01773049682378769,
+          "predicted_pseudo_null_median": 0.1019655391573906,
+          "actual_pseudo_null_median": 0.05008865147829056,
+          "pseudo_gain": -0.002807222306728363,
+          "actual_pseudo_gain": -0.020390070974826813,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.039555564522743225,
+          "L0": 0.026268377900123596
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 0.24880601838231087,
+      "grad_norm": 9.244657863270152,
+      "null_fraction": 0.45454545454545453,
+      "normal_rank": 0.48009107329628686,
+      "normal_flip": 0.17812938006086784,
+      "pseudo_rank": 0.23101526735858482,
+      "pseudo_flip": 0.10598835747011683,
+      "normal_flip_rate": 0.09978693181818182,
+      "pseudo_flip_rate": 0.04478870738636364
+    },
+    {
+      "epoch": 7,
+      "loss": 0.2510914849964055,
+      "grad_norm": 14.444873452186584,
+      "null_fraction": 0.6136363636363636,
+      "normal_rank": 0.39463214711709454,
+      "normal_flip": 0.2737556839869781,
+      "pseudo_rank": 0.23106578094038097,
+      "pseudo_flip": 0.10491231807761571,
+      "normal_flip_rate": 0.09246271306818182,
+      "pseudo_flip_rate": 0.04616477272727273
+    },
+    {
+      "epoch": 8,
+      "loss": 0.23413962058045648,
+      "grad_norm": 9.392783910036087,
+      "null_fraction": 0.4772727272727273,
+      "normal_rank": 0.4591928483410315,
+      "normal_flip": 0.18219225447286258,
+      "pseudo_rank": 0.21105871925299818,
+      "pseudo_flip": 0.0841146675996821,
+      "normal_flip_rate": 0.09628018465909091,
+      "pseudo_flip_rate": 0.04381214488636364
+    },
+    {
+      "epoch": 9,
+      "loss": 0.24980865249579604,
+      "grad_norm": 13.490061169320887,
+      "null_fraction": 0.4772727272727273,
+      "normal_rank": 0.4145580618218942,
+      "normal_flip": 0.26689288578927517,
+      "pseudo_rank": 0.20160697620700707,
+      "pseudo_flip": 0.11617669425058094,
+      "normal_flip_rate": 0.09894353693181818,
+      "pseudo_flip_rate": 0.044256036931818184
+    },
+    {
+      "epoch": 10,
+      "loss": 0.22521323812278835,
+      "grad_norm": 9.02786476503719,
+      "null_fraction": 0.45454545454545453,
+      "normal_rank": 0.403823468495499,
+      "normal_flip": 0.1919301562011242,
+      "pseudo_rank": 0.19705720482902092,
+      "pseudo_flip": 0.10804212605580688,
+      "normal_flip_rate": 0.09699041193181818,
+      "pseudo_flip_rate": 0.04478870738636364,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.2662630081176758,
+          "actual_normal_flip": 0.09884750843048096,
+          "predicted_pseudo_flip": 0.10964229702949524,
+          "actual_pseudo_flip": 0.07446808367967606,
+          "predicted_normal_null_median": 0.22609637677669525,
+          "actual_normal_null_median": 0.06471630930900574,
+          "normal_gain": 0.04016663134098053,
+          "actual_normal_gain": 0.03413119912147522,
+          "predicted_pseudo_null_median": 0.08833175897598267,
+          "actual_pseudo_null_median": 0.04964538663625717,
+          "pseudo_gain": 0.021310538053512573,
+          "actual_pseudo_gain": 0.024822697043418884,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.1519872546195984,
+          "actual_normal_flip": 0.03679078072309494,
+          "predicted_pseudo_flip": 0.07622946798801422,
+          "actual_pseudo_flip": 0.029698580503463745,
+          "predicted_normal_null_median": 0.1858614683151245,
+          "actual_normal_null_median": 0.05452127754688263,
+          "normal_gain": -0.03387421369552612,
+          "actual_normal_gain": -0.01773049682378769,
+          "predicted_pseudo_null_median": 0.0809590294957161,
+          "actual_pseudo_null_median": 0.05008865147829056,
+          "pseudo_gain": -0.004729561507701874,
+          "actual_pseudo_gain": -0.020390070974826813,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.04016663134098053,
+          "L0": 0.006292417645454407
+        }
+      }
+    },
+    {
+      "epoch": 11,
+      "loss": 0.2106886485760862,
+      "grad_norm": 11.979022586887533,
+      "null_fraction": 0.5454545454545454,
+      "normal_rank": 0.33904583074829797,
+      "normal_flip": 0.2264890492978421,
+      "pseudo_rank": 0.18097967688332905,
+      "pseudo_flip": 0.09624002827331424,
+      "normal_flip_rate": 0.09485973011363637,
+      "pseudo_flip_rate": 0.046431107954545456
+    },
+    {
+      "epoch": 12,
+      "loss": 0.1907143440436233,
+      "grad_norm": 12.310364484786987,
+      "null_fraction": 0.4318181818181818,
+      "normal_rank": 0.3036581836640835,
+      "normal_flip": 0.1947917105122046,
+      "pseudo_rank": 0.18128973719748584,
+      "pseudo_flip": 0.0831177410330962,
+      "normal_flip_rate": 0.09188565340909091,
+      "pseudo_flip_rate": 0.04727450284090909
+    },
+    {
+      "epoch": 13,
+      "loss": 0.18479498408057474,
+      "grad_norm": 11.605757382783024,
+      "null_fraction": 0.4318181818181818,
+      "normal_rank": 0.2814593396403573,
+      "normal_flip": 0.20789237303489988,
+      "pseudo_rank": 0.16946518793702126,
+      "pseudo_flip": 0.080363036387346,
+      "normal_flip_rate": 0.09197443181818182,
+      "pseudo_flip_rate": 0.04612038352272727
+    },
+    {
+      "epoch": 14,
+      "loss": 0.16525818661532618,
+      "grad_norm": 11.457939630204981,
+      "null_fraction": 0.3409090909090909,
+      "normal_rank": 0.2485765205188231,
+      "normal_flip": 0.16812853074886583,
+      "pseudo_rank": 0.15615744380788368,
+      "pseudo_flip": 0.08817025610584427,
+      "normal_flip_rate": 0.08953302556818182,
+      "pseudo_flip_rate": 0.047540838068181816
+    },
+    {
+      "epoch": 15,
+      "loss": 0.15440764752301303,
+      "grad_norm": 10.881777503273703,
+      "null_fraction": 0.6136363636363636,
+      "normal_rank": 0.2059615823355588,
+      "normal_flip": 0.17036043539304624,
+      "pseudo_rank": 0.15579265186732466,
+      "pseudo_flip": 0.08551592484582216,
+      "normal_flip_rate": 0.09290660511363637,
+      "pseudo_flip_rate": 0.04501065340909091
+    },
+    {
+      "epoch": 16,
+      "loss": 0.15358811007304626,
+      "grad_norm": 10.344637816602534,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.2531188949942589,
+      "normal_flip": 0.16564732798459855,
+      "pseudo_rank": 0.1386740395629948,
+      "pseudo_flip": 0.05691217720000581,
+      "normal_flip_rate": 0.09721235795454546,
+      "pseudo_flip_rate": 0.04922762784090909
+    },
+    {
+      "epoch": 17,
+      "loss": 0.1532174636694518,
+      "grad_norm": 11.305470195683567,
+      "null_fraction": 0.5454545454545454,
+      "normal_rank": 0.23187607391314072,
+      "normal_flip": 0.17298470547592099,
+      "pseudo_rank": 0.13919440081173723,
+      "pseudo_flip": 0.06881468163125894,
+      "normal_flip_rate": 0.10191761363636363,
+      "pseudo_flip_rate": 0.047540838068181816
+    },
+    {
+      "epoch": 18,
+      "loss": 0.15921879187226295,
+      "grad_norm": 11.906234286048196,
+      "null_fraction": 0.5681818181818182,
+      "normal_rank": 0.19091960601508617,
+      "normal_flip": 0.1821692855182019,
+      "pseudo_rank": 0.14925142851742831,
+      "pseudo_flip": 0.11453484568152238,
+      "normal_flip_rate": 0.09641335227272728,
+      "pseudo_flip_rate": 0.04354580965909091
+    },
+    {
+      "epoch": 19,
+      "loss": 0.15633295002308759,
+      "grad_norm": 12.23657673868266,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.18660087358545174,
+      "normal_flip": 0.22252709689465436,
+      "pseudo_rank": 0.1315299677239223,
+      "pseudo_flip": 0.08467386358163574,
+      "normal_flip_rate": 0.07892400568181818,
+      "pseudo_flip_rate": 0.03724254261363636
+    },
+    {
+      "epoch": 20,
+      "loss": 0.130993618037213,
+      "grad_norm": 8.576895261352712,
+      "null_fraction": 0.5681818181818182,
+      "normal_rank": 0.18987068296833473,
+      "normal_flip": 0.14292641381987117,
+      "pseudo_rank": 0.12027617696334016,
+      "pseudo_flip": 0.07090120140293782,
+      "normal_flip_rate": 0.09703480113636363,
+      "pseudo_flip_rate": 0.049849076704545456,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.1921062469482422,
+          "actual_normal_flip": 0.09884750843048096,
+          "predicted_pseudo_flip": 0.10906404256820679,
+          "actual_pseudo_flip": 0.07446808367967606,
+          "predicted_normal_null_median": 0.16778232157230377,
+          "actual_normal_null_median": 0.06471630930900574,
+          "normal_gain": 0.024323925375938416,
+          "actual_normal_gain": 0.03413119912147522,
+          "predicted_pseudo_null_median": 0.0838237851858139,
+          "actual_pseudo_null_median": 0.04964538663625717,
+          "pseudo_gain": 0.025240257382392883,
+          "actual_pseudo_gain": 0.024822697043418884,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.12129682302474976,
+          "actual_normal_flip": 0.03679078072309494,
+          "predicted_pseudo_flip": 0.06405384838581085,
+          "actual_pseudo_flip": 0.029698580503463745,
+          "predicted_normal_null_median": 0.13256226480007172,
+          "actual_normal_null_median": 0.05452127754688263,
+          "normal_gain": -0.01126544177532196,
+          "actual_normal_gain": -0.01773049682378769,
+          "predicted_pseudo_null_median": 0.07826253771781921,
+          "actual_pseudo_null_median": 0.05008865147829056,
+          "pseudo_gain": -0.014208689332008362,
+          "actual_pseudo_gain": -0.020390070974826813,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.024323925375938416,
+          "L0": 0.013058483600616455
+        }
+      }
+    },
+    {
+      "epoch": 21,
+      "loss": 0.15796028230000625,
+      "grad_norm": 11.25568626685576,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.22498778050596063,
+      "normal_flip": 0.22248781049116093,
+      "pseudo_rank": 0.11399263422936201,
+      "pseudo_flip": 0.07037290232256055,
+      "normal_flip_rate": 0.09228515625,
+      "pseudo_flip_rate": 0.04541015625
+    },
+    {
+      "epoch": 22,
+      "loss": 0.1262576752765612,
+      "grad_norm": 8.954218463464217,
+      "null_fraction": 0.4772727272727273,
+      "normal_rank": 0.18058943731540983,
+      "normal_flip": 0.1391754008998925,
+      "pseudo_rank": 0.11933226764879444,
+      "pseudo_flip": 0.06593359259634533,
+      "normal_flip_rate": 0.09530362215909091,
+      "pseudo_flip_rate": 0.053045099431818184
+    },
+    {
+      "epoch": 23,
+      "loss": 0.12781202877787026,
+      "grad_norm": 11.31255539168011,
+      "null_fraction": 0.38636363636363635,
+      "normal_rank": 0.14842790534550493,
+      "normal_flip": 0.19258449912409892,
+      "pseudo_rank": 0.10770811123604124,
+      "pseudo_flip": 0.06252760194316083,
+      "normal_flip_rate": 0.09969815340909091,
+      "pseudo_flip_rate": 0.04603160511363636
+    },
+    {
+      "epoch": 24,
+      "loss": 0.12195316194133325,
+      "grad_norm": 10.607926821166819,
+      "null_fraction": 0.5909090909090909,
+      "normal_rank": 0.14393819936297156,
+      "normal_flip": 0.17134528103369204,
+      "pseudo_rank": 0.10061060671101917,
+      "pseudo_flip": 0.07191855931358243,
+      "normal_flip_rate": 0.10759943181818182,
+      "pseudo_flip_rate": 0.05189098011363636
+    },
+    {
+      "epoch": 25,
+      "loss": 0.10557156572626396,
+      "grad_norm": 8.06651829589497,
+      "null_fraction": 0.5227272727272727,
+      "normal_rank": 0.1356808880174702,
+      "normal_flip": 0.11997677246108651,
+      "pseudo_rank": 0.10187452608211474,
+      "pseudo_flip": 0.06475407694762741,
+      "normal_flip_rate": 0.10009765625,
+      "pseudo_flip_rate": 0.046875
+    },
+    {
+      "epoch": 26,
+      "loss": 0.10293341377242045,
+      "grad_norm": 8.931128072467716,
+      "null_fraction": 0.6590909090909091,
+      "normal_rank": 0.12891911884600465,
+      "normal_flip": 0.11069280023432591,
+      "pseudo_rank": 0.09655304151502522,
+      "pseudo_flip": 0.07556870006109503,
+      "normal_flip_rate": 0.10493607954545454,
+      "pseudo_flip_rate": 0.05015980113636364
+    },
+    {
+      "epoch": 27,
+      "loss": 0.1065405947579579,
+      "grad_norm": 9.90353483503515,
+      "null_fraction": 0.36363636363636365,
+      "normal_rank": 0.14050670730119402,
+      "normal_flip": 0.14725693196735598,
+      "pseudo_rank": 0.09439392963593657,
+      "pseudo_flip": 0.044004811397330326,
+      "normal_flip_rate": 0.09823330965909091,
+      "pseudo_flip_rate": 0.048029119318181816
+    },
+    {
+      "epoch": 28,
+      "loss": 0.10816271450709213,
+      "grad_norm": 9.4058116403493,
+      "null_fraction": 0.4090909090909091,
+      "normal_rank": 0.14908255806023424,
+      "normal_flip": 0.13909751291132785,
+      "pseudo_rank": 0.08801977844400839,
+      "pseudo_flip": 0.05645100816830315,
+      "normal_flip_rate": 0.10147372159090909,
+      "pseudo_flip_rate": 0.05100319602272727
+    },
+    {
+      "epoch": 29,
+      "loss": 0.09779546790840951,
+      "grad_norm": 8.452831476926804,
+      "null_fraction": 0.45454545454545453,
+      "normal_rank": 0.13196853175759315,
+      "normal_flip": 0.12692682690579782,
+      "pseudo_rank": 0.08737215865403414,
+      "pseudo_flip": 0.04491435673447664,
+      "normal_flip_rate": 0.09184126420454546,
+      "pseudo_flip_rate": 0.04190340909090909
+    },
+    {
+      "epoch": 30,
+      "loss": 0.11002256111665205,
+      "grad_norm": 9.646706131371586,
+      "null_fraction": 0.6136363636363636,
+      "normal_rank": 0.17114435982975093,
+      "normal_flip": 0.14499379821460356,
+      "pseudo_rank": 0.0781824839386073,
+      "pseudo_flip": 0.045769602637102995,
+      "normal_flip_rate": 0.09397194602272728,
+      "pseudo_flip_rate": 0.045365767045454544,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "middle": {
+          "predicted_normal_flip": 0.20758739113807678,
+          "actual_normal_flip": 0.09884750843048096,
+          "predicted_pseudo_flip": 0.09460636973381042,
+          "actual_pseudo_flip": 0.07446808367967606,
+          "predicted_normal_null_median": 0.19806703925132751,
+          "actual_normal_null_median": 0.06471630930900574,
+          "normal_gain": 0.009520351886749268,
+          "actual_normal_gain": 0.03413119912147522,
+          "predicted_pseudo_null_median": 0.07407036423683167,
+          "actual_pseudo_null_median": 0.04964538663625717,
+          "pseudo_gain": 0.02053600549697876,
+          "actual_pseudo_gain": 0.024822697043418884,
+          "null_count": 6
+        },
+        "shallow": {
+          "predicted_normal_flip": 0.13046295940876007,
+          "actual_normal_flip": 0.03679078072309494,
+          "predicted_pseudo_flip": 0.05436623841524124,
+          "actual_pseudo_flip": 0.029698580503463745,
+          "predicted_normal_null_median": 0.15596771240234375,
+          "actual_normal_null_median": 0.05452127754688263,
+          "normal_gain": -0.02550475299358368,
+          "actual_normal_gain": -0.01773049682378769,
+          "predicted_pseudo_null_median": 0.0689547210931778,
+          "actual_pseudo_null_median": 0.05008865147829056,
+          "pseudo_gain": -0.014588482677936554,
+          "actual_pseudo_gain": -0.020390070974826813,
+          "null_count": 16
+        },
+        "utilities": {
+          "L8": 0.0,
+          "L4": 0.009520351886749268,
+          "L0": -0.01598440110683441
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "5": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.19609807431697845,
+        "actual_normal_flip": 0.09884750843048096,
+        "predicted_pseudo_flip": 0.1286950707435608,
+        "actual_pseudo_flip": 0.07446808367967606,
+        "predicted_normal_null_median": 0.15654250979423523,
+        "actual_normal_null_median": 0.06471630930900574,
+        "normal_gain": 0.039555564522743225,
+        "actual_normal_gain": 0.03413119912147522,
+        "predicted_pseudo_null_median": 0.11186976730823517,
+        "actual_pseudo_null_median": 0.04964538663625717,
+        "pseudo_gain": 0.016825303435325623,
+        "actual_pseudo_gain": 0.024822697043418884,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.10837048292160034,
+        "actual_normal_flip": 0.03679078072309494,
+        "predicted_pseudo_flip": 0.09915831685066223,
+        "actual_pseudo_flip": 0.029698580503463745,
+        "predicted_normal_null_median": 0.12165766954421997,
+        "actual_normal_null_median": 0.05452127754688263,
+        "normal_gain": -0.013287186622619629,
+        "actual_normal_gain": -0.01773049682378769,
+        "predicted_pseudo_null_median": 0.1019655391573906,
+        "actual_pseudo_null_median": 0.05008865147829056,
+        "pseudo_gain": -0.002807222306728363,
+        "actual_pseudo_gain": -0.020390070974826813,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.039555564522743225,
+        "L0": 0.026268377900123596
+      }
+    },
+    "10": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.2662630081176758,
+        "actual_normal_flip": 0.09884750843048096,
+        "predicted_pseudo_flip": 0.10964229702949524,
+        "actual_pseudo_flip": 0.07446808367967606,
+        "predicted_normal_null_median": 0.22609637677669525,
+        "actual_normal_null_median": 0.06471630930900574,
+        "normal_gain": 0.04016663134098053,
+        "actual_normal_gain": 0.03413119912147522,
+        "predicted_pseudo_null_median": 0.08833175897598267,
+        "actual_pseudo_null_median": 0.04964538663625717,
+        "pseudo_gain": 0.021310538053512573,
+        "actual_pseudo_gain": 0.024822697043418884,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.1519872546195984,
+        "actual_normal_flip": 0.03679078072309494,
+        "predicted_pseudo_flip": 0.07622946798801422,
+        "actual_pseudo_flip": 0.029698580503463745,
+        "predicted_normal_null_median": 0.1858614683151245,
+        "actual_normal_null_median": 0.05452127754688263,
+        "normal_gain": -0.03387421369552612,
+        "actual_normal_gain": -0.01773049682378769,
+        "predicted_pseudo_null_median": 0.0809590294957161,
+        "actual_pseudo_null_median": 0.05008865147829056,
+        "pseudo_gain": -0.004729561507701874,
+        "actual_pseudo_gain": -0.020390070974826813,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.04016663134098053,
+        "L0": 0.006292417645454407
+      }
+    },
+    "20": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.1921062469482422,
+        "actual_normal_flip": 0.09884750843048096,
+        "predicted_pseudo_flip": 0.10906404256820679,
+        "actual_pseudo_flip": 0.07446808367967606,
+        "predicted_normal_null_median": 0.16778232157230377,
+        "actual_normal_null_median": 0.06471630930900574,
+        "normal_gain": 0.024323925375938416,
+        "actual_normal_gain": 0.03413119912147522,
+        "predicted_pseudo_null_median": 0.0838237851858139,
+        "actual_pseudo_null_median": 0.04964538663625717,
+        "pseudo_gain": 0.025240257382392883,
+        "actual_pseudo_gain": 0.024822697043418884,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.12129682302474976,
+        "actual_normal_flip": 0.03679078072309494,
+        "predicted_pseudo_flip": 0.06405384838581085,
+        "actual_pseudo_flip": 0.029698580503463745,
+        "predicted_normal_null_median": 0.13256226480007172,
+        "actual_normal_null_median": 0.05452127754688263,
+        "normal_gain": -0.01126544177532196,
+        "actual_normal_gain": -0.01773049682378769,
+        "predicted_pseudo_null_median": 0.07826253771781921,
+        "actual_pseudo_null_median": 0.05008865147829056,
+        "pseudo_gain": -0.014208689332008362,
+        "actual_pseudo_gain": -0.020390070974826813,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.024323925375938416,
+        "L0": 0.013058483600616455
+      }
+    },
+    "30": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "middle": {
+        "predicted_normal_flip": 0.20758739113807678,
+        "actual_normal_flip": 0.09884750843048096,
+        "predicted_pseudo_flip": 0.09460636973381042,
+        "actual_pseudo_flip": 0.07446808367967606,
+        "predicted_normal_null_median": 0.19806703925132751,
+        "actual_normal_null_median": 0.06471630930900574,
+        "normal_gain": 0.009520351886749268,
+        "actual_normal_gain": 0.03413119912147522,
+        "predicted_pseudo_null_median": 0.07407036423683167,
+        "actual_pseudo_null_median": 0.04964538663625717,
+        "pseudo_gain": 0.02053600549697876,
+        "actual_pseudo_gain": 0.024822697043418884,
+        "null_count": 6
+      },
+      "shallow": {
+        "predicted_normal_flip": 0.13046295940876007,
+        "actual_normal_flip": 0.03679078072309494,
+        "predicted_pseudo_flip": 0.05436623841524124,
+        "actual_pseudo_flip": 0.029698580503463745,
+        "predicted_normal_null_median": 0.15596771240234375,
+        "actual_normal_null_median": 0.05452127754688263,
+        "normal_gain": -0.02550475299358368,
+        "actual_normal_gain": -0.01773049682378769,
+        "predicted_pseudo_null_median": 0.0689547210931778,
+        "actual_pseudo_null_median": 0.05008865147829056,
+        "pseudo_gain": -0.014588482677936554,
+        "actual_pseudo_gain": -0.020390070974826813,
+        "null_count": 16
+      },
+      "utilities": {
+        "L8": 0.0,
+        "L4": 0.009520351886749268,
+        "L0": -0.01598440110683441
+      }
+    }
+  },
+  "final_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "middle": {
+      "predicted_normal_flip": 0.20758739113807678,
+      "actual_normal_flip": 0.09884750843048096,
+      "predicted_pseudo_flip": 0.09460636973381042,
+      "actual_pseudo_flip": 0.07446808367967606,
+      "predicted_normal_null_median": 0.19806703925132751,
+      "actual_normal_null_median": 0.06471630930900574,
+      "normal_gain": 0.009520351886749268,
+      "actual_normal_gain": 0.03413119912147522,
+      "predicted_pseudo_null_median": 0.07407036423683167,
+      "actual_pseudo_null_median": 0.04964538663625717,
+      "pseudo_gain": 0.02053600549697876,
+      "actual_pseudo_gain": 0.024822697043418884,
+      "null_count": 6
+    },
+    "shallow": {
+      "predicted_normal_flip": 0.13046295940876007,
+      "actual_normal_flip": 0.03679078072309494,
+      "predicted_pseudo_flip": 0.05436623841524124,
+      "actual_pseudo_flip": 0.029698580503463745,
+      "predicted_normal_null_median": 0.15596771240234375,
+      "actual_normal_null_median": 0.05452127754688263,
+      "normal_gain": -0.02550475299358368,
+      "actual_normal_gain": -0.01773049682378769,
+      "predicted_pseudo_null_median": 0.0689547210931778,
+      "actual_pseudo_null_median": 0.05008865147829056,
+      "pseudo_gain": -0.014588482677936554,
+      "actual_pseudo_gain": -0.020390070974826813,
+      "null_count": 16
+    },
+    "utilities": {
+      "L8": 0.0,
+      "L4": 0.009520351886749268,
+      "L0": -0.01598440110683441
+    }
+  },
+  "support_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "middle": {
+      "predicted_normal_flip": 0.1727905124425888,
+      "actual_normal_flip": 0.1354166567325592,
+      "predicted_pseudo_flip": 0.0908479243516922,
+      "actual_pseudo_flip": 0.07047872245311737,
+      "predicted_normal_null_median": 0.11951979994773865,
+      "actual_normal_null_median": 0.08399822562932968,
+      "normal_gain": 0.05327071249485016,
+      "actual_normal_gain": 0.05141843110322952,
+      "predicted_pseudo_null_median": 0.06348757445812225,
+      "actual_pseudo_null_median": 0.03989361226558685,
+      "pseudo_gain": 0.027360349893569946,
+      "actual_pseudo_gain": 0.030585110187530518,
+      "null_count": 6
+    },
+    "shallow": {
+      "predicted_normal_flip": 0.09552594274282455,
+      "actual_normal_flip": 0.058510638773441315,
+      "predicted_pseudo_flip": 0.04374175891280174,
+      "actual_pseudo_flip": 0.018617020919919014,
+      "predicted_normal_null_median": 0.12431999295949936,
+      "actual_normal_null_median": 0.08820921182632446,
+      "normal_gain": -0.028794050216674805,
+      "actual_normal_gain": -0.029698573052883148,
+      "predicted_pseudo_null_median": 0.05638698488473892,
+      "actual_pseudo_null_median": 0.03568262234330177,
+      "pseudo_gain": -0.01264522597193718,
+      "actual_pseudo_gain": -0.01706560142338276,
+      "null_count": 16
+    },
+    "utilities": {
+      "L8": 0.0,
+      "L4": 0.05327071249485016,
+      "L0": 0.024476662278175354
+    }
+  },
+  "model_parameters": 21188,
+  "peak_gpu_gib": 0.8367443084716797
+}

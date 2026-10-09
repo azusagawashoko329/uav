@@ -1,0 +1,143 @@
+{
+  "scene": "bike",
+  "method": "normal_only_aligned_cross_layer_convgru_probe",
+  "args": {
+    "scene": "bike",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_k1_bike",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 16,
+    "kernel_size": 1,
+    "epochs": 10,
+    "steps_per_epoch": 44,
+    "frame_batch": 24,
+    "eval_bs": 24,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_smooth_l1": 0.001624550769437602,
+      "grad_norm": 0.04371397494237912,
+      "query": {
+        "normal_aligned_smooth_l1": 5.214905831962824e-05,
+        "normal_aligned_mae": 0.008275259751826525,
+        "normal_independent_layer_roll_smooth_l1": 5.2355021580297034e-05,
+        "normal_independent_layer_roll_mae": 0.008291033329442143,
+        "pseudo_aligned_smooth_l1": 0.0009912868845276535,
+        "pseudo_aligned_mae": 0.020373979583382607,
+        "pseudo_independent_layer_roll_smooth_l1": 0.0010063639638246968,
+        "pseudo_independent_layer_roll_mae": 0.02047845348715782,
+        "normal_roll_loss_ratio": 1.003949510639414,
+        "pseudo_over_normal_loss_ratio": 19.0087207031032
+      }
+    },
+    {
+      "epoch": 2,
+      "train_smooth_l1": 4.1851384222272e-05,
+      "grad_norm": 0.0031414635781071743
+    },
+    {
+      "epoch": 3,
+      "train_smooth_l1": 2.5506695775137896e-05,
+      "grad_norm": 0.0004978246978763226
+    },
+    {
+      "epoch": 4,
+      "train_smooth_l1": 2.4663867696455615e-05,
+      "grad_norm": 0.00033276390168297934
+    },
+    {
+      "epoch": 5,
+      "train_smooth_l1": 2.466781845875878e-05,
+      "grad_norm": 0.000296678443977395,
+      "query": {
+        "normal_aligned_smooth_l1": 2.17163606066606e-05,
+        "normal_aligned_mae": 0.0051529769552871585,
+        "normal_independent_layer_roll_smooth_l1": 2.194673925259849e-05,
+        "normal_independent_layer_roll_mae": 0.005179920815862715,
+        "pseudo_aligned_smooth_l1": 0.0008934659272199497,
+        "pseudo_aligned_mae": 0.016255125869065523,
+        "pseudo_independent_layer_roll_smooth_l1": 0.0009102245967369527,
+        "pseudo_independent_layer_roll_mae": 0.016389606054872274,
+        "normal_roll_loss_ratio": 1.010608529214938,
+        "pseudo_over_normal_loss_ratio": 41.142525831235076
+      }
+    },
+    {
+      "epoch": 6,
+      "train_smooth_l1": 2.4718196941235377e-05,
+      "grad_norm": 0.00038341935594003604
+    },
+    {
+      "epoch": 7,
+      "train_smooth_l1": 2.454414603066239e-05,
+      "grad_norm": 0.00034738153240968216
+    },
+    {
+      "epoch": 8,
+      "train_smooth_l1": 2.460015912220115e-05,
+      "grad_norm": 0.00025074292989302194
+    },
+    {
+      "epoch": 9,
+      "train_smooth_l1": 2.4401251308022026e-05,
+      "grad_norm": 0.0003066573816981459
+    },
+    {
+      "epoch": 10,
+      "train_smooth_l1": 2.4589767401101366e-05,
+      "grad_norm": 0.000341581188050358,
+      "query": {
+        "normal_aligned_smooth_l1": 2.156257005481166e-05,
+        "normal_aligned_mae": 0.005131265847012401,
+        "normal_independent_layer_roll_smooth_l1": 2.1831009689776693e-05,
+        "normal_independent_layer_roll_mae": 0.005162747693248093,
+        "pseudo_aligned_smooth_l1": 0.0008910123578971252,
+        "pseudo_aligned_mae": 0.01623915508389473,
+        "pseudo_independent_layer_roll_smooth_l1": 0.0009104782511712983,
+        "pseudo_independent_layer_roll_mae": 0.01639497932046652,
+        "normal_roll_loss_ratio": 1.012449333928315,
+        "pseudo_over_normal_loss_ratio": 41.32217799790044
+      }
+    }
+  ],
+  "final_query": {
+    "normal_aligned_smooth_l1": 2.156257005481166e-05,
+    "normal_aligned_mae": 0.005131265847012401,
+    "normal_independent_layer_roll_smooth_l1": 2.1831009689776693e-05,
+    "normal_independent_layer_roll_mae": 0.005162747693248093,
+    "pseudo_aligned_smooth_l1": 0.0008910123578971252,
+    "pseudo_aligned_mae": 0.01623915508389473,
+    "pseudo_independent_layer_roll_smooth_l1": 0.0009104782511712983,
+    "pseudo_independent_layer_roll_mae": 0.01639497932046652,
+    "normal_roll_loss_ratio": 1.012449333928315,
+    "pseudo_over_normal_loss_ratio": 41.32217799790044
+  },
+  "parameters": 2561
+}

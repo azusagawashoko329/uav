@@ -1,0 +1,145 @@
+{
+  "scene": "solar",
+  "split": {
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence2/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/03"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/02"
+      ]
+    }
+  },
+  "support": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.2411347528298696,
+        "normal_delta_median": 0.1116180345416069,
+        "pseudo_flip": 0.11997635662555695,
+        "pseudo_delta_median": 0.14233246445655823
+      },
+      "M": {
+        "normal_flip": 0.10460992902517319,
+        "normal_delta_median": 0.009902444978555044,
+        "pseudo_flip": 0.05821512887875239,
+        "pseudo_delta_median": 0.009653978049755096
+      },
+      "S": {
+        "normal_flip": 0.06146572157740593,
+        "normal_delta_median": -0.02182031174500783,
+        "pseudo_flip": 0.01861702154080073,
+        "pseudo_delta_median": -0.032301624615987144
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.16666666666666666,
+          "comparable_fraction": 0.16666666666666666,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/01",
+              "real_normal_flip": 0.08156028389930725,
+              "real_pseudo_delta": 0.008472427725791931,
+              "pareto_evidence": 0.0
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/03",
+              "real_normal_flip": 0.07801418751478195,
+              "real_pseudo_delta": 0.008984386920928955,
+              "pareto_evidence": 0.0
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence2/train/01",
+              "real_normal_flip": 0.15425531566143036,
+              "real_pseudo_delta": 0.011505119502544403,
+              "pareto_evidence": 0.5
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.047619047619047616,
+          "comparable_fraction": 0.21904761904761905,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/01",
+              "real_normal_flip": 0.05585106462240219,
+              "real_pseudo_delta": -0.040892258286476135,
+              "pareto_evidence": 0.04285714285714286
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/03",
+              "real_normal_flip": 0.05496453866362572,
+              "real_pseudo_delta": -0.03572656214237213,
+              "pareto_evidence": -0.04285714285714286
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence2/train/01",
+              "real_normal_flip": 0.07358156144618988,
+              "real_pseudo_delta": -0.02028605341911316,
+              "pareto_evidence": 0.14285714285714285
+            }
+          ]
+        }
+      },
+      "boundary": 4
+    }
+  },
+  "query": {
+    "scales": {
+      "D": {
+        "normal_flip": 0.28280141949653625,
+        "normal_delta_median": 0.12573853135108948,
+        "pseudo_flip": 0.17819148302078247,
+        "pseudo_delta_median": 0.15710754692554474
+      },
+      "M": {
+        "normal_flip": 0.07269503176212311,
+        "normal_delta_median": 0.008939355611801147,
+        "pseudo_flip": 0.09574468433856964,
+        "pseudo_delta_median": 0.008003994822502136
+      },
+      "S": {
+        "normal_flip": 0.052304964512586594,
+        "normal_delta_median": -0.02639058232307434,
+        "pseudo_flip": 0.02216312102973461,
+        "pseudo_delta_median": -0.037259429693222046
+      }
+    },
+    "normal_flip_winner": "D",
+    "boundary": 8,
+    "pareto": {
+      "gates": {
+        "M": {
+          "evidence": 0.16666666666666666,
+          "comparable_fraction": 0.16666666666666666,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/02",
+              "real_normal_flip": 0.07269503176212311,
+              "real_pseudo_delta": 0.008003994822502136,
+              "pareto_evidence": 0.16666666666666666
+            }
+          ]
+        },
+        "S": {
+          "evidence": 0.2571428571428571,
+          "comparable_fraction": 0.2857142857142857,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Solar Panel Inspection/sequence1/train/02",
+              "real_normal_flip": 0.052304964512586594,
+              "real_pseudo_delta": -0.037259429693222046,
+              "pareto_evidence": 0.2571428571428571
+            }
+          ]
+        }
+      },
+      "boundary": 0
+    }
+  }
+}

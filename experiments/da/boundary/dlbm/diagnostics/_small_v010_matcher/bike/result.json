@@ -1,0 +1,3103 @@
+{
+  "format_version": 10,
+  "scene": "bike",
+  "method": "frozen_predictive_innovation_same_frame_retrieval",
+  "probe_checkpoint": "experiment_DLBM/run/probe/ckpt/bike.pth",
+  "probe_sha256": "d92acf912b6705be630547a65c7e85ab6ec703f26b10625eb3eba81d89eac961",
+  "probe_mutated": false,
+  "args": {
+    "scene": "bike",
+    "probe_dir": "experiment_DLBM/run/probe/ckpt",
+    "out_dir": "experiment_DLBM/run/boundary/_small_v010_matcher/bike",
+    "gpu": 0,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_epochs": 10,
+    "predictor_steps": 44,
+    "predictor_batch": 24,
+    "matcher_epochs": 30,
+    "matcher_steps": 45,
+    "episode_frames": 48,
+    "predictor_lr": 0.001,
+    "matcher_lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      5,
+      10,
+      20,
+      30
+    ]
+  },
+  "split": {
+    "support_frames": 192,
+    "query_frames": 96,
+    "videos": {
+      "support": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04"
+      ],
+      "query": [
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02"
+      ]
+    }
+  },
+  "predictor_history": [
+    {
+      "epoch": 1,
+      "loss": 5.7189178733096924e-05
+    },
+    {
+      "epoch": 2,
+      "loss": 2.5750140221961456e-05
+    },
+    {
+      "epoch": 3,
+      "loss": 2.5078817130137892e-05
+    },
+    {
+      "epoch": 4,
+      "loss": 2.4576110883406894e-05
+    },
+    {
+      "epoch": 5,
+      "loss": 2.3965718355611898e-05
+    },
+    {
+      "epoch": 6,
+      "loss": 2.3627206246601418e-05
+    },
+    {
+      "epoch": 7,
+      "loss": 2.2696144283558667e-05
+    },
+    {
+      "epoch": 8,
+      "loss": 2.1426998955575982e-05
+    },
+    {
+      "epoch": 9,
+      "loss": 2.014944365410801e-05
+    },
+    {
+      "epoch": 10,
+      "loss": 1.953416701574249e-05
+    }
+  ],
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 1.6871313164301682e-05,
+    "normal_aligned_mae": 0.004486593301407993,
+    "normal_independent_layer_roll_smooth_l1": 2.1257620574033353e-05,
+    "normal_independent_layer_roll_mae": 0.005069469567388296,
+    "pseudo_aligned_smooth_l1": 0.00039730293065076694,
+    "pseudo_aligned_mae": 0.011649782303720713,
+    "pseudo_independent_layer_roll_smooth_l1": 0.000942628103075549,
+    "pseudo_independent_layer_roll_mae": 0.020716947503387928,
+    "normal_roll_loss_ratio": 1.2599861295333394,
+    "pseudo_over_normal_loss_ratio": 23.54902234234069
+  },
+  "predictor_query_after_matcher": {
+    "normal_aligned_smooth_l1": 1.6871313164301682e-05,
+    "normal_aligned_mae": 0.004486593301407993,
+    "normal_independent_layer_roll_smooth_l1": 2.1257620574033353e-05,
+    "normal_independent_layer_roll_mae": 0.005069469567388296,
+    "pseudo_aligned_smooth_l1": 0.00039730293065076694,
+    "pseudo_aligned_mae": 0.011649782303720713,
+    "pseudo_independent_layer_roll_smooth_l1": 0.000942628103075549,
+    "pseudo_independent_layer_roll_mae": 0.020716947503387928,
+    "normal_roll_loss_ratio": 1.2599861295333394,
+    "pseudo_over_normal_loss_ratio": 23.54902234234069
+  },
+  "matcher_history": [
+    {
+      "epoch": 1,
+      "loss": 3.8681573814815944,
+      "D_normal_loss": 3.8719077110290527,
+      "D_pseudo_loss": 3.872271172205607,
+      "grad_norm": 0.18085847672902874,
+      "M_normal_loss": 3.8704023679097492,
+      "M_pseudo_loss": 3.862481180826823,
+      "S_normal_loss": 3.8725035349527994,
+      "S_pseudo_loss": 3.859378385543823
+    },
+    {
+      "epoch": 2,
+      "loss": 3.8385365592108833,
+      "D_normal_loss": 3.873088995615641,
+      "D_pseudo_loss": 3.863043689727783,
+      "grad_norm": 1.1375856492254468,
+      "M_normal_loss": 3.8565847396850588,
+      "M_pseudo_loss": 3.7516294002532957,
+      "S_normal_loss": 3.8717333952585857,
+      "S_pseudo_loss": 3.815139055252075
+    },
+    {
+      "epoch": 3,
+      "loss": 3.7988017241160077,
+      "D_normal_loss": 3.8715991973876953,
+      "D_pseudo_loss": 3.7996495564778647,
+      "grad_norm": 2.337764169441329,
+      "M_normal_loss": 3.8411643664042154,
+      "M_pseudo_loss": 3.6795602003733316,
+      "S_normal_loss": 3.8448310057322184,
+      "S_pseudo_loss": 3.7560060342152912
+    },
+    {
+      "epoch": 4,
+      "loss": 3.7752785205841066,
+      "D_normal_loss": 3.9011655330657957,
+      "D_pseudo_loss": 3.7467153390248615,
+      "grad_norm": 5.2785239908430315,
+      "M_normal_loss": 3.7599700927734374,
+      "M_pseudo_loss": 3.6803432146708173,
+      "S_normal_loss": 3.8159722010294597,
+      "S_pseudo_loss": 3.747504711151123
+    },
+    {
+      "epoch": 5,
+      "loss": 3.7174738936954075,
+      "D_normal_loss": 3.857411432266235,
+      "D_pseudo_loss": 3.6098008155822754,
+      "grad_norm": 6.917018445332845,
+      "M_normal_loss": 3.754251782099406,
+      "M_pseudo_loss": 3.6370411554972333,
+      "S_normal_loss": 3.7588921070098875,
+      "S_pseudo_loss": 3.6874460856119793,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.12303245812654495,
+          0.13926443457603455,
+          0.1242644339799881
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.9519705772399902,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.1042223796248436,
+                  "normalized_information": -0.020864207297563553
+                },
+                "pseudo": {
+                  "loss": 3.654262065887451,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.15438082814216614,
+                  "normalized_information": 0.05603919178247452
+                },
+                "joint_mrr": 0.12930160388350487
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.986541271209717,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.10051465034484863,
+                  "normalized_information": -0.02979443222284317
+                },
+                "pseudo": {
+                  "loss": 3.6964263916015625,
+                  "top1": 0.03125,
+                  "mrr": 0.13301196694374084,
+                  "normalized_information": 0.04514739662408829
+                },
+                "joint_mrr": 0.11676330864429474
+              }
+            ],
+            "normal_loss": 3.9692559242248535,
+            "normal_loss_std": 0.01728534698486328,
+            "normal_top1": 0.02083333395421505,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.10236851498484612,
+            "normal_mrr_std": 0.0018538646399974823,
+            "normal_normalized_information": -0.02532931976020336,
+            "normal_normalized_information_std": 0.004465112462639809,
+            "pseudo_loss": 3.675344228744507,
+            "pseudo_loss_std": 0.021082162857055664,
+            "pseudo_top1": 0.0416666679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.1436963975429535,
+            "pseudo_mrr_std": 0.010684430599212646,
+            "pseudo_normalized_information": 0.0505932942032814,
+            "pseudo_normalized_information_std": 0.005445897579193115,
+            "joint_mrr": 0.1230324562638998
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.7047672271728516,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.14999115467071533,
+                  "normalized_information": 0.042992811650037766
+                },
+                "pseudo": {
+                  "loss": 3.589728832244873,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.16498896479606628,
+                  "normalized_information": 0.07270926982164383
+                },
+                "joint_mrr": 0.1574900597333908
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.8370165824890137,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.11929138749837875,
+                  "normalized_information": 0.008830452337861061
+                },
+                "pseudo": {
+                  "loss": 3.8111910820007324,
+                  "top1": 0.03125,
+                  "mrr": 0.12278624624013901,
+                  "normalized_information": 0.015501637943089008
+                },
+                "joint_mrr": 0.12103881686925888
+              }
+            ],
+            "normal_loss": 3.7708919048309326,
+            "normal_loss_std": 0.06612467765808105,
+            "normal_top1": 0.036458334885537624,
+            "normal_top1_std": 0.015625000931322575,
+            "normal_mrr": 0.13464127108454704,
+            "normal_mrr_std": 0.01534988358616829,
+            "normal_normalized_information": 0.025911631993949413,
+            "normal_normalized_information_std": 0.017081179656088352,
+            "pseudo_loss": 3.7004599571228027,
+            "pseudo_loss_std": 0.11073112487792969,
+            "pseudo_top1": 0.0416666679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.14388760551810265,
+            "pseudo_mrr_std": 0.02110135927796364,
+            "pseudo_normalized_information": 0.04410545388236642,
+            "pseudo_normalized_information_std": 0.02860381593927741,
+            "joint_mrr": 0.13926443830132484
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.878628730773926,
+                  "top1": 0.03125,
+                  "mrr": 0.10702202469110489,
+                  "normalized_information": -0.0019187049474567175
+                },
+                "pseudo": {
+                  "loss": 3.7697391510009766,
+                  "top1": 0.0625,
+                  "mrr": 0.16304507851600647,
+                  "normalized_information": 0.026209408417344093
+                },
+                "joint_mrr": 0.13503355160355568
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.9111952781677246,
+                  "top1": 0.03125,
+                  "mrr": 0.10900738090276718,
+                  "normalized_information": -0.010331222787499428
+                },
+                "pseudo": {
+                  "loss": 3.9346041679382324,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.11798325181007385,
+                  "normalized_information": -0.01637815497815609
+                },
+                "joint_mrr": 0.11349531635642052
+              }
+            ],
+            "normal_loss": 3.894912004470825,
+            "normal_loss_std": 0.016283273696899414,
+            "normal_top1": 0.03125,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.10801470279693604,
+            "normal_mrr_std": 0.0009926781058311462,
+            "normal_normalized_information": -0.006124963867478073,
+            "normal_normalized_information_std": 0.004206258920021355,
+            "pseudo_loss": 3.8521716594696045,
+            "pseudo_loss_std": 0.08243250846862793,
+            "pseudo_top1": 0.041666666977107525,
+            "pseudo_top1_std": 0.020833333022892475,
+            "pseudo_mrr": 0.14051416516304016,
+            "pseudo_mrr_std": 0.02253091335296631,
+            "pseudo_normalized_information": 0.004915626719594002,
+            "pseudo_normalized_information_std": 0.02129378169775009,
+            "joint_mrr": 0.1242644339799881
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.12930160388350487,
+              "M": 0.1574900597333908,
+              "S": 0.13503355160355568
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.11676330864429474,
+              "M": 0.12103881686925888,
+              "S": 0.11349531635642052
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.702284346686469,
+      "D_normal_loss": 3.851682360967,
+      "D_pseudo_loss": 3.57838503519694,
+      "grad_norm": 8.667210178905064,
+      "M_normal_loss": 3.6723653793334963,
+      "M_pseudo_loss": 3.5800009886423747,
+      "S_normal_loss": 3.7338827292124432,
+      "S_pseudo_loss": 3.797389539082845
+    },
+    {
+      "epoch": 7,
+      "loss": 3.6932872666252985,
+      "D_normal_loss": 3.8192166328430175,
+      "D_pseudo_loss": 3.6161934534708657,
+      "grad_norm": 8.202381655904983,
+      "M_normal_loss": 3.681454642613729,
+      "M_pseudo_loss": 3.602415196100871,
+      "S_normal_loss": 3.729142729441325,
+      "S_pseudo_loss": 3.711300849914551
+    },
+    {
+      "epoch": 8,
+      "loss": 3.631544213824802,
+      "D_normal_loss": 3.835084056854248,
+      "D_pseudo_loss": 3.5079387187957765,
+      "grad_norm": 9.436446359422472,
+      "M_normal_loss": 3.584260114034017,
+      "M_pseudo_loss": 3.498678684234619,
+      "S_normal_loss": 3.6890069961547853,
+      "S_pseudo_loss": 3.674296760559082
+    },
+    {
+      "epoch": 9,
+      "loss": 3.627925878100925,
+      "D_normal_loss": 3.7948892593383787,
+      "D_pseudo_loss": 3.522029002507528,
+      "grad_norm": 7.583826714091831,
+      "M_normal_loss": 3.5875432968139647,
+      "M_pseudo_loss": 3.5659140586853026,
+      "S_normal_loss": 3.612430715560913,
+      "S_pseudo_loss": 3.6847489356994627
+    },
+    {
+      "epoch": 10,
+      "loss": 3.600552537706163,
+      "D_normal_loss": 3.777088244756063,
+      "D_pseudo_loss": 3.5407275835673016,
+      "grad_norm": 8.81060070461697,
+      "M_normal_loss": 3.4983678817749024,
+      "M_pseudo_loss": 3.540947103500366,
+      "S_normal_loss": 3.5943249543507894,
+      "S_pseudo_loss": 3.6518593788146974,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.16480034589767456,
+          0.1737348586320877,
+          0.16635239124298096
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.7014801502227783,
+                  "top1": 0.03125,
+                  "mrr": 0.130694180727005,
+                  "normalized_information": 0.04384192079305649
+                },
+                "pseudo": {
+                  "loss": 3.5124099254608154,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.19336941838264465,
+                  "normalized_information": 0.0926821231842041
+                },
+                "joint_mrr": 0.16203179955482483
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.8386011123657227,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.14806267619132996,
+                  "normalized_information": 0.008421139791607857
+                },
+                "pseudo": {
+                  "loss": 3.6643800735473633,
+                  "top1": 0.0625,
+                  "mrr": 0.18707507848739624,
+                  "normalized_information": 0.05342553183436394
+                },
+                "joint_mrr": 0.1675688773393631
+              }
+            ],
+            "normal_loss": 3.7700406312942505,
+            "normal_loss_std": 0.06856048107147217,
+            "normal_top1": 0.0416666679084301,
+            "normal_top1_std": 0.0104166679084301,
+            "normal_mrr": 0.13937842845916748,
+            "normal_mrr_std": 0.008684247732162476,
+            "normal_normalized_information": 0.026131530292332172,
+            "normal_normalized_information_std": 0.017710390500724316,
+            "pseudo_loss": 3.5883949995040894,
+            "pseudo_loss_std": 0.07598507404327393,
+            "pseudo_top1": 0.0729166679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.19022224843502045,
+            "pseudo_mrr_std": 0.0031471699476242065,
+            "pseudo_normalized_information": 0.07305382750928402,
+            "pseudo_normalized_information_std": 0.019628295674920082,
+            "joint_mrr": 0.16480033844709396
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.424628734588623,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.19346533715724945,
+                  "normalized_information": 0.11535756289958954
+                },
+                "pseudo": {
+                  "loss": 3.5775375366210938,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.1739417165517807,
+                  "normalized_information": 0.07585850358009338
+                },
+                "joint_mrr": 0.18370352685451508
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.4924564361572266,
+                  "top1": 0.0729166716337204,
+                  "mrr": 0.1877419799566269,
+                  "normalized_information": 0.0978364571928978
+                },
+                "pseudo": {
+                  "loss": 3.952299118041992,
+                  "top1": 0.03125,
+                  "mrr": 0.1397903859615326,
+                  "normalized_information": -0.020949074998497963
+                },
+                "joint_mrr": 0.16376618295907974
+              }
+            ],
+            "normal_loss": 3.458542585372925,
+            "normal_loss_std": 0.03391385078430176,
+            "normal_top1": 0.0625000037252903,
+            "normal_top1_std": 0.0104166679084301,
+            "normal_mrr": 0.19060365855693817,
+            "normal_mrr_std": 0.0028616786003112793,
+            "normal_normalized_information": 0.10659701004624367,
+            "normal_normalized_information_std": 0.008760552853345871,
+            "pseudo_loss": 3.764918327331543,
+            "pseudo_loss_std": 0.18738079071044922,
+            "pseudo_top1": 0.0416666679084301,
+            "pseudo_top1_std": 0.0104166679084301,
+            "pseudo_mrr": 0.15686605125665665,
+            "pseudo_mrr_std": 0.017075665295124054,
+            "pseudo_normalized_information": 0.02745471429079771,
+            "pseudo_normalized_information_std": 0.04840378928929567,
+            "joint_mrr": 0.1737348549067974
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.5779385566711426,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.15157903730869293,
+                  "normalized_information": 0.07575491070747375
+                },
+                "pseudo": {
+                  "loss": 3.6872167587280273,
+                  "top1": 0.0625,
+                  "mrr": 0.18066151440143585,
+                  "normalized_information": 0.04752640798687935
+                },
+                "joint_mrr": 0.1661202758550644
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.812108278274536,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.13469602167606354,
+                  "normalized_information": 0.01526470948010683
+                },
+                "pseudo": {
+                  "loss": 4.120615005493164,
+                  "top1": 0.1145833358168602,
+                  "mrr": 0.1984729766845703,
+                  "normalized_information": -0.06442806124687195
+                },
+                "joint_mrr": 0.16658449918031693
+              }
+            ],
+            "normal_loss": 3.6950234174728394,
+            "normal_loss_std": 0.11708486080169678,
+            "normal_top1": 0.04687500186264515,
+            "normal_top1_std": 0.00520833395421505,
+            "normal_mrr": 0.14313752949237823,
+            "normal_mrr_std": 0.008441507816314697,
+            "normal_normalized_information": 0.04550981009379029,
+            "normal_normalized_information_std": 0.030245100613683462,
+            "pseudo_loss": 3.9039158821105957,
+            "pseudo_loss_std": 0.21669912338256836,
+            "pseudo_top1": 0.0885416679084301,
+            "pseudo_top1_std": 0.0260416679084301,
+            "pseudo_mrr": 0.18956724554300308,
+            "pseudo_mrr_std": 0.00890573114156723,
+            "pseudo_normalized_information": -0.0084508266299963,
+            "pseudo_normalized_information_std": 0.05597723461687565,
+            "joint_mrr": 0.16635238751769066
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.16203179955482483,
+              "M": 0.18370352685451508,
+              "S": 0.1661202758550644
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "scale": "D",
+            "boundary": 8,
+            "evidence": {
+              "D": 0.1675688773393631,
+              "M": 0.16376618295907974,
+              "S": 0.16658449918031693
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 11,
+      "loss": 3.6191295676761204,
+      "D_normal_loss": 3.8391106923421225,
+      "D_pseudo_loss": 3.5425111134847005,
+      "grad_norm": 8.958417754703097,
+      "M_normal_loss": 3.6289659182230634,
+      "M_pseudo_loss": 3.4967260201772055,
+      "S_normal_loss": 3.598023207982381,
+      "S_pseudo_loss": 3.609440485636393
+    },
+    {
+      "epoch": 12,
+      "loss": 3.6226751804351807,
+      "D_normal_loss": 3.8146050930023194,
+      "D_pseudo_loss": 3.5396366119384766,
+      "grad_norm": 8.397291363610162,
+      "M_normal_loss": 3.6047218958536784,
+      "M_pseudo_loss": 3.487514352798462,
+      "S_normal_loss": 3.6356993834177653,
+      "S_pseudo_loss": 3.653873825073242
+    },
+    {
+      "epoch": 13,
+      "loss": 3.5696749475267198,
+      "D_normal_loss": 3.785762166976929,
+      "D_pseudo_loss": 3.461252514521281,
+      "grad_norm": 7.78111227883233,
+      "M_normal_loss": 3.629957151412964,
+      "M_pseudo_loss": 3.4727908611297607,
+      "S_normal_loss": 3.494271977742513,
+      "S_pseudo_loss": 3.5740150610605874
+    },
+    {
+      "epoch": 14,
+      "loss": 3.6485659970177546,
+      "D_normal_loss": 3.7957867622375487,
+      "D_pseudo_loss": 3.5935144265492758,
+      "grad_norm": 8.33687371942732,
+      "M_normal_loss": 3.792479880650838,
+      "M_pseudo_loss": 3.492200183868408,
+      "S_normal_loss": 3.6040612856547036,
+      "S_pseudo_loss": 3.613353459040324
+    },
+    {
+      "epoch": 15,
+      "loss": 3.6522084130181205,
+      "D_normal_loss": 3.908721605936686,
+      "D_pseudo_loss": 3.58587425549825,
+      "grad_norm": 7.373940030733745,
+      "M_normal_loss": 3.7601693153381346,
+      "M_pseudo_loss": 3.4302300294240315,
+      "S_normal_loss": 3.67529304822286,
+      "S_pseudo_loss": 3.5529622554779055
+    },
+    {
+      "epoch": 16,
+      "loss": 3.599468384848701,
+      "D_normal_loss": 3.8330493291219074,
+      "D_pseudo_loss": 3.6448779106140137,
+      "grad_norm": 8.500650220447117,
+      "M_normal_loss": 3.720551522572835,
+      "M_pseudo_loss": 3.420276657740275,
+      "S_normal_loss": 3.48807741800944,
+      "S_pseudo_loss": 3.489977471033732
+    },
+    {
+      "epoch": 17,
+      "loss": 3.5348595407274033,
+      "D_normal_loss": 3.834974527359009,
+      "D_pseudo_loss": 3.4736233870188395,
+      "grad_norm": 8.412212342686123,
+      "M_normal_loss": 3.733710352579753,
+      "M_pseudo_loss": 3.432796080907186,
+      "S_normal_loss": 3.4277627150217693,
+      "S_pseudo_loss": 3.3062901814778645
+    },
+    {
+      "epoch": 18,
+      "loss": 3.58433354695638,
+      "D_normal_loss": 3.828063424428304,
+      "D_pseudo_loss": 3.5476357618967693,
+      "grad_norm": 10.898421062363518,
+      "M_normal_loss": 3.686353015899658,
+      "M_pseudo_loss": 3.419304625193278,
+      "S_normal_loss": 3.616399892171224,
+      "S_pseudo_loss": 3.408244514465332
+    },
+    {
+      "epoch": 19,
+      "loss": 3.4978480127122666,
+      "D_normal_loss": 3.8182068188985188,
+      "D_pseudo_loss": 3.397366682688395,
+      "grad_norm": 12.907909165488348,
+      "M_normal_loss": 3.6203580061594645,
+      "M_pseudo_loss": 3.2481215635935468,
+      "S_normal_loss": 3.588919687271118,
+      "S_pseudo_loss": 3.3141153335571287
+    },
+    {
+      "epoch": 20,
+      "loss": 3.396761004130046,
+      "D_normal_loss": 3.800680335362752,
+      "D_pseudo_loss": 3.388165998458862,
+      "grad_norm": 11.977247820960152,
+      "M_normal_loss": 3.53552041053772,
+      "M_pseudo_loss": 3.056372356414795,
+      "S_normal_loss": 3.3862091541290282,
+      "S_pseudo_loss": 3.2136178016662598,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.1535193771123886,
+          0.20770296454429626,
+          0.20176288485527039
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.7528786659240723,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.13524377346038818,
+                  "normalized_information": 0.030564771965146065
+                },
+                "pseudo": {
+                  "loss": 3.4796242713928223,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.15607917308807373,
+                  "normalized_information": 0.1011512354016304
+                },
+                "joint_mrr": 0.14566147327423096
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.819669723510742,
+                  "top1": 0.03125,
+                  "mrr": 0.1304522156715393,
+                  "normalized_information": 0.013311454094946384
+                },
+                "pseudo": {
+                  "loss": 3.543710470199585,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.19230234622955322,
+                  "normalized_information": 0.08459663391113281
+                },
+                "joint_mrr": 0.16137728095054626
+              }
+            ],
+            "normal_loss": 3.7862741947174072,
+            "normal_loss_std": 0.03339552879333496,
+            "normal_top1": 0.03645833395421505,
+            "normal_top1_std": 0.00520833395421505,
+            "normal_mrr": 0.13284799456596375,
+            "normal_mrr_std": 0.0023957788944244385,
+            "normal_normalized_information": 0.021938113030046225,
+            "normal_normalized_information_std": 0.00862665893509984,
+            "pseudo_loss": 3.5116673707962036,
+            "pseudo_loss_std": 0.03204309940338135,
+            "pseudo_top1": 0.052083334885537624,
+            "pseudo_top1_std": 0.031250000931322575,
+            "pseudo_mrr": 0.17419075965881348,
+            "pseudo_mrr_std": 0.018111586570739746,
+            "pseudo_normalized_information": 0.09287393465638161,
+            "pseudo_normalized_information_std": 0.008277300745248795,
+            "joint_mrr": 0.1535193771123886
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.545515537261963,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.1499708741903305,
+                  "normalized_information": 0.08413035422563553
+                },
+                "pseudo": {
+                  "loss": 3.28865385055542,
+                  "top1": 0.1041666716337204,
+                  "mrr": 0.23333773016929626,
+                  "normalized_information": 0.15048229694366455
+                },
+                "joint_mrr": 0.19165430217981339
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.5913643836975098,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.16570018231868744,
+                  "normalized_information": 0.07228677719831467
+                },
+                "pseudo": {
+                  "loss": 3.189675807952881,
+                  "top1": 0.125,
+                  "mrr": 0.28180307149887085,
+                  "normalized_information": 0.1760500818490982
+                },
+                "joint_mrr": 0.22375162690877914
+              }
+            ],
+            "normal_loss": 3.5684399604797363,
+            "normal_loss_std": 0.022924423217773438,
+            "normal_top1": 0.04687500186264515,
+            "normal_top1_std": 0.00520833395421505,
+            "normal_mrr": 0.15783552825450897,
+            "normal_mrr_std": 0.007864654064178467,
+            "normal_normalized_information": 0.0782085657119751,
+            "normal_normalized_information_std": 0.005921788513660431,
+            "pseudo_loss": 3.2391648292541504,
+            "pseudo_loss_std": 0.04948902130126953,
+            "pseudo_top1": 0.1145833358168602,
+            "pseudo_top1_std": 0.010416664183139801,
+            "pseudo_mrr": 0.25757040083408356,
+            "pseudo_mrr_std": 0.024232670664787292,
+            "pseudo_normalized_information": 0.16326618939638138,
+            "pseudo_normalized_information_std": 0.012783892452716827,
+            "joint_mrr": 0.20770296454429626
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.3207621574401855,
+                  "top1": 0.0625,
+                  "mrr": 0.1967260241508484,
+                  "normalized_information": 0.1421881467103958
+                },
+                "pseudo": {
+                  "loss": 3.371019124984741,
+                  "top1": 0.09375,
+                  "mrr": 0.22654768824577332,
+                  "normalized_information": 0.1292058825492859
+                },
+                "joint_mrr": 0.21163685619831085
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.6349611282348633,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.18158552050590515,
+                  "normalized_information": 0.06102496758103371
+                },
+                "pseudo": {
+                  "loss": 3.7553505897521973,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.2021922767162323,
+                  "normalized_information": 0.029926229268312454
+                },
+                "joint_mrr": 0.19188889861106873
+              }
+            ],
+            "normal_loss": 3.4778616428375244,
+            "normal_loss_std": 0.15709948539733887,
+            "normal_top1": 0.0729166679084301,
+            "normal_top1_std": 0.0104166679084301,
+            "normal_mrr": 0.18915577232837677,
+            "normal_mrr_std": 0.007570251822471619,
+            "normal_normalized_information": 0.10160655714571476,
+            "normal_normalized_information_std": 0.04058158956468105,
+            "pseudo_loss": 3.5631848573684692,
+            "pseudo_loss_std": 0.19216573238372803,
+            "pseudo_top1": 0.06770833395421505,
+            "pseudo_top1_std": 0.02604166604578495,
+            "pseudo_mrr": 0.2143699824810028,
+            "pseudo_mrr_std": 0.012177705764770508,
+            "pseudo_normalized_information": 0.07956605590879917,
+            "pseudo_normalized_information_std": 0.04963982664048672,
+            "joint_mrr": 0.2017628774046898
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "scale": "S",
+            "boundary": 0,
+            "evidence": {
+              "D": 0.14566147327423096,
+              "M": 0.19165430217981339,
+              "S": 0.21163685619831085
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.16137728095054626,
+              "M": 0.22375162690877914,
+              "S": 0.19188889861106873
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    },
+    {
+      "epoch": 21,
+      "loss": 3.3985845936669246,
+      "D_normal_loss": 3.768572982152303,
+      "D_pseudo_loss": 3.320481204986572,
+      "grad_norm": 15.024575498369005,
+      "M_normal_loss": 3.529715808232625,
+      "M_pseudo_loss": 3.1264687538146974,
+      "S_normal_loss": 3.4155274709065755,
+      "S_pseudo_loss": 3.230741262435913
+    },
+    {
+      "epoch": 22,
+      "loss": 3.3855613973405627,
+      "D_normal_loss": 3.819283660252889,
+      "D_pseudo_loss": 3.4073977947235106,
+      "grad_norm": 21.157610585954455,
+      "M_normal_loss": 3.487396478652954,
+      "M_pseudo_loss": 3.0521480401357013,
+      "S_normal_loss": 3.3930232365926107,
+      "S_pseudo_loss": 3.154119110107422
+    },
+    {
+      "epoch": 23,
+      "loss": 3.3895843505859373,
+      "D_normal_loss": 3.854425048828125,
+      "D_pseudo_loss": 3.435158443450928,
+      "grad_norm": 20.148392793867323,
+      "M_normal_loss": 3.5629981835683187,
+      "M_pseudo_loss": 3.119861396153768,
+      "S_normal_loss": 3.311637862523397,
+      "S_pseudo_loss": 3.0534252484639484
+    },
+    {
+      "epoch": 24,
+      "loss": 3.3105179733700223,
+      "D_normal_loss": 3.771692895889282,
+      "D_pseudo_loss": 3.2393965403238933,
+      "grad_norm": 20.121050474378798,
+      "M_normal_loss": 3.397588761647542,
+      "M_pseudo_loss": 3.0657933076222736,
+      "S_normal_loss": 3.3277172406514484,
+      "S_pseudo_loss": 3.0609189669291177
+    },
+    {
+      "epoch": 25,
+      "loss": 3.305147033267551,
+      "D_normal_loss": 3.7532719453175862,
+      "D_pseudo_loss": 3.207893387476603,
+      "grad_norm": 23.208399513032703,
+      "M_normal_loss": 3.3730473200480144,
+      "M_pseudo_loss": 2.9683829148610434,
+      "S_normal_loss": 3.437394460042318,
+      "S_pseudo_loss": 3.0908921400705975
+    },
+    {
+      "epoch": 26,
+      "loss": 3.2782037523057728,
+      "D_normal_loss": 3.748768138885498,
+      "D_pseudo_loss": 3.223829237620036,
+      "grad_norm": 19.73496461444431,
+      "M_normal_loss": 3.419770272572835,
+      "M_pseudo_loss": 2.96036745707194,
+      "S_normal_loss": 3.320185327529907,
+      "S_pseudo_loss": 2.996302080154419
+    },
+    {
+      "epoch": 27,
+      "loss": 3.341976218753391,
+      "D_normal_loss": 3.843882369995117,
+      "D_pseudo_loss": 3.4004551728566486,
+      "grad_norm": 27.045432753033108,
+      "M_normal_loss": 3.4861396312713624,
+      "M_pseudo_loss": 3.1043839772542317,
+      "S_normal_loss": 3.2609131813049315,
+      "S_pseudo_loss": 2.956083043416341
+    },
+    {
+      "epoch": 28,
+      "loss": 3.229107713699341,
+      "D_normal_loss": 3.7580024083455403,
+      "D_pseudo_loss": 3.2107669989267986,
+      "grad_norm": 27.212347115410697,
+      "M_normal_loss": 3.3293928941090902,
+      "M_pseudo_loss": 2.994745715459188,
+      "S_normal_loss": 3.2213685671488443,
+      "S_pseudo_loss": 2.86036958694458
+    },
+    {
+      "epoch": 29,
+      "loss": 3.2468481487698027,
+      "D_normal_loss": 3.7939584891001386,
+      "D_pseudo_loss": 3.3200796127319334,
+      "grad_norm": 21.684287288453845,
+      "M_normal_loss": 3.257192309697469,
+      "M_pseudo_loss": 2.8726338386535644,
+      "S_normal_loss": 3.279248046875,
+      "S_pseudo_loss": 2.9579766909281413
+    },
+    {
+      "epoch": 30,
+      "loss": 3.342268371582031,
+      "D_normal_loss": 3.8935728708902997,
+      "D_pseudo_loss": 3.457204294204712,
+      "grad_norm": 30.867535066604614,
+      "M_normal_loss": 3.4094981511433917,
+      "M_pseudo_loss": 2.954449160893758,
+      "S_normal_loss": 3.378667211532593,
+      "S_pseudo_loss": 2.9602187474568686,
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale_order": [
+          "D",
+          "M",
+          "S"
+        ],
+        "evidence": [
+          0.11800424754619598,
+          0.18992885947227478,
+          0.18123146891593933
+        ],
+        "scales": {
+          "D": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 4.633001327514648,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09306271374225616,
+                  "normalized_information": -0.1967865526676178
+                },
+                "pseudo": {
+                  "loss": 4.82913875579834,
+                  "top1": 0.03125,
+                  "mrr": 0.1216900497674942,
+                  "normalized_information": -0.24745233356952667
+                },
+                "joint_mrr": 0.10737638175487518
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 4.313983917236328,
+                  "top1": 0.02083333395421505,
+                  "mrr": 0.09319988638162613,
+                  "normalized_information": -0.1143786832690239
+                },
+                "pseudo": {
+                  "loss": 4.9744038581848145,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.16406434774398804,
+                  "normalized_information": -0.28497689962387085
+                },
+                "joint_mrr": 0.12863211706280708
+              }
+            ],
+            "normal_loss": 4.473492622375488,
+            "normal_loss_std": 0.15950870513916016,
+            "normal_top1": 0.02083333395421505,
+            "normal_top1_std": 0.0,
+            "normal_mrr": 0.09313130006194115,
+            "normal_mrr_std": 6.85863196849823e-05,
+            "normal_normalized_information": -0.15558261796832085,
+            "normal_normalized_information_std": 0.04120393469929695,
+            "pseudo_loss": 4.901771306991577,
+            "pseudo_loss_std": 0.0726325511932373,
+            "pseudo_top1": 0.0572916679084301,
+            "pseudo_top1_std": 0.0260416679084301,
+            "pseudo_mrr": 0.14287719875574112,
+            "pseudo_mrr_std": 0.021187148988246918,
+            "pseudo_normalized_information": -0.26621461659669876,
+            "pseudo_normalized_information_std": 0.01876228302717209,
+            "joint_mrr": 0.11800424940884113
+          },
+          "M": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 4.960065841674805,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.14000412821769714,
+                  "normalized_information": -0.28127312660217285
+                },
+                "pseudo": {
+                  "loss": 3.97161602973938,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.18359357118606567,
+                  "normalized_information": -0.0259389765560627
+                },
+                "joint_mrr": 0.1617988497018814
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 4.511371612548828,
+                  "top1": 0.0833333358168602,
+                  "mrr": 0.197947695851326,
+                  "normalized_information": -0.16536743938922882
+                },
+                "pseudo": {
+                  "loss": 3.5862045288085938,
+                  "top1": 0.09375,
+                  "mrr": 0.2381700575351715,
+                  "normalized_information": 0.07361966371536255
+                },
+                "joint_mrr": 0.21805887669324875
+              }
+            ],
+            "normal_loss": 4.735718727111816,
+            "normal_loss_std": 0.22434711456298828,
+            "normal_top1": 0.0677083358168602,
+            "normal_top1_std": 0.015625,
+            "normal_mrr": 0.16897591203451157,
+            "normal_mrr_std": 0.028971783816814423,
+            "normal_normalized_information": -0.22332028299570084,
+            "normal_normalized_information_std": 0.057952843606472015,
+            "pseudo_loss": 3.778910279273987,
+            "pseudo_loss_std": 0.19270575046539307,
+            "pseudo_top1": 0.0729166679084301,
+            "pseudo_top1_std": 0.0208333320915699,
+            "pseudo_mrr": 0.2108818143606186,
+            "pseudo_mrr_std": 0.027288243174552917,
+            "pseudo_normalized_information": 0.023840343579649925,
+            "pseudo_normalized_information_std": 0.049779320135712624,
+            "joint_mrr": 0.18992886319756508
+          },
+          "S": {
+            "videos": 2,
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+                "normal": {
+                  "loss": 3.5286216735839844,
+                  "top1": 0.0520833358168602,
+                  "mrr": 0.16795216500759125,
+                  "normalized_information": 0.08849433809518814
+                },
+                "pseudo": {
+                  "loss": 3.4070043563842773,
+                  "top1": 0.1354166716337204,
+                  "mrr": 0.2544551193714142,
+                  "normalized_information": 0.11991024762392044
+                },
+                "joint_mrr": 0.21120364218950272
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+                "normal": {
+                  "loss": 3.8037209510803223,
+                  "top1": 0.03125,
+                  "mrr": 0.13300815224647522,
+                  "normalized_information": 0.01743130572140217
+                },
+                "pseudo": {
+                  "loss": 4.341317176818848,
+                  "top1": 0.0416666679084301,
+                  "mrr": 0.16951042413711548,
+                  "normalized_information": -0.12143935263156891
+                },
+                "joint_mrr": 0.15125928819179535
+              }
+            ],
+            "normal_loss": 3.6661713123321533,
+            "normal_loss_std": 0.13754963874816895,
+            "normal_top1": 0.0416666679084301,
+            "normal_top1_std": 0.0104166679084301,
+            "normal_mrr": 0.15048015862703323,
+            "normal_mrr_std": 0.017472006380558014,
+            "normal_normalized_information": 0.052962821908295155,
+            "normal_normalized_information_std": 0.035531516186892986,
+            "pseudo_loss": 3.8741607666015625,
+            "pseudo_loss_std": 0.46715641021728516,
+            "pseudo_top1": 0.08854166977107525,
+            "pseudo_top1_std": 0.04687500186264515,
+            "pseudo_mrr": 0.21198277175426483,
+            "pseudo_mrr_std": 0.04247234761714935,
+            "pseudo_normalized_information": -0.000764552503824234,
+            "pseudo_normalized_information_std": 0.12067480012774467,
+            "joint_mrr": 0.18123146519064903
+          }
+        },
+        "video_winners": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "scale": "S",
+            "boundary": 0,
+            "evidence": {
+              "D": 0.10737638175487518,
+              "M": 0.1617988497018814,
+              "S": 0.21120364218950272
+            }
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "scale": "M",
+            "boundary": 4,
+            "evidence": {
+              "D": 0.12863211706280708,
+              "M": 0.21805887669324875,
+              "S": 0.15125928819179535
+            }
+          }
+        ],
+        "permuted_opening": false
+      }
+    }
+  ],
+  "milestones": {
+    "5": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.12303245812654495,
+        0.13926443457603455,
+        0.1242644339799881
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.9519705772399902,
+                "top1": 0.02083333395421505,
+                "mrr": 0.1042223796248436,
+                "normalized_information": -0.020864207297563553
+              },
+              "pseudo": {
+                "loss": 3.654262065887451,
+                "top1": 0.0520833358168602,
+                "mrr": 0.15438082814216614,
+                "normalized_information": 0.05603919178247452
+              },
+              "joint_mrr": 0.12930160388350487
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.986541271209717,
+                "top1": 0.02083333395421505,
+                "mrr": 0.10051465034484863,
+                "normalized_information": -0.02979443222284317
+              },
+              "pseudo": {
+                "loss": 3.6964263916015625,
+                "top1": 0.03125,
+                "mrr": 0.13301196694374084,
+                "normalized_information": 0.04514739662408829
+              },
+              "joint_mrr": 0.11676330864429474
+            }
+          ],
+          "normal_loss": 3.9692559242248535,
+          "normal_loss_std": 0.01728534698486328,
+          "normal_top1": 0.02083333395421505,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.10236851498484612,
+          "normal_mrr_std": 0.0018538646399974823,
+          "normal_normalized_information": -0.02532931976020336,
+          "normal_normalized_information_std": 0.004465112462639809,
+          "pseudo_loss": 3.675344228744507,
+          "pseudo_loss_std": 0.021082162857055664,
+          "pseudo_top1": 0.0416666679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.1436963975429535,
+          "pseudo_mrr_std": 0.010684430599212646,
+          "pseudo_normalized_information": 0.0505932942032814,
+          "pseudo_normalized_information_std": 0.005445897579193115,
+          "joint_mrr": 0.1230324562638998
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.7047672271728516,
+                "top1": 0.0520833358168602,
+                "mrr": 0.14999115467071533,
+                "normalized_information": 0.042992811650037766
+              },
+              "pseudo": {
+                "loss": 3.589728832244873,
+                "top1": 0.0520833358168602,
+                "mrr": 0.16498896479606628,
+                "normalized_information": 0.07270926982164383
+              },
+              "joint_mrr": 0.1574900597333908
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.8370165824890137,
+                "top1": 0.02083333395421505,
+                "mrr": 0.11929138749837875,
+                "normalized_information": 0.008830452337861061
+              },
+              "pseudo": {
+                "loss": 3.8111910820007324,
+                "top1": 0.03125,
+                "mrr": 0.12278624624013901,
+                "normalized_information": 0.015501637943089008
+              },
+              "joint_mrr": 0.12103881686925888
+            }
+          ],
+          "normal_loss": 3.7708919048309326,
+          "normal_loss_std": 0.06612467765808105,
+          "normal_top1": 0.036458334885537624,
+          "normal_top1_std": 0.015625000931322575,
+          "normal_mrr": 0.13464127108454704,
+          "normal_mrr_std": 0.01534988358616829,
+          "normal_normalized_information": 0.025911631993949413,
+          "normal_normalized_information_std": 0.017081179656088352,
+          "pseudo_loss": 3.7004599571228027,
+          "pseudo_loss_std": 0.11073112487792969,
+          "pseudo_top1": 0.0416666679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.14388760551810265,
+          "pseudo_mrr_std": 0.02110135927796364,
+          "pseudo_normalized_information": 0.04410545388236642,
+          "pseudo_normalized_information_std": 0.02860381593927741,
+          "joint_mrr": 0.13926443830132484
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.878628730773926,
+                "top1": 0.03125,
+                "mrr": 0.10702202469110489,
+                "normalized_information": -0.0019187049474567175
+              },
+              "pseudo": {
+                "loss": 3.7697391510009766,
+                "top1": 0.0625,
+                "mrr": 0.16304507851600647,
+                "normalized_information": 0.026209408417344093
+              },
+              "joint_mrr": 0.13503355160355568
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.9111952781677246,
+                "top1": 0.03125,
+                "mrr": 0.10900738090276718,
+                "normalized_information": -0.010331222787499428
+              },
+              "pseudo": {
+                "loss": 3.9346041679382324,
+                "top1": 0.02083333395421505,
+                "mrr": 0.11798325181007385,
+                "normalized_information": -0.01637815497815609
+              },
+              "joint_mrr": 0.11349531635642052
+            }
+          ],
+          "normal_loss": 3.894912004470825,
+          "normal_loss_std": 0.016283273696899414,
+          "normal_top1": 0.03125,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.10801470279693604,
+          "normal_mrr_std": 0.0009926781058311462,
+          "normal_normalized_information": -0.006124963867478073,
+          "normal_normalized_information_std": 0.004206258920021355,
+          "pseudo_loss": 3.8521716594696045,
+          "pseudo_loss_std": 0.08243250846862793,
+          "pseudo_top1": 0.041666666977107525,
+          "pseudo_top1_std": 0.020833333022892475,
+          "pseudo_mrr": 0.14051416516304016,
+          "pseudo_mrr_std": 0.02253091335296631,
+          "pseudo_normalized_information": 0.004915626719594002,
+          "pseudo_normalized_information_std": 0.02129378169775009,
+          "joint_mrr": 0.1242644339799881
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.12930160388350487,
+            "M": 0.1574900597333908,
+            "S": 0.13503355160355568
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.11676330864429474,
+            "M": 0.12103881686925888,
+            "S": 0.11349531635642052
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "10": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.16480034589767456,
+        0.1737348586320877,
+        0.16635239124298096
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.7014801502227783,
+                "top1": 0.03125,
+                "mrr": 0.130694180727005,
+                "normalized_information": 0.04384192079305649
+              },
+              "pseudo": {
+                "loss": 3.5124099254608154,
+                "top1": 0.0833333358168602,
+                "mrr": 0.19336941838264465,
+                "normalized_information": 0.0926821231842041
+              },
+              "joint_mrr": 0.16203179955482483
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.8386011123657227,
+                "top1": 0.0520833358168602,
+                "mrr": 0.14806267619132996,
+                "normalized_information": 0.008421139791607857
+              },
+              "pseudo": {
+                "loss": 3.6643800735473633,
+                "top1": 0.0625,
+                "mrr": 0.18707507848739624,
+                "normalized_information": 0.05342553183436394
+              },
+              "joint_mrr": 0.1675688773393631
+            }
+          ],
+          "normal_loss": 3.7700406312942505,
+          "normal_loss_std": 0.06856048107147217,
+          "normal_top1": 0.0416666679084301,
+          "normal_top1_std": 0.0104166679084301,
+          "normal_mrr": 0.13937842845916748,
+          "normal_mrr_std": 0.008684247732162476,
+          "normal_normalized_information": 0.026131530292332172,
+          "normal_normalized_information_std": 0.017710390500724316,
+          "pseudo_loss": 3.5883949995040894,
+          "pseudo_loss_std": 0.07598507404327393,
+          "pseudo_top1": 0.0729166679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.19022224843502045,
+          "pseudo_mrr_std": 0.0031471699476242065,
+          "pseudo_normalized_information": 0.07305382750928402,
+          "pseudo_normalized_information_std": 0.019628295674920082,
+          "joint_mrr": 0.16480033844709396
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.424628734588623,
+                "top1": 0.0520833358168602,
+                "mrr": 0.19346533715724945,
+                "normalized_information": 0.11535756289958954
+              },
+              "pseudo": {
+                "loss": 3.5775375366210938,
+                "top1": 0.0520833358168602,
+                "mrr": 0.1739417165517807,
+                "normalized_information": 0.07585850358009338
+              },
+              "joint_mrr": 0.18370352685451508
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.4924564361572266,
+                "top1": 0.0729166716337204,
+                "mrr": 0.1877419799566269,
+                "normalized_information": 0.0978364571928978
+              },
+              "pseudo": {
+                "loss": 3.952299118041992,
+                "top1": 0.03125,
+                "mrr": 0.1397903859615326,
+                "normalized_information": -0.020949074998497963
+              },
+              "joint_mrr": 0.16376618295907974
+            }
+          ],
+          "normal_loss": 3.458542585372925,
+          "normal_loss_std": 0.03391385078430176,
+          "normal_top1": 0.0625000037252903,
+          "normal_top1_std": 0.0104166679084301,
+          "normal_mrr": 0.19060365855693817,
+          "normal_mrr_std": 0.0028616786003112793,
+          "normal_normalized_information": 0.10659701004624367,
+          "normal_normalized_information_std": 0.008760552853345871,
+          "pseudo_loss": 3.764918327331543,
+          "pseudo_loss_std": 0.18738079071044922,
+          "pseudo_top1": 0.0416666679084301,
+          "pseudo_top1_std": 0.0104166679084301,
+          "pseudo_mrr": 0.15686605125665665,
+          "pseudo_mrr_std": 0.017075665295124054,
+          "pseudo_normalized_information": 0.02745471429079771,
+          "pseudo_normalized_information_std": 0.04840378928929567,
+          "joint_mrr": 0.1737348549067974
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.5779385566711426,
+                "top1": 0.0520833358168602,
+                "mrr": 0.15157903730869293,
+                "normalized_information": 0.07575491070747375
+              },
+              "pseudo": {
+                "loss": 3.6872167587280273,
+                "top1": 0.0625,
+                "mrr": 0.18066151440143585,
+                "normalized_information": 0.04752640798687935
+              },
+              "joint_mrr": 0.1661202758550644
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.812108278274536,
+                "top1": 0.0416666679084301,
+                "mrr": 0.13469602167606354,
+                "normalized_information": 0.01526470948010683
+              },
+              "pseudo": {
+                "loss": 4.120615005493164,
+                "top1": 0.1145833358168602,
+                "mrr": 0.1984729766845703,
+                "normalized_information": -0.06442806124687195
+              },
+              "joint_mrr": 0.16658449918031693
+            }
+          ],
+          "normal_loss": 3.6950234174728394,
+          "normal_loss_std": 0.11708486080169678,
+          "normal_top1": 0.04687500186264515,
+          "normal_top1_std": 0.00520833395421505,
+          "normal_mrr": 0.14313752949237823,
+          "normal_mrr_std": 0.008441507816314697,
+          "normal_normalized_information": 0.04550981009379029,
+          "normal_normalized_information_std": 0.030245100613683462,
+          "pseudo_loss": 3.9039158821105957,
+          "pseudo_loss_std": 0.21669912338256836,
+          "pseudo_top1": 0.0885416679084301,
+          "pseudo_top1_std": 0.0260416679084301,
+          "pseudo_mrr": 0.18956724554300308,
+          "pseudo_mrr_std": 0.00890573114156723,
+          "pseudo_normalized_information": -0.0084508266299963,
+          "pseudo_normalized_information_std": 0.05597723461687565,
+          "joint_mrr": 0.16635238751769066
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.16203179955482483,
+            "M": 0.18370352685451508,
+            "S": 0.1661202758550644
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+          "scale": "D",
+          "boundary": 8,
+          "evidence": {
+            "D": 0.1675688773393631,
+            "M": 0.16376618295907974,
+            "S": 0.16658449918031693
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "20": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.1535193771123886,
+        0.20770296454429626,
+        0.20176288485527039
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.7528786659240723,
+                "top1": 0.0416666679084301,
+                "mrr": 0.13524377346038818,
+                "normalized_information": 0.030564771965146065
+              },
+              "pseudo": {
+                "loss": 3.4796242713928223,
+                "top1": 0.02083333395421505,
+                "mrr": 0.15607917308807373,
+                "normalized_information": 0.1011512354016304
+              },
+              "joint_mrr": 0.14566147327423096
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.819669723510742,
+                "top1": 0.03125,
+                "mrr": 0.1304522156715393,
+                "normalized_information": 0.013311454094946384
+              },
+              "pseudo": {
+                "loss": 3.543710470199585,
+                "top1": 0.0833333358168602,
+                "mrr": 0.19230234622955322,
+                "normalized_information": 0.08459663391113281
+              },
+              "joint_mrr": 0.16137728095054626
+            }
+          ],
+          "normal_loss": 3.7862741947174072,
+          "normal_loss_std": 0.03339552879333496,
+          "normal_top1": 0.03645833395421505,
+          "normal_top1_std": 0.00520833395421505,
+          "normal_mrr": 0.13284799456596375,
+          "normal_mrr_std": 0.0023957788944244385,
+          "normal_normalized_information": 0.021938113030046225,
+          "normal_normalized_information_std": 0.00862665893509984,
+          "pseudo_loss": 3.5116673707962036,
+          "pseudo_loss_std": 0.03204309940338135,
+          "pseudo_top1": 0.052083334885537624,
+          "pseudo_top1_std": 0.031250000931322575,
+          "pseudo_mrr": 0.17419075965881348,
+          "pseudo_mrr_std": 0.018111586570739746,
+          "pseudo_normalized_information": 0.09287393465638161,
+          "pseudo_normalized_information_std": 0.008277300745248795,
+          "joint_mrr": 0.1535193771123886
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.545515537261963,
+                "top1": 0.0416666679084301,
+                "mrr": 0.1499708741903305,
+                "normalized_information": 0.08413035422563553
+              },
+              "pseudo": {
+                "loss": 3.28865385055542,
+                "top1": 0.1041666716337204,
+                "mrr": 0.23333773016929626,
+                "normalized_information": 0.15048229694366455
+              },
+              "joint_mrr": 0.19165430217981339
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.5913643836975098,
+                "top1": 0.0520833358168602,
+                "mrr": 0.16570018231868744,
+                "normalized_information": 0.07228677719831467
+              },
+              "pseudo": {
+                "loss": 3.189675807952881,
+                "top1": 0.125,
+                "mrr": 0.28180307149887085,
+                "normalized_information": 0.1760500818490982
+              },
+              "joint_mrr": 0.22375162690877914
+            }
+          ],
+          "normal_loss": 3.5684399604797363,
+          "normal_loss_std": 0.022924423217773438,
+          "normal_top1": 0.04687500186264515,
+          "normal_top1_std": 0.00520833395421505,
+          "normal_mrr": 0.15783552825450897,
+          "normal_mrr_std": 0.007864654064178467,
+          "normal_normalized_information": 0.0782085657119751,
+          "normal_normalized_information_std": 0.005921788513660431,
+          "pseudo_loss": 3.2391648292541504,
+          "pseudo_loss_std": 0.04948902130126953,
+          "pseudo_top1": 0.1145833358168602,
+          "pseudo_top1_std": 0.010416664183139801,
+          "pseudo_mrr": 0.25757040083408356,
+          "pseudo_mrr_std": 0.024232670664787292,
+          "pseudo_normalized_information": 0.16326618939638138,
+          "pseudo_normalized_information_std": 0.012783892452716827,
+          "joint_mrr": 0.20770296454429626
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.3207621574401855,
+                "top1": 0.0625,
+                "mrr": 0.1967260241508484,
+                "normalized_information": 0.1421881467103958
+              },
+              "pseudo": {
+                "loss": 3.371019124984741,
+                "top1": 0.09375,
+                "mrr": 0.22654768824577332,
+                "normalized_information": 0.1292058825492859
+              },
+              "joint_mrr": 0.21163685619831085
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.6349611282348633,
+                "top1": 0.0833333358168602,
+                "mrr": 0.18158552050590515,
+                "normalized_information": 0.06102496758103371
+              },
+              "pseudo": {
+                "loss": 3.7553505897521973,
+                "top1": 0.0416666679084301,
+                "mrr": 0.2021922767162323,
+                "normalized_information": 0.029926229268312454
+              },
+              "joint_mrr": 0.19188889861106873
+            }
+          ],
+          "normal_loss": 3.4778616428375244,
+          "normal_loss_std": 0.15709948539733887,
+          "normal_top1": 0.0729166679084301,
+          "normal_top1_std": 0.0104166679084301,
+          "normal_mrr": 0.18915577232837677,
+          "normal_mrr_std": 0.007570251822471619,
+          "normal_normalized_information": 0.10160655714571476,
+          "normal_normalized_information_std": 0.04058158956468105,
+          "pseudo_loss": 3.5631848573684692,
+          "pseudo_loss_std": 0.19216573238372803,
+          "pseudo_top1": 0.06770833395421505,
+          "pseudo_top1_std": 0.02604166604578495,
+          "pseudo_mrr": 0.2143699824810028,
+          "pseudo_mrr_std": 0.012177705764770508,
+          "pseudo_normalized_information": 0.07956605590879917,
+          "pseudo_normalized_information_std": 0.04963982664048672,
+          "joint_mrr": 0.2017628774046898
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+          "scale": "S",
+          "boundary": 0,
+          "evidence": {
+            "D": 0.14566147327423096,
+            "M": 0.19165430217981339,
+            "S": 0.21163685619831085
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.16137728095054626,
+            "M": 0.22375162690877914,
+            "S": 0.19188889861106873
+          }
+        }
+      ],
+      "permuted_opening": false
+    },
+    "30": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "scale_order": [
+        "D",
+        "M",
+        "S"
+      ],
+      "evidence": [
+        0.11800424754619598,
+        0.18992885947227478,
+        0.18123146891593933
+      ],
+      "scales": {
+        "D": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 4.633001327514648,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09306271374225616,
+                "normalized_information": -0.1967865526676178
+              },
+              "pseudo": {
+                "loss": 4.82913875579834,
+                "top1": 0.03125,
+                "mrr": 0.1216900497674942,
+                "normalized_information": -0.24745233356952667
+              },
+              "joint_mrr": 0.10737638175487518
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 4.313983917236328,
+                "top1": 0.02083333395421505,
+                "mrr": 0.09319988638162613,
+                "normalized_information": -0.1143786832690239
+              },
+              "pseudo": {
+                "loss": 4.9744038581848145,
+                "top1": 0.0833333358168602,
+                "mrr": 0.16406434774398804,
+                "normalized_information": -0.28497689962387085
+              },
+              "joint_mrr": 0.12863211706280708
+            }
+          ],
+          "normal_loss": 4.473492622375488,
+          "normal_loss_std": 0.15950870513916016,
+          "normal_top1": 0.02083333395421505,
+          "normal_top1_std": 0.0,
+          "normal_mrr": 0.09313130006194115,
+          "normal_mrr_std": 6.85863196849823e-05,
+          "normal_normalized_information": -0.15558261796832085,
+          "normal_normalized_information_std": 0.04120393469929695,
+          "pseudo_loss": 4.901771306991577,
+          "pseudo_loss_std": 0.0726325511932373,
+          "pseudo_top1": 0.0572916679084301,
+          "pseudo_top1_std": 0.0260416679084301,
+          "pseudo_mrr": 0.14287719875574112,
+          "pseudo_mrr_std": 0.021187148988246918,
+          "pseudo_normalized_information": -0.26621461659669876,
+          "pseudo_normalized_information_std": 0.01876228302717209,
+          "joint_mrr": 0.11800424940884113
+        },
+        "M": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 4.960065841674805,
+                "top1": 0.0520833358168602,
+                "mrr": 0.14000412821769714,
+                "normalized_information": -0.28127312660217285
+              },
+              "pseudo": {
+                "loss": 3.97161602973938,
+                "top1": 0.0520833358168602,
+                "mrr": 0.18359357118606567,
+                "normalized_information": -0.0259389765560627
+              },
+              "joint_mrr": 0.1617988497018814
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 4.511371612548828,
+                "top1": 0.0833333358168602,
+                "mrr": 0.197947695851326,
+                "normalized_information": -0.16536743938922882
+              },
+              "pseudo": {
+                "loss": 3.5862045288085938,
+                "top1": 0.09375,
+                "mrr": 0.2381700575351715,
+                "normalized_information": 0.07361966371536255
+              },
+              "joint_mrr": 0.21805887669324875
+            }
+          ],
+          "normal_loss": 4.735718727111816,
+          "normal_loss_std": 0.22434711456298828,
+          "normal_top1": 0.0677083358168602,
+          "normal_top1_std": 0.015625,
+          "normal_mrr": 0.16897591203451157,
+          "normal_mrr_std": 0.028971783816814423,
+          "normal_normalized_information": -0.22332028299570084,
+          "normal_normalized_information_std": 0.057952843606472015,
+          "pseudo_loss": 3.778910279273987,
+          "pseudo_loss_std": 0.19270575046539307,
+          "pseudo_top1": 0.0729166679084301,
+          "pseudo_top1_std": 0.0208333320915699,
+          "pseudo_mrr": 0.2108818143606186,
+          "pseudo_mrr_std": 0.027288243174552917,
+          "pseudo_normalized_information": 0.023840343579649925,
+          "pseudo_normalized_information_std": 0.049779320135712624,
+          "joint_mrr": 0.18992886319756508
+        },
+        "S": {
+          "videos": 2,
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+              "normal": {
+                "loss": 3.5286216735839844,
+                "top1": 0.0520833358168602,
+                "mrr": 0.16795216500759125,
+                "normalized_information": 0.08849433809518814
+              },
+              "pseudo": {
+                "loss": 3.4070043563842773,
+                "top1": 0.1354166716337204,
+                "mrr": 0.2544551193714142,
+                "normalized_information": 0.11991024762392044
+              },
+              "joint_mrr": 0.21120364218950272
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+              "normal": {
+                "loss": 3.8037209510803223,
+                "top1": 0.03125,
+                "mrr": 0.13300815224647522,
+                "normalized_information": 0.01743130572140217
+              },
+              "pseudo": {
+                "loss": 4.341317176818848,
+                "top1": 0.0416666679084301,
+                "mrr": 0.16951042413711548,
+                "normalized_information": -0.12143935263156891
+              },
+              "joint_mrr": 0.15125928819179535
+            }
+          ],
+          "normal_loss": 3.6661713123321533,
+          "normal_loss_std": 0.13754963874816895,
+          "normal_top1": 0.0416666679084301,
+          "normal_top1_std": 0.0104166679084301,
+          "normal_mrr": 0.15048015862703323,
+          "normal_mrr_std": 0.017472006380558014,
+          "normal_normalized_information": 0.052962821908295155,
+          "normal_normalized_information_std": 0.035531516186892986,
+          "pseudo_loss": 3.8741607666015625,
+          "pseudo_loss_std": 0.46715641021728516,
+          "pseudo_top1": 0.08854166977107525,
+          "pseudo_top1_std": 0.04687500186264515,
+          "pseudo_mrr": 0.21198277175426483,
+          "pseudo_mrr_std": 0.04247234761714935,
+          "pseudo_normalized_information": -0.000764552503824234,
+          "pseudo_normalized_information_std": 0.12067480012774467,
+          "joint_mrr": 0.18123146519064903
+        }
+      },
+      "video_winners": [
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+          "scale": "S",
+          "boundary": 0,
+          "evidence": {
+            "D": 0.10737638175487518,
+            "M": 0.1617988497018814,
+            "S": 0.21120364218950272
+          }
+        },
+        {
+          "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+          "scale": "M",
+          "boundary": 4,
+          "evidence": {
+            "D": 0.12863211706280708,
+            "M": 0.21805887669324875,
+            "S": 0.15125928819179535
+          }
+        }
+      ],
+      "permuted_opening": false
+    }
+  },
+  "query_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.11800424754619598,
+      0.18992885947227478,
+      0.18123146891593933
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.633001327514648,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09306271374225616,
+              "normalized_information": -0.1967865526676178
+            },
+            "pseudo": {
+              "loss": 4.82913875579834,
+              "top1": 0.03125,
+              "mrr": 0.1216900497674942,
+              "normalized_information": -0.24745233356952667
+            },
+            "joint_mrr": 0.10737638175487518
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.313983917236328,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09319988638162613,
+              "normalized_information": -0.1143786832690239
+            },
+            "pseudo": {
+              "loss": 4.9744038581848145,
+              "top1": 0.0833333358168602,
+              "mrr": 0.16406434774398804,
+              "normalized_information": -0.28497689962387085
+            },
+            "joint_mrr": 0.12863211706280708
+          }
+        ],
+        "normal_loss": 4.473492622375488,
+        "normal_loss_std": 0.15950870513916016,
+        "normal_top1": 0.02083333395421505,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.09313130006194115,
+        "normal_mrr_std": 6.85863196849823e-05,
+        "normal_normalized_information": -0.15558261796832085,
+        "normal_normalized_information_std": 0.04120393469929695,
+        "pseudo_loss": 4.901771306991577,
+        "pseudo_loss_std": 0.0726325511932373,
+        "pseudo_top1": 0.0572916679084301,
+        "pseudo_top1_std": 0.0260416679084301,
+        "pseudo_mrr": 0.14287719875574112,
+        "pseudo_mrr_std": 0.021187148988246918,
+        "pseudo_normalized_information": -0.26621461659669876,
+        "pseudo_normalized_information_std": 0.01876228302717209,
+        "joint_mrr": 0.11800424940884113
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.960065841674805,
+              "top1": 0.0520833358168602,
+              "mrr": 0.14000412821769714,
+              "normalized_information": -0.28127312660217285
+            },
+            "pseudo": {
+              "loss": 3.97161602973938,
+              "top1": 0.0520833358168602,
+              "mrr": 0.18359357118606567,
+              "normalized_information": -0.0259389765560627
+            },
+            "joint_mrr": 0.1617988497018814
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.511371612548828,
+              "top1": 0.0833333358168602,
+              "mrr": 0.197947695851326,
+              "normalized_information": -0.16536743938922882
+            },
+            "pseudo": {
+              "loss": 3.5862045288085938,
+              "top1": 0.09375,
+              "mrr": 0.2381700575351715,
+              "normalized_information": 0.07361966371536255
+            },
+            "joint_mrr": 0.21805887669324875
+          }
+        ],
+        "normal_loss": 4.735718727111816,
+        "normal_loss_std": 0.22434711456298828,
+        "normal_top1": 0.0677083358168602,
+        "normal_top1_std": 0.015625,
+        "normal_mrr": 0.16897591203451157,
+        "normal_mrr_std": 0.028971783816814423,
+        "normal_normalized_information": -0.22332028299570084,
+        "normal_normalized_information_std": 0.057952843606472015,
+        "pseudo_loss": 3.778910279273987,
+        "pseudo_loss_std": 0.19270575046539307,
+        "pseudo_top1": 0.0729166679084301,
+        "pseudo_top1_std": 0.0208333320915699,
+        "pseudo_mrr": 0.2108818143606186,
+        "pseudo_mrr_std": 0.027288243174552917,
+        "pseudo_normalized_information": 0.023840343579649925,
+        "pseudo_normalized_information_std": 0.049779320135712624,
+        "joint_mrr": 0.18992886319756508
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 3.5286216735839844,
+              "top1": 0.0520833358168602,
+              "mrr": 0.16795216500759125,
+              "normalized_information": 0.08849433809518814
+            },
+            "pseudo": {
+              "loss": 3.4070043563842773,
+              "top1": 0.1354166716337204,
+              "mrr": 0.2544551193714142,
+              "normalized_information": 0.11991024762392044
+            },
+            "joint_mrr": 0.21120364218950272
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 3.8037209510803223,
+              "top1": 0.03125,
+              "mrr": 0.13300815224647522,
+              "normalized_information": 0.01743130572140217
+            },
+            "pseudo": {
+              "loss": 4.341317176818848,
+              "top1": 0.0416666679084301,
+              "mrr": 0.16951042413711548,
+              "normalized_information": -0.12143935263156891
+            },
+            "joint_mrr": 0.15125928819179535
+          }
+        ],
+        "normal_loss": 3.6661713123321533,
+        "normal_loss_std": 0.13754963874816895,
+        "normal_top1": 0.0416666679084301,
+        "normal_top1_std": 0.0104166679084301,
+        "normal_mrr": 0.15048015862703323,
+        "normal_mrr_std": 0.017472006380558014,
+        "normal_normalized_information": 0.052962821908295155,
+        "normal_normalized_information_std": 0.035531516186892986,
+        "pseudo_loss": 3.8741607666015625,
+        "pseudo_loss_std": 0.46715641021728516,
+        "pseudo_top1": 0.08854166977107525,
+        "pseudo_top1_std": 0.04687500186264515,
+        "pseudo_mrr": 0.21198277175426483,
+        "pseudo_mrr_std": 0.04247234761714935,
+        "pseudo_normalized_information": -0.000764552503824234,
+        "pseudo_normalized_information_std": 0.12067480012774467,
+        "joint_mrr": 0.18123146519064903
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.10737638175487518,
+          "M": 0.1617988497018814,
+          "S": 0.21120364218950272
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.12863211706280708,
+          "M": 0.21805887669324875,
+          "S": 0.15125928819179535
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "support_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.12171276658773422,
+      0.21884369850158691,
+      0.2759353220462799
+    ],
+    "scales": {
+      "D": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal": {
+              "loss": 4.188688278198242,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09312315285205841,
+              "normalized_information": -0.0820125937461853
+            },
+            "pseudo": {
+              "loss": 4.753357887268066,
+              "top1": 0.0625,
+              "mrr": 0.14974772930145264,
+              "normalized_information": -0.22787678241729736
+            },
+            "joint_mrr": 0.12143544107675552
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal": {
+              "loss": 4.558260440826416,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09280113130807877,
+              "normalized_information": -0.17747965455055237
+            },
+            "pseudo": {
+              "loss": 4.332932472229004,
+              "top1": 0.03125,
+              "mrr": 0.13000977039337158,
+              "normalized_information": -0.11927343159914017
+            },
+            "joint_mrr": 0.11140545085072517
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal": {
+              "loss": 4.132107257843018,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09317045658826828,
+              "normalized_information": -0.06739671528339386
+            },
+            "pseudo": {
+              "loss": 3.8497703075408936,
+              "top1": 0.0729166716337204,
+              "mrr": 0.17602187395095825,
+              "normalized_information": 0.005535938777029514
+            },
+            "joint_mrr": 0.13459616526961327
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal": {
+              "loss": 4.670973777770996,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09136094152927399,
+              "normalized_information": -0.2065955102443695
+            },
+            "pseudo": {
+              "loss": 4.548884868621826,
+              "top1": 0.0625,
+              "mrr": 0.14746706187725067,
+              "normalized_information": -0.1750577688217163
+            },
+            "joint_mrr": 0.11941400170326233
+          }
+        ],
+        "normal_loss": 4.387507438659668,
+        "normal_loss_std": 0.23144549254948768,
+        "normal_top1": 0.02083333395421505,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.09261392056941986,
+        "normal_mrr_std": 0.0007372337135656176,
+        "normal_normalized_information": -0.13337111845612526,
+        "normal_normalized_information_std": 0.05978648351327266,
+        "pseudo_loss": 4.3712363839149475,
+        "pseudo_loss_std": 0.33577145720820767,
+        "pseudo_top1": 0.0572916679084301,
+        "pseudo_top1_std": 0.015625001241763532,
+        "pseudo_mrr": 0.15081160888075829,
+        "pseudo_mrr_std": 0.016436177960394278,
+        "pseudo_normalized_information": -0.12916801101528108,
+        "pseudo_normalized_information_std": 0.08673573112434754,
+        "joint_mrr": 0.12171276472508907
+      },
+      "M": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal": {
+              "loss": 3.786681652069092,
+              "top1": 0.0520833358168602,
+              "mrr": 0.16426733136177063,
+              "normalized_information": 0.02183285914361477
+            },
+            "pseudo": {
+              "loss": 3.035459518432617,
+              "top1": 0.125,
+              "mrr": 0.2831597328186035,
+              "normalized_information": 0.2158868908882141
+            },
+            "joint_mrr": 0.22371353209018707
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal": {
+              "loss": 3.4522173404693604,
+              "top1": 0.0416666679084301,
+              "mrr": 0.162525475025177,
+              "normalized_information": 0.10823093354701996
+            },
+            "pseudo": {
+              "loss": 3.1272635459899902,
+              "top1": 0.0729166716337204,
+              "mrr": 0.21207082271575928,
+              "normalized_information": 0.19217227399349213
+            },
+            "joint_mrr": 0.18729814887046814
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal": {
+              "loss": 3.553856134414673,
+              "top1": 0.0416666679084301,
+              "mrr": 0.18117207288742065,
+              "normalized_information": 0.08197582513093948
+            },
+            "pseudo": {
+              "loss": 3.12619948387146,
+              "top1": 0.1145833358168602,
+              "mrr": 0.2669847011566162,
+              "normalized_information": 0.19244714081287384
+            },
+            "joint_mrr": 0.22407838702201843
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal": {
+              "loss": 3.3276004791259766,
+              "top1": 0.0625,
+              "mrr": 0.19540342688560486,
+              "normalized_information": 0.14042168855667114
+            },
+            "pseudo": {
+              "loss": 2.9229021072387695,
+              "top1": 0.1354166716337204,
+              "mrr": 0.28516608476638794,
+              "normalized_information": 0.24496246874332428
+            },
+            "joint_mrr": 0.2402847558259964
+          }
+        ],
+        "normal_loss": 3.5300889015197754,
+        "normal_loss_std": 0.16842673645973047,
+        "normal_top1": 0.0494791679084301,
+        "normal_top1_std": 0.008637043350478128,
+        "normal_mrr": 0.1758420765399933,
+        "normal_mrr_std": 0.013438395460885044,
+        "normal_normalized_information": 0.08811532659456134,
+        "normal_normalized_information_std": 0.043507620350878344,
+        "pseudo_loss": 3.0529561638832092,
+        "pseudo_loss_std": 0.0838247594839426,
+        "pseudo_top1": 0.11197916977107525,
+        "pseudo_top1_std": 0.023725086696031513,
+        "pseudo_mrr": 0.26184533536434174,
+        "pseudo_mrr_std": 0.029589170661164094,
+        "pseudo_normalized_information": 0.2113671936094761,
+        "pseudo_normalized_information_std": 0.021653426470773007,
+        "joint_mrr": 0.2188437059521675
+      },
+      "S": {
+        "videos": 4,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+            "normal": {
+              "loss": 3.4007694721221924,
+              "top1": 0.0729166716337204,
+              "mrr": 0.19478671252727509,
+              "normalized_information": 0.12152083218097687
+            },
+            "pseudo": {
+              "loss": 2.806804656982422,
+              "top1": 0.21875,
+              "mrr": 0.37097519636154175,
+              "normalized_information": 0.2749525010585785
+            },
+            "joint_mrr": 0.2828809544444084
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+            "normal": {
+              "loss": 3.408524990081787,
+              "top1": 0.09375,
+              "mrr": 0.2379630208015442,
+              "normalized_information": 0.11951744556427002
+            },
+            "pseudo": {
+              "loss": 3.004523754119873,
+              "top1": 0.1354166716337204,
+              "mrr": 0.30244743824005127,
+              "normalized_information": 0.2238781452178955
+            },
+            "joint_mrr": 0.27020522952079773
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+            "normal": {
+              "loss": 3.2279257774353027,
+              "top1": 0.0729166716337204,
+              "mrr": 0.23205021023750305,
+              "normalized_information": 0.1661694347858429
+            },
+            "pseudo": {
+              "loss": 2.7743139266967773,
+              "top1": 0.1875,
+              "mrr": 0.3658512830734253,
+              "normalized_information": 0.28334543108940125
+            },
+            "joint_mrr": 0.2989507466554642
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+            "normal": {
+              "loss": 3.4866228103637695,
+              "top1": 0.0416666679084301,
+              "mrr": 0.1513291299343109,
+              "normalized_information": 0.09934338927268982
+            },
+            "pseudo": {
+              "loss": 2.900538682937622,
+              "top1": 0.21875,
+              "mrr": 0.3520796298980713,
+              "normalized_information": 0.25073933601379395
+            },
+            "joint_mrr": 0.2517043799161911
+          }
+        ],
+        "normal_loss": 3.380960762500763,
+        "normal_loss_std": 0.09452029759738716,
+        "normal_top1": 0.07031250279396772,
+        "normal_top1_std": 0.018597469735585893,
+        "normal_mrr": 0.2040322683751583,
+        "normal_mrr_std": 0.03463885870981417,
+        "normal_normalized_information": 0.1266377754509449,
+        "normal_normalized_information_std": 0.02441627435104144,
+        "pseudo_loss": 2.8715452551841736,
+        "pseudo_loss_std": 0.08967883853929932,
+        "pseudo_top1": 0.1901041679084301,
+        "pseudo_top1_std": 0.03405389600225104,
+        "pseudo_mrr": 0.3478383868932724,
+        "pseudo_mrr_std": 0.02710213433953624,
+        "pseudo_normalized_information": 0.2582288533449173,
+        "pseudo_normalized_information_std": 0.023165636669031944,
+        "joint_mrr": 0.27593532763421535
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/03",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.12143544107675552,
+          "M": 0.22371353209018707,
+          "S": 0.2828809544444084
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/04",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.11140545085072517,
+          "M": 0.18729814887046814,
+          "S": 0.27020522952079773
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/05",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.13459616526961327,
+          "M": 0.22407838702201843,
+          "S": 0.2989507466554642
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/06",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.11941400170326233,
+          "M": 0.2402847558259964,
+          "S": 0.2517043799161911
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "permuted_query_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.09449976682662964,
+      0.1500675231218338,
+      0.16271977126598358
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.754545211791992,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09515535831451416,
+              "normalized_information": -0.22818349301815033
+            },
+            "pseudo": {
+              "loss": 5.861128807067871,
+              "top1": 0.02083333395421505,
+              "mrr": 0.08795783668756485,
+              "normalized_information": -0.5140336751937866
+            },
+            "joint_mrr": 0.0915565975010395
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.45945405960083,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09167779982089996,
+              "normalized_information": -0.1519562005996704
+            },
+            "pseudo": {
+              "loss": 6.027124404907227,
+              "top1": 0.02083333395421505,
+              "mrr": 0.10320807993412018,
+              "normalized_information": -0.5569133162498474
+            },
+            "joint_mrr": 0.09744293987751007
+          }
+        ],
+        "normal_loss": 4.606999635696411,
+        "normal_loss_std": 0.14754557609558105,
+        "normal_top1": 0.02083333395421505,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.09341657906770706,
+        "normal_mrr_std": 0.0017387792468070984,
+        "normal_normalized_information": -0.19006984680891037,
+        "normal_normalized_information_std": 0.03811364620923996,
+        "pseudo_loss": 5.944126605987549,
+        "pseudo_loss_std": 0.08299779891967773,
+        "pseudo_top1": 0.02083333395421505,
+        "pseudo_top1_std": 0.0,
+        "pseudo_mrr": 0.09558295831084251,
+        "pseudo_mrr_std": 0.007625121623277664,
+        "pseudo_normalized_information": -0.535473495721817,
+        "pseudo_normalized_information_std": 0.021439820528030396,
+        "joint_mrr": 0.09449976868927479
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.775586128234863,
+              "top1": 0.03125,
+              "mrr": 0.12485011667013168,
+              "normalized_information": -0.23361873626708984
+            },
+            "pseudo": {
+              "loss": 4.049006462097168,
+              "top1": 0.03125,
+              "mrr": 0.13529855012893677,
+              "normalized_information": -0.045930299907922745
+            },
+            "joint_mrr": 0.13007433339953423
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.502713203430176,
+              "top1": 0.0625,
+              "mrr": 0.17207685112953186,
+              "normalized_information": -0.16313081979751587
+            },
+            "pseudo": {
+              "loss": 4.026281356811523,
+              "top1": 0.0520833358168602,
+              "mrr": 0.1680445671081543,
+              "normalized_information": -0.040060002356767654
+            },
+            "joint_mrr": 0.17006070911884308
+          }
+        ],
+        "normal_loss": 4.6391496658325195,
+        "normal_loss_std": 0.13643646240234375,
+        "normal_top1": 0.046875,
+        "normal_top1_std": 0.015625,
+        "normal_mrr": 0.14846348389983177,
+        "normal_mrr_std": 0.02361336722970009,
+        "normal_normalized_information": -0.19837477803230286,
+        "normal_normalized_information_std": 0.03524395823478699,
+        "pseudo_loss": 4.037643909454346,
+        "pseudo_loss_std": 0.011362552642822266,
+        "pseudo_top1": 0.0416666679084301,
+        "pseudo_top1_std": 0.0104166679084301,
+        "pseudo_mrr": 0.15167155861854553,
+        "pseudo_mrr_std": 0.016373008489608765,
+        "pseudo_normalized_information": -0.0429951511323452,
+        "pseudo_normalized_information_std": 0.002935148775577545,
+        "joint_mrr": 0.15006752125918865
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 3.595818042755127,
+              "top1": 0.0416666679084301,
+              "mrr": 0.17455381155014038,
+              "normalized_information": 0.07113631814718246
+            },
+            "pseudo": {
+              "loss": 3.937011241912842,
+              "top1": 0.0416666679084301,
+              "mrr": 0.16373571753501892,
+              "normalized_information": -0.016999945044517517
+            },
+            "joint_mrr": 0.16914476454257965
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 3.9602627754211426,
+              "top1": 0.0520833358168602,
+              "mrr": 0.1439511477947235,
+              "normalized_information": -0.023006228730082512
+            },
+            "pseudo": {
+              "loss": 3.9988632202148438,
+              "top1": 0.03125,
+              "mrr": 0.16863839328289032,
+              "normalized_information": -0.03297740966081619
+            },
+            "joint_mrr": 0.15629477053880692
+          }
+        ],
+        "normal_loss": 3.7780404090881348,
+        "normal_loss_std": 0.1822223663330078,
+        "normal_top1": 0.04687500186264515,
+        "normal_top1_std": 0.00520833395421505,
+        "normal_mrr": 0.15925247967243195,
+        "normal_mrr_std": 0.015301331877708435,
+        "normal_normalized_information": 0.024065044708549976,
+        "normal_normalized_information_std": 0.04707127343863249,
+        "pseudo_loss": 3.9679372310638428,
+        "pseudo_loss_std": 0.030925989151000977,
+        "pseudo_top1": 0.03645833395421505,
+        "pseudo_top1_std": 0.00520833395421505,
+        "pseudo_mrr": 0.16618705540895462,
+        "pseudo_mrr_std": 0.0024513378739356995,
+        "pseudo_normalized_information": -0.024988677352666855,
+        "pseudo_normalized_information_std": 0.007988732308149338,
+        "joint_mrr": 0.16271976754069328
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "scale": "S",
+        "boundary": 0,
+        "evidence": {
+          "D": 0.0915565975010395,
+          "M": 0.13007433339953423,
+          "S": 0.16914476454257965
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.09744293987751007,
+          "M": 0.17006070911884308,
+          "S": 0.15629477053880692
+        }
+      }
+    ],
+    "permuted_opening": true
+  },
+  "shifted_query_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "scale_order": [
+      "D",
+      "M",
+      "S"
+    ],
+    "evidence": [
+      0.12317091226577759,
+      0.14593371748924255,
+      0.11806871742010117
+    ],
+    "scales": {
+      "D": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.657615661621094,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09274519979953766,
+              "normalized_information": -0.2031448632478714
+            },
+            "pseudo": {
+              "loss": 4.499225616455078,
+              "top1": 0.0625,
+              "mrr": 0.1631019413471222,
+              "normalized_information": -0.16222991049289703
+            },
+            "joint_mrr": 0.12792357057332993
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.425413131713867,
+              "top1": 0.02083333395421505,
+              "mrr": 0.09291863441467285,
+              "normalized_information": -0.1431628316640854
+            },
+            "pseudo": {
+              "loss": 4.23000431060791,
+              "top1": 0.0416666679084301,
+              "mrr": 0.14391785860061646,
+              "normalized_information": -0.0926852598786354
+            },
+            "joint_mrr": 0.11841824650764465
+          }
+        ],
+        "normal_loss": 4.5415143966674805,
+        "normal_loss_std": 0.11610126495361328,
+        "normal_top1": 0.02083333395421505,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.09283191710710526,
+        "normal_mrr_std": 8.671730756759644e-05,
+        "normal_normalized_information": -0.1731538474559784,
+        "normal_normalized_information_std": 0.029991015791893005,
+        "pseudo_loss": 4.364614963531494,
+        "pseudo_loss_std": 0.13461065292358398,
+        "pseudo_top1": 0.05208333395421505,
+        "pseudo_top1_std": 0.01041666604578495,
+        "pseudo_mrr": 0.15350989997386932,
+        "pseudo_mrr_std": 0.009592041373252869,
+        "pseudo_normalized_information": -0.12745758518576622,
+        "pseudo_normalized_information_std": 0.034772325307130814,
+        "joint_mrr": 0.12317090854048729
+      },
+      "M": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 3.873126268386841,
+              "top1": 0.0520833358168602,
+              "mrr": 0.15310359001159668,
+              "normalized_information": -0.0004973211325705051
+            },
+            "pseudo": {
+              "loss": 3.6567654609680176,
+              "top1": 0.03125,
+              "mrr": 0.16705942153930664,
+              "normalized_information": 0.055392518639564514
+            },
+            "joint_mrr": 0.16008150577545166
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.568815231323242,
+              "top1": 0.0520833358168602,
+              "mrr": 0.131526917219162,
+              "normalized_information": -0.18020613491535187
+            },
+            "pseudo": {
+              "loss": 4.108798503875732,
+              "top1": 0.02083333395421505,
+              "mrr": 0.1320449709892273,
+              "normalized_information": -0.06137564778327942
+            },
+            "joint_mrr": 0.13178594410419464
+          }
+        ],
+        "normal_loss": 4.2209707498550415,
+        "normal_loss_std": 0.3478444814682007,
+        "normal_top1": 0.0520833358168602,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.14231525361537933,
+        "normal_mrr_std": 0.010788336396217346,
+        "normal_normalized_information": -0.09035172802396119,
+        "normal_normalized_information_std": 0.08985440689139068,
+        "pseudo_loss": 3.882781982421875,
+        "pseudo_loss_std": 0.22601652145385742,
+        "pseudo_top1": 0.026041666977107525,
+        "pseudo_top1_std": 0.005208333022892475,
+        "pseudo_mrr": 0.14955219626426697,
+        "pseudo_mrr_std": 0.017507225275039673,
+        "pseudo_normalized_information": -0.0029915645718574524,
+        "pseudo_normalized_information_std": 0.05838408321142197,
+        "joint_mrr": 0.14593372493982315
+      },
+      "S": {
+        "videos": 2,
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+            "normal": {
+              "loss": 4.902031898498535,
+              "top1": 0.02083333395421505,
+              "mrr": 0.11110207438468933,
+              "normalized_information": -0.26628193259239197
+            },
+            "pseudo": {
+              "loss": 5.071310997009277,
+              "top1": 0.0416666679084301,
+              "mrr": 0.12740132212638855,
+              "normalized_information": -0.3100097179412842
+            },
+            "joint_mrr": 0.11925169825553894
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+            "normal": {
+              "loss": 4.4239678382873535,
+              "top1": 0.02083333395421505,
+              "mrr": 0.1118001714348793,
+              "normalized_information": -0.14278948307037354
+            },
+            "pseudo": {
+              "loss": 4.780009746551514,
+              "top1": 0.03125,
+              "mrr": 0.12197129428386688,
+              "normalized_information": -0.23476143181324005
+            },
+            "joint_mrr": 0.11688573285937309
+          }
+        ],
+        "normal_loss": 4.662999868392944,
+        "normal_loss_std": 0.23903203010559082,
+        "normal_top1": 0.02083333395421505,
+        "normal_top1_std": 0.0,
+        "normal_mrr": 0.11145112290978432,
+        "normal_mrr_std": 0.00034904852509498596,
+        "normal_normalized_information": -0.20453570783138275,
+        "normal_normalized_information_std": 0.061746224761009216,
+        "pseudo_loss": 4.9256603717803955,
+        "pseudo_loss_std": 0.14565062522888184,
+        "pseudo_top1": 0.03645833395421505,
+        "pseudo_top1_std": 0.00520833395421505,
+        "pseudo_mrr": 0.12468630820512772,
+        "pseudo_mrr_std": 0.0027150139212608337,
+        "pseudo_normalized_information": -0.2723855748772621,
+        "pseudo_normalized_information_std": 0.037624143064022064,
+        "joint_mrr": 0.11806871555745602
+      }
+    },
+    "video_winners": [
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/01",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.12792357057332993,
+          "M": 0.16008150577545166,
+          "S": 0.11925169825553894
+        }
+      },
+      {
+        "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Bike Roundabout/sequence1/train/02",
+        "scale": "M",
+        "boundary": 4,
+        "evidence": {
+          "D": 0.11841824650764465,
+          "M": 0.13178594410419464,
+          "S": 0.11688573285937309
+        }
+      }
+    ],
+    "permuted_opening": false
+  },
+  "predictor_parameters": 19073,
+  "matcher_parameters": 46807,
+  "peak_gpu_gib": 0.8367443084716797
+}

@@ -1,0 +1,1337 @@
+{
+  "format_version": 19,
+  "scene": "crossroads",
+  "method": "normal_order_novelty_learned_pseudo_opening_critic_dlbm",
+  "probe_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/crossroads.pth",
+  "probe_sha256": "7669c14be5830cb1b2d2c16b8ba907a128d42bb540c66da08e7a886abcf86160",
+  "probe_mutated": false,
+  "args": {
+    "scene": "crossroads",
+    "probe_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt",
+    "out_dir": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/DLBM_v019_critic_dual_axis/scenes/crossroads",
+    "gpu": 1,
+    "seed": 42,
+    "topk": 5,
+    "max_frames_per_video": 48,
+    "cache_bs": 4,
+    "workers": 4,
+    "pseudo_min_area": 0.02,
+    "pseudo_max_area": 0.15,
+    "pseudo_mode": "multi",
+    "channels": 16,
+    "model_dim": 32,
+    "heads": 4,
+    "predictor_batch": 24,
+    "predictor_checkpoint": "/data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/boundary/_architecture_study/aligned_convgru_crossroads/predictor.pth",
+    "epochs": 5,
+    "steps_per_epoch": 20,
+    "episode_frames": 32,
+    "pair_samples": 256,
+    "eval_pairs": 2048,
+    "eval_nulls": 16,
+    "lr": 0.001,
+    "wd": 0.01,
+    "grad_clip": 1.0,
+    "milestones": [
+      1,
+      3,
+      5
+    ]
+  },
+  "videos": {
+    "support": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02"
+    ],
+    "query": [
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+      "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01"
+    ]
+  },
+  "predictor_query": {
+    "normal_aligned_smooth_l1": 4.255010935594328e-05,
+    "normal_aligned_mae": 0.007071108945334951,
+    "normal_independent_layer_roll_smooth_l1": 7.369683832318212e-05,
+    "normal_independent_layer_roll_mae": 0.009407585952430964,
+    "pseudo_aligned_smooth_l1": 7.701468227120738e-05,
+    "pseudo_aligned_mae": 0.007952746391917268,
+    "pseudo_independent_layer_roll_smooth_l1": 0.00016450755720143206,
+    "pseudo_independent_layer_roll_mae": 0.011227066162973642,
+    "normal_roll_loss_ratio": 1.7320011496724474,
+    "pseudo_over_normal_loss_ratio": 1.8099761301894324
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6492919027805328,
+      "normal_order_loss": 0.6355417311191559,
+      "nuisance_loss": 0.6699645906686783,
+      "grad_norm": 0.5549126297235489,
+      "M_null_base_nll": 0.6564900534493583,
+      "M_null_critic_gap": 0.16111955898148672,
+      "S_real_base_nll": 0.6393497983614603,
+      "S_real_critic_gap": 0.05407340700427691,
+      "S_null_base_nll": 0.6719330847263336,
+      "S_null_critic_gap": 0.21300478093326092,
+      "M_real_base_nll": 0.6488790512084961,
+      "M_real_critic_gap": 0.1883698565264543,
+      "axis_precision": [
+        1.020637035369873,
+        1.0202805995941162
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.3241231441497803,
+          "MD": 0.32485225796699524,
+          "ALL": 0.3510246276855469
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.002247024327516556,
+          "ALL": 0.07973290979862213
+        },
+        "gate_evidence": {
+          "M": 0.002247024327516556,
+          "S": 0.07748588174581528
+        },
+        "axis_precision": [
+          1.020637035369873,
+          1.0202805995941162
+        ],
+        "M": {
+          "axes": [
+            0.008239391777250527,
+            0.0060399108462864115
+          ],
+          "normal_novelty": 0.008239391777250527,
+          "pseudo_nuisance": 0.0060399108462864115,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.5646480321884155,
+                "normal_opened_nll": 0.5066565871238708,
+                "critic_nll": 0.6421828269958496,
+                "critic_gap": 0.2973964512348175
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.678682804107666,
+                "normal_opened_nll": 0.6344031691551208,
+                "critic_nll": 0.5892731547355652,
+                "critic_gap": 0.4928131401538849
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.6256374716758728,
+                "normal_opened_nll": 0.571095883846283,
+                "critic_nll": 0.6110509634017944,
+                "critic_gap": 0.37931638956069946
+              }
+            ],
+            "normal_base_nll": 0.6229894359906515,
+            "normal_opened_nll": 0.5707185467084249,
+            "critic_nll": 0.6141689817110697,
+            "critic_gap": 0.3898419936498006
+          },
+          "null_normal_base_nll": 0.614750044213401,
+          "null_critic_nll": 0.6202088925573561,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            -0.0008914855619271966,
+            -0.0768374465405941
+          ],
+          "normal_novelty": -0.0008914855619271966,
+          "pseudo_nuisance": -0.0768374465405941,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.4896860718727112,
+                "normal_opened_nll": 0.4532908797264099,
+                "critic_nll": 0.7037979364395142,
+                "critic_gap": 0.12672078609466553
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.673077404499054,
+                "normal_opened_nll": 0.6645150184631348,
+                "critic_nll": 0.6813462972640991,
+                "critic_gap": 0.23468583822250366
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.6714073419570923,
+                "normal_opened_nll": 0.639536440372467,
+                "critic_nll": 0.6825486421585083,
+                "critic_gap": 0.1992688775062561
+              }
+            ],
+            "normal_base_nll": 0.6113902727762858,
+            "normal_opened_nll": 0.5857807795206705,
+            "critic_nll": 0.6892309586207072,
+            "critic_gap": 0.18689183394114176
+          },
+          "null_normal_base_nll": 0.612281758338213,
+          "null_critic_nll": 0.6123935120801131,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.5815636232495308,
+      "normal_order_loss": 0.5310347214341163,
+      "nuisance_loss": 0.655921733379364,
+      "grad_norm": 1.1440436363220214,
+      "M_null_base_nll": 0.5324660539627075,
+      "M_null_critic_gap": 0.32813258256231037,
+      "S_real_base_nll": 0.5868944972753525,
+      "S_real_critic_gap": 0.17874261178076267,
+      "S_null_base_nll": 0.6227316856384277,
+      "S_null_critic_gap": 0.23599720001220703,
+      "M_real_base_nll": 0.5832717418670654,
+      "M_real_critic_gap": 0.3353535234928131,
+      "axis_precision": [
+        1.041520357131958,
+        1.0398086309432983
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5586396783590317,
+      "normal_order_loss": 0.5075138732790947,
+      "nuisance_loss": 0.6503505229949951,
+      "grad_norm": 0.8305899292230606,
+      "M_null_base_nll": 0.5527963439623514,
+      "M_null_critic_gap": 0.18920665979385376,
+      "S_real_base_nll": 0.5907607451081276,
+      "S_real_critic_gap": 0.25979359447956085,
+      "S_null_base_nll": 0.5160649617513021,
+      "S_null_critic_gap": 0.4111215720574061,
+      "M_real_base_nll": 0.5702387765049934,
+      "M_real_critic_gap": 0.4471551701426506,
+      "axis_precision": [
+        1.0640902519226074,
+        1.0602227449417114
+      ],
+      "query": {
+        "boundary": 0,
+        "selected_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.32073092460632324,
+          "MD": 0.327591210603714,
+          "ALL": 0.35167789459228516
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.021164067089557648,
+          "ALL": 0.09211317449808121
+        },
+        "gate_evidence": {
+          "M": 0.021164067089557648,
+          "S": 0.07094910740852356
+        },
+        "axis_precision": [
+          1.0640902519226074,
+          1.0602227449417114
+        ],
+        "M": {
+          "axes": [
+            0.050152333246337055,
+            0.030373374621073257
+          ],
+          "normal_novelty": 0.050152333246337055,
+          "pseudo_nuisance": 0.030373374621073257,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.47344282269477844,
+                "normal_opened_nll": 0.48137181997299194,
+                "critic_nll": 0.581627607345581,
+                "critic_gap": 0.6619322896003723
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.7932451963424683,
+                "normal_opened_nll": 0.6833963394165039,
+                "critic_nll": 0.5116050839424133,
+                "critic_gap": 0.9747726917266846
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.666943371295929,
+                "normal_opened_nll": 0.5862662196159363,
+                "critic_nll": 0.5546811819076538,
+                "critic_gap": 0.7632898092269897
+              }
+            ],
+            "normal_base_nll": 0.6445437967777252,
+            "normal_opened_nll": 0.583678126335144,
+            "critic_nll": 0.5493046243985494,
+            "critic_gap": 0.7999982635180155
+          },
+          "null_normal_base_nll": 0.5943914635313882,
+          "null_critic_nll": 0.5796779990196227,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            0.007694368561108944,
+            -0.05919661993781722
+          ],
+          "normal_novelty": 0.007694368561108944,
+          "pseudo_nuisance": -0.05919661993781722,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.36477330327033997,
+                "normal_opened_nll": 0.41828396916389465,
+                "critic_nll": 0.6411186456680298,
+                "critic_gap": 0.34479254484176636
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.6505550742149353,
+                "normal_opened_nll": 0.5930622816085815,
+                "critic_nll": 0.5978329181671143,
+                "critic_gap": 0.5690900087356567
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.7040523290634155,
+                "normal_opened_nll": 0.7114278078079224,
+                "critic_nll": 0.6237797737121582,
+                "critic_gap": 0.43100565671920776
+              }
+            ],
+            "normal_base_nll": 0.573126902182897,
+            "normal_opened_nll": 0.5742580195267996,
+            "critic_nll": 0.6209104458491007,
+            "critic_gap": 0.44829607009887695
+          },
+          "null_normal_base_nll": 0.565432533621788,
+          "null_critic_nll": 0.5617138259112835,
+          "null_count": 16
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 0.5129052862524986,
+      "normal_order_loss": 0.48685320019721984,
+      "nuisance_loss": 0.6005036339163781,
+      "grad_norm": 1.2401601940393447,
+      "M_null_base_nll": 0.5208918005228043,
+      "M_null_critic_gap": 0.6807426810264587,
+      "S_real_base_nll": 0.5104584470391273,
+      "S_real_critic_gap": 0.3676222451031208,
+      "M_real_base_nll": 0.6143606677651405,
+      "M_real_critic_gap": 0.5433507859706879,
+      "S_null_base_nll": 0.5082667370637258,
+      "S_null_critic_gap": 0.875563512245814,
+      "axis_precision": [
+        1.0857449769973755,
+        1.0813668966293335
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": 0.49280209094285965,
+      "normal_order_loss": 0.513191194832325,
+      "nuisance_loss": 0.5509551256895066,
+      "grad_norm": 2.7928013861179353,
+      "M_real_base_nll": 0.4545371929804484,
+      "M_real_critic_gap": 1.6218170126279194,
+      "S_null_base_nll": 0.5730625800788403,
+      "S_null_critic_gap": 0.9231817200779915,
+      "M_null_base_nll": 0.5180307711873736,
+      "M_null_critic_gap": 0.8720949803079877,
+      "S_real_base_nll": 0.6361088156700134,
+      "S_real_critic_gap": 1.8866430521011353,
+      "axis_precision": [
+        1.1017835140228271,
+        1.0997339487075806
+      ],
+      "query": {
+        "boundary": 4,
+        "selected_taps": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "probabilities": {
+          "D": 0.33161765336990356,
+          "MD": 0.34797510504722595,
+          "ALL": 0.32040730118751526
+        },
+        "utilities": {
+          "D": 0.0,
+          "MD": 0.048148348927497864,
+          "ALL": -0.034389570355415344
+        },
+        "gate_evidence": {
+          "M": 0.048148348927497864,
+          "S": -0.08253791928291321
+        },
+        "axis_precision": [
+          1.1017835140228271,
+          1.0997339487075806
+        ],
+        "M": {
+          "axes": [
+            0.04894654121663833,
+            0.005255944199032192
+          ],
+          "normal_novelty": 0.04894654121663833,
+          "pseudo_nuisance": 0.005255944199032192,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.4272202253341675,
+                "normal_opened_nll": 0.39655038714408875,
+                "critic_nll": 0.705711841583252,
+                "critic_gap": 0.8522039651870728
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.7587679624557495,
+                "normal_opened_nll": 0.7006738185882568,
+                "critic_nll": 0.46103113889694214,
+                "critic_gap": 1.7474230527877808
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.6769176125526428,
+                "normal_opened_nll": 0.5957114100456238,
+                "critic_nll": 0.5353505611419678,
+                "critic_gap": 1.3377070426940918
+              }
+            ],
+            "normal_base_nll": 0.6209686001141866,
+            "normal_opened_nll": 0.5643118719259897,
+            "critic_nll": 0.567364513874054,
+            "critic_gap": 1.3124446868896484
+          },
+          "null_normal_base_nll": 0.5720220588975483,
+          "null_critic_nll": 0.5726204580730861,
+          "null_count": 6
+        },
+        "S": {
+          "axes": [
+            0.010426054398218865,
+            0.08549811070164037
+          ],
+          "normal_novelty": 0.010426054398218865,
+          "pseudo_nuisance": 0.08549811070164037,
+          "real": {
+            "video_rows": [
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+                "normal_base_nll": 0.35171881318092346,
+                "normal_opened_nll": 0.36902302503585815,
+                "critic_nll": 0.5225421190261841,
+                "critic_gap": 1.3175959587097168
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+                "normal_base_nll": 0.6308234333992004,
+                "normal_opened_nll": 0.6035879850387573,
+                "critic_nll": 0.3960762023925781,
+                "critic_gap": 1.996097445487976
+              },
+              {
+                "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+                "normal_base_nll": 0.6834268569946289,
+                "normal_opened_nll": 0.6560962796211243,
+                "critic_nll": 0.5007997155189514,
+                "critic_gap": 1.400003433227539
+              }
+            ],
+            "normal_base_nll": 0.5553230345249176,
+            "normal_opened_nll": 0.54290242989858,
+            "critic_nll": 0.47313934564590454,
+            "critic_gap": 1.571232279141744
+          },
+          "null_normal_base_nll": 0.5448969801266987,
+          "null_critic_nll": 0.5586374563475449,
+          "null_count": 16
+        }
+      }
+    }
+  ],
+  "milestones": {
+    "1": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.3241231441497803,
+        "MD": 0.32485225796699524,
+        "ALL": 0.3510246276855469
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.002247024327516556,
+        "ALL": 0.07973290979862213
+      },
+      "gate_evidence": {
+        "M": 0.002247024327516556,
+        "S": 0.07748588174581528
+      },
+      "axis_precision": [
+        1.020637035369873,
+        1.0202805995941162
+      ],
+      "M": {
+        "axes": [
+          0.008239391777250527,
+          0.0060399108462864115
+        ],
+        "normal_novelty": 0.008239391777250527,
+        "pseudo_nuisance": 0.0060399108462864115,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.5646480321884155,
+              "normal_opened_nll": 0.5066565871238708,
+              "critic_nll": 0.6421828269958496,
+              "critic_gap": 0.2973964512348175
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.678682804107666,
+              "normal_opened_nll": 0.6344031691551208,
+              "critic_nll": 0.5892731547355652,
+              "critic_gap": 0.4928131401538849
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.6256374716758728,
+              "normal_opened_nll": 0.571095883846283,
+              "critic_nll": 0.6110509634017944,
+              "critic_gap": 0.37931638956069946
+            }
+          ],
+          "normal_base_nll": 0.6229894359906515,
+          "normal_opened_nll": 0.5707185467084249,
+          "critic_nll": 0.6141689817110697,
+          "critic_gap": 0.3898419936498006
+        },
+        "null_normal_base_nll": 0.614750044213401,
+        "null_critic_nll": 0.6202088925573561,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          -0.0008914855619271966,
+          -0.0768374465405941
+        ],
+        "normal_novelty": -0.0008914855619271966,
+        "pseudo_nuisance": -0.0768374465405941,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.4896860718727112,
+              "normal_opened_nll": 0.4532908797264099,
+              "critic_nll": 0.7037979364395142,
+              "critic_gap": 0.12672078609466553
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.673077404499054,
+              "normal_opened_nll": 0.6645150184631348,
+              "critic_nll": 0.6813462972640991,
+              "critic_gap": 0.23468583822250366
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.6714073419570923,
+              "normal_opened_nll": 0.639536440372467,
+              "critic_nll": 0.6825486421585083,
+              "critic_gap": 0.1992688775062561
+            }
+          ],
+          "normal_base_nll": 0.6113902727762858,
+          "normal_opened_nll": 0.5857807795206705,
+          "critic_nll": 0.6892309586207072,
+          "critic_gap": 0.18689183394114176
+        },
+        "null_normal_base_nll": 0.612281758338213,
+        "null_critic_nll": 0.6123935120801131,
+        "null_count": 16
+      }
+    },
+    "3": {
+      "boundary": 0,
+      "selected_taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.32073092460632324,
+        "MD": 0.327591210603714,
+        "ALL": 0.35167789459228516
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.021164067089557648,
+        "ALL": 0.09211317449808121
+      },
+      "gate_evidence": {
+        "M": 0.021164067089557648,
+        "S": 0.07094910740852356
+      },
+      "axis_precision": [
+        1.0640902519226074,
+        1.0602227449417114
+      ],
+      "M": {
+        "axes": [
+          0.050152333246337055,
+          0.030373374621073257
+        ],
+        "normal_novelty": 0.050152333246337055,
+        "pseudo_nuisance": 0.030373374621073257,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.47344282269477844,
+              "normal_opened_nll": 0.48137181997299194,
+              "critic_nll": 0.581627607345581,
+              "critic_gap": 0.6619322896003723
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.7932451963424683,
+              "normal_opened_nll": 0.6833963394165039,
+              "critic_nll": 0.5116050839424133,
+              "critic_gap": 0.9747726917266846
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.666943371295929,
+              "normal_opened_nll": 0.5862662196159363,
+              "critic_nll": 0.5546811819076538,
+              "critic_gap": 0.7632898092269897
+            }
+          ],
+          "normal_base_nll": 0.6445437967777252,
+          "normal_opened_nll": 0.583678126335144,
+          "critic_nll": 0.5493046243985494,
+          "critic_gap": 0.7999982635180155
+        },
+        "null_normal_base_nll": 0.5943914635313882,
+        "null_critic_nll": 0.5796779990196227,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          0.007694368561108944,
+          -0.05919661993781722
+        ],
+        "normal_novelty": 0.007694368561108944,
+        "pseudo_nuisance": -0.05919661993781722,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.36477330327033997,
+              "normal_opened_nll": 0.41828396916389465,
+              "critic_nll": 0.6411186456680298,
+              "critic_gap": 0.34479254484176636
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.6505550742149353,
+              "normal_opened_nll": 0.5930622816085815,
+              "critic_nll": 0.5978329181671143,
+              "critic_gap": 0.5690900087356567
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.7040523290634155,
+              "normal_opened_nll": 0.7114278078079224,
+              "critic_nll": 0.6237797737121582,
+              "critic_gap": 0.43100565671920776
+            }
+          ],
+          "normal_base_nll": 0.573126902182897,
+          "normal_opened_nll": 0.5742580195267996,
+          "critic_nll": 0.6209104458491007,
+          "critic_gap": 0.44829607009887695
+        },
+        "null_normal_base_nll": 0.565432533621788,
+        "null_critic_nll": 0.5617138259112835,
+        "null_count": 16
+      }
+    },
+    "5": {
+      "boundary": 4,
+      "selected_taps": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "probabilities": {
+        "D": 0.33161765336990356,
+        "MD": 0.34797510504722595,
+        "ALL": 0.32040730118751526
+      },
+      "utilities": {
+        "D": 0.0,
+        "MD": 0.048148348927497864,
+        "ALL": -0.034389570355415344
+      },
+      "gate_evidence": {
+        "M": 0.048148348927497864,
+        "S": -0.08253791928291321
+      },
+      "axis_precision": [
+        1.1017835140228271,
+        1.0997339487075806
+      ],
+      "M": {
+        "axes": [
+          0.04894654121663833,
+          0.005255944199032192
+        ],
+        "normal_novelty": 0.04894654121663833,
+        "pseudo_nuisance": 0.005255944199032192,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.4272202253341675,
+              "normal_opened_nll": 0.39655038714408875,
+              "critic_nll": 0.705711841583252,
+              "critic_gap": 0.8522039651870728
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.7587679624557495,
+              "normal_opened_nll": 0.7006738185882568,
+              "critic_nll": 0.46103113889694214,
+              "critic_gap": 1.7474230527877808
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.6769176125526428,
+              "normal_opened_nll": 0.5957114100456238,
+              "critic_nll": 0.5353505611419678,
+              "critic_gap": 1.3377070426940918
+            }
+          ],
+          "normal_base_nll": 0.6209686001141866,
+          "normal_opened_nll": 0.5643118719259897,
+          "critic_nll": 0.567364513874054,
+          "critic_gap": 1.3124446868896484
+        },
+        "null_normal_base_nll": 0.5720220588975483,
+        "null_critic_nll": 0.5726204580730861,
+        "null_count": 6
+      },
+      "S": {
+        "axes": [
+          0.010426054398218865,
+          0.08549811070164037
+        ],
+        "normal_novelty": 0.010426054398218865,
+        "pseudo_nuisance": 0.08549811070164037,
+        "real": {
+          "video_rows": [
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+              "normal_base_nll": 0.35171881318092346,
+              "normal_opened_nll": 0.36902302503585815,
+              "critic_nll": 0.5225421190261841,
+              "critic_gap": 1.3175959587097168
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+              "normal_base_nll": 0.6308234333992004,
+              "normal_opened_nll": 0.6035879850387573,
+              "critic_nll": 0.3960762023925781,
+              "critic_gap": 1.996097445487976
+            },
+            {
+              "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+              "normal_base_nll": 0.6834268569946289,
+              "normal_opened_nll": 0.6560962796211243,
+              "critic_nll": 0.5007997155189514,
+              "critic_gap": 1.400003433227539
+            }
+          ],
+          "normal_base_nll": 0.5553230345249176,
+          "normal_opened_nll": 0.54290242989858,
+          "critic_nll": 0.47313934564590454,
+          "critic_gap": 1.571232279141744
+        },
+        "null_normal_base_nll": 0.5448969801266987,
+        "null_critic_nll": 0.5586374563475449,
+        "null_count": 16
+      }
+    }
+  },
+  "query_policy": {
+    "boundary": 4,
+    "selected_taps": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.33161765336990356,
+      "MD": 0.34797510504722595,
+      "ALL": 0.32040730118751526
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": 0.048148348927497864,
+      "ALL": -0.034389570355415344
+    },
+    "gate_evidence": {
+      "M": 0.048148348927497864,
+      "S": -0.08253791928291321
+    },
+    "axis_precision": [
+      1.1017835140228271,
+      1.0997339487075806
+    ],
+    "M": {
+      "axes": [
+        0.04894654121663833,
+        0.005255944199032192
+      ],
+      "normal_novelty": 0.04894654121663833,
+      "pseudo_nuisance": 0.005255944199032192,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_base_nll": 0.4272202253341675,
+            "normal_opened_nll": 0.39655038714408875,
+            "critic_nll": 0.705711841583252,
+            "critic_gap": 0.8522039651870728
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_base_nll": 0.7587679624557495,
+            "normal_opened_nll": 0.7006738185882568,
+            "critic_nll": 0.46103113889694214,
+            "critic_gap": 1.7474230527877808
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_base_nll": 0.6769176125526428,
+            "normal_opened_nll": 0.5957114100456238,
+            "critic_nll": 0.5353505611419678,
+            "critic_gap": 1.3377070426940918
+          }
+        ],
+        "normal_base_nll": 0.6209686001141866,
+        "normal_opened_nll": 0.5643118719259897,
+        "critic_nll": 0.567364513874054,
+        "critic_gap": 1.3124446868896484
+      },
+      "null_normal_base_nll": 0.5720220588975483,
+      "null_critic_nll": 0.5726204580730861,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.010426054398218865,
+        0.08549811070164037
+      ],
+      "normal_novelty": 0.010426054398218865,
+      "pseudo_nuisance": 0.08549811070164037,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_base_nll": 0.35171881318092346,
+            "normal_opened_nll": 0.36902302503585815,
+            "critic_nll": 0.5225421190261841,
+            "critic_gap": 1.3175959587097168
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_base_nll": 0.6308234333992004,
+            "normal_opened_nll": 0.6035879850387573,
+            "critic_nll": 0.3960762023925781,
+            "critic_gap": 1.996097445487976
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_base_nll": 0.6834268569946289,
+            "normal_opened_nll": 0.6560962796211243,
+            "critic_nll": 0.5007997155189514,
+            "critic_gap": 1.400003433227539
+          }
+        ],
+        "normal_base_nll": 0.5553230345249176,
+        "normal_opened_nll": 0.54290242989858,
+        "critic_nll": 0.47313934564590454,
+        "critic_gap": 1.571232279141744
+      },
+      "null_normal_base_nll": 0.5448969801266987,
+      "null_critic_nll": 0.5586374563475449,
+      "null_count": 16
+    }
+  },
+  "support_policy": {
+    "boundary": 0,
+    "selected_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.33571118116378784,
+      "MD": 0.3248680830001831,
+      "ALL": 0.33942076563835144
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.032832033932209015,
+      "ALL": 0.010989423841238022
+    },
+    "gate_evidence": {
+      "M": -0.032832033932209015,
+      "S": 0.04382145777344704
+    },
+    "axis_precision": [
+      1.1017835140228271,
+      1.0997339487075806
+    ],
+    "M": {
+      "axes": [
+        0.01683542274293448,
+        0.0467213236150289
+      ],
+      "normal_novelty": 0.01683542274293448,
+      "pseudo_nuisance": 0.0467213236150289,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_base_nll": 0.6314964294433594,
+            "normal_opened_nll": 0.5915305018424988,
+            "critic_nll": 0.6343092918395996,
+            "critic_gap": 0.3848884403705597
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_base_nll": 0.37102481722831726,
+            "normal_opened_nll": 0.2978788912296295,
+            "critic_nll": 0.46902942657470703,
+            "critic_gap": 1.5761346817016602
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_base_nll": 0.5662814974784851,
+            "normal_opened_nll": 0.3622172772884369,
+            "critic_nll": 0.5581204891204834,
+            "critic_gap": 1.2758023738861084
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_base_nll": 0.42945241928100586,
+            "normal_opened_nll": 0.41650378704071045,
+            "critic_nll": 0.635765790939331,
+            "critic_gap": 0.46767720580101013
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_base_nll": 0.48881208896636963,
+            "normal_opened_nll": 0.49662989377975464,
+            "critic_nll": 0.4437236487865448,
+            "critic_gap": 1.741703748703003
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_base_nll": 0.7097119688987732,
+            "normal_opened_nll": 0.5060322880744934,
+            "critic_nll": 0.4574187397956848,
+            "critic_gap": 1.6869606971740723
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_base_nll": 0.5971836447715759,
+            "normal_opened_nll": 0.47215020656585693,
+            "critic_nll": 0.39347928762435913,
+            "critic_gap": 2.0003552436828613
+          }
+        ],
+        "normal_base_nll": 0.5419946951525552,
+        "normal_opened_nll": 0.4489918351173401,
+        "critic_nll": 0.5131209535258157,
+        "critic_gap": 1.3047889130456107
+      },
+      "null_normal_base_nll": 0.5251592724096207,
+      "null_critic_nll": 0.5598422771408446,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.03444842568465645,
+        -0.005334701122982066
+      ],
+      "normal_novelty": 0.03444842568465645,
+      "pseudo_nuisance": -0.005334701122982066,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_base_nll": 0.5347667932510376,
+            "normal_opened_nll": 0.4362879991531372,
+            "critic_nll": 0.6885138750076294,
+            "critic_gap": 0.20298850536346436
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_base_nll": 0.34263667464256287,
+            "normal_opened_nll": 0.31241199374198914,
+            "critic_nll": 0.549662172794342,
+            "critic_gap": 1.2815513610839844
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_base_nll": 0.48511964082717896,
+            "normal_opened_nll": 0.4862420856952667,
+            "critic_nll": 0.5452057719230652,
+            "critic_gap": 1.2895554304122925
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_base_nll": 0.6183750629425049,
+            "normal_opened_nll": 0.6416890025138855,
+            "critic_nll": 0.5701245069503784,
+            "critic_gap": 0.8777473568916321
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_base_nll": 0.619166374206543,
+            "normal_opened_nll": 0.5889542698860168,
+            "critic_nll": 0.3695918321609497,
+            "critic_gap": 2.19026255607605
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_base_nll": 0.676773726940155,
+            "normal_opened_nll": 0.6616101861000061,
+            "critic_nll": 0.4812684655189514,
+            "critic_gap": 1.6195011138916016
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_base_nll": 0.5995177626609802,
+            "normal_opened_nll": 0.5301180481910706,
+            "critic_nll": 0.46794062852859497,
+            "critic_gap": 1.5214784145355225
+          }
+        ],
+        "normal_base_nll": 0.5537651479244232,
+        "normal_opened_nll": 0.5224733693259103,
+        "critic_nll": 0.5246153218405587,
+        "critic_gap": 1.2832978197506495
+      },
+      "null_normal_base_nll": 0.5193167222397668,
+      "null_critic_nll": 0.5192806207175766,
+      "null_count": 16
+    }
+  },
+  "full_scene_policy": {
+    "boundary": 8,
+    "selected_taps": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "probabilities": {
+      "D": 0.33457377552986145,
+      "MD": 0.33172935247421265,
+      "ALL": 0.3336969017982483
+    },
+    "utilities": {
+      "D": 0.0,
+      "MD": -0.008537916466593742,
+      "ALL": -0.0026242695748806
+    },
+    "gate_evidence": {
+      "M": -0.008537916466593742,
+      "S": 0.005913646891713142
+    },
+    "axis_precision": [
+      1.1017835140228271,
+      1.0997339487075806
+    ],
+    "M": {
+      "axes": [
+        0.02646875828504569,
+        0.03428170979022982
+      ],
+      "normal_novelty": 0.02646875828504569,
+      "pseudo_nuisance": 0.03428170979022982,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_base_nll": 0.6314964294433594,
+            "normal_opened_nll": 0.5915305018424988,
+            "critic_nll": 0.6343092918395996,
+            "critic_gap": 0.3848884403705597
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_base_nll": 0.4272202253341675,
+            "normal_opened_nll": 0.39655038714408875,
+            "critic_nll": 0.705711841583252,
+            "critic_gap": 0.8522039651870728
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_base_nll": 0.37102481722831726,
+            "normal_opened_nll": 0.2978788912296295,
+            "critic_nll": 0.46902942657470703,
+            "critic_gap": 1.5761346817016602
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_base_nll": 0.5662814974784851,
+            "normal_opened_nll": 0.3622172772884369,
+            "critic_nll": 0.5581204891204834,
+            "critic_gap": 1.2758023738861084
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_base_nll": 0.42945241928100586,
+            "normal_opened_nll": 0.41650378704071045,
+            "critic_nll": 0.635765790939331,
+            "critic_gap": 0.46767720580101013
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_base_nll": 0.7587679624557495,
+            "normal_opened_nll": 0.7006738185882568,
+            "critic_nll": 0.46103113889694214,
+            "critic_gap": 1.7474230527877808
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_base_nll": 0.48881208896636963,
+            "normal_opened_nll": 0.49662989377975464,
+            "critic_nll": 0.4437236487865448,
+            "critic_gap": 1.741703748703003
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_base_nll": 0.7097119688987732,
+            "normal_opened_nll": 0.5060322880744934,
+            "critic_nll": 0.4574187397956848,
+            "critic_gap": 1.6869606971740723
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_base_nll": 0.6769176125526428,
+            "normal_opened_nll": 0.5957114100456238,
+            "critic_nll": 0.5353505611419678,
+            "critic_gap": 1.3377070426940918
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_base_nll": 0.5971836447715759,
+            "normal_opened_nll": 0.47215020656585693,
+            "critic_nll": 0.39347928762435913,
+            "critic_gap": 2.0003552436828613
+          }
+        ],
+        "normal_base_nll": 0.5656868666410446,
+        "normal_opened_nll": 0.483587846159935,
+        "critic_nll": 0.5293940216302871,
+        "critic_gap": 1.307085645198822
+      },
+      "null_normal_base_nll": 0.5392181083559989,
+      "null_critic_nll": 0.563675731420517,
+      "null_count": 6
+    },
+    "S": {
+      "axes": [
+        0.027241714298725128,
+        0.02191514242440462
+      ],
+      "normal_novelty": 0.027241714298725128,
+      "pseudo_nuisance": 0.02191514242440462,
+      "real": {
+        "video_rows": [
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence1/train/01",
+            "normal_base_nll": 0.5347667932510376,
+            "normal_opened_nll": 0.4362879991531372,
+            "critic_nll": 0.6885138750076294,
+            "critic_gap": 0.20298850536346436
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/01",
+            "normal_base_nll": 0.35171881318092346,
+            "normal_opened_nll": 0.36902302503585815,
+            "critic_nll": 0.5225421190261841,
+            "critic_gap": 1.3175959587097168
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/02",
+            "normal_base_nll": 0.34263667464256287,
+            "normal_opened_nll": 0.31241199374198914,
+            "critic_nll": 0.549662172794342,
+            "critic_gap": 1.2815513610839844
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/03",
+            "normal_base_nll": 0.48511964082717896,
+            "normal_opened_nll": 0.4862420856952667,
+            "critic_nll": 0.5452057719230652,
+            "critic_gap": 1.2895554304122925
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence2/train/04",
+            "normal_base_nll": 0.6183750629425049,
+            "normal_opened_nll": 0.6416890025138855,
+            "critic_nll": 0.5701245069503784,
+            "critic_gap": 0.8777473568916321
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/01",
+            "normal_base_nll": 0.6308234333992004,
+            "normal_opened_nll": 0.6035879850387573,
+            "critic_nll": 0.3960762023925781,
+            "critic_gap": 1.996097445487976
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/02",
+            "normal_base_nll": 0.619166374206543,
+            "normal_opened_nll": 0.5889542698860168,
+            "critic_nll": 0.3695918321609497,
+            "critic_gap": 2.19026255607605
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/03",
+            "normal_base_nll": 0.676773726940155,
+            "normal_opened_nll": 0.6616101861000061,
+            "critic_nll": 0.4812684655189514,
+            "critic_gap": 1.6195011138916016
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/04",
+            "normal_base_nll": 0.6834268569946289,
+            "normal_opened_nll": 0.6560962796211243,
+            "critic_nll": 0.5007997155189514,
+            "critic_gap": 1.400003433227539
+          },
+          {
+            "video": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly/Crossroads/sequence3/train/05",
+            "normal_base_nll": 0.5995177626609802,
+            "normal_opened_nll": 0.5301180481910706,
+            "critic_nll": 0.46794062852859497,
+            "critic_gap": 1.5214784145355225
+          }
+        ],
+        "normal_base_nll": 0.5542325139045715,
+        "normal_opened_nll": 0.5286020874977112,
+        "critic_nll": 0.5091725289821625,
+        "critic_gap": 1.369678157567978
+      },
+      "null_normal_base_nll": 0.5269907996058464,
+      "null_critic_nll": 0.5310876714065671,
+      "null_count": 16
+    }
+  }
+}

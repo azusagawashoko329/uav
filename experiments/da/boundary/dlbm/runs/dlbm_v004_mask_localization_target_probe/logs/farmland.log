@@ -1,0 +1,13 @@
+[2026-07-14 15:50:12] start scene=farmland gpu=0 version=DLBM_v004_mask_localization_target_probe
+[farmland] support=144 query=48 boundaries=[0, 4, 8, 11] micro=5 localizer=20
+  cached L0
+  cached L4
+  cached L8
+  cached L11
+/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+  localizer ep05 train=0.2269 choice=L4 aucs=L0:0.8170,L4:0.8208,L8:0.7975,L11:0.3653
+  localizer ep10 train=0.2215 choice=L0 aucs=L0:0.8232,L4:0.8231,L8:0.8040,L11:0.3653
+  localizer ep20 train=0.2237 choice=L4 aucs=L0:0.8270,L4:0.8280,L8:0.8042,L11:0.3653
+  final choice=L4 peak=3.67 GiB
+[2026-07-14 15:51:37] end scene=farmland exit=0

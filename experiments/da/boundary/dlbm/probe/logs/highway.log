@@ -1,0 +1,16 @@
+[2026-07-14 13:15:31] start scene=highway gpu=1 seed=42 probe_epochs=10
+[Highway] 3 seq merged, 9045 frames, 141 batches/ep | img=256 taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] code_dim=64 depth=12 tap_align=absolute k=5 loss=topk tap_norm=True | trainable=97.0M | AdamW lr(max)=0.0005 wd=0.05 OneCycleLR bs=64 ep=10 seed=42
+  shape check: patches=(64, 256, 768) recon=(64, 256, 768) n_taps=12 loss=topk
+  ep01/10 loss=0.4614 lr=1.41e-04  (134s)
+  ep02/10 loss=0.2243 lr=3.81e-04  (132s)
+  ep03/10 loss=0.1615 lr=5.00e-04  (132s)
+  ep04/10 loss=0.1291 lr=4.75e-04  (132s)
+  ep05/10 loss=0.1138 lr=4.05e-04  (132s)
+  ep06/10 loss=0.1039 lr=3.05e-04  (132s)
+  ep07/10 loss=0.0974 lr=1.94e-04  (132s)
+  ep08/10 loss=0.0930 lr=9.35e-05  (132s)
+  ep09/10 loss=0.0903 lr=2.44e-05  (132s)
+  ep10/10 loss=0.0891 lr=3.27e-09  (132s)
+saved /data1/data8tb/liangyuxuan/code/uav/experiment_DLBM/run/probe/ckpt/highway.pth
+peak_gpu_memory=13.89 GiB
+[2026-07-14 13:37:47] end scene=highway exit=0

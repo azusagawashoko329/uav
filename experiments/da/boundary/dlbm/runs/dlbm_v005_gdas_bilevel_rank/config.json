@@ -1,0 +1,22 @@
+{
+  "version": "DLBM_v005_gdas_bilevel_rank",
+  "stage": "boundary",
+  "final_training": false,
+  "independent_distribution_per_scene": true,
+  "seed": 42,
+  "gpus": [0, 1],
+  "probe": "experiment_DLBM/run/probe/ckpt",
+  "probe_mutated": false,
+  "boundaries": [0, 4, 8, 11],
+  "epochs": 50,
+  "steps_per_epoch": 8,
+  "hypergradient_updates": 400,
+  "support_batch_size": 2,
+  "query_batch_size": 4,
+  "inner_learning_rate": 0.0005,
+  "dlbm_learning_rate": 0.05,
+  "gumbel_temperature": 1.0,
+  "topk": 5,
+  "outer_objective": "RankNet ordering of two within-frame CutPaste views by realized area",
+  "milestones": [5, 10, 20, 30, 50]
+}

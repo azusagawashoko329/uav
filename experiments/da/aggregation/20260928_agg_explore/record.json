@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "id": "20260928_agg_explore",
+  "dataset": "da",
+  "question": "Compare adjacent teacher-layer aggregation and raw12 training losses",
+  "variant": "legacy_mixed",
+  "status": "unknown",
+  "source_commit": null,
+  "scripts": [
+    "scripts/probe_agg_kinds.py",
+    "scripts/probe_agg_learn.py",
+    "scripts/probe_e2e.py",
+    "scripts/probe_e2e_learned.py",
+    "scripts/probe_group_agg.py",
+    "scripts/probe_group_alt.py",
+    "scripts/probe_group_auto.py",
+    "scripts/probe_group_gap.py",
+    "scripts/run_full_scenes.sh",
+    "scripts/summarize.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20260928T075033Z_raw12_partial",
+      "status": "unknown",
+      "command": null,
+      "source_commit": null,
+      "outputs": [
+        "raw_raw12.txt",
+        "logs/raw12_bike.log",
+        "logs/raw12_crossroads.log",
+        "logs/raw12_farmland.log"
+      ]
+    },
+    {
+      "run_id": "legacy_raw12_loss_comparison",
+      "status": "unknown",
+      "command": null,
+      "source_commit": null,
+      "outputs": [
+        "loss_compare.csv",
+        "logs/"
+      ]
+    }
+  ],
+  "result_summary": "loss_compare.csv has seven-scene mean AUC 84.66 (mean loss) and 85.01 (group_balanced), single seed 42; original three-variant study incomplete",
+  "limitations": [
+    "The exact runtime source commit and shell commands are not recoverable from the recorded files.",
+    "raw_raw12.txt contains only three scenes; the seven-scene comparison is a different loss study.",
+    "No checkpoint is retained and no multi-seed evaluation is recorded."
+  ],
+  "path": "experiments/da/aggregation/20260928_agg_explore",
+  "family": "aggregation",
+  "legacy": true,
+  "original_path": "experiments/20260928_agg_explore",
+  "source_ref": null,
+  "evidence": [
+    "loss_compare.csv",
+    "raw_raw12.txt",
+    "logs/raw12_bike.log",
+    "logs/raw12_crossroads.log",
+    "logs/raw12_farmland.log",
+    "logs/raw12_group_balanced_bike.log",
+    "logs/raw12_group_balanced_crossroads.log",
+    "logs/raw12_group_balanced_farmland.log",
+    "logs/raw12_group_balanced_highway.log",
+    "logs/raw12_group_balanced_railway.log",
+    "logs/raw12_group_balanced_solar.log",
+    "logs/raw12_group_balanced_vehicle.log",
+    "logs/raw12_highway.log",
+    "logs/raw12_railway.log",
+    "logs/raw12_solar.log",
+    "logs/raw12_vehicle.log"
+  ],
+  "weight_files_local": 0,
+  "review_markers": []
+}
