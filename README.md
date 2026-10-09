@@ -1,10 +1,20 @@
 # UAV 异常检测研究仓库
 
-本仓库保留外观分支、行为分支、融合及后续蒸馏层边界探索的历史。它是研究过程记录，不把多个分支或不同数据集的指标混作同一正式模型。接手顺序：阅读 [AGENTS.md](AGENTS.md) → [实验协议](docs/EXPERIMENT_PROTOCOL.md) → [数据集说明](docs/DATASETS.md) → [历史实验索引](docs/LEGACY_EXPERIMENTS.md) → 对应实验 `RECORD.md` 和原 README。
+从 [实验导航](experiments/INDEX.md) 开始查看研究记录：每个实验位于 `experiments/<数据集>/<方向>/<实验 ID>/`，目录中有 `record.json`、可阅读记录、脚本和证据。旧路径与新路径逐项列在 [迁移表](docs/MIGRATION_MAP.csv)。本次重排只移动和归档实验资产，没有开发模型或删除实验。
 
-- 复用模型代码：`model/`；正式入口：`train.py`、`eval.py`；行为/融合：`behavior/`、`fusion/`。
-- 新实验：`experiments/<规范 ID>/`，实验专用脚本放各自 `scripts/`。历史目录保留原名，并以 `RECORD.md` 补足审计信息。
-- 文献与开发历史：`note/`；输出来源：[`docs/ARTIFACT_PROVENANCE.md`](docs/ARTIFACT_PROVENANCE.md) 和 [本地资产清单](docs/LOCAL_ARTIFACTS.csv)。
-- Git 提交及同步：[`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md)。大权重、视频、缓存不会由 Git 保存；实验报告、配置、可阅读指标和日志应进入 Git。
+| 位置 | 内容 |
+|---|---|
+| `model/`、`train.py`、`eval.py` | 当前分支的共享外观模型与训练评测入口 |
+| `behavior/`、`fusion/` | 当前分支的共享行为与融合代码 |
+| `experiments/da/appearance/` | Drone-Anomaly 外观实验、消融、code_dim 与 LAA 历史 |
+| `experiments/da/behavior/` | 运动探针与检测预览 |
+| `experiments/da/fusion/` | 融合实验与历史逐帧分数 |
+| `experiments/da/aggregation/` | 教师层聚合探索 |
+| `experiments/da/boundary/` | DLBM 与 mask DLBM 各版本运行；历史源码快照单独存放 |
+| `experiments/da/gating/` | 门控及端到端门控历史 |
+| `experiments/da/audit/` | 审计代码、分数和图 |
+| `experiments/uit/` | UIT-ADrone 实验入口；本仓库尚无可核实的本地 UIT 实验目录 |
 
-当前分支的 `experiments/20260928_agg_explore/` 是未完成的聚合探索，不能当作正式模型结论。`master` 与 `explore/distill-layer-boundary` 是独立演进线，详见历史索引。旧笔记中出现的 `DABG/` 指针指向此仓库之外的历史目录，当前仓库无法仅凭该相对路径复现；请使用 Git 提交与实验记录定位。
+接手规范见 [AGENTS.md](AGENTS.md)、[实验协议](docs/EXPERIMENT_PROTOCOL.md)、[数据集约定](docs/DATASETS.md)和 [Git 同步规范](docs/GIT_WORKFLOW.md)。[本地二进制资产索引](docs/LOCAL_ARTIFACTS.csv)仅是磁盘快照；权重和视频不由 Git 备份。历史笔记在 `note/`，但其中部分 `DABG/` 路径属于仓库外资料，不能直接作为本仓库的源码指针。
+
+`master`、`research/next` 与 `explore/distill-layer-boundary` 是不同模型演进线。边界源码快照来自 `explore` 的 `1a68d0c`，LAA 快照来自 `master` 的 `fd6cce0`；快照提交不等于每次历史运行的精确源码提交。详情见 [历史索引](docs/LEGACY_EXPERIMENTS.md)。

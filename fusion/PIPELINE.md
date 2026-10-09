@@ -233,7 +233,7 @@ fused  = (1 − 0.103)×0.300 + 0.103×0.999
 ## 5. 复现
 
 ```bash
-# 外观逐帧分数(base 环境)→ experiments/fusion/scores/app_<scene>.npz
+# 外观逐帧分数(base 环境)→ experiments/da/fusion/legacy_score_dump/scores/app_<scene>.npz
 HF_HUB_OFFLINE=1 python fusion/dump_appearance_scores.py
 
 # 行为 + 融合(DMAD 环境)
@@ -244,4 +244,4 @@ conda run -n DMAD python fusion/example_trace.py    # 抽真实帧打印全链�
 ```
 
 - 行为 per-dim/聚合诊断:`fusion/desc_probe.py`;标准化验证:`fusion/verify_percentile.py`。
-- 分数产物落 `experiments/fusion/scores/`(已 gitignore)。各步实验依据与被否决方案见 [README.md](README.md)。
+- 分数产物落 `experiments/da/fusion/legacy_score_dump/scores/`(已 gitignore)。各步实验依据与被否决方案见 [README.md](README.md)。

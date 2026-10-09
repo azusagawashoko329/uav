@@ -14,15 +14,15 @@ TRACKED = set(subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decod
 
 
 def producer(path: str) -> str:
-    if path.startswith('Visualization/output/'):
-        return 'Visualization/visualize_appearance.py (path documented; run commit unknown)'
-    if path.startswith('detect_preview/'):
-        return 'behavior/detect_vis.py (path documented; run commit unknown)'
-    if path.startswith('audit/figs/'):
-        return 'audit/cloud_dist.py (path documented; run commit unknown)'
-    if path.startswith('experiments/fusion/scores/app_'):
+    if path.startswith('experiments/da/appearance/20260611_rd_baseline/visualizations/'):
+        return 'experiments/da/appearance/20260611_rd_baseline/scripts/visualize_appearance.py (run commit unknown)'
+    if path.startswith('experiments/da/behavior/detection_preview_legacy/artifacts/'):
+        return 'experiments/da/behavior/detection_preview_legacy/scripts/detect_vis.py (run commit unknown)'
+    if path.startswith('experiments/da/audit/20260619_leakage_audit/figs/'):
+        return 'experiments/da/audit/20260619_leakage_audit/scripts/cloud_dist.py (run commit unknown)'
+    if path.startswith('experiments/da/fusion/legacy_score_dump/scores/app_'):
         return 'fusion/dump_appearance_scores.py (path documented; run commit unknown)'
-    if path.startswith('experiments/fusion/scores/beh_'):
+    if path.startswith('experiments/da/fusion/legacy_score_dump/scores/beh_'):
         return 'fusion/dump_behavior_scores.py (path documented; run commit unknown)'
     return 'unknown'
 

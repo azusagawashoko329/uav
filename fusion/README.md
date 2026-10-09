@@ -2,7 +2,7 @@
 
 把**外观教师**(DINOv3-RD,`model/`+`train.py`+`eval.py`)与**行为分支**(`behavior/`,检测+5维描述子+kNN-OOD)
 两条**相互独立**的分支,在**分数层面**做晚融合(late fusion)。不碰两分支的模型/训练,只读它们落盘的逐帧分数
-(`experiments/fusion/scores/{app,beh}_<scene>.npz`)。本文档记录 2026-06 这一长串融合实验的**全部结果与机制**
+(`experiments/da/fusion/legacy_score_dump/scores/{app,beh}_<scene>.npz`)。本文档记录 2026-06 这一长串融合实验的**全部结果与机制**
 (含大量 negative results——它们和正结果同样重要)。
 
 ---
@@ -184,7 +184,7 @@ highway-s2 异常 = 近碰撞;行为 AUC=12(强反相关)。逐层排除:
 | `verify_percentile.py` | 验证 test-rank 无损 / train-CDF 因漂移崩(§2) | base/DMAD |
 | `fuse.py` | 读两分支 npz → test-rank → (路由) → mean → concat 对比表 | base/DMAD |
 
-分数产物落 `experiments/fusion/scores/`(npz,已 gitignore)。逐场景 per-seq、维度分解、检测抖动、出分方式对比等
+分数产物落 `experiments/da/fusion/legacy_score_dump/scores/`（小型 npz 已纳入 Git）。逐场景 per-seq、维度分解、检测抖动、出分方式对比等
 诊断脚本本轮以 inline 形式跑过,关键数字已固化在上文。
 
 ## 复跑

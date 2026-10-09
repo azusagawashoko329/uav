@@ -27,7 +27,7 @@
 | `detector.py` | 冻结 **yolov8x-visdrone**(质量优先,仅车辆类,`agnostic_nms=True` 去跨类重复框) |
 | `l1.py` | **L1 子分支**:单帧 5 维描述子 + 合并 kNN-OOD + 特征消融 |
 | `weights/`,`cache/` | 权重 / 逐子视频检测缓存(均 gitignore) |
-| `visualize.py`,`track_all.sh`,`detect_vis.py` | 可视化诊断(跟踪预览旧件 / 检测预览;不参与建模) |
+| [检测预览脚本](../experiments/da/behavior/detection_preview_legacy/scripts/detect_vis.py) | 可视化诊断，产物在对应实验 `artifacts/`；旧跟踪脚本不在当前分支 |
 
 ## L1 前向(单帧)+ 训练/测试口径(重点)
 

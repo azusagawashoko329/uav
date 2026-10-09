@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Check project experiment bookkeeping without importing model dependencies."""
+"""Validate the nested experiment registry without importing model code."""
 from __future__ import annotations
 
+import csv
 import json
 import re
 import subprocess
@@ -9,60 +10,50 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPERIMENTS = ROOT / "experiments"
-ID = re.compile(r"^\d{8}_(?:da|uit|da_uit)_[a-z0-9]+(?:_[a-z0-9]+)*_s\d+$")
-STATES = {"planned", "running", "completed", "failed", "cancelled", "unknown"}
-DATASETS = {"da", "uit", "da_uit"}
-REQUIRED = {"schema_version", "id", "dataset", "question", "variant", "status", "source_commit", "scripts", "runs", "result_summary", "limitations"}
-errors = []
+EXP = ROOT / 'experiments'
+STATES = {'planned','running','completed','failed','cancelled','unknown'}
+DATASETS = {'da','uit','da_uit'}
+FAMILIES = {'appearance','behavior','fusion','aggregation','boundary','gating','audit'}
+NEW_ID = re.compile(r'^\d{8}_[a-z0-9]+(?:_[a-z0-9]+)*_s\d+$')
+REQUIRED = {'schema_version','id','path','dataset','family','status','source_commit','scripts','runs','result_summary','limitations'}
+errors=[]
+records=[]
+for path in sorted(EXP.glob('*/**/record.json')):
+    if 'source_snapshot_' in str(path):continue
+    d=path.parent;rel=d.relative_to(ROOT).as_posix()
+    try:data=json.loads(path.read_text())
+    except (OSError,ValueError) as exc:
+        errors.append(f'{rel}: bad JSON: {exc}');continue
+    records.append(rel)
+    missing=REQUIRED-data.keys()
+    if missing:errors.append(f'{rel}: missing {sorted(missing)}')
+    if data.get('id')!=d.name or data.get('path')!=rel:errors.append(f'{rel}: id/path mismatch')
+    if data.get('dataset') not in DATASETS or data.get('family') not in FAMILIES:errors.append(f'{rel}: dataset/family invalid')
+    if data.get('status') not in STATES:errors.append(f'{rel}: status invalid')
+    if not data.get('legacy') and not NEW_ID.fullmatch(d.name):errors.append(f'{rel}: new ID does not follow naming rule')
+    commit=data.get('source_commit')
+    if commit is not None and not re.fullmatch(r'[0-9a-f]{40}',str(commit)):errors.append(f'{rel}: source_commit must be SHA-40 or null')
+    for script in data.get('scripts',[]):
+        if not (d/script).is_file():errors.append(f'{rel}: missing script {script}')
+    if not data.get('legacy'):
+        for name in ('README.md','config.json','artifacts.json'):
+            if not (d/name).is_file():errors.append(f'{rel}: missing {name}')
+        if not (d/'scripts').is_dir():errors.append(f'{rel}: missing scripts/')
+    for run in data.get('runs',[]):
+        if run.get('status') not in STATES:errors.append(f'{rel}: run status invalid')
 
-for exp in sorted(p for p in EXPERIMENTS.iterdir() if p.is_dir()):
-    if ID.fullmatch(exp.name):
-        rec = exp / "record.json"
-        for name in ("README.md", "record.json", "config.json", "artifacts.json"):
-            if not (exp / name).is_file():
-                errors.append(f"{exp.name}: missing {name}")
-        if not (exp / "scripts").is_dir() or not any((exp / "scripts").glob("*.*")):
-            errors.append(f"{exp.name}: missing scripts/")
-    else:
-        rec = exp / "record.json"
-        if exp.name != "fusion" and not (exp / "RECORD.md").is_file() and not rec.is_file():
-            errors.append(f"{exp.name}: legacy directory needs RECORD.md")
-    if not rec.is_file():
-        continue
-    try:
-        data = json.loads(rec.read_text())
-    except (ValueError, OSError) as exc:
-        errors.append(f"{rec.relative_to(ROOT)}: invalid JSON: {exc}")
-        continue
-    missing = REQUIRED - data.keys()
-    if missing:
-        errors.append(f"{exp.name}: missing fields {sorted(missing)}")
-    if data.get("id") != exp.name:
-        errors.append(f"{exp.name}: record id mismatch")
-    if data.get("dataset") not in DATASETS:
-        errors.append(f"{exp.name}: invalid dataset")
-    if data.get("status") not in STATES:
-        errors.append(f"{exp.name}: invalid status")
-    commit = data.get("source_commit")
-    if commit is not None and not re.fullmatch(r"[0-9a-f]{40}", str(commit)):
-        errors.append(f"{exp.name}: source_commit must be full SHA or null")
-    for script in data.get("scripts", []):
-        if not isinstance(script, str) or not (exp / script).is_file():
-            errors.append(f"{exp.name}: missing script {script}")
-    for run in data.get("runs", []):
-        if run.get("status") not in STATES:
-            errors.append(f"{exp.name}: invalid run status")
-
-tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).decode().split("\0")
-for name in filter(None, tracked):
-    path = Path(name)
-    if path.suffix.lower() in {".pth", ".pt", ".ckpt", ".safetensors", ".onnx", ".mp4", ".avi", ".mov"}:
-        errors.append(f"tracked large artifact: {name}")
-
+catalog=EXP/'CATALOG.csv'
+if not catalog.exists():errors.append('experiments/CATALOG.csv missing')
+else:
+    with catalog.open() as f:catalog_paths={r['path'] for r in csv.DictReader(f)}
+    expected={x.removeprefix('experiments/') for x in records}
+    if catalog_paths!=expected:errors.append(f'catalog mismatch: missing={sorted(expected-catalog_paths)}, stale={sorted(catalog_paths-expected)}')
+tracked=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0')
+for name in filter(None,tracked):
+    if Path(name).suffix.lower() in {'.pth','.pt','.ckpt','.safetensors','.onnx','.mp4','.avi','.mov'}:
+        errors.append(f'tracked large artifact: {name}')
 if errors:
-    print("Experiment record check failed:", file=sys.stderr)
-    for error in errors:
-        print(" - " + error, file=sys.stderr)
+    print('Experiment registry check failed:',file=sys.stderr)
+    for item in errors:print(' - '+item,file=sys.stderr)
     sys.exit(1)
-print("Experiment records and tracked-artifact rules: OK")
+print(f'Experiment registry OK: {len(records)} records')
