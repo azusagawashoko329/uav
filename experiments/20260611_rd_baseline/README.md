@@ -1,5 +1,7 @@
 # 20260611_rd_baseline
 
+> 历史原文。下方的“训练进行中”是 2026-06-11 当时的状态，现已有 `results.csv` 等结果；当前审计视图见 [RECORD.md](RECORD.md)。
+
 第一个反向蒸馏基线。**一句话**:冻结 DINOv3 教师 → OCBE 瓶颈 → transformer decoder 学生重建教师 tap 特征,异常 = Topk 逐 patch 重建差异。
 
 ## 配置

@@ -2,6 +2,8 @@
 
 本页区分“由源码/文档可关联”和“精确运行时来源已核实”。旧实验缺运行命令或源码快照时，保持 unknown，不虚构指针。新实验按 [协议](EXPERIMENT_PROTOCOL.md) 在本目录的 `artifacts.json` 逐文件登记。
 
+[本地二进制资产逐文件清单](LOCAL_ARTIFACTS.csv)记录路径、大小、是否已在 Git 中、可关联的生产入口及缺失字段；可用 `python scripts/inventory_artifacts.py` 更新。它是整理时的磁盘快照，不是云端备份。空白 SHA-256 表示旧资产尚未校验，不能据此声称文件内容一致。
+
 | 产物路径 | 类型与 Git 状态 | 可关联生成入口 | 运行状态/缺口 |
 |---|---|---|---|
 | `Visualization/output/<scene>.mp4` | 本地视频；`.gitignore` 排除 | `Visualization/visualize_appearance.py` 文件头明确该输出路径 | 具体生成 commit、命令、权重哈希 unknown；不能仅由视频确认使用了哪次训练。 |
