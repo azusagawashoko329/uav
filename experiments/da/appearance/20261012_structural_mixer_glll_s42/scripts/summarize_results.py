@@ -143,6 +143,18 @@ def main():
         "",
         "The structural student improves the direct four-block no-adapter mean by 0.823 percentage points in this seed while using 24.87% fewer trainable OCBE+student parameters. Gains are concentrated in vehicle and crossroads; highway and railway decline. This is a single-seed result and does not establish a stable improvement. The benchmark was run on two GPUs, so deployment-device latency remains unmeasured.",
     ])
+    latency_files = sorted(EXP.glob("results/latency_benchmark*.json"))
+    if latency_files:
+        report.extend(["", "## Inference latency microbenchmark", "",
+                       "The following measurements use B=1 and 256 patch tokens, 50 warmup iterations and 200 timed iterations. They are GPU measurements, not edge-device measurements.", "",
+                       "| device | student baseline ms | student structural ms | student delta | OCBE+student baseline ms | OCBE+student structural ms | pipeline delta | teacher ms |", "|---|---:|---:|---:|---:|---:|---:|---:|"])
+        for path in latency_files:
+            lat = json.loads(path.read_text())
+            base_lat, struct_lat = lat["variants"]
+            student_delta = 100 * (1 - struct_lat["student_forward_ms"] / base_lat["student_forward_ms"])
+            pipeline_delta = 100 * (1 - struct_lat["ocbe_plus_student_forward_ms"] / base_lat["ocbe_plus_student_forward_ms"])
+            report.append(f"| {lat['device']} | {base_lat['student_forward_ms']:.4f} | {struct_lat['student_forward_ms']:.4f} | {student_delta:+.2f}% | {base_lat['ocbe_plus_student_forward_ms']:.4f} | {struct_lat['ocbe_plus_student_forward_ms']:.4f} | {pipeline_delta:+.2f}% | {lat['teacher_forward_ms']:.4f} |")
+        report.extend(["", "The structural block is faster on the RTX A6000 but not on the RTX 5880 Ada once OCBE is included. Therefore this experiment does not establish a hardware-independent speedup; the real-time claim requires a benchmark on the target UAV processor and the full image-to-score path."])
     (EXP / "results/summary.md").write_text("\n".join(report) + "\n")
     print(json.dumps(macro, ensure_ascii=False))
 
