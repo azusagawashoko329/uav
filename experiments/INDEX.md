@@ -31,7 +31,7 @@
 | [20260612_rd_notopk](da/appearance/20260612_rd_notopk/RECORD.md) | `completed` | [results.csv](da/appearance/20260612_rd_notopk/results.csv) | 1 | 7 |
 | [20260613_deit_teacher](da/appearance/20260613_deit_teacher/RECORD.md) | `completed` | [results.csv](da/appearance/20260613_deit_teacher/results.csv) | 2 | 7 |
 | [20261012_student_internal_screen_s42](da/appearance/20261012_student_internal_screen_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_student_internal_screen_s42/results/summary.md)、[screening_retry1.json](da/appearance/20261012_student_internal_screen_s42/results/screening_retry1.json) | 1 | 0 |
-| [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `planned` | 未运行 | 2 | 0 |
+| [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_structural_mixer_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_structural_mixer_glll_s42/results/summary.csv) | 3 | 0 |
 | [20260706_signal_analysis](da/appearance/20260706_signal_analysis/RECORD.md) | `unknown` | 未找到 | 0 | 180 |
 | [20260708_deep_seed42](da/appearance/20260708_deep_seed42/RECORD.md) | `unknown` | 未找到 | 0 | 7 |
 | [20260708_probe_binary](da/appearance/20260708_probe_binary/RECORD.md) | `unknown` | 未找到 | 0 | 28 |

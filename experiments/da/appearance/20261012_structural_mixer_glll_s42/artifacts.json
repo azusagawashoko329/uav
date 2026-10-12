@@ -1,4 +1,275 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261012T055019Z_bike_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1161,
+      "sha256": "f88a127305ca21203e43c196a61d4f095589983956cb6dd5b9f8436064fe2860",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T055019Z_crossroads_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1169,
+      "sha256": "a83ff84c0322ba411eb6321be10fb4c3d794a09ae6c951c876963558bff5ab35",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T060251Z_farmland_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1166,
+      "sha256": "cbc44753267557bfe6653f5a7ae768acd5827734c395f12ef52d5e9213dbe2ff",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T061637Z_highway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1165,
+      "sha256": "675a33ebc9c74cb199d13bb6c769f6922547d7ae5c327e0842c54e05ba2bd9b6",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T061931Z_railway_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1141,
+      "sha256": "8dbf3a69213f323819d2ed0204505bf1c0ec4034a934902e8eebd6a3a99bc2f3",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T062203Z_solar_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1145,
+      "sha256": "e8739a178337a3861258afe8ace3fb24c977a611d62e6c4c9ad8b2399dc39b5a",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T062747Z_vehicle_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 1150,
+      "sha256": "d6e59200588775c9c71037e05830d6654d0bb8bb60e6fac018e28a25e5120ee6",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_stdout_20261012T054828Z.log",
+      "kind": "failed_log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261012T054828Z_structural_scheduler_background_attempt",
+      "status": "failed",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261012T054814Z.jsonl",
+      "kind": "scheduler_dryrun",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261012T054814Z_structural_scheduler_dryrun",
+      "status": "completed",
+      "size_bytes": 465,
+      "sha256": "24fc47c38f673f20f3b69744cb4aa15813b4a2b8c44ab77a32a6375f61a30fa3",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261012T055019Z.jsonl",
+      "kind": "scheduler_log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 6612,
+      "sha256": "43bce33676b74930c9fc6fbef70181b0973015fb2445936c4a10afea205bde10",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 337,
+      "sha256": "b822cc3fb475e69235e2e9883c05ff0f29f0c9e6f0d473854bdda3c6ff03e5a5",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 909276,
+      "sha256": "278d2fd2b0cbd9d74a23cb040f401902f2541b4f3d85d12311681e9cef7d355f",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 343,
+      "sha256": "3613a95ff4cf4da839009f410588929798c7f091fc5e24621b34d2e35f0de7a8",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 305228,
+      "sha256": "c906232ca81c8d91dd0ac15161e216154737876a65bb4359ded36d10b437b17b",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 337,
+      "sha256": "82001010580c475ab4861ed5d0bd6cf150c1c489211880bf2c9986cf5e9209f6",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 117781,
+      "sha256": "fdffce0cde3760f35d32ee9e7cf3152de7aac28b28e81e1310d5825dd7d2954e",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 337,
+      "sha256": "c1e1c5837eb754c18ae291f5a9e6bf82a07e4f6eaa6b1629c9a7569ccee950df",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 137702,
+      "sha256": "ff67e2c1877fb50784865bb7e1a44f035f94ee7305e72c0117c4cc297e03ac16",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 336,
+      "sha256": "1d2480485b40607e5887844a259f352db822b7778e3b2842dc24d1084b54127e",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 42845,
+      "sha256": "8ad97ea71019a13f727e8f92c8d6a1788729250d2eed3fe337c30c16f6472d61",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 336,
+      "sha256": "2e42d2d1ca788a5e0ec77847620280431c7385b53df4918899640605191a7af5",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 118997,
+      "sha256": "0eba21b59e286e6cfe7b6235078aea1dc03ee1aad35f447025ea420e38938231",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "scene_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "analysis_20261012_structural_mixer_glll_s42",
+      "status": "completed",
+      "size_bytes": 2003,
+      "sha256": "d9cc116b33d2034cdf5ebdabc1aec3c241b916ff6ae86d91891cabf976fdc573",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "kind": "verified_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "analysis_20261012_structural_mixer_glll_s42",
+      "status": "completed",
+      "size_bytes": 5145,
+      "sha256": "c3388753b38d23398f652e3de37e24819415863984388c722a33f1d903962f43",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "review_report",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "analysis_20261012_structural_mixer_glll_s42",
+      "status": "completed",
+      "size_bytes": 2247,
+      "sha256": "228565ca9916c9f1861c1a9c08a053503653ee422a7c5f04e19c74f7ea6f7f4e",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 337,
+      "sha256": "27695df3c1bcb24d0fa25efd547aa1ff384cd71aa41650a85a55e3f819b51c3c",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_structural.py",
+      "run_id": "20261012T055019Z_structural_glll_s42",
+      "status": "completed",
+      "size_bytes": 128471,
+      "sha256": "6f365862f2597863bdbddbbdbc256ea99afdc44a0f9d8c6f36afd52c2b4d3310",
+      "storage": "git"
+    }
+  ]
 }
