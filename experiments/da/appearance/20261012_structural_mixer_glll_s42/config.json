@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "20261012_structural_mixer_glll_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "question": "Does a global-local structural student preserve AUC while changing internal block operators?",
+  "variant": "global_local_glll",
+  "seed": 42,
+  "teacher": {"name": "DINOv3 ViT-B/16", "layers": 12, "image_size": 256, "patch_tokens": 256, "embed_dim": 768},
+  "ocbe": {"input_taps": 12, "code_dim": 64, "tap_norm": true},
+  "student": {"stages": 4, "topology": ["global_mhsa_gatedffn", "local_dwconv_pointwise_gatedffn", "local_dwconv_pointwise_gatedffn", "local_dwconv_pointwise_gatedffn"], "dim": 768, "heads": 8, "ffn_ratio": 2.0, "heads_per_teacher_group": 3, "reverse_alignment": true},
+  "training": {"seed": 42, "epochs": 15, "batch_size": 64, "optimizer": "AdamW", "max_lr": 0.0005, "weight_decay": 0.05, "image_size": 256, "topk": 5, "loss": "group_balanced_topk, alpha=0.5"},
+  "evaluation": {"score": "mean over 12 teacher-head top-5 patch cosine distances", "metric": "ROC AUC x100 per scene; macro mean over seven scenes", "labels": "paired test video .npy"},
+  "scheduler": {"gpus": [0, 1], "poll_seconds": 2, "max_memory_mb": 2000, "dynamic_reuse": true},
+  "data_root_env": "UAV_DA_ROOT"
+}

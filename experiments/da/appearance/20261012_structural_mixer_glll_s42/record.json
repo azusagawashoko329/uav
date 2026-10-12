@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "id": "20261012_structural_mixer_glll_s42",
+  "path": "experiments/da/appearance/20261012_structural_mixer_glll_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Does a global-local structural student preserve AUC while changing internal block operators?",
+  "variant": "global_local_glll",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": ["scripts/run_structural.py", "scripts/dynamic_scheduler.py"],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed 42.",
+    "The two-GPU scheduler measures completion and dispatch but not edge-device latency.",
+    "AUC must be interpreted together with normal/abnormal score gap and parameter count."
+  ]
+}
