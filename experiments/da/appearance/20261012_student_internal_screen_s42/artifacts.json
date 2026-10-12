@@ -1,4 +1,55 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261012T051121Z_internal_screen_s42.log",
+      "kind": "initial_log",
+      "producer_script": "scripts/run_screen.py",
+      "run_id": "20261012T051121Z_internal_screen_s42",
+      "status": "completed",
+      "size_bytes": 2790,
+      "sha256": "1ed32d812fe2de2c94fb2113a4a41b5f8a2c4fc8d2efa3455f2be373cbd0e30e",
+      "storage": "git"
+    },
+    {
+      "path": "results/screening.json",
+      "kind": "initial_measurement",
+      "producer_script": "scripts/run_screen.py",
+      "run_id": "20261012T051121Z_internal_screen_s42",
+      "status": "completed",
+      "size_bytes": 2790,
+      "sha256": "1ed32d812fe2de2c94fb2113a4a41b5f8a2c4fc8d2efa3455f2be373cbd0e30e",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T051355Z_internal_screen_s42_retry1.log",
+      "kind": "retry_log",
+      "producer_script": "scripts/run_screen.py",
+      "run_id": "20261012T051355Z_internal_screen_s42_retry1",
+      "status": "completed",
+      "size_bytes": 2782,
+      "sha256": "8679a1c329ed6ab2ab3723f579c0e9c615685abcd288f4ece7a11d06cb61dec9",
+      "storage": "git"
+    },
+    {
+      "path": "results/screening_retry1.json",
+      "kind": "measurement",
+      "producer_script": "scripts/run_screen.py",
+      "run_id": "20261012T051355Z_internal_screen_s42_retry1",
+      "status": "completed",
+      "size_bytes": 2782,
+      "sha256": "8679a1c329ed6ab2ab3723f579c0e9c615685abcd288f4ece7a11d06cb61dec9",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "review_report",
+      "producer_script": null,
+      "run_id": "analysis_20261012_student_internal_screen_s42",
+      "status": "completed",
+      "size_bytes": 2585,
+      "sha256": "1f7570f414bf35689f03d3087eb9768bd852fea8e9158bf2ae941d1061bdb19c",
+      "storage": "git"
+    }
+  ]
 }

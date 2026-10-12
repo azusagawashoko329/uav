@@ -1,0 +1,136 @@
+{
+  "seed": 42,
+  "device": "NVIDIA RTX 5880 Ada Generation",
+  "torch": "2.1.0+cu121",
+  "benchmark": [
+    {
+      "variant": "mhsa_mlp4_d768",
+      "parameters": 7087872,
+      "forward_ms": 0.42852638244628904,
+      "backward_ms": 2.141534423828125,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "mhsa_mlp2_d768",
+      "parameters": 4727040,
+      "forward_ms": 0.41567489624023435,
+      "backward_ms": 3.8227615356445312,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "mhsa_mlp4_d512",
+      "parameters": 3152384,
+      "forward_ms": 0.46546943664550783,
+      "backward_ms": 4.683676910400391,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "mhsa_mlp4_d384",
+      "parameters": 1774464,
+      "forward_ms": 0.5587558364868164,
+      "backward_ms": 4.644863891601562,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "gqa2_mlp2_d768",
+      "parameters": 3841152,
+      "forward_ms": 0.7079014587402344,
+      "backward_ms": 5.234939193725586,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "linear_mlp2_d768",
+      "parameters": 4727040,
+      "forward_ms": 1.0534175872802733,
+      "backward_ms": 6.211032104492188,
+      "peak_allocated_mb": 77.5732421875
+    },
+    {
+      "variant": "local_dwconv_mlp2_d768",
+      "parameters": 2962944,
+      "forward_ms": 0.4656230545043945,
+      "backward_ms": 3.592345428466797,
+      "peak_allocated_mb": 77.5732421875
+    }
+  ],
+  "rank_probe": {
+    "status": "completed",
+    "images": 16,
+    "tokens_per_image": 256,
+    "dim": 768,
+    "layers": [
+      {
+        "layer": 0,
+        "r90": 73,
+        "r95": 121,
+        "r99": 275
+      },
+      {
+        "layer": 1,
+        "r90": 85,
+        "r95": 144,
+        "r99": 330
+      },
+      {
+        "layer": 2,
+        "r90": 95,
+        "r95": 160,
+        "r99": 333
+      },
+      {
+        "layer": 3,
+        "r90": 114,
+        "r95": 194,
+        "r99": 406
+      },
+      {
+        "layer": 4,
+        "r90": 124,
+        "r95": 209,
+        "r99": 429
+      },
+      {
+        "layer": 5,
+        "r90": 123,
+        "r95": 208,
+        "r99": 430
+      },
+      {
+        "layer": 6,
+        "r90": 125,
+        "r95": 209,
+        "r99": 430
+      },
+      {
+        "layer": 7,
+        "r90": 102,
+        "r95": 179,
+        "r99": 397
+      },
+      {
+        "layer": 8,
+        "r90": 82,
+        "r95": 151,
+        "r99": 361
+      },
+      {
+        "layer": 9,
+        "r90": 87,
+        "r95": 154,
+        "r99": 360
+      },
+      {
+        "layer": 10,
+        "r90": 59,
+        "r95": 115,
+        "r99": 304
+      },
+      {
+        "layer": 11,
+        "r90": 33,
+        "r95": 70,
+        "r99": 232
+      }
+    ]
+  }
+}
