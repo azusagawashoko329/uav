@@ -169,6 +169,7 @@ def benchmark(device, warmup: int, iters: int, backward_iters: int):
     ]:
         torch.manual_seed(42)
         model = make_variant(name).to(device).train()
+        torch.cuda.reset_peak_memory_stats(device)
         d = 768 if "d768" in name else (512 if "d512" in name else 384)
         x = torch.randn(1, 256, d, device=device)
         with torch.no_grad():
@@ -178,9 +179,11 @@ def benchmark(device, warmup: int, iters: int, backward_iters: int):
         x = x.detach().requires_grad_(True)
         for _ in range(5):
             model.zero_grad(set_to_none=True)
+            x.grad = None
             model(x).square().mean().backward()
         def train_step():
             model.zero_grad(set_to_none=True)
+            x.grad = None
             model(x).square().mean().backward()
         bwd_ms = cuda_ms(train_step, backward_iters)
         peak_mb = torch.cuda.max_memory_allocated(device) / (1024 ** 2)
