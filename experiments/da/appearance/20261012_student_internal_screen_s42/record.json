@@ -4,10 +4,21 @@
   "path": "experiments/da/appearance/20261012_student_internal_screen_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "18bc06196a332a773423e984eb1ce15df5f67b70",
   "scripts": ["scripts/run_screen.py"],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261012T051121Z_internal_screen_s42",
+      "status": "running",
+      "command": "DMAD/bin/python experiments/da/appearance/20261012_student_internal_screen_s42/scripts/run_screen.py --output experiments/da/appearance/20261012_student_internal_screen_s42/results/screening.json --gpu <gpu>",
+      "source_commit": "18bc06196a332a773423e984eb1ce15df5f67b70",
+      "seed": 42,
+      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
+      "log": "logs/20261012T051121Z_internal_screen_s42.log",
+      "outputs": ["results/screening.json"]
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "Module-level measurements do not establish seven-scene AUC.",
