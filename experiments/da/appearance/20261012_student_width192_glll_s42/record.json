@@ -7,22 +7,49 @@
   "legacy": false,
   "question": "How much seven-scene AUC is lost by reducing only the Global-Local student's internal width from 768 to 192?",
   "variant": "global_local_glll_width192",
-  "status": "running",
+  "status": "completed",
   "source_commit": "719a6eb4b31753e9f7b6bc236f90c124e594b59a",
-  "scripts": ["scripts/run_width192.py", "scripts/dynamic_scheduler.py", "scripts/summarize_results.py"],
+  "scripts": [
+    "scripts/run_width192.py",
+    "scripts/dynamic_scheduler.py",
+    "scripts/summarize_results.py"
+  ],
   "runs": [
     {
       "run_id": "20261012T094936Z_width192_scheduler_s42",
-      "status": "running",
+      "status": "completed",
       "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261012_student_width192_glll_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261012_student_width192_glll_s42 --gpus 0 1 --epochs 15 --batch 64 --workers 8",
       "source_commit": "719a6eb4b31753e9f7b6bc236f90c124e594b59a",
       "seed": 42,
       "scheduler_log": "logs/scheduler_20261012T094936Z.jsonl",
       "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<gpu>.log",
-      "outputs": ["results/<scene>.json", "results/<scene>_scores.csv", "results/summary.csv", "results/summary.json", "results/summary.md"],
-      "started_at": "2026-10-12T17:49:36+08:00"
+      "outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "results/summary.csv",
+        "results/summary.json",
+        "results/summary.md"
+      ],
+      "started_at": "2026-10-12T17:49:36+08:00",
+      "ended_at": "2026-10-12T18:23:42+08:00"
     }
   ],
-  "result_summary": "Pending seven-scene training and paired AUC evaluation. Pre-run trainable parameter count: 7,718,336 OCBE+student, versus 30,248,000 at width 768.",
-  "limitations": ["Single seed 42.", "MAD-ViT uses a different architecture and parameter-count boundary."]
+  "result_summary": "Seven-scene width-192 macro AUC=82.53810786 versus width-768 Global-Local 84.77352247, delta=-2.23541461 pp; trainable OCBE+student parameters 7,718,336 versus 30,248,000, reduction=74.48%. Solar and railway account for most of the AUC decrease.",
+  "limitations": [
+    "Single seed 42; the result does not estimate multi-seed variance.",
+    "MAD-ViT uses a different architecture and parameter-count boundary.",
+    "The experiment measures GPU training/evaluation; target UAV edge-device latency remains unmeasured."
+  ]
 }

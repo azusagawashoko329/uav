@@ -1,4 +1,255 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/scheduler_20261012T094936Z.jsonl",
+      "kind": "scheduler_log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 6614,
+      "sha256": "70ea5b614a4fcbaf796165294f2c44cda81f951880eefac876820cb6aaf25669",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T094936Z_bike_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1176,
+      "sha256": "d896811157f8309284bb18e5085cccd855c03d148d175bb44803257dbfa8e050",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T094936Z_crossroads_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1178,
+      "sha256": "71ec4c586fef76577fc84953d8156b1a94d88fb6697ecf520e9e23591a8460f5",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T095846Z_farmland_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1181,
+      "sha256": "5fd4b4038e0515f68723aa1a2e7be31dd6caa5f84d7aab28342b68803a93a76a",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T100830Z_highway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1179,
+      "sha256": "38d40078bcd0aaa6775c152f9419ef127212551e09e3b0f59d030d40e64839d0",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T101018Z_railway_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1152,
+      "sha256": "3e6387696c1adb6cd6962fb525d52f136872e55847889f5bf733cb561eddf49f",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T101216Z_solar_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1158,
+      "sha256": "e76a403b5cfb653d9cb17662f7677532cf650c01d128888bbb14b714ce2831b3",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261012T101628Z_vehicle_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1165,
+      "sha256": "0c5e063c0cf53d991242cff4ce81601145af741fc5e80f542e744c9619cc0699",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 345,
+      "sha256": "a2f207f131c3a4eb515ac71fd154c14b3335e2f95974ec935b400e63521e7fd4",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 349,
+      "sha256": "fb6c3c159d7f0b1506fc0f560ff331df343dca0dfd5c0c9293316edeb7e39076",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 345,
+      "sha256": "9bfd408f060dfacc3244bef120edf4c55174690f8296b98cd0bbb40b051a3498",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 344,
+      "sha256": "e9ac1c69fde08e02175167e569b33c79566007b13d7e7f7c7b43ca4748749646",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 344,
+      "sha256": "89ea85528a42433f6e3364816080a9711d7e528b9a1e5e88efe73e7e09267e78",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 343,
+      "sha256": "d48623e5ae131f27fdda96769d6014c433df0fbc5cd61b6d44d1a277b8385675",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "kind": "verified_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 5136,
+      "sha256": "3aae26f9a523b44c7e74aaf6bd809afc32bde349af9e10c6225da078a93e3049",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 345,
+      "sha256": "5752f9098989d080300c208e6bafa9ae74b78b9b9e2fda8edba55b261fd62d47",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 908206,
+      "sha256": "4f9cb8e50b71ac248e186197a0f4c81113745987362baa07dca00d1c08c6025b",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 305226,
+      "sha256": "d0661d2fb3c60ece690722501b0866a7d0109e321ac0fab980b27f49fa21a21c",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 117545,
+      "sha256": "7690329c3de2b8d8318a97d0aa0f46a26cbd5084c5ca3706d823661d79bcc3f2",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 137439,
+      "sha256": "fc4e1ac81515e815ccb44312971d8bed3211bb0521bd9ea466935b1098a5cbfa",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 42591,
+      "sha256": "4604289e695212ca4cbd19f8eef0b5d3a082b1b754cc41f25edfb1a589c318ca",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 118755,
+      "sha256": "d7eb2b6bd8fc49af23db05c98008a2e4480df69d4fb6793e96586759a8a7eab4",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "scene_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 1996,
+      "sha256": "daa2a4dcdbc7f9590b725cc9b175d3e8cc7ab9f9bd112353628184a0a5141bbd",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width192.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 128427,
+      "sha256": "8571a680df55da77e5ee5b0ac3a1802e2e0fbb12bd7d0f1df7d3e642ca2001b6",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "review_report",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
+      "status": "completed",
+      "size_bytes": 2176,
+      "sha256": "5019dd234545f513c043808bf0932f0be4269d8ce105a7d5e2ffa075f9f0afc7",
+      "storage": "git"
+    }
+  ]
 }
