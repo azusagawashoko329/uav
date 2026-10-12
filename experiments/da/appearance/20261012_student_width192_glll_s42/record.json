@@ -12,15 +12,15 @@
   "scripts": ["scripts/run_width192.py", "scripts/dynamic_scheduler.py", "scripts/summarize_results.py"],
   "runs": [
     {
-      "run_id": "20261012T094816Z_width192_scheduler_s42",
+      "run_id": "20261012T094936Z_width192_scheduler_s42",
       "status": "running",
       "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261012_student_width192_glll_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261012_student_width192_glll_s42 --gpus 0 1 --epochs 15 --batch 64 --workers 8",
       "source_commit": "719a6eb4b31753e9f7b6bc236f90c124e594b59a",
       "seed": 42,
-      "scheduler_log": "logs/scheduler_20261012T094816Z.jsonl",
+      "scheduler_log": "logs/scheduler_20261012T094936Z.jsonl",
       "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<gpu>.log",
       "outputs": ["results/<scene>.json", "results/<scene>_scores.csv", "results/summary.csv", "results/summary.json", "results/summary.md"],
-      "started_at": "2026-10-12T17:48:16+08:00"
+      "started_at": "2026-10-12T17:49:36+08:00"
     }
   ],
   "result_summary": "Pending seven-scene training and paired AUC evaluation. Pre-run trainable parameter count: 7,718,336 OCBE+student, versus 30,248,000 at width 768.",
