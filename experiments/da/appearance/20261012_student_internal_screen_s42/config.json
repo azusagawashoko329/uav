@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "20261012_student_internal_screen_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "question": "Can the four-block reverse-distillation student use a lower-dimensional or cheaper internal block while preserving teacher-space outputs?",
+  "scope": "module_screen_only",
+  "scene_for_rank_probe": "highway",
+  "teacher": {"name": "DINOv3 ViT-B/16", "layers": 12, "image_size": 256, "patch_tokens": 256, "embed_dim": 768},
+  "variants": ["mhsa_mlp4_d768", "mhsa_mlp2_d768", "mhsa_mlp4_d512", "mhsa_mlp4_d384", "gqa2_mlp2_d768", "linear_mlp2_d768", "local_dwconv_mlp2_d768"],
+  "benchmark": {"batch": 1, "tokens": 256, "warmup": 30, "iterations": 100, "backward_iterations": 20},
+  "rank_probe": {"max_images": 16, "layers": 12, "tokens_per_image": 256, "pca_energy": [0.9, 0.95, 0.99]},
+  "data_root_env": "UAV_DA_ROOT",
+  "output": "results/screening.json"
+}
