@@ -1,8 +1,8 @@
 """Four-stage student with an explicit global/local block topology.
 
-The decoder remains 768-dimensional so the experiment isolates block topology rather than
-changing the student input/output width. Its first block is global because reverse alignment
-maps the first student stage to the deepest teacher group; later blocks use 2-D local mixing.
+The internal width can differ from the teacher width. Reconstruction heads project each
+student stage back to the teacher width so the distillation target remains unchanged.
+The first block is global because reverse alignment maps it to the deepest teacher group.
 """
 import math
 
@@ -76,7 +76,8 @@ class LocalMixerBlock(nn.Module):
 class FourBlockGlobalLocalDecoder(nn.Module):
     """One global block followed by three local blocks and 12 reverse-aligned heads."""
 
-    def __init__(self, dim=768, code_dim=64, heads=8, ffn_ratio=2.0):
+    def __init__(self, dim=768, code_dim=64, heads=8, ffn_ratio=2.0,
+                 teacher_dim=768):
         super().__init__()
         self.proj_in = nn.Linear(code_dim, dim)
         self.blocks = nn.ModuleList([
@@ -85,7 +86,7 @@ class FourBlockGlobalLocalDecoder(nn.Module):
             LocalMixerBlock(dim, ffn_ratio),
             LocalMixerBlock(dim, ffn_ratio),
         ])
-        self.heads = nn.ModuleList(nn.Linear(dim, dim) for _ in range(12))
+        self.heads = nn.ModuleList(nn.Linear(dim, teacher_dim) for _ in range(12))
 
     def forward(self, code):
         x = self.proj_in(code)
@@ -98,6 +99,7 @@ class FourBlockGlobalLocalDecoder(nn.Module):
         return out
 
 
-def build_structural_student(dim=768, code_dim=64, heads=8, ffn_ratio=2.0):
+def build_structural_student(dim=768, code_dim=64, heads=8, ffn_ratio=2.0,
+                             teacher_dim=768):
     return FourBlockGlobalLocalDecoder(dim=dim, code_dim=code_dim, heads=heads,
-                                       ffn_ratio=ffn_ratio)
+                                       ffn_ratio=ffn_ratio, teacher_dim=teacher_dim)
