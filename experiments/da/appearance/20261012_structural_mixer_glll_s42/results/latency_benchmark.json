@@ -1,0 +1,25 @@
+{
+  "device": "NVIDIA RTX 5880 Ada Generation",
+  "gpu": 0,
+  "batch": 1,
+  "patch_tokens": 256,
+  "warmup": 50,
+  "iterations": 200,
+  "teacher_forward_ms": 8.0776806640625,
+  "variants": [
+    {
+      "variant": "four_block_mhsa",
+      "student_parameters": 35488512,
+      "ocbe_plus_student_parameters": 40258880,
+      "student_forward_ms": 1.674053955078125,
+      "ocbe_plus_student_forward_ms": 2.0411698913574217
+    },
+    {
+      "variant": "global_local_glll",
+      "student_parameters": 25477632,
+      "ocbe_plus_student_parameters": 30248000,
+      "student_forward_ms": 1.6639897155761718,
+      "ocbe_plus_student_forward_ms": 2.0942689514160158
+    }
+  ]
+}

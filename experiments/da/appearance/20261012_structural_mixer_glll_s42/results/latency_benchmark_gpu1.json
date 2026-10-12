@@ -1,0 +1,25 @@
+{
+  "device": "NVIDIA RTX A6000",
+  "gpu": 1,
+  "batch": 1,
+  "patch_tokens": 256,
+  "warmup": 50,
+  "iterations": 200,
+  "teacher_forward_ms": 8.51541015625,
+  "variants": [
+    {
+      "variant": "four_block_mhsa",
+      "student_parameters": 35488512,
+      "ocbe_plus_student_parameters": 40258880,
+      "student_forward_ms": 1.591444549560547,
+      "ocbe_plus_student_forward_ms": 1.8891331481933593
+    },
+    {
+      "variant": "global_local_glll",
+      "student_parameters": 25477632,
+      "ocbe_plus_student_parameters": 30248000,
+      "student_forward_ms": 1.368115234375,
+      "ocbe_plus_student_forward_ms": 1.6566065979003906
+    }
+  ]
+}

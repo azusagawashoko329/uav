@@ -25,3 +25,14 @@ The loss alignment is unchanged: consecutive teacher layers are grouped in fours
 ## Interpretation and limitations
 
 The structural student improves the direct four-block no-adapter mean by 0.823 percentage points in this seed while using 24.87% fewer trainable OCBE+student parameters. Gains are concentrated in vehicle and crossroads; highway and railway decline. This is a single-seed result and does not establish a stable improvement. The benchmark was run on two GPUs, so deployment-device latency remains unmeasured.
+
+## Inference latency microbenchmark
+
+The following measurements use B=1 and 256 patch tokens, 50 warmup iterations and 200 timed iterations. They are GPU measurements, not edge-device measurements.
+
+| device | student baseline ms | student structural ms | student delta | OCBE+student baseline ms | OCBE+student structural ms | pipeline delta | teacher ms |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| NVIDIA RTX 5880 Ada Generation | 1.6741 | 1.6640 | +0.60% | 2.0412 | 2.0943 | -2.60% | 8.0777 |
+| NVIDIA RTX A6000 | 1.5914 | 1.3681 | +14.03% | 1.8891 | 1.6566 | +12.31% | 8.5154 |
+
+The structural block is faster on the RTX A6000 but not on the RTX 5880 Ada once OCBE is included. Therefore this experiment does not establish a hardware-independent speedup; the real-time claim requires a benchmark on the target UAV processor and the full image-to-score path.

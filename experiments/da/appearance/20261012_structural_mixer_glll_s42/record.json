@@ -63,9 +63,22 @@
         "solar": "completed",
         "vehicle": "completed"
       }
+    },
+    {
+      "run_id": "20261012T071001Z_latency_microbenchmark",
+      "status": "completed",
+      "command": "DMAD/bin/python scripts/benchmark_latency.py --gpu 0/1 --warmup 50 --iterations 200",
+      "source_commit": "38676a64455f5f64e16d581cb517bed2296f0327",
+      "seed": 42,
+      "outputs": [
+        "results/latency_benchmark.json",
+        "results/latency_benchmark_gpu1.json",
+        "results/summary.md"
+      ],
+      "ended_at": "2026-10-12T15:09:00+08:00"
     }
   ],
-  "result_summary": "Global-local structural student macro frame AUC=84.77352247 across seven scenes, direct 4-block no-adapter comparison=83.95051850, delta=+0.82300397 pp; trainable OCBE+student parameters 30,248,000 vs 40,258,880 (-24.87%).",
+  "result_summary": "Global-local structural student macro frame AUC=84.77352247 across seven scenes, direct 4-block no-adapter comparison=83.95051850, delta=+0.82300397 pp; trainable OCBE+student parameters 30,248,000 vs 40,258,880 (-24.87%). Student-only latency was +14.03% faster on RTX A6000 but only +0.60% on RTX 5880 Ada; OCBE+student was +12.31% faster on A6000 and 2.60% slower on 5880 Ada.",
   "limitations": [
     "Single seed 42.",
     "The two-GPU scheduler measures completion and dispatch but not edge-device latency.",
