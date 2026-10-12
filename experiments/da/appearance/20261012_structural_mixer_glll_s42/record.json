@@ -7,10 +7,22 @@
   "legacy": false,
   "question": "Does a global-local structural student preserve AUC while changing internal block operators?",
   "variant": "global_local_glll",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "bd9cedecb8ec3cb2fed4fae7f891179d78bcba8b",
   "scripts": ["scripts/run_structural.py", "scripts/dynamic_scheduler.py"],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261012T054828Z_structural_glll_s42",
+      "status": "running",
+      "command": "DMAD/bin/python experiments/da/appearance/20261012_structural_mixer_glll_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment experiments/da/appearance/20261012_structural_mixer_glll_s42 --gpus 0 1 --epochs 15 --batch 64 --workers 8",
+      "source_commit": "bd9cedecb8ec3cb2fed4fae7f891179d78bcba8b",
+      "seed": 42,
+      "data_root": "UAV_DA_ROOT or default Drone-Anomaly",
+      "scheduler_log": "logs/scheduler_20261012T054828Z.jsonl",
+      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<gpu>.log",
+      "outputs": ["results/<scene>.json", "results/<scene>_scores.csv"]
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "Single seed 42.",
