@@ -7,14 +7,70 @@
   "legacy": false,
   "question": "Does learning one shared orthonormal 2x3 depth basis from normal frames improve seven-scene AUC over fixed mean/trend rank2?",
   "variant": "ocbe_depthrank2_learnableorth_h128_glll_width192",
-  "status": "planned",
+  "status": "running",
   "source_commit": "5a930ac98b1268aabb6835604d872c079a9a98ac",
   "scripts": [
     "scripts/run_ocbe.py",
     "scripts/dynamic_scheduler.py",
     "../../../../model/bottleneck_depthrank_learnable.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261013T150114Z_ocbe_depthrank2_learnableorth_h128_scheduler_s42",
+      "status": "running",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
+      "source_commit": "5a930ac98b1268aabb6835604d872c079a9a98ac",
+      "seed": 42,
+      "started_at": "2026-10-13T23:01:14+08:00",
+      "ended_at": null,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "split_fingerprints": null,
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "gpus": [
+          0,
+          1
+        ],
+        "gpu_index_note": "PyTorch logical device labels differ from nvidia-smi physical order; both physical GPUs were occupied at launch."
+      },
+      "script": "scripts/dynamic_scheduler.py",
+      "scheduler_log": "logs/scheduler_20261013T150114Z.jsonl",
+      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<logical_gpu>.log",
+      "scene_status": {
+        "bike": "running",
+        "crossroads": "running",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "results/bike_basis.json",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "results/crossroads_basis.json",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "results/farmland_basis.json",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "results/highway_basis.json",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "results/railway_basis.json",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "results/solar_basis.json",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "results/vehicle_basis.json"
+      ]
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "One seed 42 can diagnose this isolated ablation but not establish cross-seed stability.",
