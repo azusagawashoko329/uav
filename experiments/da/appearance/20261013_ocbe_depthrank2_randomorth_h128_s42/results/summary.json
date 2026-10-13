@@ -1,0 +1,587 @@
+{
+  "run_id": "20261013T154751Z_ocbe_depthrank2_randomorth_h128_scheduler_s42",
+  "method": "AUC recomputed from frame scores; test labels and manifest fingerprints checked against dataset; paired fixed-Q and fixed-initialized learned-Q keys/labels checked; 15 epochs and scheduler checked; depth basis trajectory independently recomputed",
+  "initial_random_q_raw_and_effective": [
+    [
+      0.7829481959342957,
+      0.2995366156101227,
+      0.545224666595459
+    ],
+    [
+      0.3815162479877472,
+      -0.923473596572876,
+      -0.04052148014307022
+    ]
+  ],
+  "fixed_mean_trend_q": [
+    [
+      0.5773502691896258,
+      0.5773502691896258,
+      0.5773502691896258
+    ],
+    [
+      -0.7071067811865475,
+      0.0,
+      0.7071067811865475
+    ]
+  ],
+  "depth_mode_definition": "mean=(1,1,1)/sqrt(3); trend=(-1,0,1)/sqrt(2); curvature=(1,-2,1)/sqrt(6); retention=||Q_eff mode||^2 (geometric, not measured feature energy)",
+  "scenes": [
+    {
+      "scene": "bike",
+      "auc_percent": 97.63166435305764,
+      "fixed_auc_percent": 97.64001555306295,
+      "delta_vs_fixed_pp": -0.008351200005307646,
+      "learned_fixed_init_auc_percent": 97.62411444228385,
+      "delta_vs_learned_fixed_init_pp": 0.0075499107737897475,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "score_gap": 0.0726194793334605,
+      "final_train_loss": 0.11868065829959608,
+      "learned_fixed_init_final_train_loss": 0.11955750865801688,
+      "delta_train_loss_vs_learned_fixed_init": -0.0008768503584208054,
+      "fixed_final_train_loss": 0.122006,
+      "delta_train_loss": -0.003325341700403925,
+      "principal_angle_deg": 69.57597958983553,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 2.2968689287475508,
+      "final_angle_vs_learned_fixed_init_deg": 70.44106452995929,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.9994635449074497,
+        "trend": 0.12231301164130183,
+        "curvature": 0.8782235116029028
+      },
+      "raw_q_change_fro": 0.07223892418233055,
+      "raw_q_orthogonality_error_fro": 0.1022644319795529,
+      "raw_q_delta": [
+        [
+          0.0005619525909423828,
+          -0.0564706027507782,
+          0.02052241563796997
+        ],
+        [
+          0.006059229373931885,
+          0.037221312522888184,
+          -0.013634789735078812
+        ]
+      ],
+      "projector_distance_fro": 1.3253101611342943,
+      "orthogonality_error_fro": 6.497050946659322e-08,
+      "final_raw_q": [
+        [
+          0.783510148525238,
+          0.24306601285934448,
+          0.565747082233429
+        ],
+        [
+          0.38757550716400146,
+          -0.8862522840499878,
+          -0.05415625870227814
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.7862514853477478,
+          0.24391645193099976,
+          0.5677264928817749
+        ],
+        [
+          0.35376396775245667,
+          -0.9310005307197571,
+          -0.08993959426879883
+        ]
+      ],
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+      "gpu": 0,
+      "launch_time_utc": "20261013T154751Z",
+      "finish_time_utc": "20261013T155653Z"
+    },
+    {
+      "scene": "crossroads",
+      "auc_percent": 61.78181810613608,
+      "fixed_auc_percent": 61.13492416872288,
+      "delta_vs_fixed_pp": 0.6468939374131963,
+      "learned_fixed_init_auc_percent": 61.27750333358959,
+      "delta_vs_learned_fixed_init_pp": 0.5043147725464863,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "score_gap": 0.005024339104821696,
+      "final_train_loss": 0.15435587735922357,
+      "learned_fixed_init_final_train_loss": 0.1539919762834301,
+      "delta_train_loss_vs_learned_fixed_init": 0.0003639010757934824,
+      "fixed_final_train_loss": 0.153973,
+      "delta_train_loss": 0.00038287735922357125,
+      "principal_angle_deg": 68.10937987839932,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 11.908518922198768,
+      "final_angle_vs_learned_fixed_init_deg": 71.55815737553186,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.9798974831655787,
+        "trend": 0.15910904374586507,
+        "curvature": 0.8609933964515837
+      },
+      "raw_q_change_fro": 0.2497865270761457,
+      "raw_q_orthogonality_error_fro": 0.2585250921297937,
+      "raw_q_delta": [
+        [
+          -0.0528872013092041,
+          -0.17433634400367737,
+          0.10920822620391846
+        ],
+        [
+          0.043946653604507446,
+          0.1116974949836731,
+          -0.053563203662633896
+        ]
+      ],
+      "projector_distance_fro": 1.3122449439426978,
+      "orthogonality_error_fro": 8.489369552961377e-08,
+      "final_raw_q": [
+        [
+          0.7300609946250916,
+          0.1252002716064453,
+          0.6544328927993774
+        ],
+        [
+          0.425462931394577,
+          -0.8117761015892029,
+          -0.09408467262983322
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.7386245131492615,
+          0.12666885554790497,
+          0.6621093153953552
+        ],
+        [
+          0.3468037247657776,
+          -0.9136435389518738,
+          -0.21209117770195007
+        ]
+      ],
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+      "gpu": 1,
+      "launch_time_utc": "20261013T154751Z",
+      "finish_time_utc": "20261013T160837Z"
+    },
+    {
+      "scene": "farmland",
+      "auc_percent": 99.26094495015171,
+      "fixed_auc_percent": 99.14445166883398,
+      "delta_vs_fixed_pp": 0.11649328131773018,
+      "learned_fixed_init_auc_percent": 99.1238621586476,
+      "delta_vs_learned_fixed_init_pp": 0.1370827915041133,
+      "frames": 2387,
+      "positive_frames": 80,
+      "score_gap": 0.11553904241048635,
+      "final_train_loss": 0.13911972229912778,
+      "learned_fixed_init_final_train_loss": 0.1391037863572972,
+      "delta_train_loss_vs_learned_fixed_init": 1.5935941830580447e-05,
+      "fixed_final_train_loss": 0.139033,
+      "delta_train_loss": 8.672229912778939e-05,
+      "principal_angle_deg": 63.738902276737406,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 12.103505498597432,
+      "final_angle_vs_learned_fixed_init_deg": 65.92464435826984,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.9869443798511695,
+        "trend": 0.20882858924250955,
+        "curvature": 0.8042270426451158
+      },
+      "raw_q_change_fro": 0.23912631047460467,
+      "raw_q_orthogonality_error_fro": 0.248065148272074,
+      "raw_q_delta": [
+        [
+          -0.015263140201568604,
+          -0.12156309187412262,
+          0.08795994520187378
+        ],
+        [
+          0.08306056261062622,
+          0.14075815677642822,
+          -0.08787477388978004
+        ]
+      ],
+      "projector_distance_fro": 1.268248432007796,
+      "orthogonality_error_fro": 4.665023861738377e-08,
+      "final_raw_q": [
+        [
+          0.767685055732727,
+          0.17797352373600006,
+          0.6331846117973328
+        ],
+        [
+          0.4645768404006958,
+          -0.7827154397964478,
+          -0.12839624285697937
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.759400486946106,
+          0.17605291306972504,
+          0.626351535320282
+        ],
+        [
+          0.39851781725883484,
+          -0.8868333101272583,
+          -0.23390226066112518
+        ]
+      ],
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+      "gpu": 0,
+      "launch_time_utc": "20261013T155653Z",
+      "finish_time_utc": "20261013T160633Z"
+    },
+    {
+      "scene": "highway",
+      "auc_percent": 94.446056450628,
+      "fixed_auc_percent": 94.90780238902204,
+      "delta_vs_fixed_pp": -0.46174593839403144,
+      "learned_fixed_init_auc_percent": 94.89169195110395,
+      "delta_vs_learned_fixed_init_pp": -0.44563550047594447,
+      "frames": 2820,
+      "positive_frames": 497,
+      "score_gap": 0.06452747437954756,
+      "final_train_loss": 0.1537408506405269,
+      "learned_fixed_init_final_train_loss": 0.1533421318159036,
+      "delta_train_loss_vs_learned_fixed_init": 0.00039871882462330643,
+      "fixed_final_train_loss": 0.153285,
+      "delta_train_loss": 0.00045585064052688917,
+      "principal_angle_deg": 67.42520769586399,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 9.346979031498917,
+      "final_angle_vs_learned_fixed_init_deg": 71.14375705710223,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.9912883956210748,
+        "trend": 0.15608239068607785,
+        "curvature": 0.8526291366444033
+      },
+      "raw_q_change_fro": 0.19086110222450536,
+      "raw_q_orthogonality_error_fro": 0.19630952692290998,
+      "raw_q_delta": [
+        [
+          -0.024917244911193848,
+          -0.11330483853816986,
+          0.09652125835418701
+        ],
+        [
+          0.048478156328201294,
+          0.0922655463218689,
+          -0.05281750485301018
+        ]
+      ],
+      "projector_distance_fro": 1.3058553799287318,
+      "orthogonality_error_fro": 8.366551361584577e-08,
+      "final_raw_q": [
+        [
+          0.7580309510231018,
+          0.18623177707195282,
+          0.641745924949646
+        ],
+        [
+          0.4299944341182709,
+          -0.8312080502510071,
+          -0.0933389738202095
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.7501466870307922,
+          0.18429477512836456,
+          0.6350710988044739
+        ],
+        [
+          0.37194839119911194,
+          -0.9116485118865967,
+          -0.17478956282138824
+        ]
+      ],
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+      "gpu": 0,
+      "launch_time_utc": "20261013T160633Z",
+      "finish_time_utc": "20261013T161551Z"
+    },
+    {
+      "scene": "railway",
+      "auc_percent": 85.68073421014597,
+      "fixed_auc_percent": 86.36363636363636,
+      "delta_vs_fixed_pp": -0.6829021534903887,
+      "learned_fixed_init_auc_percent": 86.2787252493135,
+      "delta_vs_learned_fixed_init_pp": -0.5979910391675247,
+      "frames": 882,
+      "positive_frames": 68,
+      "score_gap": 0.02354024825201745,
+      "final_train_loss": 0.2358904273973571,
+      "learned_fixed_init_final_train_loss": 0.23630238572756448,
+      "delta_train_loss_vs_learned_fixed_init": -0.00041195833020737926,
+      "fixed_final_train_loss": 0.235071,
+      "delta_train_loss": 0.0008194273973571031,
+      "principal_angle_deg": 70.51688057325504,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 0.2572265440053362,
+      "final_angle_vs_learned_fixed_init_deg": 70.91871700492572,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.9965420967159564,
+        "trend": 0.11469960024262113,
+        "curvature": 0.8887583646222394
+      },
+      "raw_q_change_fro": 0.011306385170420886,
+      "raw_q_orthogonality_error_fro": 0.013928051618647163,
+      "raw_q_delta": [
+        [
+          0.001082777976989746,
+          -0.010407119989395142,
+          0.002010643482208252
+        ],
+        [
+          -0.0029765665531158447,
+          0.001458585262298584,
+          0.0018230974674224854
+        ]
+      ],
+      "projector_distance_fro": 1.3332354365394286,
+      "orthogonality_error_fro": 5.0513543664135096e-08,
+      "final_raw_q": [
+        [
+          0.7840309739112854,
+          0.28912949562072754,
+          0.5472353100776672
+        ],
+        [
+          0.37853971123695374,
+          -0.9220150113105774,
+          -0.03869837149977684
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.784907877445221,
+          0.28945285081863403,
+          0.547847330570221
+        ],
+        [
+          0.37241145968437195,
+          -0.9270353317260742,
+          -0.043763380497694016
+        ]
+      ],
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+      "gpu": 1,
+      "launch_time_utc": "20261013T160837Z",
+      "finish_time_utc": "20261013T161037Z"
+    },
+    {
+      "scene": "solar",
+      "auc_percent": 83.16632854479657,
+      "fixed_auc_percent": 82.70997825053918,
+      "delta_vs_fixed_pp": 0.4563502942573905,
+      "learned_fixed_init_auc_percent": 82.76941611531478,
+      "delta_vs_learned_fixed_init_pp": 0.3969124294817874,
+      "frames": 2450,
+      "positive_frames": 792,
+      "score_gap": 0.027508949590036552,
+      "final_train_loss": 0.22284077446569095,
+      "learned_fixed_init_final_train_loss": 0.2233831493014639,
+      "delta_train_loss_vs_learned_fixed_init": -0.000542374835772963,
+      "fixed_final_train_loss": 0.223147,
+      "delta_train_loss": -0.0003062255343090625,
+      "principal_angle_deg": 69.72574486905314,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 1.8265087329405554,
+      "final_angle_vs_learned_fixed_init_deg": 71.16054066551078,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.999041025678188,
+        "trend": 0.1210310311324428,
+        "curvature": 0.8799279073766781
+      },
+      "raw_q_change_fro": 0.05835532352792957,
+      "raw_q_orthogonality_error_fro": 0.07980454614744048,
+      "raw_q_delta": [
+        [
+          0.0077874064445495605,
+          -0.04818648099899292,
+          0.020069658756256104
+        ],
+        [
+          0.008936166763305664,
+          0.020189523696899414,
+          -0.011510863900184631
+        ]
+      ],
+      "projector_distance_fro": 1.3265955731696675,
+      "orthogonality_error_fro": 4.946593502696328e-08,
+      "final_raw_q": [
+        [
+          0.7907356023788452,
+          0.25135013461112976,
+          0.5652943253517151
+        ],
+        [
+          0.39045244455337524,
+          -0.9032840728759766,
+          -0.05203233286738396
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.7875925302505493,
+          0.25035104155540466,
+          0.5630473494529724
+        ],
+        [
+          0.35509344935417175,
+          -0.9311677813529968,
+          -0.08267535269260406
+        ]
+      ],
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+      "gpu": 1,
+      "launch_time_utc": "20261013T161037Z",
+      "finish_time_utc": "20261013T161449Z"
+    },
+    {
+      "scene": "vehicle",
+      "auc_percent": 58.751965725182345,
+      "fixed_auc_percent": 57.24501293973427,
+      "delta_vs_fixed_pp": 1.506952785448071,
+      "learned_fixed_init_auc_percent": 57.34825220718434,
+      "delta_vs_learned_fixed_init_pp": 1.403713517998007,
+      "frames": 2633,
+      "positive_frames": 973,
+      "score_gap": 0.006212552364057933,
+      "final_train_loss": 0.1570109834031361,
+      "learned_fixed_init_final_train_loss": 0.15666188099762288,
+      "delta_train_loss_vs_learned_fixed_init": 0.00034910240551322413,
+      "fixed_final_train_loss": 0.156455,
+      "delta_train_loss": 0.00055598340313609,
+      "principal_angle_deg": 69.84790362390177,
+      "initial_angle_vs_fixed_deg": 70.30714745564462,
+      "movement_from_random_init_deg": 2.061715569033893,
+      "final_angle_vs_learned_fixed_init_deg": 71.54857816954545,
+      "initial_mode_retention": {
+        "mean": 0.996239911827591,
+        "trend": 0.11731416175578031,
+        "curvature": 0.8864460467894781
+      },
+      "final_mode_retention": {
+        "mean": 0.999316033070316,
+        "trend": 0.11937348481308085,
+        "curvature": 0.8813105483479848
+      },
+      "raw_q_change_fro": 0.06269640205080382,
+      "raw_q_orthogonality_error_fro": 0.08492354529632147,
+      "raw_q_delta": [
+        [
+          0.0038472414016723633,
+          -0.05017518997192383,
+          0.023456692695617676
+        ],
+        [
+          0.0058522820472717285,
+          0.026388049125671387,
+          -0.010848645120859146
+        ]
+      ],
+      "projector_distance_fro": 1.3276374116060352,
+      "orthogonality_error_fro": 6.416245114695509e-08,
+      "final_raw_q": [
+        [
+          0.786795437335968,
+          0.24936142563819885,
+          0.5686813592910767
+        ],
+        [
+          0.3873685598373413,
+          -0.8970855474472046,
+          -0.05137011408805847
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.7849816083908081,
+          0.2487865686416626,
+          0.5673703551292419
+        ],
+        [
+          0.35486364364624023,
+          -0.9312602877616882,
+          -0.08262042701244354
+        ]
+      ],
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+      "gpu": 1,
+      "launch_time_utc": "20261013T161449Z",
+      "finish_time_utc": "20261013T162207Z"
+    }
+  ],
+  "macro": {
+    "auc_percent": 82.95993033429976,
+    "fixed_auc_percent": 82.73511733336453,
+    "delta_vs_fixed_pp": 0.22481300093523718,
+    "learned_fixed_init_auc_percent": 82.75908077963395,
+    "delta_vs_learned_fixed_init_pp": 0.20084955466581636,
+    "mean_principal_angle_deg": 68.41999978672088,
+    "mean_movement_from_random_init_deg": 5.685903318146065,
+    "initial_mode_retention": {
+      "mean": 0.9962399103809892,
+      "trend": 0.11731416018356723,
+      "curvature": 0.8864460495063845
+    },
+    "mean_final_mode_retention": {
+      "mean": 0.9932132798585332,
+      "trend": 0.14306245021484273,
+      "curvature": 0.8637242725272726
+    },
+    "mean_raw_q_change_fro": 0.1263387106723915,
+    "max_raw_q_orthogonality_error_fro": 0.2585250921297937,
+    "max_orthogonality_error_fro": 8.489369552961377e-08,
+    "trainable_parameters": 3761222,
+    "fixed_trainable_parameters": 3761216
+  },
+  "scheduler": {
+    "events": 16,
+    "launches": 7,
+    "zero_return_finishes": 7,
+    "gpu_assignments": {
+      "bike": 0,
+      "crossroads": 1,
+      "farmland": 0,
+      "highway": 0,
+      "railway": 1,
+      "solar": 1,
+      "vehicle": 1
+    }
+  }
+}

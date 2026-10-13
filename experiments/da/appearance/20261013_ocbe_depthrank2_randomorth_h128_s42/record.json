@@ -84,15 +84,21 @@
         "results/solar_basis.json",
         "results/vehicle.json",
         "results/vehicle_scores.csv",
-        "results/vehicle_basis.json"
+        "results/vehicle_basis.json",
+        "results/summary.csv",
+        "results/summary.json",
+        "results/summary.md"
       ],
-      "archive_note": "Seven per-frame score CSVs converted from CRLF to LF after training for Git; rows, labels, and AUC reverified unchanged with review_results.py."
+      "archive_note": "Seven per-frame score CSVs converted from CRLF to LF after training for Git; rows, labels, and AUC reverified unchanged with review_results.py.",
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/scripts/review_results.py"
     }
   ],
-  "result_summary": null,
+  "result_summary": "Seed42 seven-scene macro frame AUC: fixed Q 82.73511733, fixed-initialized learnable Q 82.75908078, random-initialized learnable Q 82.95993033 (+0.22481300 and +0.20084955 pp). Random Q ends 68.4200 degrees from fixed mean+trend plane on average after moving 5.6859 degrees from its random initial plane. Final geometric retention of mean/trend/curvature averages 0.9932/0.1431/0.8637. Five scenes improve and two decline against fixed-initialized learnable Q; only one random draw and seed.",
   "limitations": [
     "One seed and one random Q draw cannot estimate initialization variance.",
     "Q and downstream fusion weights co-adapt; subspace movement alone does not explain AUC.",
-    "Comparison covers appearance frame AUC, not behavior/fusion or deployment latency."
+    "Comparison covers appearance frame AUC, not behavior/fusion or deployment latency.",
+    "The +0.2008 pp macro gain versus fixed-initialized learnable Q is based on one seeded random basis and should not be taken as a stable advantage.",
+    "Geometric retention of mean/trend/curvature does not measure teacher-feature energy or anomaly contribution."
   ]
 }
