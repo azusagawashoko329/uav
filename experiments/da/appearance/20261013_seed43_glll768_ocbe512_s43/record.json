@@ -7,14 +7,63 @@
   "legacy": false,
   "question": "Across seven scenes, how does seed 43 change AUC for this four-block Global-Local/OCBE variant?",
   "variant": "global_local_glll_width768_ocbe512",
-  "status": "planned",
+  "status": "running",
   "source_commit": "07af639ce4514b238ab207afe04b604ae7cde477",
   "scripts": [
     "scripts/run_scene.py",
     "../../../../scripts/appearance_seed43_scene.py",
     "../../../../scripts/appearance_seed43_matrix.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "status": "running",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/appearance_seed43_matrix.py --repo-root /data1/data8tb/liangyuxuan/code/uav --gpus 0 1 --poll-seconds 2",
+      "source_commit": "07af639ce4514b238ab207afe04b604ae7cde477",
+      "seed": 43,
+      "started_at": "2026-10-13T18:04:19+08:00",
+      "ended_at": null,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "split_fingerprints": null,
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "gpus": [
+          0,
+          1
+        ],
+        "gpu_index_note": "PyTorch logical device labels may differ from nvidia-smi physical order; both physical GPUs were occupied at launch."
+      },
+      "script": "../../../../scripts/appearance_seed43_matrix.py",
+      "scheduler_log": "logs/scheduler_20261013T100419Z_seed43_four_variant_matrix.jsonl",
+      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<logical_gpu>.log",
+      "scene_status": {
+        "bike": "running",
+        "crossroads": "running",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv"
+      ]
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "A single additional seed alone cannot establish stable ranking.",
