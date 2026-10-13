@@ -11,7 +11,8 @@
   "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
   "scripts": [
     "scripts/run_ocbe.py",
-    "scripts/dynamic_scheduler.py"
+    "scripts/dynamic_scheduler.py",
+    "../../../../scripts/summarize_ocbe.py"
   ],
   "runs": [
     {
@@ -66,13 +67,21 @@
         "results/highway_scores.csv",
         "results/railway_scores.csv",
         "results/solar_scores.csv",
-        "results/vehicle_scores.csv"
-      ]
+        "results/vehicle_scores.csv",
+        "results/summary.csv",
+        "results/summary.json",
+        "results/summary.md"
+      ],
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/summarize_ocbe.py --experiment experiments/da/appearance/20261013_ocbe_hidden128_dense_s42 --comparison width192=experiments/da/appearance/20261012_student_width192_glll_s42 --label \"OCBE 原结构隐藏维度 128\"",
+      "archive_note": "Seven per-frame score CSVs were converted from CRLF to LF after the run for Git; row counts and AUCs were reverified unchanged. Summary CSV was written with LF."
     }
   ],
-  "result_summary": "Seven scene processes completed with zero returns; frame-level AUC review in progress.",
+  "result_summary": "Seven-scene macro frame AUC=82.61367738 versus original width-192 OCBE AUC=82.53810786 (delta=+0.07556952 pp); OCBE+student trainable parameters=4,154,432 versus 7,718,336 (reduction=46.17%). Railway declines 0.80936552 pp; seed 42 only.",
   "limitations": [
     "Single seed 42.",
-    "The OCBE hidden width is a capacity ablation, not a new fusion topology."
+    "The OCBE hidden width is a capacity ablation, not a new fusion topology.",
+    "AUC difference of +0.0756 pp is too small to claim a reliable gain without multi-seed replication.",
+    "Railway declines 0.8094 pp versus the width-192 baseline.",
+    "Target UAV end-to-end latency was not measured."
   ]
 }
