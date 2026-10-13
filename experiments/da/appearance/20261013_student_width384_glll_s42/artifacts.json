@@ -1,4 +1,365 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/scheduler_20261013T052931Z.jsonl",
+      "kind": "scheduler_log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 6580,
+      "sha256": "3b90e7244a68d81c01d87ca68cfddfa108c94990bd587c625c64df41d6bcc117",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T052931Z_bike_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1177,
+      "sha256": "0718bee23a202cbab65acb40ca9419f1694f3ea491da06085d631ea01581205d",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T052931Z_crossroads_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1185,
+      "sha256": "b0fcbb70d60a7a3ca6bef7eed968c8a16dca643a8613feb0743ce6f43849c532",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T054413Z_farmland_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1185,
+      "sha256": "989e70b7dae1d4dc709f0f05f621af197a1d0b14acf3f7209fc2fc4fdc255c19",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T055629Z_highway_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1170,
+      "sha256": "846ac6580179a7a0638188d16c3c499414e2b1165f1897e8b2faec9e3f47d4d6",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T055650Z_railway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1170,
+      "sha256": "fc2c1b86efc43b695629b4161630e8232d0099ffa96769b3d538998ad70ff362",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T055940Z_solar_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1175,
+      "sha256": "cf8220fca3befd26101f3b3d48f6aac9f34e24b272a383d5ddccef8749040bcf",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T060400Z_vehicle_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "config.json",
+        "data_root:Drone-Anomaly"
+      ],
+      "status": "completed",
+      "size_bytes": 1184,
+      "sha256": "1dee67412e62adb259e90f47ee2ee017ca17d34e4e21e48ec4118f4372fdef90",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 342,
+      "sha256": "05873be8979d55ccbaaa049fcb55161484c55f9071baa28182fce9c8f4441aab",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 351,
+      "sha256": "8d23aa8de9f15299dc10172689d8595f78186a6ec86dd83ac8833f712c87c3e1",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 346,
+      "sha256": "10fba35d2760ddbdaf3897cd4d190f9265e60ea8b80d0dff93f5c2815492283f",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 346,
+      "sha256": "7f56762bd67170f7ffc7583a64ee5c7c75b342865aa3758ebf180ede28a9ab31",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 340,
+      "sha256": "3c6b6ce1a61209fcfdb0027ffe407e3b24a8713217dea0432938fd7890d36645",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 345,
+      "sha256": "6a75240861a380e68edc67d7114b7117deb3954af6bb00beef0ac99baa5ae597",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "scene_metrics",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 348,
+      "sha256": "1a9f96d9fa73212d8a13c367ed490dea2528293a184ebc228ac6c1102a62ff81",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 908629,
+      "sha256": "c523123844be40787b538d24fe24cabe6a04664e8049d423a084dd03ca852bf7",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 305228,
+      "sha256": "e4456d627ee9f16c79fea69cf8afab2a5ddd4b8bc576b3835bcb5d60b0116570",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 117665,
+      "sha256": "0c568cfbb70b8e59f45b3fa661013a3bdcb29af3637dc0cf4f30eaaab98ad574",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 137481,
+      "sha256": "2a503a221db39a5961f5fabe3a189fe470a7fe31910122a698280d172c8755a7",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 42837,
+      "sha256": "dd41f7571b50d954cbabaa47ee47dc4f8bed01d66bc5e9c068f4b49b7249202b",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 118977,
+      "sha256": "36837a693278172bd3825a41ca1fcf1939c9bda01d644dc84011db3e249b747a",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "frame_scores",
+      "producer_script": "scripts/run_width384.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "data_root:Drone-Anomaly",
+        "config.json"
+      ],
+      "status": "completed",
+      "size_bytes": 128454,
+      "sha256": "1915d605bceb1a0dcfb37f635583c6f3abd41c73481cf420eda9fef0834f08f2",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "scene_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv"
+      ],
+      "status": "completed",
+      "size_bytes": 2007,
+      "sha256": "bc5198408370952c1f58dc2ce0f37ddb013cd2da0d1c40d42e1ba45c2a1c6654",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "kind": "verified_summary",
+      "producer_script": "scripts/summarize_results.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "baseline:20261012_structural_mixer_glll_s42"
+      ],
+      "status": "completed",
+      "size_bytes": 5176,
+      "sha256": "14bf62a9fb5ff60a3601d099610faa45bf941de750fe7cc51ed2ff91f6512617",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "review_report",
+      "producer_script": "scripts/summarize_zh.py",
+      "run_id": "20261013T052931Z_width384_scheduler_s42",
+      "inputs": [
+        "results/summary.json",
+        "reference:20261012_student_width192_glll_s42/results/summary.json"
+      ],
+      "status": "completed",
+      "size_bytes": 2882,
+      "sha256": "d718983243d6355ac7fc83f6d264a281f333e191223b3e6079b3d57f41507736",
+      "storage": "git"
+    }
+  ]
 }
