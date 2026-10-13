@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "20261013_ocbe_depthrank2_learnableorth_h128_s42",
+  "path": "experiments/da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Does learning one shared orthonormal 2x3 depth basis from normal frames improve seven-scene AUC over fixed mean/trend rank2?",
+  "variant": "ocbe_depthrank2_learnableorth_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_ocbe.py",
+    "scripts/dynamic_scheduler.py",
+    "../../../../model/bottleneck_depthrank_learnable.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "One seed 42 can diagnose this isolated ablation but not establish cross-seed stability.",
+    "The trainable six raw coefficients are orthonormalized in the forward pass; effective degrees of freedom are lower than six.",
+    "AUC and normal-feature energy can disagree; normal-feature energy alone is not an anomaly metric."
+  ]
+}
