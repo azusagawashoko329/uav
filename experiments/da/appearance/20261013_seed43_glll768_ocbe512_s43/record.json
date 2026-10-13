@@ -12,7 +12,8 @@
   "scripts": [
     "scripts/run_scene.py",
     "../../../../scripts/appearance_seed43_scene.py",
-    "../../../../scripts/appearance_seed43_matrix.py"
+    "../../../../scripts/appearance_seed43_matrix.py",
+    "../../../../scripts/review_seed43_matrix.py"
   ],
   "runs": [
     {
@@ -76,15 +77,20 @@
         "results/highway_scores.csv",
         "results/railway_scores.csv",
         "results/solar_scores.csv",
-        "results/vehicle_scores.csv"
+        "results/vehicle_scores.csv",
+        "results/summary.json",
+        "results/summary.csv",
+        "results/summary.md"
       ],
-      "archive_note": "28 per-frame score CSVs normalized from CRLF to LF after run; AUC, raw-label, frame-key, and split-fingerprint validation passed before and after normalization."
+      "archive_note": "28 per-frame score CSVs normalized from CRLF to LF after run; AUC, raw-label, frame-key, and split-fingerprint validation passed before and after normalization.",
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/review_seed43_matrix.py --write"
     }
   ],
-  "result_summary": null,
+  "result_summary": "Seed43 seven-scene macro frame AUC=84.73817941; seed42=84.77352247; delta=-0.03534306 pp; trainable OCBE+student parameters=30,248,000. All seven scene AUCs recomputed from per-frame scores and paired with raw labels and seed42 frame keys.",
   "limitations": [
-    "A single additional seed alone cannot establish stable ranking.",
-    "The four variants share one dynamic two-GPU queue, with scene runs isolated in separate processes.",
-    "Target UAV end-to-end latency is not measured."
+    "Only seeds 42 and 43; small macro AUC differences are not proof of stable gains.",
+    "The seven scenes are trained and evaluated separately; per-scene effects vary.",
+    "Trainable parameters exclude frozen teacher, YOLO behavior branch and KNN database.",
+    "Target UAV end-to-end latency was not measured."
   ]
 }
