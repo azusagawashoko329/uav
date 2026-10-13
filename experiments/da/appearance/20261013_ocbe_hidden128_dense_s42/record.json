@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "id": "20261013_ocbe_hidden128_dense_s42",
+  "path": "experiments/da/appearance/20261013_ocbe_hidden128_dense_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Can the existing 12-tap OCBE hidden width drop from 512 to 128 while retaining AUC?",
+  "variant": "ocbe_dense_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": ["scripts/run_ocbe.py", "scripts/dynamic_scheduler.py"],
+  "runs": [],
+  "result_summary": "Pending seven-scene AUC. Pre-run OCBE+student parameter count: 4,154,432 versus 7,718,336 baseline.",
+  "limitations": ["Single seed 42.", "The OCBE hidden width is a capacity ablation, not a new fusion topology."]
+}

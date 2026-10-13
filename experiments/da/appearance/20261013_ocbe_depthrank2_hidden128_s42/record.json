@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "id": "20261013_ocbe_depthrank2_hidden128_s42",
+  "path": "experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Does task-aligned rank-two depth fusion preserve AUC at lower OCBE parameter count than dense hidden-128 fusion?",
+  "variant": "ocbe_depthrank2_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": ["scripts/run_ocbe.py", "scripts/dynamic_scheduler.py", "scripts/probe_depth_rank.py"],
+  "runs": [],
+  "result_summary": "Pending normal-feature depth probe and seven-scene AUC. Pre-run OCBE+student parameter count: 3,761,216.",
+  "limitations": ["Single seed 42.", "The discarded within-group depth-curvature direction may contain anomaly-relevant information."]
+}
