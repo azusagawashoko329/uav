@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "20261013_seed43_glll192_ocbe128_rank2_s43",
+  "path": "experiments/da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Across seven scenes, how does seed 43 change AUC for this four-block Global-Local/OCBE variant?",
+  "variant": "global_local_glll_width192_ocbe128_rank2",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py",
+    "../../../../scripts/appearance_seed43_scene.py",
+    "../../../../scripts/appearance_seed43_matrix.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "A single additional seed alone cannot establish stable ranking.",
+    "The four variants share one dynamic two-GPU queue, with scene runs isolated in separate processes.",
+    "Target UAV end-to-end latency is not measured."
+  ]
+}

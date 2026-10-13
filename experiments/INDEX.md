@@ -1,11 +1,11 @@
 # 实验导航
 
-共 70 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 74 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 29 | [查看](#da-appearance) |
+| `da` | `appearance` | 33 | [查看](#da-appearance) |
 | `da` | `audit` | 1 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -36,6 +36,10 @@
 | [20261013_student_width384_glll_s42](da/appearance/20261013_student_width384_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_student_width384_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261013_student_width384_glll_s42/results/summary.csv) | 4 | 0 |
 | [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.csv) | 3 | 0 |
 | [20261013_ocbe_depthrank2_hidden128_s42](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.csv)、[depth_energy_probe.json](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/depth_energy_probe.json) | 4 | 0 |
+| [20261013_seed43_glll192_ocbe128_rank2_s43](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/README.md) | `planned` | 未找到 | 3 | 0 |
+| [20261013_seed43_glll192_ocbe128_s43](da/appearance/20261013_seed43_glll192_ocbe128_s43/README.md) | `planned` | 未找到 | 3 | 0 |
+| [20261013_seed43_glll192_ocbe512_s43](da/appearance/20261013_seed43_glll192_ocbe512_s43/README.md) | `planned` | 未找到 | 3 | 0 |
+| [20261013_seed43_glll768_ocbe512_s43](da/appearance/20261013_seed43_glll768_ocbe512_s43/README.md) | `planned` | 未找到 | 3 | 0 |
 | [20260706_signal_analysis](da/appearance/20260706_signal_analysis/RECORD.md) | `unknown` | 未找到 | 0 | 180 |
 | [20260708_deep_seed42](da/appearance/20260708_deep_seed42/RECORD.md) | `unknown` | 未找到 | 0 | 7 |
 | [20260708_probe_binary](da/appearance/20260708_probe_binary/RECORD.md) | `unknown` | 未找到 | 0 | 28 |
