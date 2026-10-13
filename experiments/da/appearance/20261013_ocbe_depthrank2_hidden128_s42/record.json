@@ -12,7 +12,8 @@
   "scripts": [
     "scripts/run_ocbe.py",
     "scripts/dynamic_scheduler.py",
-    "scripts/probe_depth_rank.py"
+    "scripts/probe_depth_rank.py",
+    "../../../../scripts/summarize_ocbe.py"
   ],
   "runs": [
     {
@@ -84,14 +85,23 @@
         "results/highway_scores.csv",
         "results/railway_scores.csv",
         "results/solar_scores.csv",
-        "results/vehicle_scores.csv"
-      ]
+        "results/vehicle_scores.csv",
+        "results/summary.csv",
+        "results/summary.json",
+        "results/summary.md"
+      ],
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/summarize_ocbe.py --experiment experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42 --comparison width192=experiments/da/appearance/20261012_student_width192_glll_s42 --comparison dense128=experiments/da/appearance/20261013_ocbe_hidden128_dense_s42 --label \"OCBE 三层组内深度秩 2 融合\"",
+      "archive_note": "Seven per-frame score CSVs were converted from CRLF to LF after the run for Git; row counts and AUCs were reverified unchanged. Summary CSV was written with LF."
     }
   ],
-  "result_summary": "Seven rank-two scene processes completed with zero returns; frame-level AUC review in progress. Normal-feature depth probe completed earlier.",
+  "result_summary": "Seven-scene macro frame AUC=82.73511733 versus original width-192 OCBE AUC=82.53810786 (delta=+0.19700947 pp) and dense hidden-128 AUC=82.61367738 (delta=+0.12143995 pp); OCBE+student trainable parameters=3,761,216, down 51.27% versus original and 9.46% versus dense hidden-128. Crossroads declines 1.27972638 pp versus dense; seed 42 only.",
   "limitations": [
     "Single seed 42.",
     "The discarded within-group depth-curvature direction may contain anomaly-relevant information.",
-    "Normal-feature projection energy does not establish anomaly AUC."
+    "Normal-feature projection energy does not establish anomaly AUC.",
+    "Macro AUC differences of +0.1970 and +0.1214 pp are too small to claim a reliable gain without multi-seed replication.",
+    "Crossroads and Vehicle decline 1.2797 and 1.0173 pp versus dense hidden-128, respectively.",
+    "Normal-feature depth energy was measured before training without learned LayerNorm affine parameters and does not guarantee anomaly discrimination.",
+    "Target UAV end-to-end latency was not measured."
   ]
 }
