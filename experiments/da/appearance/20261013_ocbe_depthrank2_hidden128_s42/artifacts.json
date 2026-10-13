@@ -1,4 +1,16 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/depth_energy_probe.json",
+      "kind": "normal_feature_depth_probe",
+      "producer_script": "scripts/probe_depth_rank.py",
+      "run_id": "20261013T072655Z_depthrank_normal16_probe",
+      "inputs": "16 evenly spaced normal training frames per scene; paths embedded in result",
+      "status": "completed",
+      "size_bytes": 27162,
+      "sha256": "c0a652ac36b70b05d716e7138c2bfedb600315de7ca6457b0d8b6543d7a5257a",
+      "storage": "git"
+    }
+  ]
 }

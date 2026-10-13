@@ -14,10 +14,29 @@
     "scripts/dynamic_scheduler.py",
     "scripts/probe_depth_rank.py"
   ],
-  "runs": [],
-  "result_summary": "Pending normal-feature depth probe and seven-scene AUC. Pre-run OCBE+student parameter count: 3,761,216.",
+  "runs": [
+    {
+      "run_id": "20261013T072655Z_depthrank_normal16_probe",
+      "status": "completed",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42/scripts/probe_depth_rank.py --frames-per-scene 16 --batch 4 --gpu 0",
+      "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
+      "started_at": null,
+      "ended_at": "2026-10-13T15:26:55+08:00",
+      "timing_note": "Exact start time was not captured; ended_at is the output file modification time.",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames only; 16 evenly spaced frames per scene",
+      "seed": null,
+      "device": "cuda:0",
+      "script": "scripts/probe_depth_rank.py",
+      "outputs": [
+        "results/depth_energy_probe.json"
+      ]
+    }
+  ],
+  "result_summary": "Normal-feature rank-two depth probe completed: retained energy 89.23%-97.11% across seven scenes and four groups; seven-scene AUC pending. Predicted OCBE+student parameters=3,761,216.",
   "limitations": [
     "Single seed 42.",
-    "The discarded within-group depth-curvature direction may contain anomaly-relevant information."
+    "The discarded within-group depth-curvature direction may contain anomaly-relevant information.",
+    "Normal-feature projection energy does not establish anomaly AUC."
   ]
 }

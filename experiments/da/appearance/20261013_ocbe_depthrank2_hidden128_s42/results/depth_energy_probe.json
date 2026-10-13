@@ -1,0 +1,917 @@
+{
+  "method": "channel-layer-normalized teacher patch outputs; fixed orthonormal depth mean/trend",
+  "sampling": "evenly spaced normal training frames by sorted filename; no anomaly labels",
+  "frames_per_scene": 16,
+  "scenes": {
+    "bike": {
+      "sample_paths": [
+        "Bike Roundabout/sequence1/train/01/0.jpg",
+        "Bike Roundabout/sequence1/train/01/576.jpg",
+        "Bike Roundabout/sequence1/train/02/1141.jpg",
+        "Bike Roundabout/sequence1/train/02/1619.jpg",
+        "Bike Roundabout/sequence1/train/02/477.jpg",
+        "Bike Roundabout/sequence1/train/02/954.jpg",
+        "Bike Roundabout/sequence1/train/03/143.jpg",
+        "Bike Roundabout/sequence1/train/03/288.jpg",
+        "Bike Roundabout/sequence1/train/03/764.jpg",
+        "Bike Roundabout/sequence1/train/04/340.jpg",
+        "Bike Roundabout/sequence1/train/04/818.jpg",
+        "Bike Roundabout/sequence1/train/05/44.jpg",
+        "Bike Roundabout/sequence1/train/05/917.jpg",
+        "Bike Roundabout/sequence1/train/06/1393.jpg",
+        "Bike Roundabout/sequence1/train/06/520.jpg",
+        "Bike Roundabout/sequence1/train/06/999.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9671478271484375,
+          "optimal_rank1_energy_fraction": 0.7806578874588013,
+          "optimal_rank2_energy_fraction": 0.9713563919067383,
+          "depth_gram": [
+            [
+              0.9999853372573853,
+              0.7905668616294861,
+              0.4280094504356384
+            ],
+            [
+              0.7905668616294861,
+              0.9999728202819824,
+              0.7755699753761292
+            ],
+            [
+              0.4280094504356384,
+              0.7755699753761292,
+              0.9999759793281555
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9588019251823425,
+          "optimal_rank1_energy_fraction": 0.8435013294219971,
+          "optimal_rank2_energy_fraction": 0.9604315161705017,
+          "depth_gram": [
+            [
+              0.9999831914901733,
+              0.8403366804122925,
+              0.6513237953186035
+            ],
+            [
+              0.8403366804122925,
+              0.9999889731407166,
+              0.7999192476272583
+            ],
+            [
+              0.6513237953186035,
+              0.7999192476272583,
+              0.999994695186615
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9304038286209106,
+          "optimal_rank1_energy_fraction": 0.766202986240387,
+          "optimal_rank2_energy_fraction": 0.9320894479751587,
+          "depth_gram": [
+            [
+              0.9999972581863403,
+              0.7230209112167358,
+              0.5024006962776184
+            ],
+            [
+              0.7230209112167358,
+              0.999998927116394,
+              0.7149954438209534
+            ],
+            [
+              0.5024006962776184,
+              0.7149954438209534,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9038718342781067,
+          "optimal_rank1_energy_fraction": 0.6961897611618042,
+          "optimal_rank2_energy_fraction": 0.9260517358779907,
+          "depth_gram": [
+            [
+              0.9999997615814209,
+              0.7639632821083069,
+              0.3570493459701538
+            ],
+            [
+              0.7639632821083069,
+              0.9999998807907104,
+              0.48198437690734863
+            ],
+            [
+              0.3570493459701538,
+              0.48198437690734863,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "crossroads": {
+      "sample_paths": [
+        "Crossroads/sequence1/train/01/0.jpg",
+        "Crossroads/sequence2/train/01/1485.jpg",
+        "Crossroads/sequence2/train/01/2431.jpg",
+        "Crossroads/sequence2/train/02/1156.jpg",
+        "Crossroads/sequence2/train/02/2102.jpg",
+        "Crossroads/sequence2/train/02/829.jpg",
+        "Crossroads/sequence2/train/03/1774.jpg",
+        "Crossroads/sequence2/train/03/50.jpg",
+        "Crossroads/sequence2/train/04/1445.jpg",
+        "Crossroads/sequence2/train/04/2392.jpg",
+        "Crossroads/sequence3/train/01/147.jpg",
+        "Crossroads/sequence3/train/02/122.jpg",
+        "Crossroads/sequence3/train/03/1069.jpg",
+        "Crossroads/sequence3/train/04/1044.jpg",
+        "Crossroads/sequence3/train/05/1020.jpg",
+        "Crossroads/sequence3/train/05/999.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9635350704193115,
+          "optimal_rank1_energy_fraction": 0.7931895852088928,
+          "optimal_rank2_energy_fraction": 0.9666366577148438,
+          "depth_gram": [
+            [
+              0.9999779462814331,
+              0.7894294261932373,
+              0.47965484857559204
+            ],
+            [
+              0.7894294261932373,
+              0.9999700784683228,
+              0.7862684726715088
+            ],
+            [
+              0.47965484857559204,
+              0.7862684726715088,
+              0.9999753832817078
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9547435641288757,
+          "optimal_rank1_energy_fraction": 0.832825779914856,
+          "optimal_rank2_energy_fraction": 0.9558448791503906,
+          "depth_gram": [
+            [
+              0.9999826550483704,
+              0.8150008916854858,
+              0.6313425302505493
+            ],
+            [
+              0.8150008916854858,
+              0.999988853931427,
+              0.7970019578933716
+            ],
+            [
+              0.6313425302505493,
+              0.7970019578933716,
+              0.9999946355819702
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9313958883285522,
+          "optimal_rank1_energy_fraction": 0.7685073018074036,
+          "optimal_rank2_energy_fraction": 0.9335950613021851,
+          "depth_gram": [
+            [
+              0.9999971985816956,
+              0.7420454025268555,
+              0.5062305927276611
+            ],
+            [
+              0.7420454025268555,
+              0.9999988675117493,
+              0.702350378036499
+            ],
+            [
+              0.5062305927276611,
+              0.702350378036499,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9072785973548889,
+          "optimal_rank1_energy_fraction": 0.6968172192573547,
+          "optimal_rank2_energy_fraction": 0.926925539970398,
+          "depth_gram": [
+            [
+              0.9999998211860657,
+              0.7610536813735962,
+              0.3490663766860962
+            ],
+            [
+              0.7610536813735962,
+              0.9999998807907104,
+              0.496233195066452
+            ],
+            [
+              0.3490663766860962,
+              0.496233195066452,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "farmland": {
+      "sample_paths": [
+        "Farmland Inspection/sequence1/train/01/0.jpg",
+        "Farmland Inspection/sequence1/train/01/1570.jpg",
+        "Farmland Inspection/sequence1/train/01/2143.jpg",
+        "Farmland Inspection/sequence1/train/01/569.jpg",
+        "Farmland Inspection/sequence1/train/02/1140.jpg",
+        "Farmland Inspection/sequence1/train/02/1713.jpg",
+        "Farmland Inspection/sequence1/train/02/2287.jpg",
+        "Farmland Inspection/sequence1/train/02/711.jpg",
+        "Farmland Inspection/sequence1/train/03/1284.jpg",
+        "Farmland Inspection/sequence1/train/03/1857.jpg",
+        "Farmland Inspection/sequence1/train/03/282.jpg",
+        "Farmland Inspection/sequence1/train/03/855.jpg",
+        "Farmland Inspection/sequence1/train/04/1427.jpg",
+        "Farmland Inspection/sequence1/train/04/20.jpg",
+        "Farmland Inspection/sequence1/train/04/425.jpg",
+        "Farmland Inspection/sequence1/train/04/999.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9678167700767517,
+          "optimal_rank1_energy_fraction": 0.7725310921669006,
+          "optimal_rank2_energy_fraction": 0.9732344746589661,
+          "depth_gram": [
+            [
+              0.9999817609786987,
+              0.8067909479141235,
+              0.3994238078594208
+            ],
+            [
+              0.8067909479141235,
+              0.9999680519104004,
+              0.7480567693710327
+            ],
+            [
+              0.3994238078594208,
+              0.7480567693710327,
+              0.9999706149101257
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9506483674049377,
+          "optimal_rank1_energy_fraction": 0.8245621919631958,
+          "optimal_rank2_energy_fraction": 0.951675295829773,
+          "depth_gram": [
+            [
+              0.9999814629554749,
+              0.7991009950637817,
+              0.6188023686408997
+            ],
+            [
+              0.7991009950637817,
+              0.9999878406524658,
+              0.7882022261619568
+            ],
+            [
+              0.6188023686408997,
+              0.7882022261619568,
+              0.9999949932098389
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9384150505065918,
+          "optimal_rank1_energy_fraction": 0.7871333956718445,
+          "optimal_rank2_energy_fraction": 0.9403004050254822,
+          "depth_gram": [
+            [
+              0.9999975562095642,
+              0.7642995119094849,
+              0.5417376756668091
+            ],
+            [
+              0.7642995119094849,
+              0.9999988079071045,
+              0.7294357419013977
+            ],
+            [
+              0.5417376756668091,
+              0.7294357419013977,
+              0.9999995231628418
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9019179344177246,
+          "optimal_rank1_energy_fraction": 0.706468403339386,
+          "optimal_rank2_energy_fraction": 0.9223430752754211,
+          "depth_gram": [
+            [
+              0.9999998211860657,
+              0.756489098072052,
+              0.3987409770488739
+            ],
+            [
+              0.756489098072052,
+              0.9999998807907104,
+              0.5015122890472412
+            ],
+            [
+              0.3987409770488739,
+              0.5015122890472412,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "highway": {
+      "sample_paths": [
+        "Highway/sequence1/train/01/0.jpg",
+        "Highway/sequence1/train/01/1540.jpg",
+        "Highway/sequence1/train/01/2083.jpg",
+        "Highway/sequence1/train/01/2626.jpg",
+        "Highway/sequence1/train/01/3169.jpg",
+        "Highway/sequence1/train/01/3711.jpg",
+        "Highway/sequence1/train/01/4254.jpg",
+        "Highway/sequence1/train/01/801.jpg",
+        "Highway/sequence1/train/02/1342.jpg",
+        "Highway/sequence1/train/02/1886.jpg",
+        "Highway/sequence1/train/02/433.jpg",
+        "Highway/sequence1/train/02/977.jpg",
+        "Highway/sequence2/train/02/333.jpg",
+        "Highway/sequence2/train/02/877.jpg",
+        "Highway/sequence3/train/01/536.jpg",
+        "Highway/sequence3/train/02/99.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.967265784740448,
+          "optimal_rank1_energy_fraction": 0.7909003496170044,
+          "optimal_rank2_energy_fraction": 0.970878005027771,
+          "depth_gram": [
+            [
+              0.9999767541885376,
+              0.7980567216873169,
+              0.46015605330467224
+            ],
+            [
+              0.7980567216873169,
+              0.9999673366546631,
+              0.784675657749176
+            ],
+            [
+              0.46015605330467224,
+              0.784675657749176,
+              0.9999725818634033
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9581937789916992,
+          "optimal_rank1_energy_fraction": 0.841902494430542,
+          "optimal_rank2_energy_fraction": 0.9591648578643799,
+          "depth_gram": [
+            [
+              0.9999817609786987,
+              0.8247524499893188,
+              0.6484403610229492
+            ],
+            [
+              0.8247524499893188,
+              0.9999884366989136,
+              0.8113243579864502
+            ],
+            [
+              0.6484403610229492,
+              0.8113243579864502,
+              0.9999947547912598
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.94371098279953,
+          "optimal_rank1_energy_fraction": 0.7989279627799988,
+          "optimal_rank2_energy_fraction": 0.9450706839561462,
+          "depth_gram": [
+            [
+              0.9999973773956299,
+              0.7644872069358826,
+              0.5615732669830322
+            ],
+            [
+              0.7644872069358826,
+              0.999998927116394,
+              0.7629968523979187
+            ],
+            [
+              0.5615732669830322,
+              0.7629968523979187,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.901613175868988,
+          "optimal_rank1_energy_fraction": 0.7073349952697754,
+          "optimal_rank2_energy_fraction": 0.9240073561668396,
+          "depth_gram": [
+            [
+              0.9999998211860657,
+              0.7635626792907715,
+              0.4014943540096283
+            ],
+            [
+              0.7635626792907715,
+              0.9999999403953552,
+              0.49444401264190674
+            ],
+            [
+              0.4014943540096283,
+              0.49444401264190674,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "railway": {
+      "sample_paths": [
+        "Railway Inspection/sequence1/train/01/0.jpg",
+        "Railway Inspection/sequence1/train/01/170.jpg",
+        "Railway Inspection/sequence1/train/01/243.jpg",
+        "Railway Inspection/sequence1/train/01/46.jpg",
+        "Railway Inspection/sequence1/train/02/117.jpg",
+        "Railway Inspection/sequence1/train/02/190.jpg",
+        "Railway Inspection/sequence1/train/02/262.jpg",
+        "Railway Inspection/sequence1/train/02/334.jpg",
+        "Railway Inspection/sequence1/train/02/46.jpg",
+        "Railway Inspection/sequence1/train/03/117.jpg",
+        "Railway Inspection/sequence1/train/03/19.jpg",
+        "Railway Inspection/sequence1/train/03/262.jpg",
+        "Railway Inspection/sequence1/train/03/334.jpg",
+        "Railway Inspection/sequence1/train/03/406.jpg",
+        "Railway Inspection/sequence1/train/03/48.jpg",
+        "Railway Inspection/sequence1/train/03/99.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9710832238197327,
+          "optimal_rank1_energy_fraction": 0.7957326173782349,
+          "optimal_rank2_energy_fraction": 0.9754505157470703,
+          "depth_gram": [
+            [
+              0.999977171421051,
+              0.8287932872772217,
+              0.4625553786754608
+            ],
+            [
+              0.8287932872772217,
+              0.9999659061431885,
+              0.7723154425621033
+            ],
+            [
+              0.4625553786754608,
+              0.7723154425621033,
+              0.9999704360961914
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9560199975967407,
+          "optimal_rank1_energy_fraction": 0.8347364068031311,
+          "optimal_rank2_energy_fraction": 0.9570037126541138,
+          "depth_gram": [
+            [
+              0.9999815225601196,
+              0.8122633695602417,
+              0.6332331895828247
+            ],
+            [
+              0.8122633695602417,
+              0.9999886751174927,
+              0.8064287900924683
+            ],
+            [
+              0.6332331895828247,
+              0.8064287900924683,
+              0.9999948143959045
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9433347582817078,
+          "optimal_rank1_energy_fraction": 0.794206440448761,
+          "optimal_rank2_energy_fraction": 0.9449252486228943,
+          "depth_gram": [
+            [
+              0.9999974370002747,
+              0.7675800919532776,
+              0.5480994582176208
+            ],
+            [
+              0.7675800919532776,
+              0.999998927116394,
+              0.7514746189117432
+            ],
+            [
+              0.5480994582176208,
+              0.7514746189117432,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.8923237919807434,
+          "optimal_rank1_energy_fraction": 0.6879526376724243,
+          "optimal_rank2_energy_fraction": 0.9151620864868164,
+          "depth_gram": [
+            [
+              0.9999998211860657,
+              0.7369007468223572,
+              0.36970433592796326
+            ],
+            [
+              0.7369007468223572,
+              0.9999999403953552,
+              0.46340876817703247
+            ],
+            [
+              0.36970433592796326,
+              0.46340876817703247,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "solar": {
+      "sample_paths": [
+        "Solar Panel Inspection/sequence1/train/01/0.jpg",
+        "Solar Panel Inspection/sequence1/train/01/27.jpg",
+        "Solar Panel Inspection/sequence1/train/01/440.jpg",
+        "Solar Panel Inspection/sequence1/train/01/610.jpg",
+        "Solar Panel Inspection/sequence1/train/01/88.jpg",
+        "Solar Panel Inspection/sequence1/train/02/258.jpg",
+        "Solar Panel Inspection/sequence1/train/02/429.jpg",
+        "Solar Panel Inspection/sequence1/train/02/60.jpg",
+        "Solar Panel Inspection/sequence1/train/02/770.jpg",
+        "Solar Panel Inspection/sequence1/train/03/246.jpg",
+        "Solar Panel Inspection/sequence1/train/03/417.jpg",
+        "Solar Panel Inspection/sequence1/train/03/589.jpg",
+        "Solar Panel Inspection/sequence1/train/03/76.jpg",
+        "Solar Panel Inspection/sequence2/train/01/234.jpg",
+        "Solar Panel Inspection/sequence2/train/01/405.jpg",
+        "Solar Panel Inspection/sequence2/train/01/99.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9667530059814453,
+          "optimal_rank1_energy_fraction": 0.8000950217247009,
+          "optimal_rank2_energy_fraction": 0.9697921276092529,
+          "depth_gram": [
+            [
+              0.9999757409095764,
+              0.7957308292388916,
+              0.49090883135795593
+            ],
+            [
+              0.7957308292388916,
+              0.9999668598175049,
+              0.8000707030296326
+            ],
+            [
+              0.49090883135795593,
+              0.8000707030296326,
+              0.9999727606773376
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9574570655822754,
+          "optimal_rank1_energy_fraction": 0.8447461724281311,
+          "optimal_rank2_energy_fraction": 0.9588471055030823,
+          "depth_gram": [
+            [
+              0.9999827146530151,
+              0.8366989493370056,
+              0.6594012975692749
+            ],
+            [
+              0.8366989493370056,
+              0.9999884963035583,
+              0.8015437722206116
+            ],
+            [
+              0.6594012975692749,
+              0.8015437722206116,
+              0.999994695186615
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9333997368812561,
+          "optimal_rank1_energy_fraction": 0.7786957025527954,
+          "optimal_rank2_energy_fraction": 0.9352026581764221,
+          "depth_gram": [
+            [
+              0.9999971389770508,
+              0.7491692304611206,
+              0.531559407711029
+            ],
+            [
+              0.7491692304611206,
+              0.9999988079071045,
+              0.7169079184532166
+            ],
+            [
+              0.531559407711029,
+              0.7169079184532166,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.905827522277832,
+          "optimal_rank1_energy_fraction": 0.7213121652603149,
+          "optimal_rank2_energy_fraction": 0.9209797978401184,
+          "depth_gram": [
+            [
+              0.9999997615814209,
+              0.749727725982666,
+              0.436104416847229
+            ],
+            [
+              0.749727725982666,
+              0.9999999403953552,
+              0.5445483922958374
+            ],
+            [
+              0.436104416847229,
+              0.5445483922958374,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "vehicle": {
+      "sample_paths": [
+        "Vehicle Roundabout/sequence1/train/01/0.jpg",
+        "Vehicle Roundabout/sequence1/train/01/414.jpg",
+        "Vehicle Roundabout/sequence1/train/01/730.jpg",
+        "Vehicle Roundabout/sequence1/train/02/215.jpg",
+        "Vehicle Roundabout/sequence1/train/02/531.jpg",
+        "Vehicle Roundabout/sequence1/train/02/848.jpg",
+        "Vehicle Roundabout/sequence2/train/01/1231.jpg",
+        "Vehicle Roundabout/sequence2/train/01/1548.jpg",
+        "Vehicle Roundabout/sequence2/train/01/325.jpg",
+        "Vehicle Roundabout/sequence2/train/01/641.jpg",
+        "Vehicle Roundabout/sequence2/train/01/958.jpg",
+        "Vehicle Roundabout/sequence2/train/02/1272.jpg",
+        "Vehicle Roundabout/sequence2/train/02/1589.jpg",
+        "Vehicle Roundabout/sequence2/train/02/366.jpg",
+        "Vehicle Roundabout/sequence2/train/02/682.jpg",
+        "Vehicle Roundabout/sequence2/train/02/999.jpg"
+      ],
+      "groups": [
+        {
+          "teacher_layers": [
+            0,
+            1,
+            2
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9659884572029114,
+          "optimal_rank1_energy_fraction": 0.7955887317657471,
+          "optimal_rank2_energy_fraction": 0.969188392162323,
+          "depth_gram": [
+            [
+              0.9999784827232361,
+              0.791778564453125,
+              0.479196161031723
+            ],
+            [
+              0.791778564453125,
+              0.9999697804450989,
+              0.7947296500205994
+            ],
+            [
+              0.479196161031723,
+              0.7947296500205994,
+              0.9999748468399048
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            3,
+            4,
+            5
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9579599499702454,
+          "optimal_rank1_energy_fraction": 0.8430653214454651,
+          "optimal_rank2_energy_fraction": 0.959303081035614,
+          "depth_gram": [
+            [
+              0.9999828338623047,
+              0.8347802758216858,
+              0.6526757478713989
+            ],
+            [
+              0.8347802758216858,
+              0.9999889731407166,
+              0.8023636341094971
+            ],
+            [
+              0.6526757478713989,
+              0.8023636341094971,
+              0.9999947547912598
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            6,
+            7,
+            8
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9308966398239136,
+          "optimal_rank1_energy_fraction": 0.7658579349517822,
+          "optimal_rank2_energy_fraction": 0.9327815771102905,
+          "depth_gram": [
+            [
+              0.9999973773956299,
+              0.7306474447250366,
+              0.49969571828842163
+            ],
+            [
+              0.7306474447250366,
+              0.999998927116394,
+              0.7082338929176331
+            ],
+            [
+              0.49969571828842163,
+              0.7082338929176331,
+              0.9999995827674866
+            ]
+          ]
+        },
+        {
+          "teacher_layers": [
+            9,
+            10,
+            11
+          ],
+          "fixed_mean_trend_energy_fraction": 0.9022612571716309,
+          "optimal_rank1_energy_fraction": 0.6918615698814392,
+          "optimal_rank2_energy_fraction": 0.9229224920272827,
+          "depth_gram": [
+            [
+              0.9999998211860657,
+              0.7524166703224182,
+              0.3494282364845276
+            ],
+            [
+              0.7524166703224182,
+              0.9999998807907104,
+              0.48247280716896057
+            ],
+            [
+              0.3494282364845276,
+              0.48247280716896057,
+              1.0
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}
