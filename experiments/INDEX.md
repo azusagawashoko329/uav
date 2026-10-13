@@ -34,7 +34,7 @@
 | [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_structural_mixer_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_structural_mixer_glll_s42/results/summary.csv)、[latency_benchmark.json](da/appearance/20261012_structural_mixer_glll_s42/results/latency_benchmark.json) | 4 | 0 |
 | [20261012_student_width192_glll_s42](da/appearance/20261012_student_width192_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_student_width192_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_student_width192_glll_s42/results/summary.csv) | 3 | 0 |
 | [20261013_student_width384_glll_s42](da/appearance/20261013_student_width384_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_student_width384_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261013_student_width384_glll_s42/results/summary.csv) | 4 | 0 |
-| [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `running` | — | 2 | 0 |
+| [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `completed` | — | 2 | 0 |
 | [20261013_ocbe_depthrank2_hidden128_s42](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/README.md) | `planned` | [depth_energy_probe.json](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/depth_energy_probe.json) | 3 | 0 |
 | [20260706_signal_analysis](da/appearance/20260706_signal_analysis/RECORD.md) | `unknown` | 未找到 | 0 | 180 |
 | [20260708_deep_seed42](da/appearance/20260708_deep_seed42/RECORD.md) | `unknown` | 未找到 | 0 | 7 |

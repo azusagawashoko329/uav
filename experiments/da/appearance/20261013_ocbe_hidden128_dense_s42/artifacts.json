@@ -1,4 +1,93 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/scheduler_20261013T072902Z.jsonl",
+      "kind": "scheduler_log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 6530,
+      "sha256": "4ee4e4ed0f873403080ce2bac0feb29bc80dc3ad24f3d6de86c1618248210aa4",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T072902Z_bike_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1183,
+      "sha256": "6f104b02f55aa50e47f53d750fb7519ac75dbc4adb6d0172613e87ef8613c7fc",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T072902Z_crossroads_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1185,
+      "sha256": "9197e2d7906b8d391e690675f1420d51812ac55f98d1cea493f6377e604b1bc8",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T073744Z_farmland_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1187,
+      "sha256": "4c0b352d1ec460a3b0c8b86633826de10deca42dd5c11d1c5d6c9698ec5067c9",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T074730Z_highway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1186,
+      "sha256": "0e37983ac01895ddd7187a6a18b5e621262dac5bd941afc72d384eed46adb36f",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T074850Z_railway_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1157,
+      "sha256": "694701014861dd58a4455d3efe5247a7c79ab6c6e560cd9dd3e4720efd094a66",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T075042Z_solar_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1165,
+      "sha256": "192f6820f5420e6381a094e2be9a6c0400b500c46300902005f39c5cfaaa0dee",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T075444Z_vehicle_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1166,
+      "sha256": "a0ef94a72de0b61d3db0c986b480a6665773017f92817aa1acf272dab97c1f39",
+      "storage": "git"
+    }
+  ]
 }
