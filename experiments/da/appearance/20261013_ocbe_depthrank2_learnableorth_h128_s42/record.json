@@ -12,7 +12,8 @@
   "scripts": [
     "scripts/run_ocbe.py",
     "scripts/dynamic_scheduler.py",
-    "../../../../model/bottleneck_depthrank_learnable.py"
+    "../../../../model/bottleneck_depthrank_learnable.py",
+    "scripts/review_results.py"
   ],
   "runs": [
     {
@@ -83,15 +84,21 @@
         "results/solar_basis.json",
         "results/vehicle.json",
         "results/vehicle_scores.csv",
-        "results/vehicle_basis.json"
+        "results/vehicle_basis.json",
+        "results/summary.csv",
+        "results/summary.json",
+        "results/summary.md"
       ],
-      "archive_note": "Seven score CSVs converted from CRLF to LF after run for Git; row counts and recomputed AUC verified unchanged by review_results.py."
+      "archive_note": "Seven score CSVs converted from CRLF to LF after run for Git; row counts and recomputed AUC verified unchanged by review_results.py.",
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/scripts/review_results.py"
     }
   ],
-  "result_summary": null,
+  "result_summary": "Seven-scene macro frame AUC 82.75908078 versus fixed mean+trend rank2 82.73511733 (+0.02396345 pp). Three scenes improve and four decline; learned retained-depth subspace principal angles 0.7987-5.2989 degrees (mean 3.0460). No clear AUC gain at seed 42; 3,761,222 trainable appearance parameters, six more than fixed rank2.",
   "limitations": [
     "One seed 42 can diagnose this isolated ablation but not establish cross-seed stability.",
     "The trainable six raw coefficients are orthonormalized in the forward pass; effective degrees of freedom are lower than six.",
-    "AUC and normal-feature energy can disagree; normal-feature energy alone is not an anomaly metric."
+    "AUC and normal-feature energy can disagree; normal-feature energy alone is not an anomaly metric.",
+    "A +0.0240 pp macro AUC difference at one seed is too small to establish a reliable benefit from learning Q.",
+    "Q and downstream fusion weights co-adapt, so their separate causal effects are not identified."
   ]
 }

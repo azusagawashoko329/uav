@@ -1,0 +1,330 @@
+{
+  "run_id": "20261013T150114Z_ocbe_depthrank2_learnableorth_h128_scheduler_s42",
+  "method": "AUC recomputed from frame scores; test labels and manifest fingerprints checked against dataset; paired fixed-rank2 keys/labels checked; 15 epochs and scheduler checked; depth basis trajectory independently recomputed",
+  "scenes": [
+    {
+      "scene": "bike",
+      "auc_percent": 97.62411444228385,
+      "fixed_auc_percent": 97.64001555306295,
+      "delta_vs_fixed_pp": -0.015901110779097394,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "score_gap": 0.07231966240279641,
+      "final_train_loss": 0.11955750865801688,
+      "fixed_final_train_loss": 0.122006,
+      "delta_train_loss": -0.0024484913419831195,
+      "principal_angle_deg": 3.0124765101672564,
+      "projector_distance_fro": 0.0743217462638094,
+      "orthogonality_error_fro": 7.776484235528108e-08,
+      "final_raw_q": [
+        [
+          0.5559772849082947,
+          0.5146953463554382,
+          0.5941206812858582
+        ],
+        [
+          -0.682705819606781,
+          -0.008360118605196476,
+          0.6985657215118408
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5774532556533813,
+          0.5345767140388489,
+          0.6170700192451477
+        ],
+        [
+          -0.7184430360794067,
+          -0.026284964755177498,
+          0.6950889825820923
+        ]
+      ],
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+      "gpu": 0,
+      "launch_time_utc": "20261013T150114Z",
+      "finish_time_utc": "20261013T151016Z"
+    },
+    {
+      "scene": "crossroads",
+      "auc_percent": 61.27750333358959,
+      "fixed_auc_percent": 61.13492416872288,
+      "delta_vs_fixed_pp": 0.14257916486671007,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "score_gap": 0.004485659630073746,
+      "final_train_loss": 0.1539919762834301,
+      "fixed_final_train_loss": 0.153973,
+      "delta_train_loss": 1.8976283430088836e-05,
+      "principal_angle_deg": 3.4549890127931993,
+      "projector_distance_fro": 0.08522672614493583,
+      "orthogonality_error_fro": 1.4126299033736915e-07,
+      "final_raw_q": [
+        [
+          0.5222757458686829,
+          0.5540358424186707,
+          0.5785720944404602
+        ],
+        [
+          -0.639076292514801,
+          -0.0350487120449543,
+          0.7090741991996765
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5461530685424805,
+          0.5793651342391968,
+          0.6050231456756592
+        ],
+        [
+          -0.7045310735702515,
+          -0.07302429527044296,
+          0.705906093120575
+        ]
+      ],
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+      "gpu": 1,
+      "launch_time_utc": "20261013T150114Z",
+      "finish_time_utc": "20261013T152206Z"
+    },
+    {
+      "scene": "farmland",
+      "auc_percent": 99.1238621586476,
+      "fixed_auc_percent": 99.14445166883398,
+      "delta_vs_fixed_pp": -0.02058951018638311,
+      "frames": 2387,
+      "positive_frames": 80,
+      "score_gap": 0.11258929173458462,
+      "final_train_loss": 0.1391037863572972,
+      "fixed_final_train_loss": 0.139033,
+      "delta_train_loss": 7.078635729720895e-05,
+      "principal_angle_deg": 4.397709772059015,
+      "projector_distance_fro": 0.1084407296587577,
+      "orthogonality_error_fro": 6.082498543494437e-08,
+      "final_raw_q": [
+        [
+          0.5514546632766724,
+          0.5001195073127747,
+          0.5970466136932373
+        ],
+        [
+          -0.6598309278488159,
+          -0.028245510533452034,
+          0.7136648893356323
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5778636336326599,
+          0.5240700840950012,
+          0.625639021396637
+        ],
+        [
+          -0.709490954875946,
+          -0.05628868564963341,
+          0.7024629712104797
+        ]
+      ],
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+      "gpu": 0,
+      "launch_time_utc": "20261013T151016Z",
+      "finish_time_utc": "20261013T151956Z"
+    },
+    {
+      "scene": "highway",
+      "auc_percent": 94.89169195110395,
+      "fixed_auc_percent": 94.90780238902204,
+      "delta_vs_fixed_pp": -0.016110437918086973,
+      "frames": 2820,
+      "positive_frames": 497,
+      "score_gap": 0.06416703713200919,
+      "final_train_loss": 0.1533421318159036,
+      "fixed_final_train_loss": 0.153285,
+      "delta_train_loss": 5.713181590358274e-05,
+      "principal_angle_deg": 5.298874897682637,
+      "projector_distance_fro": 0.1306040886840793,
+      "orthogonality_error_fro": 4.596420164621418e-08,
+      "final_raw_q": [
+        [
+          0.556718647480011,
+          0.5013343691825867,
+          0.590047299861908
+        ],
+        [
+          -0.6447262763977051,
+          -0.04368024691939354,
+          0.7289326786994934
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5837833285331726,
+          0.5257065892219543,
+          0.6187322735786438
+        ],
+        [
+          -0.6937929391860962,
+          -0.07282806932926178,
+          0.7164826989173889
+        ]
+      ],
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+      "gpu": 0,
+      "launch_time_utc": "20261013T151956Z",
+      "finish_time_utc": "20261013T152914Z"
+    },
+    {
+      "scene": "railway",
+      "auc_percent": 86.2787252493135,
+      "fixed_auc_percent": 86.36363636363636,
+      "delta_vs_fixed_pp": -0.08491111432286402,
+      "frames": 882,
+      "positive_frames": 68,
+      "score_gap": 0.024413341352930662,
+      "final_train_loss": 0.23630238572756448,
+      "fixed_final_train_loss": 0.235071,
+      "delta_train_loss": 0.0012313857275644824,
+      "principal_angle_deg": 0.7987462179704143,
+      "projector_distance_fro": 0.01971456144261857,
+      "orthogonality_error_fro": 5.2586847497037247e-08,
+      "final_raw_q": [
+        [
+          0.575385332107544,
+          0.5622766613960266,
+          0.579509973526001
+        ],
+        [
+          -0.7009007334709167,
+          -0.0038352918345481157,
+          0.7084855437278748
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5803231000900269,
+          0.5671018958091736,
+          0.5844831466674805
+        ],
+        [
+          -0.7063083052635193,
+          -0.006792579311877489,
+          0.7078717947006226
+        ]
+      ],
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+      "gpu": 1,
+      "launch_time_utc": "20261013T152206Z",
+      "finish_time_utc": "20261013T152404Z"
+    },
+    {
+      "scene": "solar",
+      "auc_percent": 82.76941611531478,
+      "fixed_auc_percent": 82.70997825053918,
+      "delta_vs_fixed_pp": 0.05943786477560309,
+      "frames": 2450,
+      "positive_frames": 792,
+      "score_gap": 0.026976468584053254,
+      "final_train_loss": 0.2233831493014639,
+      "fixed_final_train_loss": 0.223147,
+      "delta_train_loss": 0.00023614930146390045,
+      "principal_angle_deg": 2.2253743315655514,
+      "projector_distance_fro": 0.0549144003252478,
+      "orthogonality_error_fro": 7.046579742467141e-08,
+      "final_raw_q": [
+        [
+          0.568002462387085,
+          0.5422422885894775,
+          0.5911744832992554
+        ],
+        [
+          -0.686546266078949,
+          -0.014808233827352524,
+          0.7155808210372925
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5778698325157166,
+          0.5516621470451355,
+          0.6014444231987
+        ],
+        [
+          -0.707317590713501,
+          -0.02911273203790188,
+          0.7062961459159851
+        ]
+      ],
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+      "gpu": 1,
+      "launch_time_utc": "20261013T152404Z",
+      "finish_time_utc": "20261013T152820Z"
+    },
+    {
+      "scene": "vehicle",
+      "auc_percent": 57.34825220718434,
+      "fixed_auc_percent": 57.24501293973427,
+      "delta_vs_fixed_pp": 0.10323926745006418,
+      "frames": 2633,
+      "positive_frames": 973,
+      "score_gap": 0.005909327943190795,
+      "final_train_loss": 0.15666188099762288,
+      "fixed_final_train_loss": 0.156455,
+      "delta_train_loss": 0.00020688099762286583,
+      "principal_angle_deg": 2.1337571069686847,
+      "projector_distance_fro": 0.052654675865248926,
+      "orthogonality_error_fro": 1.2260973600048186e-07,
+      "final_raw_q": [
+        [
+          0.5579448342323303,
+          0.5444542169570923,
+          0.5885432362556458
+        ],
+        [
+          -0.678501546382904,
+          -0.017724471166729927,
+          0.7134542465209961
+        ]
+      ],
+      "final_effective_q": [
+        [
+          0.5712032914161682,
+          0.5573920607566833,
+          0.6025288105010986
+        ],
+        [
+          -0.7082206010818481,
+          -0.03637835010886192,
+          0.7050532698631287
+        ]
+      ],
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+      "gpu": 1,
+      "launch_time_utc": "20261013T152820Z",
+      "finish_time_utc": "20261013T153535Z"
+    }
+  ],
+  "macro": {
+    "auc_percent": 82.75908077963395,
+    "fixed_auc_percent": 82.73511733336453,
+    "delta_vs_fixed_pp": 0.023963446269420836,
+    "mean_principal_angle_deg": 3.045989692743823,
+    "max_orthogonality_error_fro": 1.4126299033736915e-07,
+    "trainable_parameters": 3761222,
+    "fixed_trainable_parameters": 3761216
+  },
+  "scheduler": {
+    "events": 16,
+    "launches": 7,
+    "zero_return_finishes": 7,
+    "gpu_assignments": {
+      "bike": 0,
+      "crossroads": 1,
+      "farmland": 0,
+      "highway": 0,
+      "railway": 1,
+      "solar": 1,
+      "vehicle": 1
+    }
+  }
+}
