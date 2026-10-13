@@ -7,13 +7,49 @@
   "legacy": false,
   "question": "Can the existing 12-tap OCBE hidden width drop from 512 to 128 while retaining AUC?",
   "variant": "ocbe_dense_h128_glll_width192",
-  "status": "planned",
+  "status": "running",
   "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
   "scripts": [
     "scripts/run_ocbe.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261013T072902Z_ocbe_dense_h128_scheduler_s42",
+      "status": "running",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_hidden128_dense_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261013_ocbe_hidden128_dense_s42 --gpus 0 1 --epochs 15 --batch 64 --workers 8",
+      "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
+      "seed": 42,
+      "started_at": "2026-10-13T15:29:02+08:00",
+      "ended_at": null,
+      "data_root": "UAV_DA_ROOT or default /data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test video frames and labels",
+      "split_fingerprints": {},
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "gpus": [
+          0,
+          1
+        ]
+      },
+      "script": "scripts/dynamic_scheduler.py",
+      "scheduler_log": "logs/scheduler_20261013T072902Z.jsonl",
+      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<gpu>.log",
+      "scene_status": {
+        "bike": "running",
+        "crossroads": "running",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "outputs": [
+        "results/<scene>.json",
+        "results/<scene>_scores.csv"
+      ]
+    }
+  ],
   "result_summary": "Pending seven-scene AUC. Pre-run OCBE+student parameter count: 4,154,432 versus 7,718,336 baseline.",
   "limitations": [
     "Single seed 42.",
