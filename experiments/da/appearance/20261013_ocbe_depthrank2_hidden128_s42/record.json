@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Does task-aligned rank-two depth fusion preserve AUC at lower OCBE parameter count than dense hidden-128 fusion?",
   "variant": "ocbe_depthrank2_h128_glll_width192",
-  "status": "planned",
+  "status": "running",
   "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -31,9 +31,44 @@
       "outputs": [
         "results/depth_energy_probe.json"
       ]
+    },
+    {
+      "run_id": "20261013T080712Z_ocbe_depthrank2_h128_scheduler_s42",
+      "status": "running",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42 --gpus 0 1 --epochs 15 --batch 64 --workers 8",
+      "source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
+      "seed": 42,
+      "started_at": "2026-10-13T16:07:12+08:00",
+      "ended_at": null,
+      "data_root": "UAV_DA_ROOT or default /data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test video frames and labels",
+      "split_fingerprints": {},
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "gpus": [
+          0,
+          1
+        ]
+      },
+      "script": "scripts/dynamic_scheduler.py",
+      "scheduler_log": "logs/scheduler_20261013T080712Z.jsonl",
+      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<gpu>.log",
+      "scene_status": {
+        "bike": "running",
+        "crossroads": "running",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "outputs": [
+        "results/<scene>.json",
+        "results/<scene>_scores.csv"
+      ]
     }
   ],
-  "result_summary": "Normal-feature rank-two depth probe completed: retained energy 89.23%-97.11% across seven scenes and four groups; seven-scene AUC pending. Predicted OCBE+student parameters=3,761,216.",
+  "result_summary": "Normal-feature depth probe completed; rank-two seven-scene AUC run is underway. Predicted OCBE+student parameters=3,761,216.",
   "limitations": [
     "Single seed 42.",
     "The discarded within-group depth-curvature direction may contain anomaly-relevant information.",
