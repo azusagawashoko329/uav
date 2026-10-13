@@ -1,4 +1,247 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261013T104403Z_bike_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1192,
+      "sha256": "571a247c622fccedb6e60f0e133e8fb46a54f925adb9c5a37eafc0a3c27aee40",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T105147Z_crossroads_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1194,
+      "sha256": "bdc2a145f2d435fb2010ee9425df5b664a1bd375d0c92a604cedc4429cf33bef",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T105317Z_farmland_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1197,
+      "sha256": "ea5083891651a857be5842294b28913ad524f39b691ef326d599759bc5db0916",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T110307Z_highway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1196,
+      "sha256": "910b09d76b7f4f83b54ce87eba552668b82f7d5328d012d83251c9d4f1bda394",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T111227Z_railway_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1180,
+      "sha256": "1e1b577c2834b79eaf96da3db1a05fdcf194faef29c05121e1e00829770cadd3",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T111233Z_solar_gpu1.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1174,
+      "sha256": "767735b3184e8a61de08f1b878bb692d968bf7578d48537de823ebce8a501ea9",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261013T111359Z_vehicle_gpu0.log",
+      "kind": "scene_train_log",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 1194,
+      "sha256": "f29245dad6c4005299e58aa9e3474b8a864089c7e768887d3a0639bfafd8cb8e",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261013T100419Z_seed43_four_variant_matrix.jsonl",
+      "kind": "scheduler_log",
+      "producer_script": "../../../../scripts/appearance_seed43_matrix.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 6837,
+      "sha256": "d8dc043b48ef2a881d3633947e6a03387b4e14c36ebf5684e4573317bc01e933",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 353,
+      "sha256": "db4d095dcc84b8a957e07137780095785913840b45113a304b6f0807e25b2fe5",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 889810,
+      "sha256": "5c803beec459ea5383eeb93a51563359c20da5574806687e21bc89bb598e9144",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 357,
+      "sha256": "cc787fa5c7e239490c26005817e7b0c309a53428f7143926379bf92e60d4614e",
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 298984,
+      "sha256": "e992d40db099e1739c03b9b93d053d3af0059e11e75cf770a1f4410057c196f0",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 353,
+      "sha256": "4186b84f3633e8246c22f5623d8166fa14ac841d08bec6031e229ab1ef05c167",
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 115175,
+      "sha256": "8b38c033ae322fd5a6a5d499c7b903c25c2087d0725f1a1a93274a15901705be",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 353,
+      "sha256": "b1c327c782fff1156ed68372e67930981124c64fa47f02f8304bc47d5dc520b7",
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 134615,
+      "sha256": "e37edaa1bc312d151228d26d691657a15b077f54ec5490981a20df817fd2b9e2",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 351,
+      "sha256": "3f1b0c47b80d927c4053ae3d39073a707b9fb3d1ad84d5456d4300a81b98daf4",
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 41713,
+      "sha256": "8656c5acb834b479dc12e0ba2594d1f4e288dac6039a99cdcf0f21fb2f7d5b02",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 351,
+      "sha256": "0bd88bca98ddddd36c8d4c8036045e78fd6acc6cd681f9fe8ca96f7c7968c0fa",
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 116265,
+      "sha256": "588e5e9b39c621e806b99f4bf51f95d26be2e08980d011332cfa872fefce1cdd",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle.json",
+      "kind": "scene_metric",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 353,
+      "sha256": "8f604c54e505606c556a0236dc8864e68268a6666651aab1a55e0b8909f67cec",
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "kind": "per_frame_scores",
+      "producer_script": "scripts/run_scene.py",
+      "run_id": "20261013T100419Z_seed43_four_variant_matrix",
+      "inputs": "config.json; Drone-Anomaly normal-train/test split; source commit 07af639ce4514b238ab207afe04b604ae7cde477",
+      "status": "completed",
+      "size_bytes": 125795,
+      "sha256": "aea11a6e46f1b9d081679bda8ee5a9ecea7ebb70bbffca888f40ff885157c3f0",
+      "storage": "git"
+    }
+  ]
 }

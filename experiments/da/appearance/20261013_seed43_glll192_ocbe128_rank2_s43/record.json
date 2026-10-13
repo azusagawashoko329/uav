@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Across seven scenes, how does seed 43 change AUC for this four-block Global-Local/OCBE variant?",
   "variant": "global_local_glll_width192_ocbe128_rank2",
-  "status": "running",
+  "status": "completed",
   "source_commit": "07af639ce4514b238ab207afe04b604ae7cde477",
   "scripts": [
     "scripts/run_scene.py",
@@ -17,15 +17,23 @@
   "runs": [
     {
       "run_id": "20261013T100419Z_seed43_four_variant_matrix",
-      "status": "running",
+      "status": "completed",
       "command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/appearance_seed43_matrix.py --repo-root /data1/data8tb/liangyuxuan/code/uav --gpus 0 1 --poll-seconds 2",
       "source_commit": "07af639ce4514b238ab207afe04b604ae7cde477",
       "seed": 43,
       "started_at": "2026-10-13T18:04:19+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-13T20:19:09+08:00",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
       "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
-      "split_fingerprints": null,
+      "split_fingerprints": {
+        "bike": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+        "crossroads": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+        "farmland": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+        "highway": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+        "railway": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+        "solar": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+        "vehicle": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
       "environment": {
         "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
         "gpus": [
@@ -36,32 +44,41 @@
       },
       "script": "../../../../scripts/appearance_seed43_matrix.py",
       "scheduler_log": "logs/scheduler_20261013T100419Z_seed43_four_variant_matrix.jsonl",
-      "scene_logs": "logs/<launch_timestamp>_<scene>_gpu<logical_gpu>.log",
+      "scene_logs": [
+        "logs/20261013T114557Z_bike_gpu1.log",
+        "logs/20261013T114917Z_crossroads_gpu0.log",
+        "logs/20261013T115725Z_farmland_gpu1.log",
+        "logs/20261013T120439Z_highway_gpu0.log",
+        "logs/20261013T120935Z_railway_gpu1.log",
+        "logs/20261013T121131Z_solar_gpu1.log",
+        "logs/20261013T121337Z_vehicle_gpu0.log"
+      ],
       "scene_status": {
-        "bike": "planned",
-        "crossroads": "planned",
-        "farmland": "planned",
-        "highway": "planned",
-        "railway": "planned",
-        "solar": "planned",
-        "vehicle": "planned"
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
       },
       "outputs": [
         "results/bike.json",
-        "results/bike_scores.csv",
         "results/crossroads.json",
-        "results/crossroads_scores.csv",
         "results/farmland.json",
-        "results/farmland_scores.csv",
         "results/highway.json",
-        "results/highway_scores.csv",
         "results/railway.json",
-        "results/railway_scores.csv",
         "results/solar.json",
-        "results/solar_scores.csv",
         "results/vehicle.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
         "results/vehicle_scores.csv"
-      ]
+      ],
+      "archive_note": "28 per-frame score CSVs normalized from CRLF to LF after run; AUC, raw-label, frame-key, and split-fingerprint validation passed before and after normalization."
     }
   ],
   "result_summary": null,
