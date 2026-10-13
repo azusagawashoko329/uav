@@ -1,11 +1,11 @@
 # 实验导航
 
-共 75 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 76 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 34 | [查看](#da-appearance) |
+| `da` | `appearance` | 35 | [查看](#da-appearance) |
 | `da` | `audit` | 1 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -37,6 +37,7 @@
 | [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.csv) | 3 | 0 |
 | [20261013_ocbe_depthrank2_hidden128_s42](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.csv)、[depth_energy_probe.json](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/depth_energy_probe.json) | 4 | 0 |
 | [20261013_ocbe_depthrank2_learnableorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/results/summary.csv) | 4 | 0 |
+| [20261013_ocbe_depthrank2_randomorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/README.md) | `planned` | 未找到 | 4 | 0 |
 | [20261013_seed43_glll192_ocbe128_rank2_s43](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/results/summary.md) | 4 | 0 |
 | [20261013_seed43_glll192_ocbe128_s43](da/appearance/20261013_seed43_glll192_ocbe128_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe128_s43/results/summary.md) | 4 | 0 |
 | [20261013_seed43_glll192_ocbe512_s43](da/appearance/20261013_seed43_glll192_ocbe512_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/summary.md)、[four_variant_review.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/four_variant_review.md) | 4 | 0 |

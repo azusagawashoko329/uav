@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "id": "20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "baseline_experiment": "experiments/da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42",
+  "variant": "ocbe_depthrank2_randomorth_h128_glll_width192",
+  "seed": 42,
+  "teacher": {
+    "name": "DINOv3 ViT-B/16",
+    "layers": 12,
+    "image_size": 256,
+    "patch_tokens": 256,
+    "embed_dim": 768,
+    "frozen": true
+  },
+  "ocbe": {
+    "architecture": "learnable_shared_random_orthonormal_rank2_per_three_taps",
+    "input_taps": 12,
+    "depth_groups": 4,
+    "group_size": 3,
+    "depth_rank": 2,
+    "projected_features": 6144,
+    "fuse_hidden": 128,
+    "code_dim": 64,
+    "tap_norm": true,
+    "basis_initialization": "seeded_random_orthonormal_gaussian_gram_schmidt",
+    "basis_parameter_count": 6,
+    "basis_sharing": "one_shared_2x3_matrix_across_four_groups",
+    "orthogonality": "differentiable_gram_schmidt_in_forward",
+    "orthogonality_penalty_weight": 0.0,
+    "basis_seed": 42,
+    "initial_q_effective": [
+      [
+        0.7829481959342957,
+        0.2995366156101227,
+        0.545224666595459
+      ],
+      [
+        0.3815162479877472,
+        -0.923473596572876,
+        -0.04052148014307022
+      ]
+    ],
+    "initial_subspace_angle_vs_mean_trend_deg": 70.30714206658661,
+    "basis_rng": "independent CPU torch.Generator; no global RNG consumed"
+  },
+  "student": {
+    "architecture": "global_local_glll",
+    "stages": 4,
+    "dim": 192,
+    "teacher_output_dim": 768,
+    "heads": 8,
+    "ffn_ratio": 2.0,
+    "heads_per_teacher_group": 3,
+    "reverse_alignment": true
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 15,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "image_size": 256,
+    "topk": 5,
+    "loss": "group_balanced_topk, alpha=0.5"
+  },
+  "evaluation": {
+    "score": "mean over 12 teacher-head top-5 patch cosine distances",
+    "metric": "ROC AUC x100 per scene; macro mean over seven scenes",
+    "labels": "paired test video .npy"
+  },
+  "scheduler": {
+    "gpus": [
+      0,
+      1
+    ],
+    "poll_seconds": 2,
+    "max_memory_mb": 2000,
+    "dynamic_reuse": true
+  },
+  "data_root_env": "UAV_DA_ROOT",
+  "predicted_trainable_parameters": {
+    "ocbe": 813254,
+    "student": 2947968,
+    "total": 3761222
+  },
+  "fixed_rank2_comparison": "experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42"
+}

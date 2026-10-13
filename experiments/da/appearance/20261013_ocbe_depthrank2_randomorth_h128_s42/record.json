@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Can randomly initialized learnable orthonormal Q find useful depth directions and match or exceed fixed-initialized learnable Q?",
+  "variant": "ocbe_depthrank2_randomorth_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_ocbe.py",
+    "scripts/dynamic_scheduler.py",
+    "scripts/review_results.py",
+    "../../../../model/bottleneck_depthrank_learnable.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "One seed and one random Q draw cannot estimate initialization variance.",
+    "Q and downstream fusion weights co-adapt; subspace movement alone does not explain AUC.",
+    "Comparison covers appearance frame AUC, not behavior/fusion or deployment latency."
+  ]
+}
