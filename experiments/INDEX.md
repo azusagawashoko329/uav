@@ -42,8 +42,8 @@
 | [20261013_seed43_glll192_ocbe128_s43](da/appearance/20261013_seed43_glll192_ocbe128_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe128_s43/results/summary.md) | 4 | 0 |
 | [20261013_seed43_glll192_ocbe512_s43](da/appearance/20261013_seed43_glll192_ocbe512_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/summary.md)、[four_variant_review.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/four_variant_review.md) | 4 | 0 |
 | [20261013_seed43_glll768_ocbe512_s43](da/appearance/20261013_seed43_glll768_ocbe512_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll768_ocbe512_s43/results/summary.md) | 4 | 0 |
-| [20261014_depthretain_fixedinit_h128_s42](da/appearance/20261014_depthretain_fixedinit_h128_s42/README.md) | `planned` | 未找到 | 4 | 0 |
-| [20261014_depthretain_randominit_h128_s42](da/appearance/20261014_depthretain_randominit_h128_s42/README.md) | `planned` | 未找到 | 4 | 0 |
+| [20261014_depthretain_fixedinit_h128_s42](da/appearance/20261014_depthretain_fixedinit_h128_s42/README.md) | `running` | 未找到 | 4 | 0 |
+| [20261014_depthretain_randominit_h128_s42](da/appearance/20261014_depthretain_randominit_h128_s42/README.md) | `running` | 未找到 | 4 | 0 |
 | [20260706_signal_analysis](da/appearance/20260706_signal_analysis/RECORD.md) | `unknown` | 未找到 | 0 | 180 |
 | [20260708_deep_seed42](da/appearance/20260708_deep_seed42/RECORD.md) | `unknown` | 未找到 | 0 | 7 |
 | [20260708_probe_binary](da/appearance/20260708_probe_binary/RECORD.md) | `unknown` | 未找到 | 0 | 28 |
