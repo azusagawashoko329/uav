@@ -13,7 +13,8 @@
     "scripts/run_ocbe.py",
     "../../../../scripts/run_q_depthretain.py",
     "../../../../scripts/dynamic_q_depthretain_pair.py",
-    "../../../../model/bottleneck_depthrank_learnable.py"
+    "../../../../model/bottleneck_depthrank_learnable.py",
+    "../../../../scripts/review_q_depthretain_pair.py"
   ],
   "runs": [
     {
@@ -95,12 +96,16 @@
         "results/vehicle.json",
         "results/vehicle_scores.csv",
         "results/vehicle_basis.json",
-        "results/vehicle_pretrain.json"
+        "results/vehicle_pretrain.json",
+        "results/summary.md",
+        "results/summary.json",
+        "results/summary.csv"
       ],
-      "archive_note": "Seven per-frame CSVs converted from CRLF to LF for Git; rows, labels and scores are unchanged; file size and SHA-256 reflect archived bytes."
+      "archive_note": "Seven per-frame CSVs converted from CRLF to LF for Git; rows, labels and scores are unchanged; file size and SHA-256 reflect archived bytes.",
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/review_q_depthretain_pair.py"
     }
   ],
-  "result_summary": null,
+  "result_summary": "Seed42 seven-scene macro frame AUC 82.6903 vs old fixed Q 82.7351 (-0.0448 pp). Paired fixed/random Q planes: mean 0.0028°, max 0.0052°; normal teacher energy retained 94.435%. Convergence of depth subspace did not improve macro AUC.",
   "limitations": [
     "Q-only pretraining uses 16 normal frames per scene; joint training uses each normal batch, but initialization-probe sampling uncertainty remains.",
     "Normal teacher-feature energy is not an anomaly-AUC proxy.",
