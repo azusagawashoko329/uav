@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "20261014_depthretain_randominit_h128_s42",
+  "path": "experiments/da/appearance/20261014_depthretain_randominit_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Does explicit normal-teacher depth retention make learnable Q converge from fixed and random initial planes without unacceptable AUC loss?",
+  "variant": "ocbe_depthrank2_retention_random_orthonormal_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_ocbe.py",
+    "../../../../scripts/run_q_depthretain.py",
+    "../../../../scripts/dynamic_q_depthretain_pair.py",
+    "../../../../model/bottleneck_depthrank_learnable.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Q-only pretraining uses 16 normal frames per scene; joint training uses each normal batch, but initialization-probe sampling uncertainty remains.",
+    "Normal teacher-feature energy is not an anomaly-AUC proxy.",
+    "One seed and one random starting Q; downstream weights still co-adapt."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "20261014_depthretain_fixedinit_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "variant": "ocbe_depthrank2_retention_mean_trend_h128_glll_width192",
+  "seed": 42,
+  "teacher": {
+    "name": "DINOv3 ViT-B/16",
+    "layers": 12,
+    "image_size": 256,
+    "patch_tokens": 256,
+    "embed_dim": 768,
+    "frozen": true
+  },
+  "ocbe": {
+    "architecture": "learnable_shared_orthonormal_rank2_with_normal_teacher_retention",
+    "input_taps": 12,
+    "depth_groups": 4,
+    "group_size": 3,
+    "depth_rank": 2,
+    "projected_features": 6144,
+    "fuse_hidden": 128,
+    "code_dim": 64,
+    "tap_norm": true,
+    "basis_initialization": "mean_trend",
+    "basis_parameter_count": 6,
+    "basis_sharing": "one_shared_2x3_matrix_across_four_groups",
+    "orthogonality": "differentiable_gram_schmidt_in_forward",
+    "orthogonality_penalty_weight": 0.0,
+    "basis_seed": 42
+  },
+  "student": {
+    "architecture": "global_local_glll",
+    "stages": 4,
+    "dim": 192,
+    "teacher_output_dim": 768,
+    "heads": 8,
+    "ffn_ratio": 2.0,
+    "heads_per_teacher_group": 3,
+    "reverse_alignment": true
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 15,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "image_size": 256,
+    "topk": 5,
+    "loss": "group_balanced_topk, alpha=0.5"
+  },
+  "evaluation": {
+    "score": "mean over 12 teacher-head top-5 patch cosine distances",
+    "metric": "ROC AUC x100 per scene; macro mean over seven scenes",
+    "labels": "paired test video .npy"
+  },
+  "scheduler": {
+    "gpus": [
+      0,
+      1
+    ],
+    "poll_seconds": 2,
+    "max_memory_mb": 2000,
+    "dynamic_reuse": true,
+    "pair_same_gpu": true,
+    "jobs_total": 14
+  },
+  "data_root_env": "UAV_DA_ROOT",
+  "predicted_trainable_parameters": {
+    "ocbe": 813254,
+    "student": 2947968,
+    "total": 3761222
+  },
+  "paired_experiment": "experiments/da/appearance/20261014_depthretain_randominit_h128_s42",
+  "fixed_q_comparison": "experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42",
+  "old_random_q_comparison": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "q_information_objective": {
+    "probe_path": "experiments/da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/depth_energy_probe.json",
+    "probe_sha256": "c0a652ac36b70b05d716e7138c2bfedb600315de7ca6457b0d8b6543d7a5257a",
+    "normal_frames_per_scene": 16,
+    "depth_gram_aggregation": "mean_of_four_three_layer_groups",
+    "formula": "1 - tr(Q_eff C Q_eff^T)/tr(C)",
+    "q_only_pretrain_steps": 200,
+    "q_only_optimizer": "Adam",
+    "q_only_lr": 0.01,
+    "joint_retention_weight": 1.0,
+    "joint_depth_gram": "per_batch_normal_teacher_channel_layer_norm_mean_of_four_three_layer_groups",
+    "joint_q_optimizer": "same AdamW/OneCycleLR as OCBE and student",
+    "success_subspace_angle_deg_max": 5.0
+  }
+}
