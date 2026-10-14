@@ -1,0 +1,18 @@
+{"scene": "vehicle", "phase": "q_pretrain_done", "basis_init": "random_orthonormal", "initial_angle_to_target_deg": 77.7460082114594, "final_angle_to_target_deg": 0.002694708726103871}
+{"scene": "vehicle", "architecture": "ocbe_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "random_orthonormal", "retain_weight": 1.0, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 3761222, "cuda": "NVIDIA RTX A6000"}
+epoch=1 loss=0.960949 distill=0.904445 retention=0.056503 elapsed_s=29.6
+epoch=2 loss=0.566417 distill=0.509915 retention=0.056502 elapsed_s=58.2
+epoch=3 loss=0.427799 distill=0.371294 retention=0.056504 elapsed_s=86.9
+epoch=4 loss=0.350185 distill=0.293682 retention=0.056503 elapsed_s=115.6
+epoch=5 loss=0.299457 distill=0.242955 retention=0.056502 elapsed_s=144.3
+epoch=6 loss=0.270189 distill=0.213690 retention=0.056499 elapsed_s=173.0
+epoch=7 loss=0.250160 distill=0.193658 retention=0.056503 elapsed_s=201.8
+epoch=8 loss=0.238007 distill=0.181505 retention=0.056502 elapsed_s=230.7
+epoch=9 loss=0.229202 distill=0.172700 retention=0.056501 elapsed_s=259.3
+epoch=10 loss=0.223012 distill=0.166512 retention=0.056501 elapsed_s=288.1
+epoch=11 loss=0.218654 distill=0.162153 retention=0.056500 elapsed_s=316.9
+epoch=12 loss=0.215678 distill=0.159178 retention=0.056500 elapsed_s=345.6
+epoch=13 loss=0.213844 distill=0.157342 retention=0.056502 elapsed_s=374.4
+epoch=14 loss=0.212913 distill=0.156411 retention=0.056503 elapsed_s=403.3
+epoch=15 loss=0.212553 distill=0.156052 retention=0.056502 elapsed_s=432.0
+{"scene": "vehicle", "architecture": "ocbe_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "random_orthonormal", "auc_percent": 56.028677918250594, "frames": 2633, "positive_frames": 973, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 3761222, "basis_principal_angle_deg": 8.125562646833739, "basis_projector_distance_fro": 0.1998890746005678, "basis_orthogonality_error_fro": 8.095967185804348e-08, "basis_angle_to_retention_optimum_deg": 0.0064943286758773885, "retained_normal_energy_fraction": 0.9434981787770537, "retention_probe_sha256": "c0a652ac36b70b05d716e7138c2bfedb600315de7ca6457b0d8b6543d7a5257a", "retention_weight": 1.0, "elapsed_s": 445.17032197899243, "max_steps": 0}

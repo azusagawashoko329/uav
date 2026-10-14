@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Does explicit normal-teacher depth retention make learnable Q converge from fixed and random initial planes without unacceptable AUC loss?",
   "variant": "ocbe_depthrank2_retention_mean_trend_h128_glll_width192",
-  "status": "running",
+  "status": "completed",
   "source_commit": "25fa78ea503f9bfc4ae80f92c5dff0663b73165e",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -18,12 +18,12 @@
   "runs": [
     {
       "run_id": "20261014T064806Z_depthretain_fixed_init_s42",
-      "status": "running",
+      "status": "completed",
       "command": "python scripts/dynamic_q_depthretain_pair.py --repo-root /data1/data8tb/liangyuxuan/code/uav --fixed-experiment experiments/da/appearance/20261014_depthretain_fixedinit_h128_s42 --random-experiment experiments/da/appearance/20261014_depthretain_randominit_h128_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
       "source_commit": "25fa78ea503f9bfc4ae80f92c5dff0663b73165e",
       "seed": 42,
       "started_at": "2026-10-14T14:48:06+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-14T16:00:07+08:00",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
       "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
       "split_fingerprints": {
@@ -51,16 +51,21 @@
       "scheduler_stdout": "logs/scheduler_stdout.log",
       "scene_logs": [
         "logs/20261014T064806Z_bike_gpu0.log",
-        "logs/20261014T064806Z_crossroads_gpu1.log"
+        "logs/20261014T064806Z_crossroads_gpu1.log",
+        "logs/20261014T070650Z_farmland_gpu0.log",
+        "logs/20261014T072658Z_highway_gpu0.log",
+        "logs/20261014T073146Z_railway_gpu1.log",
+        "logs/20261014T073553Z_solar_gpu1.log",
+        "logs/20261014T074449Z_vehicle_gpu1.log"
       ],
       "scene_status": {
-        "bike": "running",
-        "crossroads": "running",
-        "farmland": "planned",
-        "highway": "planned",
-        "railway": "planned",
-        "solar": "planned",
-        "vehicle": "planned"
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
       },
       "outputs": [
         "results/bike.json",
@@ -91,7 +96,8 @@
         "results/vehicle_scores.csv",
         "results/vehicle_basis.json",
         "results/vehicle_pretrain.json"
-      ]
+      ],
+      "archive_note": "Seven per-frame CSVs converted from CRLF to LF for Git; rows, labels and scores are unchanged; file size and SHA-256 reflect archived bytes."
     }
   ],
   "result_summary": null,
