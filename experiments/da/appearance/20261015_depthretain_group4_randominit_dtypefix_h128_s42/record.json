@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Do four independent group-specific Q bases improve seven-scene AUC over one shared Q while retaining distinct teacher-depth directions?",
   "variant": "ocbe_group4_depthrank2_retention_random_orthonormal_h128_glll_width192",
-  "status": "planned",
+  "status": "running",
   "source_commit": "8fc9985d51c326f1ec8f7b105b68db362f2be331",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -16,7 +16,88 @@
     "../../../../scripts/dynamic_q_depthretain_pair.py",
     "../../../../model/bottleneck_depthrank_group_learnable.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261015T063554Z_depthretain_group4_random_init_dtypefix_s42",
+      "status": "running",
+      "command": "python scripts/dynamic_q_depthretain_pair.py --repo-root /data1/data8tb/liangyuxuan/code/uav --fixed-experiment experiments/da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42 --random-experiment experiments/da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
+      "source_commit": "8fc9985d51c326f1ec8f7b105b68db362f2be331",
+      "seed": 42,
+      "started_at": "2026-10-15T14:35:54+08:00",
+      "ended_at": null,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "split_fingerprints": {
+        "bike": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+        "crossroads": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+        "farmland": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+        "highway": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+        "railway": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+        "solar": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+        "vehicle": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "cuda_logical_gpus": [
+          0,
+          1
+        ],
+        "cuda_device_names": {
+          "0": "NVIDIA RTX 5880 Ada Generation",
+          "1": "NVIDIA RTX A6000"
+        },
+        "nvidia_smi_physical_device_names": {
+          "0": "NVIDIA RTX A6000",
+          "1": "NVIDIA RTX 5880 Ada Generation"
+        },
+        "device_order_note": "PyTorch CUDA logical device order differs from nvidia-smi physical index; scheduler pairs on PyTorch logical index."
+      },
+      "script": "../../../../scripts/dynamic_q_depthretain_pair.py",
+      "scheduler_log": "logs/scheduler_20261015T063554Z.jsonl",
+      "scheduler_stdout": null,
+      "scene_logs": [],
+      "scene_status": {
+        "bike": "planned",
+        "crossroads": "planned",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "expected_outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "results/bike_basis.json",
+        "results/bike_pretrain.json",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "results/crossroads_basis.json",
+        "results/crossroads_pretrain.json",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "results/farmland_basis.json",
+        "results/farmland_pretrain.json",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "results/highway_basis.json",
+        "results/highway_pretrain.json",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "results/railway_basis.json",
+        "results/railway_pretrain.json",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "results/solar_basis.json",
+        "results/solar_pretrain.json",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "results/vehicle_basis.json",
+        "results/vehicle_pretrain.json"
+      ],
+      "outputs": []
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "Only seed42 and one random four-Q draw; initialization variance is not estimated.",
