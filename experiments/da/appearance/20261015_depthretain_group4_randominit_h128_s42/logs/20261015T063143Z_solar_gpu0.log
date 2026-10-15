@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261015_depthretain_group4_randominit_h128_s42/scripts/run_ocbe.py", line 11, in <module>
+    main()
+  File "/data1/data8tb/liangyuxuan/code/uav/scripts/run_q_depthretain_group.py", line 143, in main
+    pretrain_history = [basis_snapshot(ocbe, 0, probe_grams, probe_target)]
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/scripts/run_q_depthretain_group.py", line 95, in basis_snapshot
+    "combined_retained_normal_energy_fraction": float(1 - retention_loss(ocbe, grams.to(ocbe.raw_depth_basis.device))),
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/scripts/run_q_depthretain_group.py", line 64, in retention_loss
+    retained = torch.einsum("gai,gij,gaj->", q, grams, q)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/functional.py", line 377, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: expected scalar type Double but found Float

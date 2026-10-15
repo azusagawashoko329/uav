@@ -7,7 +7,7 @@
   "legacy": false,
   "question": "Do four independent group-specific Q bases improve seven-scene AUC over one shared Q while retaining distinct teacher-depth directions?",
   "variant": "ocbe_group4_depthrank2_retention_mean_trend_h128_glll_width192",
-  "status": "planned",
+  "status": "failed",
   "source_commit": "8d97c7b2a1691325597e4614f27c1ab0c9f12674",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -16,12 +16,98 @@
     "../../../../scripts/dynamic_q_depthretain_pair.py",
     "../../../../model/bottleneck_depthrank_group_learnable.py"
   ],
-  "runs": [],
-  "result_summary": null,
+  "runs": [
+    {
+      "run_id": "20261015T063039Z_depthretain_group4_fixed_init_s42",
+      "status": "failed",
+      "command": "python scripts/dynamic_q_depthretain_pair.py --repo-root /data1/data8tb/liangyuxuan/code/uav --fixed-experiment experiments/da/appearance/20261015_depthretain_group4_fixedinit_h128_s42 --random-experiment experiments/da/appearance/20261015_depthretain_group4_randominit_h128_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
+      "source_commit": "8d97c7b2a1691325597e4614f27c1ab0c9f12674",
+      "seed": 42,
+      "started_at": "2026-10-15T14:30:39+08:00",
+      "ended_at": "2026-10-15T14:32:01+08:00",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "split_fingerprints": {
+        "bike": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+        "crossroads": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+        "farmland": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+        "highway": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+        "railway": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+        "solar": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+        "vehicle": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "cuda_logical_gpus": [
+          0,
+          1
+        ],
+        "cuda_device_names": {
+          "0": "NVIDIA RTX 5880 Ada Generation",
+          "1": "NVIDIA RTX A6000"
+        }
+      },
+      "script": "../../../../scripts/dynamic_q_depthretain_pair.py",
+      "scheduler_log": "logs/scheduler_20261015T063039Z.jsonl",
+      "scheduler_stdout": "logs/scheduler_stdout.log",
+      "scene_logs": [
+        "logs/20261015T063039Z_bike_gpu0.log",
+        "logs/20261015T063039Z_crossroads_gpu1.log",
+        "logs/20261015T063105Z_farmland_gpu1.log",
+        "logs/20261015T063107Z_highway_gpu0.log",
+        "logs/20261015T063127Z_railway_gpu1.log",
+        "logs/20261015T063131Z_solar_gpu0.log",
+        "logs/20261015T063145Z_vehicle_gpu1.log"
+      ],
+      "scene_status": {
+        "bike": "failed",
+        "crossroads": "failed",
+        "farmland": "failed",
+        "highway": "failed",
+        "railway": "failed",
+        "solar": "failed",
+        "vehicle": "failed"
+      },
+      "expected_outputs": [
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "results/bike_basis.json",
+        "results/bike_pretrain.json",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "results/crossroads_basis.json",
+        "results/crossroads_pretrain.json",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "results/farmland_basis.json",
+        "results/farmland_pretrain.json",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "results/highway_basis.json",
+        "results/highway_pretrain.json",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "results/railway_basis.json",
+        "results/railway_pretrain.json",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "results/solar_basis.json",
+        "results/solar_pretrain.json",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "results/vehicle_basis.json",
+        "results/vehicle_pretrain.json"
+      ],
+      "outputs": [],
+      "failure_reason": "All seven jobs exited before Q pretraining: basis_snapshot called retention_loss with double-precision CPU Gram matrix moved to CUDA while Q remained float32; torch.einsum rejected mixed dtypes."
+    }
+  ],
+  "result_summary": "No AUC result: all seven scene jobs failed before first training epoch due to a mixed dtype in Q trajectory snapshot; retained logs are evidence.",
   "limitations": [
     "Only seed42 and one random four-Q draw; initialization variance is not estimated.",
     "Q-only pretraining uses 16 normal frames per scene; joint training uses every normal batch.",
     "Normal teacher-feature energy is not an anomaly-AUC proxy.",
-    "Rows of Q are rotationally non-identifiable; compare row spaces and AUC separately."
+    "Rows of Q are rotationally non-identifiable; compare row spaces and AUC separately.",
+    "This run produced no trained model or AUC; it is not a negative method result."
   ]
 }
