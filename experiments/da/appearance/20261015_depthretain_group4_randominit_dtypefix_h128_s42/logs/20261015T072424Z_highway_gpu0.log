@@ -1,0 +1,18 @@
+{"scene": "highway", "phase": "q_pretrain_done", "basis_init": "random_orthonormal", "initial_group_angles_deg": [85.07625581442437, 72.14044442560271, 74.75791103374486, 67.8701378849983], "final_group_angles_deg": [0.00011778673105716999, 0.009486387684455169, 3.6162126785168156e-05, 2.4283820049125425e-05]}
+{"scene": "highway", "architecture": "ocbe_group4_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "random_orthonormal", "retain_weight": 1.0, "train_frames": 9045, "test_videos": 3, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 3761240, "cuda": "NVIDIA RTX 5880 Ada Generation"}
+epoch=1 loss=0.881550 distill=0.831114 retention=0.050436 elapsed_s=37.4
+epoch=2 loss=0.487761 distill=0.437325 retention=0.050436 elapsed_s=73.9
+epoch=3 loss=0.373804 distill=0.323367 retention=0.050437 elapsed_s=110.7
+epoch=4 loss=0.307557 distill=0.257121 retention=0.050436 elapsed_s=147.7
+epoch=5 loss=0.270331 distill=0.219895 retention=0.050436 elapsed_s=184.7
+epoch=6 loss=0.247888 distill=0.197452 retention=0.050436 elapsed_s=221.6
+epoch=7 loss=0.233513 distill=0.183077 retention=0.050436 elapsed_s=258.8
+epoch=8 loss=0.223859 distill=0.173424 retention=0.050436 elapsed_s=295.9
+epoch=9 loss=0.217056 distill=0.166620 retention=0.050436 elapsed_s=332.9
+epoch=10 loss=0.212200 distill=0.161763 retention=0.050437 elapsed_s=369.7
+epoch=11 loss=0.208732 distill=0.158296 retention=0.050436 elapsed_s=406.6
+epoch=12 loss=0.206363 distill=0.155927 retention=0.050436 elapsed_s=443.5
+epoch=13 loss=0.204873 distill=0.154437 retention=0.050436 elapsed_s=480.4
+epoch=14 loss=0.204069 distill=0.153633 retention=0.050436 elapsed_s=517.6
+epoch=15 loss=0.203731 distill=0.153295 retention=0.050436 elapsed_s=554.8
+{"scene": "highway", "architecture": "ocbe_group4_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "random_orthonormal", "auc_percent": 94.99026011428018, "frames": 2820, "positive_frames": 497, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 3761240, "group_angle_to_retention_optimum_deg": [0.0024324701924255156, 0.06418843230428632, 0.041172940708888675, 0.049605028015047535], "group_retained_normal_energy_fraction": [0.9707465629575631, 0.9591876631096552, 0.9448318771188366, 0.9234921451139044], "combined_retained_normal_energy_fraction": 0.9495643608688822, "retention_probe_sha256": "c0a652ac36b70b05d716e7138c2bfedb600315de7ca6457b0d8b6543d7a5257a", "retention_weight": 1.0, "elapsed_s": 565.3418129020138, "max_steps": 0}

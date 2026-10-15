@@ -1,0 +1,18 @@
+{"scene": "solar", "phase": "q_pretrain_done", "basis_init": "mean_trend", "initial_group_angles_deg": [3.6140671879958854, 5.511116349635452, 4.529370871009859, 19.543739823044856], "final_group_angles_deg": [2.9575586669421963e-06, 1.1830234667768806e-05, 4.182619578303747e-06, 4.829673078902934e-06]}
+{"scene": "solar", "architecture": "ocbe_group4_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "mean_trend", "retain_weight": 1.0, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 3761240, "cuda": "NVIDIA RTX A6000"}
+epoch=1 loss=1.026013 distill=0.972275 retention=0.053738 elapsed_s=16.8
+epoch=2 loss=0.733231 distill=0.679494 retention=0.053737 elapsed_s=32.8
+epoch=3 loss=0.490867 distill=0.437126 retention=0.053741 elapsed_s=48.8
+epoch=4 loss=0.425787 distill=0.372049 retention=0.053738 elapsed_s=64.8
+epoch=5 loss=0.381981 distill=0.328247 retention=0.053734 elapsed_s=80.7
+epoch=6 loss=0.350814 distill=0.297073 retention=0.053741 elapsed_s=96.7
+epoch=7 loss=0.329004 distill=0.275274 retention=0.053730 elapsed_s=112.7
+epoch=8 loss=0.312962 distill=0.259222 retention=0.053740 elapsed_s=128.6
+epoch=9 loss=0.300959 distill=0.247220 retention=0.053740 elapsed_s=144.5
+epoch=10 loss=0.291883 distill=0.238150 retention=0.053733 elapsed_s=160.5
+epoch=11 loss=0.285410 distill=0.231672 retention=0.053738 elapsed_s=176.4
+epoch=12 loss=0.281163 distill=0.227427 retention=0.053736 elapsed_s=192.5
+epoch=13 loss=0.278596 distill=0.224860 retention=0.053736 elapsed_s=208.5
+epoch=14 loss=0.277204 distill=0.223470 retention=0.053734 elapsed_s=224.5
+epoch=15 loss=0.276721 distill=0.222982 retention=0.053739 elapsed_s=240.5
+{"scene": "solar", "architecture": "ocbe_group4_depthrank2_retention_h128_glll_width192", "seed": 42, "basis_init": "mean_trend", "auc_percent": 82.5820021688538, "frames": 2450, "positive_frames": 792, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 3761240, "group_angle_to_retention_optimum_deg": [0.005946858646162838, 0.04509112151052574, 0.035420260050360815, 0.058362467751274565], "group_retained_normal_energy_fraction": [0.969698088092651, 0.9589242818387576, 0.9352835114658028, 0.9211409759712141], "combined_retained_normal_energy_fraction": 0.9462614945711291, "retention_probe_sha256": "c0a652ac36b70b05d716e7138c2bfedb600315de7ca6457b0d8b6543d7a5257a", "retention_weight": 1.0, "elapsed_s": 253.58836344300653, "max_steps": 0}
