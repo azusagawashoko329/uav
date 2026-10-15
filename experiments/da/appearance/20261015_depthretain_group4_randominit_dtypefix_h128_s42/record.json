@@ -14,7 +14,8 @@
     "../../../../scripts/run_q_depthretain_group.py",
     "../../../../scripts/run_q_depthretain.py",
     "../../../../scripts/dynamic_q_depthretain_pair.py",
-    "../../../../model/bottleneck_depthrank_group_learnable.py"
+    "../../../../model/bottleneck_depthrank_group_learnable.py",
+    "../../../../scripts/review_q_depthretain_group_pair.py"
   ],
   "runs": [
     {
@@ -131,9 +132,13 @@
         "results/vehicle.json",
         "results/vehicle_scores.csv",
         "results/vehicle_basis.json",
-        "results/vehicle_pretrain.json"
+        "results/vehicle_pretrain.json",
+        "results/summary.json",
+        "results/summary.csv",
+        "results/summary.md"
       ],
-      "archive_note": "Per-frame CSV line endings normalized from CRLF to LF for Git; data values unchanged."
+      "archive_note": "Per-frame CSV line endings normalized from CRLF to LF for Git; data values unchanged.",
+      "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/review_q_depthretain_group_pair.py"
     }
   ],
   "result_summary": "14/14 scene trainings completed without scheduler errors; AUC and Q review pending.",
