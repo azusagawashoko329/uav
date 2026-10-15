@@ -141,12 +141,15 @@
       "analysis_command": "/home/lyx/miniconda3/envs/DMAD/bin/python scripts/review_q_depthretain_group_pair.py"
     }
   ],
-  "result_summary": "14/14 scene trainings completed without scheduler errors; AUC and Q review pending.",
+  "result_summary": "Seed42 seven-scene macro AUC 82.7171 vs same-initialization shared Q 82.6903 (+0.0268 pp); 2/7 scenes improved. Four-group fixed/random final plane angle mean 0.0079°, max 0.0261°; normal-teacher energy gain vs shared Q about 0.282 pp. No consistent AUC improvement.",
   "limitations": [
     "Only seed42 and one random four-Q draw; initialization variance is not estimated.",
     "Q-only pretraining uses 16 normal frames per scene; joint training uses every normal batch.",
     "Normal teacher-feature energy is not an anomaly-AUC proxy.",
-    "Rows of Q are rotationally non-identifiable; compare row spaces and AUC separately."
+    "Rows of Q are rotationally non-identifiable; compare row spaces and AUC separately.",
+    "Shared-Q controls used 200 Q-only pretraining steps; this four-Q run used 300 steps, though both reached their Gram optima.",
+    "The 0.027-0.111 pp macro AUC gain is small and mixed across scenes; no repeated seeds or uncertainty interval support a stable improvement."
   ],
-  "retry_of": "experiments/da/appearance/20261015_depthretain_group4_fixedinit_h128_s42"
+  "retry_of": "experiments/da/appearance/20261015_depthretain_group4_fixedinit_h128_s42",
+  "review_status": "reviewed"
 }
