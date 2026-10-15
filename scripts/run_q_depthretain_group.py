@@ -92,7 +92,10 @@ def basis_snapshot(ocbe, epoch, grams, target, train_loss=None):
         "group_angle_to_retention_optimum_deg": group_angles,
         "group_angle_to_fixed_mean_trend_deg": fixed_angles,
         "group_retained_normal_energy_fraction": group_energy,
-        "combined_retained_normal_energy_fraction": float(1 - retention_loss(ocbe, grams.to(ocbe.raw_depth_basis.device))),
+        "combined_retained_normal_energy_fraction": float(
+            sum(torch.trace(q[group] @ grams[group] @ q[group].T) for group in range(4))
+            / sum(torch.trace(grams[group]) for group in range(4))
+        ),
         "group_effective_orthogonality_error_fro": ortho_error,
     }
 

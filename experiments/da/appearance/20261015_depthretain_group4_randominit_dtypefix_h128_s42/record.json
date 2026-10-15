@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "20261015_depthretain_group4_randominit_dtypefix_h128_s42",
+  "path": "experiments/da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "legacy": false,
+  "question": "Do four independent group-specific Q bases improve seven-scene AUC over one shared Q while retaining distinct teacher-depth directions?",
+  "variant": "ocbe_group4_depthrank2_retention_random_orthonormal_h128_glll_width192",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_ocbe.py",
+    "../../../../scripts/run_q_depthretain_group.py",
+    "../../../../scripts/run_q_depthretain.py",
+    "../../../../scripts/dynamic_q_depthretain_pair.py",
+    "../../../../model/bottleneck_depthrank_group_learnable.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Only seed42 and one random four-Q draw; initialization variance is not estimated.",
+    "Q-only pretraining uses 16 normal frames per scene; joint training uses every normal batch.",
+    "Normal teacher-feature energy is not an anomaly-AUC proxy.",
+    "Rows of Q are rotationally non-identifiable; compare row spaces and AUC separately."
+  ],
+  "retry_of": "experiments/da/appearance/20261015_depthretain_group4_randominit_h128_s42"
+}
