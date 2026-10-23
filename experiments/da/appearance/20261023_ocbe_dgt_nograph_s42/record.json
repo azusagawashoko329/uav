@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "0ffec21d879cb72d1086265822ac5d5fc6133f60",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261023T202921Z_nograph_scheduler_s42",
-      "status": "running",
+      "status": "completed",
       "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261023_ocbe_dgt_nograph_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261023_ocbe_dgt_nograph_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
       "source_commit": "0ffec21d879cb72d1086265822ac5d5fc6133f60",
       "seed": 42,
       "started_at": "2026-10-23T20:29:43+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-23T13:44:30+08:00",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
       "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
       "split_fingerprints": {
@@ -42,18 +42,48 @@
       "script": "scripts/dynamic_scheduler.py",
       "scheduler_log": null,
       "scheduler_stdout": null,
-      "scene_logs": [],
+      "scene_logs": [
+        "logs/20261023T123032Z_bike_gpu0.log",
+        "logs/20261023T123032Z_crossroads_gpu1.log",
+        "logs/20261023T124430Z_farmland_gpu0.log",
+        "logs/20261023T125558Z_highway_gpu1.log",
+        "logs/20261023T125606Z_railway_gpu0.log",
+        "logs/20261023T125852Z_solar_gpu0.log",
+        "logs/20261023T130254Z_vehicle_gpu0.log"
+      ],
       "scene_status": {
-        "bike": "planned",
-        "crossroads": "planned",
-        "farmland": "planned",
-        "highway": "planned",
-        "railway": "planned",
-        "solar": "planned",
-        "vehicle": "planned"
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
       },
-      "outputs": [],
-      "notes": "Running in sequential three-variant suite; each scheduler dynamically reuses GPUs 0 and 1."
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv",
+        "results/crossroads.json",
+        "results/crossroads_basis.json",
+        "results/crossroads_scores.csv",
+        "results/farmland.json",
+        "results/farmland_basis.json",
+        "results/farmland_scores.csv",
+        "results/highway.json",
+        "results/highway_basis.json",
+        "results/highway_scores.csv",
+        "results/railway.json",
+        "results/railway_basis.json",
+        "results/railway_scores.csv",
+        "results/solar.json",
+        "results/solar_basis.json",
+        "results/solar_scores.csv",
+        "results/vehicle.json",
+        "results/vehicle_basis.json",
+        "results/vehicle_scores.csv"
+      ],
+      "notes": "Completed seven scenes before suite interruption; no checkpoint was written by the old runner."
     }
   ],
   "result_summary": null,

@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "cancelled",
   "source_commit": "0ffec21d879cb72d1086265822ac5d5fc6133f60",
   "scripts": [
     "scripts/run_ocbe.py",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261023T202921Z_crossattn_pool_scheduler_s42",
-      "status": "running",
+      "status": "cancelled",
       "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
       "source_commit": "0ffec21d879cb72d1086265822ac5d5fc6133f60",
       "seed": 42,
       "started_at": "2026-10-23T20:29:43+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-23T13:44:30+08:00",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
       "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
       "split_fingerprints": {
@@ -42,18 +42,26 @@
       "script": "scripts/dynamic_scheduler.py",
       "scheduler_log": null,
       "scheduler_stdout": null,
-      "scene_logs": [],
+      "scene_logs": [
+        "logs/20261023T131010Z_bike_gpu0.log",
+        "logs/20261023T131010Z_crossroads_gpu1.log",
+        "logs/20261023T131918Z_farmland_gpu0.log"
+      ],
       "scene_status": {
-        "bike": "planned",
-        "crossroads": "planned",
-        "farmland": "planned",
+        "bike": "completed",
+        "crossroads": "cancelled",
+        "farmland": "cancelled",
         "highway": "planned",
         "railway": "planned",
         "solar": "planned",
         "vehicle": "planned"
       },
-      "outputs": [],
-      "notes": "Running in sequential three-variant suite; each scheduler dynamically reuses GPUs 0 and 1."
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv"
+      ],
+      "notes": "Suite interrupted after bike completed and crossroads/farmland were in progress; old runner did not write checkpoints."
     }
   ],
   "result_summary": null,
