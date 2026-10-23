@@ -184,6 +184,22 @@ def main():
     out = a.output / "results"
     auc, n, pos = evaluate(teacher, ocbe, student, videos, tf, device,
                            out / f"{a.scene}_scores.csv", 32)
+    checkpoint_path = a.output / "ckpt" / f"{a.scene}_final.pth"
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    checkpoint = {
+        "format_version": 1,
+        "scene": a.scene,
+        "variant": a.variant,
+        "seed": a.seed,
+        "split_fingerprint": fingerprint,
+        "trainable_parameters": sum(p.numel() for p in params),
+        "ocbe_state_dict": {k: v.detach().cpu() for k, v in ocbe.state_dict().items()},
+        "student_state_dict": {k: v.detach().cpu() for k, v in student.state_dict().items()},
+        "basis_snapshot": basis_history[-1],
+        "fusion_diagnostics": ocbe.diagnostics(),
+    }
+    torch.save(checkpoint, checkpoint_path)
+    checkpoint_sha256 = hashlib.sha256(checkpoint_path.read_bytes()).hexdigest()
     (out / f"{a.scene}_basis.json").write_text(json.dumps({
         "scene": a.scene, "seed": a.seed,
         "basis_sharing": "one_2x3_matrix_across_four_groups",
@@ -202,6 +218,8 @@ def main():
               "basis_projector_distance_fro": basis_history[-1]["projector_distance_fro"],
               "basis_orthogonality_error_fro": basis_history[-1]["effective_orthogonality_error_fro"],
               "fusion_diagnostics": ocbe.diagnostics(),
+              "checkpoint": str(checkpoint_path.relative_to(a.output)),
+              "checkpoint_sha256": checkpoint_sha256,
               "elapsed_s": time.monotonic() - t0, "max_steps": a.max_steps}
     (out / f"{a.scene}.json").write_text(json.dumps(metric, indent=2) + "\n")
     print(json.dumps(metric), flush=True)
