@@ -1,0 +1,111 @@
+{
+  "experiment": "20261022_ocbe_dgt64_s42",
+  "baseline": "20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "scenes": [
+    {
+      "scene": "bike",
+      "dgt_auc_percent": 97.57170337337571,
+      "dense_auc_percent": 97.63166435305764,
+      "delta_auc_pp": -0.05996097968193226,
+      "dgt_final_loss": 0.125974,
+      "dense_final_loss": 0.118681,
+      "elapsed_s": 531.9813524049241,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 60.95480390081528,
+      "basis_projector_distance_fro": 1.236357820821219
+    },
+    {
+      "scene": "crossroads",
+      "dgt_auc_percent": 62.11876073067237,
+      "dense_auc_percent": 61.78181810613608,
+      "delta_auc_pp": 0.33694262453629165,
+      "dgt_final_loss": 0.156651,
+      "dense_final_loss": 0.154356,
+      "elapsed_s": 1257.2687287540175,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 39.041111226562855,
+      "basis_projector_distance_fro": 0.8907817591984892
+    },
+    {
+      "scene": "farmland",
+      "dgt_auc_percent": 99.24306458604248,
+      "dense_auc_percent": 99.26094495015171,
+      "delta_auc_pp": -0.01788036410923155,
+      "dgt_final_loss": 0.142975,
+      "dense_final_loss": 0.13912,
+      "elapsed_s": 572.4540652229916,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 50.50162970096039,
+      "basis_projector_distance_fro": 1.0912675508169283
+    },
+    {
+      "scene": "highway",
+      "dgt_auc_percent": 95.62740194936299,
+      "dense_auc_percent": 94.446056450628,
+      "delta_auc_pp": 1.1813454987349843,
+      "dgt_final_loss": 0.15823,
+      "dense_final_loss": 0.153741,
+      "elapsed_s": 548.1772451200522,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 49.51035209537051,
+      "basis_projector_distance_fro": 1.075542333193902
+    },
+    {
+      "scene": "railway",
+      "dgt_auc_percent": 83.10088163029342,
+      "dense_auc_percent": 85.68073421014597,
+      "delta_auc_pp": -2.579852579852556,
+      "dgt_final_loss": 0.24805,
+      "dense_final_loss": 0.23589,
+      "elapsed_s": 108.9649963619886,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 69.24891662681421,
+      "basis_projector_distance_fro": 1.3224713801621264
+    },
+    {
+      "scene": "solar",
+      "dgt_auc_percent": 82.72859779946631,
+      "dense_auc_percent": 83.16632854479657,
+      "delta_auc_pp": -0.43773074533025635,
+      "dgt_final_loss": 0.231263,
+      "dense_final_loss": 0.222841,
+      "elapsed_s": 247.0315511089284,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 66.27921939577631,
+      "basis_projector_distance_fro": 1.2947361396957457
+    },
+    {
+      "scene": "vehicle",
+      "dgt_auc_percent": 57.153815673794874,
+      "dense_auc_percent": 58.751965725182345,
+      "delta_auc_pp": -1.5981500513874707,
+      "dgt_final_loss": 0.161571,
+      "dense_final_loss": 0.157011,
+      "elapsed_s": 432.669687481015,
+      "trainable_parameters": 3179718,
+      "basis_principal_angle_deg": 63.41229875329617,
+      "basis_projector_distance_fro": 1.2646609061034921
+    }
+  ],
+  "macro": {
+    "dgt_auc_percent": 82.50631796328688,
+    "dense_auc_percent": 82.95993033429976,
+    "delta_auc_pp": -0.45361237101288054
+  },
+  "parameters": {
+    "dgt_total": 3179718,
+    "dense_total": 3761222,
+    "reduction": 581504,
+    "reduction_percent": 15.460507250037354,
+    "dgt_ocbe": 231750,
+    "dense_ocbe": 813254,
+    "ocbe_reduction": 581504,
+    "ocbe_reduction_percent": 71.50336795146411
+  },
+  "integrity": {
+    "scene_count": 7,
+    "all_scene_logs_have_15_epochs": true,
+    "scheduler_failures": [],
+    "split_fingerprints_paired": true
+  }
+}
