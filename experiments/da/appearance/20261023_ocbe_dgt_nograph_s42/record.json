@@ -12,7 +12,50 @@
     "../../../../scripts/run_dgt_variant.py",
     "../../../../model/bottleneck_dgt_variants.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261023T202921Z_nograph_scheduler_s42",
+      "status": "planned",
+      "command": "/home/lyx/miniconda3/envs/DMAD/bin/python experiments/da/appearance/20261023_ocbe_dgt_nograph_s42/scripts/dynamic_scheduler.py --repo-root /data1/data8tb/liangyuxuan/code/uav --experiment /data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261023_ocbe_dgt_nograph_s42 --gpus 0 1 --seed 42 --epochs 15 --batch 64 --workers 8 --poll-seconds 2",
+      "source_commit": "0ffec21d879cb72d1086265822ac5d5fc6133f60",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "split_fingerprints": {
+        "bike": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+        "crossroads": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+        "farmland": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+        "highway": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+        "railway": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+        "solar": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+        "vehicle": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+      },
+      "environment": {
+        "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "gpus": [
+          0,
+          1
+        ]
+      },
+      "script": "scripts/dynamic_scheduler.py",
+      "scheduler_log": null,
+      "scheduler_stdout": null,
+      "scene_logs": [],
+      "scene_status": {
+        "bike": "planned",
+        "crossroads": "planned",
+        "farmland": "planned",
+        "highway": "planned",
+        "railway": "planned",
+        "solar": "planned",
+        "vehicle": "planned"
+      },
+      "outputs": [],
+      "notes": "Three-variant OCBE fusion ablation suite; this variant will run sequentially after the preceding variant."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed",
