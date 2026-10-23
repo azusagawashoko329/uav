@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "20261023_ocbe_dgt_bilinear_s42",
+  "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_ocbe.py",
+    "scripts/dynamic_scheduler.py",
+    "../../../../scripts/run_dgt_variant.py",
+    "../../../../model/bottleneck_dgt_variants.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "single seed",
+    "AUC has no direct training proxy",
+    "no auxiliary fusion loss; structure compared under existing top-k objective",
+    "hardware latency not measured"
+  ]
+}
