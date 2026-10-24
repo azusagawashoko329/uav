@@ -1,0 +1,25 @@
+{
+  "scene": "crossroads",
+  "architecture": "ocbe_dgt_residual_depth_score_aligned_randomorth_glll_width192",
+  "variant": "residual_depth",
+  "loss_mode": "score_aligned",
+  "seed": 42,
+  "auc_percent": 63.738467067803086,
+  "frames": 6244,
+  "positive_frames": 1687,
+  "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+  "trainable_parameters": 3184806,
+  "basis_principal_angle_deg": 43.22976861319698,
+  "basis_projector_distance_fro": 0.9686312618498092,
+  "basis_orthogonality_error_fro": 7.693264989227897e-08,
+  "fusion_diagnostics": {
+    "gate_mean": 1.1601275205612183,
+    "gate_std": 0.3494543135166168,
+    "hidden_rms": 2.4778409004211426,
+    "depth_residual_rms": 0.13011440634727478
+  },
+  "checkpoint": "ckpt/crossroads_final.pth",
+  "checkpoint_sha256": "745a709cb7acd46dd413d5b6d82f864c781b0924da3dbff1e9371d8533b53a38",
+  "elapsed_s": 1273.0916818630067,
+  "max_steps": 0
+}

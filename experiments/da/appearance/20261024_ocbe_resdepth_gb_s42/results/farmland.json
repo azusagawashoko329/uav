@@ -1,0 +1,25 @@
+{
+  "scene": "farmland",
+  "architecture": "ocbe_dgt_residual_depth_group_balanced_randomorth_glll_width192",
+  "variant": "residual_depth",
+  "loss_mode": "group_balanced",
+  "seed": 42,
+  "auc_percent": 99.15962288686606,
+  "frames": 2387,
+  "positive_frames": 80,
+  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+  "trainable_parameters": 3184806,
+  "basis_principal_angle_deg": 52.505723858836255,
+  "basis_projector_distance_fro": 1.1220570565019097,
+  "basis_orthogonality_error_fro": 8.110699792110095e-08,
+  "fusion_diagnostics": {
+    "gate_mean": 0.9639700055122375,
+    "gate_std": 0.3312687277793884,
+    "hidden_rms": 1.9392777681350708,
+    "depth_residual_rms": 0.15875586867332458
+  },
+  "checkpoint": "ckpt/farmland_final.pth",
+  "checkpoint_sha256": "3e8d0f4d2a37e32c46b5377eb8fb5fafc0c088deec9cf2f17980d15acba78916",
+  "elapsed_s": 572.7469964940101,
+  "max_steps": 0
+}

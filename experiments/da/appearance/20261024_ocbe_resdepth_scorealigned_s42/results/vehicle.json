@@ -1,0 +1,25 @@
+{
+  "scene": "vehicle",
+  "architecture": "ocbe_dgt_residual_depth_score_aligned_randomorth_glll_width192",
+  "variant": "residual_depth",
+  "loss_mode": "score_aligned",
+  "seed": 42,
+  "auc_percent": 54.40406022858133,
+  "frames": 2633,
+  "positive_frames": 973,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+  "trainable_parameters": 3184806,
+  "basis_principal_angle_deg": 63.646282001621486,
+  "basis_projector_distance_fro": 1.2672352426681741,
+  "basis_orthogonality_error_fro": 1.0563615555970317e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 0.7971307039260864,
+    "gate_std": 0.31529131531715393,
+    "hidden_rms": 1.2079702615737915,
+    "depth_residual_rms": 0.06553065031766891
+  },
+  "checkpoint": "ckpt/vehicle_final.pth",
+  "checkpoint_sha256": "a8e74bacdd2263daf4de95bd146d22680d1c0ea13a3d1c949ead4ddfed309691",
+  "elapsed_s": 438.49897251201037,
+  "max_steps": 0
+}

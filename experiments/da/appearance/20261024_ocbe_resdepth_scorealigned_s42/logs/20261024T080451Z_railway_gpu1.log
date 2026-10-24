@@ -1,0 +1,17 @@
+{"scene": "railway", "architecture": "ocbe_dgt_residual_depth_randomorth_glll_width192", "seed": 42, "train_frames": 1206, "test_videos": 1, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 3184806, "cuda": "NVIDIA RTX A6000"}
+epoch=1 loss=1.015032 elapsed_s=8.0
+epoch=2 loss=0.877047 elapsed_s=15.0
+epoch=3 loss=0.608475 elapsed_s=21.9
+epoch=4 loss=0.418367 elapsed_s=28.7
+epoch=5 loss=0.358528 elapsed_s=35.5
+epoch=6 loss=0.322783 elapsed_s=42.4
+epoch=7 loss=0.302777 elapsed_s=49.4
+epoch=8 loss=0.285324 elapsed_s=56.3
+epoch=9 loss=0.273428 elapsed_s=63.3
+epoch=10 loss=0.263977 elapsed_s=70.4
+epoch=11 loss=0.257160 elapsed_s=77.4
+epoch=12 loss=0.252490 elapsed_s=84.4
+epoch=13 loss=0.249389 elapsed_s=91.4
+epoch=14 loss=0.247908 elapsed_s=98.3
+epoch=15 loss=0.247643 elapsed_s=105.2
+{"scene": "railway", "architecture": "ocbe_dgt_residual_depth_score_aligned_randomorth_glll_width192", "variant": "residual_depth", "loss_mode": "score_aligned", "seed": 42, "auc_percent": 82.7178783061136, "frames": 882, "positive_frames": 68, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 3184806, "basis_principal_angle_deg": 69.8881117361999, "basis_projector_distance_fro": 1.3279789543707117, "basis_orthogonality_error_fro": 1.7600179588756026e-07, "fusion_diagnostics": {"gate_mean": 0.6784458160400391, "gate_std": 0.3593374788761139, "hidden_rms": 0.5776273608207703, "depth_residual_rms": 0.01703706942498684}, "checkpoint": "ckpt/railway_final.pth", "checkpoint_sha256": "5110e2b2d3ebc1f9956b01e93078e6a2f30c2bae4786472eac397460e50953ac", "elapsed_s": 110.04032570699928, "max_steps": 0}

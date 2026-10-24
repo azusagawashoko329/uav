@@ -1,0 +1,25 @@
+{
+  "scene": "solar",
+  "architecture": "ocbe_dgt_residual_depth_group_balanced_randomorth_glll_width192",
+  "variant": "residual_depth",
+  "loss_mode": "group_balanced",
+  "seed": 42,
+  "auc_percent": 81.82183718975034,
+  "frames": 2450,
+  "positive_frames": 792,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+  "trainable_parameters": 3184806,
+  "basis_principal_angle_deg": 66.0504645584612,
+  "basis_projector_distance_fro": 1.2924545160192475,
+  "basis_orthogonality_error_fro": 1.5782431570766564e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 0.7361772656440735,
+    "gate_std": 0.31207433342933655,
+    "hidden_rms": 0.9662653207778931,
+    "depth_residual_rms": 0.053012460470199585
+  },
+  "checkpoint": "ckpt/solar_final.pth",
+  "checkpoint_sha256": "ab04498d07951d96df08518df5c80bf5b82351503b48103633ddb666012656f6",
+  "elapsed_s": 249.40275023900904,
+  "max_steps": 0
+}

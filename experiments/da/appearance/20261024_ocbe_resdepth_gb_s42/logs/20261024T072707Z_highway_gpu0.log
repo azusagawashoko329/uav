@@ -1,0 +1,17 @@
+{"scene": "highway", "architecture": "ocbe_dgt_residual_depth_randomorth_glll_width192", "seed": 42, "train_frames": 9045, "test_videos": 3, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 3184806, "cuda": "NVIDIA RTX 5880 Ada Generation"}
+epoch=1 loss=0.848579 elapsed_s=36.7
+epoch=2 loss=0.453040 elapsed_s=72.2
+epoch=3 loss=0.335683 elapsed_s=107.8
+epoch=4 loss=0.269323 elapsed_s=143.3
+epoch=5 loss=0.230899 elapsed_s=179.2
+epoch=6 loss=0.207719 elapsed_s=215.2
+epoch=7 loss=0.192361 elapsed_s=251.2
+epoch=8 loss=0.181609 elapsed_s=287.2
+epoch=9 loss=0.173953 elapsed_s=323.4
+epoch=10 loss=0.168402 elapsed_s=359.4
+epoch=11 loss=0.164427 elapsed_s=395.3
+epoch=12 loss=0.161703 elapsed_s=431.0
+epoch=13 loss=0.159988 elapsed_s=466.6
+epoch=14 loss=0.159083 elapsed_s=502.2
+epoch=15 loss=0.158710 elapsed_s=537.8
+{"scene": "highway", "architecture": "ocbe_dgt_residual_depth_group_balanced_randomorth_glll_width192", "variant": "residual_depth", "loss_mode": "group_balanced", "seed": 42, "auc_percent": 95.19267997134767, "frames": 2820, "positive_frames": 497, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 3184806, "basis_principal_angle_deg": 50.38118171560522, "basis_projector_distance_fro": 1.0893741802565433, "basis_orthogonality_error_fro": 1.0184425195950012e-07, "fusion_diagnostics": {"gate_mean": 0.9712119102478027, "gate_std": 0.3155411183834076, "hidden_rms": 1.679387092590332, "depth_residual_rms": 0.07227843999862671}, "checkpoint": "ckpt/highway_final.pth", "checkpoint_sha256": "74dfcafb4f5b2b144b59f671cc92c514afd4f9921d025c92059017600b70e20a", "elapsed_s": 548.6886846039997, "max_steps": 0}

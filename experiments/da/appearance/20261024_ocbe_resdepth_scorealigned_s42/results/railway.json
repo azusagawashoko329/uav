@@ -1,0 +1,25 @@
+{
+  "scene": "railway",
+  "architecture": "ocbe_dgt_residual_depth_score_aligned_randomorth_glll_width192",
+  "variant": "residual_depth",
+  "loss_mode": "score_aligned",
+  "seed": 42,
+  "auc_percent": 82.7178783061136,
+  "frames": 882,
+  "positive_frames": 68,
+  "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+  "trainable_parameters": 3184806,
+  "basis_principal_angle_deg": 69.8881117361999,
+  "basis_projector_distance_fro": 1.3279789543707117,
+  "basis_orthogonality_error_fro": 1.7600179588756026e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 0.6784458160400391,
+    "gate_std": 0.3593374788761139,
+    "hidden_rms": 0.5776273608207703,
+    "depth_residual_rms": 0.01703706942498684
+  },
+  "checkpoint": "ckpt/railway_final.pth",
+  "checkpoint_sha256": "5110e2b2d3ebc1f9956b01e93078e6a2f30c2bae4786472eac397460e50953ac",
+  "elapsed_s": 110.04032570699928,
+  "max_steps": 0
+}
