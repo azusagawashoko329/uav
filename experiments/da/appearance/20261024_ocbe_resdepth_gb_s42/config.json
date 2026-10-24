@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "20261024_ocbe_resdepth_gb_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "baseline_experiment": "experiments/da/appearance/20261022_ocbe_dgt64_s42",
+  "variant": "ocbe_residual_depth_group_balanced_randomorth_glll_width192",
+  "seed": 42,
+  "teacher": {
+    "name": "DINOv3 ViT-B/16",
+    "layers": 12,
+    "image_size": 256,
+    "patch_tokens": 256,
+    "embed_dim": 768,
+    "frozen": true
+  },
+  "ocbe": {
+    "architecture": "residual_depth",
+    "depth_groups": 4,
+    "group_size": 3,
+    "depth_rank": 2,
+    "basis_sharing": "one_shared_2x3_matrix_across_four_groups",
+    "basis_initialization": "seeded_random_orthonormal",
+    "basis_seed": 42,
+    "group_hidden": 64,
+    "code_dim": 64,
+    "tap_norm": true
+  },
+  "student": {
+    "architecture": "global_local_glll",
+    "stages": 4,
+    "dim": 192,
+    "teacher_output_dim": 768,
+    "heads": 8,
+    "ffn_ratio": 2.0,
+    "heads_per_teacher_group": 3,
+    "reverse_alignment": true
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 15,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "image_size": 256,
+    "topk": 5,
+    "loss": "group_balanced",
+    "loss_formula": "group-balanced top-k, alpha=0.5"
+  },
+  "evaluation": {
+    "score": "mean over 12 teacher-head top-5 patch cosine distances",
+    "metric": "ROC AUC x100 per scene; macro mean over seven scenes",
+    "labels": "paired test video .npy"
+  },
+  "scheduler": {
+    "gpus": [
+      0,
+      1
+    ],
+    "poll_seconds": 2,
+    "max_memory_mb": 2000,
+    "dynamic_reuse": true
+  },
+  "data_root_env": "UAV_DA_ROOT",
+  "predicted_trainable_parameters": {
+    "ocbe": 236838,
+    "student": 2947968,
+    "total": 3184806
+  }
+}

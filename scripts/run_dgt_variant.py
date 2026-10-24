@@ -65,14 +65,20 @@ def dataset_manifest(scene_dir):
     return train, test, hashlib.sha256("\n".join(lines).encode()).hexdigest()
 
 
-def loss_for(taps, recons, k=5, alpha=0.5):
+def loss_for(taps, recons, k=5, alpha=0.5, mode="group_balanced"):
     per = []
     for a, b in zip(taps, recons):
         d = 1 - torch.nn.functional.cosine_similarity(a, b, dim=-1)
         per.append(d.topk(k, dim=-1).values.mean(-1))
     groups = torch.stack(per, dim=1).reshape(-1, 4, 3)
     avg, worst = groups.mean(-1), groups.max(-1).values
-    return (avg + alpha * (worst - avg)).mean()
+    group_loss = (avg + alpha * (worst - avg)).mean()
+    if mode == "group_balanced":
+        return group_loss
+    if mode == "score_aligned":
+        frame_mean = torch.stack(per, dim=1).mean()
+        return 0.75 * group_loss + 0.25 * frame_mean
+    raise ValueError(f"unknown loss mode: {mode}")
 
 
 @torch.no_grad()
@@ -133,7 +139,8 @@ def main():
     p.add_argument("--batch", type=int, default=64)
     p.add_argument("--workers", type=int, default=8)
     p.add_argument("--max-steps", type=int, default=0)
-    p.add_argument("--variant", required=True, choices=("no_graph", "crossattn_pool", "bilinear"))
+    p.add_argument("--variant", required=True, choices=("no_graph", "slot16", "residual_depth", "crossattn_pool", "bilinear"))
+    p.add_argument("--loss-mode", default="group_balanced", choices=("group_balanced", "score_aligned"))
     a = p.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA required for this experiment")
@@ -175,7 +182,7 @@ def main():
             with torch.no_grad():
                 taps = teacher(xb)["patches"]
             rec = student(ocbe(taps))
-            loss = loss_for(taps, rec)
+            loss = loss_for(taps, rec, mode=a.loss_mode)
             opt.zero_grad(); loss.backward(); opt.step(); sched.step()
             total += loss.item() * len(xb); count += len(xb)
         print(f"epoch={ep+1} loss={total/count:.6f} elapsed_s={time.monotonic()-t0:.1f}", flush=True)
@@ -190,6 +197,7 @@ def main():
         "format_version": 1,
         "scene": a.scene,
         "variant": a.variant,
+        "loss_mode": a.loss_mode,
         "seed": a.seed,
         "split_fingerprint": fingerprint,
         "trainable_parameters": sum(p.numel() for p in params),
@@ -210,7 +218,7 @@ def main():
         "diagnostics": ocbe.diagnostics(),
         "history": basis_history,
     }, indent=2) + "\n")
-    metric = {"scene": a.scene, "architecture": f"ocbe_dgt_{a.variant}_randomorth_glll_width192", "variant": a.variant, "seed": a.seed,
+    metric = {"scene": a.scene, "architecture": f"ocbe_dgt_{a.variant}_{a.loss_mode}_randomorth_glll_width192", "variant": a.variant, "loss_mode": a.loss_mode, "seed": a.seed,
               "auc_percent": auc, "frames": n, "positive_frames": pos,
               "split_fingerprint": fingerprint,
               "trainable_parameters": sum(p.numel() for p in params),

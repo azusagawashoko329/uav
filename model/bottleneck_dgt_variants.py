@@ -70,6 +70,52 @@ class DepthGroupNoGraphOCBE(_DepthGroupBase):
         return self.out_proj(hidden.reshape(hidden.shape[0], hidden.shape[1], -1))
 
 
+class DepthGroupSlot16OCBE(_DepthGroupBase):
+    """Four fixed 16-d group slots, concatenated directly into the 64-d code."""
+
+    def __init__(self, **kwargs):
+        kwargs["group_hidden"] = 16
+        super().__init__(**kwargs)
+        if self.n_groups * self.group_hidden != self.code_dim:
+            raise ValueError("Slot16 requires four groups whose slots sum to code_dim")
+
+    def forward(self, taps):
+        hidden = self.encode_groups(taps)
+        return hidden.reshape(hidden.shape[0], hidden.shape[1], -1)
+
+
+class DepthGroupResidualDepthOCBE(_DepthGroupBase):
+    """Current group fusion plus a zero-start low-rank depth-change residual."""
+
+    def __init__(self, interaction_rank=16, **kwargs):
+        super().__init__(**kwargs)
+        d = self.group_hidden
+        r = interaction_rank
+        self.pair_a = nn.Linear(d, r)
+        self.pair_b = nn.Linear(d, r)
+        self.residual_out = nn.Linear(3 * r, self.code_dim)
+        # The residual is exactly zero at initialization, but residual_out still
+        # receives gradients from the first update.
+        nn.init.zeros_(self.residual_out.weight)
+        nn.init.zeros_(self.residual_out.bias)
+        self.out_proj = nn.Linear(self.n_groups * d, self.code_dim)
+
+    def forward(self, taps):
+        hidden = self.encode_groups(taps)
+        interactions = []
+        for g in range(self.n_groups - 1):
+            diff = hidden[:, :, g + 1, :] - hidden[:, :, g, :]
+            level = hidden[:, :, g + 1, :] + hidden[:, :, g, :]
+            interactions.append(
+                F.gelu(self.pair_a(diff)) * F.gelu(self.pair_b(level)))
+        residual = self.residual_out(torch.cat(interactions, dim=-1))
+        with torch.no_grad():
+            self._diagnostics["depth_residual_rms"] = float(
+                residual.detach().pow(2).mean().sqrt().cpu())
+        base = self.out_proj(hidden.reshape(hidden.shape[0], hidden.shape[1], -1))
+        return base + residual
+
+
 class DepthGroupCrossAttnPoolOCBE(_DepthGroupBase):
     """Dynamic attention over four depth groups followed by two query pools."""
 
@@ -156,6 +202,10 @@ def build_dgt_variant(variant, n_taps=12, code_dim=64, embed_dim=768,
                   basis_seed=basis_seed)
     if variant == "no_graph":
         return DepthGroupNoGraphOCBE(**common)
+    if variant == "slot16":
+        return DepthGroupSlot16OCBE(**common)
+    if variant == "residual_depth":
+        return DepthGroupResidualDepthOCBE(**common)
     if variant == "crossattn_pool":
         return DepthGroupCrossAttnPoolOCBE(**common)
     if variant == "bilinear":
