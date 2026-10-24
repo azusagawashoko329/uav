@@ -1,0 +1,26 @@
+{
+  "scene": "solar",
+  "architecture": "ocbe_dgt_crossattn_pool_randomorth_glll_width192",
+  "variant": "crossattn_pool",
+  "seed": 42,
+  "auc_percent": 82.76355229009029,
+  "frames": 2450,
+  "positive_frames": 792,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+  "trainable_parameters": 3182182,
+  "basis_principal_angle_deg": 68.75666812911355,
+  "basis_projector_distance_fro": 1.3181177734693494,
+  "basis_orthogonality_error_fro": 1.775965323656438e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 1.0469681024551392,
+    "gate_std": 0.37964168190956116,
+    "hidden_rms": 1.4702061414718628,
+    "attention_entropy": 1.244602918624878,
+    "pool_entropy": 1.3726757764816284,
+    "attention_identity_mass": 0.2815627157688141
+  },
+  "checkpoint": "ckpt/solar_final.pth",
+  "checkpoint_sha256": "e601e8cfed7d32d434a8ae837c145754b1c21519deb6b6849b764896261d8483",
+  "elapsed_s": 250.7614145189982,
+  "max_steps": 0
+}

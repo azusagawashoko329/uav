@@ -1,4 +1,93 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261023T131010Z_bike_gpu0.log",
+      "kind": "log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 1650,
+      "sha256": "25a0bfe5607dab645b009e9ef22a15575a3a1b8b1260b249120af263a4358f19",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261023T131010Z_crossroads_gpu1.log",
+      "kind": "log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 753,
+      "sha256": "3c5bee0eec0d4ba75676cdabb8b029f47b2717ffe494714263383334e30157ad",
+      "storage": "git"
+    },
+    {
+      "path": "logs/20261023T131918Z_farmland_gpu0.log",
+      "kind": "log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 763,
+      "sha256": "55afe415a9c91a3df27ee91378fd92824865c9ca80d4fc3d59edd903abf81308",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261023T122943Z.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 465,
+      "sha256": "879651b5af0b3e828c51f1a24303f709059f134c17af723ce8d3d3882937944a",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261023T131010Z.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/dynamic_scheduler.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 2371,
+      "sha256": "91940a4d304509257535aa3c4f5a3ea4a0e9b2aebd568788422012ad1199363e",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike.json",
+      "kind": "result",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 835,
+      "sha256": "b8968bbb8ff5444ac18cd39a398859031f537e59ba5be694ac4b6bda1e0a62e4",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_basis.json",
+      "kind": "result",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 15443,
+      "sha256": "19920da9abcbc069461be81021c5d215ea3aafd8c488c80406e7f887749434f1",
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/run_ocbe.py",
+      "run_id": "20261023T131010Z_crossattn_pool_scheduler_s42",
+      "inputs": "config.json; Drone-Anomaly scene split",
+      "status": "completed",
+      "size_bytes": 907364,
+      "sha256": "3b1ba23c71af3c3730c10050116ab6a4c75b5294c949ca3015dd0aa26771cec8",
+      "storage": "git"
+    }
+  ]
 }

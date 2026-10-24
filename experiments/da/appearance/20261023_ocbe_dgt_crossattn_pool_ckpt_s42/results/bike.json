@@ -1,0 +1,26 @@
+{
+  "scene": "bike",
+  "architecture": "ocbe_dgt_crossattn_pool_randomorth_glll_width192",
+  "variant": "crossattn_pool",
+  "seed": 42,
+  "auc_percent": 97.63138448623529,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "trainable_parameters": 3182182,
+  "basis_principal_angle_deg": 66.33553176848085,
+  "basis_projector_distance_fro": 1.2952947723620831,
+  "basis_orthogonality_error_fro": 1.0412233387604704e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 1.18910813331604,
+    "gate_std": 0.4321313500404358,
+    "hidden_rms": 2.3349201679229736,
+    "attention_entropy": 0.9943773150444031,
+    "pool_entropy": 1.3748667240142822,
+    "attention_identity_mass": 0.21086077392101288
+  },
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "7cee8a68e4af8a81e7636e5638ce02644d3e4ecf9605dde0f210f83bf31f0898",
+  "elapsed_s": 536.3265631969989,
+  "max_steps": 0
+}

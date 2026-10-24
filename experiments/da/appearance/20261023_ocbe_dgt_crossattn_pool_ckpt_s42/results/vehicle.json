@@ -1,0 +1,26 @@
+{
+  "scene": "vehicle",
+  "architecture": "ocbe_dgt_crossattn_pool_randomorth_glll_width192",
+  "variant": "crossattn_pool",
+  "seed": 42,
+  "auc_percent": 56.65365470102404,
+  "frames": 2633,
+  "positive_frames": 973,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+  "trainable_parameters": 3182182,
+  "basis_principal_angle_deg": 68.0110623076058,
+  "basis_projector_distance_fro": 1.3113382030156462,
+  "basis_orthogonality_error_fro": 9.497670784809518e-08,
+  "fusion_diagnostics": {
+    "gate_mean": 1.082759141921997,
+    "gate_std": 0.35432738065719604,
+    "hidden_rms": 1.754294514656067,
+    "attention_entropy": 1.0155682563781738,
+    "pool_entropy": 1.370705246925354,
+    "attention_identity_mass": 0.2558518648147583
+  },
+  "checkpoint": "ckpt/vehicle_final.pth",
+  "checkpoint_sha256": "9ca8c56061a78536c7e759613723e16d4e7f1f5327b0e7d8390ab761bde988cf",
+  "elapsed_s": 439.24921870400067,
+  "max_steps": 0
+}

@@ -1,0 +1,26 @@
+{
+  "scene": "highway",
+  "architecture": "ocbe_dgt_crossattn_pool_randomorth_glll_width192",
+  "variant": "crossattn_pool",
+  "seed": 42,
+  "auc_percent": 95.26890139805687,
+  "frames": 2820,
+  "positive_frames": 497,
+  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+  "trainable_parameters": 3182182,
+  "basis_principal_angle_deg": 65.98784814220788,
+  "basis_projector_distance_fro": 1.291826311768698,
+  "basis_orthogonality_error_fro": 1.2261234156608568e-07,
+  "fusion_diagnostics": {
+    "gate_mean": 1.2689777612686157,
+    "gate_std": 0.3295571804046631,
+    "hidden_rms": 2.293206214904785,
+    "attention_entropy": 1.094077229499817,
+    "pool_entropy": 1.369273066520691,
+    "attention_identity_mass": 0.2624847888946533
+  },
+  "checkpoint": "ckpt/highway_final.pth",
+  "checkpoint_sha256": "24992de648adff7f6986e17e0d876e74279e1dcc847eb4db9d6ff4899f10a2d3",
+  "elapsed_s": 555.552587831,
+  "max_steps": 0
+}
