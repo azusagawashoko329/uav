@@ -4,13 +4,54 @@
   "path": "experiments/da/audit/20261026_rank2_cacheq_timingonly_s42",
   "dataset": "da",
   "family": "audit",
-  "status": "planned",
-  "source_commit": null,
+  "status": "completed",
+  "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
   "scripts": [
     "scripts/benchmark.py"
   ],
-  "runs": [],
-  "result_summary": null,
+  "runs": [
+    {
+      "run_id": "20261026T095601Z_cacheq",
+      "status": "completed",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "started_at": "2026-10-26T09:56:01.681671+00:00",
+      "ended_at": "2026-10-26T10:00:25.178537+00:00",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "experiments/da/audit/20261026_rank2_cacheq_timingonly_s42/scripts/benchmark.py",
+        "--gpu",
+        "0"
+      ],
+      "seed": 42,
+      "script": "scripts/benchmark.py",
+      "log": "logs/run.log",
+      "data_root": null,
+      "data_split": "synthetic patch features; archived seven final Qs, no AUC retest",
+      "environment": {
+        "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+        "started_at": "2026-10-26T09:56:01.681671+00:00",
+        "gpu": "NVIDIA RTX 5880 Ada Generation",
+        "cuda_ordinal": 0,
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB], utilization.gpu [%]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 18 MiB, 1 %\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 18 MiB, 0 %\n"
+      },
+      "outputs": [
+        "results/measurements.json",
+        "results/verification.json",
+        "results/profiler.json",
+        "results/summary.csv",
+        "results/summary.md"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "result_summary": "results/summary.md",
   "limitations": [
     "Full original checkpoint unavailable; archived final Qs plus matched architecture initialization for other weights",
     "No AUC re-evaluation",
@@ -18,5 +59,69 @@
     "Profiler kernel counts are external evidence from initial audit; timing process does not start profiler",
     "Seven final Qs are not independent hardware samples"
   ],
-  "follows_up": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42"
+  "follows_up": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42",
+  "review": {
+    "absolute_timing_accepted_for_table": true,
+    "timing_process_started_profiler": false,
+    "output_comparisons_bitwise_equal": 14,
+    "all_cache_lifecycle_checks_passed": true,
+    "aggregate_method": "arithmetic mean of the seven scene latency p50 values; FPS = 1000 * batch / mean p50; scene Qs are not independent hardware repetitions",
+    "aggregates": {
+      "1": {
+        "ocbe": {
+          "uncached_mean_scene_p50_ms": 0.8336522150784731,
+          "cached_mean_scene_p50_ms": 0.7118566427379847,
+          "uncached_fps_from_mean_p50": 1199.540985932447,
+          "cached_fps_from_mean_p50": 1404.7772261473062,
+          "latency_reduction_percent": 14.609878092751616,
+          "fps_increase_percent": 17.10956462694948
+        },
+        "subnet": {
+          "uncached_mean_scene_p50_ms": 2.161521298278655,
+          "cached_mean_scene_p50_ms": 2.033379498503304,
+          "uncached_fps_from_mean_p50": 462.6371254339978,
+          "cached_fps_from_mean_p50": 491.7921129509092,
+          "latency_reduction_percent": 5.928315389600735,
+          "fps_increase_percent": 6.301912646885222
+        },
+        "subnet_with_score": {
+          "uncached_mean_scene_p50_ms": 3.6793425762360648,
+          "cached_mean_scene_p50_ms": 3.5596394321016436,
+          "uncached_fps_from_mean_p50": 271.7876846963762,
+          "cached_fps_from_mean_p50": 280.9273296002317,
+          "latency_reduction_percent": 3.253384039517093,
+          "fps_increase_percent": 3.3627884626434623
+        }
+      },
+      "16": {
+        "ocbe": {
+          "uncached_mean_scene_p50_ms": 1.4843112814040589,
+          "cached_mean_scene_p50_ms": 1.4608270056279642,
+          "uncached_fps_from_mean_p50": 10779.410087663737,
+          "cached_fps_from_mean_p50": 10952.700037963836,
+          "latency_reduction_percent": 1.5821664950144476,
+          "fps_increase_percent": 1.6076014261524163
+        },
+        "subnet": {
+          "uncached_mean_scene_p50_ms": 3.0383145037506307,
+          "cached_mean_scene_p50_ms": 3.032004223704072,
+          "uncached_fps_from_mean_p50": 5266.077616470871,
+          "cached_fps_from_mean_p50": 5277.037503745121,
+          "latency_reduction_percent": 0.20769015316779438,
+          "fps_increase_percent": 0.20812240290515316
+        },
+        "subnet_with_score": {
+          "uncached_mean_scene_p50_ms": 4.0025220036373605,
+          "cached_mean_scene_p50_ms": 3.9809410643231655,
+          "uncached_fps_from_mean_p50": 3997.4795854862823,
+          "cached_fps_from_mean_p50": 4019.150181194732,
+          "latency_reduction_percent": 0.5391835271507106,
+          "fps_increase_percent": 0.5421064759687511
+        }
+      }
+    },
+    "initial_profiler_audit": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42",
+    "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+    "model_source_sha256": "88daa7cb04881ad30966e23ce0bb2ec40d5046074cab66c676d7c4041794feab"
+  }
 }

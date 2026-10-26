@@ -33,3 +33,5 @@ RTX 5880 Ada、FP32、TF32/AMP关闭，CPU四线程；batch=1为主、batch=16�
 七场景batch1/16全部完成，14项OCBE、重建与评分输出均逐位相同；梯度和缓存生命周期检查通过。配对子网延迟平均下降6.0470%。Profiler确认每次OCBE前向68→57个CUDA kernel；归一化Q的两次vector_norm和一次dot在缓存条件下消失。
 
 bike单帧在Profiler启动前为2.1521→2.0215ms；随后同进程的绝对单帧耗时抬高至约2.89ms。初轮不用于填写绝对Latency/FPS，保留配对趋势和kernel计数证据。无Profiler的独立进程复核见../20261026_rank2_cacheq_timingonly_s42/README.md。
+
+无Profiler独立进程复核已完成：单帧子网平均2.1615→2.0334ms，FPS462.6→491.8；正式绝对计时采用后续实验，初轮数据及不接受填表的评审标记继续保留。

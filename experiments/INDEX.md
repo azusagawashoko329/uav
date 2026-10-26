@@ -81,7 +81,7 @@
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261026_rank2_cacheq_timingonly_s42](da/audit/20261026_rank2_cacheq_timingonly_s42/README.md) | `planned` | 待测 | 1 | 0 |
+| [20261026_rank2_cacheq_timingonly_s42](da/audit/20261026_rank2_cacheq_timingonly_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_cacheq_timingonly_s42/results/summary.md)、[summary.csv](da/audit/20261026_rank2_cacheq_timingonly_s42/results/summary.csv) | 1 | 0 |
 | [20261026_rank2_cacheq_fp32_s42](da/audit/20261026_rank2_cacheq_fp32_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_cacheq_fp32_s42/results/summary.md)（绝对计时待独立进程复核） | 1 | 0 |
 | [20261026_lightweight_profile_fp32_s42](da/audit/20261026_lightweight_profile_fp32_s42/README.md) | `completed` | [summary.md](da/audit/20261026_lightweight_profile_fp32_s42/results/summary.md)、[summary.csv](da/audit/20261026_lightweight_profile_fp32_s42/results/summary.csv) | 2 | 0 |
 | [20260619_leakage_audit](da/audit/20260619_leakage_audit/RECORD.md) | `unknown` | 未找到 | 4 | 0 |

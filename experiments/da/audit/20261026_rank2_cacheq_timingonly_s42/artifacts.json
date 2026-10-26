@@ -1,4 +1,167 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/run.log",
+      "kind": "log",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 3512,
+      "sha256": "c06692deaa11ba345668200415d1ccc93db87020321a19022c8d2b1d87167c61",
+      "storage": "git"
+    },
+    {
+      "path": "results/measurements.json",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 92147,
+      "sha256": "937a971ca78b5ab0512bd36804222c0027dccd4aaf740f9be86d6bf8031cdbc7",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 395,
+      "sha256": "0be6b2cc3ffa9d7b2869967facd716ef7a351db2609f88cb129d8c84e8cee22f",
+      "storage": "git"
+    },
+    {
+      "path": "results/profiler.json",
+      "kind": "external_profiler_reference",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 8791,
+      "sha256": "c80fbe999ea54fb48bf3300c4240685aa2cd7fcb674162f835901d900323ac65",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 11979,
+      "sha256": "ab80f09c6e7d74b8b0ea49e17c7c420658371337683bc13c6ded807ddd038d15",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T095601Z_cacheq",
+      "source_commit": "d01dc5b9bb88d061f0a4ae68ee511b81327434d2",
+      "inputs": {
+        "config_sha256": "024c01d550ec93d5be1125ed48484a2414973da508b105771b0706bf6e5e40f5",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "source_timing_implementation": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42/scripts/benchmark.py",
+        "source_timing_script_sha256": "5b90304ba076cff7fc68dd1d92208b442353f4615aeb2f9fd7e021007c97f08b",
+        "external_profiler_json_sha256": "bd123063b8fd7525c3251129d2ae669f011c32b186c1c41c4b6189493e35568a",
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim."
+      },
+      "status": "completed",
+      "size_bytes": 4189,
+      "sha256": "764e8313e82012a7a2bbbbae09b32e42fcfdb186fd5b9d308871bfe32987d248",
+      "storage": "git"
+    }
+  ]
 }
