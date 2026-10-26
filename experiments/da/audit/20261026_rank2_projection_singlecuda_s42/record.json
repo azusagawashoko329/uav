@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_projection_singlecuda_s42",
+  "path": "experiments/da/audit/20261026_rank2_projection_singlecuda_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Original full trained checkpoint unavailable; final Q restored, other weights use paired architecture initialization",
+    "No AUC re-evaluation",
+    "CUDA FP32 / Triton2.1 compiled launcher",
+    "Synthetic GPU inputs, exclude teacher and scoring from primary FPS",
+    "CPU affinity fixed, clocks not fixed; not independent hardware replicas",
+    "CUDA setup and CPU affinity change together; cannot attribute absolute timing drift separately"
+  ],
+  "follows_up": "experiments/da/audit/20261026_rank2_projection_launchfix_s42"
+}

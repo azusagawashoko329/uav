@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_projection_singlecuda_s42",
+  "dataset": "da",
+  "family": "audit",
+  "seed": 42,
+  "variant": "exact_fp32_fused_rank2_singlecuda_affinity",
+  "source_experiment": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "historical_training_source_commit": "5113f35aa0cb29ce5f5a1e6bdef066f42a7eae4a",
+  "source_model_before_change": "c0ab96b43348adb2545d55382570fbd09ed49d10",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "basis_sha256": {
+    "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+    "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+    "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+    "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+    "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+    "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+    "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+  },
+  "gpu_name": "NVIDIA RTX 5880 Ada Generation",
+  "batches": [
+    1
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "repeats": 6,
+  "cpu_threads": 4,
+  "dtype": "float32",
+  "tf32": false,
+  "autocast": false,
+  "patch_tokens": 256,
+  "teacher_prefix_tokens": 5,
+  "teacher_embed_dim": 768,
+  "student_dim": 192,
+  "ocbe_hidden": 128,
+  "trainable_parameters": 3761222,
+  "core_major_gflops": 1.957199872,
+  "comparison": "same matched six-permutation protocol; cached-loop vs prepared fused launcher, Dense128 control; batch1 focus",
+  "primary_scope": "OCBE + student pure forward; exclude teacher and scoring",
+  "secondary_scope": "pack/projection, fuse MLP, OCBE, subnet, subnet+score, common normalization/student; batch1 only",
+  "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+  "input": "GPU-resident synthetic teacher-shaped slices [B,261,768][:,5:] for each of twelve taps",
+  "only_change": "same exact projection and prepared launcher; only measurement context setup and CPU affinity differ",
+  "cache_invalidation": [
+    "train(True)",
+    "load_state_dict including recursive parent load",
+    "_apply device/dtype conversion",
+    "standard in-place raw parameter version update"
+  ],
+  "reference_controls": [
+    "Dense128 without Rank2",
+    "cached arbitrary learnable Q with original group loops"
+  ],
+  "scope_note": "one implementation optimization audit with two existing controls; no training architecture or Q/loss variants",
+  "profiling": "separate child process after all batch1 timing; no profiler startup in measurement process",
+  "kernel": {
+    "backend": "Triton 2.1 CUDA FP32",
+    "block_size": 256,
+    "num_warps": 4,
+    "arithmetic": "explicit libdevice mul_rn / add_rn in original left-associative order; reject any FP32 FMA in generated PTX"
+  },
+  "enable_api": "ocbe.to(device).eval().cache_depth_basis_for_inference(fuse_projection=True)",
+  "reason_for_followup": "Absolute FPS drift including the Dense128 control: single-CUDA context plus fixed local CPU affinity for reproducible paired comparison",
+  "source_timing_implementation": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+  "cpu_affinity": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "cpu_numa_node": 1,
+  "validation_cross_device_evidence": "experiments/da/audit/20261026_rank2_projection_launchfix_s42/results/verification.json"
+}

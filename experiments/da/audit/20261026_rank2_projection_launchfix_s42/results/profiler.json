@@ -1,0 +1,310 @@
+{
+  "environment": {
+    "started_at": "2026-10-26T10:49:18.215818+00:00",
+    "source_commit": "c0ab96b43348adb2545d55382570fbd09ed49d10",
+    "gpu": "NVIDIA RTX 5880 Ada Generation",
+    "cuda_ordinal": 0,
+    "torch": "2.1.0+cu121",
+    "triton": "2.1.0",
+    "cuda": "12.1",
+    "python": "3.11.14",
+    "dtype": "float32",
+    "tf32": false,
+    "cpu_threads": 4,
+    "config_sha256": "c7c47458293b8e2331e3b43790a4db4d02479f25565b3300ed909a7261cd07fa",
+    "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB], utilization.gpu [%]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 331 MiB, 0 %\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 619 MiB, 0 %\n"
+  },
+  "profiles": {
+    "dense128": {
+      "forwards": 20,
+      "cuda_kernel_count": 340,
+      "kernel_count_per_forward": 17.0,
+      "cuda_kernel_duration_sum_us": 2006,
+      "kernel_names": {
+        "void at::native::(anonymous namespace)::vectorized_layer_norm_kernel<float, float>(int, float, float const*, float const*, float const*, float*, float*, float*)": 240,
+        "void at::native::(anonymous namespace)::CatArrayBatchedCopy_aligned16_contig<float, unsigned int, 3, 128, 1>(float*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<float, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)": 20,
+        "Memset (Device)": 20,
+        "ampere_sgemm_128x32_sliced1x4_tn": 20,
+        "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2> >(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>)": 20,
+        "ampere_sgemm_32x32_sliced1x4_tn": 20
+      },
+      "aten_operators": [
+        {
+          "name": "aten::layer_norm",
+          "count": 240,
+          "self_cpu_us": 364,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::native_layer_norm",
+          "count": 240,
+          "self_cpu_us": 5351,
+          "self_cuda_us": 720
+        },
+        {
+          "name": "aten::empty",
+          "count": 720,
+          "self_cpu_us": 2479,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::view",
+          "count": 560,
+          "self_cpu_us": 52,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::cat",
+          "count": 20,
+          "self_cpu_us": 285,
+          "self_cuda_us": 103
+        },
+        {
+          "name": "aten::linear",
+          "count": 40,
+          "self_cpu_us": 212,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::reshape",
+          "count": 40,
+          "self_cpu_us": 40,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::t",
+          "count": 40,
+          "self_cpu_us": 82,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::transpose",
+          "count": 40,
+          "self_cpu_us": 53,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::as_strided",
+          "count": 40,
+          "self_cpu_us": 15,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::addmm",
+          "count": 40,
+          "self_cpu_us": 783,
+          "self_cuda_us": 1163
+        },
+        {
+          "name": "aten::gelu",
+          "count": 20,
+          "self_cpu_us": 213,
+          "self_cuda_us": 20
+        }
+      ]
+    },
+    "cached_loop": {
+      "forwards": 20,
+      "cuda_kernel_count": 1140,
+      "kernel_count_per_forward": 57.0,
+      "cuda_kernel_duration_sum_us": 2629,
+      "kernel_names": {
+        "void at::native::(anonymous namespace)::vectorized_layer_norm_kernel<float, float>(int, float, float const*, float const*, float const*, float*, float*, float*)": 240,
+        "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})": 480,
+        "void at::native::vectorized_elementwise_kernel<4, at::native::CUDAFunctor_add<float>, at::detail::Array<char*, 3> >(int, at::native::CUDAFunctor_add<float>, at::detail::Array<char*, 3>)": 320,
+        "void at::native::(anonymous namespace)::CatArrayBatchedCopy_aligned16_contig<float, unsigned int, 3, 128, 1>(float*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<float, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)": 20,
+        "Memset (Device)": 20,
+        "ampere_sgemm_128x32_sliced1x4_tn": 20,
+        "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2> >(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>)": 20,
+        "ampere_sgemm_32x32_sliced1x4_tn": 20
+      },
+      "aten_operators": [
+        {
+          "name": "aten::layer_norm",
+          "count": 240,
+          "self_cpu_us": 408,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::native_layer_norm",
+          "count": 240,
+          "self_cpu_us": 5377,
+          "self_cuda_us": 720
+        },
+        {
+          "name": "aten::empty",
+          "count": 720,
+          "self_cpu_us": 2502,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::view",
+          "count": 560,
+          "self_cpu_us": 27,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::select",
+          "count": 960,
+          "self_cpu_us": 1531,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::as_strided",
+          "count": 1000,
+          "self_cpu_us": 33,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::mul",
+          "count": 480,
+          "self_cpu_us": 3883,
+          "self_cuda_us": 481
+        },
+        {
+          "name": "aten::add",
+          "count": 320,
+          "self_cpu_us": 2338,
+          "self_cuda_us": 320
+        },
+        {
+          "name": "aten::cat",
+          "count": 20,
+          "self_cpu_us": 280,
+          "self_cuda_us": 80
+        },
+        {
+          "name": "aten::linear",
+          "count": 40,
+          "self_cpu_us": 207,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::reshape",
+          "count": 40,
+          "self_cpu_us": 38,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::t",
+          "count": 40,
+          "self_cpu_us": 68,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::transpose",
+          "count": 40,
+          "self_cpu_us": 52,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::addmm",
+          "count": 40,
+          "self_cpu_us": 876,
+          "self_cuda_us": 1008
+        },
+        {
+          "name": "aten::gelu",
+          "count": 20,
+          "self_cpu_us": 219,
+          "self_cuda_us": 20
+        }
+      ]
+    },
+    "fused": {
+      "forwards": 20,
+      "cuda_kernel_count": 360,
+      "kernel_count_per_forward": 18.0,
+      "cuda_kernel_duration_sum_us": 1955,
+      "kernel_names": {
+        "void at::native::(anonymous namespace)::vectorized_layer_norm_kernel<float, float>(int, float, float const*, float const*, float const*, float*, float*, float*)": 240,
+        "void at::native::(anonymous namespace)::CatArrayBatchedCopy_aligned16_contig<float, unsigned int, 3, 128, 1>(float*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<float, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)": 20,
+        "_project_triplets_0d1d2d": 20,
+        "Memset (Device)": 20,
+        "ampere_sgemm_128x32_sliced1x4_tn": 20,
+        "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2> >(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#2}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>)": 20,
+        "ampere_sgemm_32x32_sliced1x4_tn": 20
+      },
+      "aten_operators": [
+        {
+          "name": "aten::layer_norm",
+          "count": 240,
+          "self_cpu_us": 368,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::native_layer_norm",
+          "count": 240,
+          "self_cpu_us": 5237,
+          "self_cuda_us": 720
+        },
+        {
+          "name": "aten::empty",
+          "count": 740,
+          "self_cpu_us": 2551,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::view",
+          "count": 560,
+          "self_cpu_us": 1,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::cat",
+          "count": 20,
+          "self_cpu_us": 286,
+          "self_cuda_us": 100
+        },
+        {
+          "name": "aten::linear",
+          "count": 40,
+          "self_cpu_us": 212,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::reshape",
+          "count": 40,
+          "self_cpu_us": 43,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::t",
+          "count": 40,
+          "self_cpu_us": 77,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::transpose",
+          "count": 40,
+          "self_cpu_us": 54,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::as_strided",
+          "count": 40,
+          "self_cpu_us": 21,
+          "self_cuda_us": 0
+        },
+        {
+          "name": "aten::addmm",
+          "count": 40,
+          "self_cpu_us": 818,
+          "self_cuda_us": 1015
+        },
+        {
+          "name": "aten::gelu",
+          "count": 20,
+          "self_cpu_us": 221,
+          "self_cuda_us": 20
+        }
+      ]
+    },
+    "assembly": {
+      "path": "results/fused_projection.ptx",
+      "sha256": "abaef483b10d5f0ee81f157d93fda4ab2a463bf7284b1fa72e829cae61880dd5",
+      "fp32_fma_count": 0
+    }
+  },
+  "finished_at": "2026-10-26T10:49:19.455416+00:00"
+}
