@@ -1,0 +1,11 @@
+{"event": "started", "mode": "profile", "started_at": "2026-10-26T10:38:05.387129+00:00", "source_commit": "620913368a1506e521c867e41c2bdccd983b7739", "gpu": "NVIDIA RTX 5880 Ada Generation", "cuda_ordinal": 0, "torch": "2.1.0+cu121", "triton": "2.1.0", "cuda": "12.1", "python": "3.11.14", "dtype": "float32", "tf32": false, "cpu_threads": 4, "config_sha256": "d01b4d4a3725d3778651c4e3cdee2d4e572192dc5f5c15ab18f466f638e97ad7", "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB], utilization.gpu [%]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 18 MiB, 0 %\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 1983 MiB, 0 %\n"}
+STAGE:2026-10-26 18:38:05 1045553:1045553 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-10-26 18:38:05 1045553:1045553 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-10-26 18:38:05 1045553:1045553 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-10-26 18:38:06 1045553:1045553 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"event": "profile_completed", "counts": {"dense128": 17.0, "cached_loop": 57.0, "fused": 18.0}}

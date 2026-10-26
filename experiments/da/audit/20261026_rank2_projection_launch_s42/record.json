@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_projection_launch_s42",
+  "path": "experiments/da/audit/20261026_rank2_projection_launch_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Old complete trained checkpoint unavailable; final Qs restored, other weights use paired architecture initialization",
+    "No AUC re-evaluation",
+    "CUDA FP32 and local Triton 2.1 compiled launcher API",
+    "Single-frame focus, synthetic features and no teacher/preprocessing",
+    "No fixed clock or CPU affinity; seven Qs not independent hardware samples"
+  ],
+  "follows_up": "experiments/da/audit/20261026_rank2_projection_fused_s42"
+}

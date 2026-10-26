@@ -8,6 +8,10 @@ import torch
 import triton
 import triton.language as tl
 
+# Launchers contain compiled code, never tensor pointers or learned Q values.
+# Keys include the CUDA device and every compile-time shape constant.
+_launchers = {}
+
 
 @triton.jit
 def _project_triplets(x, q, out, total: tl.constexpr, channels: tl.constexpr,
@@ -40,12 +44,30 @@ def project_depth_rank2(normalized_taps, q):
         raise RuntimeError("Fused depth projection is inference-only")
     batch, patches, channels = normalized_taps[0].shape
     groups = len(normalized_taps) // 3
-    packed = torch.stack(normalized_taps, dim=2)
+    # Flattened [tap, channel] has exactly the same storage order as stacking
+    # along the tap axis, without the additional stack/shape-dispatch wrapper.
+    packed = torch.cat(normalized_taps, dim=-1)
     output = torch.empty((batch, patches, groups * 2 * channels),
                          device=packed.device, dtype=packed.dtype)
     total = output.numel()
-    _project_triplets[(triton.cdiv(total, 256),)](
-        packed, q, output, total, channels, groups, 256,
-        num_warps=4,
-    )
+    device = packed.device.index
+    if torch.cuda.current_device() == device:
+        _launch(packed, q, output, total, channels, groups, device)
+    else:
+        with torch.cuda.device(device):
+            _launch(packed, q, output, total, channels, groups, device)
     return output
+
+
+def _launch(packed, q, output, total, channels, groups, device):
+    # Reuse the compiled kernel's launcher instead of repeating JIT tensor
+    # specialization, device selection and signature construction every frame.
+    key = (device, total, channels, groups)
+    launcher = _launchers.get(key)
+    if launcher is None:
+        grid = (triton.cdiv(total, 256), 1, 1)
+        compiled = _project_triplets[grid](packed, q, output, total, channels,
+                                         groups, 256, num_warps=4)
+        _launchers[key] = compiled[grid]
+    else:
+        launcher(packed, q, output, total, channels, groups, 256)
