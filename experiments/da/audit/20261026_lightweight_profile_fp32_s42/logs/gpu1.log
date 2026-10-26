@@ -1,0 +1,34 @@
+{"event": "started", "torch": "2.1.0+cu121", "python": "3.11.14", "cuda": "12.1", "cudnn": 8902, "cuda_ordinal": 1, "cuda_device_name": "NVIDIA RTX A6000", "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 285 MiB\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 18 MiB\n", "source_commit": "4194de9e839860dcfbdc0a9453672c76c87d90c0", "started_at": "2026-10-26T07:18:11.094899+00:00", "dtype": "float32", "tf32": false, "cpu_threads": 4}
+{"event": "measured", "variant": "baseline12", "batch": 1, "core_gflops": 47.957671936, "core_ms": 4.661202998249792, "full_ms": 10.869616002310067}
+{"event": "measured", "variant": "baseline12", "batch": 16, "core_gflops": 47.957671936, "core_ms": 51.639573997817934, "full_ms": 109.60285300097894}
+{"event": "measured", "variant": "original4", "batch": 1, "core_gflops": 21.382561792, "core_ms": 3.1883729971013963, "full_ms": 9.52632148982957}
+{"event": "measured", "variant": "original4", "batch": 16, "core_gflops": 21.382561792, "core_ms": 25.758667004993185, "full_ms": 83.77888800168876}
+{"event": "measured", "variant": "adapter", "batch": 1, "core_gflops": 21.609054208, "core_ms": 3.446903996518813, "full_ms": 9.832857511355542}
+{"event": "measured", "variant": "adapter", "batch": 16, "core_gflops": 21.609054208, "core_ms": 26.444397008162923, "full_ms": 84.56833047966938}
+{"event": "measured", "variant": "adapter_spatial", "batch": 1, "core_gflops": 21.610381312, "core_ms": 3.7543449871009216, "full_ms": 10.127787507371977}
+{"event": "measured", "variant": "adapter_spatial", "batch": 16, "core_gflops": 21.610381312, "core_ms": 26.549482994596474, "full_ms": 84.63677299732808}
+{"event": "measured", "variant": "gl768", "batch": 1, "core_gflops": 15.655370752, "core_ms": 3.210055991075933, "full_ms": 9.55315149622038}
+{"event": "measured", "variant": "gl768", "batch": 16, "core_gflops": 15.655370752, "core_ms": 20.68360149860382, "full_ms": 78.76360000227578}
+{"event": "measured", "variant": "gl192_dense512", "batch": 1, "core_gflops": 3.983048704, "core_ms": 3.1587170087732375, "full_ms": 9.542928004520945}
+{"event": "measured", "variant": "gl192_dense512", "batch": 16, "core_gflops": 3.983048704, "core_ms": 8.99665048928, "full_ms": 66.80180851253681}
+{"event": "measured", "variant": "gl192_dense128", "batch": 1, "core_gflops": 2.158526464, "core_ms": 3.1481184996664524, "full_ms": 9.52962449810002}
+{"event": "measured", "variant": "gl192_dense128", "batch": 16, "core_gflops": 2.158526464, "core_ms": 7.548076988314278, "full_ms": 65.1966595032718}
+{"event": "measured", "variant": "rank2_fixed", "batch": 1, "core_gflops": 1.957199872, "core_ms": 3.3269710111198947, "full_ms": 9.707591496407986}
+{"event": "measured", "variant": "rank2_fixed", "batch": 16, "core_gflops": 1.957199872, "core_ms": 8.299390014144592, "full_ms": 65.85375551367179}
+{"event": "measured", "variant": "rank2_random", "batch": 1, "core_gflops": 1.957199872, "core_ms": 3.714139005751349, "full_ms": 10.102792002726346}
+{"event": "measured", "variant": "rank2_random", "batch": 16, "core_gflops": 1.957199872, "core_ms": 9.232888507540338, "full_ms": 66.85303999984171}
+{"event": "measured", "variant": "dgt", "batch": 1, "core_gflops": 1.96244288, "core_ms": 4.280676483176649, "full_ms": 10.672276999684982}
+{"event": "measured", "variant": "dgt", "batch": 16, "core_gflops": 1.96244288, "core_ms": 9.690859005786479, "full_ms": 67.3889759927988}
+{"event": "measured", "variant": "nograph", "batch": 1, "core_gflops": 1.961394176, "core_ms": 4.090414484380744, "full_ms": 10.456760006491095}
+{"event": "measured", "variant": "nograph", "batch": 16, "core_gflops": 1.961394176, "core_ms": 9.568961002514698, "full_ms": 67.21374999324325}
+{"event": "measured", "variant": "crossattn", "batch": 1, "core_gflops": 1.97935104, "core_ms": 4.4087925052735955, "full_ms": 10.807089012814686}
+{"event": "measured", "variant": "crossattn", "batch": 16, "core_gflops": 1.97935104, "core_ms": 9.879575503873639, "full_ms": 67.65879300655797}
+{"event": "measured", "variant": "bilinear", "batch": 1, "core_gflops": 1.966112768, "core_ms": 4.644574495614506, "full_ms": 11.072847511968575}
+{"event": "measured", "variant": "bilinear", "batch": 16, "core_gflops": 1.966112768, "core_ms": 9.76300600450486, "full_ms": 67.49536099960096}
+{"event": "measured", "variant": "slot16", "batch": 1, "core_gflops": 1.65101568, "core_ms": 4.083788488060236, "full_ms": 10.484883998287842}
+{"event": "measured", "variant": "slot16", "batch": 16, "core_gflops": 1.65101568, "core_ms": 9.18082801217679, "full_ms": 66.94867998885456}
+{"event": "measured", "variant": "resdepth_gb", "batch": 1, "core_gflops": 1.966112768, "core_ms": 4.457455506781116, "full_ms": 10.870926984352991}
+{"event": "measured", "variant": "resdepth_gb", "batch": 16, "core_gflops": 1.966112768, "core_ms": 9.668426020652987, "full_ms": 67.47967550472822}
+{"event": "measured", "variant": "resdepth_sa", "batch": 1, "core_gflops": 1.966112768, "core_ms": 4.462422002688982, "full_ms": 10.87858151004184}
+{"event": "measured", "variant": "resdepth_sa", "batch": 16, "core_gflops": 1.966112768, "core_ms": 9.676771995145828, "full_ms": 67.52999151649419}
+{"event": "completed", "gpu": 1, "path": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261026_lightweight_profile_fp32_s42/results/gpu1.json"}

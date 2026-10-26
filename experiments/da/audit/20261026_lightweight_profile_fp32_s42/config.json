@@ -467,5 +467,6 @@
   "diagnostics": "Report exact raw training script forward separately; main inference copy removes diagnostic reductions and GPU-to-CPU scalar transfers only; verify outputs close for batch1 and16",
   "size": "FP32 tensor payload and actual torch.save(state_dict) byte count in memory, core and full teacher pipeline; no optimizer; MB and MiB explicitly distinguished",
   "teacher": "85,641,216 parameters, frozen but required during inference; pretrained weights loaded from local timm cache offline",
-  "scope": "single audit comparing existing registered architectures; no training, no new model variants, no test/AUC optimization"
+  "scope": "single audit comparing existing registered architectures; no training, no new model variants, no test/AUC optimization",
+  "model_definition": "Per user clarification: teacher + OCBE + student + top-k scoring is the entire model. Behavior branch is historical code and outside this model."
 }

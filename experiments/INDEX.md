@@ -5,7 +5,7 @@
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 41 | [查看](#da-appearance) |
+| `da` | `appearance` | 51 | [查看](#da-appearance) |
 | `da` | `audit` | 2 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -81,7 +81,7 @@
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261026_lightweight_profile_fp32_s42](da/audit/20261026_lightweight_profile_fp32_s42/README.md) | `planned` | 待测 | 2 | 0 |
+| [20261026_lightweight_profile_fp32_s42](da/audit/20261026_lightweight_profile_fp32_s42/README.md) | `running` | [gpu0.json](da/audit/20261026_lightweight_profile_fp32_s42/results/gpu0.json)、[gpu1.json](da/audit/20261026_lightweight_profile_fp32_s42/results/gpu1.json) | 2 | 0 |
 | [20260619_leakage_audit](da/audit/20260619_leakage_audit/RECORD.md) | `unknown` | 未找到 | 4 | 0 |
 
 ## da / behavior
