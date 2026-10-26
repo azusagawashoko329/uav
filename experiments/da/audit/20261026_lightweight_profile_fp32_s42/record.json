@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "20261026_lightweight_profile_fp32_s42",
+  "path": "experiments/da/audit/20261026_lightweight_profile_fp32_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py",
+    "scripts/summarize.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Desktop GPU profiling, not UAV hardware",
+    "Synthetic normalized-shaped input; no disk decoding/resize/CPU-to-GPU copies/YOLO/KNN/fusion",
+    "Older trained checkpoints unavailable; dense unpruned architectures reconstructed using current source with exact parameter checks",
+    "Historical baseline source_commit unknown; current audit does not backfill that historical commit",
+    "Model size measured FP32; no quantization or optimizer states",
+    "Loss-only variants share inference computation; AUC is historical seven-scene seed42 and is not retested",
+    "FLOPs are major arithmetic operations only; latency measures all actual operators",
+    "Main table excludes training diagnostics; raw diagnostics measured separately"
+  ]
+}
