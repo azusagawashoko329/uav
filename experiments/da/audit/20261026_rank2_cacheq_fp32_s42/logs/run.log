@@ -1,0 +1,22 @@
+{"event": "started", "source_commit": "53286fa19418e4bdf7747f4994d6f60647b60910", "started_at": "2026-10-26T09:48:56.922782+00:00", "gpu": "NVIDIA RTX 5880 Ada Generation", "cuda_ordinal": 0, "torch": "2.1.0+cu121", "cuda": "12.1", "python": "3.11.14", "dtype": "float32", "tf32": false, "cpu_threads": 4, "config_sha256": "5766bb86747b4b927f6b727d5e0d1dae928012ccfa9ec0d588a07f2c069a4941", "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB], utilization.gpu [%]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 18 MiB, 0 %\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 18 MiB, 0 %\n"}
+{"event": "measured", "scene": "bike", "batch": 1, "uncached_ms": 2.1521149901673198, "cached_ms": 2.0214630058035254, "uncached_fps": 464.6591862278945, "cached_fps": 494.6912197398849}
+STAGE:2026-10-26 17:49:13 1032019:1032019 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-10-26 17:49:13 1032019:1032019 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-10-26 17:49:13 1032019:1032019 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+STAGE:2026-10-26 17:49:14 1032019:1032019 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-10-26 17:49:14 1032019:1032019 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-10-26 17:49:14 1032019:1032019 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"event": "measured", "scene": "bike", "batch": 16, "uncached_ms": 3.083246003370732, "cached_ms": 2.9476105119101703, "uncached_fps": 5189.3361679568025, "cached_fps": 5428.125573358522}
+{"event": "measured", "scene": "crossroads", "batch": 1, "uncached_ms": 2.889355004299432, "cached_ms": 2.71282801986672, "uncached_fps": 346.0980040569522, "cached_fps": 368.6190177470703}
+{"event": "measured", "scene": "crossroads", "batch": 16, "uncached_ms": 3.115119499852881, "cached_ms": 2.9862970113754272, "uncached_fps": 5136.239557023619, "cached_fps": 5357.8059848208895}
+{"event": "measured", "scene": "farmland", "batch": 1, "uncached_ms": 2.887793001718819, "cached_ms": 2.71542850532569, "uncached_fps": 346.2852079095691, "cached_fps": 368.2660022308558}
+{"event": "measured", "scene": "farmland", "batch": 16, "uncached_ms": 3.1195280025713146, "cached_ms": 3.0160465103108436, "uncached_fps": 5128.981046751873, "cached_fps": 5304.9579790303}
+{"event": "measured", "scene": "highway", "batch": 1, "uncached_ms": 2.8976744797546417, "cached_ms": 2.7229120023548603, "uncached_fps": 345.10432658559847, "cached_fps": 367.25388082140313}
+{"event": "measured", "scene": "highway", "batch": 16, "uncached_ms": 3.152279503410682, "cached_ms": 3.0119145230855793, "uncached_fps": 5075.69204529244, "cached_fps": 5312.235748180754}
+{"event": "measured", "scene": "railway", "batch": 1, "uncached_ms": 2.89344898192212, "cached_ms": 2.7176750008948147, "uncached_fps": 345.6083056061695, "cached_fps": 367.9615846893917}
+{"event": "measured", "scene": "railway", "batch": 16, "uncached_ms": 3.150064992951229, "cached_ms": 3.0450214981101453, "uncached_fps": 5079.2602805981915, "cached_fps": 5254.478502017211}
+{"event": "measured", "scene": "solar", "batch": 1, "uncached_ms": 2.8854980191681534, "cached_ms": 2.7088065398856997, "uncached_fps": 346.5606260538294, "cached_fps": 369.1662676073559}
+{"event": "measured", "scene": "solar", "batch": 16, "uncached_ms": 3.1577465124428272, "cached_ms": 3.055609529837966, "uncached_fps": 5066.904495643771, "cached_fps": 5236.271141243775}
+{"event": "measured", "scene": "vehicle", "batch": 1, "uncached_ms": 2.890627511078492, "cached_ms": 2.7186234947293997, "uncached_fps": 345.94564542385484, "cached_fps": 367.8332074811764}
+{"event": "measured", "scene": "vehicle", "batch": 16, "uncached_ms": 3.1465164793189615, "cached_ms": 3.0601084872614592, "uncached_fps": 5084.98846427878, "cached_fps": 5228.572799495308}
+{"event": "completed", "mean_paired_subnet_latency_reduction_percent": 6.047002030506919, "scenarios": 7, "trainable_parameters": 3761222, "core_major_gflops": 1.957199872, "cache_bytes": 24}

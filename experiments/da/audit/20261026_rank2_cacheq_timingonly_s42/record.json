@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_cacheq_timingonly_s42",
+  "path": "experiments/da/audit/20261026_rank2_cacheq_timingonly_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Full original checkpoint unavailable; archived final Qs plus matched architecture initialization for other weights",
+    "No AUC re-evaluation",
+    "Single GPU, no fixed clocks or CPU pinning",
+    "Profiler kernel counts are external evidence from initial audit; timing process does not start profiler",
+    "Seven final Qs are not independent hardware samples"
+  ],
+  "follows_up": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42"
+}

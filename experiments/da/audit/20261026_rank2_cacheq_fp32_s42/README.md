@@ -27,3 +27,9 @@ RTX 5880 Ada、FP32、TF32/AMP关闭，CPU四线程；batch=1为主、batch=16�
 桌面GPU测速不能替代无人机硬件部署；无图像解码、预处理、H2D或教师前向。未锁定GPU时钟或绑核，配对结果用于评估本次修改。缓存只去掉GS，原四组逐元素加权与拼接仍有开销，是否更快以及快多少由实测决定。
 
 运行：DMAD Python执行`scripts/benchmark.py --gpu 0`。先提交计划和源码，再启动；结果和产物按协议归档。
+
+## 初轮结果与复核
+
+七场景batch1/16全部完成，14项OCBE、重建与评分输出均逐位相同；梯度和缓存生命周期检查通过。配对子网延迟平均下降6.0470%。Profiler确认每次OCBE前向68→57个CUDA kernel；归一化Q的两次vector_norm和一次dot在缓存条件下消失。
+
+bike单帧在Profiler启动前为2.1521→2.0215ms；随后同进程的绝对单帧耗时抬高至约2.89ms。初轮不用于填写绝对Latency/FPS，保留配对趋势和kernel计数证据。无Profiler的独立进程复核见../20261026_rank2_cacheq_timingonly_s42/README.md。
