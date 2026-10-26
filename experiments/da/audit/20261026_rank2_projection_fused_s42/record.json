@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_projection_fused_s42",
+  "path": "experiments/da/audit/20261026_rank2_projection_fused_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Full historical checkpoint unavailable; final trained Qs restored but other weights use paired architecture initialization",
+    "No AUC re-evaluation",
+    "CUDA FP32 Triton execution only; no training graph changes",
+    "Synthetic features, single desktop GPU, no clocks/CPU affinity lock",
+    "Seven scene Qs do not constitute independent hardware replicates"
+  ],
+  "follows_up": "experiments/da/audit/20261026_rank2_cacheq_timingonly_s42"
+}

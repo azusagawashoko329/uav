@@ -41,25 +41,35 @@ class LearnableDepthRank2OCBE(DepthRank2OCBE):
         # Runtime-only cache: old checkpoints and parameter counts stay intact.
         self.register_buffer("_inference_depth_basis", None, persistent=False)
         self._inference_depth_basis_version = None
+        self._inference_depth_projector = None
 
     def clear_inference_depth_basis(self):
         """Discard cached Q after training, weight loading or device/dtype changes."""
         self._inference_depth_basis = None
         self._inference_depth_basis_version = None
+        self._inference_depth_projector = None
         return self
 
     @torch.no_grad()
-    def cache_depth_basis_for_inference(self):
+    def cache_depth_basis_for_inference(self, *, fuse_projection=False):
         """Precompute the final effective Q after .to(...).eval().
 
         This opt-in optimization preserves the learned directions. Training and
         gradient-enabled evaluation always use the differentiable computation.
-        Prepare the cache again after loading another scene's weights.
+        Prepare the cache again after loading another scene's weights. Optional
+        fused projection keeps FP32 multiply/add ordering in one CUDA kernel.
         """
         if self.training:
             raise RuntimeError("Call eval() before caching the inference depth basis")
+        projector = None
+        if fuse_projection:
+            if not self.raw_depth_basis.is_cuda or self.raw_depth_basis.dtype != torch.float32:
+                raise ValueError("Fused depth projection requires a CUDA FP32 model")
+            from .depthrank_projection import project_depth_rank2
+            projector = project_depth_rank2
         self._inference_depth_basis = self._orthonormal_depth_basis().detach()
         self._inference_depth_basis_version = self.raw_depth_basis._version
+        self._inference_depth_projector = projector
         return self
 
     def train(self, mode=True):
@@ -96,6 +106,8 @@ class LearnableDepthRank2OCBE(DepthRank2OCBE):
             raise ValueError(f"expected {self.n_taps} taps, got {len(taps)}")
         normalized = [norm(tap) for norm, tap in zip(self.tap_norms, taps)]
         q = self.effective_depth_basis()
+        if self._inference_depth_projector is not None and not self.training and not torch.is_grad_enabled():
+            return self.fuse(self._inference_depth_projector(normalized, q))
         modes = []
         for start in range(0, self.n_taps, 3):
             first, middle, last = normalized[start:start + 3]
