@@ -36,3 +36,7 @@
 上一轮融合GPU kernel时间已与Dense128接近，剩余主机分派明显。本轮在完全相同GPU数学上进一步优化：flat concat替代stack；按(device,total,channels,groups)缓存CompiledKernel[grid]返回的launcher，只在首次形状调用执行JIT编译/特化分派。缓存里没有Tensor指针或Q值，每帧传入当前Tensor；跨设备时进入对应CUDA context并保留调用方当前设备，使用当前stream。
 
 聚焦batch1的七场景最终Q与六种顺序配对，避免无关批量吞吐重复。额外测试launcher cache命中、CUDA0/1及非默认stream。训练、Q、loss、参数、checkpoint键和浮点乘加顺序不改。计时结束后仍在独立子进程采Profiler。
+
+## 失败记录
+
+在launcher cache-hit功能检查中失败：Triton 2.1 CompiledKernel launcher只接收运行时Tensor参数，误将四个编译期常量一并传入，触发参数数量TypeError。未进入正式性能测量，没有有效FPS结果。本次失败保留；修正后实验另建20261026_rank2_projection_launchfix_s42。

@@ -70,4 +70,6 @@ def _launch(packed, q, output, total, channels, groups, device):
                                          groups, 256, num_warps=4)
         _launchers[key] = compiled[grid]
     else:
-        launcher(packed, q, output, total, channels, groups, 256)
+        # The compiled launcher accepts runtime tensor arguments only;
+        # total/channels/groups/block were already specialized at compilation.
+        launcher(packed, q, output)

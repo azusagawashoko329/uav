@@ -4,12 +4,50 @@
   "path": "experiments/da/audit/20261026_rank2_projection_launch_s42",
   "dataset": "da",
   "family": "audit",
-  "status": "planned",
-  "source_commit": null,
+  "status": "failed",
+  "source_commit": "b513925226971aa8f82035667d0d7b2baf128190",
   "scripts": [
     "scripts/benchmark.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261026T104358Z_fused_timing",
+      "status": "failed",
+      "source_commit": "b513925226971aa8f82035667d0d7b2baf128190",
+      "started_at": "2026-10-26T10:43:58.093220+00:00",
+      "ended_at": "2026-10-26T10:43:58.753203+00:00",
+      "script": "scripts/benchmark.py",
+      "log": "logs/timing.log",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "experiments/da/audit/20261026_rank2_projection_launch_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--mode",
+        "timing"
+      ],
+      "seed": 42,
+      "data_root": null,
+      "data_split": "synthetic teacher-shaped tensors; archived seven final Qs",
+      "environment": {
+        "started_at": "2026-10-26T10:43:58.093220+00:00",
+        "source_commit": "b513925226971aa8f82035667d0d7b2baf128190",
+        "gpu": "NVIDIA RTX 5880 Ada Generation",
+        "cuda_ordinal": 0,
+        "torch": "2.1.0+cu121",
+        "triton": "2.1.0",
+        "cuda": "12.1",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "config_sha256": "1010f06fbc5b3eaa88616a75d92b3acc2bf899a7a12371bbb3514f029816040a",
+        "nvidia_smi": "index, name, uuid, driver_version, memory.used [MiB], utilization.gpu [%]\n0, NVIDIA RTX A6000, GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f, 580.178.04, 18 MiB, 0 %\n1, NVIDIA RTX 5880 Ada Generation, GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6, 580.178.04, 18 MiB, 0 %\n"
+      },
+      "outputs": [],
+      "reason": "TypeError('function takes exactly 13 arguments (17 given)')"
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "Old complete trained checkpoint unavailable; final Qs restored, other weights use paired architecture initialization",
@@ -18,5 +56,10 @@
     "Single-frame focus, synthetic features and no teacher/preprocessing",
     "No fixed clock or CPU affinity; seven Qs not independent hardware samples"
   ],
-  "follows_up": "experiments/da/audit/20261026_rank2_projection_fused_s42"
+  "follows_up": "experiments/da/audit/20261026_rank2_projection_fused_s42",
+  "review": {
+    "reason": "CompiledKernel launcher receives runtime tensor arguments only; compile-time constants were incorrectly forwarded on cache hit",
+    "failed_during": "functional launcher cache-hit verification, before formal timing",
+    "replacement_experiment": "experiments/da/audit/20261026_rank2_projection_launchfix_s42"
+  }
 }
