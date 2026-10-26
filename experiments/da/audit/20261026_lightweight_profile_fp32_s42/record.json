@@ -4,13 +4,56 @@
   "path": "experiments/da/audit/20261026_lightweight_profile_fp32_s42",
   "dataset": "da",
   "family": "audit",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "fcc78a3ce1f5cc4a99a476b9606ea9b4184f4006",
   "scripts": [
     "scripts/benchmark.py",
     "scripts/summarize.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261026T071808Z_cuda0",
+      "status": "running",
+      "source_commit": "fcc78a3ce1f5cc4a99a476b9606ea9b4184f4006",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "experiments/da/audit/20261026_lightweight_profile_fp32_s42/scripts/benchmark.py",
+        "--gpu",
+        "0"
+      ],
+      "started_at": "2026-10-26T07:18:08.050527+00:00",
+      "ended_at": null,
+      "seed": 42,
+      "script": "scripts/benchmark.py",
+      "log": "logs/gpu0.log",
+      "outputs": [
+        "results/gpu0.json"
+      ],
+      "data_root": null,
+      "data_split": "synthetic tensors; no train/test selection; seven-scene AUC from archived experiments"
+    },
+    {
+      "run_id": "20261026T071808Z_cuda1",
+      "status": "running",
+      "source_commit": "fcc78a3ce1f5cc4a99a476b9606ea9b4184f4006",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "experiments/da/audit/20261026_lightweight_profile_fp32_s42/scripts/benchmark.py",
+        "--gpu",
+        "1"
+      ],
+      "started_at": "2026-10-26T07:18:08.050527+00:00",
+      "ended_at": null,
+      "seed": 42,
+      "script": "scripts/benchmark.py",
+      "log": "logs/gpu1.log",
+      "outputs": [
+        "results/gpu1.json"
+      ],
+      "data_root": null,
+      "data_split": "synthetic tensors; no train/test selection; seven-scene AUC from archived experiments"
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "Desktop GPU profiling, not UAV hardware",
