@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_cacheq_fp32_s42",
+  "path": "experiments/da/audit/20261026_rank2_cacheq_fp32_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Full original OCBE/student checkpoints were not saved; restore final trained Qs only and use paired architecture initialization for the other weights",
+    "No test-set AUC re-evaluation; historical AUC remains an archived result",
+    "Single desktop GPU, no fixed clocks/CPU pinning; synthetic teacher-shaped input",
+    "Seven final Qs do not constitute seven independent hardware samples",
+    "Only inference Q caching is optimized; projection loops and tensor arithmetic remain unchanged"
+  ]
+}

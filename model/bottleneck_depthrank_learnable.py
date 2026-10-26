@@ -38,9 +38,53 @@ class LearnableDepthRank2OCBE(DepthRank2OCBE):
         else:
             raise ValueError(f"unknown basis_init: {basis_init}")
         self.raw_depth_basis = nn.Parameter(q_init)
+        # Runtime-only cache: old checkpoints and parameter counts stay intact.
+        self.register_buffer("_inference_depth_basis", None, persistent=False)
+        self._inference_depth_basis_version = None
+
+    def clear_inference_depth_basis(self):
+        """Discard cached Q after training, weight loading or device/dtype changes."""
+        self._inference_depth_basis = None
+        self._inference_depth_basis_version = None
+        return self
+
+    @torch.no_grad()
+    def cache_depth_basis_for_inference(self):
+        """Precompute the final effective Q after .to(...).eval().
+
+        This opt-in optimization preserves the learned directions. Training and
+        gradient-enabled evaluation always use the differentiable computation.
+        Prepare the cache again after loading another scene's weights.
+        """
+        if self.training:
+            raise RuntimeError("Call eval() before caching the inference depth basis")
+        self._inference_depth_basis = self._orthonormal_depth_basis().detach()
+        self._inference_depth_basis_version = self.raw_depth_basis._version
+        return self
+
+    def train(self, mode=True):
+        if mode:
+            self.clear_inference_depth_basis()
+        return super().train(mode)
+
+    def _apply(self, fn):
+        self.clear_inference_depth_basis()
+        return super()._apply(fn)
+
+    def _load_from_state_dict(self, *args, **kwargs):
+        self.clear_inference_depth_basis()
+        return super()._load_from_state_dict(*args, **kwargs)
 
     def effective_depth_basis(self):
         """Return an orthonormal 2x3 basis without a new loss coefficient."""
+        if self._inference_depth_basis is not None:
+            if self._inference_depth_basis_version != self.raw_depth_basis._version:
+                self.clear_inference_depth_basis()
+            elif not self.training and not torch.is_grad_enabled():
+                return self._inference_depth_basis
+        return self._orthonormal_depth_basis()
+
+    def _orthonormal_depth_basis(self):
         first = F.normalize(self.raw_depth_basis[0], dim=0, eps=1e-8)
         second = self.raw_depth_basis[1]
         second = second - torch.dot(second, first) * first

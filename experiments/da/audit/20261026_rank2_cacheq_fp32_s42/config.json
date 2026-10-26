@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "id": "20261026_rank2_cacheq_fp32_s42",
+  "dataset": "da",
+  "family": "audit",
+  "seed": 42,
+  "variant": "inference_effective_q_cache_only",
+  "source_experiment": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42",
+  "historical_training_source_commit": "5113f35aa0cb29ce5f5a1e6bdef066f42a7eae4a",
+  "source_model_before_change": "e065b71445345afcbfcd2a839fff8dface706398",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "basis_sha256": {
+    "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+    "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+    "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+    "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+    "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+    "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+    "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+  },
+  "gpu_name": "NVIDIA RTX 5880 Ada Generation",
+  "batches": [
+    1,
+    16
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "repeats": 6,
+  "cpu_threads": 4,
+  "dtype": "float32",
+  "tf32": false,
+  "autocast": false,
+  "patch_tokens": 256,
+  "teacher_prefix_tokens": 5,
+  "teacher_embed_dim": 768,
+  "student_dim": 192,
+  "ocbe_hidden": 128,
+  "trainable_parameters": 3761222,
+  "core_major_gflops": 1.957199872,
+  "comparison": "same weights and inputs, uncached vs explicit runtime Q cache; alternating AB/BA rounds",
+  "primary_scope": "OCBE + student forward; excludes teacher and top-k score",
+  "secondary_scope": "OCBE + student + top-k score; batch16 throughput; Q-only overhead; profiler operator counts",
+  "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+  "input": "GPU-resident synthetic teacher-shaped slices [B,261,768][:,5:] for each of twelve taps",
+  "only_change": "cache GS(raw_Q_final) for eval with gradients disabled; original groupwise arithmetic unchanged",
+  "cache_invalidation": [
+    "train(True)",
+    "load_state_dict including recursive parent load",
+    "_apply device/dtype conversion",
+    "standard in-place raw parameter version update"
+  ],
+  "reference_controls": [
+    "Dense128 without Rank2",
+    "fixed Mean+Trend Rank2"
+  ],
+  "scope_note": "one audit of a single cache optimization with its uncached and existing-architecture controls; no new training variants"
+}
