@@ -22,3 +22,17 @@
 运行前提交计划与源码。命令为DMAD Python执行scripts/benchmark.py --gpu 0和--gpu 1；GPU分开写入results/gpu0.json与gpu1.json，最后运行scripts/summarize.py。
 
 用户在测量过程中明确模型范围为蒸馏外观分支；已统一full的命名。这仅调整报告定义，计时计算图和配置未改变，无需重跑。
+
+## 测量结果
+
+16个架构在两张GPU、batch=1/16全部完成，汇总64行。参数、FLOPs与纯权重序列化大小跨GPU一致；64项去诊断输出校验通过，所有学生及教师的主要算术FLOPs通过独立公式核对。
+
+- [完整中文报告](results/summary.md)：参数/计算量/大小、两卡单帧p50/p95/FPS、batch16吞吐、组件耗时、诊断开销和限制。
+- [CSV](results/summary.csv) / [JSON](results/summary.json)：完整数值及权重来源。
+- [参数与计算量图](results/parameters_flops.png) / [时延图](results/latency_comparison.png)。
+
+相对89.079104M训练子网基线，GL192＋Dense128的训练子网参数下降95.34%，主要算术FLOPs下降95.50%；包含冻结教师后的完整模型分别下降48.61%与48.16%。RTX 5880上完整模型batch1约10.184→9.539ms，batch16队列吞吐约196.0→340.5FPS。
+
+共享可学习Rank2→DGT：OCBE参数下降71.50%，但OCBE主要算术FLOPs反而增加1.29%；RTX 5880完整单帧10.110→10.637ms。DGT体现权重存储压缩，尚未体现速度收益。Slot16训练子网3.015590M、11.53MiB，但完整模型仍88.656806M、338.28MiB。
+
+以上比较保留各版本原输出接口：历史基线重建4个tap，其余重建12层。旧权重缺失的版本按登记架构同构初始化，只用于稠密结构资源审计；训练权重来源逐项列在报告中，不用于重新得出AUC。

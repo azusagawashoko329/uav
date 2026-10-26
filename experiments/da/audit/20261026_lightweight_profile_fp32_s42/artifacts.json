@@ -112,6 +112,126 @@
       "size_bytes": 153934,
       "sha256": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2",
       "storage": "git"
+    },
+    {
+      "path": "logs/summarize.log",
+      "kind": "log",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 456,
+      "sha256": "dd519b1d005e686add64321830db9eff31bab0caffdfcdf36b023b0310bc2f99",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "kind": "comparison_report",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 116000,
+      "sha256": "ffcbc78083358f3561f13ef24a9066faa83e306f6243f2fe0cbd5936bad37231",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "comparison_report",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 41414,
+      "sha256": "b133fb3c4be310fb353d37a63c711a4b0b04e25d3050ee7d550113e291370c64",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "comparison_report",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 18884,
+      "sha256": "c3dca1ae8870c5d5dad91f6b86987ee5ebb00b53fdfb77ee86be51a3169eff8e",
+      "storage": "git"
+    },
+    {
+      "path": "results/parameters_flops.png",
+      "kind": "figure",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 77866,
+      "sha256": "2affa6c48ad8edf27270b7b5298d149f8017e75a6ed461a1a0b6608de621f752",
+      "storage": "git"
+    },
+    {
+      "path": "results/latency_comparison.png",
+      "kind": "figure",
+      "producer_script": "scripts/summarize.py",
+      "run_id": "20261026T074413Z_report",
+      "source_commit": "53b6ace3ddc4e501659de4b252f83c34c921b949",
+      "inputs": {
+        "config_sha256": "d55a43046eea2a315cc1933a65c082d06730e0f9b3f0a34d9d86b0f29935b77d",
+        "gpu_results": {
+          "results/gpu0.json": "b77c4f8cb83cde3ecd5f00f9bca6c52c17df3dc4b50af161f59546c514cb1fb5",
+          "results/gpu1.json": "7eefca39c3c8744a8933aaa62c90258ba03849f3c694cc7734638235a7aaa2e2"
+        },
+        "historical_auc_sources": "source experiment results JSON/CSV at report source_commit 53b6ace3ddc4e501659de4b252f83c34c921b949",
+        "producer_script_sha256": "fb836362415f9ac46b618053644246540170d2d859e8ca0051ac6713487d16e5"
+      },
+      "status": "completed",
+      "size_bytes": 71848,
+      "sha256": "de8a64388e590bcd39639bd300619d72daa7bea27b688412d209ab087dd5aa67",
+      "storage": "git"
     }
   ]
 }
