@@ -1,4 +1,253 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/timing.log",
+      "kind": "log",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112420Z_fused_timing",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 3746,
+      "sha256": "f9ef0c46edad75de79a923fcbe0219583178ea1b6b955f54b5820ed60ec9cabc",
+      "storage": "git"
+    },
+    {
+      "path": "results/measurements.json",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112420Z_fused_timing",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 109296,
+      "sha256": "c1880e8b5a678d5959bc11bd0a3f9695a0bcdd93935f0dafd99a96ebd29990a6",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112420Z_fused_timing",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 640,
+      "sha256": "fdd7dcea7c26002f32bfa9f89a505cfb2c1d38fbe8e7b2dfd11b97d0a1d12676",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.csv",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112420Z_fused_timing",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 15375,
+      "sha256": "638ea69cec1fd68899e2363597123841dcd0c2c045ca7f7b329c20ffb3b493c9",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112420Z_fused_timing",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 4420,
+      "sha256": "286efdf9dc16b04b80eec5a198af8bb9ba52bf7761ab3043b8bd830ac2064c1e",
+      "storage": "git"
+    },
+    {
+      "path": "logs/profile.log",
+      "kind": "log",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112650Z_fused_profile",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 2627,
+      "sha256": "cf42f4261b74af6eda7122ccfb9fd7c0018e52a20dd3030e06bcedb92d47cda4",
+      "storage": "git"
+    },
+    {
+      "path": "results/profiler.json",
+      "kind": "profiling_result",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112650Z_fused_profile",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 12036,
+      "sha256": "a011eee04afb9965a08210545688bedd227226d9bb017c4556efab774c0055a7",
+      "storage": "git"
+    },
+    {
+      "path": "results/fused_projection.ptx",
+      "kind": "gpu_assembly",
+      "producer_script": "scripts/benchmark.py",
+      "run_id": "20261026T112650Z_fused_profile",
+      "source_commit": "04b46a5fc88154c80737b2faa1b8a270b7efb72a",
+      "inputs": {
+        "config_sha256": "86a1320ff69e6538d82e7572687953f50d34eb186e139308d83be65192003523",
+        "basis_sha256": {
+          "bike": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "crossroads": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "farmland": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "highway": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "railway": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "solar": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "vehicle": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469"
+        },
+        "weight_source": "All seven final epoch15 raw Qs restored from archived JSON; full original OCBE/student checkpoints were not saved. Other weights use deterministic seed42 architecture initialization. No new AUC claim.",
+        "shared_script": "experiments/da/audit/20261026_rank2_projection_fused_s42/scripts/benchmark.py",
+        "shared_script_sha256": "0c9af87f1c0c87e07852780dcbdefb4e324b46e76b7bba7b27e1988457a19128",
+        "wrapper_script_sha256": "5ae69b496e2b94882a8be24f2ffb556f0a005a9be40f34d0aba9b19fd1235556",
+        "model_source_sha256": {
+          "model/depthrank_projection.py": "4ae3b5200e0bbbd103e22dbdb572ed1ca666ac6b026b5cfcaa019c5245b88c95",
+          "model/bottleneck_depthrank_learnable.py": "128625b8099dd2f761e8b9f16a6ea0079ca97580a099d91ee4e1962a723ac9ab"
+        }
+      },
+      "status": "completed",
+      "size_bytes": 7120,
+      "sha256": "abaef483b10d5f0ee81f157d93fda4ab2a463bf7284b1fa72e829cae61880dd5",
+      "storage": "git"
+    }
+  ]
 }
