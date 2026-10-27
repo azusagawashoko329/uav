@@ -68,7 +68,7 @@ def main():
             funcs={'original':original,'cached_loop':cached,'fused':fused}
             samples=cfg['samples'] if batch==1 else cfg['batch16_samples']
             scene_result['timings'][str(batch)]={scope:{name:measure((lambda m=m:student(m(x))) if scope=='subnet' else (lambda m=m:anomaly_score(x,student(m(x)))),device,cfg['warmup'],samples,cfg['repeats'],batch) for name,m in funcs.items()} for scope in ('subnet','score')}
-        result['scenes'].append(scene); del base,original,cached,fused,student; torch.cuda.empty_cache()
+        result['scenes'].append(scene_result); del base,original,cached,fused,student; torch.cuda.empty_cache()
     result['finished_at']=stamp(); (EXP/'results'/'lcdb_trained_gpu0.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'event':'completed','scenes':len(result['scenes'])}),flush=True)
 
