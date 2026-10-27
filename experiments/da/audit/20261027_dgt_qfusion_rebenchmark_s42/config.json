@@ -1,0 +1,834 @@
+{
+  "schema_version": 2,
+  "id": "20261027_dgt_qfusion_rebenchmark_s42",
+  "dataset": "da",
+  "family": "audit",
+  "seed": 42,
+  "variant": "matched_remeasurement_of_existing_dgt_models_with_exact_fused_Q",
+  "source_model_before_change": "a596d12ead1b2750a43dc120cf495a2bd872fb82",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "variants": [
+    {
+      "id": "gl192_dense128",
+      "label": "GL192＋Dense128",
+      "experiment": "experiments/da/appearance/20261013_ocbe_hidden128_dense_s42",
+      "ocbe": "dense",
+      "student": "gl",
+      "dim": 192,
+      "hidden": 128,
+      "expected_core_parameters": 4154432,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "c4d87019cdfd0094bc360a2d9e385add41a17927",
+      "historical_record_sha256": "1b6e6688f3503b388b8c6ffef8e52a613f5aac81b43194ce50b235c7af42c36c",
+      "historical_config_sha256": "a8a8b820bf1d126a962a79292e639d5050588d93e1402dc5eb243cb8b33fdfef",
+      "metadata_from_previous_audit": {
+        "core_parameters": "4154432",
+        "ocbe_parameters": "1206464",
+        "student_parameters": "2947968",
+        "core_gflops": "2.158526464",
+        "ocbe_gflops": "0.60817408",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "15.876623153686523",
+        "auc_percent": "82.61367738314522",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "1.585074991453439"
+      },
+      "weight_files": {
+        "bike": null,
+        "crossroads": null,
+        "farmland": null,
+        "highway": null,
+        "railway": null,
+        "solar": null,
+        "vehicle": null
+      }
+    },
+    {
+      "id": "rank2_random",
+      "label": "GL192＋Dense128＋共享可学习随机Q",
+      "experiment": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42",
+      "ocbe": "rank2_random",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3761222,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "5113f35aa0cb29ce5f5a1e6bdef066f42a7eae4a",
+      "historical_record_sha256": "3bc1b6a81c1e1719643ab29a6274941d8d915803f6667e8c0bf8973ded37f3b0",
+      "historical_config_sha256": "c1ac5609edb668919df557f69f8c55cd315cf6e484bae98c1b2ca39e5727de2d",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3761222",
+        "ocbe_parameters": "813254",
+        "student_parameters": "2947968",
+        "core_gflops": "1.957199872",
+        "ocbe_gflops": "0.406847488",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "14.37698745727539",
+        "auc_percent": "82.95993033429976",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.156547998310998"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/bike_basis.json",
+          "sha256": "d893ca6600432c128c475e7930d5a74236bbf354750337b64e56f1b89fdf5493",
+          "size_bytes": 15146,
+          "kind": "final_Q_json"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/crossroads_basis.json",
+          "sha256": "c3abeddca70c26b3d2a0dadeabbd719442200905de33f23328dc8b04310361d3",
+          "size_bytes": 15145,
+          "kind": "final_Q_json"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/farmland_basis.json",
+          "sha256": "e9dd5d1d5bad136f996963caca70f01347ab09a44d8b5d8be2f8758d038ab090",
+          "size_bytes": 15145,
+          "kind": "final_Q_json"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/highway_basis.json",
+          "sha256": "8c98977c463eb77aed1fb50f3c6427f0bdb945e42a03454e2d1f212504635177",
+          "size_bytes": 15161,
+          "kind": "final_Q_json"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/railway_basis.json",
+          "sha256": "61f5c55964e529c86d17383e576450f48af101479f304edead4b9bb94abeb781",
+          "size_bytes": 15153,
+          "kind": "final_Q_json"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/solar_basis.json",
+          "sha256": "b8a2726f606653db8893fa01d6a4da19cfed24fd111301318c1fa9faf737ee29",
+          "size_bytes": 15152,
+          "kind": "final_Q_json"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/vehicle_basis.json",
+          "sha256": "32db6b6d2cb72e6b9dd91d9b787936b1899b5482d57edf0e7751b4fee38bf469",
+          "size_bytes": 15140,
+          "kind": "final_Q_json"
+        }
+      }
+    },
+    {
+      "id": "dgt",
+      "label": "DGT固定图",
+      "experiment": "experiments/da/appearance/20261022_ocbe_dgt64_s42",
+      "ocbe": "dgt_graph",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3179718,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "6b45512b813a1ed6048e446cebd82c162c241735",
+      "historical_record_sha256": "f5ab49fba20494f2aa3505130b36052e9e6e6e31156b22d72984fb58f69329a6",
+      "historical_config_sha256": "e17d703d89807c2929dd7213b772258551b0bfd6dc493bbce9f8ab511b20a75a",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3179718",
+        "ocbe_parameters": "231750",
+        "student_parameters": "2947968",
+        "core_gflops": "1.96244288",
+        "ocbe_gflops": "0.412090496",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.160181045532227",
+        "auc_percent": "82.50631796328688",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.7003220020560548"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/bike_basis.json",
+          "sha256": "8191a59bc27009cf0467d2266e6415d7d680be80c370086e8cb8da224c92d01c",
+          "size_bytes": 15143,
+          "kind": "final_Q_json"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/crossroads_basis.json",
+          "sha256": "9b50bec904bb03009364ce795fe0edf291436198e6fcdc4bd035612a9fdeb851",
+          "size_bytes": 15160,
+          "kind": "final_Q_json"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/farmland_basis.json",
+          "sha256": "129a59783b1f315703a08ac60dc0d095591f1a133712095eebf486f2288d16af",
+          "size_bytes": 15137,
+          "kind": "final_Q_json"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/highway_basis.json",
+          "sha256": "27fcf337462b9396788eb468b28f0b0e48e4fb038a394404ace3be985a44d074",
+          "size_bytes": 15146,
+          "kind": "final_Q_json"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/railway_basis.json",
+          "sha256": "f7a39185c889be45256b10219fb346c1b463906d5a3c57aed69d943560cc2af7",
+          "size_bytes": 15152,
+          "kind": "final_Q_json"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/solar_basis.json",
+          "sha256": "9a68537926d65c202dae3b37480681acaa99e33e7b583178774552b7ce13017e",
+          "size_bytes": 15138,
+          "kind": "final_Q_json"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261022_ocbe_dgt64_s42/results/vehicle_basis.json",
+          "sha256": "6bcd751fffba8801adea2a3242d363d17d59ad1cedca82fd0712678bf3bcb9c5",
+          "size_bytes": 15148,
+          "kind": "final_Q_json"
+        }
+      }
+    },
+    {
+      "id": "nograph",
+      "label": "DGT-NoGraph",
+      "experiment": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42",
+      "ocbe": "no_graph",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3179590,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "9c0cea050eaf573a6314fb1692d63ec63e1b310d",
+      "historical_record_sha256": "739ac58c179a2140d983b0d6bb38b33b5297a83370f522350b5fe8b7d48eb5b1",
+      "historical_config_sha256": "75c6a66cc413cc0a67f11c43b3bcb67238084018b31bc507ade4ea469cd1e2bc",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3179590",
+        "ocbe_parameters": "231622",
+        "student_parameters": "2947968",
+        "core_gflops": "1.961394176",
+        "ocbe_gflops": "0.411041792",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.158843994140625",
+        "auc_percent": "82.45454735916961",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.5268355093430728"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/bike_final.pth",
+          "sha256": "a2d6cf1ef1143ca9cfa9866b04f7648dd4bb4066e306dd9cfd88b187694619a1",
+          "size_bytes": 12750503,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/crossroads_final.pth",
+          "sha256": "42758bac295fe39a1c7d37d7e0ec305232a1fb77dbcf67b2833203ba4176e81f",
+          "size_bytes": 12751157,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/farmland_final.pth",
+          "sha256": "fe1c8243030e0aee5b647f4b34d4140c3b73caff183d4885ae4a87e990c687ff",
+          "size_bytes": 12750939,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/highway_final.pth",
+          "sha256": "cbcae07273447628c210e24d7473ae47d910a321b639455f2aa7ef39fcfe2677",
+          "size_bytes": 12750830,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/railway_final.pth",
+          "sha256": "3e236faf27317290b8d430d78e44c6dfed52bae56265189ace3b5a6cf0035ba1",
+          "size_bytes": 12750830,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/solar_final.pth",
+          "sha256": "5f5f0d5cc76ae59190c45c514336044043951fba19cd49f7611d7b7e559a4985",
+          "size_bytes": 12750612,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/ckpt/vehicle_final.pth",
+          "sha256": "80507ea53f1ec96512a9806cfbf1d6746696964e6d86914f79c6d1823cb7b298",
+          "size_bytes": 12750830,
+          "kind": "trained_checkpoint"
+        }
+      }
+    },
+    {
+      "id": "crossattn",
+      "label": "DGT-CrossAttnPool",
+      "experiment": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42",
+      "ocbe": "crossattn_pool",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3182182,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "9c0cea050eaf573a6314fb1692d63ec63e1b310d",
+      "historical_record_sha256": "513ba036929f7de9ca412ddfada660208ba02b6591984c9ababa5d19de9bdfb3",
+      "historical_config_sha256": "7929eb3e37cf4027c1ad8ab5f453c2c0546bb74357e973f8110c6fe0ad30ee2d",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3182182",
+        "ocbe_parameters": "234214",
+        "student_parameters": "2947968",
+        "core_gflops": "1.97935104",
+        "ocbe_gflops": "0.428998656",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.171459197998047",
+        "auc_percent": "82.27076033852791",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.8383665048750117"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/bike_final.pth",
+          "sha256": "7cee8a68e4af8a81e7636e5638ce02644d3e4ecf9605dde0f210f83bf31f0898",
+          "size_bytes": 12763889,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/crossroads_final.pth",
+          "sha256": "b35df53669649f1b0154eb63c85f796c03beed21508c5d48be9be6d3d7d74cc7",
+          "size_bytes": 12764603,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/farmland_final.pth",
+          "sha256": "d71dafa724530d3e4df8b2002d19fba843d4cc8797c452c1db4f8c6724b7e301",
+          "size_bytes": 12764365,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/highway_final.pth",
+          "sha256": "24992de648adff7f6986e17e0d876e74279e1dcc847eb4db9d6ff4899f10a2d3",
+          "size_bytes": 12764246,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/railway_final.pth",
+          "sha256": "f59b24235e433f8db29940f95b3af0d81451168f51069e08bdf1a1a87c1cfc56",
+          "size_bytes": 12764246,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/solar_final.pth",
+          "sha256": "e601e8cfed7d32d434a8ae837c145754b1c21519deb6b6849b764896261d8483",
+          "size_bytes": 12764008,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/ckpt/vehicle_final.pth",
+          "sha256": "9ca8c56061a78536c7e759613723e16d4e7f1f5327b0e7d8390ab761bde988cf",
+          "size_bytes": 12764246,
+          "kind": "trained_checkpoint"
+        }
+      }
+    },
+    {
+      "id": "bilinear",
+      "label": "DGT-Bilinear",
+      "experiment": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42",
+      "ocbe": "bilinear",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3182758,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "9c0cea050eaf573a6314fb1692d63ec63e1b310d",
+      "historical_record_sha256": "fdc49cf4f4bffe5220ac9dcc163f483abbcf34021177f6b72fdaeb8b59e48311",
+      "historical_config_sha256": "c8cee4b07a92fa965973999b830722dce26fb0724b8e73ed3f36799876bda70b",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3182758",
+        "ocbe_parameters": "234790",
+        "student_parameters": "2947968",
+        "core_gflops": "1.966112768",
+        "ocbe_gflops": "0.415760384",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.172565460205078",
+        "auc_percent": "81.78851455563856",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "3.0997555004432797"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/bike_final.pth",
+          "sha256": "65f409e3c8d4278bceb808b27fb1ada3baeb5d886f99461739767e87f6f7389e",
+          "size_bytes": 12764909,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/crossroads_final.pth",
+          "sha256": "95f5b455b1791377b4d60f70e28aff6ca0c63ec668750c7e95e0b202c2907983",
+          "size_bytes": 12765599,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/farmland_final.pth",
+          "sha256": "d28084dd63ffa874324101ea356215d53e90c12037c89ce98fc30ded67ad9076",
+          "size_bytes": 12765369,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/highway_final.pth",
+          "sha256": "56337a1ad9512edaaa69f5600564f8e20c50f8f2db75c80a62f531b59b231f63",
+          "size_bytes": 12765254,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/railway_final.pth",
+          "sha256": "b4bad733ed1ec248dd87929278f0a45119027945fc20af6f1b7bc62d00649ef3",
+          "size_bytes": 12765254,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/solar_final.pth",
+          "sha256": "d0b5ee95550d2e89719dddc3c852fbacde60eea70d97224fd00afeeb91ad320a",
+          "size_bytes": 12765024,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/ckpt/vehicle_final.pth",
+          "sha256": "b31b968132d190ea77fc0b349746347f02b00a2236c2dc7326109b496cced0ce",
+          "size_bytes": 12765254,
+          "kind": "trained_checkpoint"
+        }
+      }
+    },
+    {
+      "id": "slot16",
+      "label": "Slot16",
+      "experiment": "experiments/da/appearance/20261024_ocbe_slots16_s42",
+      "ocbe": "slot16",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3015590,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "2f05a38e07198ebc40f543f4570318e40d21b5f1",
+      "historical_record_sha256": "75576cc733b40afc36eb378712b3277c72b2d4cada30f68cafe5a9e67592aafb",
+      "historical_config_sha256": "987152ee9ae10934e469833e35b0e5dc14cdcb0c998717f7647ec93f39e753dd",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3015590",
+        "ocbe_parameters": "67622",
+        "student_parameters": "2947968",
+        "core_gflops": "1.65101568",
+        "ocbe_gflops": "0.100663296",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "11.53262710571289",
+        "auc_percent": "81.95509334315838",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.5030024989973754"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/bike_final.pth",
+          "sha256": "2402211fd5b1ac5a4f39cd35b6d6604bdc61a16b376d92fbfd87457055e3552e",
+          "size_bytes": 12093925,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/crossroads_final.pth",
+          "sha256": "3be738c842e7c2639c9659ee49e55f9a2b2cb3dcff685df18e2f4031e7110607",
+          "size_bytes": 12094567,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/farmland_final.pth",
+          "sha256": "9124bf52cc4d3f78a82bb75527d66d734748e7c3df51e19a1b24400f7eb3104e",
+          "size_bytes": 12094353,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/highway_final.pth",
+          "sha256": "da130d10b7ed47398f94ea7fb6b0e932eec1e27bccf6bd49e8a1c0fa1e25c3d6",
+          "size_bytes": 12094246,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/railway_final.pth",
+          "sha256": "3089298aa33632d3005218f104d0d5f158d4b0a5270048d4cee8f90943a13383",
+          "size_bytes": 12094246,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/solar_final.pth",
+          "sha256": "7abfc7705324833c340b0e2a8ddd6ee4f170300145c7267d97be3a7aa0e1db7e",
+          "size_bytes": 12094032,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261024_ocbe_slots16_s42/ckpt/vehicle_final.pth",
+          "sha256": "0f22297f229b7a3992127a49d5b742f062d02f40ebe1641b8716069dace1cd58",
+          "size_bytes": 12094246,
+          "kind": "trained_checkpoint"
+        }
+      }
+    },
+    {
+      "id": "resdepth_gb",
+      "label": "ResidualDepth（原loss）",
+      "experiment": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42",
+      "ocbe": "residual_depth",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3184806,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "2f05a38e07198ebc40f543f4570318e40d21b5f1",
+      "historical_record_sha256": "ea59dd509cd81c6fae38f96318b41d205513fb309cf91b4f3e117319ae0577ce",
+      "historical_config_sha256": "14b7128a8cc3cf518354d65b3958ddf803cf18b9573042397d217115b74861f4",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3184806",
+        "ocbe_parameters": "236838",
+        "student_parameters": "2947968",
+        "core_gflops": "1.966112768",
+        "ocbe_gflops": "0.415760384",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.180377960205078",
+        "auc_percent": "82.1868873105013",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.8970174898859113"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/bike_final.pth",
+          "sha256": "acf3bde09a2b89fce84d844333e849455f9d29c12bc5fc0f833a711cb0599025",
+          "size_bytes": 12773165,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/crossroads_final.pth",
+          "sha256": "61a1a4d64f9d66bc3679e3ec690709be85d79092448b99434c71a2ff4763af15",
+          "size_bytes": 12773855,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/farmland_final.pth",
+          "sha256": "3e8d0f4d2a37e32c46b5377eb8fb5fafc0c088deec9cf2f17980d15acba78916",
+          "size_bytes": 12773625,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/highway_final.pth",
+          "sha256": "74dfcafb4f5b2b144b59f671cc92c514afd4f9921d025c92059017600b70e20a",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/railway_final.pth",
+          "sha256": "a3f072392637f74014c5cc500f4b7676a15efa508f32ee42f5ecec1e65904ecf",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/solar_final.pth",
+          "sha256": "ab04498d07951d96df08518df5c80bf5b82351503b48103633ddb666012656f6",
+          "size_bytes": 12773280,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_gb_s42/ckpt/vehicle_final.pth",
+          "sha256": "ed586288e7f20d3dbd86755ef0bed13b6538eaf0865cf54736ae831238ba5c8d",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        }
+      }
+    },
+    {
+      "id": "resdepth_sa",
+      "label": "ResidualDepth（score-aligned）",
+      "experiment": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42",
+      "ocbe": "residual_depth",
+      "student": "gl",
+      "dim": 192,
+      "hidden": null,
+      "expected_core_parameters": 3184806,
+      "adapter": null,
+      "taps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "historical_source_commit": "2f05a38e07198ebc40f543f4570318e40d21b5f1",
+      "historical_record_sha256": "b8dfe47fd718642a13b03a8c260980ec2a04e1055257785451135bac208fbc1b",
+      "historical_config_sha256": "8c712c282309460b03a5a1e70639b0a1e69474198e8bd7b460782bd1fafbe7bd",
+      "metadata_from_previous_audit": {
+        "core_parameters": "3184806",
+        "ocbe_parameters": "236838",
+        "student_parameters": "2947968",
+        "core_gflops": "1.966112768",
+        "ocbe_gflops": "0.415760384",
+        "student_gflops": "1.550352384",
+        "core_pth_mib": "12.180377960205078",
+        "auc_percent": "82.10377874069518",
+        "auc_source": "seven scene JSON",
+        "core_without_score_ms": "2.9024484974797815"
+      },
+      "weight_files": {
+        "bike": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/bike_final.pth",
+          "sha256": "86d90c428cdfa365d5d5bfee6aaccd3687ea763e3974095d3d53197daa28b489",
+          "size_bytes": 12773165,
+          "kind": "trained_checkpoint"
+        },
+        "crossroads": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/crossroads_final.pth",
+          "sha256": "745a709cb7acd46dd413d5b6d82f864c781b0924da3dbff1e9371d8533b53a38",
+          "size_bytes": 12773855,
+          "kind": "trained_checkpoint"
+        },
+        "farmland": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/farmland_final.pth",
+          "sha256": "8ebb5d0c350010361aa7372d95a9a6ec3d31f0d44d881028189cba45f17ddb75",
+          "size_bytes": 12773625,
+          "kind": "trained_checkpoint"
+        },
+        "highway": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/highway_final.pth",
+          "sha256": "651ed9d0fc756e3f12af397b0d3f232414c7763d6ba1217c9ab6d469c7b1ad2a",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        },
+        "railway": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/railway_final.pth",
+          "sha256": "5110e2b2d3ebc1f9956b01e93078e6a2f30c2bae4786472eac397460e50953ac",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        },
+        "solar": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/solar_final.pth",
+          "sha256": "0e1023111199b5f550d0f289c52084c9d1a478da57a1fba4e7623db693894702",
+          "size_bytes": 12773280,
+          "kind": "trained_checkpoint"
+        },
+        "vehicle": {
+          "path": "experiments/da/appearance/20261024_ocbe_resdepth_scorealigned_s42/ckpt/vehicle_final.pth",
+          "sha256": "a8e74bacdd2263daf4de95bd146d22680d1c0ea13a3d1c949ead4ddfed309691",
+          "size_bytes": 12773510,
+          "kind": "trained_checkpoint"
+        }
+      }
+    }
+  ],
+  "dtype": "float32",
+  "tf32": false,
+  "autocast": false,
+  "cpu_threads": 4,
+  "devices": {
+    "0": {
+      "name": "NVIDIA RTX 5880 Ada Generation",
+      "cpu_affinity": [
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    "1": {
+      "name": "NVIDIA RTX A6000",
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "primary_batch": 1,
+  "warmup": 30,
+  "samples": 100,
+  "repeats": 4,
+  "balanced_orders": [
+    [
+      "dense_control",
+      "original",
+      "cached_loop",
+      "fused"
+    ],
+    [
+      "original",
+      "fused",
+      "dense_control",
+      "cached_loop"
+    ],
+    [
+      "cached_loop",
+      "dense_control",
+      "fused",
+      "original"
+    ],
+    [
+      "fused",
+      "cached_loop",
+      "original",
+      "dense_control"
+    ]
+  ],
+  "primary_scopes": [
+    "ocbe",
+    "subnet"
+  ],
+  "auxiliary": {
+    "scene": "bike",
+    "batch": 16,
+    "samples": 30,
+    "repeats": 4,
+    "scopes": [
+      "subnet"
+    ],
+    "queued_throughput": true
+  },
+  "score_timing": {
+    "scene": "bike",
+    "batch": 1,
+    "samples": 30,
+    "repeats": 4
+  },
+  "scope": "OCBE + GL192 student only; no teacher/preprocessing/H2D/scoring in primary FPS",
+  "input": "GPU-resident twelve synthetic teacher tensors [B,261,768][:,5:]; patch count256",
+  "conditions": {
+    "original": "No Q cache; original elementwise projection; diagnostics disabled as in old audit",
+    "cached_loop": "Q GS cached; original elementwise projection; diagnostics disabled",
+    "fused": "Q GS cached; exact fused projection; group-contiguous layout for DGT; diagnostics disabled",
+    "dense_control": "Dense128 without Rank2, same GPU process and synthetic inputs"
+  },
+  "only_change": "Inference execution for Q, optional disabling of training diagnostics; no architecture, learned weights, training, loss or AUC changes",
+  "metadata_source": {
+    "path": "experiments/da/audit/20261026_lightweight_profile_fp32_s42/results/summary.csv",
+    "sha256": "b133fb3c4be310fb353d37a63c711a4b0b04e25d3050ee7d550113e291370c64",
+    "note": "Params, major GFLOPs, size and AUC are historical metadata; params and serialized size rechecked, FLOPs not reprofiled in timing process"
+  },
+  "legacy_clean_reference": "experiments/da/audit/20261026_lightweight_profile_fp32_s42/scripts/benchmark.py",
+  "profiling": "After BOTH GPUs finish timing, separate processes; no profiler in timing workers",
+  "group_layout": "[group,batch,patch,2*channel], contiguous input to each original per-group Linear; no gate/attention/mixing batching changes",
+  "arithmetic": "Original FP32 (w0*x0+w1*x1)+w2*x2 with explicit mul_rn/add_rn, no FMA",
+  "acceptance": "All seven scene outputs, student reconstructions and anomaly scores must be bitwise equal across original/cached/fused; failure recorded, not accepted as corrected timing"
+}

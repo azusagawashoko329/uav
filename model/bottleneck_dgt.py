@@ -63,12 +63,16 @@ class DepthGroupGatedTensorOCBE(LearnableDepthRank2OCBE):
             raise ValueError(f"expected {self.n_taps} taps, got {len(taps)}")
         normalized = [norm(tap) for norm, tap in zip(self.tap_norms, taps)]
         q = self.effective_depth_basis()
+        prepared = self._inference_group_inputs(normalized, q)
         groups = []
         for start in range(0, self.n_taps, 3):
-            first, middle, last = normalized[start:start + 3]
-            mode0 = q[0, 0] * first + q[0, 1] * middle + q[0, 2] * last
-            mode1 = q[1, 0] * first + q[1, 1] * middle + q[1, 2] * last
-            group = torch.cat((mode0, mode1), dim=-1)
+            if prepared is None:
+                first, middle, last = normalized[start:start + 3]
+                mode0 = q[0, 0] * first + q[0, 1] * middle + q[0, 2] * last
+                mode1 = q[1, 0] * first + q[1, 1] * middle + q[1, 2] * last
+                group = torch.cat((mode0, mode1), dim=-1)
+            else:
+                group = prepared[start // 3]
             value = torch.nn.functional.gelu(self.value_proj(group))
             gate = 1.0 + torch.tanh(self.gate_proj(group))
             groups.append(value * gate)

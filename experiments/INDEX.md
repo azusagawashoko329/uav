@@ -1,12 +1,12 @@
 # 实验导航
 
-共 99 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 100 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
 | `da` | `appearance` | 51 | [查看](#da-appearance) |
-| `da` | `audit` | 8 | [查看](#da-audit) |
+| `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
@@ -81,6 +81,7 @@
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
+| [20261027_dgt_qfusion_rebenchmark_s42](da/audit/20261027_dgt_qfusion_rebenchmark_s42/README.md) | `planned` | 待测（DGT后续统一Q推理） | 2 | 0 |
 | [20261026_rank2_projection_singlecuda_s42](da/audit/20261026_rank2_projection_singlecuda_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_projection_singlecuda_s42/results/summary.md)、[summary.csv](da/audit/20261026_rank2_projection_singlecuda_s42/results/summary.csv)（融合投影复核） | 1 | 0 |
 | [20261026_rank2_projection_launchfix_s42](da/audit/20261026_rank2_projection_launchfix_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_projection_launchfix_s42/results/summary.md) | 1 | 0 |
 | [20261026_rank2_projection_launch_s42](da/audit/20261026_rank2_projection_launch_s42/README.md) | `failed` | [timing.log](da/audit/20261026_rank2_projection_launch_s42/logs/timing.log)（launcher验证失败，无有效测速） | 1 | 0 |

@@ -101,6 +101,19 @@ class LearnableDepthRank2OCBE(DepthRank2OCBE):
         second = F.normalize(second, dim=0, eps=1e-8)
         return torch.stack((first, second), dim=0)
 
+    def _inference_group_inputs(self, normalized, q):
+        """Prepare contiguous group projections for DGT's existing group loop.
+
+        The caller first obtains effective_depth_basis(), which also invalidates
+        stale caches. Training and gradient-enabled evaluation keep their exact
+        original per-group operations.
+        """
+        if (self._inference_depth_projector is not None
+                and not self.training and not torch.is_grad_enabled()):
+            from .depthrank_projection import project_depth_rank2_groups
+            return project_depth_rank2_groups(normalized, q)
+        return None
+
     def forward(self, taps):
         if len(taps) != self.n_taps:
             raise ValueError(f"expected {self.n_taps} taps, got {len(taps)}")

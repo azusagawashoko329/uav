@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "20261027_dgt_qfusion_rebenchmark_s42",
+  "path": "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42",
+  "dataset": "da",
+  "family": "audit",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py",
+    "scripts/run_audit.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Synthetic features; teacher and image preprocessing excluded",
+    "No new AUC: reuse historical scores; exact function comparison only",
+    "DGT original and DenseRank2 full trained checkpoints unavailable; final scene Q restored with paired seed42 other weights",
+    "Six later fusion versions load all seven original checkpoints; checkpoint hashes in config",
+    "FP32 CUDA/Triton inference optimization; training unchanged",
+    "GPU/CPU clocks not locked; CPU affinity fixed; per-GPU tables kept separate",
+    "Seven trained Qs do not constitute independent hardware replications",
+    "Historical GFLOPs use major linear algebra operators, exclude pointwise Q/norm/activation; carried forward without changing definition"
+  ],
+  "follows_up": [
+    "experiments/da/audit/20261026_lightweight_profile_fp32_s42",
+    "experiments/da/audit/20261026_rank2_projection_singlecuda_s42"
+  ]
+}

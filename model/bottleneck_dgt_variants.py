@@ -27,31 +27,45 @@ class _DepthGroupBase(LearnableDepthRank2OCBE):
         nn.init.zeros_(self.gate_proj.bias)
         self.fuse = nn.Identity()
         self._diagnostics = {}
+        self._diagnostics_enabled = True
+
+    def set_diagnostics_enabled(self, enabled=True):
+        """Optionally skip training statistics and CPU copies during deployment."""
+        self._diagnostics_enabled = bool(enabled)
+        if not enabled:
+            self._diagnostics = {}
+        return self
 
     def encode_groups(self, taps):
         if len(taps) != self.n_taps:
             raise ValueError(f"expected {self.n_taps} taps, got {len(taps)}")
         normalized = [norm(tap) for norm, tap in zip(self.tap_norms, taps)]
         q = self.effective_depth_basis()
+        prepared = self._inference_group_inputs(normalized, q)
         groups = []
         gate_values = []
         for start in range(0, self.n_taps, 3):
-            first, middle, last = normalized[start:start + 3]
-            mode0 = q[0, 0] * first + q[0, 1] * middle + q[0, 2] * last
-            mode1 = q[1, 0] * first + q[1, 1] * middle + q[1, 2] * last
-            group = torch.cat((mode0, mode1), dim=-1)
+            if prepared is None:
+                first, middle, last = normalized[start:start + 3]
+                mode0 = q[0, 0] * first + q[0, 1] * middle + q[0, 2] * last
+                mode1 = q[1, 0] * first + q[1, 1] * middle + q[1, 2] * last
+                group = torch.cat((mode0, mode1), dim=-1)
+            else:
+                group = prepared[start // 3]
             value = F.gelu(self.value_proj(group))
             raw_gate = self.gate_proj(group)
             gate = 1.0 + torch.tanh(raw_gate)
             groups.append(value * gate)
-            gate_values.append(gate)
+            if self._diagnostics_enabled:
+                gate_values.append(gate)
         hidden = torch.stack(groups, dim=2)  # B,N,G,D
-        with torch.no_grad():
-            self._diagnostics = {
-                "gate_mean": float(torch.stack(gate_values).mean().detach().cpu()),
-                "gate_std": float(torch.stack(gate_values).std().detach().cpu()),
-                "hidden_rms": float(hidden.detach().pow(2).mean().sqrt().cpu()),
-            }
+        if self._diagnostics_enabled:
+            with torch.no_grad():
+                self._diagnostics = {
+                    "gate_mean": float(torch.stack(gate_values).mean().detach().cpu()),
+                    "gate_std": float(torch.stack(gate_values).std().detach().cpu()),
+                    "hidden_rms": float(hidden.detach().pow(2).mean().sqrt().cpu()),
+                }
         return hidden
 
     def diagnostics(self):
@@ -109,9 +123,10 @@ class DepthGroupResidualDepthOCBE(_DepthGroupBase):
             interactions.append(
                 F.gelu(self.pair_a(diff)) * F.gelu(self.pair_b(level)))
         residual = self.residual_out(torch.cat(interactions, dim=-1))
-        with torch.no_grad():
-            self._diagnostics["depth_residual_rms"] = float(
-                residual.detach().pow(2).mean().sqrt().cpu())
+        if self._diagnostics_enabled:
+            with torch.no_grad():
+                self._diagnostics["depth_residual_rms"] = float(
+                    residual.detach().pow(2).mean().sqrt().cpu())
         base = self.out_proj(hidden.reshape(hidden.shape[0], hidden.shape[1], -1))
         return base + residual
 
@@ -150,14 +165,15 @@ class DepthGroupCrossAttnPoolOCBE(_DepthGroupBase):
         query_logits = torch.einsum("md,bngd->bnmg", self.pool_queries, mixed)
         pool_weights = query_logits.softmax(dim=-1)
         pooled = torch.einsum("bnmg,bngd->bnmd", pool_weights, mixed)
-        with torch.no_grad():
-            entropy = -(attn.clamp_min(1e-8) * attn.clamp_min(1e-8).log()).sum(-1).mean()
-            pool_entropy = -(pool_weights.clamp_min(1e-8) * pool_weights.clamp_min(1e-8).log()).sum(-1).mean()
-            self._diagnostics.update({
-                "attention_entropy": float(entropy.detach().cpu()),
-                "pool_entropy": float(pool_entropy.detach().cpu()),
-                "attention_identity_mass": float(torch.diagonal(attn, dim1=-2, dim2=-1).mean().detach().cpu()),
-            })
+        if self._diagnostics_enabled:
+            with torch.no_grad():
+                entropy = -(attn.clamp_min(1e-8) * attn.clamp_min(1e-8).log()).sum(-1).mean()
+                pool_entropy = -(pool_weights.clamp_min(1e-8) * pool_weights.clamp_min(1e-8).log()).sum(-1).mean()
+                self._diagnostics.update({
+                    "attention_entropy": float(entropy.detach().cpu()),
+                    "pool_entropy": float(pool_entropy.detach().cpu()),
+                    "attention_identity_mass": float(torch.diagonal(attn, dim1=-2, dim2=-1).mean().detach().cpu()),
+                })
         return self.pool_out(pooled.reshape(pooled.shape[0], pooled.shape[1], -1))
 
 
@@ -189,9 +205,10 @@ class DepthGroupBilinearOCBE(_DepthGroupBase):
         for g, delta in enumerate(deltas):
             mixed[:, :, g, :] = mixed[:, :, g, :] + delta
             mixed[:, :, g + 1, :] = mixed[:, :, g + 1, :] + delta
-        with torch.no_grad():
-            self._diagnostics["bilinear_delta_rms"] = float(
-                torch.stack(deltas, dim=2).detach().pow(2).mean().sqrt().cpu())
+        if self._diagnostics_enabled:
+            with torch.no_grad():
+                self._diagnostics["bilinear_delta_rms"] = float(
+                    torch.stack(deltas, dim=2).detach().pow(2).mean().sqrt().cpu())
         return self.out_proj(mixed.reshape(mixed.shape[0], mixed.shape[1], -1))
 
 
