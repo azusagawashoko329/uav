@@ -1,0 +1,11 @@
+{"event": "started", "variant": "dgt", "gpu": 0, "source_commit": "7a93cf294d4795727d8f63c197ea496f8ec3bfd8"}
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py", line 218, in <module>
+    main()
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py", line 211, in main
+    result = run_variant(spec, config, device, args.gpu)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py", line 148, in run_variant
+    for batch in config["batches"]:
+                 ~~~~~~^^^^^^^^^^^
+KeyError: 'batches'

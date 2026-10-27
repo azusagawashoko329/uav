@@ -4,14 +4,559 @@
   "path": "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42",
   "dataset": "da",
   "family": "audit",
-  "status": "planned",
-  "source_commit": null,
+  "status": "completed",
+  "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
   "scripts": [
     "scripts/benchmark.py",
     "scripts/run_audit.py"
   ],
-  "runs": [],
-  "result_summary": null,
+  "runs": [
+    {
+      "run_id": "20261027T152400Z_smoke_config_error",
+      "status": "failed",
+      "source_commit": "7a93cf294d4795727d8f63c197ea496f8ec3bfd8",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "dgt"
+      ],
+      "log": "logs/smoke_dgt_gpu0.log",
+      "reason": "Smoke stopped before timing because config lacked worker-facing batches field",
+      "outputs": []
+    },
+    {
+      "run_id": "20261027T152500Z_smoke_dgt_retry",
+      "status": "completed",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "dgt"
+      ],
+      "log": "logs/smoke_dgt_gpu0_retry.log",
+      "outputs": []
+    },
+    {
+      "variant": "gl192_dense128",
+      "gpu": 0,
+      "affinity": "20-23",
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "gl192_dense128"
+      ],
+      "log": "logs/gl192_dense128_gpu0.log",
+      "started_at": "2026-10-27T07:24:46.266421+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:26:14.275674+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/gl192_dense128_gpu0.json"
+      ],
+      "run_id": "20261027T072446Z_gl192_dense128_gpu0",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:24:48.745266+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 0,
+        "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1327403,
+        "affinity": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "rank2_random",
+      "gpu": 1,
+      "affinity": "0-3",
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "1",
+        "--variant",
+        "rank2_random"
+      ],
+      "log": "logs/rank2_random_gpu1.log",
+      "started_at": "2026-10-27T07:24:46.267721+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:27:00.287072+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/rank2_random_gpu1.json"
+      ],
+      "run_id": "20261027T072446Z_rank2_random_gpu1",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:24:48.730999+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 1,
+        "cuda_device_name": "NVIDIA RTX A6000",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1327404,
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "dgt",
+      "gpu": 0,
+      "affinity": "20-23",
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "dgt"
+      ],
+      "log": "logs/dgt_gpu0.log",
+      "started_at": "2026-10-27T07:26:14.282338+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:28:36.300896+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/dgt_gpu0.json"
+      ],
+      "run_id": "20261027T072614Z_dgt_gpu0",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:26:16.429659+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 0,
+        "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1327685,
+        "affinity": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "nograph",
+      "gpu": 1,
+      "affinity": "0-3",
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "1",
+        "--variant",
+        "nograph"
+      ],
+      "log": "logs/nograph_gpu1.log",
+      "started_at": "2026-10-27T07:27:00.293307+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:29:30.313038+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/nograph_gpu1.json"
+      ],
+      "run_id": "20261027T072700Z_nograph_gpu1",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:27:02.520437+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 1,
+        "cuda_device_name": "NVIDIA RTX A6000",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1327794,
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "crossattn",
+      "gpu": 0,
+      "affinity": "20-23",
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "crossattn"
+      ],
+      "log": "logs/crossattn_gpu0.log",
+      "started_at": "2026-10-27T07:28:36.307270+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:31:22.329623+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/crossattn_gpu0.json"
+      ],
+      "run_id": "20261027T072836Z_crossattn_gpu0",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:28:38.465855+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 0,
+        "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1328069,
+        "affinity": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "bilinear",
+      "gpu": 1,
+      "affinity": "0-3",
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "1",
+        "--variant",
+        "bilinear"
+      ],
+      "log": "logs/bilinear_gpu1.log",
+      "started_at": "2026-10-27T07:29:30.319034+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:32:20.341788+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/bilinear_gpu1.json"
+      ],
+      "run_id": "20261027T072930Z_bilinear_gpu1",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:29:32.597080+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 1,
+        "cuda_device_name": "NVIDIA RTX A6000",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1328214,
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "slot16",
+      "gpu": 0,
+      "affinity": "20-23",
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "slot16"
+      ],
+      "log": "logs/slot16_gpu0.log",
+      "started_at": "2026-10-27T07:31:22.335788+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:33:12.356061+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/slot16_gpu0.json"
+      ],
+      "run_id": "20261027T073122Z_slot16_gpu0",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:31:24.437579+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 0,
+        "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1328373,
+        "affinity": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "resdepth_gb",
+      "gpu": 1,
+      "affinity": "0-3",
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "1",
+        "--variant",
+        "resdepth_gb"
+      ],
+      "log": "logs/resdepth_gb_gpu1.log",
+      "started_at": "2026-10-27T07:32:20.348284+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:35:02.372514+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/resdepth_gb_gpu1.json"
+      ],
+      "run_id": "20261027T073220Z_resdepth_gb_gpu1",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:32:22.697836+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 1,
+        "cuda_device_name": "NVIDIA RTX A6000",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1328495,
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "variant": "resdepth_sa",
+      "gpu": 0,
+      "affinity": "20-23",
+      "command": [
+        "taskset",
+        "-c",
+        "20-23",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/benchmark.py",
+        "--gpu",
+        "0",
+        "--variant",
+        "resdepth_sa"
+      ],
+      "log": "logs/resdepth_sa_gpu0.log",
+      "started_at": "2026-10-27T07:33:12.361935+00:00",
+      "status": "completed",
+      "ended_at": "2026-10-27T07:35:20.379166+00:00",
+      "exit_code": 0,
+      "outputs": [
+        "results/resdepth_sa_gpu0.json"
+      ],
+      "run_id": "20261027T073312Z_resdepth_sa_gpu0",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/benchmark.py",
+      "seed": 42,
+      "data_root": null,
+      "data_split": "GPU-resident synthetic twelve teacher taps; seven archived final Qs",
+      "environment": {
+        "started_at": "2026-10-27T07:33:14.508506+00:00",
+        "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+        "gpu": 0,
+        "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+        "cuda": "12.1",
+        "torch": "2.1.0+cu121",
+        "python": "3.11.14",
+        "dtype": "float32",
+        "tf32": false,
+        "cpu_threads": 4,
+        "pid": 1328629,
+        "affinity": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "config_sha256": "337ab2830f16e1642edf983b932e5c963a41468666797f363cb19ee0aa3a5de6"
+    },
+    {
+      "run_id": "20261027T153600Z_report_initial",
+      "status": "failed",
+      "source_commit": "c116497d7f32a17e6e936d5e4e781f1d81d4c42a",
+      "script": "scripts/run_audit.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py"
+      ],
+      "log": "logs/scheduler.log",
+      "reason": "All nine workers completed; report CSV flattening duplicated the batch field",
+      "outputs": []
+    },
+    {
+      "run_id": "20261027T153700Z_report_retry",
+      "status": "completed",
+      "source_commit": "2cd2a27e1f57b908522c4785bbe7b85f754f91b5",
+      "script": "scripts/run_audit.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "-u",
+        "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py",
+        "--report-only"
+      ],
+      "log": "logs/report_retry2.log",
+      "outputs": [
+        "results/measurements.json",
+        "results/measurements.csv",
+        "results/summary.md"
+      ]
+    }
+  ],
+  "result_summary": "results/summary.md",
   "limitations": [
     "Synthetic features; teacher and image preprocessing excluded",
     "No new AUC: reuse historical scores; exact function comparison only",
@@ -25,5 +570,26 @@
   "follows_up": [
     "experiments/da/audit/20261026_lightweight_profile_fp32_s42",
     "experiments/da/audit/20261026_rank2_projection_singlecuda_s42"
-  ]
+  ],
+  "review": {
+    "accepted": true,
+    "worker_variants": 9,
+    "scenes_per_variant": 7,
+    "all_verification_max_abs_diff": 0.0,
+    "primary_scope": "OCBE + GL192 student",
+    "score_scope": "OCBE + GL192 student + anomaly_score",
+    "fused_q_change": "inference-only Triton FP32 projection; no training change",
+    "report_correction": "Initial report failed after all workers; report-only retry succeeded; failed log retained",
+    "gpu_assignments": {
+      "gl192_dense128": 0,
+      "rank2_random": 1,
+      "dgt": 0,
+      "nograph": 1,
+      "crossattn": 0,
+      "bilinear": 1,
+      "slot16": 0,
+      "resdepth_gb": 1,
+      "resdepth_sa": 0
+    }
+  }
 }

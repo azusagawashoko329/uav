@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py", line 153, in <module>
+    main()
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py", line 143, in main
+    report(config, results)
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py", line 63, in report
+    rows = flatten(config, results)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42/scripts/run_audit.py", line 55, in flatten
+    rows.append(dict(variant=variant, label=result["label"],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dict() got multiple values for keyword argument 'batch'

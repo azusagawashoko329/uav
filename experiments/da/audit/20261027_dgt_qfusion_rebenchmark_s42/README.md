@@ -27,3 +27,25 @@ DGT变体默认仍记录训练诊断；部署审计统一显式关闭这些无�
 运行前提交源码、README、config/record和scripts，记录40位source_commit，再运行DMAD Python的scripts/run_audit.py。该脚本管理两卡独立运行、日志与状态；两卡计时都结束才启动Profiler，完成后生成summary.md/CSV和artifact SHA。旧实验、原速度表及负结果保留。新报告分别显示同轮原实现与优化实现，历史AUC只作引用。
 
 部署：载入checkpoint→to(device).eval()→set_diagnostics_enabled(False)（提供该接口的DGT变体）→cache_depth_basis_for_inference(fuse_projection=True)→torch.inference_mode()前向。默认训练行为与旧checkpoint键不改。
+
+## 复测结果
+
+九个版本均完成七场景复测，所有 batch=1/16 的 code、学生重建和异常分数差异均为 0。主表以 OCBE＋学生为响应链路；`score` 表与旧审计的 core_score 口径对应。不同版本由动态调度分配到两张卡，绝对值只在同一版本的三种 Q 路径内比较。
+
+| 版本 | 原循环 FPS | 缓存Q原循环 FPS | 融合Q FPS | 融合相对原循环 |
+|---|---:|---:|---:|---:|
+| GL192＋Dense128 | 649.1 | 648.8 | 648.8 | -0.05% |
+| Rank2随机可学习Q | 470.3 | 498.6 | **618.3** | **+31.45%** |
+| DGT固定图 | 312.3 | 326.4 | **396.5** | **+26.96%** |
+| DGT-NoGraph | 409.4 | 429.3 | **521.4** | **+27.37%** |
+| DGT-CrossAttnPool | 270.8 | 282.4 | **341.7** | **+26.20%** |
+| DGT-Bilinear | 333.0 | 346.3 | **401.7** | **+20.65%** |
+| Slot16 | 417.6 | 438.7 | **530.8** | **+27.10%** |
+| ResidualDepth（原loss） | 356.8 | 372.1 | **436.3** | **+22.28%** |
+| ResidualDepth（score-aligned） | 358.6 | 373.8 | **439.1** | **+22.44%** |
+
+包含异常分数的融合 FPS 为：Rank2 320.6、DGT 236.7、NoGraph 294.6、CrossAttnPool 199.9、Bilinear 252.4、Slot16 300.0、ResidualDepth 原 loss 266.2、score-aligned 267.6。完整逐场景、batch16、Latency、p95 和评分表见 `results/summary.md` 与 `results/measurements.csv`。
+
+这组数字解释了旧表为什么需要重做：Rank2 的原始投影路径在每帧重复触发大量小 CUDA kernel；缓存 Q 只能去掉正交化，融合路径才去掉投影拆分的启动和临时张量开销。DGT 后续版本保留了同一 Q 投影，因此旧 FPS/Latency 同样被拖低。融合后 DGT 各版本的响应链路提高约 20.65%–27.37%；CrossAttnPool 的绝对速度仍最低，是其交叉注意力结构本身的成本。Dense128 没有 Q 投影，融合前后基本不变。
+
+第一轮动态调度在所有 worker 已完成后，于报告 CSV 展平阶段因重复写入 `batch` 字段失败；失败日志保留在 `logs/scheduler.log`，修正后的报告运行记录在 `logs/report_retry2.log`。没有使用第一轮错误报告，也没有丢弃任何 worker 测量。
