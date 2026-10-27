@@ -830,5 +830,9 @@
   "profiling": "After BOTH GPUs finish timing, separate processes; no profiler in timing workers",
   "group_layout": "[group,batch,patch,2*channel], contiguous input to each original per-group Linear; no gate/attention/mixing batching changes",
   "arithmetic": "Original FP32 (w0*x0+w1*x1)+w2*x2 with explicit mul_rn/add_rn, no FMA",
-  "acceptance": "All seven scene outputs, student reconstructions and anomaly scores must be bitwise equal across original/cached/fused; failure recorded, not accepted as corrected timing"
+  "acceptance": "All seven scene outputs, student reconstructions and anomaly scores must be bitwise equal across original/cached/fused; failure recorded, not accepted as corrected timing",
+  "batches": [
+    1,
+    16
+  ]
 }
