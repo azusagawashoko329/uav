@@ -28,3 +28,11 @@ P=\begin{bmatrix}1/2&1/2&1/2&1/2\\-3/\sqrt{20}&-1/\sqrt{20}&1/\sqrt{20}&3/\sqrt{
 ## 限制
 
 速度审计的输入是GPU常驻合成教师特征，不包含教师前向、预处理和H2D；不同GPU绝对值不直接比较。原DGT完整checkpoint不可用，速度审计只恢复七场景最终Q并使用配对初始化。历史AUC只用于后续训练结果对照，不由速度审计补造。
+
+## 最终结果
+
+Vectorized-DGT和LCDB速度审计通过后，LCDB按原训练协议完成七场景seed42训练。AUC为`highway 94.8034`、`farmland 99.1461`、`bike 97.5302`、`solar 83.0705`、`vehicle 57.8559`、`crossroads 62.8364`、`railway 84.5480`，mean(7)=**82.8272**。相对GL192-Rank2 Learnable Q的82.9599下降0.1327，相对DGT固定图82.5063提升0.3209。
+
+训练checkpoint使用融合Q复测，OCBE＋student融合路径为**609.5 FPS / 1.6406 ms**，包含异常评分为**322.7 FPS / 3.0991 ms**；七场景输出逐位一致。LCDB的结论是：它没有带来AUC提升，但在保持3.368M参数和约1.762G core FLOPs的情况下，避免了DGT的多小算子延迟和明显AUC下降。vehicle、railway仍然下降，固定Mean＋Trend不应直接作为所有场景的最终深度先验。
+
+第一轮训练权重延迟脚本写入了无效的场景名JSON，失败记录和无效标记保留；修正写入后重测成功。完整结果见`results/summary.md`，checkpoint只在本地`ckpt/`保存并登记SHA。

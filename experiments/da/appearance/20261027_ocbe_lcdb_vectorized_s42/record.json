@@ -138,9 +138,266 @@
       "outputs": [
         "results/lcdb_gpu0.json"
       ]
+    },
+    {
+      "run_id": "20261027T094853Z_lcdb_training_scheduler",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-27T09:48:53Z",
+      "ended_at": "2026-10-27T10:23:33Z",
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "15",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261027T094853Z.jsonl",
+      "outputs": [
+        "results/auc_comparison.csv"
+      ]
+    },
+    {
+      "run_id": "20261027T094853Z_bike_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "bike",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T094853Z_bike_gpu0.log",
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth"
+      ],
+      "auc_percent": 97.53015905915917,
+      "checkpoint_sha256": "9b7ba3bb3c8b19887afb20300dfdb5bc09b4b1139157c4bb00d0156198072b4a"
+    },
+    {
+      "run_id": "20261027T094853Z_crossroads_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "crossroads",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T094853Z_crossroads_gpu1.log",
+      "outputs": [
+        "results/crossroads.json",
+        "results/crossroads_basis.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth"
+      ],
+      "auc_percent": 62.83635889677208,
+      "checkpoint_sha256": "8952f0771684e9c69709b3d6239dd456ee33298401738f42b29dc2c4cf6bb519"
+    },
+    {
+      "run_id": "20261027T094853Z_farmland_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "farmland",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T095801Z_farmland_gpu0.log",
+      "outputs": [
+        "results/farmland.json",
+        "results/farmland_basis.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth"
+      ],
+      "auc_percent": 99.14607715648027,
+      "checkpoint_sha256": "f2f80b155332bc5811fbbc40c07b12bdd392a1b9253c67739839757629844af5"
+    },
+    {
+      "run_id": "20261027T094853Z_highway_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "highway",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T100743Z_highway_gpu0.log",
+      "outputs": [
+        "results/highway.json",
+        "results/highway_basis.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth"
+      ],
+      "auc_percent": 94.80343100358502,
+      "checkpoint_sha256": "f9814dd7636e468e96edbf90b37fc757226af02c3a9668950f277c1751b5e1d8"
+    },
+    {
+      "run_id": "20261027T094853Z_railway_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "railway",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T100959Z_railway_gpu1.log",
+      "outputs": [
+        "results/railway.json",
+        "results/railway_basis.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth"
+      ],
+      "auc_percent": 84.5479838126897,
+      "checkpoint_sha256": "da8c83c200fdf81917d06274b39fd1efed152f8c972723e0b50d07140d46c2e5"
+    },
+    {
+      "run_id": "20261027T094853Z_solar_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "solar",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T101157Z_solar_gpu1.log",
+      "outputs": [
+        "results/solar.json",
+        "results/solar_basis.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth"
+      ],
+      "auc_percent": 83.07045119469727,
+      "checkpoint_sha256": "c2957001fb05c8fca496948564178c35a72ca88627ebc05b0a67e446ce766ca0"
+    },
+    {
+      "run_id": "20261027T094853Z_vehicle_lcdb",
+      "status": "completed",
+      "source_commit": "dce86cdc9e177c21551ba81befd7136c178089eb",
+      "script": "scripts/run_lcdb.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_lcdb.py",
+        "--scene",
+        "vehicle",
+        "--variant",
+        "lcdb",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T101611Z_vehicle_gpu1.log",
+      "outputs": [
+        "results/vehicle.json",
+        "results/vehicle_basis.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth"
+      ],
+      "auc_percent": 57.85587364875742,
+      "checkpoint_sha256": "5df8d968556b79729a17844497e810e551624dfbcd11494b78bf44f9ff85b296"
+    },
+    {
+      "run_id": "20261027T102541Z_lcdb_trained_latency_initial",
+      "status": "failed",
+      "source_commit": "74109c2d6f65cdb7a31467f92e1cab0e30b9d8fb",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "log": "logs/lcdb_trained_latency.log",
+      "reason": "Invalid JSON writer stored scene names instead of measurement objects",
+      "outputs": [
+        "results/lcdb_trained_gpu0_invalid.json"
+      ]
+    },
+    {
+      "run_id": "20261027T102541Z_lcdb_trained_latency_retry",
+      "status": "completed",
+      "source_commit": "808880829e240333d1f235926bfbfd5c483c3f7d",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "log": "logs/lcdb_trained_latency_retry.log",
+      "outputs": [
+        "results/lcdb_trained_gpu0.json"
+      ]
     }
   ],
-  "result_summary": "results/speed_summary.md",
+  "result_summary": "results/summary.md",
   "limitations": [
     "Speed audit uses synthetic GPU-resident teacher-shaped tensors and does not claim AUC",
     "Original DGT checkpoint is unavailable; speed audit uses paired architecture initialization and archived scene Q",
@@ -149,5 +406,19 @@
   ],
   "follows_up": [
     "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42"
-  ]
+  ],
+  "review": {
+    "accepted": true,
+    "training_auc_mean": 82.82719068173442,
+    "rank2_auc_mean": 82.9599,
+    "dgt_auc_mean": 82.5063,
+    "trained_core_fused_fps": 609.5,
+    "trained_core_fused_latency_ms": 1.6406,
+    "trained_score_fused_fps": 322.7,
+    "trained_latency_max_abs_diff": 0.0,
+    "vectorized_dgt_speed_gate_passed": true,
+    "lcdb_speed_gate_passed": true,
+    "first_latency_report_failed": true,
+    "training_failures": []
+  }
 }
