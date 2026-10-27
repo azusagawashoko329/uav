@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "20261027_ocbe_sgf_base_r48_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "sgf_base",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": "206daa8387bf59e3b5a360ad719d12bb680b4b14",
+  "model": {
+    "architecture": "ocbe_sgf_sgf_base_r48_randomorth_glll_width192",
+    "teacher_taps": 12,
+    "group_size": 3,
+    "q": "shared learnable random-orthonormal 2x3",
+    "latent_width": 48,
+    "group_mix": false,
+    "group_mix_kernel": "none",
+    "head": "192->128->64",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)"
+  },
+  "training": {
+    "epochs": 15,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "optimizer": "AdamW(lr=5e-4,weight_decay=5e-2)",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "data": {
+    "root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "split": "normal training frames; paired test-video frames and .npy labels"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3073142,
+    "expected_fusion_macs_per_patch": 327680,
+    "expected_core_gflops": "approximately 1.724"
+  },
+  "acceptance": {
+    "seven_scene_auc": "record per scene and macro mean",
+    "speed": "compare latency/FPS and training elapsed with LCDB and Rank2",
+    "correctness": "same output shape [B,256,64], no extra loss"
+  }
+}
