@@ -46,7 +46,7 @@ def measure(fn, device, warmup, samples, repeats, batch):
 
 def main():
     cfg=json.loads((EXP/'config.json').read_text()); device=torch.device('cuda:0'); torch.cuda.set_device(device)
-    torch.set_num_threads(cfg['cpu_threads']); torch.backends.cuda.matmul.allow_tf32=False
+    torch.set_num_threads(cfg.get('cpu_threads', 4)); torch.backends.cuda.matmul.allow_tf32=False
     torch.backends.cudnn.allow_tf32=False; torch.backends.cudnn.benchmark=False; torch.backends.cudnn.deterministic=True
     env=dict(started_at=stamp(),source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
              cuda_device_name=torch.cuda.get_device_name(device),gpu=0,torch=torch.__version__,cuda=torch.version.cuda,
