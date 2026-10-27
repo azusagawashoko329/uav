@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "id": "20261027_ocbe_lcdb_vectorized_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "vectorized_dgt_and_lcdb",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "variants": [
+    "dense128",
+    "rank2",
+    "dgt",
+    "vectorized_dgt",
+    "lcdb"
+  ],
+  "batches": [
+    1,
+    16
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "batch16_samples": 30,
+  "repeats": 4,
+  "cpu_threads": 4,
+  "source_model_before_change": "05f7c443d1753d6a35e9d1d0e0ff7ac816be3f22",
+  "q_source": "experiments/da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/<scene>_basis.json",
+  "speed_scope": "OCBE + GL192 student and OCBE + GL192 student + anomaly_score; synthetic teacher taps; no teacher/preprocessing/H2D",
+  "speed_conditions": "original uncached Q projection, GS-cached original projection, fused exact FP32 Q projection",
+  "training": {
+    "variant": "lcdb",
+    "epochs": 15,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192)",
+    "q": "shared learnable random orthonormal Rank2",
+    "alignment": "adjacent three teacher blocks to one student block",
+    "scenes": "seven independent Drone-Anomaly scenes",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "lcdb": {
+    "depth_basis": "fixed mean plus normalized linear trend over four groups",
+    "group_input": "4 x (2 x 768)",
+    "pre_mix": "2 x 4 depth basis before channel bottleneck",
+    "mlp": "3072 -> 128 -> 64",
+    "new_loss": false
+  },
+  "acceptance": {
+    "vectorized_dgt": "outputs match original within 1e-5; latency improves",
+    "lcdb": "no additional kernel explosion; speed closer to Rank2 than DGT; train only after speed audit"
+  },
+  "limitations": [
+    "Speed audit uses synthetic GPU-resident teacher-shaped tensors and does not claim AUC",
+    "Original DGT checkpoint is unavailable; speed audit uses paired architecture initialization and archived scene Q",
+    "Training AUC requires all seven scene workers and will be recorded separately",
+    "GPU clocks are not fixed; per-GPU absolute values are not mixed"
+  ]
+}

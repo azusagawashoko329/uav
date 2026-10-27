@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "20261027_ocbe_lcdb_vectorized_s42",
+  "path": "experiments/da/appearance/20261027_ocbe_lcdb_vectorized_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/benchmark.py",
+    "scripts/run_lcdb.py",
+    "scripts/dynamic_scheduler.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Speed audit uses synthetic GPU-resident teacher-shaped tensors and does not claim AUC",
+    "Original DGT checkpoint is unavailable; speed audit uses paired architecture initialization and archived scene Q",
+    "Training AUC requires all seven scene workers and will be recorded separately",
+    "GPU clocks are not fixed; per-GPU absolute values are not mixed"
+  ],
+  "follows_up": [
+    "experiments/da/audit/20261027_dgt_qfusion_rebenchmark_s42"
+  ]
+}
