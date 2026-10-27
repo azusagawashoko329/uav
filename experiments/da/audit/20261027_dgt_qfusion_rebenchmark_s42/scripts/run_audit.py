@@ -52,6 +52,7 @@ def flatten(config, results):
             for batch, scopes in scene["timings"].items():
                 for scope, modes in scopes.items():
                     for condition, metric in modes.items():
+                        metric = {k: v for k, v in metric.items() if k not in {"batch"}}
                         rows.append(dict(variant=variant, label=result["label"],
                                          gpu=result["environment"]["gpu"], scene=scene["scene"],
                                          batch=int(batch), scope=scope, condition=condition,
@@ -86,6 +87,21 @@ def report(config, results):
                      f"{mean_ms['original']:.4f} / {fps['original']:.1f} | "
                      f"{mean_ms['cached_loop']:.4f} / {fps['cached_loop']:.1f} | "
                      f"{mean_ms['fused']:.4f} / {fps['fused']:.1f} | {gain:+.2f}% |")
+    lines += ["", "## batch=1：包含异常分数的 OCBE＋学生链路", "",
+              "这一节对应旧审计的 core_score 口径；仍不包含教师前向、图像预处理和数据传输。", "",
+              "| 版本 | GPU | 原循环 ms/FPS | 缓存Q原循环 ms/FPS | 融合Q ms/FPS | 融合相对原循环 |", "|---|---|---:|---:|---:|---:|"]
+    for spec in config["variants"]:
+        result = results[spec["id"]]
+        vals = {k: [scene["timings"]["1"]["score"][k]["latency_p50_ms"]
+                    for scene in result["scenes"]]
+                for k in ("original", "cached_loop", "fused")}
+        mean_ms = {k: sum(v) / len(v) for k, v in vals.items()}
+        fps = {k: 1000 / v for k, v in mean_ms.items()}
+        lines.append(f"| {spec['label']} (`{spec['id']}`) | GPU{result['environment']['gpu']} | "
+                     f"{mean_ms['original']:.4f} / {fps['original']:.1f} | "
+                     f"{mean_ms['cached_loop']:.4f} / {fps['cached_loop']:.1f} | "
+                     f"{mean_ms['fused']:.4f} / {fps['fused']:.1f} | "
+                     f"{(fps['fused']/fps['original']-1)*100:+.2f}% |")
     lines += ["", "## 逐场景融合结果", "", "| 版本 | 场景 | GPU | 原循环 FPS | 缓存循环 FPS | 融合 FPS | 融合相对原循环 |\n|---|---|---|---:|---:|---:|---:|"]
     for spec in config["variants"]:
         result = results[spec["id"]]
@@ -102,6 +118,18 @@ def report(config, results):
 
 
 def main():
+    if "--report-only" in sys.argv:
+        config = json.loads((EXP / "config.json").read_text())
+        # Worker files are assigned dynamically, so discover them by variant.
+        results = {}
+        for spec in config["variants"]:
+            matches = sorted((EXP / "results").glob(f"{spec['id']}_gpu*.json"))
+            if len(matches) != 1:
+                raise RuntimeError(f"expected one worker result for {spec['id']}, got {matches}")
+            results[spec["id"]] = json.loads(matches[0].read_text())
+        report(config, results)
+        print(json.dumps({"event": "report_completed", "variants": len(results)}), flush=True)
+        return
     config = json.loads((EXP / "config.json").read_text())
     record = json.loads((EXP / "record.json").read_text())
     record.update(status="running", source_commit=subprocess.check_output(
