@@ -52,6 +52,9 @@ def main():
              cuda_device_name=torch.cuda.get_device_name(device),gpu=0,torch=torch.__version__,cuda=torch.version.cuda,
              python=platform.python_version(),dtype='float32',tf32=False,cpu_threads=torch.get_num_threads())
     result=dict(environment=env,scenes=[])
+    batches = cfg.get('batches', [1, 16])
+    warmup, samples, repeats = cfg.get('warmup', 30), cfg.get('samples', 100), cfg.get('repeats', 4)
+    batch16_samples = cfg.get('batch16_samples', 30)
     for i,scene in enumerate(cfg['scenes']):
         state=torch.load(EXP/'ckpt'/f'{scene}_final.pth',map_location='cpu',weights_only=False)
         base=build_cross_depth_mixer_bottleneck(hidden=128).to(device).eval(); student=FourBlockGlobalLocalDecoder(dim=192,teacher_dim=768).to(device).eval()
@@ -59,15 +62,15 @@ def main():
         original=copy.deepcopy(base).eval(); cached=copy.deepcopy(base).eval(); fused=copy.deepcopy(base).eval()
         cached.cache_depth_basis_for_inference(fuse_projection=False); fused.cache_depth_basis_for_inference(fuse_projection=True)
         scene_result=dict(scene=scene,auc_percent=json.loads((EXP/'results'/f'{scene}.json').read_text())['auc_percent'],timings={},verification={})
-        for batch in cfg['batches']:
+        for batch in batches:
             x=taps(batch,device,i)
             with torch.inference_mode():
                 y0,y1,y2=original(x),cached(x),fused(x); s0,s1,s2=student(y0),student(y1),student(y2)
                 a0,a1,a2=anomaly_score(x,s0),anomaly_score(x,s1),anomaly_score(x,s2)
                 scene_result['verification'][str(batch)]=dict(cached_code_max_abs_diff=float((y0-y1).abs().max().cpu()),fused_code_max_abs_diff=float((y0-y2).abs().max().cpu()),fused_score_max_abs_diff=float((a0-a2).abs().max().cpu()))
             funcs={'original':original,'cached_loop':cached,'fused':fused}
-            samples=cfg['samples'] if batch==1 else cfg['batch16_samples']
-            scene_result['timings'][str(batch)]={scope:{name:measure((lambda m=m:student(m(x))) if scope=='subnet' else (lambda m=m:anomaly_score(x,student(m(x)))),device,cfg['warmup'],samples,cfg['repeats'],batch) for name,m in funcs.items()} for scope in ('subnet','score')}
+            sample_count = batch16_samples if batch != 1 else samples
+            scene_result['timings'][str(batch)]={scope:{name:measure((lambda m=m:student(m(x))) if scope=='subnet' else (lambda m=m:anomaly_score(x,student(m(x)))),device,warmup,sample_count,repeats,batch) for name,m in funcs.items()} for scope in ('subnet','score')}
         result['scenes'].append(scene_result); del base,original,cached,fused,student; torch.cuda.empty_cache()
     result['finished_at']=stamp(); (EXP/'results'/'crossdepth_trained_gpu0.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'event':'completed','scenes':len(result['scenes'])}),flush=True)
