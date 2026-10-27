@@ -4,15 +4,277 @@
   "path": "experiments/da/appearance/20261027_ocbe_crossdepth_mixer_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "completed",
+  "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
   "scripts": [
     "scripts/run_crossdepth.py",
     "scripts/dynamic_scheduler.py",
     "scripts/benchmark_trained.py"
   ],
-  "runs": [],
-  "result_summary": null,
+  "runs": [
+    {
+      "run_id": "20261027T133548Z_crossdepth_training_scheduler",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-27T13:35:48Z",
+      "ended_at": "2026-10-27T14:39:08Z",
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "15",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261027T133548Z.jsonl",
+      "outputs": [
+        "results/auc_comparison.csv"
+      ]
+    },
+    {
+      "run_id": "20261027T133548Z_bike_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "bike",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T133548Z_bike_gpu0.log",
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth"
+      ],
+      "auc_percent": 97.52323771238548,
+      "checkpoint_sha256": "d131791027e34690c332fa462c517e30f09cc22b499cc4c73f2eb2829be03046"
+    },
+    {
+      "run_id": "20261027T133548Z_crossroads_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "crossroads",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T133548Z_crossroads_gpu1.log",
+      "outputs": [
+        "results/crossroads.json",
+        "results/crossroads_basis.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth"
+      ],
+      "auc_percent": 62.83564346441485,
+      "checkpoint_sha256": "b4939a7d81c833812d3dca79fcc4feb2d1806895aba912fde0b32dce2c8d46d9"
+    },
+    {
+      "run_id": "20261027T133548Z_farmland_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "farmland",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T135204Z_farmland_gpu0.log",
+      "outputs": [
+        "results/farmland.json",
+        "results/farmland_basis.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth"
+      ],
+      "auc_percent": 99.15041179020372,
+      "checkpoint_sha256": "588b474a43f87bf5daf4dff6496f110eadae7e49a5c7141b552935566652af67"
+    },
+    {
+      "run_id": "20261027T133548Z_highway_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "highway",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T141022Z_highway_gpu0.log",
+      "outputs": [
+        "results/highway.json",
+        "results/highway_basis.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth"
+      ],
+      "auc_percent": 94.83305342169245,
+      "checkpoint_sha256": "dc4e984ddf545b00d91409ec443a802c70805d67d49deecbcd68488b80faaaa6"
+    },
+    {
+      "run_id": "20261027T133548Z_railway_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "railway",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T141458Z_railway_gpu1.log",
+      "outputs": [
+        "results/railway.json",
+        "results/railway_basis.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth"
+      ],
+      "auc_percent": 84.47571903454258,
+      "checkpoint_sha256": "0ec476b4161f113e1dc8b3af732925d7de5789491c9923fddf4dc750ae81dd93"
+    },
+    {
+      "run_id": "20261027T133548Z_solar_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "solar",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T141814Z_solar_gpu1.log",
+      "outputs": [
+        "results/solar.json",
+        "results/solar_basis.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth"
+      ],
+      "auc_percent": 83.14371093321635,
+      "checkpoint_sha256": "596c43d3f8e08e4c2f2a3b60937874a8d09093cbae21bb4d5962efa6f0717dcc"
+    },
+    {
+      "run_id": "20261027T133548Z_vehicle_crossdepth",
+      "status": "completed",
+      "source_commit": "d9add994fdcb2de8fed7721e4db452e61a539dbb",
+      "script": "scripts/run_crossdepth.py",
+      "seed": 42,
+      "started_at": null,
+      "ended_at": null,
+      "command": [
+        "scripts/run_crossdepth.py",
+        "--scene",
+        "vehicle",
+        "--variant",
+        "crossdepth_mixer",
+        "--epochs",
+        "15",
+        "--batch",
+        "64"
+      ],
+      "log": "logs/20261027T142544Z_vehicle_gpu1.log",
+      "outputs": [
+        "results/vehicle.json",
+        "results/vehicle_basis.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth"
+      ],
+      "auc_percent": 58.10104756126252,
+      "checkpoint_sha256": "b7a5a4f5f0322b6baca4c11a743a274bd637736da63fa099aeaa5b98891d0f9a"
+    },
+    {
+      "run_id": "20261027T144000Z_crossdepth_latency_fail1",
+      "status": "failed",
+      "source_commit": "943258094fbbf09775f1d680cfc1f91fd9ef734b",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "log": "logs/crossdepth_trained_latency.log",
+      "reason": "Missing cpu_threads config before timing",
+      "outputs": []
+    },
+    {
+      "run_id": "20261027T144100Z_crossdepth_latency_fail2",
+      "status": "failed",
+      "source_commit": "42dd7d4f0ac46e21be22f91652fcfa15b8023f42",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "log": "logs/crossdepth_trained_latency_retry.log",
+      "reason": "Missing batches config before timing",
+      "outputs": []
+    },
+    {
+      "run_id": "20261027T144200Z_crossdepth_latency_retry",
+      "status": "completed",
+      "source_commit": "a3f3ee1d27aed6fca2d1660a745c9583a083b10e",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "log": "logs/crossdepth_trained_latency_retry2.log",
+      "outputs": [
+        "results/crossdepth_trained_gpu0.json"
+      ]
+    }
+  ],
+  "result_summary": "results/summary.md",
   "limitations": [
     "No behavior branch",
     "AUC is one seed only",
@@ -21,5 +283,17 @@
   ],
   "follows_up": [
     "experiments/da/appearance/20261027_ocbe_lcdb_vectorized_s42"
-  ]
+  ],
+  "review": {
+    "accepted": true,
+    "auc_mean": 82.86611770253114,
+    "rank2_auc_mean": 82.9599,
+    "lcdb_auc_mean": 82.82719068173442,
+    "dgt_auc_mean": 82.5063,
+    "trained_fused_fps": 516.3,
+    "trained_fused_latency_ms": 1.9367,
+    "trained_score_fps": 293.0,
+    "trained_latency_max_abs_diff": 0.0,
+    "decision": "negative: stop Cross-Depth Mixer as a main direction"
+  }
 }

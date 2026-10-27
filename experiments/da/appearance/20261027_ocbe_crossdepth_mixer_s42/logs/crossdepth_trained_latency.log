@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_crossdepth_mixer_s42/scripts/benchmark_trained.py", line 76, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_crossdepth_mixer_s42/scripts/benchmark_trained.py", line 49, in main
+    torch.set_num_threads(cfg['cpu_threads']); torch.backends.cuda.matmul.allow_tf32=False
+                          ~~~^^^^^^^^^^^^^^^
+KeyError: 'cpu_threads'
