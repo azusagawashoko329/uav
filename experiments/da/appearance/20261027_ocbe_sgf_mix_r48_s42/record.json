@@ -4,13 +4,40 @@
   "path": "experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
   "scripts": [
     "scripts/run_sgf.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261027T153421Z_sgf_mix_training_scheduler",
+      "status": "running",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-27T15:34:21Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "15",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": null,
+      "outputs": [],
+      "notes": "Seven scenes dynamically scheduled across GPUs 0 and 1; user will be notified after completion."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
