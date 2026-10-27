@@ -1,11 +1,11 @@
 # 实验导航
 
-共 101 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 102 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 52 | [查看](#da-appearance) |
+| `da` | `appearance` | 53 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -30,6 +30,7 @@
 | [20260612_rd_noln](da/appearance/20260612_rd_noln/RECORD.md) | `completed` | [results.csv](da/appearance/20260612_rd_noln/results.csv) | 1 | 7 |
 | [20260612_rd_notopk](da/appearance/20260612_rd_notopk/RECORD.md) | `completed` | [results.csv](da/appearance/20260612_rd_notopk/results.csv) | 1 | 7 |
 | [20260613_deit_teacher](da/appearance/20260613_deit_teacher/RECORD.md) | `completed` | [results.csv](da/appearance/20260613_deit_teacher/results.csv) | 2 | 7 |
+| [20261027_ocbe_crossdepth_mixer_s42](da/appearance/20261027_ocbe_crossdepth_mixer_s42/README.md) | `planned` | 待七场景训练 | 2 | 0 |
 | [20261027_ocbe_lcdb_vectorized_s42](da/appearance/20261027_ocbe_lcdb_vectorized_s42/README.md) | `completed` | [summary.md](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/summary.md)、[auc_comparison.csv](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/auc_comparison.csv)、[speed_summary.md](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/speed_summary.md) | 5 | 7 |
 | [20261012_student_internal_screen_s42](da/appearance/20261012_student_internal_screen_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_student_internal_screen_s42/results/summary.md)、[screening_retry1.json](da/appearance/20261012_student_internal_screen_s42/results/screening_retry1.json) | 1 | 0 |
 | [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_structural_mixer_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_structural_mixer_glll_s42/results/summary.csv)、[latency_benchmark.json](da/appearance/20261012_structural_mixer_glll_s42/results/latency_benchmark.json) | 4 | 0 |

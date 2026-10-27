@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "id": "20261027_ocbe_crossdepth_mixer_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "nonlinear_cross_depth_mixer_learnable_group_rank2",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": "5f4f2c6d6b0b8c76f39de48a4dd4eb3cd3127931",
+  "training": {
+    "epochs": 15,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192)",
+    "local_q": "shared learnable random orthonormal 2x3",
+    "group_mixer": "zero_initialized learnable 4x4 A with GELU residual",
+    "group_rank2": "trainable row-orthonormal 2x4 P initialized Mean+Trend",
+    "bottleneck": "3072->128->64",
+    "main_loss_unchanged": true,
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3368030,
+    "expected_core_gflops": "approximately 1.78"
+  },
+  "acceptance": {
+    "output_shape": "[B,256,64]",
+    "speed": "no DGT-style kernel explosion",
+    "auc": "compare seven-scene mean against LCDB and Rank2"
+  },
+  "limitations": [
+    "No behavior branch",
+    "AUC is one seed only",
+    "GPU clocks not fixed",
+    "Checkpoints local and ignored by Git"
+  ]
+}

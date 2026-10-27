@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "20261027_ocbe_crossdepth_mixer_s42",
+  "path": "experiments/da/appearance/20261027_ocbe_crossdepth_mixer_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_crossdepth.py",
+    "scripts/dynamic_scheduler.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "No behavior branch",
+    "AUC is one seed only",
+    "GPU clocks not fixed",
+    "Checkpoints local and ignored by Git"
+  ],
+  "follows_up": [
+    "experiments/da/appearance/20261027_ocbe_lcdb_vectorized_s42"
+  ]
+}
