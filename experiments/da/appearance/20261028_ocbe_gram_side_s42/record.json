@@ -4,13 +4,40 @@
   "path": "experiments/da/appearance/20261028_ocbe_gram_side_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
   "scripts": [
     "scripts/run_extension.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261028T123306Z_gram_side_suite",
+      "status": "running",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-28T12:33:06Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "15",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": null,
+      "outputs": [],
+      "notes": "Sequential four-stage suite; this stage is dynamically scheduled after prior stage completion."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
