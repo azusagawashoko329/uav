@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
   "scripts": [
     "scripts/run_sgf.py",
@@ -13,15 +13,19 @@
   ],
   "runs": [
     {
-      "run_id": "20261027T153421Z_sgf_mix_training_scheduler",
-      "status": "running",
+      "run_id": "20261027T163813Z_sgf_mix_training_scheduler",
+      "status": "completed",
       "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-27T15:34:21Z",
-      "ended_at": null,
+      "started_at": "20261027T163813Z",
+      "ended_at": "20261027T174050Z",
       "command": [
         "scripts/dynamic_scheduler.py",
+        "--repo-root",
+        "/data1/data8tb/liangyuxuan/code/uav",
+        "--experiment",
+        "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42",
         "--gpus",
         "0",
         "1",
@@ -34,17 +38,221 @@
         "--seed",
         "42"
       ],
+      "log": "logs/scheduler_20261027T163813Z.jsonl",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "data_split": "normal training frames per scene; paired test-video frames and .npy labels",
+      "scene_status": {
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
+      },
+      "outputs": [
+        "results/summary.md",
+        "results/auc_comparison.csv",
+        "results/training_timing.csv",
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth"
+      ],
+      "wall_clock_seconds": null,
+      "sum_scene_elapsed_s": 6760.716510736034
+    },
+    {
+      "run_id": "20261027T163813Z_bike_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T163813Z",
+      "ended_at": "20261027T165413Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T163813Z_bike_gpu0.log",
+      "log": "logs/20261027T163813Z_bike_gpu0.log",
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth"
+      ],
+      "auc_percent": 97.61782425688216,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "6988e25082700497b6b89690fc7452c4a7409f59859266010f01c95fc0c7dad0",
+      "elapsed_s": 950.1794812249718
+    },
+    {
+      "run_id": "20261027T163813Z_crossroads_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T163813Z",
+      "ended_at": "20261027T171657Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T163813Z_crossroads_gpu1.log",
+      "log": "logs/20261027T163813Z_crossroads_gpu1.log",
+      "outputs": [
+        "results/crossroads.json",
+        "results/crossroads_basis.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth"
+      ],
+      "auc_percent": 62.79917592598735,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "f13e76a9564914f2fc76f32069cc63f88a04464f0b8ecd9680fae761b13505b7",
+      "elapsed_s": 2314.6623945350293
+    },
+    {
+      "run_id": "20261027T163813Z_farmland_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T165413Z",
+      "ended_at": "20261027T171211Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T165413Z_farmland_gpu0.log",
+      "log": "logs/20261027T165413Z_farmland_gpu0.log",
+      "outputs": [
+        "results/farmland.json",
+        "results/farmland_basis.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth"
+      ],
+      "auc_percent": 99.12115301257045,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "0bb736d5b9445041e783893a3bdd2cbb5892f314420ce4757ef3190d899cde36",
+      "elapsed_s": 1069.9104873049655
+    },
+    {
+      "run_id": "20261027T163813Z_highway_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T171211Z",
+      "ended_at": "20261027T172918Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T171211Z_highway_gpu0.log",
+      "log": "logs/20261027T171211Z_highway_gpu0.log",
+      "outputs": [
+        "results/highway.json",
+        "results/highway_basis.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth"
+      ],
+      "auc_percent": 94.26459748590553,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "5009cf9fbd3a507d0383cff1ee7befaa823c82014f3bd89c9a6be4bcf48c3def",
+      "elapsed_s": 1017.2916504180175
+    },
+    {
+      "run_id": "20261027T163813Z_railway_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T171657Z",
+      "ended_at": "20261027T172011Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T171657Z_railway_gpu1.log",
+      "log": "logs/20261027T171657Z_railway_gpu1.log",
+      "outputs": [
+        "results/railway.json",
+        "results/railway_basis.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth"
+      ],
+      "auc_percent": 81.23464373464373,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "9b7d2fb2cdbb468eb8f70e4ca36f88d73ea16a799a656bfcae6264a0a8087ad5",
+      "elapsed_s": 186.9531728210277
+    },
+    {
+      "run_id": "20261027T163813Z_solar_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T172011Z",
+      "ended_at": "20261027T172736Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T172011Z_solar_gpu1.log",
+      "log": "logs/20261027T172011Z_solar_gpu1.log",
+      "outputs": [
+        "results/solar.json",
+        "results/solar_basis.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth"
+      ],
+      "auc_percent": 81.81802951103315,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "f9e82c102c70c309f2d57a6b462dae6fdcca8a0616ed173ff916c0ecfd3b8566",
+      "elapsed_s": 436.7103668570053
+    },
+    {
+      "run_id": "20261027T163813Z_vehicle_sgf_mix",
+      "status": "completed",
+      "source_commit": "436a69be87d9df0b0be81a8610cf216ad5e9ddf5",
+      "script": "scripts/run_sgf.py",
+      "seed": 42,
+      "started_at": "20261027T172736Z",
+      "ended_at": "20261027T174050Z",
+      "command": "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261027_ocbe_sgf_mix_r48_s42/logs/20261027T172736Z_vehicle_gpu1.log",
+      "log": "logs/20261027T172736Z_vehicle_gpu1.log",
+      "outputs": [
+        "results/vehicle.json",
+        "results/vehicle_basis.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth"
+      ],
+      "auc_percent": 54.82280612687131,
+      "trainable_parameters": 3073286,
+      "checkpoint_sha256": "9936d33812ee6c3886a4938373ac34036ee1828aaa899480a9f3d5c6617b685c",
+      "elapsed_s": 785.0089575750171
+    },
+    {
+      "run_id": "20261028T063505Z_sgf_mix_latency",
+      "status": "completed",
+      "source_commit": "1173df2da86106b516393f72594bb5b88a0c05f3",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": "20261028T063505Z",
+      "ended_at": "20261028T063505Z",
+      "command": [
+        "scripts/benchmark_trained.py"
+      ],
       "log": null,
-      "outputs": [],
-      "notes": "Seven scenes dynamically scheduled across GPUs 0 and 1; user will be notified after completion."
+      "outputs": [
+        "results/sgf_mix_trained_gpu0.json",
+        "results/speed_summary.md"
+      ],
+      "verification": "fused Q code max abs diff <1.2e-7; fused score max abs diff 0"
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "AUC has no direct training proxy",
     "no auxiliary fusion loss",
     "GPU clocks not fixed",
     "checkpoints are local and ignored by Git"
-  ]
+  ],
+  "review": {
+    "auc_mean_percent": 81.66831857912767,
+    "trainable_parameters": 3073286,
+    "sum_scene_elapsed_s": 6760.716510736034,
+    "rank2_mean_percent": 82.9599,
+    "lcdb_mean_percent": 82.8272,
+    "crossdepth_mean_percent": 82.8661,
+    "benchmark": "results/sgf_mix_trained_gpu0.json"
+  }
 }

@@ -30,3 +30,15 @@ Q、三层教师对应一个学生 block、GL192 学生、group-balanced top-k l
 ## 预期与限制
 
 预期 SGF-48 的融合参数和计算量低于 LCDB；AUC 是否保持需要七场景实测。单一种子不能证明稳定性，GPU 时钟和场景运行顺序也会影响绝对训练时间。
+
+## 最终结果
+
+
+七场景已完成，mean AUC 为 **82.3713**，可训练参数为 **3,073,142**。
+
+- Rank2 Learnable Q mean AUC：82.9599；LCDB：82.8272；Cross-Depth：82.8661。
+- 本变体相对 Rank2：-0.5886 pp；相对 LCDB：-0.4559 pp。
+- 训练过程无失败；各场景 checkpoint 已生成并在 `artifacts.json` 登记。
+- 训练权重速度结果见 [`speed_summary.md`](results/speed_summary.md)。
+
+SGF-base 降低了融合参数和理论计算量，但 AUC 掉点超过当前可接受范围；共享组内压缩带来的信息损失较明显。
