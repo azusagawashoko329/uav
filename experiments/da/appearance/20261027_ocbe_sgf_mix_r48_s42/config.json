@@ -47,5 +47,14 @@
     "seven_scene_auc": "record per scene and macro mean",
     "speed": "compare latency/FPS and training elapsed with LCDB and Rank2",
     "correctness": "same output shape [B,256,64], no extra loss"
-  }
+  },
+  "batches": [
+    1,
+    16
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "batch16_samples": 30,
+  "repeats": 4,
+  "cpu_threads": 4
 }
