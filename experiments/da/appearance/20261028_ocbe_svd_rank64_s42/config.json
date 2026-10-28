@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "id": "20261028_ocbe_svd_rank64_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "svd_rank64",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": "ed5c8e4b75b8b6cc6eaa87751b7ead89ab50cac0",
+  "architecture": "Rank2 Learnable Q with SVD initialized rank64 factorized 6144->128 head",
+  "training": {
+    "epochs": 15,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)",
+    "q": "shared learnable random-orthonormal 2x3",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3376198,
+    "teacher": "DINOv3 frozen 12 taps",
+    "behavior_branch": false
+  },
+  "acceptance": {
+    "auc": "compare seven-scene mean against Rank2 Learnable Q",
+    "resource": "record parameters/FLOPs/latency when applicable",
+    "checkpoint": "each scene checkpoint and hash"
+  },
+  "baseline_checkpoint_root": "experiments/da/appearance/20261028_rank2_checkpoint_refresh_s42",
+  "rank": 64
+}

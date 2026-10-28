@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "id": "20261028_ocbe_residual_energy_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "residual_energy",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": "ed5c8e4b75b8b6cc6eaa87751b7ead89ab50cac0",
+  "architecture": "Rank2 + zero-initialized discarded-depth residual energy side channel",
+  "training": {
+    "epochs": 15,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)",
+    "q": "shared learnable random-orthonormal 2x3",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3761734,
+    "teacher": "DINOv3 frozen 12 taps",
+    "behavior_branch": false
+  },
+  "acceptance": {
+    "auc": "compare seven-scene mean against Rank2 Learnable Q",
+    "resource": "record parameters/FLOPs/latency when applicable",
+    "checkpoint": "each scene checkpoint and hash"
+  }
+}
