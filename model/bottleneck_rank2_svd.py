@@ -47,6 +47,12 @@ class SVDRank2OCBE(LearnableDepthRank2OCBE):
             nn.GELU(),
             output,
         )
+        # Preserve the trained Rank2 baseline's Q, tap LayerNorms, and any
+        # other non-head state.  Only the original dense fusion head is
+        # replaced by its truncated-SVD factorization.
+        preserved = {k: v for k, v in baseline_state.items()
+                     if not k.startswith("fuse.")}
+        self.load_state_dict(preserved, strict=False)
 
 
 def build_svd_rank2_bottleneck(baseline_state, rank=64, n_taps=12,
