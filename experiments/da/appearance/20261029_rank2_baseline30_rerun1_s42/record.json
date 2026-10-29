@@ -4,8 +4,8 @@
   "path": "experiments/da/appearance/20261029_rank2_baseline30_rerun1_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
-  "source_commit": "a1dab8a737641c0191a531074aae86b4a74780c2",
+  "status": "completed",
+  "source_commit": "d3bae3a22093ee58e3d1082c4073e3fe6ec329fe",
   "scripts": [
     "scripts/run_baseline30.py",
     "scripts/dynamic_scheduler.py",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261029T113105Z_20261029_rank2_baseline30_rerun1_s42_suite",
-      "status": "running",
+      "status": "completed",
       "source_commit": "d3bae3a22093ee58e3d1082c4073e3fe6ec329fe",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-29T11:31:05Z",
-      "ended_at": null,
+      "started_at": "2026-10-29T11:31:27Z",
+      "ended_at": "2026-10-29T13:51:28Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -39,16 +39,101 @@
         "--variant",
         "baseline_rank2"
       ],
-      "log": "logs/scheduler_20261029T113105Z.jsonl",
-      "outputs": [],
-      "notes": "Equal-budget 30-epoch server-interruption rerun1; seven scenes; dynamic two-GPU scheduling."
+      "log": "logs/scheduler_20261029T113127Z.jsonl",
+      "outputs": [
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/bike_basis.json",
+        "results/crossroads_basis.json",
+        "results/farmland_basis.json",
+        "results/highway_basis.json",
+        "results/railway_basis.json",
+        "results/solar_basis.json",
+        "results/vehicle_basis.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth"
+      ],
+      "notes": "Completed seven-scene equal-budget 30-epoch run with dynamic two-GPU scheduling.",
+      "scene_status": {
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
+      },
+      "sum_scene_elapsed_s": 8125.828420867001
+    },
+    {
+      "run_id": "20261029T135505Z_rank2_baseline30_rerun1_latency",
+      "status": "completed",
+      "source_commit": "49748a742f65da2aaa0ed3f6c15dbdbcf5e4d310",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": "2026-10-29T13:55:05.572922+00:00",
+      "ended_at": "2026-10-29T13:55:28.840376+00:00",
+      "command": [
+        "scripts/benchmark_trained.py"
+      ],
+      "outputs": [
+        "results/rank2_baseline30_rerun1_trained_gpu0.json",
+        "results/speed_summary.md"
+      ],
+      "verification": "all outputs finite; GPU 0; FP32; teacher and preprocessing excluded"
+    },
+    {
+      "run_id": "20261029T135600Z_rank2_baseline30_rerun1_report",
+      "status": "completed",
+      "source_commit": "27bbe70e81c77818a8201119d42680e7aaebb363",
+      "script": "scripts/summarize_results.py",
+      "seed": 42,
+      "started_at": "2026-10-29T13:56:00Z",
+      "ended_at": "2026-10-29T13:58:46Z",
+      "command": [
+        "scripts/summarize_results.py"
+      ],
+      "outputs": [
+        "results/summary.md",
+        "results/auc_comparison.csv",
+        "results/training_timing.csv",
+        "results/speed_summary.md",
+        "results/equal_budget_comparison.md"
+      ]
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "AUC has no direct training proxy",
-    "same 30 epoch budget is used for both rerun variants",
+    "historical 15-epoch Rank2 reference is the matched refresh run; the strict architecture comparison is Rank2 30 vs SVD-e2e 30",
+    "SVD-e2e uses a random rank64 factorized fusion head and does not load a Rank2 checkpoint",
+    "GPU clocks not fixed; latency benchmark excludes teacher and preprocessing",
     "checkpoints local and ignored by Git"
-  ]
+  ],
+  "review": {
+    "auc_mean_percent": 84.00798449295976,
+    "trainable_parameters": 3761222,
+    "sum_scene_elapsed_s": 8125.828420867001,
+    "variant": "rank2_baseline30_rerun1",
+    "speed_result": "results/rank2_baseline30_rerun1_trained_gpu0.json",
+    "equal_budget_comparison": "results/summary.md"
+  }
 }
