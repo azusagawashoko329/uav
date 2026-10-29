@@ -1,11 +1,11 @@
 # 实验导航
 
-共 114 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 115 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 65 | [查看](#da-appearance) |
+| `da` | `appearance` | 66 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -74,6 +74,7 @@
 | [20261028_ocbe_residual_energy_s42](da/appearance/20261028_ocbe_residual_energy_s42/README.md) | `completed` | 未找到 | 3 |  |
 | [20261028_ocbe_svd_rank64_s42](da/appearance/20261028_ocbe_svd_rank64_s42/README.md) | `completed` | 未找到 | 3 |  |
 | [20261028_rank2_checkpoint_refresh_s42](da/appearance/20261028_rank2_checkpoint_refresh_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261029_ocbe_group_context_w64_s42](da/appearance/20261029_ocbe_group_context_w64_s42/README.md) | `planned` | 未找到 | 2 |  |
 | [20261029_ocbe_svd_e2e_rank64_rerun1_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_rerun1_s42/README.md) | `completed` | 未找到 | 4 |  |
 | [20261029_ocbe_svd_e2e_rank64_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_s42/README.md) | `cancelled` | 未找到 | 2 |  |
 | [20261029_ocbe_svd_rank64_s43](da/appearance/20261029_ocbe_svd_rank64_s43/README.md) | `completed` | 未找到 | 3 |  |

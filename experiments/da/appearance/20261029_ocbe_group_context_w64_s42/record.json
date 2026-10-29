@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261029_ocbe_group_context_w64_s42",
+  "path": "experiments/da/appearance/20261029_ocbe_group_context_w64_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_group_context.py",
+    "scripts/dynamic_scheduler.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "single seed42",
+    "AUC has no direct training proxy",
+    "30 epoch budget matched to Rank2 baseline",
+    "context gate is initialized at zero",
+    "checkpoints local and ignored by Git"
+  ]
+}

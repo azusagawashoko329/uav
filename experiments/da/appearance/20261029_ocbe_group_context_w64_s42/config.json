@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "20261029_ocbe_group_context_w64_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "group_context_w64",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": null,
+  "architecture": "Rank2 shared Q + shared group-local projection + zero-gated multiplicative global context + output MLP",
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)",
+    "q": "shared learnable random-orthonormal 2x3",
+    "optimizer": "AdamW(lr=5e-4,weight_decay=5e-2)",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "fusion": {
+    "input": "four groups of (2,768)",
+    "local_width": 64,
+    "context": "tanh(mean over four groups) and elementwise multiplicative residual",
+    "context_gate": "learnable [64] initialized to zero",
+    "output": "Linear(256,128)->GELU->Linear(128,64)"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3105990,
+    "teacher": "DINOv3 frozen 12 taps",
+    "behavior_branch": false
+  },
+  "acceptance": {
+    "auc": "compare against Rank2 30-epoch baseline seed42",
+    "resource": "record parameters/training time/FPS",
+    "structure": "right-side group interaction must be explicit without multi-hop graph operations",
+    "checkpoint": "each scene checkpoint and hash"
+  }
+}
