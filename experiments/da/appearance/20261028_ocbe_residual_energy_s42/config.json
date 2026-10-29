@@ -34,5 +34,13 @@
     "auc": "compare seven-scene mean against Rank2 Learnable Q",
     "resource": "record parameters/FLOPs/latency when applicable",
     "checkpoint": "each scene checkpoint and hash"
-  }
+  },
+  "batches": [
+    1,
+    16
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "repeats": 4,
+  "cpu_threads": 4
 }
