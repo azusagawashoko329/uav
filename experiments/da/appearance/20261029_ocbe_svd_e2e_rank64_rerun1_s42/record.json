@@ -4,13 +4,40 @@
   "path": "experiments/da/appearance/20261029_ocbe_svd_e2e_rank64_rerun1_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "a1dab8a737641c0191a531074aae86b4a74780c2",
   "scripts": [
     "scripts/run_svd_e2e.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261029T113105Z_20261029_ocbe_svd_e2e_rank64_rerun1_s42_suite",
+      "status": "running",
+      "source_commit": "d3bae3a22093ee58e3d1082c4073e3fe6ec329fe",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-29T11:31:05Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261029T113105Z.jsonl",
+      "outputs": [],
+      "notes": "Equal-budget 30-epoch server-interruption rerun1; seven scenes; dynamic two-GPU scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
