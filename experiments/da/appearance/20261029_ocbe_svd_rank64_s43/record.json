@@ -4,13 +4,40 @@
   "path": "experiments/da/appearance/20261029_ocbe_svd_rank64_s43",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "ca0dcfd396e09631edef6bf001010cf3534648f4",
   "scripts": [
     "scripts/run_svd.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261029T062815Z_svd_rank64_suite",
+      "status": "running",
+      "source_commit": "ca0dcfd396e09631edef6bf001010cf3534648f4",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 43,
+      "started_at": "2026-10-29T06:28:15Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "15",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "43"
+      ],
+      "log": null,
+      "outputs": [],
+      "notes": "Sequential baseline then corrected SVD rank64 stage."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed43",
