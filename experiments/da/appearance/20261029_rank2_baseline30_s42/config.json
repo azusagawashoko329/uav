@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "id": "20261029_rank2_baseline30_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "rank2_baseline30",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": "82bcb80c5eebadfe8161cb4c702c2c1ee487aebd",
+  "architecture": "Rank2 Learnable Q baseline from scratch for 30 epochs",
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)",
+    "q": "shared learnable random-orthonormal 2x3",
+    "optimizer": "AdamW(lr=5e-4,weight_decay=5e-2)",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3761222,
+    "teacher": "DINOv3 frozen 12 taps",
+    "behavior_branch": false
+  },
+  "acceptance": {
+    "auc": "compare both mean AUC under equal 30 epoch budget",
+    "resource": "record parameters/training time/FPS",
+    "checkpoint": "each scene checkpoint and hash"
+  }
+}

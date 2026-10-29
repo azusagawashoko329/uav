@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "20261029_rank2_baseline30_s42",
+  "path": "experiments/da/appearance/20261029_rank2_baseline30_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_baseline30.py",
+    "scripts/dynamic_scheduler.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "single seed42",
+    "AUC has no direct training proxy",
+    "30 epoch budget differs from historical 15 epoch MADViT comparison",
+    "checkpoints local and ignored by Git"
+  ]
+}
