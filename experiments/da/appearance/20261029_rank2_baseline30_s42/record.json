@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261029_rank2_baseline30_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "cancelled",
   "source_commit": "4b772d51df865adfda42092d9c433783b3ed05aa",
   "scripts": [
     "scripts/run_baseline30.py",
@@ -13,12 +13,12 @@
   "runs": [
     {
       "run_id": "20261029T093958Z_20261029_rank2_baseline30_s42_suite",
-      "status": "running",
+      "status": "cancelled",
       "source_commit": "4b772d51df865adfda42092d9c433783b3ed05aa",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
       "started_at": "2026-10-29T09:39:58Z",
-      "ended_at": null,
+      "ended_at": "2026-10-29T11:28:55Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -35,7 +35,7 @@
       ],
       "log": null,
       "outputs": [],
-      "notes": "Equal-budget 30-epoch end-to-end comparison."
+      "notes": "Equal-budget 30-epoch end-to-end comparison. Server interruption; partial run preserved."
     }
   ],
   "result_summary": null,
@@ -43,6 +43,7 @@
     "single seed42",
     "AUC has no direct training proxy",
     "30 epoch budget differs from historical 15 epoch MADViT comparison",
-    "checkpoints local and ignored by Git"
+    "checkpoints local and ignored by Git",
+    "previous attempt cancelled by server interruption; partial logs are retained"
   ]
 }
