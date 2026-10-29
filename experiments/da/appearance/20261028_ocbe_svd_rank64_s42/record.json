@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261028_ocbe_svd_rank64_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
   "scripts": [
     "scripts/run_svd.py",
@@ -13,13 +13,13 @@
   ],
   "runs": [
     {
-      "run_id": "20261028T123306Z_svd_rank64_suite",
-      "status": "running",
+      "run_id": "20261028T153935Z_svd_rank64_training_scheduler",
+      "status": "completed",
       "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-28T12:33:06Z",
-      "ended_at": null,
+      "started_at": "20261028T153935Z",
+      "ended_at": "20261028T161444Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -34,17 +34,217 @@
         "--seed",
         "42"
       ],
-      "log": null,
-      "outputs": [],
-      "notes": "Sequential four-stage suite; this stage is dynamically scheduled after prior stage completion."
+      "log": "logs/scheduler_20261028T153935Z.jsonl",
+      "scene_status": {
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
+      },
+      "outputs": [
+        "results/summary.md",
+        "results/auc_comparison.csv",
+        "results/training_timing.csv",
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth"
+      ],
+      "sum_scene_elapsed_s": 3650.3835588790243
+    },
+    {
+      "run_id": "20261028T153935Z_bike_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T153935Z",
+      "ended_at": "20261028T154935Z",
+      "log": "logs/20261028T153935Z_bike_gpu0.log",
+      "auc_percent": 97.65995427846241,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 528.7542061900022,
+      "checkpoint_sha256": "36f61c5bf458f25d2abf2fa2e1b47e9014772c0c21e2217a6054ba880c101618",
+      "outputs": [
+        "results/bike.json",
+        "results/bike_basis.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth"
+      ],
+      "pre_finetune_auc_percent": 97.59442518276731
+    },
+    {
+      "run_id": "20261028T153935Z_crossroads_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T153935Z",
+      "ended_at": "20261028T160053Z",
+      "log": "logs/20261028T153935Z_crossroads_gpu1.log",
+      "auc_percent": 62.524970215250185,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 1235.2334013839718,
+      "checkpoint_sha256": "591e6e090f1533872d687b489a18206613733733ad07832ab497abf0516851b9",
+      "outputs": [
+        "results/crossroads.json",
+        "results/crossroads_basis.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth"
+      ],
+      "pre_finetune_auc_percent": 58.03373302587953
+    },
+    {
+      "run_id": "20261028T153935Z_farmland_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T154935Z",
+      "ended_at": "20261028T155921Z",
+      "log": "logs/20261028T154935Z_farmland_gpu0.log",
+      "auc_percent": 99.34276116168184,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 568.3246325789951,
+      "checkpoint_sha256": "33d96d0623d0b35191fec22e3a001810f718fd9ed72ccd4890588a8fefeb3849",
+      "outputs": [
+        "results/farmland.json",
+        "results/farmland_basis.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth"
+      ],
+      "pre_finetune_auc_percent": 99.25769397485912
+    },
+    {
+      "run_id": "20261028T153935Z_highway_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T155921Z",
+      "ended_at": "20261028T160842Z",
+      "log": "logs/20261028T155921Z_highway_gpu0.log",
+      "auc_percent": 95.22464100141096,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 541.4377808989957,
+      "checkpoint_sha256": "b39d05cce15a4dbc291ba3cced4f461fdc5d7bd797902c217c8ca66c15103136",
+      "outputs": [
+        "results/highway.json",
+        "results/highway_basis.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth"
+      ],
+      "pre_finetune_auc_percent": 91.34497038191266
+    },
+    {
+      "run_id": "20261028T153935Z_railway_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T160053Z",
+      "ended_at": "20261028T160253Z",
+      "log": "logs/20261028T160053Z_railway_gpu1.log",
+      "auc_percent": 90.31651972828443,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 107.91928792203544,
+      "checkpoint_sha256": "e0fd78669b3470ce4bf2c1b7fd137751c880acbdfd83ab437e653a8e8f61caa7",
+      "outputs": [
+        "results/railway.json",
+        "results/railway_basis.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth"
+      ],
+      "pre_finetune_auc_percent": 83.92289348171701
+    },
+    {
+      "run_id": "20261028T153935Z_solar_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T160253Z",
+      "ended_at": "20261028T160718Z",
+      "log": "logs/20261028T160253Z_solar_gpu1.log",
+      "auc_percent": 88.14464000682337,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 243.9500372110051,
+      "checkpoint_sha256": "6d1646502463db2254fdb824b4f10e222c6c3713def7295c8e7844d5047e7527",
+      "outputs": [
+        "results/solar.json",
+        "results/solar_basis.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth"
+      ],
+      "pre_finetune_auc_percent": 85.66298540288287
+    },
+    {
+      "run_id": "20261028T153935Z_vehicle_svd_rank64",
+      "status": "completed",
+      "source_commit": "5a92e5c4add59c85cc2f3fa05382a3a1259eb47f",
+      "script": "scripts/run_svd.py",
+      "seed": 42,
+      "started_at": "20261028T160718Z",
+      "ended_at": "20261028T161444Z",
+      "log": "logs/20261028T160718Z_vehicle_gpu1.log",
+      "auc_percent": 51.96340345967633,
+      "trainable_parameters": 3376198,
+      "elapsed_s": 424.7642126940191,
+      "checkpoint_sha256": "28b450291ce8e285687b00c167a696b4d087ce791ae36fddeb8bedd0c1958fbc",
+      "outputs": [
+        "results/vehicle.json",
+        "results/vehicle_basis.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth"
+      ],
+      "pre_finetune_auc_percent": 54.94895305786351
+    },
+    {
+      "run_id": "2026-10-29T06:02:10.064277+00:00_svd_rank64_latency",
+      "status": "completed",
+      "source_commit": "79ee0c48364d7c71f30e01d749b9e9bfcd86727d",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": "2026-10-29T06:02:10.064277+00:00",
+      "ended_at": "2026-10-29T06:02:33.358808+00:00",
+      "command": [
+        "scripts/benchmark_trained.py"
+      ],
+      "outputs": [
+        "results/svd_rank64_trained_gpu0.json",
+        "results/speed_summary.md"
+      ],
+      "verification": "all outputs finite"
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "AUC has no direct training proxy",
     "no auxiliary fusion loss",
     "GPU clocks not fixed",
     "checkpoints local and ignored by Git"
-  ]
+  ],
+  "review": {
+    "auc_mean_percent": 83.59669855022707,
+    "trainable_parameters": 3376198,
+    "sum_scene_elapsed_s": 3650.3835588790243,
+    "baseline_refresh_mean_percent": 82.96117834572989,
+    "variant": "svd_rank64",
+    "speed_result": "results/svd_rank64_trained_gpu0.json",
+    "pre_finetune_auc_mean_percent": 81.53795064398314
+  }
 }

@@ -20,3 +20,9 @@
 ## 限制
 
 单种子；AUC 没有直接 loss 代理；GPU 时钟不固定；SVD 版本是从训练后 baseline 做结构化压缩，和从随机初始化端到端训练的结果分开解释。
+
+## 最终结果
+
+七场景 mean AUC 为 **83.5967**，可训练参数为 **3,376,198**。结果见 [`summary.md`](results/summary.md)、[`speed_summary.md`](results/speed_summary.md)。
+
+直接 SVD 压缩 mean AUC 为 81.5380，微调后为 83.5967；该版本比 baseline 高 +0.6355 pp，但 Vehicle 下降明显，需要多种子复核。

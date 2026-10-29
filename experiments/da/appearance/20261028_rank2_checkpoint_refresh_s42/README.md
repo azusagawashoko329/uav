@@ -20,3 +20,9 @@
 ## 限制
 
 单种子；AUC 没有直接 loss 代理；GPU 时钟不固定；SVD 版本是从训练后 baseline 做结构化压缩，和从随机初始化端到端训练的结果分开解释。
+
+## 最终结果
+
+七场景 mean AUC 为 **82.9612**，可训练参数为 **3,761,222**。结果见 [`summary.md`](results/summary.md)、[`speed_summary.md`](results/speed_summary.md)。
+
+该轮复现 Rank2 Learnable Q，mean AUC 为 82.9612，七个场景 checkpoint 作为 SVD 压缩的初始化来源。

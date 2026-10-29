@@ -1,0 +1,380 @@
+{
+  "environment": {
+    "started_at": "2026-10-29T06:01:40.084531+00:00",
+    "source_commit": "79ee0c48364d7c71f30e01d749b9e9bfcd86727d",
+    "cuda_device_name": "NVIDIA RTX 5880 Ada Generation",
+    "gpu": 0,
+    "torch": "2.1.0+cu121",
+    "cuda": "12.1",
+    "dtype": "float32",
+    "tf32": false
+  },
+  "variant": "residual_energy",
+  "scenes": [
+    {
+      "scene": "bike",
+      "auc_percent": 97.6008134189583,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.9096540054306388,
+            "latency_p95_ms": 2.0152649958617985,
+            "serial_fps": 523.6550690105215,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.4234329941682518,
+            "latency_p95_ms": 3.656229004263878,
+            "serial_fps": 292.10444653173573,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.7863299949094653,
+            "latency_p95_ms": 3.8122429978102446,
+            "serial_fps": 4225.727821270521,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.82548400759697,
+            "latency_p95_ms": 4.846544994506985,
+            "serial_fps": 3315.7295671917063,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "crossroads",
+      "auc_percent": 62.2823345832587,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.9106100080534816,
+            "latency_p95_ms": 1.9944559899158776,
+            "serial_fps": 523.3930502744483,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.452760982327163,
+            "latency_p95_ms": 3.7808630149811506,
+            "serial_fps": 289.6232913655087,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.79530101781711,
+            "latency_p95_ms": 3.815259027760476,
+            "serial_fps": 4215.73939060109,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.839861998334527,
+            "latency_p95_ms": 4.869543015956879,
+            "serial_fps": 3305.879383648925,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "farmland",
+      "auc_percent": 99.16991764195926,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.8978180014528334,
+            "latency_p95_ms": 2.054831013083458,
+            "serial_fps": 526.9209161439462,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.4455920103937387,
+            "latency_p95_ms": 3.7258680094964802,
+            "serial_fps": 290.22588773815005,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.7955460138618946,
+            "latency_p95_ms": 3.8166369777172804,
+            "serial_fps": 4215.467271787942,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.846893949434161,
+            "latency_p95_ms": 4.87246603006497,
+            "serial_fps": 3301.0831610763594,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "highway",
+      "auc_percent": 94.7570485331273,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.8928680219687521,
+            "latency_p95_ms": 1.9849559757858515,
+            "serial_fps": 528.2988504184832,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.4487720113247633,
+            "latency_p95_ms": 3.649215039331466,
+            "serial_fps": 289.95827985041956,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.811412025243044,
+            "latency_p95_ms": 3.8249969948083162,
+            "serial_fps": 4197.919273495424,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.833012004382908,
+            "latency_p95_ms": 4.8539480194449425,
+            "serial_fps": 3310.5649200726375,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "railway",
+      "auc_percent": 83.66454689984101,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.8663080409169197,
+            "latency_p95_ms": 1.9870780524797738,
+            "serial_fps": 535.8172274222741,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.391214006114751,
+            "latency_p95_ms": 3.629326994996518,
+            "serial_fps": 294.8796502364299,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.813810006249696,
+            "latency_p95_ms": 3.823252976872027,
+            "serial_fps": 4195.2797789561555,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.836653999518603,
+            "latency_p95_ms": 4.852126003243029,
+            "serial_fps": 3308.0720683332934,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "solar",
+      "auc_percent": 82.99414531320443,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.8510500085540116,
+            "latency_p95_ms": 1.9249659962952137,
+            "serial_fps": 540.2339187914064,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.3991350210271776,
+            "latency_p95_ms": 3.639545990154147,
+            "serial_fps": 294.19249127026796,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.798288991674781,
+            "latency_p95_ms": 3.8190680206753314,
+            "serial_fps": 4212.423023911383,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.853221005760133,
+            "latency_p95_ms": 4.887037968728691,
+            "serial_fps": 3296.7795987469167,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    },
+    {
+      "scene": "vehicle",
+      "auc_percent": 55.98883715746852,
+      "timings": {
+        "1": {
+          "core": {
+            "latency_p50_ms": 1.8571899854578078,
+            "latency_p95_ms": 1.997445011511445,
+            "serial_fps": 538.4478743856108,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 3.4480090253055096,
+            "latency_p95_ms": 3.629086015280336,
+            "serial_fps": 290.02244270848314,
+            "batch": 1,
+            "samples": 100,
+            "repeats": 4
+          }
+        },
+        "16": {
+          "core": {
+            "latency_p50_ms": 3.8136980147100985,
+            "latency_p95_ms": 3.8262250018306077,
+            "serial_fps": 4195.402975874128,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          },
+          "score": {
+            "latency_p50_ms": 4.837788990698755,
+            "latency_p95_ms": 4.855951003264636,
+            "serial_fps": 3307.2959632513885,
+            "batch": 16,
+            "samples": 30,
+            "repeats": 4
+          }
+        }
+      },
+      "verification": {
+        "1": {
+          "code_finite": true,
+          "score_finite": true
+        },
+        "16": {
+          "code_finite": true,
+          "score_finite": true
+        }
+      }
+    }
+  ],
+  "finished_at": "2026-10-29T06:02:07.141527+00:00"
+}

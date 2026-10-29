@@ -20,3 +20,9 @@
 ## 限制
 
 单种子；AUC 没有直接 loss 代理；GPU 时钟不固定；SVD 版本是从训练后 baseline 做结构化压缩，和从随机初始化端到端训练的结果分开解释。
+
+## 最终结果
+
+七场景 mean AUC 为 **82.3511**，可训练参数为 **3,761,734**。结果见 [`summary.md`](results/summary.md)、[`speed_summary.md`](results/speed_summary.md)。
+
+残差能量侧通道比 baseline 低 0.6101 pp，当前单种子下没有证明被 Q 丢弃的深度能量可以提升 AUC。

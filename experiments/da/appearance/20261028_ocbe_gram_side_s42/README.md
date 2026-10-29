@@ -20,3 +20,9 @@
 ## 限制
 
 单种子；AUC 没有直接 loss 代理；GPU 时钟不固定；SVD 版本是从训练后 baseline 做结构化压缩，和从随机初始化端到端训练的结果分开解释。
+
+## 最终结果
+
+七场景 mean AUC 为 **82.8310**，可训练参数为 **3,762,502**。结果见 [`summary.md`](results/summary.md)、[`speed_summary.md`](results/speed_summary.md)。
+
+Gram 侧通道比 baseline 低 0.1301 pp；它增加了少量有意义的二阶特征，但当前实现的训练 Q 投影存在额外 `stack+einsum` 开销，速度不能直接代表最终结构成本。
