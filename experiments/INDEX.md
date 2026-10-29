@@ -1,11 +1,11 @@
 # 实验导航
 
-共 102 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 114 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 53 | [查看](#da-appearance) |
+| `da` | `appearance` | 65 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -30,46 +30,6 @@
 | [20260612_rd_noln](da/appearance/20260612_rd_noln/RECORD.md) | `completed` | [results.csv](da/appearance/20260612_rd_noln/results.csv) | 1 | 7 |
 | [20260612_rd_notopk](da/appearance/20260612_rd_notopk/RECORD.md) | `completed` | [results.csv](da/appearance/20260612_rd_notopk/results.csv) | 1 | 7 |
 | [20260613_deit_teacher](da/appearance/20260613_deit_teacher/RECORD.md) | `completed` | [results.csv](da/appearance/20260613_deit_teacher/results.csv) | 2 | 7 |
-| [20261027_ocbe_crossdepth_mixer_s42](da/appearance/20261027_ocbe_crossdepth_mixer_s42/README.md) | `completed` | [summary.md](da/appearance/20261027_ocbe_crossdepth_mixer_s42/results/summary.md)、[auc_comparison.csv](da/appearance/20261027_ocbe_crossdepth_mixer_s42/results/auc_comparison.csv) | 3 | 7 |
-| [20261027_ocbe_sgf_base_r48_s42](da/appearance/20261027_ocbe_sgf_base_r48_s42/README.md) | `completed` | [summary.md](da/appearance/20261027_ocbe_sgf_base_r48_s42/results/summary.md)、[speed_summary.md](da/appearance/20261027_ocbe_sgf_base_r48_s42/results/speed_summary.md) | 3 | 7 |
-| [20261027_ocbe_sgf_mix_r48_s42](da/appearance/20261027_ocbe_sgf_mix_r48_s42/README.md) | `completed` | [summary.md](da/appearance/20261027_ocbe_sgf_mix_r48_s42/results/summary.md)、[speed_summary.md](da/appearance/20261027_ocbe_sgf_mix_r48_s42/results/speed_summary.md) | 3 | 7 |
-| [20261028_rank2_checkpoint_refresh_s42](da/appearance/20261028_rank2_checkpoint_refresh_s42/README.md) | `completed` | [summary.md](da/appearance/20261028_rank2_checkpoint_refresh_s42/results/summary.md)、[speed_summary.md](da/appearance/20261028_rank2_checkpoint_refresh_s42/results/speed_summary.md) | 3 | 7 |
-| [20261028_ocbe_gram_side_s42](da/appearance/20261028_ocbe_gram_side_s42/README.md) | `completed` | [summary.md](da/appearance/20261028_ocbe_gram_side_s42/results/summary.md)、[speed_summary.md](da/appearance/20261028_ocbe_gram_side_s42/results/speed_summary.md) | 3 | 7 |
-| [20261028_ocbe_residual_energy_s42](da/appearance/20261028_ocbe_residual_energy_s42/README.md) | `completed` | [summary.md](da/appearance/20261028_ocbe_residual_energy_s42/results/summary.md)、[speed_summary.md](da/appearance/20261028_ocbe_residual_energy_s42/results/speed_summary.md) | 3 | 7 |
-| [20261028_ocbe_svd_rank64_s42](da/appearance/20261028_ocbe_svd_rank64_s42/README.md) | `completed` | [summary.md](da/appearance/20261028_ocbe_svd_rank64_s42/results/summary.md)、[speed_summary.md](da/appearance/20261028_ocbe_svd_rank64_s42/results/speed_summary.md) | 3 | 7 |
-| [20261029_rank2_checkpoint_refresh_s43](da/appearance/20261029_rank2_checkpoint_refresh_s43/README.md) | `completed` | [summary.md](da/appearance/20261029_rank2_checkpoint_refresh_s43/results/summary.md)、[speed_summary.md](da/appearance/20261029_rank2_checkpoint_refresh_s43/results/speed_summary.md) | 3 | 7 |
-| [20261029_ocbe_svd_rank64_s43](da/appearance/20261029_ocbe_svd_rank64_s43/README.md) | `completed` | [summary.md](da/appearance/20261029_ocbe_svd_rank64_s43/results/summary.md)、[speed_summary.md](da/appearance/20261029_ocbe_svd_rank64_s43/results/speed_summary.md) | 3 | 7 |
-| [20261029_rank2_baseline30_s42](da/appearance/20261029_rank2_baseline30_s42/README.md) | `running` | 运行中 | 2 | 0 |
-| [20261029_ocbe_svd_e2e_rank64_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_s42/README.md) | `running` | 运行中 | 2 | 0 |
-| [20261027_ocbe_lcdb_vectorized_s42](da/appearance/20261027_ocbe_lcdb_vectorized_s42/README.md) | `completed` | [summary.md](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/summary.md)、[auc_comparison.csv](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/auc_comparison.csv)、[speed_summary.md](da/appearance/20261027_ocbe_lcdb_vectorized_s42/results/speed_summary.md) | 5 | 7 |
-| [20261012_student_internal_screen_s42](da/appearance/20261012_student_internal_screen_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_student_internal_screen_s42/results/summary.md)、[screening_retry1.json](da/appearance/20261012_student_internal_screen_s42/results/screening_retry1.json) | 1 | 0 |
-| [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_structural_mixer_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_structural_mixer_glll_s42/results/summary.csv)、[latency_benchmark.json](da/appearance/20261012_structural_mixer_glll_s42/results/latency_benchmark.json) | 4 | 0 |
-| [20261012_student_width192_glll_s42](da/appearance/20261012_student_width192_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261012_student_width192_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261012_student_width192_glll_s42/results/summary.csv) | 3 | 0 |
-| [20261013_student_width384_glll_s42](da/appearance/20261013_student_width384_glll_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_student_width384_glll_s42/results/summary.md)、[summary.csv](da/appearance/20261013_student_width384_glll_s42/results/summary.csv) | 4 | 0 |
-| [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_hidden128_dense_s42/results/summary.csv) | 3 | 0 |
-| [20261013_ocbe_depthrank2_hidden128_s42](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/summary.csv)、[depth_energy_probe.json](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/results/depth_energy_probe.json) | 4 | 0 |
-| [20261013_ocbe_depthrank2_learnableorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/results/summary.csv) | 4 | 0 |
-| [20261013_ocbe_depthrank2_randomorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/summary.md)、[summary.csv](da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/results/summary.csv) | 4 | 0 |
-| [20261013_seed43_glll192_ocbe128_rank2_s43](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/results/summary.md) | 4 | 0 |
-| [20261013_seed43_glll192_ocbe128_s43](da/appearance/20261013_seed43_glll192_ocbe128_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe128_s43/results/summary.md) | 4 | 0 |
-| [20261013_seed43_glll192_ocbe512_s43](da/appearance/20261013_seed43_glll192_ocbe512_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/summary.md)、[four_variant_review.md](da/appearance/20261013_seed43_glll192_ocbe512_s43/results/four_variant_review.md) | 4 | 0 |
-| [20261013_seed43_glll768_ocbe512_s43](da/appearance/20261013_seed43_glll768_ocbe512_s43/README.md) | `completed` | [summary.md](da/appearance/20261013_seed43_glll768_ocbe512_s43/results/summary.md) | 4 | 0 |
-| [20261014_depthretain_fixedinit_h128_s42](da/appearance/20261014_depthretain_fixedinit_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261014_depthretain_fixedinit_h128_s42/results/summary.md) | 5 | 0 |
-| [20261014_depthretain_randominit_h128_s42](da/appearance/20261014_depthretain_randominit_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261014_depthretain_randominit_h128_s42/results/summary.md) | 5 | 0 |
-| [20261015_depthretain_group4_fixedinit_h128_s42](da/appearance/20261015_depthretain_group4_fixedinit_h128_s42/README.md) | `failed` | 未找到 | 5 | 0 |
-| [20261015_depthretain_group4_fixedinit_dtypefix_h128_s42](da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42/results/summary.md)、[summary.csv](da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42/results/summary.csv)、[summary.json](da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42/results/summary.json) | 6 | 0 |
-| [20261015_depthretain_group4_randominit_h128_s42](da/appearance/20261015_depthretain_group4_randominit_h128_s42/README.md) | `failed` | 未找到 | 5 | 0 |
-| [20261015_depthretain_group4_randominit_dtypefix_h128_s42](da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42/README.md) | `completed` | [summary.md](da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42/results/summary.md)、[summary.csv](da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42/results/summary.csv)、[summary.json](da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42/results/summary.json) | 6 | 0 |
-| [20261022_ocbe_dgt64_s42](da/appearance/20261022_ocbe_dgt64_s42/README.md) | `completed` | [summary.md](da/appearance/20261022_ocbe_dgt64_s42/results/summary.md)、[summary.csv](da/appearance/20261022_ocbe_dgt64_s42/results/summary.csv)、[summary.json](da/appearance/20261022_ocbe_dgt64_s42/results/summary.json) | 3 | 0 |
-| [20261023_ocbe_dgt_nograph_s42](da/appearance/20261023_ocbe_dgt_nograph_s42/README.md) | `planned` | — | 2 | 0 |
-| [20261023_ocbe_dgt_crossattn_pool_s42](da/appearance/20261023_ocbe_dgt_crossattn_pool_s42/README.md) | `planned` | — | 2 | 0 |
-| [20261023_ocbe_dgt_bilinear_s42](da/appearance/20261023_ocbe_dgt_bilinear_s42/README.md) | `planned` | — | 2 | 0 |
-| [20261023_ocbe_dgt_nograph_ckpt_s42](da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/README.md) | `completed` | [summary.md](da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/results/summary.md)、[summary.csv](da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/results/summary.csv)、[summary.json](da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/results/summary.json) | 3 | 0 |
-| [20261023_ocbe_dgt_crossattn_pool_ckpt_s42](da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/README.md) | `completed` | [summary.md](da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/results/summary.md)、[summary.csv](da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/results/summary.csv)、[summary.json](da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/results/summary.json) | 3 | 0 |
-| [20261023_ocbe_dgt_bilinear_ckpt_s42](da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/README.md) | `completed` | [summary.md](da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/results/summary.md)、[summary.csv](da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/results/summary.csv)、[summary.json](da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/results/summary.json) | 3 | 0 |
-| [20261024_ocbe_slots16_s42](da/appearance/20261024_ocbe_slots16_s42/README.md) | `completed` | [summary.md](da/appearance/20261024_ocbe_slots16_s42/results/summary.md)、[summary.csv](da/appearance/20261024_ocbe_slots16_s42/results/summary.csv)、[summary.json](da/appearance/20261024_ocbe_slots16_s42/results/summary.json) | 3 | 0 |
-| [20261024_ocbe_resdepth_gb_s42](da/appearance/20261024_ocbe_resdepth_gb_s42/README.md) | `completed` | [summary.md](da/appearance/20261024_ocbe_resdepth_gb_s42/results/summary.md)、[summary.csv](da/appearance/20261024_ocbe_resdepth_gb_s42/results/summary.csv)、[summary.json](da/appearance/20261024_ocbe_resdepth_gb_s42/results/summary.json) | 3 | 0 |
-| [20261024_ocbe_resdepth_scorealigned_s42](da/appearance/20261024_ocbe_resdepth_scorealigned_s42/README.md) | `completed` | [summary.md](da/appearance/20261024_ocbe_resdepth_scorealigned_s42/results/summary.md)、[summary.csv](da/appearance/20261024_ocbe_resdepth_scorealigned_s42/results/summary.csv)、[summary.json](da/appearance/20261024_ocbe_resdepth_scorealigned_s42/results/summary.json) | 3 | 0 |
 | [20260706_signal_analysis](da/appearance/20260706_signal_analysis/RECORD.md) | `unknown` | 未找到 | 0 | 180 |
 | [20260708_deep_seed42](da/appearance/20260708_deep_seed42/RECORD.md) | `unknown` | 未找到 | 0 | 7 |
 | [20260708_probe_binary](da/appearance/20260708_probe_binary/RECORD.md) | `unknown` | 未找到 | 0 | 28 |
@@ -78,6 +38,48 @@
 | [20260710_middeep_seed43](da/appearance/20260710_middeep_seed43/RECORD.md) | `unknown` | 未找到 | 0 | 1 |
 | [20260710_v2_seed43](da/appearance/20260710_v2_seed43/RECORD.md) | `unknown` | 未找到 | 0 | 21 |
 | [20260710_v2_seed44](da/appearance/20260710_v2_seed44/RECORD.md) | `unknown` | 未找到 | 0 | 21 |
+| [20261012_structural_mixer_glll_s42](da/appearance/20261012_structural_mixer_glll_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261012_student_internal_screen_s42](da/appearance/20261012_student_internal_screen_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261012_student_width192_glll_s42](da/appearance/20261012_student_width192_glll_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261013_ocbe_depthrank2_hidden128_s42](da/appearance/20261013_ocbe_depthrank2_hidden128_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_ocbe_depthrank2_learnableorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_learnableorth_h128_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_ocbe_depthrank2_randomorth_h128_s42](da/appearance/20261013_ocbe_depthrank2_randomorth_h128_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_ocbe_hidden128_dense_s42](da/appearance/20261013_ocbe_hidden128_dense_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261013_seed43_glll192_ocbe128_rank2_s43](da/appearance/20261013_seed43_glll192_ocbe128_rank2_s43/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_seed43_glll192_ocbe128_s43](da/appearance/20261013_seed43_glll192_ocbe128_s43/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_seed43_glll192_ocbe512_s43](da/appearance/20261013_seed43_glll192_ocbe512_s43/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_seed43_glll768_ocbe512_s43](da/appearance/20261013_seed43_glll768_ocbe512_s43/README.md) | `completed` | 未找到 | 4 |  |
+| [20261013_student_width384_glll_s42](da/appearance/20261013_student_width384_glll_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261014_depthretain_fixedinit_h128_s42](da/appearance/20261014_depthretain_fixedinit_h128_s42/README.md) | `completed` | 未找到 | 5 |  |
+| [20261014_depthretain_randominit_h128_s42](da/appearance/20261014_depthretain_randominit_h128_s42/README.md) | `completed` | 未找到 | 5 |  |
+| [20261015_depthretain_group4_fixedinit_dtypefix_h128_s42](da/appearance/20261015_depthretain_group4_fixedinit_dtypefix_h128_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261015_depthretain_group4_fixedinit_h128_s42](da/appearance/20261015_depthretain_group4_fixedinit_h128_s42/README.md) | `failed` | 未找到 | 5 |  |
+| [20261015_depthretain_group4_randominit_dtypefix_h128_s42](da/appearance/20261015_depthretain_group4_randominit_dtypefix_h128_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261015_depthretain_group4_randominit_h128_s42](da/appearance/20261015_depthretain_group4_randominit_h128_s42/README.md) | `failed` | 未找到 | 5 |  |
+| [20261022_ocbe_dgt64_s42](da/appearance/20261022_ocbe_dgt64_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261023_ocbe_dgt_bilinear_ckpt_s42](da/appearance/20261023_ocbe_dgt_bilinear_ckpt_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261023_ocbe_dgt_bilinear_s42](da/appearance/20261023_ocbe_dgt_bilinear_s42/README.md) | `cancelled` | 未找到 | 4 |  |
+| [20261023_ocbe_dgt_crossattn_pool_ckpt_s42](da/appearance/20261023_ocbe_dgt_crossattn_pool_ckpt_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261023_ocbe_dgt_crossattn_pool_s42](da/appearance/20261023_ocbe_dgt_crossattn_pool_s42/README.md) | `cancelled` | 未找到 | 4 |  |
+| [20261023_ocbe_dgt_nograph_ckpt_s42](da/appearance/20261023_ocbe_dgt_nograph_ckpt_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261023_ocbe_dgt_nograph_s42](da/appearance/20261023_ocbe_dgt_nograph_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261024_ocbe_resdepth_gb_s42](da/appearance/20261024_ocbe_resdepth_gb_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261024_ocbe_resdepth_scorealigned_s42](da/appearance/20261024_ocbe_resdepth_scorealigned_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261024_ocbe_slots16_s42](da/appearance/20261024_ocbe_slots16_s42/README.md) | `completed` | 未找到 | 6 |  |
+| [20261027_ocbe_crossdepth_mixer_s42](da/appearance/20261027_ocbe_crossdepth_mixer_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261027_ocbe_lcdb_vectorized_s42](da/appearance/20261027_ocbe_lcdb_vectorized_s42/README.md) | `completed` | 未找到 | 5 |  |
+| [20261027_ocbe_sgf_base_r48_s42](da/appearance/20261027_ocbe_sgf_base_r48_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261027_ocbe_sgf_mix_r48_s42](da/appearance/20261027_ocbe_sgf_mix_r48_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261028_ocbe_gram_side_s42](da/appearance/20261028_ocbe_gram_side_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261028_ocbe_residual_energy_s42](da/appearance/20261028_ocbe_residual_energy_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261028_ocbe_svd_rank64_s42](da/appearance/20261028_ocbe_svd_rank64_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261028_rank2_checkpoint_refresh_s42](da/appearance/20261028_rank2_checkpoint_refresh_s42/README.md) | `completed` | 未找到 | 3 |  |
+| [20261029_ocbe_svd_e2e_rank64_rerun1_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_rerun1_s42/README.md) | `planned` | 未找到 | 2 |  |
+| [20261029_ocbe_svd_e2e_rank64_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_s42/README.md) | `cancelled` | 未找到 | 2 |  |
+| [20261029_ocbe_svd_rank64_s43](da/appearance/20261029_ocbe_svd_rank64_s43/README.md) | `completed` | 未找到 | 3 |  |
+| [20261029_rank2_baseline30_rerun1_s42](da/appearance/20261029_rank2_baseline30_rerun1_s42/README.md) | `planned` | 未找到 | 2 |  |
+| [20261029_rank2_baseline30_s42](da/appearance/20261029_rank2_baseline30_s42/README.md) | `cancelled` | 未找到 | 2 |  |
+| [20261029_rank2_checkpoint_refresh_s43](da/appearance/20261029_rank2_checkpoint_refresh_s43/README.md) | `completed` | 未找到 | 3 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
 | [cd128](da/appearance/codedim/cd128/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/cd128/results.csv) | 1 | 1 |
@@ -93,15 +95,15 @@
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261027_dgt_qfusion_rebenchmark_s42](da/audit/20261027_dgt_qfusion_rebenchmark_s42/README.md) | `planned` | 待测（DGT后续统一Q推理） | 2 | 0 |
-| [20261026_rank2_projection_singlecuda_s42](da/audit/20261026_rank2_projection_singlecuda_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_projection_singlecuda_s42/results/summary.md)、[summary.csv](da/audit/20261026_rank2_projection_singlecuda_s42/results/summary.csv)（融合投影复核） | 1 | 0 |
-| [20261026_rank2_projection_launchfix_s42](da/audit/20261026_rank2_projection_launchfix_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_projection_launchfix_s42/results/summary.md) | 1 | 0 |
-| [20261026_rank2_projection_launch_s42](da/audit/20261026_rank2_projection_launch_s42/README.md) | `failed` | [timing.log](da/audit/20261026_rank2_projection_launch_s42/logs/timing.log)（launcher验证失败，无有效测速） | 1 | 0 |
-| [20261026_rank2_projection_fused_s42](da/audit/20261026_rank2_projection_fused_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_projection_fused_s42/results/summary.md) | 1 | 0 |
-| [20261026_rank2_cacheq_timingonly_s42](da/audit/20261026_rank2_cacheq_timingonly_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_cacheq_timingonly_s42/results/summary.md)、[summary.csv](da/audit/20261026_rank2_cacheq_timingonly_s42/results/summary.csv) | 1 | 0 |
-| [20261026_rank2_cacheq_fp32_s42](da/audit/20261026_rank2_cacheq_fp32_s42/README.md) | `completed` | [summary.md](da/audit/20261026_rank2_cacheq_fp32_s42/results/summary.md)（绝对计时待独立进程复核） | 1 | 0 |
-| [20261026_lightweight_profile_fp32_s42](da/audit/20261026_lightweight_profile_fp32_s42/README.md) | `completed` | [summary.md](da/audit/20261026_lightweight_profile_fp32_s42/results/summary.md)、[summary.csv](da/audit/20261026_lightweight_profile_fp32_s42/results/summary.csv) | 2 | 0 |
 | [20260619_leakage_audit](da/audit/20260619_leakage_audit/RECORD.md) | `unknown` | 未找到 | 4 | 0 |
+| [20261026_lightweight_profile_fp32_s42](da/audit/20261026_lightweight_profile_fp32_s42/README.md) | `completed` | 未找到 | 2 |  |
+| [20261026_rank2_cacheq_fp32_s42](da/audit/20261026_rank2_cacheq_fp32_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261026_rank2_cacheq_timingonly_s42](da/audit/20261026_rank2_cacheq_timingonly_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261026_rank2_projection_fused_s42](da/audit/20261026_rank2_projection_fused_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261026_rank2_projection_launch_s42](da/audit/20261026_rank2_projection_launch_s42/README.md) | `failed` | 未找到 | 1 |  |
+| [20261026_rank2_projection_launchfix_s42](da/audit/20261026_rank2_projection_launchfix_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261026_rank2_projection_singlecuda_s42](da/audit/20261026_rank2_projection_singlecuda_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261027_dgt_qfusion_rebenchmark_s42](da/audit/20261027_dgt_qfusion_rebenchmark_s42/README.md) | `completed` | 未找到 | 2 |  |
 
 ## da / behavior
 
