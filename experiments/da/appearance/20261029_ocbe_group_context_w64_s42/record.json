@@ -4,13 +4,44 @@
   "path": "experiments/da/appearance/20261029_ocbe_group_context_w64_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "14c56f82a4bc8d7d52131bfd5ebfbb6b19ba4a95",
   "scripts": [
     "scripts/run_group_context.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261029T141058Z_20261029_ocbe_group_context_w64_s42_suite",
+      "status": "running",
+      "source_commit": "aaccdbf4578e347bbe2f6f0818c75f50ddb2c5f6",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-29T14:10:58Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42",
+        "--train-script",
+        "run_group_context.py",
+        "--variant",
+        "group_context_w64"
+      ],
+      "log": "logs/scheduler_20261029T141058Z.jsonl",
+      "outputs": [],
+      "notes": "Seven-scene 30-epoch GCF right-side OCBE fusion run; dynamic two-GPU scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
