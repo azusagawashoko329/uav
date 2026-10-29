@@ -4,13 +4,40 @@
   "path": "experiments/da/appearance/20261029_ocbe_svd_e2e_rank64_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "4b772d51df865adfda42092d9c433783b3ed05aa",
   "scripts": [
     "scripts/run_svd_e2e.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261029T093958Z_20261029_ocbe_svd_e2e_rank64_s42_suite",
+      "status": "running",
+      "source_commit": "4b772d51df865adfda42092d9c433783b3ed05aa",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-29T09:39:58Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": null,
+      "outputs": [],
+      "notes": "Equal-budget 30-epoch end-to-end comparison."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
