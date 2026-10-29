@@ -4,8 +4,8 @@
   "path": "experiments/da/appearance/20261029_ocbe_group_context_w64_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
-  "source_commit": "14c56f82a4bc8d7d52131bfd5ebfbb6b19ba4a95",
+  "status": "completed",
+  "source_commit": "8dc6a9328b5400f8aa43c7c3f67445d0853f7911",
   "scripts": [
     "scripts/run_group_context.py",
     "scripts/dynamic_scheduler.py",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261029T141058Z_20261029_ocbe_group_context_w64_s42_suite",
-      "status": "running",
-      "source_commit": "aaccdbf4578e347bbe2f6f0818c75f50ddb2c5f6",
+      "status": "completed",
+      "source_commit": "8dc6a9328b5400f8aa43c7c3f67445d0853f7911",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-29T14:10:58Z",
-      "ended_at": null,
+      "started_at": "2026-10-29T14:11:56Z",
+      "ended_at": "2026-10-29T15:18:47Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -39,17 +39,101 @@
         "--variant",
         "group_context_w64"
       ],
-      "log": "logs/scheduler_20261029T141058Z.jsonl",
-      "outputs": [],
-      "notes": "Seven-scene 30-epoch GCF right-side OCBE fusion run; dynamic two-GPU scheduling."
+      "log": "logs/scheduler_20261029T141156Z.jsonl",
+      "outputs": [
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/bike_basis.json",
+        "results/crossroads_basis.json",
+        "results/farmland_basis.json",
+        "results/highway_basis.json",
+        "results/railway_basis.json",
+        "results/solar_basis.json",
+        "results/vehicle_basis.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth"
+      ],
+      "notes": "Completed seven-scene 30-epoch GCF run with dynamic two-GPU scheduling.",
+      "scene_status": {
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
+      },
+      "sum_scene_elapsed_s": 7181.188573149002
+    },
+    {
+      "run_id": "20261029T152257Z_group_context_w64_latency",
+      "status": "completed",
+      "source_commit": "df14511e336c3cfd946e6f0fb845367490364ffb",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": "2026-10-29T15:22:57.019261+00:00",
+      "ended_at": "2026-10-29T15:23:20.389516+00:00",
+      "command": [
+        "scripts/benchmark_trained.py"
+      ],
+      "outputs": [
+        "results/group_context_w64_trained_gpu0.json",
+        "results/speed_summary.md"
+      ],
+      "verification": "all outputs finite; GPU 0; FP32; teacher and preprocessing excluded"
+    },
+    {
+      "run_id": "20261029T152400Z_group_context_w64_report",
+      "status": "completed",
+      "source_commit": "df14511e336c3cfd946e6f0fb845367490364ffb",
+      "script": "scripts/summarize_results.py",
+      "seed": 42,
+      "started_at": "2026-10-29T15:23:20Z",
+      "ended_at": "2026-10-29T15:23:22Z",
+      "command": [
+        "scripts/summarize_results.py"
+      ],
+      "outputs": [
+        "results/summary.md",
+        "results/auc_comparison.csv",
+        "results/training_timing.csv",
+        "results/speed_summary.md"
+      ]
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "AUC has no direct training proxy",
     "30 epoch budget matched to Rank2 baseline",
-    "context gate is initialized at zero",
+    "context gate initialized at zero",
+    "GCF lowers parameters but its current cross-group interaction is not AUC-aligned",
+    "GPU clocks not fixed; latency benchmark excludes teacher and preprocessing",
     "checkpoints local and ignored by Git"
-  ]
+  ],
+  "review": {
+    "auc_mean_percent": 82.92235083792316,
+    "trainable_parameters": 3105990,
+    "sum_scene_elapsed_s": 7181.188573149002,
+    "variant": "group_context_w64",
+    "speed_result": "results/group_context_w64_trained_gpu0.json",
+    "baseline": "20261029_rank2_baseline30_rerun1_s42"
+  }
 }

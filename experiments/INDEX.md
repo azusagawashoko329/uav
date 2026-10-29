@@ -74,7 +74,7 @@
 | [20261028_ocbe_residual_energy_s42](da/appearance/20261028_ocbe_residual_energy_s42/README.md) | `completed` | 未找到 | 3 |  |
 | [20261028_ocbe_svd_rank64_s42](da/appearance/20261028_ocbe_svd_rank64_s42/README.md) | `completed` | 未找到 | 3 |  |
 | [20261028_rank2_checkpoint_refresh_s42](da/appearance/20261028_rank2_checkpoint_refresh_s42/README.md) | `completed` | 未找到 | 3 |  |
-| [20261029_ocbe_group_context_w64_s42](da/appearance/20261029_ocbe_group_context_w64_s42/README.md) | `running` | 未找到 | 2 |  |
+| [20261029_ocbe_group_context_w64_s42](da/appearance/20261029_ocbe_group_context_w64_s42/README.md) | `completed` | 未找到 | 4 |  |
 | [20261029_ocbe_svd_e2e_rank64_rerun1_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_rerun1_s42/README.md) | `completed` | 未找到 | 4 |  |
 | [20261029_ocbe_svd_e2e_rank64_s42](da/appearance/20261029_ocbe_svd_e2e_rank64_s42/README.md) | `cancelled` | 未找到 | 2 |  |
 | [20261029_ocbe_svd_rank64_s43](da/appearance/20261029_ocbe_svd_rank64_s43/README.md) | `completed` | 未找到 | 3 |  |
