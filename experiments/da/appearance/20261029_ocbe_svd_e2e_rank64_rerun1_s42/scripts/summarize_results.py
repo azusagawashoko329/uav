@@ -4,7 +4,7 @@ from pathlib import Path
 EXP = Path(__file__).resolve().parents[1]
 RES = EXP / 'results'
 SCENES = ['highway','farmland','bike','solar','vehicle','crossroads','railway']
-REF = EXP.parents[2] / '20261028_rank2_checkpoint_refresh_s42' / 'results'
+REF = EXP.parent / '20261028_rank2_checkpoint_refresh_s42' / 'results'
 PEER_IDS = {
  '20261029_rank2_baseline30_rerun1_s42': '20261029_ocbe_svd_e2e_rank64_rerun1_s42',
  '20261029_ocbe_svd_e2e_rank64_rerun1_s42': '20261029_rank2_baseline30_rerun1_s42',
