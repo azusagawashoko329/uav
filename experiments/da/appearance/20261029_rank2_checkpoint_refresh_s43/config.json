@@ -4,7 +4,7 @@
   "dataset": "da",
   "family": "appearance",
   "seed": 43,
-  "variant": "rank2_checkpoint_refresh",
+  "variant": "rank2_refresh",
   "scenes": [
     "bike",
     "crossroads",
@@ -33,5 +33,13 @@
   "acceptance": {
     "auc": "compare seven-scene mean against seed43 Rank2 baseline",
     "checkpoint": "each scene checkpoint and hash"
-  }
+  },
+  "batches": [
+    1,
+    16
+  ],
+  "warmup": 30,
+  "samples": 100,
+  "repeats": 4,
+  "cpu_threads": 4
 }
