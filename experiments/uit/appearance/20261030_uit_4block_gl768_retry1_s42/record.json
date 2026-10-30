@@ -4,12 +4,41 @@
   "path": "experiments/uit/appearance/20261030_uit_4block_gl768_retry1_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": "cd35034f521e829230cfbe9b957428a19123272d",
+  "status": "running",
+  "source_commit": "9b7e5ca936ed38d46bd5a3ed15b5272ef6ba3570",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261030T051932Z_20261030_uit_4block_gl768_retry1_s42_matrix_retry1",
+      "status": "running",
+      "source_commit": "9b7e5ca936ed38d46bd5a3ed15b5272ef6ba3570",
+      "script": "scripts/uit_variant_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-30T05:19:32Z",
+      "ended_at": null,
+      "command": [
+        "scripts/uit_variant_scheduler.py",
+        "--variants",
+        "five retry1 ids",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261030T051932Z_uit_five_variant_matrix_retry1.jsonl",
+      "outputs": [],
+      "notes": "Retry1 after initial wrapper path failure; five independent UIT-ADrone variants with dynamic two-GPU scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
@@ -17,6 +46,6 @@
     "AUC has no direct training proxy",
     "behavior branch excluded; appearance branch is the model",
     "checkpoints local and ignored by Git",
-    "retry1 after fixing wrapper import path; previous failed attempt is archived separately"
+    "retry1 after initial wrapper path failure; initial failed records retained separately"
   ]
 }
