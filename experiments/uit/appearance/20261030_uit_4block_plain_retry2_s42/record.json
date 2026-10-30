@@ -4,12 +4,45 @@
   "path": "experiments/uit/appearance/20261030_uit_4block_plain_retry2_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "ff5660e4077484f895755cce95a9a3917582edf6",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261030T070718Z_uit_five_variant_matrix_retry2_20261030_uit_4block_plain_retry2_s42",
+      "status": "running",
+      "source_commit": "ff5660e4077484f895755cce95a9a3917582edf6",
+      "script": "scripts/uit_variant_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-30T07:07:18Z",
+      "ended_at": null,
+      "command": [
+        "scripts/uit_variant_scheduler.py",
+        "--variants",
+        "20261030_uit_4block_gl192_retry2_s42",
+        "20261030_uit_4block_gl768_retry2_s42",
+        "20261030_uit_4block_plain_retry2_s42",
+        "20261030_uit_gl192_dense128_rank2_retry2_s42",
+        "20261030_uit_gl192_dense128_retry2_s42",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261030T070718Z_uit_five_variant_matrix_retry2.jsonl",
+      "outputs": [],
+      "notes": "retry2 after retry1 external interruption; detached nohup scheduler with dynamic two-GPU scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
