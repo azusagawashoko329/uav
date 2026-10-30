@@ -81,7 +81,7 @@
 | [20261029_rank2_baseline30_rerun1_s42](da/appearance/20261029_rank2_baseline30_rerun1_s42/README.md) | `completed` | 未找到 | 4 |  |
 | [20261029_rank2_baseline30_s42](da/appearance/20261029_rank2_baseline30_s42/README.md) | `cancelled` | 未找到 | 2 |  |
 | [20261029_rank2_checkpoint_refresh_s43](da/appearance/20261029_rank2_checkpoint_refresh_s43/README.md) | `completed` | 未找到 | 3 |  |
-| [20261030_ocbe_group_block_lr_r128_s42](da/appearance/20261030_ocbe_group_block_lr_r128_s42/README.md) | `planned` | 未找到 | 2 |  |
+| [20261030_ocbe_group_block_lr_r128_s42](da/appearance/20261030_ocbe_group_block_lr_r128_s42/README.md) | `running` | 未找到 | 2 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
 | [cd128](da/appearance/codedim/cd128/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/cd128/results.csv) | 1 | 1 |

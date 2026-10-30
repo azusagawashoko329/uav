@@ -4,13 +4,44 @@
   "path": "experiments/da/appearance/20261030_ocbe_group_block_lr_r128_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "c1a6c4fd74388491ae6e49343406c48073c406d5",
   "scripts": [
     "scripts/run_group_block_lr.py",
     "scripts/dynamic_scheduler.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261030T020705Z_20261030_ocbe_group_block_lr_r128_s42_suite",
+      "status": "running",
+      "source_commit": "c5ae8da488e834a8fa8b4092a66b24885cdd2151",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-30T02:07:05Z",
+      "ended_at": null,
+      "command": [
+        "scripts/dynamic_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42",
+        "--train-script",
+        "run_group_block_lr.py",
+        "--variant",
+        "group_block_lr_r128"
+      ],
+      "log": "logs/scheduler_20261030T020705Z.jsonl",
+      "outputs": [],
+      "notes": "Seven-scene 30-epoch group-block low-rank OCBE fusion run; dynamic two-GPU scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
