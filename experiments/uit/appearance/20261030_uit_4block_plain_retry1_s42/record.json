@@ -4,7 +4,7 @@
   "path": "experiments/uit/appearance/20261030_uit_4block_plain_retry1_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "running",
+  "status": "unknown",
   "source_commit": "9b7e5ca936ed38d46bd5a3ed15b5272ef6ba3570",
   "scripts": [
     "scripts/run_scene.py"
@@ -12,12 +12,12 @@
   "runs": [
     {
       "run_id": "20261030T051932Z_20261030_uit_4block_plain_retry1_s42_matrix_retry1",
-      "status": "running",
+      "status": "unknown",
       "source_commit": "9b7e5ca936ed38d46bd5a3ed15b5272ef6ba3570",
       "script": "scripts/uit_variant_scheduler.py",
       "seed": 42,
       "started_at": "2026-10-30T05:19:32Z",
-      "ended_at": null,
+      "ended_at": "2026-10-30T07:05:54Z",
       "command": [
         "scripts/uit_variant_scheduler.py",
         "--variants",
@@ -36,10 +36,10 @@
       ],
       "log": "logs/scheduler_20261030T051932Z_uit_five_variant_matrix_retry1.jsonl",
       "outputs": [],
-      "notes": "Retry1 after initial wrapper path failure; five independent UIT-ADrone variants with dynamic two-GPU scheduling."
+      "notes": "启动了前两个变体并分别运行到 epoch 8/7；调度器随后不在，进程和 GPU 占用均消失；无 Python traceback、无返回码，无法判定具体外部终止原因。此记录不作为结果使用。"
     }
   ],
-  "result_summary": null,
+  "result_summary": "训练进程在完成前外部中断；未生成最终 AUC、EER 或权重。保留已产生的日志，作为中断记录。",
   "limitations": [
     "single seed42",
     "official UIT train/test frame overlap retained",
