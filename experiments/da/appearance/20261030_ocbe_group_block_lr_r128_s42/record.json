@@ -4,8 +4,8 @@
   "path": "experiments/da/appearance/20261030_ocbe_group_block_lr_r128_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
-  "source_commit": "c1a6c4fd74388491ae6e49343406c48073c406d5",
+  "status": "completed",
+  "source_commit": "611e0ef76fd76ffce11959bad1976693418520d2",
   "scripts": [
     "scripts/run_group_block_lr.py",
     "scripts/dynamic_scheduler.py",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261030T020705Z_20261030_ocbe_group_block_lr_r128_s42_suite",
-      "status": "running",
-      "source_commit": "c5ae8da488e834a8fa8b4092a66b24885cdd2151",
+      "status": "completed",
+      "source_commit": "611e0ef76fd76ffce11959bad1976693418520d2",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-30T02:07:05Z",
-      "ended_at": null,
+      "started_at": "2026-10-30T02:07:14Z",
+      "ended_at": "2026-10-30T03:14:42Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -39,17 +39,100 @@
         "--variant",
         "group_block_lr_r128"
       ],
-      "log": "logs/scheduler_20261030T020705Z.jsonl",
-      "outputs": [],
-      "notes": "Seven-scene 30-epoch group-block low-rank OCBE fusion run; dynamic two-GPU scheduling."
+      "log": "logs/scheduler_20261030T020714Z.jsonl",
+      "outputs": [
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/bike_basis.json",
+        "results/crossroads_basis.json",
+        "results/farmland_basis.json",
+        "results/highway_basis.json",
+        "results/railway_basis.json",
+        "results/solar_basis.json",
+        "results/vehicle_basis.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth"
+      ],
+      "notes": "Completed seven-scene 30-epoch group-block low-rank run with dynamic two-GPU scheduling.",
+      "scene_status": {
+        "bike": "completed",
+        "crossroads": "completed",
+        "farmland": "completed",
+        "highway": "completed",
+        "railway": "completed",
+        "solar": "completed",
+        "vehicle": "completed"
+      },
+      "sum_scene_elapsed_s": 7210.925382338006
+    },
+    {
+      "run_id": "20261030T032202Z_group_block_lr_r128_latency",
+      "status": "completed",
+      "source_commit": "aac12790ac215ad798a73e9d20edac3280123119",
+      "script": "scripts/benchmark_trained.py",
+      "seed": 42,
+      "started_at": "2026-10-30T03:22:02.685808+00:00",
+      "ended_at": "2026-10-30T03:22:25.918745+00:00",
+      "command": [
+        "scripts/benchmark_trained.py"
+      ],
+      "outputs": [
+        "results/group_block_lr_r128_trained_gpu0.json",
+        "results/speed_summary.md"
+      ],
+      "verification": "all outputs finite; GPU 0; FP32; teacher and preprocessing excluded"
+    },
+    {
+      "run_id": "20261030T032230Z_group_block_lr_r128_report",
+      "status": "completed",
+      "source_commit": "aac12790ac215ad798a73e9d20edac3280123119",
+      "script": "scripts/summarize_results.py",
+      "seed": 42,
+      "started_at": "2026-10-30T03:22:25Z",
+      "ended_at": "2026-10-30T03:22:27Z",
+      "command": [
+        "scripts/summarize_results.py"
+      ],
+      "outputs": [
+        "results/summary.md",
+        "results/auc_comparison.csv",
+        "results/training_timing.csv",
+        "results/speed_summary.md"
+      ]
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "AUC has no direct training proxy",
     "30 epoch budget matched to Rank2 baseline",
     "rank128 shared-input factorization may remove group-specific channel directions",
+    "GPU clocks not fixed; latency benchmark excludes teacher and preprocessing",
     "checkpoints local and ignored by Git"
-  ]
+  ],
+  "review": {
+    "auc_mean_percent": 83.41420398243183,
+    "trainable_parameters": 3236934,
+    "sum_scene_elapsed_s": 7210.925382338006,
+    "variant": "group_block_lr_r128",
+    "speed_result": "results/group_block_lr_r128_trained_gpu0.json",
+    "baseline": "20261029_rank2_baseline30_rerun1_s42"
+  }
 }
