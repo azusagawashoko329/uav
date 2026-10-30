@@ -1,6 +1,6 @@
 # 实验导航
 
-共 116 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 121 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
@@ -11,6 +11,7 @@
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
 | `da` | `gating` | 2 | [查看](#da-gating) |
+| `uit` | `appearance` | 5 | [查看](#uit-appearance) |
 
 ## da / aggregation
 
@@ -162,5 +163,15 @@
 |---|---|---|---:|---:|
 | [20260710_end2end_gate](da/gating/20260710_end2end_gate/RECORD.md) | `unknown` | 未找到 | 0 | 174 |
 | [legacy_gate](da/gating/legacy_gate/RECORD.md) | `unknown` | 未找到 | 0 | 16 |
+
+## uit / appearance
+
+| 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
+|---|---|---|---:|---:|
+| [20261030_uit_4block_gl192_s42](uit/appearance/20261030_uit_4block_gl192_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261030_uit_4block_gl768_s42](uit/appearance/20261030_uit_4block_gl768_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261030_uit_4block_plain_s42](uit/appearance/20261030_uit_4block_plain_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261030_uit_gl192_dense128_rank2_s42](uit/appearance/20261030_uit_gl192_dense128_rank2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261030_uit_gl192_dense128_s42](uit/appearance/20261030_uit_gl192_dense128_s42/README.md) | `planned` | 未找到 | 1 |  |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。
