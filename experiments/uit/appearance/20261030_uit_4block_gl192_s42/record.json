@@ -4,12 +4,39 @@
   "path": "experiments/uit/appearance/20261030_uit_4block_gl192_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "planned",
+  "status": "running",
   "source_commit": "0de5b07f19c3021b71c254d4c34da746c7ceceda",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261030T051049Z_20261030_uit_4block_gl192_s42_matrix",
+      "status": "running",
+      "source_commit": "653fd7dfbe0707e936b31d85a5cacbe4761fe973",
+      "script": "scripts/uit_variant_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-10-30T05:10:49Z",
+      "ended_at": null,
+      "command": [
+        "scripts/uit_variant_scheduler.py",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261030T051049Z_uit_five_variant_matrix.jsonl",
+      "outputs": [],
+      "notes": "Five independent UIT-ADrone appearance variants; shared dynamic two-GPU matrix scheduling."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
