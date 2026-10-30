@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261030_uit_gl192_dense128_rank2_retry2_s42",
+  "path": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42",
+  "dataset": "uit",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "single seed42",
+    "official UIT train/test frame overlap retained",
+    "AUC has no direct training proxy",
+    "behavior branch excluded; appearance branch is the model",
+    "checkpoints local and ignored by Git",
+    "retry2 is an independent rerun after externally interrupted retry1; retry1 retained at 20261030_uit_gl192_dense128_rank2_retry1_s42"
+  ]
+}
