@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "id": "20261030_ocbe_group_block_lr_r128_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "group_block_lr_r128",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "source_model_before_change": null,
+  "architecture": "Rank2 shared Q + group-block low-rank fusion (shared V, four U_g, rank128)",
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "loss_mode": "group_balanced",
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)",
+    "q": "shared learnable random-orthonormal 2x3",
+    "optimizer": "AdamW(lr=5e-4,weight_decay=5e-2)",
+    "dynamic_scheduler": "scripts/dynamic_scheduler.py"
+  },
+  "fusion": {
+    "input": "four groups of (2,768)",
+    "shared_input": "V:1536->128 without bias",
+    "group_output": "four independent U_g:128->128",
+    "preactivation": "sum_g U_g V x_g + b",
+    "output": "GELU then Linear(128->64)"
+  },
+  "resources": {
+    "expected_trainable_parameters": 3236934,
+    "expected_ocbe_parameters": 288966,
+    "teacher": "DINOv3 frozen 12 taps",
+    "behavior_branch": false
+  },
+  "acceptance": {
+    "auc": "compare against Rank2 30-epoch baseline seed42",
+    "resource": "record parameters/training time/FPS",
+    "structure": "cross-group mixing before GELU with no context/gate/hop/attention",
+    "checkpoint": "each scene checkpoint and hash"
+  }
+}
