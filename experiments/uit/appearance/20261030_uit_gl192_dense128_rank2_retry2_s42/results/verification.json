@@ -1,0 +1,50 @@
+{
+  "epoch_sequence": "1..30; no missing epochs",
+  "max_steps": 0,
+  "scheduler_returncode": 0,
+  "frames": 147005,
+  "positive_frames": 63485,
+  "labels_and_frame_order": "exact match against dataset and all five variants",
+  "finite_scores": true,
+  "recomputed_auc_percent": 75.06126585812197,
+  "recomputed_eer": 0.32658045977011496,
+  "metrics_match_logged_result": true,
+  "checkpoint_sha256_matches": true,
+  "checkpoint_strict_load": true,
+  "checkpoint_finite": true,
+  "ocbe_parameters": 813254,
+  "student_parameters": 2947968,
+  "source_commit": "ff5660e4077484f895755cce95a9a3917582edf6",
+  "scope": "post-hoc score/label/checkpoint checks; inference was not rerun",
+  "rank2": {
+    "initialization": "random_orthonormal, seed42",
+    "shared_groups": 4,
+    "constraint": "differentiable Gram-Schmidt (no extra orthogonality loss)",
+    "raw_q": [
+      [
+        0.4404025375843048,
+        0.15101484954357147,
+        0.5456331968307495
+      ],
+      [
+        0.3500264883041382,
+        -0.5656033158302307,
+        -0.10778500884771347
+      ]
+    ],
+    "effective_q": [
+      [
+        0.6139987111091614,
+        0.21054130792617798,
+        0.7607088088989258
+      ],
+      [
+        0.5069560408592224,
+        -0.8438915014266968,
+        -0.17562086880207062
+      ]
+    ],
+    "orthogonality_error_fro": 6.322026990801533e-08
+  },
+  "review_source_commit": "dccc43d5641194afbe15790b916a2a89e7b1d332"
+}

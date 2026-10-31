@@ -1,4 +1,126 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261030T185012Z_uit_gpu1.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 2031,
+      "sha256": "f085c7e53c6c4a842cbad8e598437953d087a7536675dbee6018ba5cb579e6f4",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 5399,
+      "sha256": "3ed38f30b67e2b4b00d2cd6298b34844789855a24e0ac381b8d436806ab48c51",
+      "storage": "git"
+    },
+    {
+      "path": "results/five_variant_comparison.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1307,
+      "sha256": "db2e36ff2f786c094d50f4f1b8eedb34e0dc17eed86418fb17dd273318b6b8bf",
+      "storage": "git"
+    },
+    {
+      "path": "results/five_variant_summary.md",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 5495,
+      "sha256": "a3c159e3ad5a26416bb5a9af25e8d025718490aa997ebb49af9cc02c0274dcce",
+      "storage": "git"
+    },
+    {
+      "path": "results/five_variant_training_timing.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 987,
+      "sha256": "595607976d5fb5d2b26d758fd6d574802d5a253d50cd46b01f0057b3c93f0af4",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 505,
+      "sha256": "26d2c4af8241cb33f0725488c9ac5f60c9e55d6aec834f0a2f2b3e55d16a454c",
+      "storage": "git"
+    },
+    {
+      "path": "results/training_timing.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1065,
+      "sha256": "9f0be1e19462e60c79c0c8ea1d13d6770750b3260f3460d8b612d003d54ee5b6",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 549,
+      "sha256": "45ae97777fb855d4423d1693b369dc28207978593601f90ab161c654580fafab",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 6917292,
+      "sha256": "5ad67228d3b3e7ef74f2468c0a698ab3f36e8ffdf0ea90f23a5d150ed22cb1fe",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1434,
+      "sha256": "df7fd195f1d9869603a33d6c3d0967c19a4cb385d0bc3e356e01f7ff0baf47c1",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_rank2_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "local_only",
+      "size_bytes": 15075706,
+      "sha256": "94fb3b84e91521fbc35769d19677a8345ed7d6f730e988ec5b16581af2e54947",
+      "storage": "ignored_local"
+    }
+  ]
 }

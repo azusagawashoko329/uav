@@ -1,4 +1,93 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261030T122617Z_uit_gpu0.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 2042,
+      "sha256": "9d6342c87d5e02694442b905cef21aeff052bf6a9ae9872d75bd7d569f8f009c",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 5399,
+      "sha256": "3ed38f30b67e2b4b00d2cd6298b34844789855a24e0ac381b8d436806ab48c51",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 556,
+      "sha256": "b8f11259feb39c98a19aa77eb762f0461d094efa0073170a12135e3c4d77bf53",
+      "storage": "git"
+    },
+    {
+      "path": "results/training_timing.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1050,
+      "sha256": "bbdceb0ada4644a40edb599f4fe1c56c65b330e9308980b44925967dee1546e0",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 544,
+      "sha256": "8f9925acfc12aa4fd91d730985acb197f48789a5ff9975ac767cacc55fb5fe69",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 6917139,
+      "sha256": "c642f3182607cf639d96960652bf3eb4db963733d536428dd44f7728c5ef6398",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 752,
+      "sha256": "e7ecd4587f0e9d62b402bac5181b6f95c564b9286c39b68997a7f8d984a13eff",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl192_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "local_only",
+      "size_bytes": 30903866,
+      "sha256": "ef8e278fcd6b8ce00ea63349a5e2b1e7de467dfb87d0010044c53d6af8a7badc",
+      "storage": "ignored_local"
+    }
+  ]
 }

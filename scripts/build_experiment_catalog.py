@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXP = ROOT / 'experiments'
 records=[]
-RESULT_NAMES=('summary.json','summary.csv','results_mean.csv','results.csv','results_fusion.csv','loss_compare.csv','report.md','REVIEW.md')
+RESULT_NAMES=('summary.json','summary.csv','summary.md','results_mean.csv','results.csv','results_fusion.csv','loss_compare.csv','report.md','REVIEW.md','uit.json','five_variant_summary.md','five_variant_comparison.csv')
 for path in sorted(EXP.glob('*/**/record.json')):
     if 'source_snapshot_' in str(path):
         continue

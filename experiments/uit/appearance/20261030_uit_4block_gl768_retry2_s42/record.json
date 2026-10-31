@@ -4,46 +4,70 @@
   "path": "experiments/uit/appearance/20261030_uit_4block_gl768_retry2_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "ff5660e4077484f895755cce95a9a3917582edf6",
   "scripts": [
-    "scripts/run_scene.py"
+    "scripts/run_scene.py",
+    "../20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py"
   ],
   "runs": [
     {
       "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_gl768_retry2_s42",
-      "status": "running",
+      "status": "completed",
       "source_commit": "ff5660e4077484f895755cce95a9a3917582edf6",
       "script": "scripts/uit_variant_scheduler.py",
       "seed": 42,
-      "started_at": "2026-10-30T07:07:33Z",
-      "ended_at": null,
+      "started_at": "2026-10-30T07:07:33+00:00",
+      "ended_at": "2026-10-30T14:06:38+00:00",
       "command": [
-        "scripts/uit_variant_scheduler.py",
-        "--variants",
-        "20261030_uit_4block_gl192_retry2_s42",
-        "20261030_uit_4block_gl768_retry2_s42",
-        "20261030_uit_4block_plain_retry2_s42",
-        "20261030_uit_gl192_dense128_rank2_retry2_s42",
-        "20261030_uit_gl192_dense128_retry2_s42",
-        "--gpus",
-        "0",
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261030_uit_4block_gl768_retry2_s42/scripts/run_scene.py",
+        "--output",
+        "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261030_uit_4block_gl768_retry2_s42",
+        "--gpu",
         "1",
+        "--seed",
+        "42",
         "--epochs",
         "30",
         "--batch",
         "64",
         "--workers",
-        "8",
-        "--seed",
-        "42"
+        "8"
       ],
-      "log": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
-      "outputs": [],
-      "notes": "retry2 after retry1 external interruption; detached nohup scheduler with dynamic two-GPU scheduling."
+      "log": "logs/20261030T070733Z_uit_gpu1.log",
+      "outputs": [
+        "results/uit.json",
+        "results/uit_scores.csv",
+        "ckpt/uit_final.pth"
+      ],
+      "notes": "Detached retry2 completed 30 full epochs; returncode=0. No checkpoint warm start.",
+      "scheduler_log": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
+      "gpu_index_at_launch": 1,
+      "gpu_name": "NVIDIA RTX A6000",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/UIT-ADrone",
+      "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213"
+    },
+    {
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_gl768_retry2_s42",
+      "status": "completed",
+      "source_commit": "dccc43d5641194afbe15790b916a2a89e7b1d332",
+      "script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "seed": 42,
+      "started_at": "2026-10-31T06:04:15.377403+00:00",
+      "ended_at": "2026-10-31T06:04:21.839490+00:00",
+      "command": [
+        "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py"
+      ],
+      "outputs": [
+        "results/summary.md",
+        "results/verification.json",
+        "results/training_timing.csv"
+      ],
+      "notes": "CPU post-hoc review, no training or inference rerun."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "official UIT train/test frame overlap retained",
@@ -51,5 +75,21 @@
     "behavior branch excluded; appearance branch is the model",
     "checkpoints local and ignored by Git",
     "retry2 is an independent rerun after externally interrupted retry1; retry1 retained at 20261030_uit_4block_gl768_retry1_s42"
-  ]
+  ],
+  "weight_files_local": 1,
+  "review": {
+    "method": "4block + GL768 + Dense512",
+    "experiment_id": "20261030_uit_4block_gl768_retry2_s42",
+    "auc_percent": 80.60471662952028,
+    "eer_percent": 27.2713122605364,
+    "trainable_parameters": 30248000,
+    "parameters_m": 30.248,
+    "ocbe_parameters": 4770368,
+    "student_parameters": 25477632,
+    "train_h": 3.77,
+    "checkpoint_mib": 115.41619300842285,
+    "auc_delta_vs_previous_pp": -1.1402429511662433,
+    "auc_delta_vs_plain_pp": -1.1402429511662433,
+    "parameter_reduction_vs_plain_percent": 24.866265529493127
+  }
 }

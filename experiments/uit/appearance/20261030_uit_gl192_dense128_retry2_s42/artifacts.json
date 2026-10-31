@@ -1,4 +1,93 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261030T140638Z_uit_gpu1.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 2012,
+      "sha256": "c82a6d4f61b1312cc5d4d703c93d03ba28e7670ce83b4749b486bd1354382907",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 5399,
+      "sha256": "3ed38f30b67e2b4b00d2cd6298b34844789855a24e0ac381b8d436806ab48c51",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 556,
+      "sha256": "820c6ba16a35bc41d128759bf0698fdad03a071de74b59ccc68dfe63798fae8e",
+      "storage": "git"
+    },
+    {
+      "path": "results/training_timing.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1097,
+      "sha256": "24d4d79839c905b95a0f11c173e50ea605b05541aeed7c4b5a8f3e251f121d81",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 547,
+      "sha256": "2e5ef42d17aa7e9d15bbda50078da4f12dce313ba3626149c80215dff46906f1",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 6917256,
+      "sha256": "e9c1a25274d7f1477b10623c9517f0abe7a2a0f57f314b23fdc53136a7ce8599",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 753,
+      "sha256": "73833c1df701793bf8817eac98411c437368b03b276238790b5e4d4712a13138",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_gl192_dense128_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "local_only",
+      "size_bytes": 16648250,
+      "sha256": "e6d704f480f69a200eb4f45425430c1299b3dda53de3aab34528e6b28860e3c0",
+      "storage": "ignored_local"
+    }
+  ]
 }

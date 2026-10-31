@@ -1,4 +1,104 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261030T070733Z_uit_gpu0.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 2024,
+      "sha256": "fb306e03d9e2f06234ad4f79f59ab461743b032d0f24c018ab44fd8036ccbbbe",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261030T070733Z_uit_five_variant_matrix.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 5399,
+      "sha256": "3ed38f30b67e2b4b00d2cd6298b34844789855a24e0ac381b8d436806ab48c51",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_stdout_retry2.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 5554,
+      "sha256": "887fddc2fd3071dc8fcfdd102306d9af5d4c5c84506237fd6070a2442757711b",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 549,
+      "sha256": "d3b495a39769346e5927f9a2bae5410472cc80e0c1b5458e60120218d57d9ec2",
+      "storage": "git"
+    },
+    {
+      "path": "results/training_timing.csv",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 1041,
+      "sha256": "f58bd677541c980bb7ed450989c75cd8368d576246f782febd23b326a35dd00a",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 544,
+      "sha256": "545674edcbec0a6d6a5506c5ecc6b9310c048080e911590be3d2accbf6cac19a",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "completed",
+      "size_bytes": 6956405,
+      "sha256": "02fe246853f4331f61d83687661af09866a48e7ed34e550614e672f1d491ac2b",
+      "storage": "git"
+    },
+    {
+      "path": "results/verification.json",
+      "kind": "result",
+      "producer_script": "experiments/uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/scripts/review_matrix.py",
+      "run_id": "20261031T060415Z_uit_matrix_review_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; logs; results/uit_scores.csv; ckpt/uit_final.pth",
+      "status": "completed",
+      "size_bytes": 753,
+      "sha256": "ab5acb7d6547b76d74c8217572fc1fe3dd34f45e8edabfacdffc8aeddca63612",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261030T070733Z_uit_five_variant_matrix_20261030_uit_4block_plain_retry2_s42",
+      "inputs": "config.json; UIT-ADrone official split",
+      "status": "local_only",
+      "size_bytes": 161066106,
+      "sha256": "ea5d90481d5f2c04aef77c867eb6632957cb96a4f35849e9ecbfe77cce56b750",
+      "storage": "ignored_local"
+    }
+  ]
 }
