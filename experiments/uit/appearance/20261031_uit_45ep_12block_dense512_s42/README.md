@@ -4,7 +4,7 @@
 
 ## 固定设置
 
-- 冻结 DINOv3 ViT-B/16，12 层 patch taps，输入 256×256；
+- 冻结 DINOv3 ViT-B/16，历史 baseline 取 `[5,7,9,11]` 四个 patch taps，输入 256×256；
 - 相邻三个教师层与学生反向对齐，蒸馏损失保持 group-balanced top-5 cosine；
 - seed42、45 epoch、batch64、AdamW、OneCycleLR；
 - 在 epoch 10、20、30、40、45 分别保存 checkpoint，同时保存最终 `uit_final.pth`；

@@ -21,10 +21,11 @@ from torchvision import transforms as T
 
 from model import anomaly_readouts, build_appearance_teacher, build_bottleneck
 from model.bottleneck_depthrank_learnable import build_learnable_depthrank2_bottleneck
-from model.student import Block
+from model.student import Block, StudentDecoder
 from model.student_structural import FourBlockGlobalLocalDecoder
 
 UIT_ROOT_DEFAULT = Path('/data1/data8tb/liangyuxuan/dataset/UIT-ADrone')
+DEFAULT_CHECKPOINT_EPOCHS = (10, 20, 30, 40, 45)
 
 
 class PlainFourBlockDecoder(torch.nn.Module):
@@ -82,6 +83,13 @@ def loss_for(taps, recons, k=5, alpha=0.5):
     for a, b in zip(taps, recons):
         d = 1 - F.cosine_similarity(a, b, dim=-1)
         per.append(d.topk(k, dim=-1).values.mean(-1))
+    # Historical 12-block baseline uses four taps [5,7,9,11] and the original
+    # tap-mean top-k loss. The lightweight 4-block variants use all 12 taps,
+    # grouped as four adjacent teacher triplets with the group-balanced loss.
+    if len(per) == 4:
+        return torch.stack(per, dim=1).mean()
+    if len(per) != 12:
+        raise ValueError(f'expected either 4 historical taps or 12 grouped taps, got {len(per)}')
     groups = torch.stack(per, dim=1).reshape(-1, 4, 3)
     avg, worst = groups.mean(-1), groups.max(-1).values
     return (avg + alpha * (worst - avg)).mean()
@@ -89,7 +97,10 @@ def loss_for(taps, recons, k=5, alpha=0.5):
 
 def build_variant(cfg, seed):
     v = cfg['variant']
-    if v == 'uit_4block_plain':
+    if v == 'uit_12block_dense512':
+        ocbe = build_bottleneck(n_taps=4, code_dim=64, fuse_hidden=512, use_tap_norm=True)
+        student = StudentDecoder(n_taps=4, code_dim=64, embed_dim=768, depth=12, heads=8)
+    elif v == 'uit_4block_plain':
         ocbe = build_bottleneck(n_taps=12, code_dim=64, fuse_hidden=512, use_tap_norm=True)
         # Absolute reverse alignment gives exactly three heads at each of four stages.
         student = PlainFourBlockDecoder(code_dim=64, embed_dim=768, heads=8)
@@ -109,6 +120,26 @@ def build_variant(cfg, seed):
     else:
         raise ValueError(f'unknown UIT variant: {v}')
     return ocbe, student
+
+
+def save_checkpoint(output, label, epoch, variant, seed, fingerprint, ocbe, student,
+                    optimizer, scheduler, train_loss, trainable_parameters):
+    """Save a model-weight snapshot; checkpoints are intentionally local/ignored.
+
+    Optimizer/scheduler objects are not serialized: these snapshots are for stage
+    comparison and safe weight loading, not implicit training continuation.
+    """
+    path = output / 'ckpt' / f'uit_epoch{epoch}.pth' if label == 'epoch' else output / 'ckpt' / 'uit_final.pth'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        'format_version': 2, 'dataset': 'UIT-ADrone', 'variant': variant,
+        'seed': seed, 'epoch': epoch, 'split_fingerprint': fingerprint,
+        'trainable_parameters': trainable_parameters, 'train_loss': train_loss,
+        'ocbe_state_dict': {k: v.detach().cpu() for k, v in ocbe.state_dict().items()},
+        'student_state_dict': {k: v.detach().cpu() for k, v in student.state_dict().items()},
+    }
+    torch.save(payload, path)
+    return path
 
 
 def eer_of(labels, scores):
@@ -159,7 +190,8 @@ def main():
     torch.backends.cudnn.deterministic = True; torch.backends.cudnn.benchmark = False
     device = torch.device(f'cuda:{a.gpu}')
     train, test_dirs, fingerprint = manifest(a.data_root)
-    teacher = build_appearance_teacher(layers=list(range(12))).to(device).eval()
+    teacher_layers = cfg.get('teacher_layers', list(range(12)))
+    teacher = build_appearance_teacher(layers=teacher_layers).to(device).eval()
     tf = T.Compose([T.Resize((256, 256)), T.ToTensor(), T.Normalize(teacher.img_mean, teacher.img_std)])
     loader = DataLoader(Frames(train, tf), batch_size=a.batch, shuffle=True,
                         generator=torch.Generator().manual_seed(a.seed), num_workers=a.workers,
@@ -170,11 +202,17 @@ def main():
     steps_per_epoch = min(len(loader), a.max_steps) if a.max_steps else len(loader)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=5e-4,
                                                 steps_per_epoch=steps_per_epoch, epochs=a.epochs)
+    checkpoint_epochs = tuple(int(x) for x in cfg.get('training', {}).get(
+        'checkpoint_epochs', DEFAULT_CHECKPOINT_EPOCHS))
+    if any(ep < 1 or ep > a.epochs for ep in checkpoint_epochs):
+        raise ValueError(f'checkpoint epochs must be within 1..{a.epochs}: {checkpoint_epochs}')
+    trainable_parameters = sum(p.numel() for p in params)
     print(json.dumps({'dataset':'UIT-ADrone','variant':cfg['variant'],'seed':a.seed,
                       'train_videos':len(set(str(Path(x).parent) for x in train)),
                       'train_frames':len(train),'test_videos':len(test_dirs),
                       'test_frames':sum(len(list(d.glob('*.jpg'))) for d in test_dirs),
-                      'split_fingerprint':fingerprint,'trainable_parameters':sum(p.numel() for p in params),
+                      'split_fingerprint':fingerprint,'trainable_parameters':trainable_parameters,
+                      'teacher_layers':teacher_layers,'checkpoint_epochs':checkpoint_epochs,
                       'cuda':torch.cuda.get_device_name(device)}, ensure_ascii=False), flush=True)
     t0=time.monotonic()
     for ep in range(a.epochs):
@@ -186,19 +224,22 @@ def main():
             rec=student(ocbe(taps)); loss=loss_for(taps, rec)
             opt.zero_grad(); loss.backward(); opt.step(); sched.step()
             total += loss.item()*len(xb); count += len(xb)
-        print(f'epoch={ep+1} loss={total/count:.6f} elapsed_s={time.monotonic()-t0:.1f}', flush=True)
+        train_loss = total / count
+        print(f'epoch={ep+1} loss={train_loss:.6f} elapsed_s={time.monotonic()-t0:.1f}', flush=True)
+        if ep + 1 in checkpoint_epochs:
+            save_checkpoint(a.output, 'epoch', ep + 1, cfg['variant'], a.seed, fingerprint,
+                            ocbe, student, opt, sched, train_loss, trainable_parameters)
     ocbe.eval(); student.eval(); out=a.output/'results'
     auc, eer, n, pos=evaluate(teacher, ocbe, student, test_dirs, tf, device, out/'uit_scores.csv', 32)
-    ckpt_path=a.output/'ckpt'/'uit_final.pth';ckpt_path.parent.mkdir(parents=True,exist_ok=True)
-    ckpt={'format_version':1,'dataset':'UIT-ADrone','variant':cfg['variant'],'seed':a.seed,
-          'split_fingerprint':fingerprint,'trainable_parameters':sum(p.numel() for p in params),
-          'ocbe_state_dict':{k:v.detach().cpu() for k,v in ocbe.state_dict().items()},
-          'student_state_dict':{k:v.detach().cpu() for k,v in student.state_dict().items()}}
-    torch.save(ckpt,ckpt_path); sha=hashlib.sha256(ckpt_path.read_bytes()).hexdigest()
+    ckpt_path = save_checkpoint(a.output, 'final', a.epochs, cfg['variant'], a.seed,
+                                fingerprint, ocbe, student, opt, sched, train_loss,
+                                trainable_parameters)
+    sha=hashlib.sha256(ckpt_path.read_bytes()).hexdigest()
     metric={'dataset':'UIT-ADrone','variant':cfg['variant'],'seed':a.seed,'auc_percent':auc,'eer':eer,
             'frames':n,'positive_frames':pos,'train_frames':len(train),'test_videos':len(test_dirs),
-            'split_fingerprint':fingerprint,'trainable_parameters':sum(p.numel() for p in params),
+            'split_fingerprint':fingerprint,'trainable_parameters':trainable_parameters,
             'checkpoint':'ckpt/uit_final.pth','checkpoint_sha256':sha,'elapsed_s':time.monotonic()-t0,'max_steps':a.max_steps}
+    metric['checkpoint_epochs'] = list(checkpoint_epochs)
     (out/'uit.json').write_text(json.dumps(metric,ensure_ascii=False,indent=2)+'\n');print(json.dumps(metric),flush=True)
 
 if __name__=='__main__': main()

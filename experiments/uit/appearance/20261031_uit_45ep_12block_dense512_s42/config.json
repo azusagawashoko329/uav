@@ -37,15 +37,22 @@
     "test": "test/frames/<video>/*.jpg, 51 videos, 147005 frames",
     "labels": "test/test_frame_mask/<video>.npy",
     "aggregation": "concat all test frames then one ROC AUC and EER",
-    "official_overlap": "historical UIT protocol retains train frames inside test full videos; no deduplication"
+    "official_overlap": "historical UIT protocol retains train frames inside test full videos; no deduplication",
+    "teacher_layers": "[5,7,9,11] historical four-tap baseline; student depth12"
   },
   "resources": {
-    "expected_trainable_parameters": null,
+    "expected_trainable_parameters": 89079104,
     "behavior_branch": false,
     "teacher": "DINOv3 ViT-B/16 frozen, layers 0-11"
   },
   "acceptance": {
     "compare": "all six variants use identical UIT loading, seed42, 45 epoch budget, evaluation and checkpoint cadence",
     "outputs": "AUC/EER, parameter count, train time, checkpoint hash"
-  }
+  },
+  "teacher_layers": [
+    5,
+    7,
+    9,
+    11
+  ]
 }
