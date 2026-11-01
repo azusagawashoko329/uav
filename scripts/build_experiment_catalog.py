@@ -24,19 +24,24 @@ for path in sorted(EXP.glob('*/**/record.json')):
         'id':d.get('id',path.parent.name),'path':relative,
         'dataset':d.get('dataset',parts[0]),'family':d.get('family',parts[1]),
         'status':d.get('status','unknown'),'source_ref':d.get('source_ref') or '',
+        'archived':str(bool(d.get('archived', False))).lower(),
         'evidence_count':len(evidence),'weight_files_local':d.get('weight_files_local',''),
         'scripts_count':len(d.get('scripts',[])),
         'result_evidence':';'.join(result_files)
     })
-records.sort(key=lambda r:(r['dataset'],r['family'],r['path']))
+records.sort(key=lambda r:(r['dataset'],r['family'],r['archived'],r['path']))
 with (EXP/'CATALOG.csv').open('w',newline='') as f:
     writer=csv.DictWriter(f,fieldnames=list(records[0]),lineterminator='\n');writer.writeheader();writer.writerows(records)
 groups=defaultdict(list)
 for row in records:groups[(row['dataset'],row['family'])].append(row)
-lines=['# 实验导航','',f'共 {len(records)} 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。', '', '| 数据集 | 方向 | 数量 | 入口 |', '|---|---|---:|---|']
-for (dataset,family),items in sorted(groups.items()):
+active=[r for r in records if r['archived'] != 'true']
+archived_count=len(records)-len(active)
+lines=['# 实验导航','',f'共 {len(active)} 个活动实验；另有 {archived_count} 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。', '', '| 数据集 | 方向 | 数量 | 入口 |', '|---|---|---:|---|']
+active_groups=defaultdict(list)
+for row in active: active_groups[(row['dataset'],row['family'])].append(row)
+for (dataset,family),items in sorted(active_groups.items()):
     lines.append(f'| `{dataset}` | `{family}` | {len(items)} | [查看](#{dataset}-{family}) |')
-for (dataset,family),items in sorted(groups.items()):
+for (dataset,family),items in sorted(active_groups.items()):
     lines += ['',f'## {dataset} / {family}','','| 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |','|---|---|---|---:|---:|']
     for r in items:
         d=EXP/r['path'];target=d/'RECORD.md'
