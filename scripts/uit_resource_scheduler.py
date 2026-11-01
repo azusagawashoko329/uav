@@ -19,7 +19,7 @@ def main():
   e={'time':now(),'run_id':args.run_id,'kind':kind,**kw};line=json.dumps(e,ensure_ascii=False)+'\n'
   for f in logs: f.parent.mkdir(exist_ok=True);f.open('a').write(line)
   print(line,end='',flush=True)
-    queue=list(args.variants);running={};failures=[];emit('start',jobs=len(queue),gpus=args.gpus,policy='force configured GPUs; ignore external occupancy')
+ queue=list(args.variants);running={};failures=[];emit('start',jobs=len(queue),gpus=args.gpus,policy='force configured GPUs; ignore external occupancy')
  while queue or running:
   for g,s in list(running.items()):
    rc=s['p'].poll()
