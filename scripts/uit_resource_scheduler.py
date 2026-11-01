@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dynamic UIT scheduler: run on free physical GPUs, wait for busy GPUs."""
+"""Dynamic UIT scheduler: queue on configured physical GPUs regardless of occupancy."""
 import argparse, datetime as dt, json, os, subprocess, sys, time
 from pathlib import Path
 
@@ -19,7 +19,7 @@ def main():
   e={'time':now(),'run_id':args.run_id,'kind':kind,**kw};line=json.dumps(e,ensure_ascii=False)+'\n'
   for f in logs: f.parent.mkdir(exist_ok=True);f.open('a').write(line)
   print(line,end='',flush=True)
- queue=list(args.variants);running={};failures=[];emit('start',jobs=len(queue),gpus=args.gpus,policy='skip busy GPU; dynamic free-card queue')
+    queue=list(args.variants);running={};failures=[];emit('start',jobs=len(queue),gpus=args.gpus,policy='force configured GPUs; ignore external occupancy')
  while queue or running:
   for g,s in list(running.items()):
    rc=s['p'].poll()
@@ -29,7 +29,7 @@ def main():
    running.pop(g)
   inv=inventory(args.gpus)
   for g in args.gpus:
-   if not queue or g in running or g not in inv or inv[g]['memory_mb']>args.max_memory_mb: continue
+   if not queue or g in running or g not in inv: continue
    v=queue.pop(0);d=dirs[v];stamp=now();log=d/'logs'/f'{stamp}_uit_gpu{g}.log';cmd=[sys.executable,str(d/'scripts/run_scene.py'),'--output',str(d),'--gpu','0','--seed',str(args.seed),'--epochs',str(args.epochs),'--batch',str(args.batch),'--workers',str(args.workers)];env={**os.environ,'CUDA_VISIBLE_DEVICES':inv[g]['uuid'],'CUDA_DEVICE_ORDER':'PCI_BUS_ID','PYTHONUNBUFFERED':'1'};f=log.open('w');pobj=subprocess.Popen(cmd,cwd=root,env=env,stdout=f,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL);running[g]={'v':v,'p':pobj,'f':f,'log':log};emit('launch',variant=v,gpu=g,uuid=inv[g]['uuid'],name=inv[g]['name'],memory_mb=inv[g]['memory_mb'],pid=pobj.pid,log=str(log),command=cmd)
  if queue: emit('waiting',queued=queue,occupied=list(running),inventory=inv)
  if queue or running: time.sleep(args.poll_seconds)

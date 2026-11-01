@@ -1,6 +1,6 @@
 # 实验导航
 
-共 143 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 149 个已登记实验或历史实验组。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
@@ -11,7 +11,7 @@
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
 | `da` | `gating` | 2 | [查看](#da-gating) |
-| `uit` | `appearance` | 27 | [查看](#uit-appearance) |
+| `uit` | `appearance` | 33 | [查看](#uit-appearance) |
 
 ## da / aggregation
 
@@ -189,11 +189,17 @@
 | [20261031_uit_45ep_4block_gl768_dense512_s42](uit/appearance/20261031_uit_45ep_4block_gl768_dense512_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
 | [20261031_uit_45ep_gl192_dense128_rank2_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_rank2_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
 | [20261031_uit_45ep_gl192_dense128_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
-| [20261101_uit_45ep_12block_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_12block_dense512_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_dense512_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_gl192_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_gl192_dense512_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_gl768_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261101_uit_45ep_gl192_dense128_rank2_retry1_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261101_uit_45ep_gl192_dense128_retry1_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry1_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_12block_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_12block_dense512_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_12block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_12block_dense512_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_dense512_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_dense512_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_gl192_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_gl192_dense512_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_gl192_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl192_dense512_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_gl768_dense512_retry1_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_4block_gl768_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_gl192_dense128_rank2_retry1_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_gl192_dense128_rank2_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261101_uit_45ep_gl192_dense128_retry1_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry1_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261101_uit_45ep_gl192_dense128_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42/README.md) | `planned` | 未找到 | 1 |  |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。

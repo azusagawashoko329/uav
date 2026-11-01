@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "20261101_uit_45ep_12block_dense512_retry2_s42",
+  "path": "experiments/uit/appearance/20261101_uit_45ep_12block_dense512_retry2_s42",
+  "dataset": "uit",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "single seed42",
+    "force queue restart after user cancellation of retry1",
+    "external GPU process intentionally ignored per user instruction",
+    "official UIT overlap retained",
+    "checkpoints at epochs 10,20,30,40,45 and final are local and ignored by Git"
+  ]
+}
