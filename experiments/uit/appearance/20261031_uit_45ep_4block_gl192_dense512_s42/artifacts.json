@@ -1,4 +1,25 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/scheduler_20261031T062606Z_uit_five_variant_matrix.jsonl",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_gl192_dense512_s42",
+      "status": "cancelled",
+      "size_bytes": 1416,
+      "sha256": "2bfebc543786dbeecde4d660f3898ebe3e0f89dd2ba8346457fd97e1f4c872b7",
+      "storage": "git",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "results/interruption.md",
+      "producer_script": "post-hoc interruption audit",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_gl192_dense512_s42",
+      "status": "cancelled",
+      "size_bytes": 364,
+      "sha256": "4014e418777dd75b667831d6a962662435a1319881f2dbf4500f0901f29b716c",
+      "storage": "git",
+      "inputs": "config.json; logs; recorded reboot time"
+    }
+  ]
 }

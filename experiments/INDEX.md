@@ -183,11 +183,11 @@
 | [20261030_uit_gl192_dense128_retry1_s42](uit/appearance/20261030_uit_gl192_dense128_retry1_s42/README.md) | `unknown` | 未找到 | 1 |  |
 | [20261030_uit_gl192_dense128_retry2_s42](uit/appearance/20261030_uit_gl192_dense128_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_gl192_dense128_s42](uit/appearance/20261030_uit_gl192_dense128_s42/README.md) | `failed` | 未找到 | 1 |  |
-| [20261031_uit_45ep_12block_dense512_s42](uit/appearance/20261031_uit_45ep_12block_dense512_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261031_uit_45ep_4block_dense512_s42](uit/appearance/20261031_uit_45ep_4block_dense512_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261031_uit_45ep_4block_gl192_dense512_s42](uit/appearance/20261031_uit_45ep_4block_gl192_dense512_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261031_uit_45ep_4block_gl768_dense512_s42](uit/appearance/20261031_uit_45ep_4block_gl768_dense512_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261031_uit_45ep_gl192_dense128_rank2_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_rank2_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261031_uit_45ep_gl192_dense128_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261031_uit_45ep_12block_dense512_s42](uit/appearance/20261031_uit_45ep_12block_dense512_s42/README.md) | `failed` | 未找到 | 1 | 2 |
+| [20261031_uit_45ep_4block_dense512_s42](uit/appearance/20261031_uit_45ep_4block_dense512_s42/README.md) | `failed` | 未找到 | 1 | 3 |
+| [20261031_uit_45ep_4block_gl192_dense512_s42](uit/appearance/20261031_uit_45ep_4block_gl192_dense512_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
+| [20261031_uit_45ep_4block_gl768_dense512_s42](uit/appearance/20261031_uit_45ep_4block_gl768_dense512_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
+| [20261031_uit_45ep_gl192_dense128_rank2_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_rank2_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
+| [20261031_uit_45ep_gl192_dense128_s42](uit/appearance/20261031_uit_45ep_gl192_dense128_s42/README.md) | `cancelled` | 未找到 | 1 | 0 |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。

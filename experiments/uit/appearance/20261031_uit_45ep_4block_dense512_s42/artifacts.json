@@ -1,4 +1,65 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261031T062606Z_uit_gpu1.log",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "failed",
+      "size_bytes": 1857,
+      "sha256": "dded8c0f10d66a49893bd395ce40f8de69302c24d7770bc611bcf862c42e9f02",
+      "storage": "git",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "logs/scheduler_20261031T062606Z_uit_five_variant_matrix.jsonl",
+      "producer_script": "scripts/uit_variant_scheduler.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "failed",
+      "size_bytes": 1416,
+      "sha256": "2bfebc543786dbeecde4d660f3898ebe3e0f89dd2ba8346457fd97e1f4c872b7",
+      "storage": "git",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "local_only",
+      "size_bytes": 161066382,
+      "sha256": "bcd18dbb8185ad69a9759b76e0d448e2ddada168f3aade8f32f5714cf117c6ee",
+      "storage": "ignored_local",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "local_only",
+      "size_bytes": 161066382,
+      "sha256": "72f57b7d4328e807c0c05701b5ff4b71481d0e2529b3d8e2f6ec808307e77a60",
+      "storage": "ignored_local",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "local_only",
+      "size_bytes": 161066382,
+      "sha256": "b5923f39e8133f1eb1400ab1d81ce3e148a4aee934246bde0dd134c064e8fca7",
+      "storage": "ignored_local",
+      "inputs": "config.json; logs; recorded reboot time"
+    },
+    {
+      "path": "results/interruption.md",
+      "producer_script": "post-hoc interruption audit",
+      "run_id": "20261031T062606Z_uit_five_variant_matrix_20261031_uit_45ep_4block_dense512_s42",
+      "status": "failed",
+      "size_bytes": 383,
+      "sha256": "dabc63f4814268ce1e74bb55bce80246be65fd7fcf6f34f047ec06d3083a7442",
+      "storage": "git",
+      "inputs": "config.json; logs; recorded reboot time"
+    }
+  ]
 }
