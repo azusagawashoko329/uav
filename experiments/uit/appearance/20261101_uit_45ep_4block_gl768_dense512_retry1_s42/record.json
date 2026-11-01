@@ -4,7 +4,7 @@
   "path": "experiments/uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry1_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "running",
+  "status": "cancelled",
   "source_commit": "dc0382f81a0d6a31f9bb65c6b80e91dc2b97d765",
   "scripts": [
     "scripts/run_scene.py"
@@ -12,12 +12,12 @@
   "runs": [
     {
       "run_id": "20261101T084204Z_uit_six_45ep_restart_20261101_uit_45ep_4block_gl768_dense512_retry1_s42",
-      "status": "running",
+      "status": "cancelled",
       "source_commit": "dc0382f81a0d6a31f9bb65c6b80e91dc2b97d765",
       "script": "scripts/uit_resource_scheduler.py",
       "seed": 42,
       "started_at": "2026-11-01T08:42:04Z",
-      "ended_at": null,
+      "ended_at": "2026-11-01T09:32:37Z",
       "command": [
         "scripts/uit_resource_scheduler.py",
         "--variants",
@@ -41,10 +41,15 @@
       ],
       "log": "logs/scheduler_20261101T084204Z_uit_six_45ep_restart.jsonl",
       "outputs": [],
-      "notes": "Fresh restart after cancelled 20261031 matrix; dynamic queue skips busy GPU and launches on free physical UUID."
+      "notes": "User requested force scheduling that ignores the external GPU process; this partial retry1 was intentionally stopped before its first stage checkpoint. It is not a result.",
+      "interruption": {
+        "reason": "user_requested_force_queue_restart",
+        "last_complete_epoch": 1,
+        "final_metrics": false
+      }
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/interruption.md",
   "limitations": [
     "single seed42",
     "fresh 45 epoch restart after cancelled 20261031 matrix",
