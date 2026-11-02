@@ -1,11 +1,11 @@
 # 实验导航
 
-共 135 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 137 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 75 | [查看](#da-appearance) |
+| `da` | `appearance` | 77 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -85,11 +85,13 @@
 | [20261030_ocbe_group_block_lr_r128_s42](da/appearance/20261030_ocbe_group_block_lr_r128_s42/README.md) | `completed` | 未找到 | 4 |  |
 | [20261102_student12_gl768_retry1_s42](da/appearance/20261102_student12_gl768_retry1_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_gl768_retry2_s42](da/appearance/20261102_student12_gl768_retry2_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261102_student12_gl768_retry3_s42](da/appearance/20261102_student12_gl768_retry3_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261102_student12_gl768_retry3_s42](da/appearance/20261102_student12_gl768_retry3_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261102_student12_gl768_retry4_s42](da/appearance/20261102_student12_gl768_retry4_s42/README.md) | `planned` | 未找到 | 1 |  |
 | [20261102_student12_gl768_s42](da/appearance/20261102_student12_gl768_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry1_s42](da/appearance/20261102_student12_plain_retry1_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry2_s42](da/appearance/20261102_student12_plain_retry2_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261102_student12_plain_retry3_s42](da/appearance/20261102_student12_plain_retry3_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261102_student12_plain_retry3_s42](da/appearance/20261102_student12_plain_retry3_s42/README.md) | `cancelled` | 未找到 | 1 |  |
+| [20261102_student12_plain_retry4_s42](da/appearance/20261102_student12_plain_retry4_s42/README.md) | `planned` | 未找到 | 1 |  |
 | [20261102_student12_plain_s42](da/appearance/20261102_student12_plain_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
