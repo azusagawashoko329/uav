@@ -1,11 +1,11 @@
 # 实验导航
 
-共 127 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 129 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
-| `da` | `appearance` | 67 | [查看](#da-appearance) |
+| `da` | `appearance` | 69 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -83,6 +83,8 @@
 | [20261029_rank2_baseline30_s42](da/appearance/20261029_rank2_baseline30_s42/README.md) | `cancelled` | 未找到 | 2 |  |
 | [20261029_rank2_checkpoint_refresh_s43](da/appearance/20261029_rank2_checkpoint_refresh_s43/README.md) | `completed` | 未找到 | 3 |  |
 | [20261030_ocbe_group_block_lr_r128_s42](da/appearance/20261030_ocbe_group_block_lr_r128_s42/README.md) | `completed` | 未找到 | 4 |  |
+| [20261102_student12_gl768_s42](da/appearance/20261102_student12_gl768_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261102_student12_plain_s42](da/appearance/20261102_student12_plain_s42/README.md) | `planned` | 未找到 | 1 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
 | [cd128](da/appearance/codedim/cd128/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/cd128/results.csv) | 1 | 1 |
