@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261102_student12_plain_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "cancelled",
   "source_commit": "89819f6135d274f53d47dc32e27feec7bd7b83a6",
   "scripts": [
     "scripts/run_scene.py"
@@ -12,12 +12,12 @@
   "runs": [
     {
       "run_id": "20261102T155430Z_da_student12_plain_gl30_20261102_student12_plain_s42",
-      "status": "running",
+      "status": "cancelled",
       "source_commit": "89819f6135d274f53d47dc32e27feec7bd7b83a6",
       "script": "scripts/dynamic_scheduler.py",
       "seed": 42,
       "started_at": "2026-11-02T15:54:30Z",
-      "ended_at": null,
+      "ended_at": "2026-11-02T15:55:39Z",
       "command": [
         "scripts/dynamic_scheduler.py",
         "--gpus",
@@ -35,10 +35,10 @@
         "plain"
       ],
       "outputs": [],
-      "notes": "Seven independent DA scene models; compare plain12 30 vs historical plain12 15 and GL12 30."
+      "notes": "Cancelled immediately after detecting duplicate two-GPU schedulers; scenes were started in parallel by both variants and are not valid formal results."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/interruption.md",
   "limitations": [
     "single seed42",
     "seven independent scene models",
