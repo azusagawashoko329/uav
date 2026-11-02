@@ -4,12 +4,33 @@
   "path": "experiments/da/appearance/20261102_student12_plain_retry2_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "e781d04",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261102T155954Z_da_student12_fairtaps30_20261102_student12_plain_retry2_s42",
+      "status": "running",
+      "source_commit": "e781d04",
+      "script": "dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-11-02T15:59:54Z",
+      "ended_at": null,
+      "command": [
+        "dynamic_scheduler.py",
+        "--gpu",
+        "0",
+        "--epochs",
+        "30",
+        "--variant",
+        "plain12"
+      ],
+      "outputs": [],
+      "notes": "Fair retry2: both variants use teacher taps [5,7,9,11], Dense512, 12 blocks width768; one scheduler per dedicated GPU."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
