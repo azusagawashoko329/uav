@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "id": "20261102_student12_gl768_retry5_s42",
+  "path": "experiments/da/appearance/20261102_student12_gl768_retry5_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "running",
+  "source_commit": "1450e48",
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20261103T_gl12_retry5",
+      "status": "running",
+      "source_commit": "1450e48",
+      "script": "dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-11-03T00:00:00Z",
+      "ended_at": null,
+      "command": [
+        "dynamic_scheduler.py",
+        "--gpu",
+        "1",
+        "--epochs",
+        "30",
+        "--variant",
+        "gl12"
+      ],
+      "outputs": [],
+      "notes": "Corrected GL teacher taps [5,7,9,11], repeated [Global,Local,Local,Local] x3, output positions [2,5,8,11]."
+    }
+  ],
+  "result_summary": null,
+  "limitations": [
+    "single seed42",
+    "seven scene models",
+    "four taps [5,7,9,11]",
+    "GL repeated fourblock structure"
+  ]
+}

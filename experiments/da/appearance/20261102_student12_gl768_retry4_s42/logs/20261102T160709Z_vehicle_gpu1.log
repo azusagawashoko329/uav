@@ -1,0 +1,18 @@
+{"scene": "vehicle", "variant": "gl12", "trainable_parameters": 59046464, "split_fingerprint": "258db2bb2a47a5ef431e42ce9c6e09df80449897db256eb39df01a5162ba6048", "cuda": "NVIDIA RTX A6000"}
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261102_student12_gl768_retry4_s42/scripts/run_scene.py", line 55, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261102_student12_gl768_retry4_s42/scripts/run_scene.py", line 52, in main
+    r=student(ocbe(taps));q=loss(taps,r);opt.zero_grad();q.backward();opt.step();sch.step();tot+=q.item()*len(x);n+=len(x)
+              ^^^^^^^^^^
+  File "/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lyx/miniconda3/envs/DMAD/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/model/bottleneck.py", line 52, in forward
+    assert len(taps) == self.n_taps, f"expected {self.n_taps} taps, got {len(taps)}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: expected 4 taps, got 12
