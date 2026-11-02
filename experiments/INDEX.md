@@ -86,12 +86,12 @@
 | [20261102_student12_gl768_retry1_s42](da/appearance/20261102_student12_gl768_retry1_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_gl768_retry2_s42](da/appearance/20261102_student12_gl768_retry2_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [20261102_student12_gl768_retry3_s42](da/appearance/20261102_student12_gl768_retry3_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261102_student12_gl768_retry4_s42](da/appearance/20261102_student12_gl768_retry4_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261102_student12_gl768_retry4_s42](da/appearance/20261102_student12_gl768_retry4_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_gl768_s42](da/appearance/20261102_student12_gl768_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry1_s42](da/appearance/20261102_student12_plain_retry1_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry2_s42](da/appearance/20261102_student12_plain_retry2_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry3_s42](da/appearance/20261102_student12_plain_retry3_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261102_student12_plain_retry4_s42](da/appearance/20261102_student12_plain_retry4_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261102_student12_plain_retry4_s42](da/appearance/20261102_student12_plain_retry4_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_plain_s42](da/appearance/20261102_student12_plain_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
