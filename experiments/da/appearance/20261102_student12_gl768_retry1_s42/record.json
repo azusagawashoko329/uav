@@ -4,12 +4,33 @@
   "path": "experiments/da/appearance/20261102_student12_gl768_retry1_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "b4df7fa",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261102T155657Z_da_student12_isolated30_20261102_student12_gl768_retry1_s42",
+      "status": "running",
+      "source_commit": "b4df7fa",
+      "script": "experiments/da/appearance/20261029_rank2_baseline30_rerun1_s42/scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-11-02T15:56:57Z",
+      "ended_at": null,
+      "command": [
+        "dynamic_scheduler.py",
+        "--gpus",
+        "1",
+        "--epochs",
+        "30",
+        "--variant",
+        "gl12"
+      ],
+      "outputs": [],
+      "notes": "Isolated GPU: one scheduler owns one GPU; seven scenes sequentially, no duplicate scene assignment."
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "single seed42",
