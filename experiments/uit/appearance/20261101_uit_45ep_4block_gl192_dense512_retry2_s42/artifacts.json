@@ -1,4 +1,115 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261101T231538Z_uit_gpu0.log",
+      "kind": "log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "completed",
+      "size_bytes": 2767,
+      "sha256": "8703a635edacf4ac2abb830d1ec63b4883ee2ccb08cf91a2fa619780c9ca1498",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261101T093340Z_uit_six_45ep_force.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "completed",
+      "size_bytes": 1857,
+      "sha256": "6139ecf6924024590ec285415639a48f46616c98301e4bc0b364a5fa91422b0f",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261101T093724Z_uit_six_45ep_force2.jsonl",
+      "kind": "log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "completed",
+      "size_bytes": 7534,
+      "sha256": "3219a4eb1dfeee14cfb6d0ebc6c7b5b64210ca82d5fb95e5b66027be4eaba496",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "completed",
+      "size_bytes": 613,
+      "sha256": "b56b2636726b533629f18fe5eea7ce008e9f5e5657aa792a1941199dd9537016",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "kind": "result",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "completed",
+      "size_bytes": 6918335,
+      "sha256": "23ddafa340fbb69e847742330ee4cb68db263bb81ac75fd50abb0c618b4294cb",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30904142,
+      "sha256": "2b3917962097a85973bba18e086a80dd2c4fec7354a571c1c865bbddd22e02ed",
+      "storage": "ignored_local"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30904142,
+      "sha256": "9eb4e805c5b1f8e50b629a3c63c56dbc806d9fa1e341fbac3f29da78fc0f5ed1",
+      "storage": "ignored_local"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30904142,
+      "sha256": "9e90d588080defe579ae1d85197abe7fae38c2581f27925483b9034e3e9174dd",
+      "storage": "ignored_local"
+    },
+    {
+      "path": "ckpt/uit_epoch40.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30904142,
+      "sha256": "a3e17249129aee9c3c4031c9c89b8a46fa04807061ec014a7549b708633fb8e0",
+      "storage": "ignored_local"
+    },
+    {
+      "path": "ckpt/uit_epoch45.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30904142,
+      "sha256": "5787f88e15541654ceb8d41fd3a16a590842d90d857e1dd364c4fc4ab5848e1a",
+      "storage": "ignored_local"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "kind": "checkpoint",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_4block_gl192_dense512_retry2_s42",
+      "status": "local_only",
+      "size_bytes": 30903930,
+      "sha256": "8e0f46fd4c0cfb148f72c4719b68d91e6338039fb21e5e84a25578c084788644",
+      "storage": "ignored_local"
+    }
+  ]
 }

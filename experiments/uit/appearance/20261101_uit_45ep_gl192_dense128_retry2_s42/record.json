@@ -4,7 +4,7 @@
   "path": "experiments/uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "532e0e024c1d697d5f45ff1b3aed95487f85fbc1",
   "scripts": [
     "scripts/run_scene.py"
@@ -45,12 +45,12 @@
     },
     {
       "run_id": "20261101T093724Z_uit_six_45ep_force2_20261101_uit_45ep_gl192_dense128_retry2_s42",
-      "status": "running",
+      "status": "completed",
       "source_commit": "532e0e024c1d697d5f45ff1b3aed95487f85fbc1",
       "script": "scripts/uit_resource_scheduler.py",
       "seed": 42,
       "started_at": "2026-11-01T09:37:24Z",
-      "ended_at": null,
+      "ended_at": "2026-11-02T15:37:42Z",
       "command": [
         "scripts/uit_resource_scheduler.py",
         "--variants",
@@ -73,16 +73,39 @@
         "42"
       ],
       "log": "logs/scheduler_20261101T093724Z_uit_six_45ep_force2.jsonl",
-      "outputs": [],
-      "notes": "Formal force-queued retry after scheduler fix; both configured physical GPUs are intentionally used regardless of external occupancy."
+      "outputs": [
+        "results/uit.json",
+        "results/uit_scores.csv",
+        "ckpt/uit_final.pth",
+        "ckpt/uit_epoch10.pth",
+        "ckpt/uit_epoch20.pth",
+        "ckpt/uit_epoch30.pth",
+        "ckpt/uit_epoch40.pth",
+        "ckpt/uit_epoch45.pth"
+      ],
+      "notes": "45 epoch force-queued run completed successfully; all six checkpoint weights present."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "force queue restart after user cancellation of retry1",
     "external GPU process intentionally ignored per user instruction",
     "official UIT overlap retained",
     "checkpoints at epochs 10,20,30,40,45 and final are local and ignored by Git"
-  ]
+  ],
+  "weight_files_local": 6,
+  "review": {
+    "method": "GL192 + Dense128",
+    "id": "20261101_uit_45ep_gl192_dense128_retry2_s42",
+    "variant": "uit_gl192_dense128",
+    "auc_percent": 75.50971477823674,
+    "eer_percent": 32.24018199233716,
+    "params": 4154432,
+    "params_m": 4.154432,
+    "elapsed_h": 6.9359435320138925,
+    "sha256": "223831bd93a69d1745e597368f200e062b5cc80c195c2a6e0bd2d2724d4c2d59",
+    "epochs": 45,
+    "checkpoints": "10,20,30,40,45"
+  }
 }

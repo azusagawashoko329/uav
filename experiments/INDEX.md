@@ -173,11 +173,11 @@
 | [20261030_uit_4block_plain_retry2_s42](uit/appearance/20261030_uit_4block_plain_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_gl192_dense128_rank2_retry2_s42](uit/appearance/20261030_uit_gl192_dense128_rank2_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_gl192_dense128_retry2_s42](uit/appearance/20261030_uit_gl192_dense128_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
-| [20261101_uit_45ep_12block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_12block_dense512_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_dense512_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_gl192_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl192_dense512_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
-| [20261101_uit_45ep_4block_gl768_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
-| [20261101_uit_45ep_gl192_dense128_rank2_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
-| [20261101_uit_45ep_gl192_dense128_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42/README.md) | `running` | 未找到 | 1 |  |
+| [20261101_uit_45ep_12block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_12block_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261101_uit_45ep_4block_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261101_uit_45ep_4block_gl192_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl192_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261101_uit_45ep_4block_gl768_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261101_uit_45ep_gl192_dense128_rank2_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261101_uit_45ep_gl192_dense128_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。
