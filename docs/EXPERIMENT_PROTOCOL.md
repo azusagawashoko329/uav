@@ -19,6 +19,10 @@ experiments/<dataset>/<family>/YYYYMMDD_<question>_<variant>_s<seed>/
 
 现存旧实验沿用原始 ID，如 `20260611_rd_baseline`，但已物理归入数据集/方向。旧运行可能缺完整配置、确切源码或脚本；通过 `RECORD.md` 与 `record.json` 表示缺口，不伪造事实。旧路径到新路径见 [迁移表](MIGRATION_MAP.csv)。`source_snapshot_*` 目录是历史分支代码证据，不能作为当前分支的运行入口。
 
+## 变体 ID
+
+六个反向蒸馏结构变体使用统一 ID（`rd_s12_t4_h512` … `rd_s4_t12_gl192_h128_qr2`），完整定义、代码入口和正式运行见 [VARIANTS.md](../experiments/VARIANTS.md)，机器可读版本见 [VARIANTS.csv](../experiments/VARIANTS.csv)。变体 ID 只标识模型结构与超参，不标识数据集、种子或 checkpoint；具体训练结果仍由实验 ID、dataset、seed 和 run_id 唯一确定。引用时不要用 `12block`、`GL192` 等口语名作为唯一标识。
+
 ## 运行和状态
 
 1. 新建目录，写假设、基线、唯一变化因素、数据集/划分/标签与评测口径；放入实验专用脚本。通用实现放共享代码目录，通过 import 使用。先提交这一阶段，运行前记录 `git rev-parse HEAD` 的 40 位源码提交；工作树须干净。

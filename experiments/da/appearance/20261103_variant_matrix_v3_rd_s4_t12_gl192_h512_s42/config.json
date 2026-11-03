@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "id": "20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant_id": "rd_s4_t12_gl192_h512",
+  "variant_label": "V3",
+  "runner_variant": "uit_4block_gl192",
+  "question": "在 Drone-Anomaly 七场景上，以统一 30 epoch、seed42、双卡动态调度复跑 V3 rd_s4_t12_gl192_h512，作为六变体公平比较矩阵的一格。",
+  "architecture": {
+    "student": "FourBlockGlobalLocalDecoder(dim=192, teacher_dim=768)：1 Global + 3 Local，12 个重建头",
+    "teacher": "DINOv3 ViT-B/16 frozen，taps 0..11（全部 12 层）",
+    "ocbe": "OCBE(n_taps=12, code_dim=64, fuse_hidden=512)",
+    "alignment": "12 个教师层按相邻 3 层分 4 组；反向对齐到 4 个 student stage，每 stage 3 个头",
+    "loss": "group_balanced_top5_cosine_alpha0.5"
+  },
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "optimizer": "AdamW + OneCycleLR",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "save": "每场景 final checkpoint；不保存中间 epoch"
+  },
+  "evaluation": {
+    "metrics": [
+      "AUC",
+      "EER"
+    ],
+    "score_readout": "anomaly_readouts(topk, k=5)，对全部 tap 取平均",
+    "aggregation": "每个场景将所有 test 视频的逐帧分数拼接后计算一次 global AUC/EER；七场景再做宏平均"
+  },
+  "resources": {
+    "expected_trainable_parameters": 7718336,
+    "behavior_branch": false,
+    "teacher": "DINOv3 ViT-B/16 frozen",
+    "code_dim": 64,
+    "gpus": 2,
+    "scheduler": "scripts/da_variant_scheduler.py：两卡各跑一个场景进程，场景结束立即在同一卡启动队列中的下一个场景",
+    "variant_registry": "experiments/VARIANTS.md"
+  },
+  "source_model_before_change": "TO_BE_FILLED",
+  "run_id": "planned"
+}

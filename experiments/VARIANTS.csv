@@ -1,0 +1,7 @@
+variant_id,label,model,student_blocks,student_topology,teacher_taps,gl_dim,ocbe_fuse_hidden,code_dim,q_init,student_class,ocbe_class,param_count,loss,runner_variant,canonical_experiment,canonical_status,canonical_auc
+rd_s12_t4_h512,V0,original_12block,12,plain,5;7;9;11,,512,64,none,StudentDecoder,OCBE,89079104,tap_mean_top5,uit_12block_dense512,20261101_uit_45ep_12block_dense512_retry2_s42,completed,85.25
+rd_s4_t12_h512,V1,4block,4,plain,0-11,,512,64,none,PlainFourBlockDecoder,OCBE,40258880,group_balanced_top5_a0.5,uit_4block_plain,20261101_uit_45ep_4block_dense512_retry2_s42,completed,82.23
+rd_s4_t12_gl768_h512,V2,4block_gl768,4,global_local_1g3l,0-11,768,512,64,none,FourBlockGlobalLocalDecoder,OCBE,30248000,group_balanced_top5_a0.5,uit_4block_gl768,20261101_uit_45ep_4block_gl768_dense512_retry2_s42,completed,81.38
+rd_s4_t12_gl192_h512,V3,4block_gl192,4,global_local_1g3l,0-11,192,512,64,none,FourBlockGlobalLocalDecoder,OCBE,7718336,group_balanced_top5_a0.5,uit_4block_gl192,20261101_uit_45ep_4block_gl192_dense512_retry2_s42,completed,75.99
+rd_s4_t12_gl192_h128,V4,gl192_dense128,4,global_local_1g3l,0-11,192,128,64,none,FourBlockGlobalLocalDecoder,OCBE,4154432,group_balanced_top5_a0.5,uit_gl192_dense128,20261101_uit_45ep_gl192_dense128_retry2_s42,completed,75.51
+rd_s4_t12_gl192_h128_qr2,V5,gl192_dense128_rank2,4,global_local_1g3l,0-11,192,128,64,learnable_random_orthonormal_2x3,FourBlockGlobalLocalDecoder,LearnableDepthRank2OCBE,3761222,group_balanced_top5_a0.5,uit_gl192_dense128_rank2,20261101_uit_45ep_gl192_dense128_rank2_retry2_s42,completed,75.40
