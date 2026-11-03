@@ -1,0 +1,89 @@
+{
+  "dataset": "Drone-Anomaly",
+  "variant_id": "rd_s4_t12_gl192_h128",
+  "variant_label": "V4",
+  "runner_variant": "uit_gl192_dense128",
+  "seed": 42,
+  "epochs": 30,
+  "status": "completed",
+  "completed_scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "missing_scenes": [],
+  "failures": [],
+  "macro_mean": {
+    "auc_percent": 83.91860711304864,
+    "eer": 0.2023735361751839
+  },
+  "scenes": {
+    "bike": {
+      "auc_percent": 97.61320288292697,
+      "eer": 0.0468384074941452,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/bike_final.pth",
+      "checkpoint_sha256": "db99d3cda01458a333a1e95a8e6337d809685db1cce8ec36858fd9185a04ac7a"
+    },
+    "crossroads": {
+      "auc_percent": 62.197243660261215,
+      "eer": 0.4096993636164143,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/crossroads_final.pth",
+      "checkpoint_sha256": "0beb53bfece5878c8fa60eff7fb092da7a6e2608175a6828b61dec988e11e6e4"
+    },
+    "farmland": {
+      "auc_percent": 99.12982228001734,
+      "eer": 0.0775899436497616,
+      "frames": 2387,
+      "positive_frames": 80,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/farmland_final.pth",
+      "checkpoint_sha256": "9de8fc13f652d5cae6e58dc5202348cad9aa6bc7eb03e425ba6c20c0fb8e77c4"
+    },
+    "highway": {
+      "auc_percent": 94.48174193676913,
+      "eer": 0.13861386138613863,
+      "frames": 2820,
+      "positive_frames": 497,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/highway_final.pth",
+      "checkpoint_sha256": "79a34e0d28d1e931baa3d4ce4682a74a5cf25e545950741db2098993f381d4df"
+    },
+    "railway": {
+      "auc_percent": 89.53064026593438,
+      "eer": 0.13882063882063883,
+      "frames": 882,
+      "positive_frames": 68,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/railway_final.pth",
+      "checkpoint_sha256": "131fd4a89881e61158a0b436837c416b8c94effeb667d8584a0fbdfd10f5e00f"
+    },
+    "solar": {
+      "auc_percent": 86.17843087083135,
+      "eer": 0.19360675512665862,
+      "frames": 2450,
+      "positive_frames": 792,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/solar_final.pth",
+      "checkpoint_sha256": "1f9a0428f2d5210a7b2ed0b0df5b42e5820556bf6db699dac684f1a392bdf3ec"
+    },
+    "vehicle": {
+      "auc_percent": 58.29916789459998,
+      "eer": 0.4114457831325301,
+      "frames": 2633,
+      "positive_frames": 973,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/vehicle_final.pth",
+      "checkpoint_sha256": "66c404f1671ae893f88476c364a7c784b520198162e51207d9d8300439dbc48b"
+    }
+  }
+}

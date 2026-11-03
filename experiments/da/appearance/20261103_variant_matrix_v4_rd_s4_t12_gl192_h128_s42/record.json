@@ -4,7 +4,7 @@
   "path": "experiments/da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
   "variant_id": "rd_s4_t12_gl192_h128",
   "variant_label": "V4",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42",
-      "status": "running",
+      "status": "completed",
       "source_commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
       "script": "scripts/da_variant_scheduler.py",
       "seed": 42,
-      "started_at": "2026-11-03T14:42:04Z",
-      "ended_at": null,
+      "started_at": "20261103T144213Z",
+      "ended_at": "20261103T231714Z",
       "command": [
         "scripts/da_variant_scheduler.py",
         "--run-id",
@@ -45,8 +45,33 @@
         "42"
       ],
       "log": "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
-      "outputs": [],
-      "notes": "Dynamic two-GPU scene queue; final checkpoint per scene; no intermediate epochs."
+      "outputs": [
+        "results/summary.json",
+        "results/summary.md",
+        "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth"
+      ],
+      "notes": "completed_scenes=7/7; failures=0"
     }
   ],
   "result_summary": "results/summary.md",

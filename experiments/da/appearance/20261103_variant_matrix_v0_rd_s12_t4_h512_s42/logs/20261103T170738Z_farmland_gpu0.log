@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s12_t4_h512", "variant_label": "V0", "scene": "farmland", "seed": 42, "epochs": 30, "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly", "train_frames": 9548, "test_videos": 1, "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3", "trainable_parameters": 89079104, "teacher_taps": [5, 7, 9, 11], "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.394338 elapsed_s=128.6
+epoch=2 loss=0.233873 elapsed_s=256.3
+epoch=3 loss=0.167551 elapsed_s=384.0
+epoch=4 loss=0.133485 elapsed_s=511.8
+epoch=5 loss=0.113844 elapsed_s=639.5
+epoch=6 loss=0.102041 elapsed_s=767.2
+epoch=7 loss=0.093779 elapsed_s=895.0
+epoch=8 loss=0.087922 elapsed_s=1022.8
+epoch=9 loss=0.081806 elapsed_s=1150.7
+epoch=10 loss=0.077449 elapsed_s=1278.5
+epoch=11 loss=0.073864 elapsed_s=1406.3
+epoch=12 loss=0.071073 elapsed_s=1534.1
+epoch=13 loss=0.068476 elapsed_s=1661.9
+epoch=14 loss=0.066220 elapsed_s=1789.7
+epoch=15 loss=0.064167 elapsed_s=1917.5
+epoch=16 loss=0.062329 elapsed_s=2045.3
+epoch=17 loss=0.060678 elapsed_s=2173.1
+epoch=18 loss=0.059114 elapsed_s=2300.9
+epoch=19 loss=0.057599 elapsed_s=2428.6
+epoch=20 loss=0.056256 elapsed_s=2556.4
+epoch=21 loss=0.054961 elapsed_s=2684.2
+epoch=22 loss=0.053779 elapsed_s=2812.1
+epoch=23 loss=0.052659 elapsed_s=2939.9
+epoch=24 loss=0.051637 elapsed_s=3067.8
+epoch=25 loss=0.050729 elapsed_s=3195.6
+epoch=26 loss=0.049928 elapsed_s=3323.5
+epoch=27 loss=0.049260 elapsed_s=3451.4
+epoch=28 loss=0.048738 elapsed_s=3579.3
+epoch=29 loss=0.048376 elapsed_s=3707.3
+epoch=30 loss=0.048184 elapsed_s=3835.2
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s12_t4_h512", "variant_label": "V0", "runner_variant": "uit_12block_dense512", "scene": "farmland", "seed": 42, "epochs": 30, "auc_percent": 99.42295188556567, "eer": 0.052882531426094496, "frames": 2387, "positive_frames": 80, "train_frames": 9548, "test_videos": 1, "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3", "trainable_parameters": 89079104, "teacher_taps": [5, 7, 9, 11], "elapsed_s": 3858.8023090350325, "max_steps": 0, "checkpoint": "ckpt/farmland_final.pth", "checkpoint_sha256": "60e51de06a7051498f8cd9696df70c66062f57dc7a326851df45f8fdcc5130a9", "cuda": "NVIDIA RTX A6000"}

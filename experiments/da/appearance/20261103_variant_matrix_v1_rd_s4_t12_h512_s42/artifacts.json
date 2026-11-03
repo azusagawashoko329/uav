@@ -1,4 +1,221 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/bike.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 788,
+      "git": "tracked",
+      "sha256": "bd237b3009d4b7cf875a271ff01dd7a733d498e5f10fb5e5309b0e1631e97c01"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 909466,
+      "git": "tracked",
+      "sha256": "0333e5fff3a8f5308fdff6eba1d834cb1c850d8447ad2528126c82df803caab7"
+    },
+    {
+      "path": "ckpt/bike_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066404,
+      "git": "ignored",
+      "sha256": "deb3742ad7a42e0f33b731c91ddfc4ae90b7f2e1db2c819241192e8d4a04cfcf"
+    },
+    {
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 811,
+      "git": "tracked",
+      "sha256": "aa5fa007889f6490ac4b8c9e0fcacb163dcdbf06177bb3d39b0085e7026a57ff"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 305176,
+      "git": "tracked",
+      "sha256": "d97ca77ccc6a8883d27e8a540cceb3b63d72396134530830d6ad78eda976360f"
+    },
+    {
+      "path": "ckpt/crossroads_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161067104,
+      "git": "ignored",
+      "sha256": "11d65b4e253f208602b170891a0ef94d103d4711f720f1929286a2d79672d626"
+    },
+    {
+      "path": "results/farmland.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 806,
+      "git": "tracked",
+      "sha256": "d80d19757391a4bc01feebca9e425db0aebe8176e8c2281045cf18ed911120ca"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 117837,
+      "git": "tracked",
+      "sha256": "02d346cb89b248aac2f452d4be3f1f8b7410a9ab6713425ae3a61d59b2a2ebbe"
+    },
+    {
+      "path": "ckpt/farmland_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066828,
+      "git": "ignored",
+      "sha256": "7a4f43c919404ddb464d448d8ad13d2c3ddf808d16e950579cb539ebb8ecb04f"
+    },
+    {
+      "path": "results/highway.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 790,
+      "git": "tracked",
+      "sha256": "6870fec4d3a01143a96a682ef35ea9cee2f0e1c0866212a1d5c95a3cfbbeff4e"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 137707,
+      "git": "tracked",
+      "sha256": "dac3fa48101a5aa6e989da80ccfa169faf20e36575acefe77c996ac00071dc35"
+    },
+    {
+      "path": "ckpt/highway_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066722,
+      "git": "ignored",
+      "sha256": "4fd055ed087346bcdb0dd249acf50a9f1dd695afc04f3d7efadff7ce8cfeb392"
+    },
+    {
+      "path": "results/railway.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 788,
+      "git": "tracked",
+      "sha256": "e8685622b39d44c43679f7c3ef6ce7c47eeb73502a54926a199831415ea45eab"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 42864,
+      "git": "tracked",
+      "sha256": "e598b3c15c8940fabffa1a71fbda26583c9b1863723603c815077af611b503ab"
+    },
+    {
+      "path": "ckpt/railway_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066722,
+      "git": "ignored",
+      "sha256": "ec66c9c01e7e4239fc2144f209fa4f17b9f91fa50eb411246ed6024027fd6758"
+    },
+    {
+      "path": "results/solar.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 786,
+      "git": "tracked",
+      "sha256": "8be60f68fe5bffa4f72e7011546b77756aad5cccec3c22c37ac572741d5ea72b"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 119024,
+      "git": "tracked",
+      "sha256": "3ff592cae4dceb0e29f804f68ba6fe6af450eb66f956cdbbab6ae13acd8e6bce"
+    },
+    {
+      "path": "ckpt/solar_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066510,
+      "git": "ignored",
+      "sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246"
+    },
+    {
+      "path": "results/vehicle.json",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 791,
+      "git": "tracked",
+      "sha256": "9c67f4e093d89517a5d76bdf38311293424fed0cb2561d155e4724bcc0106d59"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 128479,
+      "git": "tracked",
+      "sha256": "c09294887e94c59a3af3a2767823acf8e47b458f5bc15e2e0bf0b13d365ecc82"
+    },
+    {
+      "path": "ckpt/vehicle_final.pth",
+      "producer_script": "scripts/da_variant_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 161066722,
+      "git": "ignored",
+      "sha256": "b21666a8faf46aca4918d15ef54b8f364cd95515a2990ca08331a27f6c7fe8fb"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/finalize_da_variant_matrix.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 2777,
+      "sha256": "1567bec1423ae7abe2a02ef6023e0d3276a0580f54c2749643ab9a87f9ef885d",
+      "git": "tracked"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/finalize_da_variant_matrix.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 497,
+      "sha256": "384183bb6f4598ca1e63ea0df5364bb3a679d1b34053e5eb80a602be2b939000",
+      "git": "tracked"
+    },
+    {
+      "path": "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
+      "producer_script": "scripts/da_variant_scheduler.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size": 60907,
+      "sha256": "902d15c8af4bb305b902934af0a64714969c7492d0428d32d112472aff99e1b3",
+      "git": "tracked"
+    }
+  ]
 }

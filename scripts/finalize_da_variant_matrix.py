@@ -191,6 +191,10 @@ def main():
     for r in matrix_rows:
         vals = [f"{r['scenes'][s]:.2f}" if s in r['scenes'] else '—' for s in SCENES]
         lines.append(f"| {r['variant_label']} | " + ' | '.join(vals) + ' |')
+    lines += ['', '## 比较注意', '',
+              '- 矩阵内部同 runner、seed、30 epoch、数据划分；V0 与 V1–V5 的 taps/loss 不同，V0→V1 不是严格单因素对照。',
+              '- 单 seed42；分场景波动可大于 macro 差异，不能据此声称显著性。',
+              '- 与旧 DA 同名运行的绝对数值差异可能来自 cuDNN deterministic、动态双卡分配和运行方差；旧运行模型代码与当前一致（git diff 05443fa..HEAD 对 model/ 为空），不是加载错模型。']
     matrix_path.parent.mkdir(parents=True, exist_ok=True)
     matrix_path.write_text('\n'.join(lines) + '\n')
     print('matrix summary:', matrix_path)
