@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "id": "20261103_student12_gl768_retry_failed3_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "gl12",
+  "scenes": ["railway", "solar", "vehicle"],
+  "teacher_layers": [5, 7, 9, 11],
+  "architecture": {"student": "GlobalMixerBlock + 11 LocalMixerBlock depth12 width768", "ocbe": "dense512", "output_positions": [2, 5, 8, 11]},
+  "training": {"epochs": 30, "batch": 64, "workers": 8, "image_size": 256, "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly"},
+  "scheduler": {"gpus": [0, 1], "dynamic": true, "max_memory_mb": 2000, "poll_seconds": 2.0},
+  "retry_of": "20261102_student12_gl768_retry5_s42"
+}
