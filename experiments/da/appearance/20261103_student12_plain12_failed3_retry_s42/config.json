@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "id": "20261103_student12_plain12_failed3_retry_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "plain12",
+  "question": "Rerun the three preflight-failed scenes from the fair Plain12 run",
+  "scenes": ["bike", "crossroads", "farmland"],
+  "architecture": {"student": "StudentDecoder depth12 width768", "teacher": "DINOv3 taps [5,7,9,11]", "ocbe": "dense512"},
+  "training": {"epochs": 30, "batch": 64, "workers": 8, "image_size": 256, "loss": "mean per-tap top5 cosine", "optimizer": "AdamW + OneCycleLR", "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly"},
+  "evaluation": {"metrics": ["AUC", "EER"], "aggregation": "per scene concat all test frames"},
+  "retry_of": "20261102_student12_plain_retry2_s42",
+  "source_model": "20261102_student12_plain_retry4_s42"
+}
