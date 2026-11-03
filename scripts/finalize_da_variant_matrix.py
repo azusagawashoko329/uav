@@ -194,7 +194,8 @@ def main():
     lines += ['', '## 比较注意', '',
               '- 矩阵内部同 runner、seed、30 epoch、数据划分；V0 与 V1–V5 的 taps/loss 不同，V0→V1 不是严格单因素对照。',
               '- 单 seed42；分场景波动可大于 macro 差异，不能据此声称显著性。',
-              '- 与旧 DA 同名运行的绝对数值差异可能来自 cuDNN deterministic、动态双卡分配和运行方差；旧运行模型代码与当前一致（git diff 05443fa..HEAD 对 model/ 为空），不是加载错模型。']
+              '- 与旧 DA 同名运行的绝对数值差异可能来自 cuDNN deterministic、动态双卡分配和运行方差；旧运行模型代码与当前一致（git diff 05443fa..HEAD 对 model/ 为空），不是加载错模型。',
+              '- 新旧 runner 的 `split_fingerprint` 配方不同：旧 DA runner 用绝对路径拼 manifest，新 runner 用场景相对路径；数据文件相同但哈希不同（Crossroads 旧 `8ded80ee…`，新 `22f9aa85…`），不要直接用 fingerprint 跨代判断数据划分。新矩阵六变体之间 fingerprint 一致。']
     matrix_path.parent.mkdir(parents=True, exist_ok=True)
     matrix_path.write_text('\n'.join(lines) + '\n')
     print('matrix summary:', matrix_path)
