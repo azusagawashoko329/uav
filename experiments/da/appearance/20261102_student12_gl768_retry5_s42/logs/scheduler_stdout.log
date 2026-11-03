@@ -1,0 +1,8 @@
+{"time": "20261102T161039Z", "kind": "gpu_probe", "gpus": [1], "status": {"1": {"used_mb": 13837, "total_mb": 49140}}, "max_memory_mb": 2000, "poll_seconds": 2.0}
+Traceback (most recent call last):
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261029_rank2_baseline30_rerun1_s42/scripts/dynamic_scheduler.py", line 126, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/data1/data8tb/liangyuxuan/code/uav/experiments/da/appearance/20261029_rank2_baseline30_rerun1_s42/scripts/dynamic_scheduler.py", line 76, in main
+    raise RuntimeError(f"requested GPUs are busy above threshold: {busy}")
+RuntimeError: requested GPUs are busy above threshold: {1: 13837}
