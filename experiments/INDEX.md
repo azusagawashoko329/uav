@@ -92,9 +92,9 @@
 | [20261102_student12_plain_retry1_s42](da/appearance/20261102_student12_plain_retry1_s42/README.md) | `running` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry2_s42](da/appearance/20261102_student12_plain_retry2_s42/README.md) | `cancelled` | 未找到 | 1 |  |
 | [20261102_student12_plain_retry3_s42](da/appearance/20261102_student12_plain_retry3_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261102_student12_plain_retry4_s42](da/appearance/20261102_student12_plain_retry4_s42/README.md) | `running` | 未找到 | 1 |  |
+| [20261102_student12_plain_retry4_s42](da/appearance/20261102_student12_plain_retry4_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261102_student12_plain_s42](da/appearance/20261102_student12_plain_s42/README.md) | `cancelled` | 未找到 | 1 |  |
-| [20261103_student12_gl768_retry_failed3_s42](da/appearance/20261103_student12_gl768_retry_failed3_s42/README.md) | `running` | 未找到 | 2 |  |
+| [20261103_student12_gl768_retry_failed3_s42](da/appearance/20261103_student12_gl768_retry_failed3_s42/README.md) | `completed` | 未找到 | 2 |  |
 | [20261103_student12_plain12_failed3_retry_s42](da/appearance/20261103_student12_plain12_failed3_retry_s42/README.md) | `cancelled` | 未找到 | 2 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
