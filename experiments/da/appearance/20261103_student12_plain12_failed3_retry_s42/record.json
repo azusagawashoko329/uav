@@ -4,10 +4,37 @@
   "path": "experiments/da/appearance/20261103_student12_plain12_failed3_retry_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
-  "scripts": ["scripts/run_scene.py", "scripts/run_three.py"],
-  "runs": [],
+  "status": "running",
+  "source_commit": "ecec631f8d8eb4dca8f202101e77fc125140fb3e",
+  "scripts": [
+    "scripts/run_scene.py",
+    "scripts/run_three.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20261103T_run_failed3_plain12_s42",
+      "status": "running",
+      "source_commit": "ecec631f8d8eb4dca8f202101e77fc125140fb3e",
+      "script": "scripts/run_three.py",
+      "seed": 42,
+      "started_at": "2026-11-03T00:00:00Z",
+      "ended_at": null,
+      "command": [
+        "python",
+        "scripts/run_three.py"
+      ],
+      "outputs": [],
+      "scenes": [
+        "bike",
+        "crossroads",
+        "farmland"
+      ]
+    }
+  ],
   "result_summary": null,
-  "limitations": ["single seed42", "three scenes only", "rerun of preflight failures; not a replacement for existing complete seven-scene runs"]
+  "limitations": [
+    "single seed42",
+    "three scenes only",
+    "rerun of preflight failures; not a replacement for existing complete seven-scene runs"
+  ]
 }
