@@ -4,10 +4,58 @@
   "path": "experiments/da/appearance/20261103_student12_gl768_retry_failed3_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
-  "scripts": ["scripts/run_scene.py", "scripts/dynamic_scheduler.py"],
-  "runs": [],
+  "status": "running",
+  "source_commit": "21312135f538f6a84c88a6560ea7a2e3c15c1eed",
+  "scripts": [
+    "scripts/run_scene.py",
+    "scripts/dynamic_scheduler.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20261103T_gl12_failed3_dynamic_s42",
+      "status": "running",
+      "source_commit": "21312135f538f6a84c88a6560ea7a2e3c15c1eed",
+      "script": "scripts/dynamic_scheduler.py",
+      "seed": 42,
+      "started_at": "2026-11-03T05:45:00Z",
+      "ended_at": null,
+      "command": [
+        "python",
+        "scripts/dynamic_scheduler.py",
+        "--repo-root",
+        "/data1/data8tb/liangyuxuan/code/uav",
+        "--experiment",
+        "experiments/da/appearance/20261103_student12_gl768_retry_failed3_s42",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--train-script",
+        "run_scene.py",
+        "--variant",
+        "gl12",
+        "--scenes",
+        "railway",
+        "solar",
+        "vehicle"
+      ],
+      "outputs": [],
+      "scenes": [
+        "railway",
+        "solar",
+        "vehicle"
+      ]
+    }
+  ],
   "result_summary": null,
-  "limitations": ["single seed42", "three scenes only", "rerun of failed scenes from GL12 retry5"]
+  "limitations": [
+    "single seed42",
+    "three scenes only",
+    "rerun of failed scenes from GL12 retry5"
+  ]
 }
