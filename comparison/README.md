@@ -23,23 +23,23 @@ comparison/
         README.md
         record.json
         results/summary.{json,md}
-    <method>/
-      <variant>/            # 外部方法；URL 到位后建目录
+    <Method>/
+      <variant>/            # 外部方法；目录名保留官方大小写/标点
         record.json
-        upstream/           # 可选；默认 clone 到 /data1/data8tb/liangyuxuan/Comparison method/<method>/
+        upstream/           # 可选；默认 clone 到 /data1/data8tb/liangyuxuan/Comparison method/<Method>/
         scripts/            # 适配脚本
         results/
   uit/
-    <method>/
+    <Method>/
       <variant>/            # UIT 对比空间；条目按同一 schema 添加
 ```
 
 ## 命名
 
-- 目录路径：`comparison/<dataset>/<method>/<variant>/`，例如 `comparison/da/ours/rd_s4_t12_gl192_h512`、`comparison/da/madvit/full`。
-- `record.json` 的 `id` 仍为 `<dataset>-<method>-<variant>`（例如 `da-ours-rd_s4_t12_gl192_h512`），用于 CATALOG/索引唯一标识；目录路径与 `id` 是两种表示。
+- 目录路径：`comparison/<dataset>/<Method>/<variant>/`，例如 `comparison/da/ours/rd_s4_t12_gl192_h512`、`comparison/da/adVAE/default`、`comparison/da/MADViT/Full`。
+- `record.json` 的 `id` 为 `<dataset>-<Method>-<variant>`（例如 `da-ours-rd_s4_t12_gl192_h512`、`da-adVAE-default`、`da-MADViT-full`），用于 CATALOG/索引唯一标识；目录路径与 `id` 是两种表示。
 - `dataset`：`da` 或 `uit`。
-- `method`：小写 slug，如 `ours`、`madvit`、`astt`、`lightvit-ad`。
+- `method`：官方方法名，保留官方大小写和标点，如 `ours`、`adVAE`、`GANomaly`、`Future Frame`、`ST Dissoc.`、`MADViT`、`LightViT-AD`。
 - `variant`：方法内变体；我的方法直接用 `experiments/VARIANTS.md` 的 canonical ID（`rd_s12_t4_h512` 等）；单变体方法用 `default`。
 - 详细字段见 [SCHEMA.md](SCHEMA.md)；机器校验以 [schema.json](schema.json) 和 `check_comparisons.py` 为准。
 
@@ -63,7 +63,7 @@ comparison/
 
 ## 添加外部方法
 
-1. 用户提供上游 URL 后，clone 到本机默认根目录 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`（`source.local_path` 记录该绝对路径），或放在条目内 `upstream/`（已 gitignore）；记录 `source.url`、`source.commit`、`source.license`；
+1. 用户提供上游 URL 后，clone 到本机默认根目录 `/data1/data8tb/liangyuxuan/Comparison method/<Method>/`（`source.local_path` 记录该绝对路径），或放在条目内 `upstream/`（已 gitignore）；记录 `source.url`、`source.commit`、`source.license`；
 2. 在该条目写 `scripts/` 适配器，把上游训练/评测接到 DA 的 per-scene 官方 train/test 上；
 3. 运行并产出 `results/summary.json`（至少含 macro AUC/EER 与 per-scene AUC/EER）；
 4. 更新 `record.json`，把 `status` 改为 `completed`，填 `results`；
@@ -74,7 +74,7 @@ python comparison/build_catalog.py
 python comparison/check_comparisons.py
 ```
 
-## Ours
+## ours
 
 六个 DA 变体的对比条目在 `comparison/da/ours/rd_*`：
 
@@ -96,4 +96,4 @@ python comparison/check_comparisons.py
 
 外部方法的年份/星号/颜色按用户表格登记；`record.json` 暂未编码颜色分类，需要时再加 `category` 字段。
 
-13 个外部仓库已 clone 到 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`，对应 15 条 `planned` record（MADViT 三个变体共享一个仓库）；`source.url/local_path/commit` 已填，等待 DA 适配与运行。`Comparison method/MANIFEST.csv` 保留每个仓库的 commit / license / clone 状态。
+13 个外部仓库已 clone 到 `/data1/data8tb/liangyuxuan/Comparison method/<Method>/`（目录名保留官方大小写/标点），对应 15 条 `planned` record（MADViT 三个变体共享一个仓库）；`source.url/local_path/commit` 已填，等待 DA 适配与运行。`Comparison method/MANIFEST.csv` 保留每个仓库的 commit / license / clone 状态。

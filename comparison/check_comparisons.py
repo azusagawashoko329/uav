@@ -9,7 +9,6 @@ from __future__ import annotations
 import csv
 import json
 import math
-import re
 import sys
 from pathlib import Path
 
@@ -17,9 +16,6 @@ ROOT = Path(__file__).resolve().parents[1]
 COMP = ROOT / 'comparison'
 DATASETS = {'da', 'uit'}
 STATUSES = {'planned', 'running', 'completed', 'failed', 'cancelled', 'blocked', 'unknown'}
-ID_RE = re.compile(r'^(da|uit)-[a-z0-9]+(?:[-_][a-z0-9]+)*$')
-METHOD_RE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
-VARIANT_RE = re.compile(r'^[a-z0-9]+(?:[-_][a-z0-9]+)*$')
 SOURCE_KEYS = {'type', 'url', 'commit', 'local_path', 'experiment', 'run_id', 'license', 'notes'}
 PROTOCOL_KEYS = {'one_class', 'train', 'test', 'metrics', 'seed', 'epochs', 'input_size', 'notes'}
 RESULT_KEYS = {'macro_auc', 'macro_eer', 'per_scene', 'summary', 'source_results'}
@@ -67,11 +63,11 @@ def check_record(path: Path):
     rid = data.get('id')
     if dataset not in DATASETS:
         fail(rel, f'invalid dataset {dataset!r}')
-    if not isinstance(method, str) or not METHOD_RE.fullmatch(method):
+    if not isinstance(method, str) or not method.strip():
         fail(rel, f'invalid method {method!r}')
-    if not isinstance(variant, str) or not VARIANT_RE.fullmatch(variant):
+    if not isinstance(variant, str) or not variant.strip():
         fail(rel, f'invalid variant {variant!r}')
-    if not isinstance(rid, str) or not ID_RE.fullmatch(rid):
+    if not isinstance(rid, str) or not rid.strip():
         fail(rel, f'invalid id {rid!r}')
     if rid != f'{dataset}-{method}-{variant}':
         fail(rel, f'id must equal {dataset}-{method}-{variant}')

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,12 +51,12 @@ def main():
             'result_summary': (results.get('summary') or '') if isinstance(results, dict) else '',
             'notes': data.get('notes', ''),
         })
-    method_order = ['ours', 'advae', 'ganomaly', 'memae', 'mkd', 'andt', 'future-frame',
-                    'st-dissoc', 'mlep', 'astt', 'dad-fsm', 'hstforu', 'madvit', 'lightvit-ad']
+    method_order = ['ours', 'adVAE', 'GANomaly', 'MemAE', 'MKD', 'ANDT', 'Future Frame',
+                    'ST Dissoc.', 'MLEP', 'ASTT', 'DAD-FSM', 'HSTforU', 'MADViT', 'LightViT-AD']
     variant_order = {
         'rd_s12_t4_h512': 0, 'rd_s4_t12_h512': 1, 'rd_s4_t12_gl768_h512': 2,
         'rd_s4_t12_gl192_h512': 3, 'rd_s4_t12_gl192_h128': 4,
-        'rd_s4_t12_gl192_h128_qr2': 5, 'full': 0, 'multi-layer': 1, 'last-layer': 2,
+        'rd_s4_t12_gl192_h128_qr2': 5, 'Full': 0, 'Multi-layer': 1, 'Last-layer': 2,
     }
     def sort_key(r):
         mi = method_order.index(r['method']) if r['method'] in method_order else 99
@@ -86,7 +87,8 @@ def main():
                   '|---|---|---|---|---:|---:|---|']
         for r in subset:
             target = COMP / r['path'] / 'README.md'
-            link = f"{r['path']}/README.md" if target.is_file() else f"{r['path']}/record.json"
+            raw_link = f"{r['path']}/README.md" if target.is_file() else f"{r['path']}/record.json"
+            link = quote(raw_link, safe='/._-')
             if r['source_type'] == 'internal' and r['source_experiment']:
                 source = f"[experiment](../{r['source_experiment']})"
             elif r['source_url']:

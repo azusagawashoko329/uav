@@ -24,14 +24,14 @@
     },
     "id": {
       "type": "string",
-      "pattern": "^(da|uit)-[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+      "pattern": "^(da|uit)-.+$"
     },
     "dataset": {
       "enum": ["da", "uit"]
     },
     "method": {
       "type": "string",
-      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      "minLength": 1
     },
     "method_display": {
       "type": "string",
@@ -44,7 +44,7 @@
     },
     "variant": {
       "type": "string",
-      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+      "pattern": "^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$"
     },
     "status": {
       "enum": ["planned", "running", "completed", "failed", "cancelled", "blocked", "unknown"]

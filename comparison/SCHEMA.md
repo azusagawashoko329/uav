@@ -1,15 +1,15 @@
 # comparison record schema (v1)
 
-每个对比条目是一个目录 `comparison/<dataset>/<method>/<variant>/`，其中 `record.json` 是唯一机器入口。JSON Schema 见 [schema.json](schema.json)；`check_comparisons.py` 做不依赖第三方库的等价校验。
+每个对比条目是一个目录 `comparison/<dataset>/<Method>/<variant>/`，其中 `record.json` 是唯一机器入口；`<Method>` 保留官方方法名的大小写和标点（`adVAE`、`GANomaly`、`Future Frame`、`ST Dissoc.`、`MADViT`、`LightViT-AD`），我的方法为小写 `ours`。JSON Schema 见 [schema.json](schema.json)；`check_comparisons.py` 做不依赖第三方库的等价校验。
 
 ## 必填字段
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
 | `schema_version` | int | 固定 `1` |
-| `id` | str | 必须等于 `<dataset>-<method>-<variant>`；目录路径为 `<dataset>/<method>/<variant>` |
+| `id` | str | 必须等于 `<dataset>-<Method>-<variant>`；目录路径为 `<dataset>/<Method>/<variant>` |
 | `dataset` | enum | `da` / `uit` |
-| `method` | str | 小写 slug，如 `ours` / `madvit` / `lightvit-ad` |
+| `method` | str | 官方方法名，保留大小写/标点（`adVAE`、`GANomaly`、`Future Frame`、`ST Dissoc.`、`MADViT`、`LightViT-AD`）；我的方法为 `ours` |
 | `method_display` | str | 展示名，如 `Ours` / `MADViT` |
 | `year` | int/null | 方法年份；未知填 `null` |
 | `variant` | str | 方法内变体；单变体用 `default` |
@@ -26,7 +26,7 @@
 | `type` | enum | `internal`（ours，指向 `experiments/`）或 `external`（第三方仓库） |
 | `url` | str/null | 外部仓库 URL；completed external 必须非空 |
 | `commit` | str/null | 外部运行的完整 commit SHA；completed 时必须非空 |
-| `local_path` | str/null | 本地 clone 路径；本机默认 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`（也可用条目内 `upstream/`） |
+| `local_path` | str/null | 本地 clone 路径；本机默认 `/data1/data8tb/liangyuxuan/Comparison method/<Method>/`（也可用条目内 `upstream/`） |
 | `experiment` | str/null | internal 时指向 `experiments/...` 原始实验目录 |
 | `run_id` | str/null | internal 时指向原始 `record.json` 的 run |
 | `license` | str/null | 外部仓库 license / 使用限制 |
