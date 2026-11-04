@@ -12,6 +12,7 @@
 - `load_data/tabular.py` 读 ODDS 表格数据，`datasets/` 是 `letter.mat`、`cardio.mat`、`optdigits.mat`、`pendigits.mat`、`satellite.mat`；
 - `checkpoints/` 也是 `cardio/letter/optdigits/pendigits/satellite` 的表格 checkpoint；
 - README 明确写：`The whole code is coming soon...`，`Until now, we have only uploaded some code to show the performance of the adVAE model.`
+- 截至本仓库 HEAD `440d8af22b88`（`git log` 只有一个 `Update README.md` 提交），仍只有表格版/部分代码，没有图像/视频版；`coming soon` 在这份仓库里没有兑现。
 
 ANDT 论文的 adVAE baseline（Table VI/VII 的 AUC）引用的是同一篇 KBS 论文，但 ANDT 作者实际用的**视频/图像适配版**不在这个仓库里；因此不能拿这份 FC 表格模型的参数/FLOPs 去填 DA 主表。
 
