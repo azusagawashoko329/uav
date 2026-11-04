@@ -125,7 +125,7 @@ def update_artifacts(exp: Path, run_id: str) -> None:
             'status': 'present',
             'size_bytes': p.stat().st_size,
             'sha256': sha256(p),
-            'storage': 'git' if rel.startswith('results/') and rel != 'results/uit_scores.csv' else 'ignored',
+            'storage': 'git' if rel.startswith('results/') else 'ignored',
         })
     for p in sorted((exp / 'logs').glob('*')):
         if p.is_file() and p.suffix in {'.log', '.jsonl'}:
