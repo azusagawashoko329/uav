@@ -54,10 +54,12 @@
 
 ## 3. 轻量化主表（按新协议；实测/审计）
 
-| Method | Input (H×W×T) | Total Params (M) | Trainable Params (M) | FLOPs (G/output frame) | Latency@BS1 P50 (ms/output frame) | FPS@BS1 | FPS@BS16 | Status |
+箭头：**↓ 越低越好，↑ 越高越好**；FPS 是越高越好，所以用 `FPS↑`。
+
+| Method | Input (H×W×T) | Total Params (M) ↓ | Trainable Params (M) ↓ | FLOPs (G/output frame) ↓ | Latency@BS1 P50 (ms/output frame) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | adVAE | unknown | blocked | blocked | blocked | blocked | — | — | blocked |
-| GANomaly | 256×256×1 | 143.950 (G) | 188.690 (G+D train) | 10.952 | 13.357 | 74.9 | 622.7 | measured |
+| GANomaly | 256×256×1 | 143.950 (G, inference) | 188.690 (G+D, train) | 10.952 | 13.357 | 74.9 | 622.7 | measured |
 | MemAE | 256×256×16 | 6.503 | 6.503 | 0.066 | 0.437 | 2287.0 | 2193.0 | measured |
 | MKD | 128×128×1 | 15.059 | 0.344 | 10.477 | 2.273 | 442.9 | 3554.4 | measured |
 | ANDT | 256×256×6 | 70.347 (mlp4096) | 70.347 | blocked | blocked | — | — | blocked |
@@ -86,7 +88,7 @@
 ## 4. 参数审计细节
 
 - **Teacher**：DINOv3 ViT-B/16，frozen，85.641M；Ours 的 Total = teacher + OCBE + student；Trainable = OCBE + student。
-- **GANomaly**：`NetG`（encoder1+decoder+encoder2）143.950M 是推理图；`NetD` 44.739M 只在训练使用；Trainable 列写 G+D 训练参数 188.690M，避免把 D 悄悄丢掉。
+- **GANomaly**：**G = Generator（生成器）**，即 `encoder1 → decoder → encoder2`，是推理图（143.950M）；**D = Discriminator（判别器）**，只在训练时参与对抗损失（44.739M）。Trainable 列写 G+D 训练参数 188.690M，避免把 D 悄悄丢掉；推理/时延/FLOPs 只走 G。
 - **MemAE**：`chnum_in=3`、`mem_dim=2000`、`T=16`；参数与 T 无关，6.503M。
 - **MKD**：source VGG16 features 14.715M（frozen）+ cloner cfg B 0.344M（trainable）= 15.059M；输入 128×128 按原论文 MVTec 配置；若 DA 适配到 256，需标 `adapted`。首次测量在 `inference_mode` 下被 `VGG.forward` 的 `register_hook` 拒绝；改用无 hook 的 source/cloner 前向重测，表中数字来自重测。计时/FLOPs 覆盖 source+cloner 全前向；打分用最终特征距离作示例，距离计算本身可忽略。
 - **ANDT**：代码 `b16` + `num_layers=2`、`heads=6`、`num_frames=6`；`mlp=4096` 时 70.347M，`mlp=1536` 时 62.478M。论文 ablation 选 4096；但 forward 有 `pdb.set_trace()` 且 decoder 对 6 帧形状不匹配，FLOPs/latency 必须先确认代码版本。

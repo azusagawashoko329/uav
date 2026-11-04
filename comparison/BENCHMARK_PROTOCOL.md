@@ -64,10 +64,12 @@
 ## 7. 表格字段
 
 ```
-Method | Input (H×W×T) | Total Params (M) | Trainable Params (M) |
-FLOPs (G/output frame) | Latency@BS1 P50 (ms/output frame) |
-FPS@BS1 | FPS@BS16 | AUC mean | Status | Source/Notes
+Method | Input (H×W×T) | Total Params (M) ↓ | Trainable Params (M) ↓ |
+FLOPs (G/output frame) ↓ | Latency@BS1 P50 (ms/output frame) ↓ |
+FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status | Source/Notes
 ```
+
+箭头约定：**↓ 越低越好，↑ 越高越好**。FPS 是越高越好，所以是 `FPS↑`；Latency/Params/FLOPs 是 `↓`。
 
 `Status`：`measured` / `paper-only` / `blocked` / `pending` / `adapted`。
 
