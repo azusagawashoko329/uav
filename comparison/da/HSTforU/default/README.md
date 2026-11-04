@@ -1,9 +1,12 @@
-# HSTforU（v2 实测，mmcv-lite 兼容层）
+# HSTforU（Avenue/PVT2-b2 structure；DA 配置未确认）
 
+- 论文：Le et al., *HSTforU: anomaly detection in aerial and ground-based videos with hierarchical spatio-temporal transformer for U-net*, Applied Intelligence 55(4), 2025, DOI `10.1007/s10489-024-06042-4`。
 - 代码：`/data1/data8tb/liangyuxuan/Comparison method/HSTforU/`（HEAD `9548473`）。
-- 变体：Avenue/PVT2-b2（`models/HSTforU_Avenue.py`），PVT2 encoder + TimeSformer + UNet decoder。
+- 变体：**当前假设**为 Avenue/PVT2-b2（`models/HSTforU_Avenue.py`），PVT2 encoder + TimeSformer + UNet decoder。
 - 输入：4 帧 `256×256` RGB；输出下一帧；`T=4, K=1, stride=1`。
 - 权重：random init（无官方 checkpoint）；FLOPs/latency 与权重无关。
+
+> **DA 配置未确认**：repo 只有 `configs/scripts/{ped2,avenue,shanghaitech}.yaml`，没有 Drone-Anomaly 的 yaml；`models/__init__.py` 默认还是 Ped2/PVT2-b1。这个 148.970M 是 Avenue/PVT2-b2 结构，不能自动称为 DA 论文配置。`paper_matched=false`。
 
 ## 依赖处理
 
@@ -29,4 +32,5 @@ HSTforU 代码使用 mmcv 1.x API，但当前 Python 3.13 环境只能装 `mmcv-
 
 - 结果：`comparison/da/HSTforU/default/benchmark_v2.json`
 - benchmark：`comparison/benchmarks/bench_v2_extra.py --method hstforu`
+- **评分口径**：官方 `test.py` 对 `target` 计算 PSNR，再用 `anomaly_score` 做逐视频 min-max；当前 `_hstforu` 用 `F.mse_loss(out, zeros)` 代理，既不是 target PSNR 也不是逐视频归一化。因此当前 latency 只能作网络前向参考，不能称为完整 anomaly-score latency。
 - AUC 仍引用用户表/论文的 66.96，不把这里的效率数字当成官方 AUC 配置。

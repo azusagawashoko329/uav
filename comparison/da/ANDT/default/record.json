@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 efficiency measured with an adapted decoder (see efficiency block); DA AUC adaptation/run still pending.",
+  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 efficiency measured with an adapted decoder (see efficiency block); DA AUC adaptation/run still pending. paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv).",
   "efficiency": {
     "status": "measured",
     "input_hwt": "256x256x6",
@@ -63,6 +63,6 @@
     "fps_stream_estimated": 199.41662502934358,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/ANDT/default/benchmark_v2.json",
-    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included"
+    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv)."
   }
 }

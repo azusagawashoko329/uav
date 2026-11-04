@@ -18,7 +18,7 @@
   "training_only_params_m": 0.0,
   "frozen_inference_params_m": 0.0,
   "benchmark_source": "comparison/da/HSTforU/default/benchmark_v2.json",
-  "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint.",
+  "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
   "protocol_version": 2,
   "measurement_status": "measured",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
@@ -4423,5 +4423,7 @@
     108.85902173700742,
     112.65459329198347,
     113.56597629497992
-  ]
+  ],
+  "paper_matched": false,
+  "paper_match_note": "paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2."
 }

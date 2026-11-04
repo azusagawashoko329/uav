@@ -332,3 +332,13 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 
 - 状态规则：两方法的官方记录仍是 `partial/unverified`；TF2-adapted 记录也保持 `partial/unverified`，因为 `flops_verified=false`，不能升 `measured`。主表可引用 P50@BS1 并加 `runtime-adapted` 脚注，不能冒充官方 TF1.15。
 - MLEP 的 BS16 FPS 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 与 batch 16 调度开销；实测值，不做外推。
+
+## 16. 2026-11-04 score-inclusive 补测与版本核实
+
+- 新增 `comparison/benchmarks/bench_v2_scored.py`：ST Dissoc. 官方 `loss_map`+reciprocal；DAD-FSM 未来分割 target MSE；写 `benchmark_v2_scored.json`，不覆盖旧 JSON。
+- 新增 `comparison/benchmarks/bench_tf2_scored.py`：Future Frame/MLEP 官方 PSNR against GT next frame；写 `benchmark_v2_scored.json`。
+- 结果：Future Frame 6.829ms / 145.9 FPS@BS1；ST 4.280ms / 231.4；MLEP 12.787ms / 78.3（scored BS16 未测）；DAD 13.576ms / 73.4。
+- ASTT：核实 repo 的 DA 脚本引用缺失的 `model.py`；当前 `model_ste_tte` 148.22M 不是 DA 证据，`adapted` 改为 true、状态 `partial/unverified`、`paper_matched=false`。
+- ANDT：论文 decoder 是 `2 FC→8×8×512→5 conv`，当前 `de_dense` 适配不匹配，`paper_matched=false`。
+- HSTforU：repo 无 Drone-Anomaly config，当前 Avenue/PVT2-b2 是假设，`paper_matched=false`。
+- 旧 `benchmark_v2.json` / `benchmark_v2_tf2compat.json` 全部保留。

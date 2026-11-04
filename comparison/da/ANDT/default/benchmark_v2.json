@@ -19,7 +19,7 @@
   "training_only_params_m": 0.0,
   "frozen_inference_params_m": 0.0,
   "benchmark_source": "comparison/da/ANDT/default/benchmark_v2.json",
-  "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring.",
+  "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. paper_matched=false: decoder is a de_dense reconstruction; paper uses 2 FC -> 8x8x512 + 5 conv decoder.",
   "protocol_version": 2,
   "measurement_status": "measured",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
@@ -1904,5 +1904,7 @@
     40.29946080897935,
     40.503468866983894,
     40.657403805002104
-  ]
+  ],
+  "paper_matched": false,
+  "paper_match_note": "paper_matched=false: decoder is a de_dense reconstruction; paper uses 2 FC -> 8x8x512 + 5 conv decoder."
 }

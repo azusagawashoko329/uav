@@ -165,3 +165,18 @@ MLEP 的 BS16 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 和 batc
 - 新增 `benchmark_v2_tf2compat.json`：`runtime_adapted=true`、`model_code_modified=false`、`adapted_reason`、`tf1_params_check`。
 - 因为 `flops_verified=false`，即使有 latency 也不能升为 `measured`；状态仍是 `partial/unverified`。
 - 引用规则：主表可用 P50@BS1 + `runtime-adapted †` 脚注；不得覆盖官方 TF1.15 行，也不得把 TF2 数字写成论文 TF1 数字。
+
+## 8. score-inclusive 补测（2026-11-04）
+
+旧 JSON 保留；以下补测写独立 `benchmark_v2_scored.json`。
+
+| Method | 旧口径 | 旧 P50 / FPS@BS1 / FPS@BS16 | 新评分 | 新 P50 / FPS@BS1 / FPS@BS16 |
+|---|---|---|---:|---:|
+| Future Frame | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR vs GT next frame | **6.829ms / 145.9 / 178.2** |
+| ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | 官方 loss_map + reciprocal | **4.280ms / 231.4 / 452.3** |
+| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR vs GT next frame | **12.787ms / 78.3 / —（BS16 未测）** |
+| DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE | **13.576ms / 73.4 / 289.1** |
+
+- MLEP 的 scored BS16 未完成（长时 run 被停止），只写 BS1；不能用 prediction-only 的 75.5 冒充 scored BS16。
+- 评分 elementwise 运算不计入 MAC-based FLOPs；DAD 的分割图仍是离线预计算，不含分割生成。
+- `bench_v2_scored.py`（ST/DAD）与 `bench_tf2_scored.py`（Future Frame/MLEP）不覆盖旧 JSON。

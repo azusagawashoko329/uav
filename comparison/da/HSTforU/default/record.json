@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned; v2 efficiency measured with mmcv-lite 2.x compatibility shims; DA AUC adaptation/run pending.",
+  "notes": "Upstream cloned; v2 efficiency measured with mmcv-lite 2.x compatibility shims; DA AUC adaptation/run pending. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
   "efficiency": {
     "status": "measured",
     "input_hwt": "256x256x4",
@@ -63,6 +63,6 @@
     "fps_stream_estimated": 15.506232763029269,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/HSTforU/default/benchmark_v2.json",
-    "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint."
+    "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2."
   }
 }

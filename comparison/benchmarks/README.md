@@ -15,6 +15,8 @@ v2 已实现：
 - `bench_v2_madvit_variants.py`：MADViT Full / Multi-layer / Last-layer（论文 Sec. 5.4 的 scoring 变体）。
 - `bench_tf1_extra.py`：Future Frame / MLEP（TF1.15，FLOPs 标 partial/unverified）。
 - `bench_tf2_compat.py` + `tf2_compat_shims.py`：Future Frame / MLEP 的 TF2.20 runtime-adapted 计时（官方模型代码不变，只补 TF1 contrib API；结果写 `benchmark_v2_tf2compat.json`，不覆盖官方 partial 记录）。
+- `bench_v2_scored.py`：ST Dissoc. / DAD-FSM 的 score-inclusive 补测（官方 loss_map/reciprocal、未来分割 target MSE；写 `benchmark_v2_scored.json`，不覆盖旧 JSON）。
+- `bench_tf2_scored.py`：Future Frame / MLEP 的 score-inclusive 补测（官方 PSNR；写 `benchmark_v2_scored.json`，不覆盖旧 JSON）。
 
 结果写在对应方法/变体目录里：
 
@@ -37,6 +39,10 @@ comparison/da/Future Frame/default/benchmark_v2.json          # 官方 TF1.15，
 comparison/da/Future Frame/default/benchmark_v2_tf2compat.json # TF2.20 runtime-adapted
 comparison/da/MLEP/default/benchmark_v2.json                  # 官方 TF1.15，partial
 comparison/da/MLEP/default/benchmark_v2_tf2compat.json        # TF2.20 runtime-adapted
+comparison/da/ST Dissoc./default/benchmark_v2_scored.json       # score-inclusive
+comparison/da/DAD-FSM/default/benchmark_v2_scored.json          # score-inclusive
+comparison/da/Future Frame/default/benchmark_v2_scored.json     # score-inclusive PSNR
+comparison/da/MLEP/default/benchmark_v2_scored.json             # score-inclusive PSNR (BS1)
 ```
 
 ## 1. 输出文件命名

@@ -56,7 +56,8 @@ ANDT 是**时序**方法，不是单帧分类器：
 - benchmark：`comparison/benchmarks/bench_v2_andt.py`
 - 结果：`comparison/da/ANDT/default/benchmark_v2.json`
 - 权重状态：random init；官方 checkpoint 不可用。FLOPs/latency 对权重不敏感。
-- 计时包含预测帧与目标的 MSE 评分（`F.mse_loss`）。
+- **评分口径**：当前 `bench_v2_andt.py` 用 `F.mse_loss(out, zeros)` 作为产生标量的代理，不是官方 `MSE(pred, true_next_frame)`；因此 latency 只能作 adapted/近似的评分耗时，不能称为官方 anomaly-score latency。
+- **论文 decoder 与本地代码不一致**：论文（arXiv:2209.13363）写的是两个 FC 层把特征升到 `8×8×512`，再用 5 层卷积/上采样重建 `256×256×3`；本地 active 代码是 `view(...,256,16,16)`，`de_dense` 是单层 `768→256*16*16`，两者都不是论文的 `8×8×512` 两 FC 路径。因此 `de_dense(feat[:,0])` 只是能跑通的最小适配，`paper_matched=false`。
 - `frame_coverage=1.0` 是近似值：滑动窗口预测下一帧时，视频开头 5 帧没有预测分数。
 
 ## 官方代码为什么仍不能冒充
@@ -66,7 +67,7 @@ ANDT 是**时序**方法，不是单帧分类器：
 - `pdb.set_trace()` 会中断；
 - forward 里 `.cuda()` 硬编码；
 - decoder `x.view(x.size(0), 256, 16, 16)` 只对应 **1 帧**的 256 个 patch；`num_frames=6` 时 `feat` 是 `1 + 256*6 = 1537` 个 token，`view` 形状不匹配；
-- `de_dense` 路径被注释，论文 decoder 的细节可能与这里的 adapted 版本不同。
+- `de_dense` 路径被注释；论文 decoder 是 `2 FC → 8×8×512 → 5 conv/upsample`，而本地 `de_dense` 是 `768→256×16×16` 单层投影，**adapted 版本不是论文 decoder 的逐层复现**。
 
 因此：
 

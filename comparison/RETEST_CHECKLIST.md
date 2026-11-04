@@ -6,6 +6,7 @@
 > MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
 > Future Frame / MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；已补 TF2.20 runtime-adapted 计时（Future Frame 5.467ms / 180.8 FPS@BS1；MLEP 11.538ms / 82.0 FPS@BS1），仍标 `partial/unverified`，不能冒充官方 TF1.15；adVAE 仍 `blocked`。
+> ASTT 当前测的是 `model_ste_tte`（148.22M），DA `train_val_Drone-Anomaly.py` 引用的 `model.py` 缺失，变体未确认，不能当官方 ASTT；详见 [da/fairness_audit.md](da/fairness_audit.md)。
 
 ## 0. 全局准入（所有方法共用）
 
@@ -95,11 +96,11 @@
 
 | 方法 | 当前状态 | 结果/限制 |
 |---|---|---|
-| Future Frame | partial/unverified | 官方 TF1.15：7.704M / 74.476G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：5.467ms / 180.8 FPS@BS1 / 185.1 FPS@BS16（`benchmark_v2_tf2compat.json`） |
-| ST Dissoc. | measured | 60.612G / 3.668ms / 269.7 FPS@BS1；`padding=False→0` 兼容修正 |
-| MLEP | partial/unverified | 官方 TF1.15：12.561M / 319.513G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：11.538ms / 82.0 FPS@BS1 / 75.5 FPS@BS16（`benchmark_v2_tf2compat.json`） |
-| ASTT | measured | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint |
-| DAD-FSM | measured | 71.194G / 12.684ms / 78.5 FPS@BS1；RGB+分割双流，ResNet50 随机初始化 |
+| Future Frame | partial/unverified | 官方 TF1.15：7.704M / 74.476G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR 6.829ms / 145.9 FPS@BS1 / 178.2 FPS@BS16（`benchmark_v2_scored.json`；prediction-only 保留） |
+| ST Dissoc. | measured | 60.612G / 4.280ms / 231.4 FPS@BS1（score-inclusive loss_map）；`padding=False→0` 兼容修正 |
+| MLEP | partial/unverified | 官方 TF1.15：12.561M / 319.513G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR BS1 12.787ms / 78.3 FPS（BS16 未测；prediction-only 75.5 不能冒充） |
+| ASTT | partial/unverified | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint；DA `model.py` 缺失，变体未确认，不能当官方 ASTT |
+| DAD-FSM | measured | 71.194G / 13.576ms / 73.4 FPS@BS1（score-inclusive target MSE）；RGB+分割双流，ResNet50 随机初始化 |
 | HSTforU | measured | 168.209G / 64.258ms / 15.5 FPS@BS1；mmcv-lite 2.x + 兼容 shim |
 | MADViT Full | measured | code default：38.533G / 11.525ms / 83.9 FPS@BS1 |
 | MADViT Multi-layer / Last-layer | measured (adapted scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图 |

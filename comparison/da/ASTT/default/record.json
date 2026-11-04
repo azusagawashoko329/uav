@@ -19,9 +19,9 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned locally; v2 lightweight efficiency measured (see efficiency block); DA AUC adaptation/run still pending.",
+  "notes": "Upstream cloned locally; v2 lightweight efficiency measured (see efficiency block); DA AUC adaptation/run still pending. Variant unconfirmed; see fairness_audit.md.",
   "efficiency": {
-    "status": "measured",
+    "status": "partial/unverified",
     "input_hwt": "384x384x4",
     "code_commit": "1d05305a94fb47b33897c7aa085c5351bcbbc8f9",
     "weights_state": "random init (no checkpoint)",
@@ -64,6 +64,6 @@
     "fps_stream_estimated": 52.178726129070434,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/ASTT/default/benchmark_v2.json",
-    "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint. | STE-TTE variant"
+    "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint. | STE-TTE variant Variant unconfirmed: DA script imports missing model.py; current speed is model_ste_tte 148.220M, not proven to be the DA AUC model. Original candidates are 63.068M/65.409M."
   }
 }

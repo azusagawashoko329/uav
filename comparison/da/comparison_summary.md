@@ -61,7 +61,7 @@
 
 > 本表全部来自各方法/变体目录的 `benchmark_v2.json`：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。旧 v1 数字在 §5 归档，不再引用。
 > `FLOPs verified=yes` 表示所有 MAC 算子均已核验、`flops_ops_missing=[]`；profiler 只比共同支持算子，不用其总数做验收。
-> **†** Future Frame / MLEP：latency/FPS 是 **TF2.20 runtime-adapted**（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行）；模型图未改、参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍是 `partial/unverified`，不是 `measured`。官方 TF1.15 的 latency 留空；详见 §3.3。
+> **†** Future Frame / MLEP：latency/FPS 是 **TF2.20 runtime-adapted**（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行）；模型图未改、参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍是 `partial/unverified`，不是 `measured`。主表/§3.4 使用 score-inclusive PSNR 结果；§3.3 表保留 prediction-only 对照。MLEP 的 scored BS16 未测（见 §3.4），不能用 prediction-only 75.5 冒充。官方 TF1.15 的 latency 留空；详见 §3.3。
 >
 > **‡** 只到 prediction / cluster-map，未含官方 PSNR、最终 loss_map 或异常分数；**§** 输入分割图是离线预计算，未含分割生成；**¶** 测的是原仓库配置（MKD MVTec-128、HSTforU Avenue/PVT2-b2），不是 DA AUC 配置；**?** 模型变体未确认（ASTT 当前是 STE-TTE，DA `model.py` 缺失）。`*` 表示 adapted/reconstructed（见下方 ANDT/MADViT 脚注）。逐方法证据和“可用于主表/需脚注/需重测/暂不可用”判断见 [fairness_audit.md](fairness_audit.md)。
 
@@ -72,11 +72,11 @@
 | MemAE | 256×256×16 | 6.503 | 6.503 | 0 | 70.808 | yes | 7.321 | 136.5 | 130.3 | 67.67 | measured |
 | MKD ¶ | 128×128×1 | 15.059 | 0.344 | 0 | 10.477 | yes | 2.495 | 394.5 | 2340.8 | 66.63 | measured |
 | ANDT (adapted 6-frame)* | 256×256×6 | 70.347 | 70.347 | 0 | 74.490 | yes | 5.015 | 199.4 | 197.5 | 68.64 | measured |
-| Future Frame †‡ | 256×256×4 | 7.704 | 14.536 | 6.831 | 74.476 | no | 5.467 | 180.8 | 185.1 | — | partial/unverified †‡ |
-| ST Dissoc. ‡ | 256×256×5 | 6.120 | 6.120 | 0 | 60.612 | yes | 3.668 | 269.7 | 288.2 | — | measured |
-| MLEP †‡ | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | 11.538 | 82.0 | 75.5 | — | partial/unverified †‡ |
-| ASTT ? | 384×384×4 | 148.220 | 148.220 | 0 | 109.416 | yes | 19.048 | 52.2 | 146.6 | — | measured |
-| DAD-FSM § | 224×224×4 | 123.979 | 123.979 | 0 | 71.194 | yes | 12.684 | 78.5 | 195.6 | — | measured |
+| Future Frame † | 256×256×4 | 7.704 | 14.536 | 6.831 | 74.476 | no | 6.829 | 145.9 | 178.2 | — | partial/unverified † |
+| ST Dissoc. | 256×256×5 | 6.120 | 6.120 | 0 | 60.612 | yes | 4.280 | 231.4 | 452.3 | — | measured |
+| MLEP † | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | 12.787 | 78.3 | — | — | partial/unverified † |
+| ASTT ? | 384×384×4 | 148.220 | 148.220 | 0 | 109.416 | yes | 19.048 | 52.2 | 146.6 | — | partial/unverified ? |
+| DAD-FSM § | 224×224×4 | 123.979 | 123.979 | 0 | 71.194 | yes | 13.576 | 73.4 | 289.1 | — | measured |
 | HSTforU ¶ | 256×256×4 | 148.970 | 148.970 | 0 | 168.209 | yes | 64.258 | 15.5 | 71.0 | 66.96 | measured |
 | MADViT Full | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.525 | 83.9 | 444.0 | 72.2 | measured |
 | MADViT Multi-layer * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.130 | 88.9 | 432.2 | 62.9 | measured |
@@ -110,16 +110,16 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | MemAE | 16 | 1 | 1 | 70.808 | 7.321 | 1.0 | 1.0（≈；边界帧除外） | 136.5 | 136.5 | null | measured |
 | ANDT（adapted 6 帧） | 6 | 1 | 1 | 74.490 | 5.015 | 1.0 | ≈1.0（除开头 5 帧） | 199.4 | 199.4 | null | measured |
-| Future Frame †‡ | 4 | 1 | 1 | 74.476 | 5.467 | 1.0 | 1.0（≈） | 180.8 | 180.8 | null | partial/unverified †‡ |
-| ST Dissoc. ‡ | 5 | 1 | 1 | 60.612 | 3.668 | 1.0 | 1.0（≈） | 269.7 | 269.7 | null | measured |
-| MLEP †‡ | 4 | 1 | 1 | 319.513 | 11.538 | 1.0 | 1.0（≈） | 82.0 | 82.0 | null | partial/unverified †‡ |
-| ASTT ? | 4 | 1 | 1 | 109.416 | 19.048 | 1.0 | 1.0（≈） | 52.2 | 52.2 | null | measured |
-| DAD-FSM § | 4 | 1 | 1 | 71.194 | 12.684 | 1.0 | 1.0（≈） | 78.5 | 78.5 | null | measured |
+| Future Frame † | 4 | 1 | 1 | 74.476 | 6.829 | 1.0 | 1.0（≈） | 145.9 | 145.9 | null | partial/unverified † |
+| ST Dissoc. | 5 | 1 | 1 | 60.612 | 4.280 | 1.0 | 1.0（≈） | 231.4 | 231.4 | null | measured |
+| MLEP † | 4 | 1 | 1 | 319.513 | 12.787 | 1.0 | 1.0（≈） | 78.3 | 78.3 | null | partial/unverified † |
+| ASTT ? | 4 | 1 | 1 | 109.416 | 19.048 | 1.0 | 1.0（≈） | 52.2 | 52.2 | null | partial/unverified ? |
+| DAD-FSM § | 4 | 1 | 1 | 71.194 | 13.576 | 1.0 | 1.0（≈） | 73.4 | 73.4 | null | measured |
 | HSTforU ¶ | 4 | 1 | 1 | 168.209 | 64.258 | 1.0 | 1.0（≈） | 15.5 | 15.5 | null | measured |
 
 > `K` 不能默认等于 `T`；`score_density=K/stride` 可以 >1，**不是帧覆盖率**。`frame_coverage` 必须按原方法的分数映射、窗口重叠和融合方式单独计算（例如 T=16/stride=1/K=16 时 score_density=16，但 frame_coverage 最多 1.0）。`fps_stream_estimated` 只是按 stride 推算的吞吐估计；没有实际连续流测试时 `fps_stream_measured=null`，不能声称已实测。
 > **MemAE 已核实**：`script_testing.py` 每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），并映射到中心帧；因此 `K=1, stride=1`，不是 `K=T=16`。旧 v1 的 `÷16` 把窗口时延/FLOPs 错误摊成 1/16，已废弃。
-> **†‡ Future Frame / MLEP**：§3.1 的 latency/FPS 来自 TF2.20 runtime-adapted（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行），且只到 prediction tensor、未含 PSNR；`fps_stream_measured=null`，详见 §3.3。官方 TF1.15 的 latency 仍未测，不能把这里的数字写成官方 TF1.15 数字。
+> **† Future Frame / MLEP**：§3.1 的 latency/FPS 来自 TF2.20 runtime-adapted；Future Frame 是 score-inclusive PSNR，MLEP 是 score-inclusive PSNR 的 BS1（BS16 未测，留 —）。`fps_stream_measured=null`，详见 §3.3/§3.4。官方 TF1.15 的 latency 仍未测，不能把这里的数字写成官方 TF1.15 数字。
 
 ### 3.2 每行配置与来源
 
@@ -129,13 +129,13 @@
 | GANomaly | `78da4ea9a99f5b02ab60dd651a18def929176d77` | 256×256×1 | random init（未载入训练权重） | no | ANDT Table VI / 用户表 | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
 | MemAE | `ceece7714fb241e82ef3f3785d3d1ed86c28113e` | 256×256×16 | random init | no | ANDT Table VI / 用户表 | v2: 同上 |
 | MKD | `0c574ae9ad12666982a1ccc2c7148acd6bf442fe` | 128×128×1（MVTec 配置） | random init（VGG16 source 未载入预训练） | no | ANDT Table VI / 用户表 | v2: 同上 |
-| ANDT（adapted 6-frame） | `f2e8c4f701238a99faa5841b3e2884cb1c507d1e` | 256×256×6 | random init（无官方 checkpoint） | no（code adapted, not DA） | ANDT 论文 / 用户表（官方 6 帧模型；效率为适配版） | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
+| ANDT（adapted 6-frame） | `f2e8c4f701238a99faa5841b3e2884cb1c507d1e` | 256×256×6 | random init（无官方 checkpoint） | no（code adapted, not DA） | ANDT 论文 / 用户表（官方 6 帧模型；效率为适配版） | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3；decoder 为 `de_dense` 适配，论文 2FC→8×8×512→5conv 未复现，`paper_matched=false` |
 | Future Frame | `9e0f161b8d5f1f46556e116577a5596405798343` | 256×256×4 | random init（无官方 checkpoint） | no | 用户表 | 官方 TF1.15：CPU profiler for FLOPs，GPU latency blocked；TF2.20 runtime-adapted 见 §3.3 |
-| ST Dissoc. | `1206c2a7c4c4e0b47c21c498fadb8e1e3973dd56` | 256×256×5（15 通道） | random init | no | 用户表 | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
+| ST Dissoc. | `1206c2a7c4c4e0b47c21c498fadb8e1e3973dd56` | 256×256×5（15 通道） | random init | no | 用户表 | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3；score-inclusive 见 §3.4 |
 | MLEP | `22e96634fe43a5b8394413a1aae267b673b3c4ce` | 224×224×4 | random init（无官方 checkpoint） | no | 用户表 | 官方 TF1.15：CPU profiler for FLOPs，GPU latency blocked；TF2.20 runtime-adapted 见 §3.3 |
 | ASTT ? | `1d05305a94fb47b33897c7aa085c5351bcbbc8f9` | 384×384×4（STE-TTE） | random init | no | 用户表 | v2: 同上；**当前是 `model_ste_tte` 148.22M，DA `model.py` 缺失，变体未确认** |
-| DAD-FSM | `602fed9ac93e6a3f2a291e9b1f23bcca775df961` | 224×224×4（RGB+分割双流） | random init（ResNet50 预训练权重未带） | no | 用户表 | v2: 同上 |
-| HSTforU ¶ | `9548473306bbb89895b077275e8503de79653029` | 256×256×4 | random init | no | 用户表 | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3；mmcv-lite 2.x + 兼容 shim；**Avenue/PVT2-b2 是假设，repo 无 DA config** |
+| DAD-FSM | `602fed9ac93e6a3f2a291e9b1f23bcca775df961` | 224×224×4（RGB+分割双流） | random init（ResNet50 预训练权重未带） | no | 用户表 | v2: 同上；分割图离线预计算，score-inclusive 见 §3.4 |
+| HSTforU ¶ | `9548473306bbb89895b077275e8503de79653029` | 256×256×4 | random init | no | 用户表 | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3；mmcv-lite 2.x + 兼容 shim；**Avenue/PVT2-b2 是假设，repo 无 DA config，paper_matched=false** |
 | MADViT Full（code default） | `a1d1732c78f9f0a21a1a162b87b158436dad79f3` | 224×224×1 | random init | no | 用户表 | v2: 同上 |
 | MADViT Multi-layer / Last-layer | 同上 | 224×224×1 | random init | no | 用户表 | v2: 论文 Sec. 5.4 的 adapted scoring；同一前向图 |
 | LightViT-AD | `c0f6ca9a6817d126e15e09f83612710ee6f954d1` | 224×224×1 | random init（teacher 冻结） | no | 用户表（缺 vehicle/crossroads） | v2: 同上 |
@@ -160,6 +160,21 @@
 - 无官方 checkpoint，random init；latency/FLOPs 与权重数值无关，复现 AUC 才需要权重。
 - 详细说明：[Future Frame/default/README.md](Future%20Frame/default/README.md)、[MLEP/default/README.md](MLEP/default/README.md)；原始数据：`Future Frame/default/benchmark_v2_tf2compat.json`、`MLEP/default/benchmark_v2_tf2compat.json`。
 - 主表已用 **P50@BS1 + `runtime-adapted †`** 放入这两个方法；官方 TF1.15 的 latency 仍留空，不要用 TF2 数字覆盖官方 `benchmark_v2.json`，也不要把 `Status` 写成 `measured`。
+
+### 3.4 score-inclusive 补测（2026-11-04）
+
+旧 `benchmark_v2.json` 里 ST Dissoc. 是 stage-E forward-only、DAD-FSM 是 MSE-to-zero proxy、Future Frame/MLEP 是 prediction-only。已用 `bench_v2_scored.py` / `bench_tf2_scored.py` 补上官方评分路径，写独立 `benchmark_v2_scored.json`，不覆盖旧 JSON：
+
+| Method | 旧口径 | 旧 P50 / FPS@BS1 / FPS@BS16 | **score-inclusive** | 新 P50 / FPS@BS1 / FPS@BS16 |
+|---|---|---|---:|---:|
+| Future Frame † | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR vs GT next frame | **6.829ms / 145.9 / 178.2** |
+| ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | 官方 `loss_map` + reciprocal | **4.280ms / 231.4 / 452.3** |
+| MLEP † | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR vs GT next frame | **12.787ms / 78.3 / —（BS16 未测）** |
+| DAD-FSM § | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE | **13.576ms / 73.4 / 289.1** |
+
+- ST/DAD 的评分 FLOPs（elementwise）不计入各自的 60.612G / 71.194G MAC 计数；FF/MLEP 的 PSNR 也不计入 TF-profiler FLOPs。
+- DAD-FSM 的分割图仍是离线预计算（`§`），不是完整在线成本。
+- 旧 JSON 保留为对照；主表 ST/DAD/FF 已切到 score-inclusive 数字；MLEP 已切到 scored BS1，scored BS16 未测（留 —）。
 
 ## 4. 参数审计细节（v2 三列口径）
 

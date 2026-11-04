@@ -1,0 +1,9 @@
+[mlep] score-inclusive BS1
+WARNING:tensorflow:From /data1/data8tb/liangyuxuan/Comparison method/MLEP/models/networks.py:119: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+I0000 00:00:1793803171.202867 3238860 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+E0000 00:00:1793803171.321380 3238860 meta_optimizer.cc:967] layout failed: INVALID_ARGUMENT: MutableGraphView::SortTopologically error: detected edge(s) creating cycle(s) {'recurrent/ConvLSTM/while/Identity_4' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/concat', 'recurrent/ConvLSTM/while/Identity_3' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/mul'}.
+[mlep] score-inclusive BS16
+I0000 00:00:1793803191.976344 3238860 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+EXIT=143

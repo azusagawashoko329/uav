@@ -102,7 +102,7 @@ python comparison/check_comparisons.py
 - **v1 归档**：[da/LEGACY_v1.md](da/LEGACY_v1.md) + [da/LEGACY_v1.sha256](da/LEGACY_v1.sha256)。旧 `benchmark_*.json` / `.log` / 旧审计不改。
 - **改动记录**：[protocol_change_log.md](protocol_change_log.md)。
 - **逐方法重测**：[RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。
-- **脚本规范**：[benchmarks/README.md](benchmarks/README.md)。v2 脚本：`flops_counter.py`、`bench_v2_common.py`、`bench_v2_ours.py`、`bench_v2_external.py`、`bench_v2_andt.py`、`bench_v2_extra.py`、`bench_v2_madvit_variants.py`、`bench_tf1_extra.py`、`bench_tf2_compat.py`（含 `tf2_compat_shims.py`）；旧 `bench_ours.py` / `bench_external.py` 是 v1 legacy；v2 结果写对应方法/变体目录的 `benchmark_v2.json`，不得覆盖同目录 `legacy_v1/` 下的旧文件。
+- **脚本规范**：[benchmarks/README.md](benchmarks/README.md)。v2 脚本：`flops_counter.py`、`bench_v2_common.py`、`bench_v2_ours.py`、`bench_v2_external.py`、`bench_v2_andt.py`、`bench_v2_extra.py`、`bench_v2_madvit_variants.py`、`bench_tf1_extra.py`、`bench_tf2_compat.py`（含 `tf2_compat_shims.py`）、`bench_v2_scored.py`、`bench_tf2_scored.py`；旧 `bench_ours.py` / `bench_external.py` 是 v1 legacy；v2 结果写对应方法/变体目录的 `benchmark_v2.json`，不得覆盖同目录 `legacy_v1/` 下的旧文件。
 - **v2 验证记录**：[da/v2_validation.md](da/v2_validation.md)。
 - **公平性复核（measured vs paper-matched）**：[da/fairness_audit.md](da/fairness_audit.md)。逐方法的官方/适配/未确认判断、评分完整性和需脚注/需重测清单。
 - 机器字段：`record.json` 可选 `efficiency` 对象，见 [SCHEMA.md](SCHEMA.md)。

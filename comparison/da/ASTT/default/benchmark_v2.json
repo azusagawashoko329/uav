@@ -1,8 +1,8 @@
 {
   "method": "ASTT",
   "method_display": "ASTT",
-  "variant": "ste_tte",
-  "adapted": false,
+  "variant": "ste_tte (variant unconfirmed)",
+  "adapted": true,
   "supersedes": null,
   "code_commit": "1d05305a94fb47b33897c7aa085c5351bcbbc8f9",
   "input_hwt": "384x384x4",
@@ -18,9 +18,9 @@
   "training_only_params_m": 0.0,
   "frozen_inference_params_m": 0.0,
   "benchmark_source": "comparison/da/ASTT/default/benchmark_v2.json",
-  "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint.",
+  "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint. The DA entry point train_val_Drone-Anomaly.py imports a missing model.py; it is not proven that this STE-TTE variant (model_ste_tte.py, 148.220M) is the DA AUC model. Original model candidates are 63.068M / 65.409M; status is therefore partial/unverified, not official ASTT.",
   "protocol_version": 2,
-  "measurement_status": "measured",
+  "measurement_status": "partial/unverified",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
   "gpu": "NVIDIA RTX 5880 Ada Generation",
   "torch": "2.8.0+cu129",
@@ -2546,5 +2546,7 @@
     53.8962232460035,
     54.58054021600401,
     54.72410505998414
-  ]
+  ],
+  "paper_matched": false,
+  "variant_unconfirmed": true
 }
