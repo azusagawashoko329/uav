@@ -198,11 +198,11 @@
 | [20261101_uit_45ep_4block_gl768_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261101_uit_45ep_gl192_dense128_rank2_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261101_uit_45ep_gl192_dense128_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
-| [20261104_variant_matrix_v0_rd_s12_t4_h512_s42](uit/appearance/20261104_variant_matrix_v0_rd_s12_t4_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261104_variant_matrix_v1_rd_s4_t12_h512_s42](uit/appearance/20261104_variant_matrix_v1_rd_s4_t12_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42](uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v0_rd_s12_t4_h512_s42](uit/appearance/20261104_variant_matrix_v0_rd_s12_t4_h512_s42/README.md) | `running` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v1_rd_s4_t12_h512_s42](uit/appearance/20261104_variant_matrix_v1_rd_s4_t12_h512_s42/README.md) | `running` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42](uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42/README.md) | `running` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `running` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `running` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `running` | 未找到 | 1 | 0 |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。
