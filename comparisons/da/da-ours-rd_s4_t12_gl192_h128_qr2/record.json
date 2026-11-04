@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "da-ours-rd_s4_t12_gl192_h128_qr2",
+  "dataset": "da",
+  "method": "ours",
+  "method_display": "Ours",
+  "year": 2026,
+  "variant": "rd_s4_t12_gl192_h128_qr2",
+  "status": "completed",
+  "source": {
+    "type": "internal",
+    "url": null,
+    "commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+    "local_path": null,
+    "experiment": "experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42",
+    "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42",
+    "license": "internal",
+    "notes": "Raw experiment remains authoritative; checkpoints are local and registered in the source artifacts.json."
+  },
+  "protocol": {
+    "one_class": true,
+    "train": "official train normal frames only; per-scene merge of sequence*/train/*/*.jpg",
+    "test": "per-scene concat all test frames; one global AUC/EER per scene; macro mean over 7 scenes",
+    "metrics": [
+      "AUC",
+      "EER"
+    ],
+    "seed": 42,
+    "epochs": 30,
+    "input_size": 256,
+    "notes": "GL192; OCBE fuse_hidden=128; 12 teacher taps; learnable rank-2 Q (random orthonormal init); group-balanced top5 loss (alpha=0.5)."
+  },
+  "results": {
+    "macro_auc": 84.01371987810137,
+    "macro_eer": 0.20209241805594544,
+    "per_scene": {
+      "bike": {
+        "auc": 97.68282219002347,
+        "eer": 0.04543325526932084
+      },
+      "crossroads": {
+        "auc": 62.248988931480966,
+        "eer": 0.41781874039938555
+      },
+      "farmland": {
+        "auc": 99.32108799306458,
+        "eer": 0.06285218899003034
+      },
+      "highway": {
+        "auc": 94.88562888307027,
+        "eer": 0.13215669393026258
+      },
+      "railway": {
+        "auc": 90.52608758491111,
+        "eer": 0.13144963144963145
+      },
+      "solar": {
+        "auc": 87.17924114486237,
+        "eer": 0.19722557297949336
+      },
+      "vehicle": {
+        "auc": 56.25218241929693,
+        "eer": 0.42771084337349397
+      }
+    },
+    "summary": "results/summary.json",
+    "source_results": "experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/results/"
+  },
+  "notes": "Comparison view of V5; raw experiment: experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md."
+}

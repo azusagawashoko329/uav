@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "da-ours-rd_s4_t12_gl192_h512",
+  "dataset": "da",
+  "method": "ours",
+  "method_display": "Ours",
+  "year": 2026,
+  "variant": "rd_s4_t12_gl192_h512",
+  "status": "completed",
+  "source": {
+    "type": "internal",
+    "url": null,
+    "commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+    "local_path": null,
+    "experiment": "experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42",
+    "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42",
+    "license": "internal",
+    "notes": "Raw experiment remains authoritative; checkpoints are local and registered in the source artifacts.json."
+  },
+  "protocol": {
+    "one_class": true,
+    "train": "official train normal frames only; per-scene merge of sequence*/train/*/*.jpg",
+    "test": "per-scene concat all test frames; one global AUC/EER per scene; macro mean over 7 scenes",
+    "metrics": [
+      "AUC",
+      "EER"
+    ],
+    "seed": 42,
+    "epochs": 30,
+    "input_size": 256,
+    "notes": "4-block Global-Local width 192; 12 teacher taps; group-balanced top5 loss (alpha=0.5)."
+  },
+  "results": {
+    "macro_auc": 84.08641927351752,
+    "macro_eer": 0.1991514866482674,
+    "per_scene": {
+      "bike": {
+        "auc": 97.65654912389996,
+        "eer": 0.04527712724434036
+      },
+      "crossroads": {
+        "auc": 60.875183199462924,
+        "eer": 0.4272547728768927
+      },
+      "farmland": {
+        "auc": 99.31404421326397,
+        "eer": 0.06025140875596012
+      },
+      "highway": {
+        "auc": 94.85934115238136,
+        "eer": 0.13517003874300473
+      },
+      "railway": {
+        "auc": 90.88560485619308,
+        "eer": 0.12285012285012285
+      },
+      "solar": {
+        "auc": 86.4231884587735,
+        "eer": 0.20325693606755127
+      },
+      "vehicle": {
+        "auc": 58.591023910647735,
+        "eer": 0.4
+      }
+    },
+    "summary": "results/summary.json",
+    "source_results": "experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/results/"
+  },
+  "notes": "Comparison view of V3; raw experiment: experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md."
+}

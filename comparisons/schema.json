@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/uav/comparisons/record.schema.json",
+  "title": "UAV-VAD comparison entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "dataset",
+    "method",
+    "method_display",
+    "year",
+    "variant",
+    "status",
+    "source",
+    "protocol",
+    "results",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(da|uit)-[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+    },
+    "dataset": {
+      "enum": ["da", "uit"]
+    },
+    "method": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "method_display": {
+      "type": "string",
+      "minLength": 1
+    },
+    "year": {
+      "type": ["integer", "null"],
+      "minimum": 1990,
+      "maximum": 2100
+    },
+    "variant": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+    },
+    "status": {
+      "enum": ["planned", "running", "completed", "failed", "cancelled", "blocked", "unknown"]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "url", "commit", "local_path", "experiment", "run_id", "license", "notes"],
+      "properties": {
+        "type": {
+          "enum": ["internal", "external"]
+        },
+        "url": {
+          "type": ["string", "null"]
+        },
+        "commit": {
+          "type": ["string", "null"]
+        },
+        "local_path": {
+          "type": ["string", "null"]
+        },
+        "experiment": {
+          "type": ["string", "null"]
+        },
+        "run_id": {
+          "type": ["string", "null"]
+        },
+        "license": {
+          "type": ["string", "null"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "protocol": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["one_class", "train", "test", "metrics", "seed", "epochs", "input_size", "notes"],
+      "properties": {
+        "one_class": {
+          "type": "boolean"
+        },
+        "train": {
+          "type": "string"
+        },
+        "test": {
+          "type": "string"
+        },
+        "metrics": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": ["AUC", "EER"]
+          }
+        },
+        "seed": {
+          "type": ["integer", "null"]
+        },
+        "epochs": {
+          "type": ["integer", "null"]
+        },
+        "input_size": {
+          "type": ["integer", "null"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "results": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["macro_auc", "macro_eer", "per_scene", "summary", "source_results"],
+      "properties": {
+        "macro_auc": {
+          "type": ["number", "null"]
+        },
+        "macro_eer": {
+          "type": ["number", "null"]
+        },
+        "per_scene": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["auc", "eer"],
+            "properties": {
+              "auc": {
+                "type": "number"
+              },
+              "eer": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": ["string", "null"]
+        },
+        "source_results": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "protocol": {
+            "type": "object"
+          },
+          "results": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}
