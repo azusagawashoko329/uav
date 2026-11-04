@@ -16,11 +16,11 @@
 | [da-ours-rd_s4_t12_gl192_h512](da/ours/rd_s4_t12_gl192_h512/README.md) | ours | `rd_s4_t12_gl192_h512` | `completed` | 84.0864 | 0.1992 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42) |
 | [da-ours-rd_s4_t12_gl192_h128](da/ours/rd_s4_t12_gl192_h128/README.md) | ours | `rd_s4_t12_gl192_h128` | `completed` | 83.9186 | 0.2024 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42) |
 | [da-ours-rd_s4_t12_gl192_h128_qr2](da/ours/rd_s4_t12_gl192_h128_qr2/README.md) | ours | `rd_s4_t12_gl192_h128_qr2` | `completed` | 84.0137 | 0.2021 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42) |
-| [da-adVAE-default](da/adVAE/default/record.json) | adVAE | `default` | `planned` | — | — | [upstream](https://github.com/WangXuhongCN/adVAE.git) |
+| [da-adVAE-default](da/adVAE/default/README.md) | adVAE | `default` | `planned` | — | — | [upstream](https://github.com/WangXuhongCN/adVAE.git) |
 | [da-GANomaly-default](da/GANomaly/default/record.json) | GANomaly | `default` | `planned` | — | — | [upstream](https://github.com/samet-akcay/ganomaly.git) |
 | [da-MemAE-default](da/MemAE/default/record.json) | MemAE | `default` | `planned` | — | — | [upstream](https://github.com/donggong1/memae-anomaly-detection.git) |
 | [da-MKD-default](da/MKD/default/record.json) | MKD | `default` | `planned` | — | — | [upstream](https://github.com/rohban-lab/Knowledge_Distillation_AD.git) |
-| [da-ANDT-default](da/ANDT/default/record.json) | ANDT | `default` | `planned` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
+| [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
 | [da-Future Frame-default](da/Future%20Frame/default/record.json) | Future Frame | `default` | `planned` | — | — | [upstream](https://github.com/StevenLiuWen/ano_pred_cvpr2018.git) |
 | [da-ST Dissoc.-default](da/ST%20Dissoc./default/record.json) | ST Dissoc. | `default` | `planned` | — | — | [upstream](https://github.com/ChangYunPeng/VideoAnomalyDetection.git) |
 | [da-MLEP-default](da/MLEP/default/record.json) | MLEP | `default` | `planned` | — | — | [upstream](https://github.com/svip-lab/MLEP.git) |
