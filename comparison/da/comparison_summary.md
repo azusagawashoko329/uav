@@ -90,7 +90,7 @@
 - **MemAE**：`chnum_in=3`、`mem_dim=2000`、`T=16`；参数与 T 无关，6.503M。
 - **MKD**：source VGG16 features 14.715M（frozen）+ cloner cfg B 0.344M（trainable）= 15.059M；输入 128×128 按原论文 MVTec 配置；若 DA 适配到 256，需标 `adapted`。首次测量在 `inference_mode` 下被 `VGG.forward` 的 `register_hook` 拒绝；改用无 hook 的 source/cloner 前向重测，表中数字来自重测。计时/FLOPs 覆盖 source+cloner 全前向；打分用最终特征距离作示例，距离计算本身可忽略。
 - **ANDT**：代码 `b16` + `num_layers=2`、`heads=6`、`num_frames=6`；`mlp=4096` 时 70.347M，`mlp=1536` 时 62.478M。论文 ablation 选 4096；但 forward 有 `pdb.set_trace()` 且 decoder 对 6 帧形状不匹配，FLOPs/latency 必须先确认代码版本。
-- **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格数据（ODDS）实现，不是 DA 视频模型；无法从该仓库准确得到视频模型的参数量/输入规格。需要 ANDT 作者实际 adVAE 实现或论文图像配置，否则不能填。
+- **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格数据（ODDS）实现，不是 DA 视频模型；其 `Encoder(400,64)+Decoder(400,64)+Gauss_trans(64)` 合计 **0.329M**，但输入是 `(B,400)` 表格向量，不是 256×256 图像。这个 0.329M 不能填进 DA 主表；需要 ANDT 作者实际 adVAE 视频实现或论文图像配置，否则只能保留 `blocked`。详见 [adVAE/default/README.md](adVAE/default/README.md)。
 
 ## 5. 待办
 

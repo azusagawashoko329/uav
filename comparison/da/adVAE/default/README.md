@@ -15,6 +15,21 @@
 
 ANDT 论文的 adVAE baseline（Table VI/VII 的 AUC）引用的是同一篇 KBS 论文，但 ANDT 作者实际用的**视频/图像适配版**不在这个仓库里；因此不能拿这份 FC 表格模型的参数/FLOPs 去填 DA 主表。
 
+## 如果只数这份代码
+
+可以数，而且已经数了：
+
+| 模块 | 参数量 |
+|---|---:|
+| `Encoder(400, 64)` | 146,128 |
+| `Decoder(400, 64)` | 133,600 |
+| `Gauss_trans(64)` | 49,536 |
+| **合计** | **329,264 ≈ 0.329M** |
+
+但这组数字对应的是 `(B, 400)` 的**表格输入**（`Encoder` 输出 `mu/logvar` 各 `(B,64)`，`Decoder` 输出 `(B,400)`），不是 256×256×3 的图像/视频输入。`models/__init__.py` 里也只留下注释掉的 `# from .resnet34 import ResNet34`、`# from torchvision.models import InceptinV3`、`# ... alexnet as AlexNet`，说明图像版主干没有随代码发布。
+
+因此：**能统计这份表格代码 = 0.329M；不能把 0.329M 当作 DA 表里 adVAE 的参数量**。主表仍保留 `blocked`，直到拿到 ANDT 实际用的视频/图像版实现或论文结构。
+
 ## 还需要什么
 
 要解 blocked，需要满足其一：
