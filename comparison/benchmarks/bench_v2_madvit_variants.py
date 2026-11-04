@@ -6,7 +6,7 @@ forward and change only the scoring function:
   Full        : all 12 skip-connection feature losses + CLS/DIST token KL
                 (exactly multi_layer_distillation_loss in the repo)
   Multi-layer : all 12 feature losses, no token KL
-  Last-layer  : final CLS/DIST token KL only (paper Sec. 4.4)
+  Last-layer  : final CLS/DIST token KL only (paper Sec. 5.4)
 
 Multi-layer / Last-layer share the same forward graph and are reconstructed
 from the paper ablation; results are labelled adapted.
@@ -76,7 +76,7 @@ class MADVariant(nn.Module):
         if self.mode == 'Multi-layer':
             return self._feature_loss(t_feats, s_feats)
         if self.mode == 'Last-layer':
-            # Paper Sec. 4.4: "Last-layer tokens only" = final CLS/DIST token loss only.
+            # Paper Sec. 5.4: "Last-layer tokens only" = final CLS/DIST token loss only.
             return self._token_loss(t_tok, s_tok)
         raise ValueError(self.mode)
 
@@ -122,7 +122,7 @@ def main():
             'frozen_inference_params_m': pt / 1e6,
             'benchmark_source': str(out_path.relative_to(ROOT)),
             'notes': (
-                f'Scoring variant {mode}. Definitions from MADViT paper Sec. 4.4: '
+                f'Scoring variant {mode}. Definitions from MADViT paper Sec. 5.4: '
                 'Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses '
                 'only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_'
                 'distillation_loss; Multi-layer/Last-layer share the same forward graph and only '

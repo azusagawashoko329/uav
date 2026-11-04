@@ -1,6 +1,6 @@
 # v2 FLOPs 计数器验证记录（2026-11-04）
 
-协议：[BENCHMARK_PROTOCOL.md](../BENCHMARK_PROTOCOL.md) v2。本轮先用 GANomaly（反卷积）、MemAE（3D 卷积/反卷积）、GLoRD V0（Attention）做小规模验证，再跑正式 50 warmup + 3×500。
+协议：[BENCHMARK_PROTOCOL.md](../BENCHMARK_PROTOCOL.md) v2。本轮先用 GANomaly（反卷积）、MemAE（3D 卷积/反卷积）、GLoRD V0（Attention）做小规模验证，再跑正式 50 warmup + 3×500。逐方法的 **公平性/paper-matched 复核**见 [fairness_audit.md](fairness_audit.md)：`measured` 只表示测速完成，不等于与论文 AUC 配置一致。
 
 ## 1. 计数器实现
 
@@ -43,7 +43,7 @@
 
 ANDT 的适配方式是 `de_dense(feat[:,0])` 预测下一帧（发布代码 decoder 只支持 1 帧），因此这一行是 **adapted**，不是 official；详见 [ANDT/default/README.md](ANDT/default/README.md)。
 
-MADViT Full / Multi-layer / Last-layer 共享同一 teacher+student 前向图；FLOPs 都是 38.533G，差异只在 scoring（论文 Sec. 4.4）：Full=全层 feature+token，Multi=全层 feature only，Last=final token only。
+MADViT Full / Multi-layer / Last-layer 共享同一 teacher+student 前向图；FLOPs 都是 38.533G，差异只在 scoring（论文 Sec. 5.4）：Full=全层 feature+token，Multi=全层 feature only，Last=final token only。
 
 DINOv3 teacher 的融合 Attention 还做了独立公式核对：12 blocks × `4·L²·E`（L=261 tokens，E=768）= **2,511,212,544 FLOPs**，与计数器 `aten._scaled_dot_product_efficient_attention` 完全一致。
 
@@ -85,7 +85,7 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 - ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1 / 197.5 FPS@BS16；不是官方代码。
 - 额外方法：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/3.668ms/269.7 FPS；ASTT 109.416G/19.048ms/52.2 FPS；DAD-FSM 71.194G/12.684ms/78.5 FPS；HSTforU 168.209G/64.258ms/15.5 FPS。
-- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 4.4 改 scoring 的 adapted reconstruction。
+- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 5.4 改 scoring 的 adapted reconstruction。
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
 - 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
@@ -102,7 +102,7 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 `MADViT/code/train_val_VIT_Distillation.py` 只有一条评分路径：`multi_layer_distillation_loss` 对全部 12 个 teacher/student skip connection 做 cosine loss，再加 CLS/DIST token KL loss。代码里没有 Full / Multi-layer / Last-layer 参数或层选择开关。
 
-论文 PDF（本地 `Comparison method/MADViT/...pdf`）Sec. 4.4 的定义：
+论文 PDF（本地 `Comparison method/MADViT/...pdf`）Sec. 5.4 的定义：
 
 - `Full`：全层 feature loss + final CLS/DIST token loss（代码默认路径）；
 - `Multi-layer`：只做全层 feature loss，不做 token loss；

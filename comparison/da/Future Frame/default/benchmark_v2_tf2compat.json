@@ -19,11 +19,11 @@
   "da_adapted": false,
   "auc_source": "user table / paper",
   "inference_params_m": 7.704195,
-  "training_trainable_params_m": 7.704195,
-  "training_only_params_m": 0.0,
+  "training_trainable_params_m": 14.535684,
+  "training_only_params_m": 6.831489,
   "frozen_inference_params_m": 0.0,
   "benchmark_source": "comparison/da/Future Frame/default/benchmark_v2_tf2compat.json",
-  "notes": "Official TF1 generator (U-Net), 4 frames -> next frame; inference does not use FlowNet. No official checkpoint; random init. Model code unchanged; TF2.20 contrib shims only. FLOPs from TF1.15 profiler on identical graph; params exact-match TF1. Timing is runtime-adapted, not TF1.15.",
+  "notes": "Official TF1 generator (U-Net), 4 frames -> next frame; inference does not use FlowNet. No official checkpoint; random init. Model code unchanged; TF2.20 contrib shims only. FLOPs from TF1.15 profiler on identical graph; params exact-match TF1. Timing is runtime-adapted, not TF1.15. Global default training config (adversarial=True, LAM_ADV=0.05 in every shipped hyper_params.ini section) trains generator + discriminator; D has 6.831M trainable params, so training trainable = 14.536M while inference is G-only 7.704M. DA-specific LAM_ADV is not present in the repo and remains unconfirmed.",
   "profiling_config": "NVIDIA RTX 5880 Ada Generation (GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6); FP32; TF2.20 runtime-adapted; BS1 50/500/3; BS16 50/500/3; TF Session.run is synchronous",
   "gpu": "NVIDIA RTX 5880 Ada Generation",
   "gpu_uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6",
@@ -1575,5 +1575,8 @@
     "tf2_params": 7704195,
     "tf1_params": 7704195,
     "match": true
-  }
+  },
+  "timing_scope": "prediction_tensor_only",
+  "scoring_included": false,
+  "scoring_note": "Official PSNR between predicted and ground-truth next frame is not included; current latency/FPS is prediction-only."
 }

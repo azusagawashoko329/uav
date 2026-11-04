@@ -17,7 +17,7 @@ def multi_layer_distillation_loss(teacher_feats, teacher_token, student_feats, s
 - 评估时调用同一个 `multi_layer_distillation_loss`；
 - 没有 `full/multi/last` 参数、没有层选择开关、没有三个 checkpoint 目录。
 
-## 论文定义（Sec. 4.4）
+## 论文定义（Sec. 5.4）
 
 论文 PDF 的 ablation 对三个变体给了明确定义：
 

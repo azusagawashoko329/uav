@@ -226,6 +226,10 @@ Future Frame / MLEP 的官方 TF1.15 运行时在 RTX 5880（sm_89）上无法�
 - 主表引用时用 `P50@BS1 + runtime-adapted` 脚注，不能覆盖官方 TF1.15 行，也不能把 TF2 数字写成论文 TF1 数字；
 - 注明 TF `Session.run` 是同步的，BS16 排队方式与 PyTorch 异步 launch 不完全相同。
 
+### 9.2 measured 与 paper-matched 分开
+
+`measured` 只说明 v2 测速协议完成；**不等于**被测图/输入/评分与论文 AUC 所用配置一致。后者单独称 `paper-matched`，必须能从官方代码、配置或论文证明；无法证明时在 `notes`/论文表中标 `original-repo config`、`adapted`、`reconstructed` 或 `unconfirmed`。禁止仅因“都用了同一个网络名字”就把 `measured` 写成 `paper-matched`。逐方法判定见 [da/fairness_audit.md](da/fairness_audit.md)。
+
 ## 10. 表头与记录字段
 
 ### 10.1 主表表头
@@ -282,7 +286,7 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 - **MemAE**：已核实原测试每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），`K=1, stride=1`；v2 全窗口 FLOPs=70.808G，旧 `÷16` 废弃。
 - **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
 - **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。
-- **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 4.4 实现 adapted scoring 并完成测量。
+- **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 5.4 实现 adapted scoring 并完成测量。
 - **HSTforU**：已用 mmcv-lite 2.x + 兼容 shim（runner/parrots/UPSAMPLE_LAYERS）完成测量：168.209G / 64.258ms / 15.5 FPS@BS1。
 - **Future Frame / MLEP**：TF1 代码；已在 `uav_tf1` 环境构建推理图并得到 params/FLOPs（Future Frame 7.704M/74.476G；MLEP 12.561M/319.513G）。官方权重链接失效、官方 TF1.15 CUDA10 在 5880 的 GPU latency 无法按协议完成，官方记录标 `partial/unverified`。另用 TF2.20（CUDA12.5/cuDNN9）+ contrib shim 跑同一官方图，得到 runtime-adapted latency（Future Frame 5.467ms/180.8 FPS@BS1；MLEP 11.538ms/82.0 FPS@BS1）；TF2 图参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍 `partial/unverified`，不能冒充官方 TF1.15。
 - **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：只有用户表数字，`paper-only`，不参与本机速度排序。

@@ -295,7 +295,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 额外方法限制：
 
 - LightViT-AD：teacher 冻结、student 可训练；benchmark 用随机初始化，无 checkpoint。
-- MADViT：代码只有一条 all-layer + token 评分路径；Full 是代码默认，Multi-layer/Last-layer 按论文 Sec. 4.4 用同一前向图替换 scoring 重建，标 adapted。
+- MADViT：代码只有一条 all-layer + token 评分路径；Full 是代码默认，Multi-layer/Last-layer 按论文 Sec. 5.4 用同一前向图替换 scoring 重建，标 adapted。
 - ST Dissoc.：`padding=False` 在现代 PyTorch 下按 0 处理；输入 5 帧拼接为 15 通道。
 - ASTT：测的是 `model_ste_tte.py`（STE-TTE），384×384×4，无 checkpoint。
 - DAD-FSM：RGB + 分割双流，ResNet50 预训练权重未带，随机初始化；FLOPs/latency 与权重无关。
@@ -308,7 +308,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - MemAE `K`：确认为 `K=1, stride=1`，旧 `÷16` 废弃。
 - MKD：已改为 taps 6/9/12 多层评分，旧最终层距离废弃。
 - ANDT：官方 6 帧 decoder 仍不可用；已用 adapted `de_dense(feat[:,0])` 测 `T=6,K=1,stride=1`，70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1，标 adapted，不冒充 official。
-- 新增完成：LightViT-AD、MADViT Full（code default）、ST Dissoc.、ASTT（STE-TTE）、DAD-FSM；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 4.4 实现 adapted scoring 并完成测量。
+- 新增完成：LightViT-AD、MADViT Full（code default）、ST Dissoc.、ASTT（STE-TTE）、DAD-FSM；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 5.4 实现 adapted scoring 并完成测量。
 
 仍未完成：
 

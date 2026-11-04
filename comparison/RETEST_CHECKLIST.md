@@ -1,5 +1,7 @@
 # 逐方法待重测清单（v2）
 
+> **公平性复核**：`measured` 只表示测速完成，不等同于 `paper-matched`；逐方法证据和需脚注/需重测清单见 [da/fairness_audit.md](da/fairness_audit.md)。
+>
 > **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
 > MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
@@ -100,11 +102,11 @@
 | DAD-FSM | measured | 71.194G / 12.684ms / 78.5 FPS@BS1；RGB+分割双流，ResNet50 随机初始化 |
 | HSTforU | measured | 168.209G / 64.258ms / 15.5 FPS@BS1；mmcv-lite 2.x + 兼容 shim |
 | MADViT Full | measured | code default：38.533G / 11.525ms / 83.9 FPS@BS1 |
-| MADViT Multi-layer / Last-layer | measured (adapted scoring) | 按论文 Sec. 4.4：Multi=全层 feature only；Last=final token only；同一前向图 |
+| MADViT Multi-layer / Last-layer | measured (adapted scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图 |
 | LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
 - [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
-- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 已按论文 Sec. 4.4 实现 adapted scoring 并完成测量
+- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 已按论文 Sec. 5.4 实现 adapted scoring 并完成测量
 - [x] Future Frame/MLEP 已补 TF2.20 runtime-adapted 计时（官方 TF1.15 latency 仍受 CUDA10/sm_89 限制）；adVAE 仍待视频实现
 
 ## 8. Paper-only 方法（不重测，单独表）

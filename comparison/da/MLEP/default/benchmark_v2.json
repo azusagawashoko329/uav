@@ -53,5 +53,8 @@
   "iterations": 0,
   "rounds": 0,
   "benchmark_source": "comparison/da/MLEP/default/benchmark_v2.json",
-  "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value."
+  "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value.",
+  "timing_scope": "prediction_tensor_only",
+  "scoring_included": false,
+  "scoring_note": "Official PSNR between predicted and ground-truth next frame is not included; current latency/FPS is prediction-only."
 }

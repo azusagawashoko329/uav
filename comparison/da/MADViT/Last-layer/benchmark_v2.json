@@ -18,7 +18,7 @@
   "training_only_params_m": 0.0,
   "frozen_inference_params_m": 88.636264,
   "benchmark_source": "comparison/da/MADViT/Last-layer/benchmark_v2.json",
-  "notes": "Scoring variant Last-layer. Definitions from MADViT paper Sec. 4.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation.",
+  "notes": "Scoring variant Last-layer. Definitions from MADViT paper Sec. 5.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation.",
   "protocol_version": 2,
   "measurement_status": "measured",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",

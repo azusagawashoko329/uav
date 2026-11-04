@@ -16,8 +16,11 @@
 | Inference / Trainable Params | 12.561M / 12.561M |
 | Training-only Params | 0 |
 | FLOPs | 319.513G/output frame |
+| Latency/FPS 口径 | **Prediction-only**（只到 prediction net 输出；未含官方 PSNR 评分） |
 
 MLEP 的 margin learning 是训练目标；本表只测推理用的 prediction net（`use_decoder=True`），不把训练期的 margin/三元组计算塞进推理 FLOPs。
+
+**评分口径**：官方 `inference.py` 在 prediction net 输出后还要对 ground-truth 下一帧计算 PSNR（`utils.util.psnr_error`），当前 benchmark 只计时到预测图像张量，没有包含 PSNR。因此主表/本 README 的 latency/FPS 应读作 **Prediction-only**；包含 PSNR 的 per-anomaly-score 计时仍需补测。
 
 ## 2. 为什么官方 TF1.15 的 latency 拿不到
 

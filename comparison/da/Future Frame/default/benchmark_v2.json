@@ -16,8 +16,8 @@
   "da_adapted": false,
   "auc_source": "user table / paper (DA-adapted baseline)",
   "inference_params_m": 7.704195,
-  "training_trainable_params_m": 7.704195,
-  "training_only_params_m": 0.0,
+  "training_trainable_params_m": 14.535684,
+  "training_only_params_m": 6.831489,
   "frozen_inference_params_m": 0.0,
   "flops_g_per_output_frame": 74.476028824,
   "flops_window_g": 74.476028824,
@@ -53,5 +53,8 @@
   "iterations": 0,
   "rounds": 0,
   "benchmark_source": "comparison/da/Future Frame/default/benchmark_v2.json",
-  "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value."
+  "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value. Global default training config (adversarial=True, LAM_ADV=0.05 in every shipped hyper_params.ini section) trains generator + discriminator; D has 6.831M trainable params, so training trainable = 14.536M while inference is G-only 7.704M. DA-specific LAM_ADV is not present in the repo and remains unconfirmed.",
+  "timing_scope": "prediction_tensor_only",
+  "scoring_included": false,
+  "scoring_note": "Official PSNR between predicted and ground-truth next frame is not included; current latency/FPS is prediction-only."
 }
