@@ -1,0 +1,39 @@
+=== V0 rd_s12_t4_h512 ===
+STAGE:2026-11-04 14:07:34 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:07:34 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:07:34 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s12_t4_h512", "variant": "rd_s12_t4_h512", "label": "V0", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 174.72032, "trainable_params_m": 89.079104, "teacher_params_m": 85.641216, "flops_g": 90.20491064, "latency_bs1_p50_ms": 17.800167988752946, "latency_bs1_mean_ms": 17.02598390332423, "latency_bs1_p95_ms": 18.202567007392645, "fps_bs1": 58.733756925774806, "fps_bs16": 193.8748543401172, "bs16_round_times_s": [39.42988462600624, 41.263731839950196, 42.27153994498076]}
+=== V1 rd_s4_t12_h512 ===
+STAGE:2026-11-04 14:10:07 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:10:07 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:10:07 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s4_t12_h512", "variant": "rd_s4_t12_h512", "label": "V1", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 125.900096, "trainable_params_m": 40.25888, "teacher_params_m": 85.641216, "flops_g": 65.240413264, "latency_bs1_p50_ms": 18.671552505111322, "latency_bs1_mean_ms": 18.760414385197993, "latency_bs1_p95_ms": 19.354867050424218, "fps_bs1": 53.3037266377763, "fps_bs16": 249.1504680446173, "bs16_round_times_s": [31.320946113963146, 32.109110862948, 32.53908755100565]}
+=== V2 rd_s4_t12_gl768_h512 ===
+STAGE:2026-11-04 14:12:15 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:12:16 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:12:16 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s4_t12_gl768_h512", "variant": "rd_s4_t12_gl768_h512", "label": "V2", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 115.889216, "trainable_params_m": 30.248, "teacher_params_m": 85.641216, "flops_g": 60.118774864, "latency_bs1_p50_ms": 18.648271507117897, "latency_bs1_mean_ms": 18.742543327622116, "latency_bs1_p95_ms": 19.53512500040233, "fps_bs1": 53.35455186203222, "fps_bs16": 264.0826093205221, "bs16_round_times_s": [29.561604724032804, 30.293551023991313, 30.591567480005324]}
+=== V3 rd_s4_t12_gl192_h512 ===
+STAGE:2026-11-04 14:14:18 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:14:18 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:14:18 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s4_t12_gl192_h512", "variant": "rd_s4_t12_gl192_h512", "label": "V3", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 93.359552, "trainable_params_m": 7.718336, "teacher_params_m": 85.641216, "flops_g": 48.595088464, "latency_bs1_p50_ms": 18.62022851128131, "latency_bs1_mean_ms": 18.72500878913949, "latency_bs1_p95_ms": 19.454824971035123, "fps_bs1": 53.404514318839745, "fps_bs16": 318.1825780234016, "bs16_round_times_s": [24.688252288033254, 25.142797100008465, 25.414947554992978]}
+=== V4 rd_s4_t12_gl192_h128 ===
+STAGE:2026-11-04 14:16:04 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:16:04 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:16:04 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s4_t12_gl192_h128", "variant": "rd_s4_t12_gl192_h128", "label": "V4", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 89.795648, "trainable_params_m": 4.154432, "teacher_params_m": 85.641216, "flops_g": 46.770566224, "latency_bs1_p50_ms": 18.656119995284826, "latency_bs1_mean_ms": 18.74991122846647, "latency_bs1_p95_ms": 19.30966496001929, "fps_bs1": 53.333585840224195, "fps_bs16": 325.04710167733083, "bs16_round_times_s": [24.113066444988362, 24.611817668017466, 24.864043407025747]}
+=== V5 rd_s4_t12_gl192_h128_qr2 ===
+STAGE:2026-11-04 14:17:50 3093331:3093331 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:17:50 3093331:3093331 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:17:50 3093331:3093331 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"id": "da-ours-rd_s4_t12_gl192_h128_qr2", "variant": "rd_s4_t12_gl192_h128_qr2", "label": "V5", "input": "256x256x1 (RGB)", "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3, "total_params_m": 89.402438, "trainable_params_m": 3.761222, "teacher_params_m": 85.641216, "flops_g": 46.572385385, "latency_bs1_p50_ms": 19.63848900049925, "latency_bs1_mean_ms": 19.73242728423793, "latency_bs1_p95_ms": 20.42246301425621, "fps_bs1": 50.67800253843025, "fps_bs16": 323.7066787219657, "bs16_round_times_s": [24.16726000496419, 24.713731677038595, 24.93599681201158]}
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_ours.json
+| ID | total M | trainable M | FLOPs G | Latency P50 ms | FPS BS1 | FPS BS16 |
+|---|---:|---:|---:|---:|---:|---:|
+| da-ours-rd_s12_t4_h512 | 174.720 | 89.079 | 90.205 | 17.800 | 58.7 | 193.9 |
+| da-ours-rd_s4_t12_h512 | 125.900 | 40.259 | 65.240 | 18.672 | 53.3 | 249.2 |
+| da-ours-rd_s4_t12_gl768_h512 | 115.889 | 30.248 | 60.119 | 18.648 | 53.4 | 264.1 |
+| da-ours-rd_s4_t12_gl192_h512 | 93.360 | 7.718 | 48.595 | 18.620 | 53.4 | 318.2 |
+| da-ours-rd_s4_t12_gl192_h128 | 89.796 | 4.154 | 46.771 | 18.656 | 53.3 | 325.0 |
+| da-ours-rd_s4_t12_gl192_h128_qr2 | 89.402 | 3.761 | 46.572 | 19.638 | 50.7 | 323.7 |

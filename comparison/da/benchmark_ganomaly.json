@@ -1,0 +1,26 @@
+{
+  "method": "GANomaly",
+  "input": "256x256x1 (RGB)",
+  "total_params_m": 143.950208,
+  "trainable_params_m": 188.689536,
+  "training_only_params_m": 44.739328,
+  "notes": "inference graph G=143.950M; D is training-only 44.739M; trainable column includes G+D.",
+  "flops_g_per_output_frame": 10.951852032,
+  "latency_bs1_p50_ms_per_output_frame": 13.356802519410849,
+  "latency_bs1_mean_ms_per_output_frame": 13.358336160425097,
+  "latency_bs1_p95_ms_per_output_frame": 13.390342995990068,
+  "fps_bs1": 74.85962233549432,
+  "fps_bs16": 622.7452846759729,
+  "bs16_round_times_s": [
+    12.781291613006033,
+    12.846343757002614,
+    12.881580489047337
+  ],
+  "gpu": "NVIDIA RTX 5880 Ada Generation",
+  "torch": "2.1.0+cu121",
+  "cuda": "12.1",
+  "precision": "fp32; amp off; tf32 off",
+  "warmup": 50,
+  "iterations": 500,
+  "rounds": 3
+}

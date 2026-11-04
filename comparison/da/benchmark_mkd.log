@@ -1,0 +1,5 @@
+STAGE:2026-11-04 14:24:41 3098449:3098449 ActivityProfilerController.cpp:312] Completed Stage: Warm Up
+STAGE:2026-11-04 14:24:41 3098449:3098449 ActivityProfilerController.cpp:318] Completed Stage: Collection
+STAGE:2026-11-04 14:24:41 3098449:3098449 ActivityProfilerController.cpp:322] Completed Stage: Post Processing
+{"method": "MKD", "input": "128x128x1 (RGB; MVTec config)", "total_params_m": 15.058672, "trainable_params_m": 0.343984, "notes": "source VGG16 features frozen; cloner cfg B trainable; 128x128 per MKD MVTec config; DA may adapt to 256.", "flops_g_per_output_frame": 10.4767488, "latency_bs1_p50_ms_per_output_frame": 2.2731579665560275, "latency_bs1_mean_ms_per_output_frame": 2.2577612271998078, "latency_bs1_p95_ms_per_output_frame": 2.3274659761227667, "fps_bs1": 442.91663261497837, "fps_bs16": 3554.410858362434, "bs16_round_times_s": [2.2126216900069267, 2.2507246119785123, 2.2665596769656986], "gpu": "NVIDIA RTX 5880 Ada Generation", "torch": "2.1.0+cu121", "cuda": "12.1", "precision": "fp32; amp off; tf32 off", "warmup": 50, "iterations": 500, "rounds": 3}
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_mkd.json

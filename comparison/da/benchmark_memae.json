@@ -1,0 +1,25 @@
+{
+  "method": "MemAE",
+  "input": "256x256x16 (RGB clip, T=16)",
+  "total_params_m": 6.503171,
+  "trainable_params_m": 6.503171,
+  "notes": "MemDim=2000, C=3; 16 output frames per clip; metrics divided by T=16.",
+  "flops_g_per_output_frame": 0.065664,
+  "latency_bs1_p50_ms_per_output_frame": 0.43685765740519855,
+  "latency_bs1_mean_ms_per_output_frame": 0.43724716145758674,
+  "latency_bs1_p95_ms_per_output_frame": 0.44017618711222894,
+  "fps_bs1": 2287.036001940977,
+  "fps_bs16": 2192.9874295871155,
+  "bs16_round_times_s": [
+    57.66326201497577,
+    58.36786762799602,
+    58.55447742796969
+  ],
+  "gpu": "NVIDIA RTX 5880 Ada Generation",
+  "torch": "2.1.0+cu121",
+  "cuda": "12.1",
+  "precision": "fp32; amp off; tf32 off",
+  "warmup": 50,
+  "iterations": 500,
+  "rounds": 3
+}

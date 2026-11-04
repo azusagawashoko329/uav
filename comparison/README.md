@@ -87,6 +87,12 @@ python comparison/check_comparisons.py
 
 它们指向 `experiments/da/appearance/20261103_variant_matrix_*` 的原始 30 epoch / seed42 实验；对比条目只复制 `results/summary.{json,md}`，完整逐帧分数与 checkpoint 仍以原始实验目录为准。数据来源与泄漏审计见 [20261103_variant_matrix_data_audit.md](../experiments/da/appearance/20261103_variant_matrix_data_audit.md)。
 
+## 轻量化对比
+
+- 公平口径：[BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md)（同一张 5880 Ada、FP32、关闭 AMP/TF32、BS1 P50、BS16 连续吞吐、含教师/时序/光流）。
+- DA 总表：[da/comparison_summary.md](da/comparison_summary.md)。
+- 实测脚本：`comparison/benchmarks/bench_ours.py`、`comparison/benchmarks/bench_external.py`。
+
 ## 当前 DA 对比矩阵
 
 `comparison/INDEX.md` 会列出：
