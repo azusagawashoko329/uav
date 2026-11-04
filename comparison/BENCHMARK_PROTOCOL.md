@@ -60,6 +60,7 @@
 - **MKD**：原方法是多层特征评分，不能只用最终层特征距离代替完整模型；重测时必须按原代码的 source/cloner 多层特征与评分实现。当前 v1 的“最终层距离”只能标 `partial/unverified`。
 - **GANomaly**：推理图只走 G（`encoder1 → decoder → encoder2`）；D 是 training-only，不计入推理 FLOPs，但要在参数量列和 Notes 里单列。
 - **Ours**：包含 DINOv3 教师 + OCBE + student + `anomaly_readouts` 打分；不能只算学生子网。
+- **Teacher tap 不是计算裁剪**：tap 是“取哪几层特征”的输出选择，不是只运行这几层。V0 取 `[5,7,9,11]` 时，要得到第 11 层特征，Transformer 仍必须前向 `0..11` 的所有 block；FLOPs 按实际前向层数计，不能按“4 个 tap × 单层”算。能省的是未用 tap 的特征保存/后处理，不是得到第 11 层所必需的前向计算。
 
 ### 3.2 单位与基本约定
 
@@ -89,17 +90,17 @@
 - 在时延中实际包含；
 - 如果某个实现把这些算子做成大矩阵乘（例如用 matmul 实现 distance），要按实际算子计入。
 
-### 3.4 计数流程与交叉检查
+### 3.4 计数流程与验收
 
 1. **固定计算图**：同一代码 commit、同一输入 `H×W×T`、同一权重状态、同一分支（teacher 的 tap 数、是否 scoring、是否 DA 适配都要一致）。
 2. **算子计数器**：用模块 forward hook 覆盖 `Conv2d/ConvTranspose2d/Conv3d/ConvTranspose3d/Linear`，并包装 `torch.matmul/bmm/einsum/scaled_dot_product_attention`；逐模块记录 `op_type, module_name, input_shape, output_shape, MACs`。
-3. **Profiler 交叉检查**：同一图跑 `torch.profiler(with_flops=True)`，`sum(event.flops)`；profiler 只作交叉检查，不能单独作为 Full FLOPs 的唯一依据。
-4. **手工公式**：对主干（教师/编码器/解码器）按上表公式估算，三者应一致。
-5. **一致性阈值**：计数器与 profiler 差异 **≤ 1%** 才可视为通过；超过 1% 必须定位漏计/重计算子。
-6. **无法覆盖时**：`flops_verified=false`，`flops_ops_missing` 列出漏计算子，`Status=partial/unverified`；**严禁把不完整值写成 Full FLOPs 或标 measured**。
-7. **保存明细**：新结果 JSON 必须含 `flops_breakdown`（逐模块/逐算子 MACs）和 `flops_ops_covered` / `flops_ops_missing`；主表只引用通过检查的 `flops_g_per_output_frame`。
+3. **Profiler 只比共同支持的算子**：同一图跑 `torch.profiler(with_flops=True)`；**只对计数器与 profiler 都支持、且能一一对齐的算子**（通常是 `Conv2d`、`Linear`、未被融合的 `MatMul/BMM`）按算子类别/模块比较，共同子集差异 **≤1%**。不能拿“完整计数器总数”与“不完整 profiler 总数”相比，也不要求两者总 FLOPs 相等。
+4. **独立公式核验 profiler 盲区**：对 `ConvTranspose2d/3d`、`Conv3d`、融合 `scaled_dot_product_attention`、自定义 kernel 等 profiler 漏计/无法拆分的算子，用计数器按实际输入输出形状计算，并用上表公式独立核对；每个盲区算子的 MACs 单独列出。MemAE 这类 3D 反卷积模型，完整计数器与 profiler 总数相差很大是正常的，不能因此判失败。
+5. **完整 FLOPs 的定义**：`Full FLOPs = Σ(所有已验证 MAC 算子的 MACs) × 2`。它**不要求**等于 profiler 总数；profiler 只用于共同子集核验。某算子无法核验时，`flops_verified=false`、`flops_ops_missing` 列出该算子、`Status=partial/unverified`；**严禁把不完整值写成 Full FLOPs 或标 measured**。
+6. **防重复计数**：同一次矩阵乘只能走一条计数路径。Module hook 已经计过的 `Linear/Conv`，Attention 包装不能再把同一 QK/AV 计一次；`scaled_dot_product_attention` 若内部由 matmul 组成，不能同时由 matmul 包装和 SDPA 包装累计。用 `op_id`（module + 调用序号 + 输入/输出 shape）或调用栈去重；共同子集与 profiler 的偏差若表现为整数倍，优先查重复计数。
+7. **保存明细**：新结果 JSON 必须含 `flops_breakdown`（逐模块/逐算子 MACs）、`flops_ops_covered` / `flops_ops_missing`、`flops_common_subset_check`（共同子集差异）和 `flops_duplicate_check`（去重说明）；主表只引用通过检查的 `flops_g_per_output_frame`。
 
-> 已知坑：`torch.profiler(with_flops=True)` 在 `torch.inference_mode()` 下可能拿不到 FLOPs（本仓库 v1 曾出现 0.0）；计数阶段改用 `torch.no_grad()`，计时阶段仍用 `inference_mode()`，并记录这一差异。
+> 已知坑：`torch.profiler(with_flops=True)` 在 `torch.inference_mode()` 下可能拿不到 FLOPs（本仓库 v1 曾出现 0.0）；计数阶段改用 `torch.no_grad()`，计时阶段仍用 `inference_mode()`，并记录这一差异。Profiler 对 `ConvTranspose*`/`Conv3d`/融合 Attention 的覆盖不完整，不能把它的总数当作 Full FLOPs 的验收基准。
 
 ## 4. 时序方法：T、K、stride 必须分开
 
@@ -109,18 +110,21 @@
 | `K` | 一个窗口产生的**有效输出异常分数**数，**不能默认等于 T** | ANDT 6 帧预测下一帧：`K=1`；6 帧重建并逐帧打分：可能 `K=6`；MemAE 原测试若只产 clip 级误差：`K=1` |
 | `stride` | 窗口每次前进的原始视频帧数；`stride < T` 为重叠窗口 | 非重叠 `stride=T`；逐帧滑动 `stride=1` |
 | `window_flops_g` | 一个窗口的 FLOPs | 由 §3 测得 |
-| `window_latency_ms` | 一个窗口的时延 | BS1 一次窗口前向 |
+| `window_latency_ms` | 一个窗口的 BS1 **Mean** 时延 | 与 `latency_bs1_mean_ms_per_output_frame × K` 对齐 |
 | `flops_g_per_output_frame` | `window_flops_g / K` | 主表列 |
 | `latency_bs1_*_ms_per_output_frame` | `window_latency_ms / K` | 主表列 |
 | `fps_independent_window` | `K · 1000 / window_latency_mean_ms`（BS1） | 把每个窗口当独立样本、消费全部 K 个分数 |
-| `fps_stream` | `stride · 1000 / window_latency_mean_ms`（BS1） | 真实视频流每秒能推进的原始帧数 |
-| `score_coverage` | `K / stride` | `K < stride` 时有些帧没有分数，必须报告 |
+| `score_density` | `K / stride` | 每个输入帧平均对应多少个分数；可 >1（重叠/多分数），**不是帧覆盖率** |
+| `frame_coverage` | 实际收到至少一个分数的原始帧数 / 总帧数 | 0..1；必须按原方法的分数映射、窗口重叠和融合方式计算，不能由 `K/stride` 推出 |
+| `fps_stream_estimated` | `stride · 1000 / window_latency_mean_ms`（BS1） | **按窗口步长推算**的流吞吐估计，不是实测真实流吞吐 |
+| `fps_stream_measured` | 连续视频流测试的实际原始帧/秒 | 只有真正跑了连续流测试才填；否则 `null` |
 
 规则：
 
 - **不能默认 `K=T`**。必须从原方法测试/打分代码确认：窗口输出的是逐帧分数、clip 级分数，还是只预测下一帧。
-- 重叠窗口必须同时报告 **独立窗口吞吐** 和 **真实视频流吞吐**；两者不能混为一个 FPS。
-- BS16 同理：`FPS@BS16 = 16 · K · 500 / median(round_time)`（输出分数/秒）；另报 `stream_FPS@BS16 = 16 · stride · 500 / median(round_time)`（原始帧/秒）。
+- **`score_density` 与 `frame_coverage` 是两件事**：例如 `T=16, stride=1, K=16` 时 `score_density=16`（平均每输入帧 16 个分数），但 `frame_coverage` 最多是 `1.0`（100%），不可能是 1600%。`K<stride` 也不必然导致 `frame_coverage<1`，因为分数映射/融合可能把分数分配给多帧；必须按原方法计算 `frame_coverage`。
+- 重叠窗口必须同时报告 **独立窗口吞吐** 和 **流吞吐估计**；两者不能混为一个 FPS。若没有实际连续流测试，只能写 `fps_stream_estimated`，**不能声称已实测 `fps_stream_measured`**。
+- BS16 同理：`FPS@BS16 = 16 · K · 500 / median(round_time)`（输出分数/秒）；另报 `stream_FPS@BS16_estimated = 16 · stride · 500 / median(round_time)`（原始帧/秒）；只有实际连续流测试才另报 measured。
 - 时序方法的主表 `Latency@BS1 P50` 按 output score 摊销；同时保留 `window_latency_ms`，避免把窗口时延伪装成单帧时延。
 - **MemAE**：代码当前返回 `B×T` 的逐帧残差，但原论文测试可能生成 clip 级误差。现有 v1 的 `÷16` 结果**先标 `partial/unverified`**；重测时先核对原测试脚本的 `K`，再决定 `K=1` 还是 `K=T`，不得沿用旧除法。
 - **ANDT**：论文 6 帧预测模型 `T=6, K=1, stride=1`；如果测的是 1 帧重建代码变体，必须标 `code-variant-1frame`，不能和论文 6 帧模型混表。
@@ -158,14 +162,14 @@
 
 - **`FPS@BS1 = 1000 / mean_latency_ms`**（输出分数/秒）。
 - 注意：**P50 和 Mean 是两个统计量**。主表 Latency 用 P50，FPS@BS1 用 Mean；不能拿 P50 反算 FPS 再声称一致。
-- 时序方法：`FPS@BS1 = K · 1000 / mean_window_latency_ms`；另报 `stream_FPS@BS1 = stride · 1000 / mean_window_latency_ms`。
+- 时序方法：`FPS@BS1 = K · 1000 / mean_window_latency_ms`；另报 `fps_stream_estimated = stride · 1000 / mean_window_latency_ms`（未做连续流测试时只能叫 estimated）。
 
 ### 6.3 FPS@BS16
 
 - `batch=16`，连续执行多个 batch；**只在整轮结束时同步**，不要每个 batch 强制同步。
 - 预热 50 个 batch；正式 500 个 batch；重复 3 轮。
 - `FPS@BS16 = 16 · K · 500 / median(round_time_s)`（输出分数/秒）。
-- 时序方法另报 `stream_FPS@BS16 = 16 · stride · 500 / median(round_time_s)`（原始帧/秒）。
+- 时序方法另报 `stream_FPS@BS16_estimated = 16 · stride · 500 / median(round_time_s)`（原始帧/秒）；只有实际连续流测试才另报 measured。
 - 保存 `bs16_round_times_s` 原始三轮时间。
 
 ### 6.4 环境记录
@@ -203,11 +207,12 @@ AUC 和效率是两条独立证据，**不能暗示来自同一配置**：
 
 `measured` 的硬性条件：
 
-- `flops_verified=true` 且 `flops_ops_missing` 为空；
+- `flops_verified=true`、`flops_ops_missing` 为空，且 `flops_common_subset_check`/`flops_duplicate_check` 已记录；
 - `code_commit` 为完整 SHA；
 - `input_hwt`、`weights_state`、`da_adapted`、`auc_source`、`profiling_config` 均非空；
 - `input_frames_t`、`effective_output_scores_k`、`window_stride` 均非空且已核实；
-- `T>1` 时还必须有 `window_latency_ms`、`flops_window_g`、`fps_independent_window`、`fps_stream`、`score_coverage`；
+- `score_density`、`frame_coverage`、`fps_stream_estimated` 均非空且已核实（单帧方法为 1.0/1.0/同 FPS）；`fps_stream_measured` 只有实际连续流测试才填；
+- `T>1` 时还必须有 `window_latency_ms`、`flops_window_g`、`fps_independent_window`；
 - 原始 BS1/BS16 耗时已保存到结果 JSON；
 - 参数量三列均为非空数值。
 
@@ -228,7 +233,8 @@ AUC mean ↑ | Status
 
 ```
 Method | T | K | stride | window FLOPs (G) | window Latency (ms) |
-FPS independent-window ↑ | FPS stream (frames/s) ↑ | score coverage | Status
+score density (K/stride) | frame coverage | FPS independent-window ↑ |
+fps_stream_estimated (frames/s) ↑ | fps_stream_measured (frames/s) | Status
 ```
 
 ### 10.3 配置/来源附表
@@ -240,7 +246,7 @@ AUC source | profiling config | benchmark source
 
 ### 10.4 机器字段
 
-`record.json` 的可选 `efficiency` 对象字段定义见 [SCHEMA.md](SCHEMA.md)；原始 benchmark JSON 的字段命名必须与主表/附表一致，并含 `protocol_version: 2`、`measurement_status`、`flops_verified`、`flops_ops_covered/missing`、`flops_breakdown`。
+`record.json` 的可选 `efficiency` 对象字段定义见 [SCHEMA.md](SCHEMA.md)；原始 benchmark JSON 的字段命名必须与主表/附表一致，并含 `protocol_version: 2`、`measurement_status`、`flops_verified`、`flops_ops_covered/missing`、`flops_common_subset_check`、`flops_duplicate_check`、`flops_breakdown`。
 
 ## 11. 旧数据处置
 
@@ -257,7 +263,7 @@ AUC source | profiling config | benchmark source
 | V5 `rd_s4_t12_gl192_h128_qr2` FLOPs | 46.572G | 49.106G | 2.534G（约 5.2%） |
 | V0 BS1 latency | 17.800ms | 10.184ms | 7.616ms |
 
-复核要求：用**同一计算图**（同一 teacher tap 数、同一 scoring、同一输入）分别做算子计数、profiler 和分模块计时；定位差异来自 tap 数、readout、计时范围还是 GPU 状态。**在定位前，两组数字都只能标 `partial/unverified`，不能选一个当正式值。**
+复核要求：用**同一计算图**（同一 teacher tap 数、同一 scoring、同一输入）分别做算子计数、共同子集 profiler 核验、盲区独立公式和分模块计时；定位差异来自 tap 数、readout、计时范围还是 GPU 状态。**tap 是输出选择，不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11`，FLOPs 按实际前向层数计，不能按 4 taps × 单层。**在定位前，两组数字都只能标 `partial/unverified`，不能选一个当正式值。**
 
 ## 12. 已知阻塞与逐方法重测清单
 
@@ -278,7 +284,7 @@ AUC source | profiling config | benchmark source
 - [ ] 固定完整 `code_commit`，记录本地路径和启动命令；
 - [ ] 固定 `Input (H×W×T)`、通道顺序、归一化、权重状态、是否 DA 适配；
 - [ ] 参数量三列（Inference / Training Trainable / Training-only）均为实测/结构审计值；
-- [ ] FLOPs 用算子计数器 + profiler + 手工公式三方交叉，差异 ≤1%，覆盖/漏计算子写入 JSON；
+- [ ] FLOPs 用算子计数器核验所有 MAC 算子；profiler 只对共同支持子集比较（≤1%），盲区用独立公式；覆盖/漏计算子写入 JSON；完整 FLOPs 不要求等于 profiler 总数；防重复计数；
 - [ ] 时序方法已核实 `T/K/stride`，并同时给出独立窗口与真实视频流吞吐；
 - [ ] BS1 50/500/3、BS16 50/500/3，原始耗时保存，P50 与 Mean 分开；
 - [ ] `flops_verified=true`、`flops_ops_missing=[]`；
@@ -293,4 +299,4 @@ CUDA_VISIBLE_DEVICES=GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6 \
 python comparison/benchmarks/bench_ours.py
 ```
 
-v2 脚本必须输出 `protocol_version: 2`、`measurement_status`、`flops_verified`、`flops_ops_covered`、`flops_ops_missing`、`flops_breakdown`、`input_hwt`、`T/K/stride` 和原始耗时；否则只能算 v1 legacy。
+v2 脚本必须输出 `protocol_version: 2`、`measurement_status`、`flops_verified`、`flops_ops_covered`、`flops_ops_missing`、`flops_common_subset_check`、`flops_duplicate_check`、`flops_breakdown`、`input_hwt`、`T/K/stride`、`score_density`、`frame_coverage`、`fps_stream_estimated` 和原始耗时；否则只能算 v1 legacy。

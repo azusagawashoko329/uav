@@ -88,10 +88,12 @@
 | `frozen_inference_params_m` | number/null | 推理参数中的冻结部分（如教师），仅作透明拆分 |
 | `flops_g_per_output_frame` | number/null | 一个有效输出分数的 GFLOPs；`1 MAC=2 FLOPs` |
 | `flops_window_g` | number/null | 一个窗口的 GFLOPs；单帧方法等于 per-output 值 |
-| `flops_verified` | bool | 是否通过算子计数器 + profiler + 手工公式交叉检查 |
+| `flops_verified` | bool | 是否所有 MAC 算子都已用计数器 + 独立公式核验；**不要求完整总数等于 profiler 总数** |
 | `flops_counter` | str/null | 计数器/工具版本与覆盖说明 |
-| `flops_ops_covered` | list[str] | 已覆盖算子，如 `["Conv2d","ConvTranspose2d","Linear","MatMul","Attention-QK","Attention-AV"]` |
+| `flops_ops_covered` | list[str] | 已覆盖算子，如 `["Conv2d","ConvTranspose2d","Conv3d","Linear","MatMul","Attention-QK","Attention-AV"]` |
 | `flops_ops_missing` | list[str] | 漏计/无法核验的算子；非空时不能标 `measured` |
+| `flops_common_subset_check` | str/null | 与 profiler **共同支持算子**的差异；只对这个子集要求 ≤1%，不比较完整总数 |
+| `flops_duplicate_check` | str/null | 防重复计数说明：module hook / matmul / SDPA 包装如何按 `op_id` 去重 |
 | `latency_bs1_p50_ms_per_output_frame` | number/null | BS1 P50，按输出分数摊销 |
 | `latency_bs1_mean_ms_per_output_frame` | number/null | BS1 Mean；`FPS@BS1` 用它反算 |
 | `latency_bs1_p95_ms_per_output_frame` | number/null | BS1 P95 |
@@ -100,16 +102,18 @@
 | `input_frames_t` | int/null | 窗口输入帧数 `T` |
 | `effective_output_scores_k` | int/null | 每个窗口的有效输出分数数 `K`，不得默认等于 `T` |
 | `window_stride` | int/null | 窗口滑动步长（原始帧） |
-| `window_latency_ms` | number/null | 一个窗口的 BS1 时延 |
+| `window_latency_ms` | number/null | 一个窗口的 BS1 **Mean** 时延 |
 | `fps_independent_window` | number/null | 独立窗口吞吐（输出分数/秒） |
-| `fps_stream` | number/null | 真实视频流吞吐（原始帧/秒，按 `stride`） |
-| `score_coverage` | number/null | `K/stride`；小于 1 表示有帧没有分数 |
+| `score_density` | number/null | `K/stride`，每个输入帧平均对应多少分数；可 >1，**不是帧覆盖率** |
+| `frame_coverage` | number/null | 实际收到至少一个分数的原始帧比例（0..1）；按分数映射/重叠/融合计算，不能由 `K/stride` 推出 |
+| `fps_stream_estimated` | number/null | `stride·1000/mean_window_latency_ms`，按窗口步长推算的流吞吐估计 |
+| `fps_stream_measured` | number/null | 只有实际连续视频流测试才填；否则 `null` |
 | `benchmark_source` | str/null | 新结果 JSON 路径，例如 `comparison/da/benchmark_v2_ours.json` |
 | `notes` | str | 口径偏差、漏计说明、与 AUC 配置的差异 |
 
 校验规则（`check_comparisons.py` 会执行）：
 
-- `status=measured` 时：`flops_verified=true`、`flops_ops_missing=[]`、`code_commit` 为完整 SHA、参数量三列非空、`input_hwt`/`weights_state`/`auc_source`/`profiling_config` 非空；`input_frames_t`/`effective_output_scores_k`/`window_stride` 必须非空；`T>1` 时 `window_latency_ms`/`flops_window_g`/`fps_independent_window`/`fps_stream`/`score_coverage` 也必须非空。
+- `status=measured` 时：`flops_verified=true`、`flops_ops_missing=[]`、`flops_counter`/`flops_common_subset_check`/`flops_duplicate_check` 非空、`code_commit` 为完整 SHA、参数量三列非空、`input_hwt`/`weights_state`/`auc_source`/`profiling_config` 非空；`input_frames_t`/`effective_output_scores_k`/`window_stride` 必须非空；`score_density`/`frame_coverage`/`fps_stream_estimated` 必须非空；`T>1` 时 `window_latency_ms`/`flops_window_g`/`fps_independent_window` 也必须非空。
 - `training_only_params_m <= training_trainable_params_m`；`frozen_inference_params_m <= inference_params_m`。
 - `benchmark_source` 非空时，路径必须存在。
 - 旧 `total_params_m` / `trainable_params_m` 是 v1 字段，**不要写进 efficiency**；新测量用三列新字段。旧 benchmark JSON 原样保留。

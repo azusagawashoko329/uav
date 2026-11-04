@@ -11,7 +11,9 @@
 - [x] v1 改动记录：[protocol_change_log.md](protocol_change_log.md)
 - [ ] v2 脚本改造：`bench_ours.py` / `bench_external.py` 或新增 `bench_v2_*.py`（规范见 [benchmarks/README.md](benchmarks/README.md)）
 - [ ] 算子计数器：Conv2d/ConvTranspose2d/Conv3d/ConvTranspose3d/Linear/MatMul/Attention QK/AV
-- [ ] 同一图三方交叉（计数器 / profiler / 手工公式）差异 ≤1%
+- [ ] 只对 profiler **共同支持**的算子比较且差异 ≤1%；ConvTranspose/Conv3d/融合 Attention 用独立公式核验；**完整 FLOPs 不要求等于 profiler 总数**
+- [ ] 防重复计数：module hook / matmul 包装 / SDPA 包装按 `op_id` 去重，同一矩阵乘不能累计两次
+- [ ] 时序方法 `score_density=K/stride`；`frame_coverage` 按分数映射/重叠/融合单独计算，不用 K/stride 冒充；没有连续流测试只能写 `fps_stream_estimated`
 - [ ] 结果写 `benchmark_v2_<method>.json`，不覆盖任何 v1 文件
 
 ## 1. Ours / GLoRD 六个变体
@@ -20,7 +22,7 @@
 
 | 变体 | 当前输入 | 待确认 | 重测动作 |
 |---|---|---|---|
-| V0 `rd_s12_t4_h512` | 256×256×1 | teacher taps `[5,7,9,11]`；FLOPs 90.205 vs 95.107；latency 17.800 vs 10.184 | 固定 4 taps 图；分模块计 teacher/OCBE/student/readout；算子计数 + profiler 交叉；BS1/BS16 重跑 |
+| V0 `rd_s12_t4_h512` | 256×256×1 | teacher taps `[5,7,9,11]`；FLOPs 90.205 vs 95.107；latency 17.800 vs 10.184 | 记录 4 taps，但仍前向 `0..11`；分模块计 teacher/OCBE/student/readout；共同子集对 profiler、盲区用公式；BS1/BS16 重跑 |
 | V1 `rd_s4_t12_h512` | 256×256×1 | 12 taps `0..11` | 同 V0 流程 |
 | V2 `rd_s4_t12_gl768_h512` | 256×256×1 | GL768 分支是否全部计入 | 同 V0 流程 |
 | V3 `rd_s4_t12_gl192_h512` | 256×256×1 | GL192 分支 | 同 V0 流程 |
@@ -28,7 +30,7 @@
 | V5 `rd_s4_t12_gl192_h128_qr2` | 256×256×1 | FLOPs 46.572 vs 49.106；latency 19.638 vs 旧审计 ~9.7 | 同 V0 流程；单独记录 Q rank-2 |
 
 - [ ] 所有变体 `inference_params_m = teacher + OCBE + student`，`training_trainable_params_m = OCBE + student`，`training_only_params_m = 0`，`frozen_inference_params_m = teacher`
-- [ ] 分别记录 `teacher_taps`，确认没有“建 12 taps 只选 4 个但把 12-tap 计算计入”
+- [ ] 记录 `teacher_taps`，并确认 **tap 不是计算裁剪**：取 `[5,7,9,11]` 仍需前向 `0..11` 的所有 block，FLOPs 按实际前向层数计，不能按“4 taps × 单层”算；能省的是未用 tap 的特征保存/后处理，不是得到第 11 层所必需的前向
 - [ ] 确认 `anomaly_readouts` 的 top-k/距离是否计入 FLOPs；纯排序不计 MAC 但计入时延
 - [ ] 解决 V0/V5 新旧 FLOPs 与 V0 latency 差异；在解决前两组都只能 `partial/unverified`
 - [ ] AUC 仍引用 `experiments/da/appearance/20261103_variant_matrix_*`，效率配置单独写 `architecture-init`
@@ -39,7 +41,7 @@
 
 - [ ] 推理图只走 G：`inference_params_m=143.950`、`frozen_inference_params_m=0`
 - [ ] 训练列 `training_trainable_params_m=188.690`（G+D），`training_only_params_m=44.739`（D）
-- [ ] FLOPs 覆盖 G 的 `encoder1 → decoder → encoder2`，含 Conv2d/ConvTranspose2d/Linear
+- [ ] FLOPs 覆盖 G 的 `encoder1 → decoder → encoder2`，含 Conv2d/ConvTranspose2d/Linear；ConvTranspose2d 用独立公式核验（profiler 可能漏计）
 - [ ] 明确输入 256×256×1、`T=1/K=1/stride=1`
 - [ ] 结果写 `benchmark_v2_ganomaly.json`；AUC 来源仍标 ANDT Table VI / 用户表，不暗示同配置
 
@@ -50,8 +52,8 @@
 - [ ] 先读原测试代码，确认输出是 clip 级误差还是 `T` 个逐帧分数
 - [ ] 若 clip 级：`K=1`，`stride=16`（或原测试步长），不能沿用 `÷16`
 - [ ] 若逐帧：`K=16`，`stride=16`，并说明每帧分数如何产生
-- [ ] FLOPs 覆盖 Conv3d/ConvTranspose3d + memory 读写；`flops_ops_covered` 不得漏 3D 反卷积
-- [ ] 记录 `window_flops_g`、`window_latency_ms`、`fps_independent_window`、`fps_stream`、`score_coverage`
+- [ ] FLOPs 覆盖 Conv3d/ConvTranspose3d + memory 读写；`flops_ops_covered` 不得漏 3D 反卷积；这两个算子是 profiler 盲区，必须用独立公式核验
+- [ ] 记录 `window_flops_g`、`window_latency_ms`、`fps_independent_window`、`score_density`、`frame_coverage`、`fps_stream_estimated`；未做连续流测试时 `fps_stream_measured=null`
 - [ ] 结果写 `benchmark_v2_memae.json`
 
 ## 4. MKD

@@ -171,6 +171,8 @@
         "flops_counter",
         "flops_ops_covered",
         "flops_ops_missing",
+        "flops_common_subset_check",
+        "flops_duplicate_check",
         "latency_bs1_p50_ms_per_output_frame",
         "latency_bs1_mean_ms_per_output_frame",
         "latency_bs1_p95_ms_per_output_frame",
@@ -181,8 +183,10 @@
         "window_stride",
         "window_latency_ms",
         "fps_independent_window",
-        "fps_stream",
-        "score_coverage",
+        "score_density",
+        "frame_coverage",
+        "fps_stream_estimated",
+        "fps_stream_measured",
         "benchmark_source",
         "notes"
       ],
@@ -250,6 +254,12 @@
           "type": "array",
           "items": {"type": "string"}
         },
+        "flops_common_subset_check": {
+          "type": ["string", "null"]
+        },
+        "flops_duplicate_check": {
+          "type": ["string", "null"]
+        },
         "latency_bs1_p50_ms_per_output_frame": {
           "type": ["number", "null"],
           "minimum": 0
@@ -290,11 +300,20 @@
           "type": ["number", "null"],
           "minimum": 0
         },
-        "fps_stream": {
+        "score_density": {
           "type": ["number", "null"],
           "minimum": 0
         },
-        "score_coverage": {
+        "frame_coverage": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fps_stream_estimated": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "fps_stream_measured": {
           "type": ["number", "null"],
           "minimum": 0
         },

@@ -27,18 +27,21 @@ EFFICIENCY_KEYS = {
     'training_trainable_params_m', 'training_only_params_m',
     'frozen_inference_params_m', 'flops_g_per_output_frame', 'flops_window_g',
     'flops_verified', 'flops_counter', 'flops_ops_covered', 'flops_ops_missing',
+    'flops_common_subset_check', 'flops_duplicate_check',
     'latency_bs1_p50_ms_per_output_frame', 'latency_bs1_mean_ms_per_output_frame',
     'latency_bs1_p95_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
     'input_frames_t', 'effective_output_scores_k', 'window_stride',
-    'window_latency_ms', 'fps_independent_window', 'fps_stream',
-    'score_coverage', 'benchmark_source', 'notes',
+    'window_latency_ms', 'fps_independent_window', 'score_density',
+    'frame_coverage', 'fps_stream_estimated', 'fps_stream_measured',
+    'benchmark_source', 'notes',
 }
 EFFICIENCY_NUM_KEYS = {
     'inference_params_m', 'training_trainable_params_m', 'training_only_params_m',
     'frozen_inference_params_m', 'flops_g_per_output_frame', 'flops_window_g',
     'latency_bs1_p50_ms_per_output_frame', 'latency_bs1_mean_ms_per_output_frame',
     'latency_bs1_p95_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
-    'window_latency_ms', 'fps_independent_window', 'fps_stream', 'score_coverage',
+    'window_latency_ms', 'fps_independent_window', 'score_density',
+    'frame_coverage', 'fps_stream_estimated', 'fps_stream_measured',
 }
 EFFICIENCY_INT_KEYS = {'input_frames_t', 'effective_output_scores_k', 'window_stride'}
 
@@ -118,6 +121,11 @@ def check_efficiency(path: Path, rel: str, data: dict):
         if not isinstance(val, list) or any(not isinstance(x, str) or not x for x in val):
             fail(rel, f'efficiency.{key} must be a list of non-empty strings')
 
+    for key in ('flops_common_subset_check', 'flops_duplicate_check'):
+        val = eff.get(key)
+        if val is not None and not isinstance(val, str):
+            fail(rel, f'efficiency.{key} must be string or null')
+
     if not isinstance(eff.get('notes'), str):
         fail(rel, 'efficiency.notes must be a string')
 
@@ -138,10 +146,13 @@ def check_efficiency(path: Path, rel: str, data: dict):
 
     k = eff.get('effective_output_scores_k')
     stride = eff.get('window_stride')
-    coverage = eff.get('score_coverage')
-    if k is not None and stride is not None and coverage is not None:
-        if not close(coverage, k / stride, tol=1e-6):
-            fail(rel, f'efficiency.score_coverage must equal K/stride ({k}/{stride})')
+    density = eff.get('score_density')
+    if k is not None and stride is not None and density is not None:
+        if not close(density, k / stride, tol=1e-6):
+            fail(rel, f'efficiency.score_density must equal K/stride ({k}/{stride})')
+    frame_coverage = eff.get('frame_coverage')
+    if frame_coverage is not None and not (0 <= frame_coverage <= 1):
+        fail(rel, 'efficiency.frame_coverage must be in [0, 1]')
 
     if status == 'measured':
         if eff.get('flops_verified') is not True:
@@ -152,19 +163,20 @@ def check_efficiency(path: Path, rel: str, data: dict):
                     'training_only_params_m', 'flops_g_per_output_frame',
                     'latency_bs1_p50_ms_per_output_frame',
                     'latency_bs1_mean_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
-                    'input_frames_t', 'effective_output_scores_k', 'window_stride'):
+                    'input_frames_t', 'effective_output_scores_k', 'window_stride',
+                    'score_density', 'frame_coverage', 'fps_stream_estimated'):
             if eff.get(key) is None:
                 fail(rel, f'measured efficiency requires {key}')
-        if not isinstance(eff.get('flops_counter'), str) or not eff['flops_counter'].strip():
-            fail(rel, 'measured efficiency requires flops_counter')
+        for key in ('flops_counter', 'flops_common_subset_check', 'flops_duplicate_check'):
+            if not isinstance(eff.get(key), str) or not eff[key].strip():
+                fail(rel, f'measured efficiency requires {key}')
         if not eff.get('flops_ops_covered'):
             fail(rel, 'measured efficiency requires non-empty flops_ops_covered')
         if not benchmark_source:
             fail(rel, 'measured efficiency requires benchmark_source')
         t = eff.get('input_frames_t')
         if t is not None and t > 1:
-            for key in ('window_latency_ms', 'flops_window_g', 'fps_independent_window',
-                        'fps_stream', 'score_coverage'):
+            for key in ('window_latency_ms', 'flops_window_g', 'fps_independent_window'):
                 if eff.get(key) is None:
                     fail(rel, f'temporal measured efficiency requires {key}')
     elif status in {'partial/unverified', 'blocked', 'paper-only'}:

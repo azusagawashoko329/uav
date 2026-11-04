@@ -93,18 +93,18 @@
 
 ### 3.1 时序附表（T / K / stride）
 
-| Method | T | K | stride | window FLOPs (G) | window Latency (ms) | FPS independent-window ↑ | FPS stream (frames/s) ↑ | score coverage | Status |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| MemAE | 16 | 待核实（旧假设 16） | 16 | — | — | — | — | — | partial/unverified |
-| ANDT（论文 6 帧） | 6 | 1 | 1 | — | — | — | — | 1.0 | blocked |
-| Future Frame | TBD | TBD | TBD | — | — | — | — | — | blocked |
-| ST Dissoc. | TBD | TBD | TBD | — | — | — | — | — | blocked |
-| MLEP | TBD | TBD | TBD | — | — | — | — | — | blocked |
-| ASTT | TBD | TBD | TBD | — | — | — | — | — | blocked |
-| DAD-FSM | TBD | TBD | TBD | — | — | — | — | — | blocked |
-| HSTforU | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| Method | T | K | stride | window FLOPs (G) | window Latency (ms) | score density (K/stride) | frame coverage | FPS independent-window ↑ | fps_stream_estimated (frames/s) ↑ | fps_stream_measured | Status |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| MemAE | 16 | 待核实（旧假设 16） | 16 | — | — | 待核实 | 待核实 | — | — | null | partial/unverified |
+| ANDT（论文 6 帧） | 6 | 1 | 1 | — | — | 1.0 | ≈1.0（除开头 5 帧） | — | — | null | blocked |
+| Future Frame | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
+| ST Dissoc. | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
+| MLEP | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
+| ASTT | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
+| DAD-FSM | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
+| HSTforU | TBD | TBD | TBD | — | — | — | — | — | — | null | blocked |
 
-> `K` 不能默认等于 `T`；`fps_independent_window` 按输出分数计，`fps_stream` 按原始帧计。MemAE 旧 `÷16` 未核实，不能当正式值。
+> `K` 不能默认等于 `T`；`score_density=K/stride` 可以 >1，**不是帧覆盖率**。`frame_coverage` 必须按原方法的分数映射、窗口重叠和融合方式单独计算（例如 T=16/stride=1/K=16 时 score_density=16，但 frame_coverage 最多 1.0）。`fps_stream_estimated` 只是按 stride 推算的吞吐估计；没有实际连续流测试时 `fps_stream_measured=null`，不能声称已实测。MemAE 旧 `÷16` 未核实，不能当正式值。
 
 ### 3.2 每行配置与来源
 
@@ -191,7 +191,8 @@
    - V0 FLOPs 90.205G（2026-11-04）vs 95.107G（2026-10-26 审计）；
    - V5 FLOPs 46.572G vs 49.106G；
    - V0 BS1 latency 17.800ms vs 10.184ms。
-   - 需用同一计算图（teacher tap 数、scoring、输入）做算子计数 + profiler + 分模块计时；定位前都标 `partial/unverified`。
+   - 需用同一计算图（teacher tap 数、scoring、输入）做算子计数 + 分模块计时；profiler 只比共同支持算子，盲区用独立公式；定位前都标 `partial/unverified`。
+   - **tap 不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11`，FLOPs 按实际前向层数计，不能按 4 taps × 单层；可省的是未用 tap 的保存/后处理。
 2. **MemAE 的 K**：旧代码按 `T=16` 摊，原测试可能是 clip 级误差；先核对原测试脚本再决定 `K=1` 或 `K=16`。
 3. **MKD 多层特征评分**：当前 v1 只用最终层距离，不是完整 MKD；需按原方法多层特征重测。
 4. **ANDT 6 帧 decoder**：发布代码只支持 1 帧；论文 6 帧模型 `T=6,K=1,stride=1`，需修/确认 decoder 后才能测 FLOPs/latency。

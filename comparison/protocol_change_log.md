@@ -11,7 +11,7 @@
 |---|---|---|---|---|---|
 | 1 | 参数列拆分 | `total_params_m` / `trainable_params_m` | `inference_params_m` / `training_trainable_params_m` / `training_only_params_m`（可选 `frozen_inference_params_m`） | `Total < Trainable` 的歧义：GANomaly 推理只用 G，训练却更新 G+D | GANomaly 143.950/188.690；所有方法的 Total/Trainable 列 |
 | 2 | 冻结教师位置 | 有的表把教师算进 Total，有的只算学生 | 教师计入 Inference，不计入 Training Trainable；单列 `frozen_inference_params_m` | 避免“Total”既当推理又当训练 | Ours V0–V5 的 174.720/89.079 等旧列 |
-| 3 | FLOPs 唯一依据 | `torch.profiler(with_flops=True)` | 算子计数器 + profiler + 手工公式三方交叉；`1 MAC=2 FLOPs`；记录 covered/missing | profiler 会漏 ConvTranspose/融合 attention/自定义算子，不能单独当 Full FLOPs | 所有 v1 `flops_g*` 数字 |
+| 3 | FLOPs 唯一依据 | `torch.profiler(with_flops=True)` | 算子计数器 + 独立公式；profiler 只核验共同支持子集；`1 MAC=2 FLOPs`；记录 covered/missing | profiler 会漏 ConvTranspose/Conv3d/融合 Attention/自定义算子，不能单独当 Full FLOPs，也不能用它的总数做总验收 | 所有 v1 `flops_g*` 数字 |
 | 4 | FLOPs 不完整处置 | 不完整值也写成 `FLOPs` | `flops_verified=false` + `flops_ops_missing` + `partial/unverified` | 严禁把不完整值冒充 Full FLOPs | MKD 10.477G；Ours 90.205/46.572G 等 |
 | 5 | 时序计量 | 多数直接 `÷T`，默认 `K=T` | 分开 `T`（输入帧）、`K`（有效输出分数）、`stride`；窗口值 + 摊销值；独立窗口吞吐 + 真实流吞吐 | MemAE/ANDT 等 `K≠T`，`÷16` 会虚增/虚减 | MemAE 0.066G/0.437ms/2287FPS；ANDT 的窗口摊法 |
 | 6 | 完整推理范围 | 有的只算学生/最终层 | 统一从 GPU 张量到最终分数，含 Teacher/Backbone/Decoder/Scoring；离线光流/缓存/预处理单列 | 避免“只算子网”与“完整模型”混表 | Ours 旧 3.319ms/47.958G（仅学生）vs 17.800ms/90.205G（含教师）不能混用 |
@@ -59,11 +59,12 @@ v2 要求：
 
 1. `1 MAC = 2 FLOPs`；
 2. 模块 hook 覆盖 `Conv2d/ConvTranspose2d/Conv3d/ConvTranspose3d/Linear`，并包装 `matmul/bmm/einsum/scaled_dot_product_attention`；
-3. 同一图跑 profiler 交叉检查；
-4. 主干用手工公式核对；
-5. 差异 ≤1% 才 `flops_verified=true`；
-6. 不一致时 `flops_verified=false`、`flops_ops_missing` 列漏计算子、`Status=partial/unverified`；
-7. 保存 `flops_breakdown`（逐模块/算子 MACs）。
+3. profiler 只与计数器**共同支持的算子**比较，共同子集差异 ≤1%；不能要求完整计数器总数等于 profiler 总数；
+4. `ConvTranspose2d/3d`、`Conv3d`、融合 Attention、自定义 kernel 等 profiler 盲区，用计数器 + 独立公式核验；
+5. 完整 FLOPs = `Σ(所有已验证 MAC 算子 MACs) × 2`；不要求等于 profiler 总数；
+6. 防重复计数：module hook / matmul 包装 / SDPA 包装按 `op_id` 去重，同一矩阵乘不能累计两次；
+7. 有算子无法核验时 `flops_verified=false`、`flops_ops_missing` 列出、`Status=partial/unverified`；
+8. 保存 `flops_breakdown`（逐模块/算子 MACs）和 `flops_common_subset_check` / `flops_duplicate_check`。
 
 **旧数字处置**：所有 v1 `flops_g*` 不再直接作为正式 Full FLOPs；MKD 的 10.477G 因只算最终层距离，直接降级；Ours 的 90.205/46.572G 因未做算子覆盖核验且与旧审计不一致，降级 `partial/unverified`。
 
@@ -84,8 +85,9 @@ v2 定义：
 - `flops_g_per_output_frame = window_flops_g / K`；
 - `latency_*_ms_per_output_frame = window_latency_ms / K`；
 - `fps_independent_window = K · 1000 / mean_window_latency_ms`；
-- `fps_stream = stride · 1000 / mean_window_latency_ms`；
-- `score_coverage = K / stride`。
+- `fps_stream_estimated = stride · 1000 / mean_window_latency_ms`（只是按窗口步长推算的估计；没有连续流测试不能写 measured）；
+- `score_density = K / stride`（每输入帧平均分数个数，可 >1，不是帧覆盖率）；
+- `frame_coverage` = 实际收到至少一个分数的原始帧比例（0..1），按分数映射/重叠/融合单独计算，不能由 K/stride 推出。
 
 **旧数字处置**：MemAE 的 0.066G/0.437ms/2287FPS 全部标 `partial/unverified`，先核对原测试 K；ANDT 标 `T=6,K=1,stride=1`，但代码 blocked；其余时序方法在适配前不填 K。
 
@@ -135,7 +137,7 @@ v1 表头写 `Latency@BS1 P50` 和 `FPS@BS1`，但没有说明 FPS 是从 Mean �
 - 同时保存 `Mean`、`P95`、每轮原始耗时；
 - `FPS@BS1 = 1000 / Mean_latency_ms`；
 - BS16：`16·K·500 / median(round_time_s)`，只在整轮结束同步；
-- 时序方法另报 `window_latency_ms`、`fps_independent_window`、`fps_stream`。
+- 时序方法另报 `window_latency_ms`、`fps_independent_window`、`score_density`、`frame_coverage`、`fps_stream_estimated`；只有实际连续流测试才填 `fps_stream_measured`。
 
 **旧数字处置**：v1 的 FPS@BS1 虽然代码里用的是 Mean，但表头/文档没写清；保留数字，但在 v2 中重新生成并同时保存 Mean/P50/P95。
 
@@ -143,7 +145,7 @@ v1 表头写 `Latency@BS1 P50` 和 `FPS@BS1`，但没有说明 FPS 是从 Mean �
 
 v1 的 `measured` 只表示“跑过脚本”，不表示“口径完整”。v2：
 
-- `measured`：三方 FLOPs 核验通过、参数三列完整、T/K/stride 已核实、原始耗时保存、配置/来源齐全；
+- `measured`：所有 MAC 算子都有计数器 + 独立公式核验（不要求与 profiler 总数相等）、参数三列完整、T/K/stride 与 `score_density`/`frame_coverage`/`fps_stream_estimated` 已核实、原始耗时保存、配置/来源齐全；
 - `partial/unverified`：有数字但上述任一未完成；
 - `paper-only`：论文/用户表数字，未本机同协议实测；
 - `blocked`：代码/decoder/配置缺失，不填猜测值。
@@ -172,7 +174,8 @@ v1 的 `measured` 只表示“跑过脚本”，不表示“口径完整”。v2
 | V0 BS1 latency | 17.800ms | 10.184ms | 7.616ms |
 
 - 两个变体的 FLOPs 差异比例几乎相同（约 5.2%），更像是某个系统性算子/范围差异，而不是单变体噪声；但不能据此预设哪边正确。
-- 复核要求：同一 teacher tap 数、同一 scoring、同一输入，分别做算子计数、profiler、分模块计时；记录 `teacher_taps`、是否含 `anomaly_readouts`、是否含教师全部层。
+- 复核要求：同一 teacher tap 数、同一 scoring、同一输入，分别做算子计数、共同子集 profiler 核验、分模块计时；记录 `teacher_taps`、是否含 `anomaly_readouts`、是否含教师全部层。
+- **tap 不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11` 才能得到第 11 层特征；FLOPs 按实际前向层数计，不能按 4 taps × 单层。能省的是未用 tap 的保存/后处理，不是必需的前向。
 - 复核前两组数字都标 `partial/unverified`，不选一个当正式值。
 
 ## 11. 文件变更与未变更
@@ -206,3 +209,43 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 2. 先测 Ours + GANomaly + MemAE + MKD，验证口径；
 3. 再处理 ANDT/adVAE 的 blocked 状态；
 4. 所有数字通过 §0 验收后，才把 `comparison_summary.md` §3 填上并改 `measured`。
+
+## 13. 2026-11-04 追加修订（复核反馈）
+
+### 13.1 `score_coverage` → `score_density`，新增 `frame_coverage`
+
+- **问题**：`score_coverage = K/stride` 只能描述输出分数密度，不能代表视频帧覆盖率。例：`T=16, stride=1, K=16` 时 `K/stride=16`，但真实帧覆盖率最多 100%，不可能是 1600%。
+- **修正**：
+  - 字段改名 `score_density`，定义仍为 `K/stride`，允许 >1；
+  - 新增 `frame_coverage`：实际收到至少一个分数的原始帧比例（0..1），必须按原方法的分数映射、窗口重叠和融合方式计算，不能由 `K/stride` 推出；
+  - `check_comparisons.py` 不再检查“覆盖率 == K/stride”，改为检查 `score_density == K/stride`、`frame_coverage ∈ [0,1]`。
+- **涉及文件**：`BENCHMARK_PROTOCOL.md`、`SCHEMA.md`、`schema.json`、`check_comparisons.py`、`da/comparison_summary.md`、`RETEST_CHECKLIST.md`、`benchmarks/README.md`。
+
+### 13.2 `fps_stream` → `fps_stream_estimated`，新增 `fps_stream_measured`
+
+- **问题**：`stride × 1000 / window_latency` 只是按窗口步长推算的吞吐能力；没有实际执行连续视频流测试，不能声称是实测真实流吞吐。
+- **修正**：
+  - 字段改名 `fps_stream_estimated`，公式不变，明确是估计值；
+  - 新增 `fps_stream_measured`：只有真正跑了连续流测试才填，否则 `null`；
+  - 主表/时序附表/脚本规范/检查器同步改名。
+- **涉及文件**：同上。
+
+### 13.3 FLOPs 验收：不再要求完整总数与 profiler 总数差 ≤1%
+
+- **问题**：profiler 会漏 `ConvTranspose2d/3d`、`Conv3d`、融合 Attention、自定义 kernel；MemAE 这类模型即使计数器完全正确，两个工具的总数也可能相差几十倍。强制总数 ≤1% 会让正确结果无法通过。
+- **修正**：
+  - 只对计数器与 profiler **共同支持**的算子比较，共同子集差异 ≤1%；
+  - profiler 盲区算子用计数器 + 独立公式核验；
+  - 完整 FLOPs = `Σ(所有已验证 MAC 算子 MACs) × 2`，不要求等于 profiler 总数；
+  - 新增 `flops_common_subset_check`、`flops_duplicate_check`；按 `op_id` 去重，防止 module hook / matmul / SDPA 包装重复累计同一矩阵乘；
+  - `measured` 要求 `flops_verified=true`、`flops_ops_missing=[]`，但不再要求 profiler 总数一致。
+- **涉及文件**：`BENCHMARK_PROTOCOL.md`、`SCHEMA.md`、`schema.json`、`check_comparisons.py`、`RETEST_CHECKLIST.md`、`benchmarks/README.md`。
+
+### 13.4 Teacher taps 不是计算裁剪
+
+- **问题**：V0 取 `[5,7,9,11]` 不等于只运行 4 个 Transformer Block；要得到第 11 层特征，仍必须前向 `0..11`。
+- **修正**：在协议、重测清单、脚本规范、总表复核项中明确：
+  - tap 是输出选择，不是计算裁剪；
+  - FLOPs 按实际前向层数计，不能按“4 taps × 单层”；
+  - 能优化的是未用 tap 的特征保存/后处理，不是得到第 11 层所必需的前向。
+- **涉及文件**：`BENCHMARK_PROTOCOL.md`、`RETEST_CHECKLIST.md`、`benchmarks/README.md`、`da/comparison_summary.md`、本文件。
