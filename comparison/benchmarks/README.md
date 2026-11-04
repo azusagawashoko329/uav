@@ -11,6 +11,7 @@ v2 已实现：
 - `bench_v2_ours.py`：六个 Ours 变体。
 - `bench_v2_external.py`：GANomaly / MemAE / MKD。
 - `bench_v2_andt.py`：ANDT adapted 6-frame（适配器在 `comparison/da/ANDT/default/scripts/`）。
+- `bench_v2_extra.py`：LightViT-AD / MADViT Full / ST Dissoc. / ASTT(STE-TTE) / DAD-FSM。
 
 结果写在对应方法/变体目录里：
 
@@ -21,6 +22,11 @@ comparison/da/GANomaly/default/benchmark_v2.json
 comparison/da/MemAE/default/benchmark_v2.json
 comparison/da/MKD/default/benchmark_v2.json
 comparison/da/ANDT/default/benchmark_v2.json   # adapted 6-frame
+comparison/da/LightViT-AD/default/benchmark_v2.json
+comparison/da/MADViT/Full/benchmark_v2.json    # code default only
+comparison/da/ST Dissoc./default/benchmark_v2.json
+comparison/da/ASTT/default/benchmark_v2.json
+comparison/da/DAD-FSM/default/benchmark_v2.json
 ```
 
 ## 1. 输出文件命名

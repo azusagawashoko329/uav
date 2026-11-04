@@ -47,15 +47,16 @@ ANDT 是**时序**方法，不是单帧分类器：
 | Inference Params | 70.347M |
 | Training Trainable | 70.347M |
 | FLOPs | **74.490G / output score** |
-| Latency@BS1 P50 | **4.470ms / output score** |
-| FPS@BS1 | **223.6** |
-| FPS@BS16 | **210.4** |
+| Latency@BS1 P50 | **5.015ms / output score** |
+| FPS@BS1 | **199.4** |
+| FPS@BS16 | **197.5** |
 | FLOPs verified | yes（hand 16 模块误差 0；profiler matmul 0%；ConvTranspose 盲区跳过） |
 
 - 适配器：`comparison/da/ANDT/default/scripts/andt_adapted_model.py`
 - benchmark：`comparison/benchmarks/bench_v2_andt.py`
 - 结果：`comparison/da/ANDT/default/benchmark_v2.json`
 - 权重状态：random init；官方 checkpoint 不可用。FLOPs/latency 对权重不敏感。
+- 计时包含预测帧与目标的 MSE 评分（`F.mse_loss`）。
 - `frame_coverage=1.0` 是近似值：滑动窗口预测下一帧时，视频开头 5 帧没有预测分数。
 
 ## 官方代码为什么仍不能冒充

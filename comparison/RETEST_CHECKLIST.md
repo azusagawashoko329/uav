@@ -1,8 +1,9 @@
 # 逐方法待重测清单（v2）
 
-> **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD 已完成 v2 正式测量（50 warmup + 3×500），
+> **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
+> MADViT Full、ST Dissoc.、ASTT、DAD-FSM 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
-> ANDT、adVAE、其余外部方法仍 `blocked`；paper-only 方法不重测。
+> MADViT Multi/Last 代码无变体，保持 paper-only；HSTforU/Future Frame/MLEP/adVAE 仍 `blocked`。
 
 ## 0. 全局准入（所有方法共用）
 
@@ -88,21 +89,23 @@
 - [ ] 若拿到实现：输入 H×W×T、K/stride、编码器/解码器/高斯模块全部计入
 - [ ] 结果写 `benchmark_v2_advae.json`；否则保持 `blocked`
 
-## 7. 其余外部方法（代码已 clone，未适配）
+## 7. 其余外部方法（部分已完成 v2）
 
-| 方法 | 当前状态 | 先确认 | 重测重点 |
-|---|---|---|---|
-| Future Frame | blocked | 输入帧数/预测目标 | `T/K/stride`；光流是否在线；光流单独报 |
-| ST Dissoc. | blocked | 输入窗口/静态/动态分支 | 双分支是否都计入；`K/stride` |
-| MLEP | blocked | 输入分辨率/时序单元 | 时序编码器；`K/stride` |
-| ASTT | blocked | 输入窗口/打分方式 | 时序编码器/预测器/打分；有光流则计入 |
-| DAD-FSM | blocked | 输入窗口/打分方式 | 同上；双流/光流单列 |
-| HSTforU | blocked | 输入窗口/层级 | 时序/层级打分；`K/stride` |
-| MADViT Full / Multi-layer / Last-layer | blocked | 三个变体的层选择 | 同一 ViT 主干的 tap 集合；AUC 与效率配置对应 |
-| LightViT-AD | blocked | 输入分辨率/轻量主干 | 主干+AD 头；缺 vehicle/crossroads 的 AUC 要标注 |
+| 方法 | 当前状态 | 结果/限制 |
+|---|---|---|
+| Future Frame | blocked | TensorFlow 1.x + FlowNet2 权重缺失，当前 TF2.20 不兼容 |
+| ST Dissoc. | measured | 60.612G / 3.668ms / 269.7 FPS@BS1；`padding=False→0` 兼容修正 |
+| MLEP | blocked | TensorFlow 1.x（`tf.contrib`），当前 TF2.20 不兼容 |
+| ASTT | measured | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint |
+| DAD-FSM | measured | 71.194G / 12.684ms / 78.5 FPS@BS1；RGB+分割双流，ResNet50 随机初始化 |
+| HSTforU | blocked | 缺 `mmcv`（`mmcv.cnn`/`runner`），模型无法构造 |
+| MADViT Full | measured | code default：38.533G / 11.744ms / 79.8 FPS@BS1 |
+| MADViT Multi-layer / Last-layer | paper-only | 代码没有变体开关；只有全层+token 的默认路径，不能复用 Full 数字 |
+| LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
-- [ ] 每个方法先写适配 README：输入 H×W×T、T/K/stride、是否光流、是否 DA 适配、AUC 来源
-- [ ] 再按 §0 全局准入重测；未适配前不填估计值
+- [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
+- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 保持 paper-only
+- [ ] HSTforU/Future Frame/MLEP/adVAE 仍待依赖/代码；未适配前不填估计值
 
 ## 8. Paper-only 方法（不重测，单独表）
 

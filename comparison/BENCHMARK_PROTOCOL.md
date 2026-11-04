@@ -1,7 +1,7 @@
 # 轻量化对比协议 v2（DA 主表）
 
 - **版本**：v2，2026-11-04。
-- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD 完成正式测量；ANDT/adVAE/其余外部方法仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
+- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted)、LightViT-AD、MADViT Full、ST Dissoc.、ASTT、DAD-FSM 完成正式测量；MADViT Multi/Last 无代码变体、HSTforU/Future Frame/MLEP/adVAE 仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
 - **v1 数据**：已归到各方法目录的 `legacy_v1/`（Ours 在 `comparison/da/ours/legacy_v1/`，外部方法在 `<Method>/default/legacy_v1/`）与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/`，全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
 - **正式主表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 重测完成前，数字留空或标 `partial/unverified` / `blocked` / `paper-only`，不得把 v1 数字当正式对比结果。
 
@@ -272,7 +272,8 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 - **MemAE**：已核实原测试每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），`K=1, stride=1`；v2 全窗口 FLOPs=70.808G，旧 `÷16` 废弃。
 - **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
 - **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。
-- **ASTT/DAD-FSM/Future Frame/ST Dissoc./MLEP/HSTforU/MADViT/LightViT-AD**：代码已 clone，但尚未按 v2 适配；全部 `blocked`，不得填入估计值。
+- **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 代码未实现，保持 `paper-only`。
+- **HSTforU / Future Frame / MLEP**：代码或依赖不完整（HSTforU 缺 `mmcv`；Future Frame/MLEP 为 TF1 代码），保持 `blocked`。
 - **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：只有用户表数字，`paper-only`，不参与本机速度排序。
 
 逐方法的“要改什么、要确认什么、当前状态”见 [RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。

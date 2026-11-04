@@ -22,15 +22,15 @@
 | [da-MKD-default](da/MKD/default/record.json) | MKD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/rohban-lab/Knowledge_Distillation_AD.git) |
 | [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
 | [da-Future Frame-default](da/Future%20Frame/default/record.json) | Future Frame | `default` | `planned` | — | — | — | [upstream](https://github.com/StevenLiuWen/ano_pred_cvpr2018.git) |
-| [da-ST Dissoc.-default](da/ST%20Dissoc./default/record.json) | ST Dissoc. | `default` | `planned` | — | — | — | [upstream](https://github.com/ChangYunPeng/VideoAnomalyDetection.git) |
+| [da-ST Dissoc.-default](da/ST%20Dissoc./default/record.json) | ST Dissoc. | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/ChangYunPeng/VideoAnomalyDetection.git) |
 | [da-MLEP-default](da/MLEP/default/record.json) | MLEP | `default` | `planned` | — | — | — | [upstream](https://github.com/svip-lab/MLEP.git) |
-| [da-ASTT-default](da/ASTT/default/record.json) | ASTT | `default` | `planned` | — | — | — | [upstream](https://github.com/Tungufm/ASTT.git) |
-| [da-DAD-FSM-default](da/DAD-FSM/default/record.json) | DAD-FSM | `default` | `planned` | — | — | — | [upstream](https://github.com/AhmedFakhry47/DAD-FSM.git) |
+| [da-ASTT-default](da/ASTT/default/record.json) | ASTT | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/Tungufm/ASTT.git) |
+| [da-DAD-FSM-default](da/DAD-FSM/default/record.json) | DAD-FSM | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/AhmedFakhry47/DAD-FSM.git) |
 | [da-HSTforU-default](da/HSTforU/default/record.json) | HSTforU | `default` | `planned` | — | — | — | [upstream](https://github.com/vt-le/HSTforU.git) |
-| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | — | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
 | [da-MADViT-Multi-layer](da/MADViT/Multi-layer/record.json) | MADViT | `Multi-layer` | `planned` | — | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
 | [da-MADViT-Last-layer](da/MADViT/Last-layer/record.json) | MADViT | `Last-layer` | `planned` | — | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
-| [da-LightViT-AD-default](da/LightViT-AD/default/record.json) | LightViT-AD | `default` | `planned` | — | — | — | [upstream](https://github.com/manojbalwant/lightvit-ad.git) |
+| [da-LightViT-AD-default](da/LightViT-AD/default/record.json) | LightViT-AD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/lightvit-ad.git) |
 
 ## uit
 

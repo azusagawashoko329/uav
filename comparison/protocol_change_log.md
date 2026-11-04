@@ -256,9 +256,9 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 
 - `comparison/benchmarks/flops_counter.py`：FlopCounterMode + native MHA 公式 + 手写模块公式 + profiler 共同子集 + 去重检查。
 - `comparison/benchmarks/bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
-- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`、`bench_v2_andt.py`：只写对应方法目录下的 `benchmark_v2.json`。
+- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`、`bench_v2_andt.py`、`bench_v2_extra.py`：只写对应方法目录下的 `benchmark_v2.json`。
 - `comparison/da/ANDT/default/scripts/andt_adapted_model.py`：ANDT 6 帧最小适配（`de_dense(feat[:,0])`）。
-- `comparison/da/v2_validation.md`：玩具算子 + GANomaly/MemAE/GLoRD V0 的验证记录。
+- `comparison/da/v2_validation.md`：玩具算子 + GANomaly/MemAE/GLoRD V0/ANDT/额外方法的验证记录。
 
 验证结论：
 
@@ -274,7 +274,12 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 | GANomaly | 16.428 | 8.088 | 123.6 | 848.5 |
 | MemAE | 70.808 | 7.321 | 136.5 | 130.3 |
 | MKD | 10.477 | 2.495 | 394.5 | 2340.8 |
-| ANDT adapted 6-frame | 74.490 | 4.470 | 223.6 | 210.4 |
+| ANDT adapted 6-frame | 74.490 | 5.015 | 199.4 | 197.5 |
+| LightViT-AD | 3.753 | 6.519 | 148.8 | 2438.6 |
+| MADViT Full (code default) | 38.533 | 11.744 | 79.8 | 436.9 |
+| ST Dissoc. | 60.612 | 3.668 | 269.7 | 288.2 |
+| ASTT (STE-TTE) | 109.416 | 19.048 | 52.2 | 146.6 |
+| DAD-FSM | 71.194 | 12.684 | 78.5 | 195.6 |
 | Ours V0 | 95.107 | 14.521 | 68.4 | 187.4 |
 | Ours V1 | 68.532 | 19.903 | 50.0 | 244.3 |
 | Ours V2 | 62.804 | 14.787 | 67.3 | 263.3 |
@@ -282,14 +287,23 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 | Ours V4 | 49.308 | 19.417 | 51.3 | 324.7 |
 | Ours V5 | 49.106 | 20.513 | 48.5 | 324.4 |
 
+额外方法限制：
+
+- LightViT-AD：teacher 冻结、student 可训练；benchmark 用随机初始化，无 checkpoint。
+- MADViT：代码只有一条 all-layer + token 评分路径，标 `Full (code default)`；Multi-layer/Last-layer 无代码开关，保持 `paper-only`。
+- ST Dissoc.：`padding=False` 在现代 PyTorch 下按 0 处理；输入 5 帧拼接为 15 通道。
+- ASTT：测的是 `model_ste_tte.py`（STE-TTE），384×384×4，无 checkpoint。
+- DAD-FSM：RGB + 分割双流，ResNet50 预训练权重未带，随机初始化；FLOPs/latency 与权重无关。
+
 已解决/关闭：
 
 - GLoRD V0/V5 新旧 FLOPs 差异：v2 为 95.107/49.106，与旧审计一致；v1 的 90.205/46.572 是 profiler 漏计 native MHA。
 - MemAE `K`：确认为 `K=1, stride=1`，旧 `÷16` 废弃。
 - MKD：已改为 taps 6/9/12 多层评分，旧最终层距离废弃。
-- ANDT：官方 6 帧 decoder 仍不可用；已用 adapted `de_dense(feat[:,0])` 测 `T=6,K=1,stride=1`，70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1，标 adapted，不冒充 official。
+- ANDT：官方 6 帧 decoder 仍不可用；已用 adapted `de_dense(feat[:,0])` 测 `T=6,K=1,stride=1`，70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1，标 adapted，不冒充 official。
+- 新增完成：LightViT-AD、MADViT Full（code default）、ST Dissoc.、ASTT（STE-TTE）、DAD-FSM；MADViT Multi-layer/Last-layer 代码未实现，保持 `paper-only`。
 
 仍未完成：
 
-- 官方 ANDT 6 帧 decoder、adVAE（表格版）、Future Frame/ST Dissoc./MLEP/ASTT/DAD-FSM/HSTforU/MADViT/LightViT-AD（未适配）保持 `blocked`。
+- 官方 ANDT 6 帧 decoder、HSTforU（缺 mmcv）、Future Frame（TF1/FlowNet2）、MLEP（TF1）、adVAE（表格版）保持 `blocked`。
 - DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE 保持 `paper-only`。

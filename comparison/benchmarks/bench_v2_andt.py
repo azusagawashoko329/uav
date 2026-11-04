@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -72,12 +73,17 @@ def main():
             'ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only '
             'supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one '
             'next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. '
-            'No official checkpoint; FLOPs/latency are weight-independent.'
+            'No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring.'
         ),
     }
     x1 = torch.randn(1, 6, 3, 256, 256, device='cuda')
     x16 = torch.randn(16, 6, 3, 256, 256, device='cuda')
-    result = measure(lambda x: model(x), model, x1, x16, meta,
+
+    def fn(x):
+        out = model(x)
+        return F.mse_loss(out, torch.zeros_like(out))
+
+    result = measure(fn, model, x1, x16, meta,
                      run_profiler=not args.no_profiler)
     write_result(out_path, result)
     print('params M', params / 1e6, flush=True)
