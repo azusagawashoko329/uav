@@ -1,5 +1,7 @@
 # 融合(fusion)
 
+> **状态：历史归档（2026-11-04）。** 行为分支已舍弃；本目录的 behavior+appearance 晚融合不再开发，也不进入当前模型的 AUC 主表。当前模型只有外观蒸馏分支。
+
 把**外观教师**(DINOv3-RD,`model/`+`train.py`+`eval.py`)与**行为分支**(`behavior/`,检测+5维描述子+kNN-OOD)
 两条**相互独立**的分支,在**分数层面**做晚融合(late fusion)。不碰两分支的模型/训练,只读它们落盘的逐帧分数
 (`experiments/da/fusion/legacy_score_dump/scores/{app,beh}_<scene>.npz`)。本文档记录 2026-06 这一长串融合实验的**全部结果与机制**
