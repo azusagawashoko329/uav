@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """v2 benchmark for the six Ours DA variants.
 
-Writes only benchmark_v2_ours_<variant>.json and benchmark_v2_ours.json.
-Never writes the frozen v1 benchmark_ours.json.
+Writes ours/<variant>/benchmark_v2.json and the aggregate
+ours/benchmark_v2_ours.json. Never writes the frozen v1 file under
+ours/legacy_v1/.
 """
 from __future__ import annotations
 
@@ -48,7 +49,7 @@ def build_meta(vid: str, spec: dict, teacher_params: int, trainable: int,
         'method_display': 'Ours',
         'variant': vid,
         'label': spec['label'],
-        'supersedes': 'comparison/da/benchmark_ours.json',
+        'supersedes': 'comparison/da/ours/legacy_v1/benchmark_ours.json',
         'code_commit': git_commit(REPO_ROOT),
         'input_hwt': '256x256x1',
         'input_frames_t': 1,
@@ -72,7 +73,7 @@ def build_meta(vid: str, spec: dict, teacher_params: int, trainable: int,
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--out-dir', type=Path, default=REPO_ROOT / 'comparison/da')
+    p.add_argument('--out-dir', type=Path, default=REPO_ROOT / 'comparison/da/ours')
     p.add_argument('--variants', nargs='*', default=list(VARIANT_SPECS))
     p.add_argument('--no-profiler', action='store_true')
     args = p.parse_args()
@@ -87,7 +88,7 @@ def main():
     x16 = torch.randn(16, 3, 256, 256, device='cuda')
     aggregate = {'protocol_version': 2, 'method': 'ours', 'variants': {}}
     for vid in VARIANT_SPECS:
-        p = args.out_dir / f'benchmark_v2_ours_{vid}.json'
+        p = args.out_dir / vid / 'benchmark_v2.json'
         if p.is_file():
             aggregate['variants'][vid] = json.loads(p.read_text())
 
@@ -99,7 +100,8 @@ def main():
         student = student.cuda().eval()
         trainable = sum(p.numel() for p in ocbe.parameters()) + sum(p.numel() for p in student.parameters())
         model = OursModel(teacher, ocbe, student, spec['taps']).cuda().eval()
-        out_path = args.out_dir / f'benchmark_v2_ours_{vid}.json'
+        out_path = args.out_dir / vid / 'benchmark_v2.json'
+        out_path.parent.mkdir(parents=True, exist_ok=True)
         meta = build_meta(vid, spec, teacher_params, trainable, out_path)
         result = measure(lambda x: model(x), model, x1, x16, meta,
                          run_profiler=not args.no_profiler)

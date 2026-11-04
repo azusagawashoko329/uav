@@ -56,7 +56,8 @@ python comparison/benchmarks/bench_v2_external.py --method ganomaly
 ```
 
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
-- 结果只写 `benchmark_v2_*.json`；旧 `benchmark_*.json` 未改动。
+- 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
+- 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
 - 汇总见 [comparison_summary.md](comparison_summary.md) §3。
 
 ## 5. 复现坑（已修复，保留记录）
@@ -66,4 +67,4 @@ MKD 前两次尝试失败，未写入正式结果：
 1. `make_arch('B', cfg_b, ...)` 把 `cfg` 传成了 list；上游接口要求 dict `{'A': ..., 'B': ...}`，报 `TypeError: list indices must be integers or slices, not str`。
 2. 上游 `VGG.forward` 在 `target_layer=11` 调 `x.register_hook(...)`；在 `torch.no_grad()`/`inference_mode()` 下报 `RuntimeError: cannot register a hook on a tensor that doesn't require gradient`。v2 改为 hook-free 的 `_cloner_features()`，按相同 taps `[2,5,8,11,14,17,20,23,26,29,32,35,38]` 收集特征。
 
-最终成功日志：`comparison/da/benchmark_v2_mkd.log`。
+最终成功日志：`comparison/da/MKD/default/benchmark_v2.log`。

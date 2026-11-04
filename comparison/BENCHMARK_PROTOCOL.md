@@ -2,7 +2,7 @@
 
 - **版本**：v2，2026-11-04。
 - **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD 完成正式测量；ANDT/adVAE/其余外部方法仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
-- **v1 数据**：`comparison/da/benchmark_*.json`、`comparison/da/benchmark_*.log` 与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/` 全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
+- **v1 数据**：已归到各方法目录的 `legacy_v1/`（Ours 在 `comparison/da/ours/legacy_v1/`，外部方法在 `<Method>/default/legacy_v1/`）与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/`，全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
 - **正式主表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 重测完成前，数字留空或标 `partial/unverified` / `blocked` / `paper-only`，不得把 v1 数字当正式对比结果。
 
 ## 0. 一句话口径
@@ -250,9 +250,9 @@ AUC source | profiling config | benchmark source
 
 ## 11. 旧数据处置
 
-- 现有 `comparison/da/benchmark_ours.json`、`benchmark_ganomaly.json`、`benchmark_memae.json`、`benchmark_mkd.json` 及对应 `.log` **原样保留**，不覆盖、不静默改数。
+- 现有 v1 文件已归到对应方法的 `legacy_v1/`（Ours 在 `comparison/da/ours/legacy_v1/`，外部方法在 `<Method>/default/legacy_v1/`）；**原样保留**，不覆盖、不静默改数。
 - 旧审计 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/` 原样保留。
-- 新结果另存为 `benchmark_v2_<method>.json`，并在 JSON 内写 `protocol_version: 2`、`supersedes`、`measurement_status`、`code_commit`、`flops_counter` 和覆盖清单。
+- 新结果写在对应方法/变体目录：`comparison/<dataset>/<Method>/<variant>/benchmark_v2.json`（Ours 另在 `ours/` 下保留聚合文件）；JSON 内写 `protocol_version: 2`、`supersedes`、`measurement_status`、`code_commit`、`flops_counter` 和覆盖清单。
 - v1 旧数字在 [da/comparison_summary.md](da/comparison_summary.md) 只放在“v1 归档”区，不得进入 v2 正式表。
 
 ### 11.1 GLoRD 新旧差异（v2 已定位）
@@ -289,7 +289,7 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 - [ ] BS1 50/500/3、BS16 50/500/3，原始耗时保存，P50 与 Mean 分开；
 - [ ] `flops_verified=true`、`flops_ops_missing=[]`；
 - [ ] AUC 来源与效率配置分行注明，不暗示同一版本；
-- [ ] 结果写入 `benchmark_v2_<method>.json`，未覆盖任何 v1 文件。
+- [ ] 结果写入 `comparison/<dataset>/<Method>/<variant>/benchmark_v2.json`，未覆盖任何 v1 文件。
 
 ## 14. 复现入口（v2 改造后）
 

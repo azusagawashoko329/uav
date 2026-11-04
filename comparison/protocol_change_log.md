@@ -19,7 +19,7 @@
 | 8 | 来源与配置 | 只写 AUC 来源 | 每行写 `code_commit`、`input_hwt`、`weights_state`、`da_adapted`、`auc_source`、`profiling_config` | AUC 可能是 ANDT DA 适配版，效率可能是原仓库默认模型，不能暗示同一配置 | 所有跨表引用 |
 | 9 | Latency/FPS 统计量 | P50 与 FPS 关系未写清 | Latency 主指标 P50；`FPS@BS1 = 1000/Mean`；保存 Mean/P50/P95 + 原始耗时 | P50 和 Mean 不能互相反算后声称一致 | 所有 FPS@BS1 行 |
 | 10 | Status | `measured` 混用 | `measured` / `partial/unverified` / `paper-only` / `blocked`，并给出硬性条件 | 让“有数字”不等于“可正式比较” | 所有 v1 `measured` 行 |
-| 11 | 旧数据处置 | 新结果覆盖同文件 | v1 原样冻结；v2 写 `benchmark_v2_<method>.json`，带 `supersedes`/`measurement_status` | 保留审计链，不静默改历史 | 现有 `benchmark_*.json` 全部 |
+| 11 | 旧数据处置 | 新结果覆盖同文件 | v1 原样冻结在 `<Method>/<variant>/legacy_v1/`；v2 写 `<Method>/<variant>/benchmark_v2.json`，带 `supersedes`/`measurement_status` | 保留审计链，不静默改历史 | 现有 `benchmark_*.json` 全部 |
 | 12 | 表头 | 单一 Total/FLOPs/Latency 表 | 主表 + 时序附表 + 配置/来源附表 | 让 T/K/stride、commit、权重状态有位置 | `comparison_summary.md` 轻量化表 |
 
 ## 2. 参数量：为什么必须拆三列
@@ -191,10 +191,10 @@ v1 的 `measured` 只表示“跑过脚本”，不表示“口径完整”。v2
 
 **未变更（按用户要求原样归档）**：
 
-- `comparison/da/benchmark_ours.json`、`benchmark_ours.log`
-- `comparison/da/benchmark_ganomaly.json`、`benchmark_ganomaly.log`
-- `comparison/da/benchmark_memae.json`、`benchmark_memae.log`
-- `comparison/da/benchmark_mkd.json`、`benchmark_mkd.log`
+- `comparison/da/ours/legacy_v1/benchmark_ours.json`、`benchmark_ours.log`
+- `comparison/da/GANomaly/default/legacy_v1/benchmark_ganomaly.json`、`.log`
+- `comparison/da/MemAE/default/legacy_v1/benchmark_memae.json`、`.log`
+- `comparison/da/MKD/default/legacy_v1/benchmark_mkd.json`、`.log`
 - `experiments/da/audit/20261026_lightweight_profile_fp32_s42/results/summary.{json,csv,md}`
 
 验证：
@@ -256,7 +256,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 
 - `comparison/benchmarks/flops_counter.py`：FlopCounterMode + native MHA 公式 + 手写模块公式 + profiler 共同子集 + 去重检查。
 - `comparison/benchmarks/bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
-- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`：只写 `benchmark_v2_*.json`。
+- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`：只写对应方法目录下的 `benchmark_v2.json`。
 - `comparison/da/v2_validation.md`：玩具算子 + GANomaly/MemAE/GLoRD V0 的验证记录。
 
 验证结论：
@@ -266,7 +266,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - GLoRD V0：95.106764800G；手写 92 模块误差 0；profiler 90.204910640G（漏 student native MHA）；与旧审计 95.107G 一致。
 - 全部 `flops_ops_missing=[]`、`flops_verified=true`；没有把 profiler 总数当 Full FLOPs。
 
-正式结果（`benchmark_v2_*.json`）：
+正式结果（各方法/变体目录的 `benchmark_v2.json`）：
 
 | Method | FLOPs G/output | P50 ms | FPS BS1 | FPS BS16 |
 |---|---:|---:|---:|---:|

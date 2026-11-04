@@ -5,7 +5,7 @@ WARNING: this script writes the frozen v1 files comparison/da/benchmark_*.json
 and uses profiler-only FLOPs, assumed K=T for MemAE, and final-layer distance
 for MKD. It is NOT valid for formal v2 numbers. See
 comparison/benchmarks/README.md and comparison/BENCHMARK_PROTOCOL.md; v2
-results must go to benchmark_v2_<method>.json.
+results must go to <Method>/default/benchmark_v2.json.
 
 adVAE and ANDT are intentionally not timed here: adVAE's official repo is the
 tabular version, and ANDT's released forward is a code variant with pdb/decoder
@@ -32,7 +32,11 @@ from torch.profiler import ProfilerActivity, profile
 
 ROOT = Path(__file__).resolve().parents[2]
 CLONE = Path('/data1/data8tb/liangyuxuan/Comparison method')
-OUT = ROOT / 'comparison/da'
+LEGACY_OUT = {
+    'ganomaly': ROOT / 'comparison/da/GANomaly/default/legacy_v1',
+    'memae': ROOT / 'comparison/da/MemAE/default/legacy_v1',
+    'mkd': ROOT / 'comparison/da/MKD/default/legacy_v1',
+}
 WARMUP = 50
 ITERS = 500
 ROUNDS = 3
@@ -169,7 +173,7 @@ def main():
     p.add_argument('--overwrite-v1', action='store_true',
                    help='allow overwriting the frozen v1 benchmark_<method>.json (not for formal v2)')
     a = p.parse_args()
-    out = OUT / f'benchmark_{a.method}.json'
+    out = LEGACY_OUT[a.method] / f'benchmark_{a.method}.json'
     if out.exists() and not a.overwrite_v1:
         raise SystemExit(
             f'refusing to overwrite frozen v1 file {out}; '

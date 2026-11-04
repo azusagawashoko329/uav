@@ -15,7 +15,7 @@
 - [x] 只对 profiler **共同支持**的算子比较；ConvTranspose/Conv3d/融合 Attention 用独立公式核验；**完整 FLOPs 不要求等于 profiler 总数**
 - [x] 防重复计数：module hook / matmul 包装 / SDPA 包装分开，手写公式与主计数器逐模块对齐
 - [x] 时序方法 `score_density=K/stride`；`frame_coverage` 按分数映射/重叠/融合单独计算，不用 K/stride 冒充；没有连续流测试只能写 `fps_stream_estimated`
-- [x] 结果写 `benchmark_v2_<method>.json`，不覆盖任何 v1 文件
+- [x] 结果写 `<Method>/<variant>/benchmark_v2.json`，不覆盖任何 v1 文件
 
 ## 1. Ours / GLoRD 六个变体（已完成 v2 测量）
 

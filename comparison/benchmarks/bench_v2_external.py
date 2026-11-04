@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """v2 benchmark for external methods: GANomaly, MemAE, MKD.
 
-Writes only benchmark_v2_<method>.json. Never writes the frozen v1 files.
+Writes <Method>/default/benchmark_v2.json and its log. Never writes the frozen
+v1 files under <Method>/default/legacy_v1/.
 """
 from __future__ import annotations
 
@@ -24,7 +25,11 @@ sys.path.insert(0, str(ROOT))
 from bench_v2_common import git_commit, measure, write_result
 
 CLONE = Path('/data1/data8tb/liangyuxuan/Comparison method')
-OUT = ROOT / 'comparison/da'
+METHOD_DIRS = {
+    'ganomaly': ROOT / 'comparison/da/GANomaly/default',
+    'memae': ROOT / 'comparison/da/MemAE/default',
+    'mkd': ROOT / 'comparison/da/MKD/default',
+}
 
 
 def _meta(method, variant, input_hwt, t, k, stride, frame_coverage,
@@ -73,7 +78,7 @@ def _ganomaly(out_path):
         'ANDT Table VI / user table (DA-adapted baseline); not the same config as this efficiency run',
         'G is the inference graph; D is training-only (G+D in training trainable). '
         'Full G forward includes encoder1 -> decoder -> encoder2; scoring is latent MSE.',
-        'comparison/da/benchmark_ganomaly.json', out_path)
+        'comparison/da/GANomaly/default/legacy_v1/benchmark_ganomaly.json', out_path)
     return g, fn, meta
 
 
@@ -151,7 +156,7 @@ def _mkd(out_path):
         'ANDT Table VI / user table (DA-adapted baseline); efficiency is MVTec 128 config',
         'Multi-layer scoring at cloner/source taps (6,9,12): cosine + 0.01*MSE, per original test_functions.py. '
         'Source VGG16 is frozen; cloner cfg B is trainable. V1 only used the final layer and was wrong.',
-        'comparison/da/benchmark_mkd.json', out_path)
+        'comparison/da/MKD/default/legacy_v1/benchmark_mkd.json', out_path)
     return model, lambda x: model(x), meta
 
 
@@ -174,14 +179,15 @@ def _memae(out_path):
         'Original script_testing.py returns one clip-level reconstruction error per 16-frame clip '
         '(mean over T,H,W), mapped to a center frame; K=1, stride=1. The old v1 BxT/16 calculation was wrong. '
         'frame_coverage is approximately 1.0 excluding boundary frames.',
-        'comparison/da/benchmark_memae.json', out_path)
+        'comparison/da/MemAE/default/legacy_v1/benchmark_memae.json', out_path)
     return m, fn, meta
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--method', required=True, choices=['ganomaly', 'memae', 'mkd'])
-    p.add_argument('--out-dir', type=Path, default=OUT)
+    p.add_argument('--out-dir', type=Path, default=None,
+                   help='default: comparison/da/<Method>/default')
     p.add_argument('--no-profiler', action='store_true')
     args = p.parse_args()
 
@@ -189,7 +195,8 @@ def main():
     torch.backends.cudnn.allow_tf32 = False
     torch.set_float32_matmul_precision('highest')
 
-    out_path = args.out_dir / f'benchmark_v2_{args.method}.json'
+    out_dir = args.out_dir or METHOD_DIRS[args.method]
+    out_path = out_dir / 'benchmark_v2.json'
     if args.method == 'ganomaly':
         model, fn, meta = _ganomaly(out_path)
         x1 = torch.randn(1, 3, 256, 256, device='cuda')

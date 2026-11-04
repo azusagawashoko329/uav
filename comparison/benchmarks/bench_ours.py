@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """LEGACY v1 benchmark for the six Ours DA variants.
 
-WARNING: this script writes the frozen v1 file comparison/da/benchmark_ours.json
-and uses profiler-only FLOPs plus the old total/trainable parameter names. It is
+WARNING: this script targets the frozen v1 file
+comparison/da/ours/legacy_v1/benchmark_ours.json and uses profiler-only FLOPs
+plus the old total/trainable parameter names. It is
 NOT valid for formal v2 numbers. See comparison/benchmarks/README.md and
 comparison/BENCHMARK_PROTOCOL.md; v2 results must go to benchmark_v2_ours.json.
 
@@ -122,7 +123,7 @@ def measure_variant(teacher, vid, spec):
 def main():
     print('WARNING: v1 LEGACY benchmark; not valid for formal v2 numbers. '
           'See comparison/benchmarks/README.md.', flush=True)
-    path = ROOT / 'comparison/da/benchmark_ours.json'
+    path = ROOT / 'comparison/da/ours/legacy_v1/benchmark_ours.json'
     if path.exists() and '--overwrite-v1' not in sys.argv:
         raise SystemExit(
             f'refusing to overwrite frozen v1 file {path}; '

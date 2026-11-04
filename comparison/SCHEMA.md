@@ -108,7 +108,7 @@
 | `frame_coverage` | number/null | 实际收到至少一个分数的原始帧比例（0..1）；按分数映射/重叠/融合计算，不能由 `K/stride` 推出 |
 | `fps_stream_estimated` | number/null | `stride·1000/mean_window_latency_ms`，按窗口步长推算的流吞吐估计 |
 | `fps_stream_measured` | number/null | 只有实际连续视频流测试才填；否则 `null` |
-| `benchmark_source` | str/null | 新结果 JSON 路径，例如 `comparison/da/benchmark_v2_ours.json` |
+| `benchmark_source` | str/null | 新结果 JSON 路径，例如 `comparison/da/ours/<variant>/benchmark_v2.json` 或 `comparison/da/GANomaly/default/benchmark_v2.json` |
 | `notes` | str | 口径偏差、漏计说明、与 AUC 配置的差异 |
 
 校验规则（`check_comparisons.py` 会执行）：

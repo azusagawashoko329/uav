@@ -59,7 +59,7 @@
 
 ## 3. 轻量化主表 v2（2026-11-04 实测）
 
-> 本表全部来自 `benchmark_v2_*.json`：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。旧 v1 数字在 §5 归档，不再引用。
+> 本表全部来自各方法/变体目录的 `benchmark_v2.json`：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。旧 v1 数字在 §5 归档，不再引用。
 > `FLOPs verified=yes` 表示所有 MAC 算子均已核验、`flops_ops_missing=[]`；profiler 只比共同支持算子，不用其总数做验收。
 
 | Method | Input (H×W×T) | Inference Params (M) ↓ | Training Trainable (M) ↓ | Training-only (M) ↓ | FLOPs (G/output score) ↓ | FLOPs verified | Latency@BS1 P50 (ms/output score) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status |
@@ -91,7 +91,7 @@
 | Ours V4 `rd_s4_t12_gl192_h128` | 256×256×1 | 89.796 | 4.154 | 0 | 49.308 | yes | 19.417 | 51.3 | 324.7 | 83.9186 | measured |
 | Ours V5 `rd_s4_t12_gl192_h128_qr2` | 256×256×1 | 89.402 | 3.761 | 0 | 49.106 | yes | 20.513 | 48.5 | 324.4 | 84.0137 | measured |
 
-> 复现与验证证据见 [v2_validation.md](v2_validation.md)。所有方法都是 `benchmark_v2_*.json`，未覆盖 v1 文件。
+> 复现与验证证据见 [v2_validation.md](v2_validation.md)。所有方法的结果都在各自目录的 `benchmark_v2.json`，未覆盖 v1 文件。
 
 ### 3.1 时序附表（T / K / stride）
 
@@ -207,4 +207,4 @@
 - 逐方法待办与验收条件见 [RETEST_CHECKLIST.md](../RETEST_CHECKLIST.md)；Ours V0–V5、GANomaly、MemAE、MKD 已完成，ANDT/adVAE/其余外部方法仍 blocked。
 - 改动原因与哪些旧数字不再正式见 [protocol_change_log.md](../protocol_change_log.md)。
 - 旧 JSON/日志/审计文件哈希见 [LEGACY_v1.md](LEGACY_v1.md)。
-- v2 结果文件：`comparison/da/benchmark_v2_*.json`（未覆盖任何 v1 文件）。
+- v2 结果文件：各方法/变体目录下的 `benchmark_v2.json`；Ours 聚合在 `comparison/da/ours/benchmark_v2_ours.json`（未覆盖任何 v1 文件）。

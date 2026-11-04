@@ -23,9 +23,16 @@ comparison/
         README.md
         record.json
         results/summary.{json,md}
+        benchmark_v2.json   # 该变体的 v2 轻量化结果
+      benchmark_v2_ours.json # 六变体聚合
+      logs/                 # 分批运行日志
+      legacy_v1/            # 冻结的 v1 结果
     <Method>/
       <variant>/            # 外部方法；目录名保留官方大小写/标点
         record.json
+        benchmark_v2.json   # 该方法的 v2 轻量化结果
+        benchmark_v2.log
+        legacy_v1/          # 冻结的 v1 结果
         upstream/           # 可选；默认 clone 到 /data1/data8tb/liangyuxuan/Comparison method/<Method>/
         scripts/            # 适配脚本
         results/
@@ -95,7 +102,7 @@ python comparison/check_comparisons.py
 - **v1 归档**：[da/LEGACY_v1.md](da/LEGACY_v1.md) + [da/LEGACY_v1.sha256](da/LEGACY_v1.sha256)。旧 `benchmark_*.json` / `.log` / 旧审计不改。
 - **改动记录**：[protocol_change_log.md](protocol_change_log.md)。
 - **逐方法重测**：[RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。
-- **脚本规范**：[benchmarks/README.md](benchmarks/README.md)。v2 脚本：`flops_counter.py`、`bench_v2_common.py`、`bench_v2_ours.py`、`bench_v2_external.py`；旧 `bench_ours.py` / `bench_external.py` 是 v1 legacy；v2 结果写 `benchmark_v2_<method>.json`，不得覆盖旧文件。
+- **脚本规范**：[benchmarks/README.md](benchmarks/README.md)。v2 脚本：`flops_counter.py`、`bench_v2_common.py`、`bench_v2_ours.py`、`bench_v2_external.py`；旧 `bench_ours.py` / `bench_external.py` 是 v1 legacy；v2 结果写对应方法/变体目录的 `benchmark_v2.json`，不得覆盖同目录 `legacy_v1/` 下的旧文件。
 - **v2 验证记录**：[da/v2_validation.md](da/v2_validation.md)。
 - 机器字段：`record.json` 可选 `efficiency` 对象，见 [SCHEMA.md](SCHEMA.md)。
 
