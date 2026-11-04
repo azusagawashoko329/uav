@@ -14,6 +14,7 @@ v2 已实现：
 - `bench_v2_extra.py`：LightViT-AD / MADViT Full / ST Dissoc. / ASTT(STE-TTE) / DAD-FSM / HSTforU。
 - `bench_v2_madvit_variants.py`：MADViT Full / Multi-layer / Last-layer（论文 Sec. 4.4 的 scoring 变体）。
 - `bench_tf1_extra.py`：Future Frame / MLEP（TF1.15，FLOPs 标 partial/unverified）。
+- `bench_tf2_compat.py` + `tf2_compat_shims.py`：Future Frame / MLEP 的 TF2.20 runtime-adapted 计时（官方模型代码不变，只补 TF1 contrib API；结果写 `benchmark_v2_tf2compat.json`，不覆盖官方 partial 记录）。
 
 结果写在对应方法/变体目录里：
 
@@ -32,8 +33,10 @@ comparison/da/ST Dissoc./default/benchmark_v2.json
 comparison/da/ASTT/default/benchmark_v2.json
 comparison/da/DAD-FSM/default/benchmark_v2.json
 comparison/da/HSTforU/default/benchmark_v2.json
-comparison/da/Future Frame/default/benchmark_v2.json
-comparison/da/MLEP/default/benchmark_v2.json
+comparison/da/Future Frame/default/benchmark_v2.json          # 官方 TF1.15，partial
+comparison/da/Future Frame/default/benchmark_v2_tf2compat.json # TF2.20 runtime-adapted
+comparison/da/MLEP/default/benchmark_v2.json                  # 官方 TF1.15，partial
+comparison/da/MLEP/default/benchmark_v2_tf2compat.json        # TF2.20 runtime-adapted
 ```
 
 ## 1. 输出文件命名
@@ -134,6 +137,14 @@ comparison/da/MLEP/default/benchmark_v2.json
 - MKD：按原方法多层特征评分实现，不能只取最终层距离；输入保持原论文配置（128×128）或明确标 `da_adapted=true`；FLOPs 覆盖 source/cloner 的 Conv2d/Linear。
 - 外部方法统一从本地 clone 的完整 commit 取 `code_commit`，并写 `source.local_path`。
 - 结果写 `<Method>/default/benchmark_v2.json`；不得覆盖同目录 `legacy_v1/` 下的 v1 文件。
+
+### 3.4 `bench_tf2_compat.py`（TF1 方法的 runtime-adapted 计时）
+
+- 只用于 Future Frame / MLEP。官方 TF1.15 wheel 是 CUDA 10.0/cuDNN 7.6.5，RTX 5880（sm_89）上 cuBLAS/cuDNN 会卡死，无法按 v2 计时；TF2.20（CUDA 12.5/cuDNN 9）可以执行同一张图。
+- 模型文件不改；`tf2_compat_shims.py` 只补 `tensorflow.contrib.layers`、`arg_scope` 和 `ConvLSTMCell`。验收条件是 **TF2 图参数量与 TF1 图逐参数完全一致**（Future Frame 7,704,195；MLEP 12,560,835），脚本会在不一致时直接报错。
+- 计时仍用 50 warmup + 3×500（BS1/BS16）、FP32、5880 UUID；TF `Session.run` 是同步的，BS16 的排队方式与 PyTorch 异步 launch 不同，需在结果里注明。
+- 输出必须是 `benchmark_v2_tf2compat.json`，字段含 `runtime_adapted: true`、`model_code_modified: false`、`adapted_reason`、`tf1_params_check`；**不能覆盖官方 `benchmark_v2.json`**。
+- 状态仍写 `partial/unverified`：FLOPs 来自 TF1 profiler，未做 v2 算子计数器交叉验证，`flops_verified=false`。它不能升为 `measured`，也不能冒充官方 TF1.15 数字。
 
 ## 4. 脚本级验收
 

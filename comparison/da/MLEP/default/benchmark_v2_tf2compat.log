@@ -1,0 +1,11 @@
+[mlep] building BS1
+WARNING:tensorflow:From /data1/data8tb/liangyuxuan/Comparison method/MLEP/models/networks.py:119: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+I0000 00:00:1793797163.568026 3222176 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+E0000 00:00:1793797163.686849 3222176 meta_optimizer.cc:967] layout failed: INVALID_ARGUMENT: MutableGraphView::SortTopologically error: detected edge(s) creating cycle(s) {'recurrent/ConvLSTM/while/Identity_4' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/concat', 'recurrent/ConvLSTM/while/Identity_3' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/mul'}.
+[mlep] building BS16
+I0000 00:00:1793797184.323000 3222176 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/MLEP/default/benchmark_v2_tf2compat.json
+{"measurement_status": "partial/unverified", "runtime_adapted": true, "method": "MLEP", "inference_params_m": 12.560835, "flops_g_per_output_frame": 319.512526355, "flops_verified": false, "latency_bs1_p50_ms_per_output_frame": 11.538247490534559, "fps_bs1": 82.04709167943031, "fps_bs16": 75.5110281290866, "tf1_params_check": {"tf2_params": 12560835, "tf1_params": 12560835, "match": true}}
+EXIT=0

@@ -1,0 +1,13 @@
+WARNING:tensorflow:From /home/lyx/miniconda3/lib/python3.13/site-packages/tensorflow/python/compat/v2_compat.py:98: disable_resource_variables (from tensorflow.python.ops.resource_variables_toggle) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+runtime cwd /tmp/tf2_libdevice_bjqnfpon libdevice /home/lyx/miniconda3/envs/uav_tf1/lib/libdevice.10.bc
+[futureframe] building BS1
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793797018.009601 3222176 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+I0000 00:00:1793797018.024436 3222176 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled
+[futureframe] building BS16
+I0000 00:00:1793797028.031573 3222176 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 46614 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/Future Frame/default/benchmark_v2_tf2compat.json
+{"measurement_status": "partial/unverified", "runtime_adapted": true, "method": "Future Frame", "inference_params_m": 7.704195, "flops_g_per_output_frame": 74.476028824, "flops_verified": false, "latency_bs1_p50_ms_per_output_frame": 5.466906528454274, "fps_bs1": 180.80664795680545, "fps_bs16": 185.1074789593676, "tf1_params_check": {"tf2_params": 7704195, "tf1_params": 7704195, "match": true}}
+EXIT=0

@@ -15,11 +15,11 @@
     "experiment": null,
     "run_id": null,
     "license": null,
-    "notes": "Cloned locally with --depth 1; HEAD commit recorded; protocol alignment pending."
+    "notes": "Cloned locally with --depth 1; HEAD commit recorded. Official TF1.15 params/FLOPs recorded, GPU latency blocked; TF2.20 runtime-adapted timing in benchmark_v2_tf2compat.json."
   },
   "protocol": null,
   "results": null,
-  "notes": "v2 partial: params/FLOPs profiled; GPU latency blocked by TF1 CUDA10 on RTX 5880; no checkpoint.",
+  "notes": "v2 partial: params/FLOPs profiled; official TF1.15 GPU latency blocked by CUDA10 on RTX 5880; no checkpoint. TF2.20 runtime-adapted timing is in benchmark_v2_tf2compat.json (P50 5.467ms, FPS 180.8/185.1); status remains partial/unverified because FLOPs are not cross-checked by the v2 counter. Not official TF1.15.",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "256x256x4",
@@ -59,6 +59,6 @@
     "fps_stream_estimated": null,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/Future Frame/default/benchmark_v2.json",
-    "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value."
+    "notes": "TF1 graph built and profiled on CPU for params/FLOPs. Official TF1.15 GPU latency could not be completed: CUDA10/cuDNN7 kernels on RTX 5880 stall. A separate TF2.20 runtime-adapted measurement is in benchmark_v2_tf2compat.json; it is not the official TF1.15 runtime and keeps status partial/unverified."
   }
 }

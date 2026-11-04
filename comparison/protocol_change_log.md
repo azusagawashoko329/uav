@@ -300,7 +300,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - ASTT：测的是 `model_ste_tte.py`（STE-TTE），384×384×4，无 checkpoint。
 - DAD-FSM：RGB + 分割双流，ResNet50 预训练权重未带，随机初始化；FLOPs/latency 与权重无关。
 - HSTforU：Avenue/PVT2-b2；mmcv-lite 2.x 缺 mmcv 1.x runner/parrots/UPSAMPLE_LAYERS，使用兼容 shim；4 帧输入，MSE scoring。
-- Future Frame / MLEP：TF1.15 CPU profiler 得到 FLOPs；官方权重链接失效/无 checkpoint；TF1 CUDA10 在 5880 的 GPU session 无法按协议完成 latency，标 partial/unverified。
+- Future Frame / MLEP：TF1.15 CPU profiler 得到 FLOPs；官方权重链接失效/无 checkpoint；TF1 CUDA10 在 5880 的 GPU session 无法按协议完成 latency，官方记录标 partial/unverified；TF2.20 runtime-adapted 计时见 §15。
 
 已解决/关闭：
 
@@ -308,9 +308,27 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - MemAE `K`：确认为 `K=1, stride=1`，旧 `÷16` 废弃。
 - MKD：已改为 taps 6/9/12 多层评分，旧最终层距离废弃。
 - ANDT：官方 6 帧 decoder 仍不可用；已用 adapted `de_dense(feat[:,0])` 测 `T=6,K=1,stride=1`，70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1，标 adapted，不冒充 official。
-- 新增完成：LightViT-AD、MADViT Full（code default）、ST Dissoc.、ASTT（STE-TTE）、DAD-FSM；MADViT Multi-layer/Last-layer 代码未实现，保持 `paper-only`。
+- 新增完成：LightViT-AD、MADViT Full（code default）、ST Dissoc.、ASTT（STE-TTE）、DAD-FSM；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 4.4 实现 adapted scoring 并完成测量。
 
 仍未完成：
 
-- 官方 ANDT 6 帧 decoder、adVAE（表格版）保持 `blocked`；HSTforU 已用 mmcv-lite 2.x + 兼容 shim 完成测量；Future Frame/MLEP 已建 TF1 图并得到 params/FLOPs，但 GPU latency 受 TF1 CUDA10 限制，标 `partial/unverified`。
+- 官方 ANDT 6 帧 decoder、adVAE（表格版）保持 `blocked`；HSTforU 已用 mmcv-lite 2.x + 兼容 shim 完成测量；Future Frame/MLEP 已建 TF1 图并得到 params/FLOPs，官方 GPU latency 受 TF1 CUDA10 限制，官方记录标 `partial/unverified`；TF2.20 runtime-adapted 计时已补（§15），但仍不是官方 TF1.15。
 - DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE 保持 `paper-only`。
+
+## 15. 2026-11-04 Future Frame / MLEP 的 TF2 runtime-adapted 计时
+
+背景：官方 TF1.15 wheel 绑定 CUDA 10.0/cuDNN 7.6.5，RTX 5880（Ada/sm_89）上 cuBLAS/cuDNN 卡死；官方 latency 无法按 v2 协议完成。为得到同卡可比较数字，增加 runtime-adapted 路径：
+
+- 新增 `comparison/benchmarks/tf2_compat_shims.py`：只补 TF1 `contrib.layers`、`arg_scope`、`contrib.rnn.ConvLSTMCell`，模型文件不改。
+- 新增 `comparison/benchmarks/bench_tf2_compat.py`：TF2.20（CUDA 12.5.1/cuDNN 9）上按 v2 协议计时；输出 `benchmark_v2_tf2compat.json`，不覆盖官方 `benchmark_v2.json`。
+- 参数验收：Future Frame TF1/TF2 均为 7,704,195；MLEP 均为 12,560,835；不一致时脚本直接报错。
+- FLOPs 仍引用 TF1.15 profiler（同一图）：Future Frame 74.476G，MLEP 319.513G；没有 v2 手写计数器交叉验证，`flops_verified=false`。
+- 结果：
+
+| Method | Runtime | Params M | FLOPs G | P50 ms | FPS BS1 | FPS BS16 |
+|---|---|---:|---:|---:|---:|---:|
+| Future Frame | TF2.20/CUDA12.5.1/cuDNN9 | 7.704 | 74.476 | 5.467 | 180.8 | 185.1 |
+| MLEP | TF2.20/CUDA12.5.1/cuDNN9 | 12.561 | 319.513 | 11.538 | 82.0 | 75.5 |
+
+- 状态规则：两方法的官方记录仍是 `partial/unverified`；TF2-adapted 记录也保持 `partial/unverified`，因为 `flops_verified=false`，不能升 `measured`。主表可引用 P50@BS1 并加 `runtime-adapted` 脚注，不能冒充官方 TF1.15。
+- MLEP 的 BS16 FPS 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 与 batch 16 调度开销；实测值，不做外推。

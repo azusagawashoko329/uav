@@ -1,7 +1,7 @@
 # 轻量化对比协议 v2（DA 主表）
 
 - **版本**：v2，2026-11-04。
-- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted)、LightViT-AD、MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 完成正式测量；Future Frame/MLEP 为 `partial/unverified`（params/FLOPs 有，GPU latency 未完成）；adVAE 仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
+- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted)、LightViT-AD、MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 完成正式测量；Future Frame/MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未完成），另已增加 TF2.20 runtime-adapted 计时（Future Frame 5.467ms、MLEP 11.538ms，见 summary §3.3），但因 `flops_verified=false` 仍不能升 `measured`；adVAE 仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
 - **v1 数据**：已归到各方法目录的 `legacy_v1/`（Ours 在 `comparison/da/ours/legacy_v1/`，外部方法在 `<Method>/default/legacy_v1/`）与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/`，全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
 - **正式主表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 重测完成前，数字留空或标 `partial/unverified` / `blocked` / `paper-only`，不得把 v1 数字当正式对比结果。
 
@@ -216,6 +216,16 @@ AUC 和效率是两条独立证据，**不能暗示来自同一配置**：
 - 原始 BS1/BS16 耗时已保存到结果 JSON；
 - 参数量三列均为非空数值。
 
+### 9.1 TF1 runtime-adapted 的特别口径
+
+Future Frame / MLEP 的官方 TF1.15 运行时在 RTX 5880（sm_89）上无法执行 cuBLAS/cuDNN，不能按原 runtime 计时。允许用 TF2.20 + contrib shim 跑**同一官方模型图**，但必须：
+
+- 写入单独的 `benchmark_v2_tf2compat.json`，`runtime_adapted=true`、`model_code_modified=false`、`adapted_reason` 非空；
+- 给出 TF2/TF1 参数量逐参数核对（脚本内 `tf1_params_check`），不一致即失败；
+- FLOPs 仍只能引用 TF1 profiler，`flops_verified=false`，因此 **Status 只能是 `partial/unverified`，不能升 `measured`**；
+- 主表引用时用 `P50@BS1 + runtime-adapted` 脚注，不能覆盖官方 TF1.15 行，也不能把 TF2 数字写成论文 TF1 数字；
+- 注明 TF `Session.run` 是同步的，BS16 排队方式与 PyTorch 异步 launch 不完全相同。
+
 ## 10. 表头与记录字段
 
 ### 10.1 主表表头
@@ -268,13 +278,13 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 ## 12. 已知阻塞与逐方法重测清单
 
 - **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格/向量版（`(B,400)`，0.329M），不是 DA 视频模型；视频实现缺失，标 `blocked`。
-- **ANDT**：`ANDT/ANDT/model.py` 有 `pdb.set_trace()`、硬编码 `.cuda()`，decoder `x.view(B,256,16,16)` 只支持 1 帧。v2 用最小 adapted patch `de_dense(feat[:,0])` 测 6 帧：`T=6, K=1, stride=1`，70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1，结果标 **adapted**，不是官方 6 帧代码；官方 decoder 仍 `blocked`。若测 1 帧代码变体，另标 `code-variant-1frame`。
+- **ANDT**：`ANDT/ANDT/model.py` 有 `pdb.set_trace()`、硬编码 `.cuda()`，decoder `x.view(B,256,16,16)` 只支持 1 帧。v2 用最小 adapted patch `de_dense(feat[:,0])` 测 6 帧：`T=6, K=1, stride=1`，70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1，结果标 **adapted**，不是官方 6 帧代码；官方 decoder 仍 `blocked`。若测 1 帧代码变体，另标 `code-variant-1frame`。
 - **MemAE**：已核实原测试每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），`K=1, stride=1`；v2 全窗口 FLOPs=70.808G，旧 `÷16` 废弃。
 - **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
 - **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。
-- **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 代码未实现，保持 `paper-only`。
+- **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 已在 `bench_v2_madvit_variants.py` 中按论文 Sec. 4.4 实现 adapted scoring 并完成测量。
 - **HSTforU**：已用 mmcv-lite 2.x + 兼容 shim（runner/parrots/UPSAMPLE_LAYERS）完成测量：168.209G / 64.258ms / 15.5 FPS@BS1。
-- **Future Frame / MLEP**：TF1 代码；已在 `uav_tf1` 环境构建推理图并得到 params/FLOPs（Future Frame 7.704M/74.476G；MLEP 12.561M/319.513G），但官方权重链接失效、TF1 CUDA10 在 5880 的 GPU latency 无法按协议完成，标 `partial/unverified`。
+- **Future Frame / MLEP**：TF1 代码；已在 `uav_tf1` 环境构建推理图并得到 params/FLOPs（Future Frame 7.704M/74.476G；MLEP 12.561M/319.513G）。官方权重链接失效、官方 TF1.15 CUDA10 在 5880 的 GPU latency 无法按协议完成，官方记录标 `partial/unverified`。另用 TF2.20（CUDA12.5/cuDNN9）+ contrib shim 跑同一官方图，得到 runtime-adapted latency（Future Frame 5.467ms/180.8 FPS@BS1；MLEP 11.538ms/82.0 FPS@BS1）；TF2 图参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍 `partial/unverified`，不能冒充官方 TF1.15。
 - **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：只有用户表数字，`paper-only`，不参与本机速度排序。
 
 逐方法的“要改什么、要确认什么、当前状态”见 [RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。

@@ -3,7 +3,7 @@
 > **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
 > MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
-> Future Frame / MLEP 为 TF1 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；adVAE 仍 `blocked`。
+> Future Frame / MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；已补 TF2.20 runtime-adapted 计时（Future Frame 5.467ms / 180.8 FPS@BS1；MLEP 11.538ms / 82.0 FPS@BS1），仍标 `partial/unverified`，不能冒充官方 TF1.15；adVAE 仍 `blocked`。
 
 ## 0. 全局准入（所有方法共用）
 
@@ -93,9 +93,9 @@
 
 | 方法 | 当前状态 | 结果/限制 |
 |---|---|---|
-| Future Frame | partial/unverified | TF1 graph 已建：7.704M / 74.476G；官方权重链接失效，GPU latency 受 TF1 CUDA10 限制 |
+| Future Frame | partial/unverified | 官方 TF1.15：7.704M / 74.476G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：5.467ms / 180.8 FPS@BS1 / 185.1 FPS@BS16（`benchmark_v2_tf2compat.json`） |
 | ST Dissoc. | measured | 60.612G / 3.668ms / 269.7 FPS@BS1；`padding=False→0` 兼容修正 |
-| MLEP | partial/unverified | TF1 graph 已建：12.561M / 319.513G；GPU latency 受 TF1 CUDA10 限制 |
+| MLEP | partial/unverified | 官方 TF1.15：12.561M / 319.513G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：11.538ms / 82.0 FPS@BS1 / 75.5 FPS@BS16（`benchmark_v2_tf2compat.json`） |
 | ASTT | measured | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint |
 | DAD-FSM | measured | 71.194G / 12.684ms / 78.5 FPS@BS1；RGB+分割双流，ResNet50 随机初始化 |
 | HSTforU | measured | 168.209G / 64.258ms / 15.5 FPS@BS1；mmcv-lite 2.x + 兼容 shim |
@@ -104,8 +104,8 @@
 | LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
 - [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
-- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 保持 paper-only
-- [ ] Future Frame/MLEP 的 TF1 GPU latency 待解决；adVAE 仍待视频实现
+- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 已按论文 Sec. 4.4 实现 adapted scoring 并完成测量
+- [x] Future Frame/MLEP 已补 TF2.20 runtime-adapted 计时（官方 TF1.15 latency 仍受 CUDA10/sm_89 限制）；adVAE 仍待视频实现
 
 ## 8. Paper-only 方法（不重测，单独表）
 

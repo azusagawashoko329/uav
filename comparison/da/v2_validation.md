@@ -38,8 +38,8 @@
 | ASTT (STE-TTE) | 1×4×3×384×384 | **109.415536640G** | 64 模块 | 0 | 105.638578944G | attention/ConvTranspose 盲区；matmul 0% |
 | DAD-FSM | 1×4×3×224×224 ×2 流 | **71.193985024G** | 78 模块 | 0 | 71.044112386G | ConvTranspose 盲区；matmul 0% |
 | HSTforU (Avenue) | 4×3×256×256 | **168.209416192G** | 216 模块 | 0 | 144.628441088G | attention/ConvTranspose 盲区；matmul 0% |
-| Future Frame | 4×3×256×256 | **74.476028824G** | — | — | 74.476028824G (TF1) | TF1 profiler；GPU latency 未测 |
-| MLEP | 4×3×224×224 | **319.512526355G** | — | — | 319.512526355G (TF1) | TF1 profiler；GPU latency 未测 |
+| Future Frame | 4×3×256×256 | **74.476028824G** | — | — | 74.476028824G (TF1) | TF1 profiler；官方 latency 未测；TF2 adapted 见 §7 |
+| MLEP | 4×3×224×224 | **319.512526355G** | — | — | 319.512526355G (TF1) | TF1 profiler；官方 latency 未测；TF2 adapted 见 §7 |
 
 ANDT 的适配方式是 `de_dense(feat[:,0])` 预测下一帧（发布代码 decoder 只支持 1 帧），因此这一行是 **adapted**，不是 official；详见 [ANDT/default/README.md](ANDT/default/README.md)。
 
@@ -76,7 +76,12 @@ python comparison/benchmarks/bench_v2_extra.py --method lightvit
 
 CUDA_VISIBLE_DEVICES=GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6 \
 python comparison/benchmarks/bench_v2_madvit_variants.py
+
+CUDA_VISIBLE_DEVICES=GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6 \
+python comparison/benchmarks/bench_tf2_compat.py --method both
 ```
+
+> `bench_tf2_compat.py` 是 Future Frame/MLEP 的 TF2.20 runtime-adapted 计时，不覆盖官方 `benchmark_v2.json`；说明见 §7。
 
 - ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1 / 197.5 FPS@BS16；不是官方代码。
 - 额外方法：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/3.668ms/269.7 FPS；ASTT 109.416G/19.048ms/52.2 FPS；DAD-FSM 71.194G/12.684ms/78.5 FPS；HSTforU 168.209G/64.258ms/15.5 FPS。
@@ -86,11 +91,11 @@ python comparison/benchmarks/bench_v2_madvit_variants.py
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
 - 汇总见 [comparison_summary.md](comparison_summary.md) §3。
 
-## 5. 依赖/代码限制（HSTforU 已解，其他仍 blocked）
+## 5. 依赖/代码限制（HSTforU 已解；TF1 官方 runtime 仍 blocked，TF2 adapted 已补）
 
 - **HSTforU**：已用 `mmcv-lite 2.x` + 兼容 shim（`mmcv.runner`、`parrots_wrapper`、`UPSAMPLE_LAYERS`）构造 Avenue/PVT2-b2 模型并完成测量；不再是 blocked。
-- **Future Frame**：TF1.15 环境已建，generator 图可构建并得到 7.704M / 74.476G；官方 FlowNet2/checkpoint 下载链接失效（OneDrive 301/401、AWS 404），且 TF1 CUDA10 在 5880 上的 GPU session 无法按协议完成 latency，标 `partial/unverified`。
-- **MLEP**：TF1.15 环境已建，`cyclegan_convlstm` 图可构建并得到 12.561M / 319.513G；GPU latency 同样受 TF1 CUDA10 限制，标 `partial/unverified`。
+- **Future Frame**：TF1.15 环境已建，generator 图可构建并得到 7.704M / 74.476G；官方 FlowNet2/checkpoint 下载链接失效（OneDrive 301/401、AWS 404），且 TF1 CUDA10 在 5880 上的 GPU session 无法按协议完成 latency。官方记录保持 `partial/unverified`；另用 TF2.20 runtime-adapted 得到 5.467ms / 180.8 FPS@BS1（§7），仍不能冒充 TF1.15。
+- **MLEP**：TF1.15 环境已建，`cyclegan_convlstm` 图可构建并得到 12.561M / 319.513G；官方 GPU latency 同样受 TF1 CUDA10 限制。官方记录保持 `partial/unverified`；另用 TF2.20 runtime-adapted 得到 11.538ms / 82.0 FPS@BS1（§7）。
 - **adVAE**：官方仓库是表格/向量版，不是 DA 视频模型，保持 `blocked`。
 
 ### 5.1 MADViT 变体核对
@@ -113,3 +118,50 @@ MKD 前两次尝试失败，未写入正式结果：
 2. 上游 `VGG.forward` 在 `target_layer=11` 调 `x.register_hook(...)`；在 `torch.no_grad()`/`inference_mode()` 下报 `RuntimeError: cannot register a hook on a tensor that doesn't require gradient`。v2 改为 hook-free 的 `_cloner_features()`，按相同 taps `[2,5,8,11,14,17,20,23,26,29,32,35,38]` 收集特征。
 
 最终成功日志：`comparison/da/MKD/default/benchmark_v2.log`。
+
+## 7. TF1 方法的 TF2 runtime-adapted 验证（Future Frame / MLEP）
+
+### 7.1 为什么需要 runtime adaptation
+
+官方 TF1.15 wheel 绑定 CUDA 10.0/cuDNN 7.6.5；RTX 5880 是 Ada/sm_89。最小复现：
+
+| 测试 | 结果 |
+|---|---|
+| TF1.15 识别 5880（compute capability 8.9） | 成功 |
+| Session 创建 + 变量初始化 | 约 2.3s |
+| `tf.add` elementwise GPU | 正常 |
+| 64×64 `tf.matmul`（cuBLAS 10.0） | 40s 内不返回 |
+| 32×32 `tf.nn.conv2d`（cuDNN 7） | 100s 内不返回 |
+| 完整模型 smoke | 5–15 分钟不返回 |
+
+因此官方 TF1.15 记录只能是 params/FLOPs + `partial/unverified`；latency/FPS 不能填。
+
+### 7.2 TF2 适配方式和验收
+
+`comparison/benchmarks/bench_tf2_compat.py` + `tf2_compat_shims.py`：
+
+- 模型文件不改；只补 TF1 `contrib.layers`、`arg_scope`、`contrib.rnn.ConvLSTMCell`。
+- TF2 版本：2.20.0（CUDA 12.5.1 build，cuDNN 9，Python 3.13.5）。
+- **验收条件：TF2 图 trainable params 与 TF1 图逐参数完全一致**：
+  - Future Frame：TF1 7,704,195 = TF2 7,704,195；
+  - MLEP：TF1 12,560,835 = TF2 12,560,835。
+  脚本在不等时直接 `RuntimeError`。
+- 输出 shape 也一致：Future Frame `[B,256,256,3]`；MLEP `[B,224,224,3]`，ConvLSTM hidden `[B,56,56,256]`。
+- FLOPs 沿用 TF1.15 profiler（同一图）：Future Frame 74.476G，MLEP 319.513G；没做 v2 PyTorch 计数器交叉验证，所以 `flops_verified=false`。
+- 计时：5880 UUID、FP32、BS1/BS16 各 50 warmup + 3×500；每次 `Session.run` 同步计时。TF Session.run 的同步语义与 PyTorch BS16 异步 launch 不同，报告中已注明。
+
+### 7.3 结果（runtime-adapted，不是官方 TF1.15）
+
+| Method | Runtime | Params (M) | FLOPs (G) | P50 (ms) | Mean (ms) | P95 (ms) | FPS@BS1 | FPS@BS16 | Status |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| Future Frame | TF2.20/CUDA12.5.1/cuDNN9 | 7.704 | 74.476 | 5.467 | 5.531 | 6.217 | 180.8 | 185.1 | `partial/unverified`（runtime-adapted） |
+| MLEP | TF2.20/CUDA12.5.1/cuDNN9 | 12.561 | 319.513 | 11.538 | 12.188 | 13.822 | 82.0 | 75.5 | `partial/unverified`（runtime-adapted） |
+
+MLEP 的 BS16 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 和 batch 16 调度开销；是实测值，不做外推。两方法都没有连续视频流实测，`fps_stream_measured=null`。
+
+### 7.4 状态判定
+
+- 官方 `benchmark_v2.json` 不变：TF1.15，latency null，`partial/unverified`。
+- 新增 `benchmark_v2_tf2compat.json`：`runtime_adapted=true`、`model_code_modified=false`、`adapted_reason`、`tf1_params_check`。
+- 因为 `flops_verified=false`，即使有 latency 也不能升为 `measured`；状态仍是 `partial/unverified`。
+- 引用规则：主表可用 P50@BS1 + `runtime-adapted †` 脚注；不得覆盖官方 TF1.15 行，也不得把 TF2 数字写成论文 TF1 数字。
