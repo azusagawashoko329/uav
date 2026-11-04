@@ -256,7 +256,8 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 
 - `comparison/benchmarks/flops_counter.py`：FlopCounterMode + native MHA 公式 + 手写模块公式 + profiler 共同子集 + 去重检查。
 - `comparison/benchmarks/bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
-- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`：只写对应方法目录下的 `benchmark_v2.json`。
+- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`、`bench_v2_andt.py`：只写对应方法目录下的 `benchmark_v2.json`。
+- `comparison/da/ANDT/default/scripts/andt_adapted_model.py`：ANDT 6 帧最小适配（`de_dense(feat[:,0])`）。
 - `comparison/da/v2_validation.md`：玩具算子 + GANomaly/MemAE/GLoRD V0 的验证记录。
 
 验证结论：
@@ -273,6 +274,7 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 | GANomaly | 16.428 | 8.088 | 123.6 | 848.5 |
 | MemAE | 70.808 | 7.321 | 136.5 | 130.3 |
 | MKD | 10.477 | 2.495 | 394.5 | 2340.8 |
+| ANDT adapted 6-frame | 74.490 | 4.470 | 223.6 | 210.4 |
 | Ours V0 | 95.107 | 14.521 | 68.4 | 187.4 |
 | Ours V1 | 68.532 | 19.903 | 50.0 | 244.3 |
 | Ours V2 | 62.804 | 14.787 | 67.3 | 263.3 |
@@ -285,8 +287,9 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - GLoRD V0/V5 新旧 FLOPs 差异：v2 为 95.107/49.106，与旧审计一致；v1 的 90.205/46.572 是 profiler 漏计 native MHA。
 - MemAE `K`：确认为 `K=1, stride=1`，旧 `÷16` 废弃。
 - MKD：已改为 taps 6/9/12 多层评分，旧最终层距离废弃。
+- ANDT：官方 6 帧 decoder 仍不可用；已用 adapted `de_dense(feat[:,0])` 测 `T=6,K=1,stride=1`，70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1，标 adapted，不冒充 official。
 
 仍未完成：
 
-- ANDT（decoder 只支持 1 帧）、adVAE（表格版）、Future Frame/ST Dissoc./MLEP/ASTT/DAD-FSM/HSTforU/MADViT/LightViT-AD（未适配）保持 `blocked`。
+- 官方 ANDT 6 帧 decoder、adVAE（表格版）、Future Frame/ST Dissoc./MLEP/ASTT/DAD-FSM/HSTforU/MADViT/LightViT-AD（未适配）保持 `blocked`。
 - DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE 保持 `paper-only`。

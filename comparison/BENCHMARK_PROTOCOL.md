@@ -268,7 +268,7 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 ## 12. 已知阻塞与逐方法重测清单
 
 - **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格/向量版（`(B,400)`，0.329M），不是 DA 视频模型；视频实现缺失，标 `blocked`。
-- **ANDT**：`ANDT/ANDT/model.py` 有 `pdb.set_trace()`、硬编码 `.cuda()`，decoder `x.view(B,256,16,16)` 只支持 1 帧；论文 6 帧模型 `T=6, K=1, stride=1` 需要先修/确认 decoder，否则标 `blocked`。若测 1 帧代码变体，标 `code-variant-1frame`。
+- **ANDT**：`ANDT/ANDT/model.py` 有 `pdb.set_trace()`、硬编码 `.cuda()`，decoder `x.view(B,256,16,16)` 只支持 1 帧。v2 用最小 adapted patch `de_dense(feat[:,0])` 测 6 帧：`T=6, K=1, stride=1`，70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1，结果标 **adapted**，不是官方 6 帧代码；官方 decoder 仍 `blocked`。若测 1 帧代码变体，另标 `code-variant-1frame`。
 - **MemAE**：已核实原测试每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），`K=1, stride=1`；v2 全窗口 FLOPs=70.808G，旧 `÷16` 废弃。
 - **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
 - **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。

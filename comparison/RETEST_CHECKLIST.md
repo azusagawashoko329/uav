@@ -67,16 +67,17 @@
 - [ ] 参数三列：inference 15.059、training trainable 0.344、training-only 0、frozen 14.715
 - [ ] 结果写 `benchmark_v2_mkd.json`
 
-## 5. ANDT
+## 5. ANDT（adapted 6-frame 已测；official 仍 blocked）
 
-当前状态：`blocked`（发布代码 decoder 只支持 1 帧；论文 6 帧模型跑不通）。
+当前状态：`adapted 6-frame measured`；官方 6 帧 decoder 仍不可用。
 
-- [ ] 先确认是否有作者完整 6 帧预测代码/decoder；没有则保持 `blocked`
-- [ ] 论文配置：`T=6, K=1, stride=1`，输入 256×256×6，预测下一帧
-- [ ] 若采用最小 patch（去掉 `pdb`，`output = self.decoder(self.de_dense(feat[:,0]))`），必须标 `adapted`，不能冒充 official
-- [ ] 若测 1 帧代码变体，标 `code-variant-1frame`，`T=1`，不能与论文 6 帧 AUC 混表
-- [ ] FLOPs 覆盖 Transformer encoder/decoder、patch embedding、时空位置编码；`K=1` 摊销
-- [ ] 结果写 `benchmark_v2_andt.json` 前，先在 README 记录代码改动
+- [x] 采用最小 patch（去掉 `pdb`/`.cuda()`，`output = self.decoder(self.de_dense(feat[:,0]))`），明确标 `adapted`
+- [x] 论文配置：`T=6, K=1, stride=1`，输入 256×256×6，预测下一帧
+- [x] FLOPs 覆盖 Transformer encoder/decoder、patch embedding、de_dense、decoder conv；`K=1`
+- [x] 结果：70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1；写 `ANDT/default/benchmark_v2.json`
+- [x] README 记录代码改动与 adapted 限制
+- [ ] 官方 6 帧代码/decoder 仍待确认；确认前不能把 adapted 数字当 official
+- [ ] 1 帧代码变体（若需要）单独标 `code-variant-1frame`，不能与论文 6 帧 AUC 混表
 
 ## 6. adVAE
 

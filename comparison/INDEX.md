@@ -20,7 +20,7 @@
 | [da-GANomaly-default](da/GANomaly/default/record.json) | GANomaly | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/samet-akcay/ganomaly.git) |
 | [da-MemAE-default](da/MemAE/default/record.json) | MemAE | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/donggong1/memae-anomaly-detection.git) |
 | [da-MKD-default](da/MKD/default/record.json) | MKD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/rohban-lab/Knowledge_Distillation_AD.git) |
-| [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | — | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
+| [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
 | [da-Future Frame-default](da/Future%20Frame/default/record.json) | Future Frame | `default` | `planned` | — | — | — | [upstream](https://github.com/StevenLiuWen/ano_pred_cvpr2018.git) |
 | [da-ST Dissoc.-default](da/ST%20Dissoc./default/record.json) | ST Dissoc. | `default` | `planned` | — | — | — | [upstream](https://github.com/ChangYunPeng/VideoAnomalyDetection.git) |
 | [da-MLEP-default](da/MLEP/default/record.json) | MLEP | `default` | `planned` | — | — | — | [upstream](https://github.com/svip-lab/MLEP.git) |

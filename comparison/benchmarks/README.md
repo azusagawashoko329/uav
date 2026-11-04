@@ -10,6 +10,7 @@ v2 已实现：
 - `bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
 - `bench_v2_ours.py`：六个 Ours 变体。
 - `bench_v2_external.py`：GANomaly / MemAE / MKD。
+- `bench_v2_andt.py`：ANDT adapted 6-frame（适配器在 `comparison/da/ANDT/default/scripts/`）。
 
 结果写在对应方法/变体目录里：
 
@@ -19,6 +20,7 @@ comparison/da/ours/benchmark_v2_ours.json      # 六变体聚合
 comparison/da/GANomaly/default/benchmark_v2.json
 comparison/da/MemAE/default/benchmark_v2.json
 comparison/da/MKD/default/benchmark_v2.json
+comparison/da/ANDT/default/benchmark_v2.json   # adapted 6-frame
 ```
 
 ## 1. 输出文件命名
@@ -106,7 +108,13 @@ comparison/da/MKD/default/benchmark_v2.json
 - 权重状态写 `architecture-init`（效率测结构）；AUC 另引 `experiments/da/appearance/20261103_variant_matrix_*`，不要暗示同一权重。
 - 结果写 `ours/<variant>/benchmark_v2.json` 和 `ours/benchmark_v2_ours.json`；不得覆盖 `ours/legacy_v1/benchmark_ours.json`。
 
-### 3.2 `bench_external.py`
+### 3.2 `bench_v2_andt.py`
+
+- ANDT 必须标 `adapted`：发布代码 `Decoder.forward` 只支持 1 帧；适配器用 `de_dense(feat[:,0])` 预测下一帧。
+- 输入 `(B,6,3,256,256)`，`T=6, K=1, stride=1`；不能把 adapted 数字当 official。
+- `mlp_dim=4096`、`num_layers=2`、`num_heads=6`；参数量 70.347M。
+
+### 3.3 `bench_external.py`
 
 - GANomaly：推理只走 G，`inference_params_m=G`；`training_trainable_params_m=G+D`；`training_only_params_m=D`；FLOPs 覆盖 G 的 Conv2d/ConvTranspose2d/Linear。
 - MemAE：先核对原测试的 `K`（clip 级 vs 逐帧），不要把 `K=T=16` 当默认；`flops_ops_covered` 必须含 Conv3d/ConvTranspose3d；同时记录 `score_density=K/stride` 与按分数映射计算的 `frame_coverage`，不要用 K/stride 冒充覆盖率；未核实前 `measurement_status=partial/unverified`。

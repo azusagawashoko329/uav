@@ -1,8 +1,9 @@
-# ANDT (parameters counted; latency/FLOPs blocked)
+# ANDT（adapted 6-frame measured；official code still partial）
 
 - 论文：Jin et al., *Anomaly Detection in Aerial Videos With Transformers*, IEEE TGRS 2022（arXiv:2209.13363）；Drone-Anomaly 数据集与 ANDT baseline。
 - 本地代码：`/data1/data8tb/liangyuxuan/Comparison method/ANDT/`（HEAD `f2e8c4f70123`；`record.json.source.local_path` 指向这里）。
 - 对比条目目录只放记录，不复制上游代码。
+- v2 结果：`comparison/da/ANDT/default/benchmark_v2.json`（**adapted 6-frame**，不是官方代码）。
 
 ## “论文的 6 帧模型”是什么
 
@@ -29,23 +30,45 @@ ANDT 是**时序**方法，不是单帧分类器：
 - `num_frames=6`、`mlp=1536`（config 默认）：**62.478M**。
 - `num_frames=1`、`mlp=4096`：**69.364M**。
 
-## 为什么 FLOPs/latency 标 blocked
+## v2 adapted 6-frame 结果
+
+发布代码的 `Decoder.forward` 只支持 1 帧，不能直接跑论文的 6 帧输入。v2 使用最小适配：
+
+1. 去掉 `pdb.set_trace()` 和 forward 里的硬编码 `.cuda()`；
+2. `Decoder.forward` 改为 `self.decoder(self.de_dense(x[:, 0]))`（`de_dense` 是代码里已定义但被注释掉的 768→256×16×16 投影）；
+3. 输入 `(B, 6, 3, 256, 256)`，输出预测的下一帧 `(B, 3, 256, 256)`。
+
+实测（RTX 5880 Ada，FP32，50 warmup + 3×500）：
+
+| 项 | 值 |
+|---|---:|
+| Input | 256×256×6 |
+| T / K / stride | 6 / 1 / 1 |
+| Inference Params | 70.347M |
+| Training Trainable | 70.347M |
+| FLOPs | **74.490G / output score** |
+| Latency@BS1 P50 | **4.470ms / output score** |
+| FPS@BS1 | **223.6** |
+| FPS@BS16 | **210.4** |
+| FLOPs verified | yes（hand 16 模块误差 0；profiler matmul 0%；ConvTranspose 盲区跳过） |
+
+- 适配器：`comparison/da/ANDT/default/scripts/andt_adapted_model.py`
+- benchmark：`comparison/benchmarks/bench_v2_andt.py`
+- 结果：`comparison/da/ANDT/default/benchmark_v2.json`
+- 权重状态：random init；官方 checkpoint 不可用。FLOPs/latency 对权重不敏感。
+- `frame_coverage=1.0` 是近似值：滑动窗口预测下一帧时，视频开头 5 帧没有预测分数。
+
+## 官方代码为什么仍不能冒充
 
 发布代码 `ANDT/ANDT/model.py` 的 `forward` 是未整理变体：
 
-- 里面有 `pdb.set_trace()`，直接跑会中断；
+- `pdb.set_trace()` 会中断；
 - forward 里 `.cuda()` 硬编码；
-- decoder 里 `x.view(x.size(0), 256, 16, 16)` 只对应 **1 帧**的 256 个 patch；`num_frames>1` 时 `feat` 是 `1 + 256*num_frames` 个 token，`view` 形状不匹配。论文的 6 帧预测模型需要确认/修补 decoder 后才能测 FLOPs/latency。
+- decoder `x.view(x.size(0), 256, 16, 16)` 只对应 **1 帧**的 256 个 patch；`num_frames=6` 时 `feat` 是 `1 + 256*6 = 1537` 个 token，`view` 形状不匹配；
+- `de_dense` 路径被注释，论文 decoder 的细节可能与这里的 adapted 版本不同。
 
-因此参数量可按代码结构数（见上），但时延/FLOPs 不能把这份 1 帧变体冒充论文 6 帧模型。
+因此：
 
-## 如果接受 adapted 版本
-
-最小改动（不重训、不改权重）：
-
-1. 去掉 `pdb.set_trace()`；
-2. forward 末尾从 `output = self.decoder(feat)` 改为 `output = self.decoder(self.de_dense(feat[:, 0]))`（`de_dense` 是代码里已定义但被注释掉的 768→256×16×16 投影）；
-3. 输入 `(B, 6, 3, 256, 256)`，decoder 输出预测的下一帧；
-4. 按 `BENCHMARK_PROTOCOL.md` 测 BS1/BS16/FLOPs，主表标 `adapted`。
-
-这不是作者发布的完整 6 帧模型（`de_dense` 路径被注释，论文 decoder 细节也可能不同），所以不能冒充 official；是否接受 adapted 数字需要确认。
+- **adapted 数字不能当 official**；
+- AUC 仍引用 ANDT 论文/用户表的官方 6 帧模型（68.64），不能把这里的效率数字与官方 AUC 说成同一实现；
+- 若后续拿到作者完整 6 帧代码/decoder，需要重新跑并替换这一行。
