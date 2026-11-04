@@ -1,13 +1,16 @@
 # DA 方法对比总表
 
-公平口径：[comparison/BENCHMARK_PROTOCOL.md](../BENCHMARK_PROTOCOL.md)
+> **v2 口径修订中（2026-11-04）。** 轻量化协议已改为 [BENCHMARK_PROTOCOL.md](../BENCHMARK_PROTOCOL.md) v2：
+> 参数量拆成 Inference / Training Trainable / Training-only；FLOPs 必须算子计数 + profiler + 手工公式交叉核验；
+> 时序方法分开记录 `T/K/stride`；`Status` 只允许 `measured` / `partial/unverified` / `paper-only` / `blocked`。
+> **v2 重测完成前，§3 主表留空；§5 的 v1 数字只作历史归档，不得作为正式对比结果。**
+> 旧文件哈希与归档说明：[LEGACY_v1.md](LEGACY_v1.md)；逐条改动：[protocol_change_log.md](../protocol_change_log.md)；逐方法重测：[RETEST_CHECKLIST.md](../RETEST_CHECKLIST.md)。
 
 **AUC 来源必须分开读：**
 
-- 外部方法（adVAE / GANomaly / MemAE / MKD / ANDT / Future Frame / ST Dissoc. / MLEP / ASTT / DAD-FSM / HSTforU / MADViT / LightViT-AD / 以及 CVAE 系列）的 AUC 取自用户提供的对比表 / ANDT 论文；ANDT 论文明确 baseline 是在其统一网络与评测协议下跑的，**不一定等于各方法原论文配置**。
+- 外部方法（adVAE / GANomaly / MemAE / MKD / ANDT / Future Frame / ST Dissoc. / MLEP / ASTT / DAD-FSM / HSTforU / MADViT / LightViT-AD / CVAE 系列）的 AUC 取自用户提供的对比表 / ANDT 论文；ANDT 论文明确 baseline 是在其统一网络与评测协议下跑的，**不一定等于各方法原论文配置**。
 - Ours 的 AUC 取自 `experiments/da/appearance/20261103_variant_matrix_*`（seed42，30 epoch，七场景 macro）。
-- 轻量化指标是新协议实测/审计结果，不能和旧表里“只算学生、不含教师”的 Latency/FPS 混用。旧表 Ours V0 是 3.319 ms/301.3 FPS；新协议含 DINOv3 教师，是 17.800 ms/58.7 FPS。两组数字不能混用。
-- GANomaly / MemAE / MKD 的轻量化数字是**各自原始代码/配置**实测；它们的 AUC 数字来自 ANDT benchmark，二者不是同一适配版本，不能把“原论文模型参数”当成“ANDT 适配版参数”。
+- AUC 与轻量化是两条独立证据：AUC 可能来自 DA 适配版，效率可能来自原仓库默认模型；每行配置见 §3.2，不能暗示同一版本。
 
 ## 1. AUC（用户表格顺序，七场景）
 
@@ -41,6 +44,8 @@
 | GL192-D128-Rank2 (V5) | 94.4461 | 99.2609 | 97.6317 | 83.1663 | 58.752 | 61.7818 | 85.6807 | 82.9599 |
 | (30)GL192-D128-Rank2 (V5) | 94.8307 | 99.3254 | 97.6593 | 87.1792 | 56.2522 | 62.3047 | 90.5044 | 84.008 |
 
+> `*` 表示只有部分场景或来自用户表，不能与七场景 macro 直接比较；空格 `—` 表示原表未给。
+
 ## 2. Ours 20261103 30ep 矩阵（新 AUC，与上表旧 Ours 行区分）
 
 | ID | V | highway | farmland | bike | solar | vehicle | crossroads | railway | macro AUC |
@@ -52,11 +57,104 @@
 | rd_s4_t12_gl192_h128 | V4 | 94.48 | 99.13 | 97.61 | 86.18 | 58.30 | 62.20 | 89.53 | 83.9186 |
 | rd_s4_t12_gl192_h128_qr2 | V5 | 94.89 | 99.32 | 97.68 | 87.18 | 56.25 | 62.25 | 90.53 | 84.0137 |
 
-## 3. 轻量化主表（按新协议；实测/审计）
+## 3. 轻量化主表 v2（待重测，空表）
 
-箭头：**↓ 越低越好，↑ 越高越好**；FPS 是越高越好，所以用 `FPS↑`。
+> 本表按 v2 口径只放**通过核验**的数字。当前全部留空，`Status` 说明原因；不把 v1 数字搬进来。
+> `FLOPs verified` 为 `no` 表示尚未完成算子计数器 + profiler + 手工公式三方交叉核验。
 
-| Method | Input (H×W×T) | Total Params (M) ↓ | Trainable Params (M) ↓ | FLOPs (G/output frame) ↓ | Latency@BS1 P50 (ms/output frame) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | Status |
+| Method | Input (H×W×T) | Inference Params (M) ↓ | Training Trainable (M) ↓ | Training-only (M) ↓ | FLOPs (G/output score) ↓ | FLOPs verified | Latency@BS1 P50 (ms/output score) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status |
+|---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---|
+| adVAE | unknown | — | — | — | — | — | — | — | — | 63.87 | blocked |
+| GANomaly | 256×256×1 | — | — | — | — | no | — | — | — | 64.54 | partial/unverified |
+| MemAE | 256×256×16 | — | — | — | — | no | — | — | — | 67.67 | partial/unverified |
+| MKD | 128×128×1 | — | — | — | — | no | — | — | — | 66.63 | partial/unverified |
+| ANDT | 256×256×6 | — | — | — | — | no | — | — | — | 68.64 | blocked |
+| Future Frame | TBD | — | — | — | — | — | — | — | — | — | blocked |
+| ST Dissoc. | TBD | — | — | — | — | — | — | — | — | — | blocked |
+| MLEP | TBD | — | — | — | — | — | — | — | — | — | blocked |
+| ASTT | TBD | — | — | — | — | — | — | — | — | — | blocked |
+| DAD-FSM | TBD | — | — | — | — | — | — | — | — | — | blocked |
+| HSTforU | TBD | — | — | — | — | — | — | — | — | 66.96 | blocked |
+| MADViT Full | TBD | — | — | — | — | — | — | — | — | 72.2 | blocked |
+| MADViT Multi-layer | TBD | — | — | — | — | — | — | — | — | 62.9 | blocked |
+| MADViT Last-layer | TBD | — | — | — | — | — | — | — | — | 74.19 | blocked |
+| LightViT-AD | TBD | — | — | — | — | — | — | — | — | *83.12 | blocked |
+| DwCVAE | — | — | — | — | — | — | — | — | — | *74.95 | paper-only |
+| CVAE | — | — | — | — | — | — | — | — | — | *68.62 | paper-only |
+| DCVAE | — | — | — | — | — | — | — | — | — | *64.11 | paper-only |
+| SCVAE | — | — | — | — | — | — | — | — | — | *62.25 | paper-only |
+| CLSTMVAE | — | — | — | — | — | — | — | — | — | *63.98 | paper-only |
+| Ours V0 `rd_s12_t4_h512` | 256×256×1 | — | — | — | — | no | — | — | — | 84.7916 | partial/unverified |
+| Ours V1 `rd_s4_t12_h512` | 256×256×1 | — | — | — | — | no | — | — | — | 84.9435 | partial/unverified |
+| Ours V2 `rd_s4_t12_gl768_h512` | 256×256×1 | — | — | — | — | no | — | — | — | 85.3707 | partial/unverified |
+| Ours V3 `rd_s4_t12_gl192_h512` | 256×256×1 | — | — | — | — | no | — | — | — | 84.0864 | partial/unverified |
+| Ours V4 `rd_s4_t12_gl192_h128` | 256×256×1 | — | — | — | — | no | — | — | — | 83.9186 | partial/unverified |
+| Ours V5 `rd_s4_t12_gl192_h128_qr2` | 256×256×1 | — | — | — | — | no | — | — | — | 84.0137 | partial/unverified |
+
+### 3.1 时序附表（T / K / stride）
+
+| Method | T | K | stride | window FLOPs (G) | window Latency (ms) | FPS independent-window ↑ | FPS stream (frames/s) ↑ | score coverage | Status |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| MemAE | 16 | 待核实（旧假设 16） | 16 | — | — | — | — | — | partial/unverified |
+| ANDT（论文 6 帧） | 6 | 1 | 1 | — | — | — | — | 1.0 | blocked |
+| Future Frame | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| ST Dissoc. | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| MLEP | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| ASTT | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| DAD-FSM | TBD | TBD | TBD | — | — | — | — | — | blocked |
+| HSTforU | TBD | TBD | TBD | — | — | — | — | — | blocked |
+
+> `K` 不能默认等于 `T`；`fps_independent_window` 按输出分数计，`fps_stream` 按原始帧计。MemAE 旧 `÷16` 未核实，不能当正式值。
+
+### 3.2 每行配置与来源
+
+| Method | code commit | Input (H×W×T) | weights state | DA-adapted | AUC source | profiling config |
+|---|---|---|---|---|---|---|
+| adVAE | `440d8af22b88b6b7b24e02f2f0599c9ef542b34c` | unknown（表格版 `(B,400)`） | — | no | ANDT Table VI / 用户表 | — |
+| GANomaly | `78da4ea9a99f5b02ab60dd651a18def929176d77` | 256×256×1 | random init（未载入训练权重） | no | ANDT Table VI / 用户表 | v1 legacy: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
+| MemAE | `ceece7714fb241e82ef3f3785d3d1ed86c28113e` | 256×256×16 | random init | no | ANDT Table VI / 用户表 | v1 legacy: 同上 |
+| MKD | `0c574ae9ad12666982a1ccc2c7148acd6bf442fe` | 128×128×1（MVTec 配置） | random init（VGG16 source 未载入预训练） | no | ANDT Table VI / 用户表 | v1 legacy: 同上 |
+| ANDT | `f2e8c4f701238a99faa5841b3e2884cb1c507d1e` | 256×256×6（论文 6 帧） | — | no | ANDT 论文 / 用户表 | — |
+| Future Frame | `9e0f161b8d5f1f46556e116577a5596405798343` | TBD | — | no | 用户表 | — |
+| ST Dissoc. | `1206c2a7c4c4e0b47c21c498fadb8e1e3973dd56` | TBD | — | no | 用户表 | — |
+| MLEP | `22e96634fe43a5b8394413a1aae267b673b3c4ce` | TBD | — | no | 用户表 | — |
+| ASTT | `1d05305a94fb47b33897c7aa085c5351bcbbc8f9` | TBD | — | no | 用户表 | — |
+| DAD-FSM | `602fed9ac93e6a3f2a291e9b1f23bcca775df961` | TBD | — | no | 用户表 | — |
+| HSTforU | `9548473306bbb89895b077275e8503de79653029` | TBD | — | no | 用户表 | — |
+| MADViT（三个变体） | `a1d1732c78f9f0a21a1a162b87b158436dad79f3` | TBD | — | no | 用户表 | — |
+| LightViT-AD | `c0f6ca9a6817d126e15e09f83612710ee6f954d1` | TBD | — | no | 用户表（缺 vehicle/crossroads） | — |
+| DwCVAE / CVAE / DCVAE / SCVAE / CLSTMVAE | — | — | — | — | 用户表（不同论文/硬件/batch） | paper-only，不可与本机混排 |
+| Ours V0–V5 | `db2cf70f602783b95533208aae9a4bbc6a0531ca` | 256×256×1 | architecture-init（效率测结构；AUC 用 DA-trained 权重） | yes（DA 输入/配置） | `experiments/da/appearance/20261103_variant_matrix_*`（seed42, 30ep） | v1 legacy: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
+
+## 4. 参数审计细节（v2 三列口径）
+
+> 以下是**结构审计值**，用于说明三列怎么拆；除标注外仍待 v2 重测确认，不能直接填进 §3 的正式表。
+
+| Method/Variant | Inference Params (M) | Training Trainable (M) | Training-only (M) | Frozen Inference (M) | 备注 |
+|---|---:|---:|---:|---:|---|
+| GANomaly | 143.950（G） | 188.690（G+D） | 44.739（D） | 0 | G 推理，D 只训练；`Inference < Training Trainable` 正常 |
+| MemAE | 6.503 | 6.503 | 0 | 0 | `mem_dim=2000`、`T=16`；参数与 T 无关 |
+| MKD | 15.059 | 0.344 | 0 | 14.715 | source VGG16 冻结 + cloner B 可训练 |
+| ANDT（论文 6 帧, mlp4096） | 70.347 | 70.347 | 0 | 0 | 代码结构审计；decoder 未修，FLOPs blocked |
+| ANDT（论文 6 帧, mlp1536） | 62.478 | 62.478 | 0 | 0 | config 默认 |
+| ANDT（1 帧代码变体, mlp4096） | 69.364 | 69.364 | 0 | 0 | 不能当论文 6 帧模型 |
+| adVAE（官方表格版） | 0.329 | 0.329 | 0 | 0 | 输入 `(B,400)`，不是 DA 视频模型；主表 blocked |
+| Ours V0 | 174.720 | 89.079 | 0 | 85.641 | teacher + OCBE + student |
+| Ours V1 | 125.900 | 40.259 | 0 | 85.641 | 同上 |
+| Ours V2 | 115.889 | 30.248 | 0 | 85.641 | 同上 |
+| Ours V3 | 93.360 | 7.718 | 0 | 85.641 | 同上 |
+| Ours V4 | 89.796 | 4.154 | 0 | 85.641 | 同上 |
+| Ours V5 | 89.402 | 3.761 | 0 | 85.641 | 同上 |
+
+- **Inference Params** 含冻结教师；**Training Trainable** 不含教师，含训练专用模块；**Training-only** 是训练专用子集。
+- 旧字段 `total_params_m` / `trainable_params_m` 不再作为主表列名；它们只出现在 v1 归档 JSON 里。
+- GANomaly 的 D 不能悄悄丢掉：推理表用 G，训练列写 G+D，并单列 D。
+
+## 5. v1 轻量化归档（只读，不得作为正式对比）
+
+> 以下数字来自 v1 口径（profiler-only FLOPs、未拆参数列、MemAE 未核实 K、MKD 最终层距离）。保留原值只为追溯；v2 重测前不得引用为正式结果。原始文件与哈希见 [LEGACY_v1.md](LEGACY_v1.md)。
+
+| Method | Input (H×W×T) | Total Params (M) | Trainable Params (M) | FLOPs (G/output frame) | Latency@BS1 P50 (ms/output frame) | FPS@BS1 | FPS@BS16 | v1 Status |
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | adVAE | unknown | blocked | blocked | blocked | blocked | — | — | blocked |
 | GANomaly | 256×256×1 | 143.950 (G, inference) | 188.690 (G+D, train) | 10.952 | 13.357 | 74.9 | 622.7 | measured |
@@ -85,18 +183,23 @@
 | Ours V4 | 256×256×1 | 89.796 | 4.154 | 46.771 | 18.656 | 53.3 | 325.0 | measured |
 | Ours V5 | 256×256×1 | 89.402 | 3.761 | 46.572 | 19.638 | 50.7 | 323.7 | measured |
 
-## 4. 参数审计细节
+> v1 的 `Status=measured` 只是旧标签，按 v2 口径应视为 `partial/unverified`（FLOPs 未做算子级覆盖核验）或 `blocked`（adVAE/ANDT）。
 
-- **Teacher**：DINOv3 ViT-B/16，frozen，85.641M；Ours 的 Total = teacher + OCBE + student；Trainable = OCBE + student。
-- **GANomaly**：**G = Generator（生成器）**，即 `encoder1 → decoder → encoder2`，是推理图（143.950M）；**D = Discriminator（判别器）**，只在训练时参与对抗损失（44.739M）。Trainable 列写 G+D 训练参数 188.690M，避免把 D 悄悄丢掉；推理/时延/FLOPs 只走 G。
-- **MemAE**：`chnum_in=3`、`mem_dim=2000`、`T=16`；参数与 T 无关，6.503M。
-- **MKD**：source VGG16 features 14.715M（frozen）+ cloner cfg B 0.344M（trainable）= 15.059M；输入 128×128 按原论文 MVTec 配置；若 DA 适配到 256，需标 `adapted`。首次测量在 `inference_mode` 下被 `VGG.forward` 的 `register_hook` 拒绝；改用无 hook 的 source/cloner 前向重测，表中数字来自重测。计时/FLOPs 覆盖 source+cloner 全前向；打分用最终特征距离作示例，距离计算本身可忽略。
-- **ANDT**：代码 `b16` + `num_layers=2`、`heads=6`、`num_frames=6`；`mlp=4096` 时 70.347M，`mlp=1536` 时 62.478M。论文 ablation 选 4096；但 forward 有 `pdb.set_trace()` 且 decoder 对 6 帧形状不匹配，FLOPs/latency 必须先确认代码版本。
-- **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格数据（ODDS）实现，不是 DA 视频模型；其 `Encoder(400,64)+Decoder(400,64)+Gauss_trans(64)` 合计 **0.329M**，但输入是 `(B,400)` 表格向量，不是 256×256 图像。这个 0.329M 不能填进 DA 主表；需要 ANDT 作者实际 adVAE 视频实现或论文图像配置，否则只能保留 `blocked`。详见 [adVAE/default/README.md](adVAE/default/README.md)。
+## 6. 待复核问题
 
-## 5. 待办
+1. **GLoRD 新旧数字差异（不预设哪个正确）**：
+   - V0 FLOPs 90.205G（2026-11-04）vs 95.107G（2026-10-26 审计）；
+   - V5 FLOPs 46.572G vs 49.106G；
+   - V0 BS1 latency 17.800ms vs 10.184ms。
+   - 需用同一计算图（teacher tap 数、scoring、输入）做算子计数 + profiler + 分模块计时；定位前都标 `partial/unverified`。
+2. **MemAE 的 K**：旧代码按 `T=16` 摊，原测试可能是 clip 级误差；先核对原测试脚本再决定 `K=1` 或 `K=16`。
+3. **MKD 多层特征评分**：当前 v1 只用最终层距离，不是完整 MKD；需按原方法多层特征重测。
+4. **ANDT 6 帧 decoder**：发布代码只支持 1 帧；论文 6 帧模型 `T=6,K=1,stride=1`，需修/确认 decoder 后才能测 FLOPs/latency。
+5. **adVAE**：官方仓库是表格版，视频实现缺失；主表保持 `blocked`。
+6. **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：用户表速度的硬件/batch 不同，`paper-only`，不能与本机实测混排。
 
-1. ✅ GANomaly / MemAE / MKD 的 BS1/BS16/FLOPs 已完成（脚本 `comparison/benchmarks/bench_external.py`，结果 `benchmark_{ganomaly,memae,mkd}.json`）。
-2. 确认 ANDT 的 6 帧论文模型/decoder 版本，再补 FLOPs/latency；当前参数按代码结构数，时延/FLOPS 保留 `blocked`。
-3. 找到 ANDT 实际使用的 adVAE 视频实现，补参数/时延；否则主表保留 `blocked`。
-4. 其余方法（ASTT/DAD-FSM/HSTforU/MADViT/LightViT-AD 等）按同一协议逐个补测；其中 MADViT/LightViT-AD/ASTT/DAD-FSM/HSTforU 的代码已 clone，但尚未做协议适配。
+## 7. 下一步
+
+- 逐方法待办与验收条件见 [RETEST_CHECKLIST.md](../RETEST_CHECKLIST.md)。
+- 改动原因与哪些旧数字不再正式见 [protocol_change_log.md](../protocol_change_log.md)。
+- 旧 JSON/日志/审计文件哈希见 [LEGACY_v1.md](LEGACY_v1.md)。

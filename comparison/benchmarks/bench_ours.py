@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Benchmark the six Ours DA variants under comparison/BENCHMARK_PROTOCOL.md.
+"""LEGACY v1 benchmark for the six Ours DA variants.
+
+WARNING: this script writes the frozen v1 file comparison/da/benchmark_ours.json
+and uses profiler-only FLOPs plus the old total/trainable parameter names. It is
+NOT valid for formal v2 numbers. See comparison/benchmarks/README.md and
+comparison/BENCHMARK_PROTOCOL.md; v2 results must go to benchmark_v2_ours.json.
 
 Primary scope: preprocessed input tensor on GPU -> frame-level anomaly score.
 Includes the frozen DINOv3 teacher, OCBE and student. FP32, no AMP/TF32.
@@ -115,6 +120,13 @@ def measure_variant(teacher, vid, spec):
 
 
 def main():
+    print('WARNING: v1 LEGACY benchmark; not valid for formal v2 numbers. '
+          'See comparison/benchmarks/README.md.', flush=True)
+    path = ROOT / 'comparison/da/benchmark_ours.json'
+    if path.exists() and '--overwrite-v1' not in sys.argv:
+        raise SystemExit(
+            f'refusing to overwrite frozen v1 file {path}; '
+            'see comparison/benchmarks/README.md (pass --overwrite-v1 only if intentional)')
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
     torch.set_float32_matmul_precision('highest')
@@ -127,7 +139,6 @@ def main():
     for vid, spec in VARIANT_SPECS.items():
         print(f'=== {spec["label"]} {vid} ===', flush=True)
         out['variants'][vid] = measure_variant(teacher, vid, spec)
-    path = ROOT / 'comparison/da/benchmark_ours.json'
     path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + '\n')
     print('wrote', path)
     print('| ID | total M | trainable M | FLOPs G | Latency P50 ms | FPS BS1 | FPS BS16 |')

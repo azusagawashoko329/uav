@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Benchmark external methods under comparison/BENCHMARK_PROTOCOL.md.
+"""LEGACY v1 benchmark for external methods (GANomaly, MemAE, MKD).
 
-Currently profiles GANomaly, MemAE and MKD with their original code/config.
+WARNING: this script writes the frozen v1 files comparison/da/benchmark_*.json
+and uses profiler-only FLOPs, assumed K=T for MemAE, and final-layer distance
+for MKD. It is NOT valid for formal v2 numbers. See
+comparison/benchmarks/README.md and comparison/BENCHMARK_PROTOCOL.md; v2
+results must go to benchmark_v2_<method>.json.
+
 adVAE and ANDT are intentionally not timed here: adVAE's official repo is the
 tabular version, and ANDT's released forward is a code variant with pdb/decoder
 issues (see BENCHMARK_PROTOCOL.md).
@@ -157,9 +162,18 @@ def mkd():
 
 
 def main():
+    print('WARNING: v1 LEGACY benchmark; not valid for formal v2 numbers. '
+          'See comparison/benchmarks/README.md.', flush=True)
     p = argparse.ArgumentParser()
     p.add_argument('--method', required=True, choices=['ganomaly', 'memae', 'mkd'])
+    p.add_argument('--overwrite-v1', action='store_true',
+                   help='allow overwriting the frozen v1 benchmark_<method>.json (not for formal v2)')
     a = p.parse_args()
+    out = OUT / f'benchmark_{a.method}.json'
+    if out.exists() and not a.overwrite_v1:
+        raise SystemExit(
+            f'refusing to overwrite frozen v1 file {out}; '
+            'see comparison/benchmarks/README.md (pass --overwrite-v1 only if intentional)')
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
     torch.set_float32_matmul_precision('highest')
@@ -168,7 +182,6 @@ def main():
     r.update({'gpu': torch.cuda.get_device_name(0), 'torch': torch.__version__,
               'cuda': torch.version.cuda, 'precision': 'fp32; amp off; tf32 off',
               'warmup': WARMUP, 'iterations': ITERS, 'rounds': ROUNDS})
-    out = OUT / f'benchmark_{a.method}.json'
     out.write_text(json.dumps(r, indent=2, ensure_ascii=False) + '\n')
     print(json.dumps(r, ensure_ascii=False), flush=True)
     print('wrote', out)

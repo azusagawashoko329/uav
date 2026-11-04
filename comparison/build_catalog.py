@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 COMP = ROOT / 'comparison'
 COLUMNS = [
     'path', 'id', 'dataset', 'method', 'method_display', 'year', 'variant', 'status',
+    'efficiency_status', 'input_hwt', 'inference_params_m',
+    'training_trainable_params_m', 'training_only_params_m',
+    'flops_g_per_output_frame', 'flops_verified',
+    'latency_bs1_p50_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
     'source_type', 'source_url', 'source_commit', 'source_experiment',
     'protocol', 'metrics', 'macro_auc', 'macro_eer', 'result_summary', 'notes',
 ]
@@ -31,6 +35,7 @@ def main():
         rel = path.parent.relative_to(COMP).as_posix()
         source = data.get('source') or {}
         results = data.get('results') or {}
+        efficiency = data.get('efficiency') or {}
         records.append({
             'path': rel,
             'id': data.get('id', ''),
@@ -40,6 +45,17 @@ def main():
             'year': data.get('year', ''),
             'variant': data.get('variant', ''),
             'status': data.get('status', ''),
+            'efficiency_status': efficiency.get('status', ''),
+            'input_hwt': efficiency.get('input_hwt', ''),
+            'inference_params_m': efficiency.get('inference_params_m', ''),
+            'training_trainable_params_m': efficiency.get('training_trainable_params_m', ''),
+            'training_only_params_m': efficiency.get('training_only_params_m', ''),
+            'flops_g_per_output_frame': efficiency.get('flops_g_per_output_frame', ''),
+            'flops_verified': efficiency.get('flops_verified', ''),
+            'latency_bs1_p50_ms_per_output_frame': efficiency.get(
+                'latency_bs1_p50_ms_per_output_frame', ''),
+            'fps_bs1': efficiency.get('fps_bs1', ''),
+            'fps_bs16': efficiency.get('fps_bs16', ''),
             'source_type': source.get('type', ''),
             'source_url': source.get('url') or '',
             'source_commit': source.get('commit') or '',
@@ -83,8 +99,8 @@ def main():
         if not subset:
             lines += ['（暂无条目）']
             continue
-        lines += ['| ID | 方法 | 变体 | 状态 | macro AUC | macro EER | 来源 |',
-                  '|---|---|---|---|---:|---:|---|']
+        lines += ['| ID | 方法 | 变体 | 状态 | 轻量化 | macro AUC | macro EER | 来源 |',
+                  '|---|---|---|---|---|---:|---:|---|']
         for r in subset:
             target = COMP / r['path'] / 'README.md'
             raw_link = f"{r['path']}/README.md" if target.is_file() else f"{r['path']}/record.json"
@@ -97,8 +113,9 @@ def main():
                 source = 'awaiting URL'
             auc = '—' if r['macro_auc'] == '' else f"{float(r['macro_auc']):.4f}"
             eer = '—' if r['macro_eer'] == '' else f"{float(r['macro_eer']):.4f}"
+            eff_status = f"`{r['efficiency_status']}`" if r['efficiency_status'] else '—'
             lines.append(f"| [{r['id']}]({link}) | {r['method_display']} | `{r['variant']}` | "
-                         f"`{r['status']}` | {auc} | {eer} | {source} |")
+                         f"`{r['status']}` | {eff_status} | {auc} | {eer} | {source} |")
     lines += ['', '重新生成：`python comparison/build_catalog.py`；校验：`python comparison/check_comparisons.py`。', '']
     (COMP / 'INDEX.md').write_text('\n'.join(lines))
     print(f'{len(records)} comparison entries indexed')

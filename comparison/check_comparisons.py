@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +20,27 @@ STATUSES = {'planned', 'running', 'completed', 'failed', 'cancelled', 'blocked',
 SOURCE_KEYS = {'type', 'url', 'commit', 'local_path', 'experiment', 'run_id', 'license', 'notes'}
 PROTOCOL_KEYS = {'one_class', 'train', 'test', 'metrics', 'seed', 'epochs', 'input_size', 'notes'}
 RESULT_KEYS = {'macro_auc', 'macro_eer', 'per_scene', 'summary', 'source_results'}
+EFFICIENCY_STATUSES = {'measured', 'partial/unverified', 'paper-only', 'blocked'}
+EFFICIENCY_KEYS = {
+    'status', 'input_hwt', 'code_commit', 'weights_state', 'da_adapted',
+    'auc_source', 'profiling_config', 'inference_params_m',
+    'training_trainable_params_m', 'training_only_params_m',
+    'frozen_inference_params_m', 'flops_g_per_output_frame', 'flops_window_g',
+    'flops_verified', 'flops_counter', 'flops_ops_covered', 'flops_ops_missing',
+    'latency_bs1_p50_ms_per_output_frame', 'latency_bs1_mean_ms_per_output_frame',
+    'latency_bs1_p95_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
+    'input_frames_t', 'effective_output_scores_k', 'window_stride',
+    'window_latency_ms', 'fps_independent_window', 'fps_stream',
+    'score_coverage', 'benchmark_source', 'notes',
+}
+EFFICIENCY_NUM_KEYS = {
+    'inference_params_m', 'training_trainable_params_m', 'training_only_params_m',
+    'frozen_inference_params_m', 'flops_g_per_output_frame', 'flops_window_g',
+    'latency_bs1_p50_ms_per_output_frame', 'latency_bs1_mean_ms_per_output_frame',
+    'latency_bs1_p95_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
+    'window_latency_ms', 'fps_independent_window', 'fps_stream', 'score_coverage',
+}
+EFFICIENCY_INT_KEYS = {'input_frames_t', 'effective_output_scores_k', 'window_stride'}
 
 errors = []
 records = {}
@@ -34,6 +56,120 @@ def is_num(x):
 
 def close(a, b, tol=1e-6):
     return is_num(a) and is_num(b) and abs(a - b) <= tol
+
+
+def check_efficiency(path: Path, rel: str, data: dict):
+    """Validate the optional v2 efficiency block.
+
+    Unknown values must be null (or []), not omitted, so a half-filled block
+    cannot be mistaken for a measured result.
+    """
+    eff = data.get('efficiency')
+    if eff is None:
+        return
+    if not isinstance(eff, dict):
+        fail(rel, 'efficiency must be an object or null')
+        return
+    missing = EFFICIENCY_KEYS - set(eff)
+    extra = set(eff) - EFFICIENCY_KEYS
+    if missing:
+        fail(rel, f'efficiency missing keys {sorted(missing)}')
+    if extra:
+        fail(rel, f'efficiency has unknown keys {sorted(extra)}')
+    if missing or extra:
+        return
+
+    status = eff.get('status')
+    if status not in EFFICIENCY_STATUSES:
+        fail(rel, f'invalid efficiency.status {status!r}')
+
+    input_hwt = eff.get('input_hwt')
+    if not isinstance(input_hwt, str) or not re.fullmatch(r'[0-9]+x[0-9]+x[0-9]+', input_hwt):
+        fail(rel, 'efficiency.input_hwt must match HxWxT, e.g. 256x256x1')
+
+    for key in ('weights_state', 'auc_source', 'profiling_config'):
+        val = eff.get(key)
+        if not isinstance(val, str) or not val.strip():
+            fail(rel, f'efficiency.{key} must be a non-empty string')
+
+    code_commit = eff.get('code_commit')
+    if code_commit is not None and not isinstance(code_commit, str):
+        fail(rel, 'efficiency.code_commit must be string or null')
+    if status == 'measured':
+        if not isinstance(code_commit, str) or not re.fullmatch(r'[0-9a-f]{40}', code_commit):
+            fail(rel, 'efficiency.code_commit must be a full 40-char SHA when measured')
+
+    for key in ('da_adapted', 'flops_verified'):
+        if not isinstance(eff.get(key), bool):
+            fail(rel, f'efficiency.{key} must be boolean')
+
+    for key in EFFICIENCY_NUM_KEYS:
+        val = eff.get(key)
+        if val is not None and (not is_num(val) or val < 0):
+            fail(rel, f'efficiency.{key} must be a non-negative finite number or null')
+
+    for key in EFFICIENCY_INT_KEYS:
+        val = eff.get(key)
+        if val is not None and (not isinstance(val, int) or isinstance(val, bool) or val < 1):
+            fail(rel, f'efficiency.{key} must be a positive integer or null')
+
+    for key in ('flops_ops_covered', 'flops_ops_missing'):
+        val = eff.get(key)
+        if not isinstance(val, list) or any(not isinstance(x, str) or not x for x in val):
+            fail(rel, f'efficiency.{key} must be a list of non-empty strings')
+
+    if not isinstance(eff.get('notes'), str):
+        fail(rel, 'efficiency.notes must be a string')
+
+    inference = eff.get('inference_params_m')
+    frozen = eff.get('frozen_inference_params_m')
+    trainable = eff.get('training_trainable_params_m')
+    training_only = eff.get('training_only_params_m')
+    if inference is not None and frozen is not None and frozen > inference + 1e-9:
+        fail(rel, 'efficiency.frozen_inference_params_m exceeds inference_params_m')
+    if trainable is not None and training_only is not None and training_only > trainable + 1e-9:
+        fail(rel, 'efficiency.training_only_params_m exceeds training_trainable_params_m')
+
+    benchmark_source = eff.get('benchmark_source')
+    if benchmark_source is not None and not isinstance(benchmark_source, str):
+        fail(rel, 'efficiency.benchmark_source must be string or null')
+    elif benchmark_source and not (ROOT / benchmark_source).is_file():
+        fail(rel, f'efficiency.benchmark_source missing: {benchmark_source}')
+
+    k = eff.get('effective_output_scores_k')
+    stride = eff.get('window_stride')
+    coverage = eff.get('score_coverage')
+    if k is not None and stride is not None and coverage is not None:
+        if not close(coverage, k / stride, tol=1e-6):
+            fail(rel, f'efficiency.score_coverage must equal K/stride ({k}/{stride})')
+
+    if status == 'measured':
+        if eff.get('flops_verified') is not True:
+            fail(rel, 'measured efficiency requires flops_verified=true')
+        if eff.get('flops_ops_missing'):
+            fail(rel, 'measured efficiency requires flops_ops_missing=[]')
+        for key in ('inference_params_m', 'training_trainable_params_m',
+                    'training_only_params_m', 'flops_g_per_output_frame',
+                    'latency_bs1_p50_ms_per_output_frame',
+                    'latency_bs1_mean_ms_per_output_frame', 'fps_bs1', 'fps_bs16',
+                    'input_frames_t', 'effective_output_scores_k', 'window_stride'):
+            if eff.get(key) is None:
+                fail(rel, f'measured efficiency requires {key}')
+        if not isinstance(eff.get('flops_counter'), str) or not eff['flops_counter'].strip():
+            fail(rel, 'measured efficiency requires flops_counter')
+        if not eff.get('flops_ops_covered'):
+            fail(rel, 'measured efficiency requires non-empty flops_ops_covered')
+        if not benchmark_source:
+            fail(rel, 'measured efficiency requires benchmark_source')
+        t = eff.get('input_frames_t')
+        if t is not None and t > 1:
+            for key in ('window_latency_ms', 'flops_window_g', 'fps_independent_window',
+                        'fps_stream', 'score_coverage'):
+                if eff.get(key) is None:
+                    fail(rel, f'temporal measured efficiency requires {key}')
+    elif status in {'partial/unverified', 'blocked', 'paper-only'}:
+        if not eff.get('notes', '').strip():
+            fail(rel, f'efficiency.status={status} requires explanatory notes')
 
 
 def load(path):
@@ -191,6 +327,7 @@ def check_record(path: Path):
                 fail(rel, 'results.summary must be a path string')
             elif not (path.parent / summary).is_file():
                 fail(rel, f'results.summary missing: {summary}')
+    check_efficiency(path, rel, data)
     return data
 
 

@@ -45,11 +45,12 @@ comparison/
 
 ## 状态
 
-`planned` / `running` / `completed` / `failed` / `cancelled` / `blocked` / `unknown`。
+`planned` / `running` / `completed` / `failed` / `cancelled` / `blocked` / `unknown` 是**条目生命周期**状态，和轻量化测量的 `efficiency.status` 是两套字段：
 
 - `planned`：已登记方法/变体，等待 URL、代码或运行环境；
 - `completed`：有可核对的结果摘要（`results/summary.json`），且 `results.macro_auc` 存在；
-- 外部方法的 `source.url` / `source.commit` / `source.local_path` 在状态进入 `running/completed` 前必须填写。
+- 外部方法的 `source.url` / `source.commit` / `source.local_path` 在状态进入 `running/completed` 前必须填写；
+- 轻量化状态只用 `measured` / `partial/unverified` / `paper-only` / `blocked`，定义见 [BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md) §9。
 
 ## 统一协议
 
@@ -89,9 +90,13 @@ python comparison/check_comparisons.py
 
 ## 轻量化对比
 
-- 公平口径：[BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md)（同一张 5880 Ada、FP32、关闭 AMP/TF32、BS1 P50、BS16 连续吞吐、含教师/时序/光流）。
-- DA 总表：[da/comparison_summary.md](da/comparison_summary.md)。
-- 实测脚本：`comparison/benchmarks/bench_ours.py`、`comparison/benchmarks/bench_external.py`。
+- **v2 公平口径**：[BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md)：同一张 5880 Ada、FP32、关闭 AMP/TF32；参数量拆 Inference / Training Trainable / Training-only；FLOPs 用算子计数器 + profiler + 手工公式三方交叉，`1 MAC=2 FLOPs`；时序方法记录 `T/K/stride`；BS1 P50 + Mean/P95，BS16 连续吞吐；含教师/时序/光流。
+- **DA 总表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 主表暂时留空/标状态，v1 数字只在归档区。
+- **v1 归档**：[da/LEGACY_v1.md](da/LEGACY_v1.md) + [da/LEGACY_v1.sha256](da/LEGACY_v1.sha256)。旧 `benchmark_*.json` / `.log` / 旧审计不改。
+- **改动记录**：[protocol_change_log.md](protocol_change_log.md)。
+- **逐方法重测**：[RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。
+- **脚本规范**：[benchmarks/README.md](benchmarks/README.md)。现有 `bench_ours.py` / `bench_external.py` 是 v1 legacy；v2 结果写 `benchmark_v2_<method>.json`，不得覆盖旧文件。
+- 机器字段：`record.json` 可选 `efficiency` 对象，见 [SCHEMA.md](SCHEMA.md)。
 
 ## 当前 DA 对比矩阵
 

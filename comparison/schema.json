@@ -150,6 +150,162 @@
         }
       }
     },
+    "efficiency": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "input_hwt",
+        "code_commit",
+        "weights_state",
+        "da_adapted",
+        "auc_source",
+        "profiling_config",
+        "inference_params_m",
+        "training_trainable_params_m",
+        "training_only_params_m",
+        "frozen_inference_params_m",
+        "flops_g_per_output_frame",
+        "flops_window_g",
+        "flops_verified",
+        "flops_counter",
+        "flops_ops_covered",
+        "flops_ops_missing",
+        "latency_bs1_p50_ms_per_output_frame",
+        "latency_bs1_mean_ms_per_output_frame",
+        "latency_bs1_p95_ms_per_output_frame",
+        "fps_bs1",
+        "fps_bs16",
+        "input_frames_t",
+        "effective_output_scores_k",
+        "window_stride",
+        "window_latency_ms",
+        "fps_independent_window",
+        "fps_stream",
+        "score_coverage",
+        "benchmark_source",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["measured", "partial/unverified", "paper-only", "blocked"]
+        },
+        "input_hwt": {
+          "type": "string",
+          "pattern": "^[0-9]+x[0-9]+x[0-9]+$"
+        },
+        "code_commit": {
+          "type": ["string", "null"]
+        },
+        "weights_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "da_adapted": {
+          "type": "boolean"
+        },
+        "auc_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profiling_config": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inference_params_m": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "training_trainable_params_m": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "training_only_params_m": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "frozen_inference_params_m": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "flops_g_per_output_frame": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "flops_window_g": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "flops_verified": {
+          "type": "boolean"
+        },
+        "flops_counter": {
+          "type": ["string", "null"]
+        },
+        "flops_ops_covered": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "flops_ops_missing": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "latency_bs1_p50_ms_per_output_frame": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "latency_bs1_mean_ms_per_output_frame": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "latency_bs1_p95_ms_per_output_frame": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "fps_bs1": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "fps_bs16": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "input_frames_t": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "effective_output_scores_k": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "window_stride": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "window_latency_ms": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "fps_independent_window": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "fps_stream": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "score_coverage": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "benchmark_source": {
+          "type": ["string", "null"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
     "notes": {
       "type": "string"
     }
