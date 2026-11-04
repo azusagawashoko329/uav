@@ -127,7 +127,7 @@
 | MADViT（三个变体） | `a1d1732c78f9f0a21a1a162b87b158436dad79f3` | TBD | — | no | 用户表 | — |
 | LightViT-AD | `c0f6ca9a6817d126e15e09f83612710ee6f954d1` | TBD | — | no | 用户表（缺 vehicle/crossroads） | — |
 | DwCVAE / CVAE / DCVAE / SCVAE / CLSTMVAE | — | — | — | — | 用户表（不同论文/硬件/batch） | paper-only，不可与本机混排 |
-| Ours V0–V5 | `cef6f9690c0bcd3b5f05d4ffab6ff93640a134b7`（benchmark 脚本；模型代码同实验 `db2cf70`） | 256×256×1 | architecture-init（效率测结构；AUC 用 DA-trained 权重） | yes（DA 输入/配置） | `experiments/da/appearance/20261103_variant_matrix_*`（seed42, 30ep） | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
+| Ours V0–V5 | `cef6f9690c0bcd3b5f05d4ffab6ff93640a134b7`（模型代码基线；v2 benchmark 脚本基于该提交运行，脚本见 `comparison/benchmarks/`） | 256×256×1 | architecture-init（效率测结构；AUC 用 DA-trained 权重） | yes（DA 输入/配置） | `experiments/da/appearance/20261103_variant_matrix_*`（seed42, 30ep） | v2: 5880 Ada, FP32, BS1 50/500/3, BS16 50/500/3 |
 
 ## 4. 参数审计细节（v2 三列口径）
 
