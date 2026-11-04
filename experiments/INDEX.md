@@ -1,6 +1,6 @@
 # 实验导航
 
-共 146 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 152 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
@@ -11,7 +11,7 @@
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
 | `da` | `gating` | 2 | [查看](#da-gating) |
-| `uit` | `appearance` | 11 | [查看](#uit-appearance) |
+| `uit` | `appearance` | 17 | [查看](#uit-appearance) |
 
 ## da / aggregation
 
@@ -198,5 +198,11 @@
 | [20261101_uit_45ep_4block_gl768_dense512_retry2_s42](uit/appearance/20261101_uit_45ep_4block_gl768_dense512_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261101_uit_45ep_gl192_dense128_rank2_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_rank2_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261101_uit_45ep_gl192_dense128_retry2_s42](uit/appearance/20261101_uit_45ep_gl192_dense128_retry2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261104_variant_matrix_v0_rd_s12_t4_h512_s42](uit/appearance/20261104_variant_matrix_v0_rd_s12_t4_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v1_rd_s4_t12_h512_s42](uit/appearance/20261104_variant_matrix_v1_rd_s4_t12_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42](uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `planned` | 未找到 | 1 | 0 |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。

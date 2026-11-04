@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "id": "20261104_variant_matrix_v0_rd_s12_t4_h512_s42",
+  "dataset": "uit",
+  "family": "appearance",
+  "seed": 42,
+  "variant": "uit_12block_dense512",
+  "variant_id": "rd_s12_t4_h512",
+  "variant_label": "V0",
+  "scenes": [
+    "uit"
+  ],
+  "question": "Six-variant UIT-ADrone matrix (45 epoch) using the same variant IDs/naming as the DA matrix; dual-GPU dynamic scheduling",
+  "architecture": {
+    "student": "12block_transformer_width768",
+    "ocbe": "dense512",
+    "description": "12-block student (4 reconstructions), 4 teacher taps [5,7,9,11], OCBE h512"
+  },
+  "training": {
+    "epochs": 45,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "loss": "group_balanced_top5_cosine_alpha0.5",
+    "optimizer": "AdamW",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/UIT-ADrone",
+    "checkpoint_epochs": [
+      10,
+      20,
+      30,
+      40,
+      45
+    ]
+  },
+  "data_protocol": {
+    "train": "train/frames/<video>/*.jpg, 41 videos, 59186 frames",
+    "test": "test/frames/<video>/*.jpg, 51 videos, 147005 frames",
+    "labels": "test/test_frame_mask/<video>.npy",
+    "aggregation": "concat all test frames then one ROC AUC and EER",
+    "official_overlap": "historical UIT protocol retains train frames inside test full videos; no deduplication"
+  },
+  "resources": {
+    "expected_trainable_parameters": 89079104,
+    "behavior_branch": false,
+    "teacher": "DINOv3 ViT-B/16 frozen, layers 0-11"
+  },
+  "teacher_layers": [
+    5,
+    7,
+    9,
+    11
+  ],
+  "acceptance": {
+    "compare": "all six variants use identical UIT loading, seed42, 45 epoch budget, evaluation and checkpoint cadence",
+    "outputs": "AUC/EER, parameter count, train time, checkpoint hash",
+    "variant_guard": "config variant_id -> builder -> teacher taps -> expected parameter count must match before training"
+  },
+  "source_model_before_change": "70e45ad89496d4c98e137830e2860a28328d4fbf",
+  "runtime_resources": {
+    "policy": "dynamic per-GPU queue; next variant starts when a GPU frees; pin by UUID",
+    "requested_gpus": [
+      0,
+      1
+    ]
+  }
+}

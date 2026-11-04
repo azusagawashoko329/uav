@@ -27,6 +27,17 @@ from model.student_structural import FourBlockGlobalLocalDecoder
 UIT_ROOT_DEFAULT = Path('/data1/data8tb/liangyuxuan/dataset/UIT-ADrone')
 DEFAULT_CHECKPOINT_EPOCHS = (10, 20, 30, 40, 45)
 
+# Canonical variant ID -> (label, builder key, expected teacher taps).
+# This guards against colloquial names being mapped to the wrong architecture.
+VARIANT_CANONICAL = {
+    'rd_s12_t4_h512': ('V0', 'uit_12block_dense512', [5, 7, 9, 11]),
+    'rd_s4_t12_h512': ('V1', 'uit_4block_plain', list(range(12))),
+    'rd_s4_t12_gl768_h512': ('V2', 'uit_4block_gl768', list(range(12))),
+    'rd_s4_t12_gl192_h512': ('V3', 'uit_4block_gl192', list(range(12))),
+    'rd_s4_t12_gl192_h128': ('V4', 'uit_gl192_dense128', list(range(12))),
+    'rd_s4_t12_gl192_h128_qr2': ('V5', 'uit_gl192_dense128_rank2', list(range(12))),
+}
+
 
 class PlainFourBlockDecoder(torch.nn.Module):
     """Historical plain four-block decoder: three heads emitted per stage."""
@@ -182,9 +193,38 @@ def main():
     p.add_argument('--batch', type=int, default=64)
     p.add_argument('--workers', type=int, default=8)
     p.add_argument('--max-steps', type=int, default=0)
+    p.add_argument('--validate-only', action='store_true',
+                   help='check variant mapping/taps/params and exit before data/GPU work')
     a = p.parse_args()
     cfg = json.loads((a.output / 'config.json').read_text())
     if cfg['seed'] != a.seed: raise ValueError(f"seed mismatch config={cfg['seed']} cli={a.seed}")
+    if a.epochs != int(cfg.get('training', {}).get('epochs', a.epochs)):
+        raise ValueError(f"epochs mismatch config={cfg.get('training', {}).get('epochs')} cli={a.epochs}")
+    variant_id = cfg.get('variant_id')
+    if variant_id is not None:
+        if variant_id not in VARIANT_CANONICAL:
+            raise ValueError(f'unknown canonical variant_id: {variant_id}')
+        label, builder_key, expected_taps = VARIANT_CANONICAL[variant_id]
+        if cfg.get('variant') != builder_key:
+            raise ValueError(f"variant/builder mismatch: config variant={cfg.get('variant')} "
+                             f"canonical {variant_id} -> {builder_key}")
+        if cfg.get('variant_label') not in (None, label):
+            raise ValueError(f"variant label mismatch: config={cfg.get('variant_label')} canonical={label}")
+        cfg_teacher_layers = cfg.get('teacher_layers', list(range(12)))
+        if list(cfg_teacher_layers) != expected_taps:
+            raise ValueError(f"teacher_taps mismatch for {variant_id}: "
+                             f"config={cfg_teacher_layers} canonical={expected_taps}")
+    if a.validate_only:
+        ocbe, student = build_variant(cfg, a.seed)
+        actual = sum(p.numel() for p in ocbe.parameters()) + sum(p.numel() for p in student.parameters())
+        expected = cfg.get('resources', {}).get('expected_trainable_parameters')
+        if expected is not None and int(expected) != actual:
+            raise RuntimeError(f'parameter mismatch: config={expected} actual={actual}')
+        print(json.dumps({'validate_only': True, 'id': cfg.get('id'), 'variant_id': variant_id,
+                          'variant': cfg.get('variant'), 'variant_label': cfg.get('variant_label'),
+                          'teacher_layers': cfg.get('teacher_layers', list(range(12))),
+                          'trainable_parameters': actual}, ensure_ascii=False), flush=True)
+        return
     if not torch.cuda.is_available(): raise RuntimeError('CUDA required')
     random.seed(a.seed); np.random.seed(a.seed); torch.manual_seed(a.seed); torch.cuda.manual_seed_all(a.seed)
     torch.backends.cudnn.deterministic = True; torch.backends.cudnn.benchmark = False
@@ -207,6 +247,9 @@ def main():
     if any(ep < 1 or ep > a.epochs for ep in checkpoint_epochs):
         raise ValueError(f'checkpoint epochs must be within 1..{a.epochs}: {checkpoint_epochs}')
     trainable_parameters = sum(p.numel() for p in params)
+    expected = cfg.get('resources', {}).get('expected_trainable_parameters')
+    if expected is not None and int(expected) != trainable_parameters:
+        raise RuntimeError(f'parameter mismatch: config={expected} actual={trainable_parameters}')
     print(json.dumps({'dataset':'UIT-ADrone','variant':cfg['variant'],'seed':a.seed,
                       'train_videos':len(set(str(Path(x).parent) for x in train)),
                       'train_frames':len(train),'test_videos':len(test_dirs),
