@@ -61,7 +61,7 @@
 
 > 本表全部来自各方法/变体目录的 `benchmark_v2.json`：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。旧 v1 数字在 §5 归档，不再引用。
 > `FLOPs verified=yes` 表示所有 MAC 算子均已核验、`flops_ops_missing=[]`；profiler 只比共同支持算子，不用其总数做验收。
-> Future Frame / MLEP 的官方 TF1.15 latency 在 5880 上不可执行，主表保持 `—`；同图 TF2.20 runtime-adapted 计时单独列在 §3.3，不能填进官方行。
+> **†** Future Frame / MLEP：latency/FPS 是 **TF2.20 runtime-adapted**（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行）；模型图未改、参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍是 `partial/unverified`，不是 `measured`。官方 TF1.15 的 latency 留空；详见 §3.3。
 
 | Method | Input (H×W×T) | Inference Params (M) ↓ | Training Trainable (M) ↓ | Training-only (M) ↓ | FLOPs (G/output score) ↓ | FLOPs verified | Latency@BS1 P50 (ms/output score) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status |
 |---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---|
@@ -70,9 +70,9 @@
 | MemAE | 256×256×16 | 6.503 | 6.503 | 0 | 70.808 | yes | 7.321 | 136.5 | 130.3 | 67.67 | measured |
 | MKD | 128×128×1 | 15.059 | 0.344 | 0 | 10.477 | yes | 2.495 | 394.5 | 2340.8 | 66.63 | measured |
 | ANDT (adapted 6-frame)* | 256×256×6 | 70.347 | 70.347 | 0 | 74.490 | yes | 5.015 | 199.4 | 197.5 | 68.64 | measured |
-| Future Frame | 256×256×4 | 7.704 | 7.704 | 0 | 74.476 | no | — | — | — | — | partial/unverified |
+| Future Frame † | 256×256×4 | 7.704 | 7.704 | 0 | 74.476 | no | 5.467 | 180.8 | 185.1 | — | partial/unverified † |
 | ST Dissoc. | 256×256×5 | 6.120 | 6.120 | 0 | 60.612 | yes | 3.668 | 269.7 | 288.2 | — | measured |
-| MLEP | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | — | — | — | — | partial/unverified |
+| MLEP † | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | 11.538 | 82.0 | 75.5 | — | partial/unverified † |
 | ASTT | 384×384×4 | 148.220 | 148.220 | 0 | 109.416 | yes | 19.048 | 52.2 | 146.6 | — | measured |
 | DAD-FSM | 224×224×4 | 123.979 | 123.979 | 0 | 71.194 | yes | 12.684 | 78.5 | 195.6 | — | measured |
 | HSTforU (Avenue/PVT2-b2) | 256×256×4 | 148.970 | 148.970 | 0 | 168.209 | yes | 64.258 | 15.5 | 71.0 | 66.96 | measured |
@@ -105,16 +105,16 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | MemAE | 16 | 1 | 1 | 70.808 | 7.321 | 1.0 | 1.0（≈；边界帧除外） | 136.5 | 136.5 | null | measured |
 | ANDT（adapted 6 帧） | 6 | 1 | 1 | 74.490 | 5.015 | 1.0 | ≈1.0（除开头 5 帧） | 199.4 | 199.4 | null | measured |
-| Future Frame | 4 | 1 | 1 | 74.476 | — | 1.0 | 1.0（≈） | — | — | null | partial/unverified |
+| Future Frame † | 4 | 1 | 1 | 74.476 | 5.467 | 1.0 | 1.0（≈） | 180.8 | 180.8 | null | partial/unverified † |
 | ST Dissoc. | 5 | 1 | 1 | 60.612 | 3.668 | 1.0 | 1.0（≈） | 269.7 | 269.7 | null | measured |
-| MLEP | 4 | 1 | 1 | 319.513 | — | 1.0 | 1.0（≈） | — | — | null | partial/unverified |
+| MLEP † | 4 | 1 | 1 | 319.513 | 11.538 | 1.0 | 1.0（≈） | 82.0 | 82.0 | null | partial/unverified † |
 | ASTT | 4 | 1 | 1 | 109.416 | 19.048 | 1.0 | 1.0（≈） | 52.2 | 52.2 | null | measured |
 | DAD-FSM | 4 | 1 | 1 | 71.194 | 12.684 | 1.0 | 1.0（≈） | 78.5 | 78.5 | null | measured |
 | HSTforU | 4 | 1 | 1 | 168.209 | 64.258 | 1.0 | 1.0（≈） | 15.5 | 15.5 | null | measured |
 
 > `K` 不能默认等于 `T`；`score_density=K/stride` 可以 >1，**不是帧覆盖率**。`frame_coverage` 必须按原方法的分数映射、窗口重叠和融合方式单独计算（例如 T=16/stride=1/K=16 时 score_density=16，但 frame_coverage 最多 1.0）。`fps_stream_estimated` 只是按 stride 推算的吞吐估计；没有实际连续流测试时 `fps_stream_measured=null`，不能声称已实测。
 > **MemAE 已核实**：`script_testing.py` 每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），并映射到中心帧；因此 `K=1, stride=1`，不是 `K=T=16`。旧 v1 的 `÷16` 把窗口时延/FLOPs 错误摊成 1/16，已废弃。
-> **Future Frame / MLEP**：§3.1 的 latency/FPS 保留官方 TF1.15 的 `—`；TF2.20 runtime-adapted 数字见 §3.3，不能填进官方行。
+> **† Future Frame / MLEP**：§3.1 的 latency/FPS 来自 TF2.20 runtime-adapted（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行）；`fps_stream_measured=null`，详见 §3.3。官方 TF1.15 的 latency 仍未测，不能把这里的数字写成官方 TF1.15 数字。
 
 ### 3.2 每行配置与来源
 
@@ -139,7 +139,7 @@
 
 ### 3.3 TF1 方法的 runtime-adapted 计时（TF2.20）
 
-> 官方 TF1.15 wheel 绑定 CUDA 10.0/cuDNN 7.6.5，RTX 5880（sm_89）上 cuBLAS/cuDNN 会卡死，无法按 v2 协议计时；主表因此保留 `partial/unverified`。下面是把**同一官方模型图**放到 TF2.20（CUDA 12.5.1/cuDNN 9）上、同一张 5880、同一 v2 计时协议得到的 **runtime-adapted** 结果。模型文件未改，只补 TF1 contrib API；两方法的 TF2 图参数量与 TF1 图逐参数完全一致。运行时不同，不能冒充官方 TF1.15，也不能和论文里的 TF1 数字直接混比。
+> 官方 TF1.15 wheel 绑定 CUDA 10.0/cuDNN 7.6.5，RTX 5880（sm_89）上 cuBLAS/cuDNN 会卡死，无法按 v2 协议计时；主表用 `†` 标出同图 TF2.20 runtime-adapted 数字，官方 TF1.15 的 latency 仍留空。下面是把**同一官方模型图**放到 TF2.20（CUDA 12.5.1/cuDNN 9）上、同一张 5880、同一 v2 计时协议得到的结果。模型文件未改，只补 TF1 contrib API；两方法的 TF2 图参数量与 TF1 图逐参数完全一致。运行时不同，不能冒充官方 TF1.15，也不能和论文里的 TF1 数字直接混比。
 
 | Method | Runtime | Input (H×W×T) | Params (M) | FLOPs (G) | P50 (ms) | Mean (ms) | P95 (ms) | FPS@BS1 | FPS@BS16 | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
@@ -154,7 +154,7 @@
 - FLOPs 仍来自 TF1.15 profiler（同一图），没有做 v2 手写计数器交叉验证，所以 `flops_verified=false`；状态只能是 `partial/unverified`，不能升为 `measured`。
 - 无官方 checkpoint，random init；latency/FLOPs 与权重数值无关，复现 AUC 才需要权重。
 - 详细说明：[Future Frame/default/README.md](Future%20Frame/default/README.md)、[MLEP/default/README.md](MLEP/default/README.md)；原始数据：`Future Frame/default/benchmark_v2_tf2compat.json`、`MLEP/default/benchmark_v2_tf2compat.json`。
-- 若要把这两个方法放进主表，建议用 **P50@BS1 + `runtime-adapted †` 脚注**；官方 TF1.15 的 latency 仍留空，不要用 TF2 数字覆盖官方 `benchmark_v2.json`。
+- 主表已用 **P50@BS1 + `runtime-adapted †`** 放入这两个方法；官方 TF1.15 的 latency 仍留空，不要用 TF2 数字覆盖官方 `benchmark_v2.json`，也不要把 `Status` 写成 `measured`。
 
 ## 4. 参数审计细节（v2 三列口径）
 
