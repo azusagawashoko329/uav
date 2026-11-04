@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "v2 efficiency partially measured (BS1 only; BS16 is a batch scalar and invalid); scoring variants per paper Sec. 5.4. DA AUC adaptation/run still pending. | code default token-only; paper_matched=false.",
+  "notes": "v2 efficiency measured for the repo-default token-only path (batch scalar, BS16 invalid; reference-only). The repo multi_layer_distillation_loss computes feature_loss but returns token_loss; it is not paper Full. Paper Sec. 5.4 Full scoring is measured separately in Full-paper. DA AUC adaptation/run still pending.",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "224x224x1",
@@ -61,6 +61,6 @@
     "fps_stream_estimated": 83.93515639140223,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/MADViT/Full/benchmark_v2.json",
-    "notes": "Scoring variant Full. Definitions from MADViT paper Sec. 5.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation. | CODE BUG: code default returns token_loss only; not paper Full. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched."
+    "notes": "Scoring variant Full. Definitions from MADViT paper Sec. 5.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation. | CODE BUG: code default returns token_loss only; not paper Full. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is repo-default/reference-only, not paper-matched; see Full-paper for paper Sec. 5.4 scoring."
   }
 }

@@ -33,7 +33,7 @@
 | GLoRD V0 | 1×3×256×256 | **95.106764800G** | 92 模块 | 0 | 90.204910640G | native MHA 被部分分解；v1 少 4.901854160G |
 | ANDT adapted 6-frame | 1×6×3×256×256 | **74.489796608G** | 16 模块 | 0 | 73.812554496G | ConvTranspose2d 盲区；matmul 共同子集 0% |
 | LightViT-AD | 1×3×224×224 | **3.753105408G** | 74 模块 | 0 | 3.212593921G | attention 跳过；conv/matmul 0% |
-| MADViT Full (code default) | 1×3×224×224 | **38.533091328G** | 112 模块 | 0 | 36.731774980G | attention 跳过；conv/matmul 0% |
+| MADViT Full (repo-default) / Full-paper | 1×3×224×224 | **38.533091328G** | 112 模块 | 0 | 36.731774980G | attention 跳过；conv/matmul 0%；两种 scoring FLOPs 相同 |
 | ST Dissoc. | 1×15×256×256 | **60.611887104G** | 45 模块 | 0 | 60.646413312G | conv 0% |
 | ASTT (STE-TTE) | 1×4×3×384×384 | **109.415536640G** | 64 模块 | 0 | 105.638578944G | attention/ConvTranspose 盲区；matmul 0% |
 | DAD-FSM | 1×4×3×224×224 ×2 流 | **71.193985024G** | 78 模块 | 0 | 71.044112386G | ConvTranspose 盲区；matmul 0% |
@@ -43,7 +43,7 @@
 
 ANDT 的适配方式是 `de_dense(feat[:,0])` 预测下一帧（发布代码 decoder 只支持 1 帧），因此这一行是 **adapted**，不是 official；详见 [ANDT/default/README.md](ANDT/default/README.md)。
 
-MADViT Full / Multi-layer / Last-layer 共享同一 teacher+student 前向图；FLOPs 都是 38.533G，差异只在 scoring（论文 Sec. 5.4）：Full=全层 feature+token，Multi=全层 feature only，Last=final token only。
+MADViT repo-default Full / Full-paper / Multi-layer / Last-layer 共享同一 teacher+student 前向图；FLOPs 都是 38.533G，差异只在 scoring（论文 Sec. 5.4）：Full-paper=全层 per-patch feature+token（per-sample `[B]`），repo-default Full=token-only，Multi=全层 feature only，Last=final token only。
 
 DINOv3 teacher 的融合 Attention 还做了独立公式核对：12 blocks × `4·L²·E`（L=261 tokens，E=768）= **2,511,212,544 FLOPs**，与计数器 `aten._scaled_dot_product_efficient_attention` 完全一致。
 
@@ -85,7 +85,7 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 - ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1；BS16 输出 batch 标量，per-sample FPS 无效、记为 `—`；不是官方代码。
 - 额外方法（主表值；ST/DAD 为 score-inclusive 版）：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/4.280ms/231.4 FPS；ASTT 109.416G/19.048ms/52.2 FPS（variant 未确认）；DAD-FSM 71.194G/17.032ms/58.3 FPS；HSTforU 168.209G/64.258ms/15.5 FPS（Avenue 结构）。
-- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 5.4 改 scoring 的 adapted reconstruction；三者输出 batch 标量，BS16 per-sample FPS 无效。
+- MADViT（同一前向图）：Full-paper 38.533G/11.066ms/90.1 FPS@BS1/457.6 FPS@BS16（per-sample）；repo-default Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。repo-default/Multi/Last 输出 batch 标量，BS16 per-sample FPS 无效，仅 reference-only。
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
 - 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
@@ -100,15 +100,15 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 ### 5.1 MADViT 变体核对
 
-`MADViT/code/train_val_VIT_Distillation.py` 只有一条评分路径：`multi_layer_distillation_loss` 对全部 12 个 teacher/student skip connection 做 cosine loss，再加 CLS/DIST token KL loss。代码里没有 Full / Multi-layer / Last-layer 参数或层选择开关。
+`MADViT/code/train_val_VIT_Distillation.py` 只有一条评分路径：`multi_layer_distillation_loss` 对全部 12 个 teacher/student skip connection 做 cosine loss，再加 CLS/DIST token KL loss；但函数最后 `return token_loss`，`feature_loss` 被丢弃。代码里没有 Full / Multi-layer / Last-layer 参数或层选择开关。
 
 论文 PDF（本地 `Comparison method/MADViT/...pdf`）Sec. 5.4 的定义：
 
-- `Full`：全层 feature loss + final CLS/DIST token loss（代码默认路径）；
+- `Full`：`L = L_feat + L_token`，feature 是 12 层 patch-token cosine 平均，token 是 final CLS/DIST KL；
 - `Multi-layer`：只做全层 feature loss，不做 token loss；
 - `Last-layer`：只监督 final CLS/DIST token（token loss only）。
 
-因此 Multi-layer / Last-layer 是用同一 teacher+student 前向图、只替换 scoring 的 **adapted reconstruction**，在 `bench_v2_madvit_variants.py` 中实现；结果标 adapted，不冒充代码原生变体。
+因此新增 `Full-paper`：按论文公式在 patch 维算 per-sample cosine、token KL 用 `reduction='none'` 后按 class 求和，返回 `[B]`；结果 38.533G / 11.066ms / 90.1 FPS@BS1 / 457.6 FPS@BS16，输出 `[1]`/`[16]`。repo-default `Full` 保留原测量并标 reference-only；Multi/Last 是用同一前向图、只替换 scoring 的 **reconstructed**，不重训、不作为正式复现结果。
 
 ## 6. 复现坑（已修复，保留记录）
 

@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Measure MADViT Full / Multi-layer / Last-layer scoring variants.
+"""Measure MADViT scoring variants.
 
 The cloned repo has no variant switch. We keep the same teacher+student
 forward and change only the scoring function:
-  Full        : all 12 skip-connection feature losses + CLS/DIST token KL
-                (exactly multi_layer_distillation_loss in the repo)
-  Multi-layer : all 12 feature losses, no token KL
-  Last-layer  : final CLS/DIST token KL only (paper Sec. 5.4)
+  Full        : repo default multi_layer_distillation_loss. NOTE: the repo
+                computes feature_loss but returns token_loss only.
+  Full-paper  : paper Sec. 5.4 Full score = mean-layer feature loss +
+                final CLS/DIST token KL, returned per sample [B]. This is
+                the corrected paper-Full scoring graph.
+  Multi-layer : all 12 feature losses, no token KL (reconstructed, scalar)
+  Last-layer  : final CLS/DIST token KL only (reconstructed, scalar)
 
 Multi-layer / Last-layer share the same forward graph and are reconstructed
-from the paper ablation; results are labelled adapted.
+from the paper ablation; they are reference-only, not formal reproductions.
 """
 from __future__ import annotations
 
@@ -68,11 +71,32 @@ class MADVariant(nn.Module):
                   for t, s in zip(t_feats, s_feats)]
         return sum(losses) / len(losses)
 
+    def _token_loss_per_sample(self, t_tok, s_tok):
+        temperature = 4.0
+
+        def kl_per_sample(s, t):
+            return F.kl_div(F.log_softmax(s / temperature, dim=-1),
+                            F.softmax(t / temperature, dim=-1),
+                            reduction='none').sum(dim=-1)
+
+        return 0.5 * (kl_per_sample(s_tok[0], t_tok[0]) +
+                      kl_per_sample(s_tok[1], t_tok[1])) * (temperature ** 2)
+
+    def _feature_loss_per_sample(self, t_feats, s_feats):
+        # Paper Sec. 5.4 / 3.4: cosine similarity per patch token (dim=-1),
+        # then mean over patches; average the per-sample loss over layers.
+        losses = [(1 - F.cosine_similarity(t[:, 2:], s[:, 2:], dim=-1)).mean(dim=-1)
+                  for t, s in zip(t_feats, s_feats)]
+        return sum(losses) / len(losses)
+
     def forward(self, x):
         t_feats, t_tok = self.teacher(x)
         s_feats, s_tok = self.student(x)
         if self.mode == 'Full':
             return self._full_loss(t_feats, t_tok, s_feats, s_tok)
+        if self.mode == 'Full-paper':
+            return (self._feature_loss_per_sample(t_feats, s_feats) +
+                    self._token_loss_per_sample(t_tok, s_tok))
         if self.mode == 'Multi-layer':
             return self._feature_loss(t_feats, s_feats)
         if self.mode == 'Last-layer':
@@ -83,8 +107,10 @@ class MADVariant(nn.Module):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--modes', nargs='*', default=['Full', 'Multi-layer', 'Last-layer'])
+    p.add_argument('--modes', nargs='*', default=['Full-paper'],
+                   help='default only writes the new Full-paper variant; pass others explicitly')
     p.add_argument('--no-profiler', action='store_true')
+    p.add_argument('--smoke', action='store_true')
     args = p.parse_args()
 
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -98,6 +124,19 @@ def main():
     x1 = torch.randn(1, 3, 224, 224, device='cuda')
     x16 = torch.randn(16, 3, 224, 224, device='cuda')
 
+    if args.smoke:
+        for mode in args.modes:
+            model = MADVariant(teacher, student, mod, mode).cuda().eval()
+            with torch.inference_mode():
+                y1 = model(x1)
+                y16 = model(x16)
+            print(f'smoke {mode}: BS1 {tuple(y1.shape) if y1.dim() else "scalar"} '
+                  f'BS16 {tuple(y16.shape) if y16.dim() else "scalar"}', flush=True)
+            del model, y1, y16
+            gc.collect()
+            torch.cuda.empty_cache()
+        return
+
     for mode in args.modes:
         out_path = OUT / mode / 'benchmark_v2.json'
         model = MADVariant(teacher, student, mod, mode).cuda().eval()
@@ -105,7 +144,7 @@ def main():
             'method': 'MADViT',
             'method_display': 'MADViT',
             'variant': mode,
-            'adapted': mode != 'Full',
+            'adapted': mode in {'Multi-layer', 'Last-layer'},
             'supersedes': None,
             'code_commit': git_commit(CLONE / 'MADViT'),
             'input_hwt': '224x224x1',
@@ -122,12 +161,29 @@ def main():
             'frozen_inference_params_m': pt / 1e6,
             'benchmark_source': str(out_path.relative_to(ROOT)),
             'notes': (
-                f'Scoring variant {mode}. Definitions from MADViT paper Sec. 5.4: '
-                'Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses '
-                'only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_'
-                'distillation_loss; Multi-layer/Last-layer share the same forward graph and only '
-                'change scoring, so this is an adapted reconstruction of the paper ablation.'
+                ('Paper Sec. 5.4 Full scoring: per-patch (1 - cosine), mean over patches, then '
+                 'mean over 12 layers + T^2/2 * sum of CLS/DIST KL; per-sample [B]. The repo default Full '
+                 'returns token loss only and is kept separately as repo-default.'
+                 if mode == 'Full-paper' else
+                 'Repo-default Full: calls multi_layer_distillation_loss, which computes '
+                 'feature_loss but returns token_loss only; batch scalar, reference-only.'
+                 if mode == 'Full' else
+                 f'Reconstructed {mode} scoring from paper Sec. 5.4; batch scalar, '
+                 'reference-only, not a formal reproduction.')
             ),
+            'output_shape_bs1': '[1]' if mode == 'Full-paper' else '[] scalar',
+            'output_shape_bs16': '[16]' if mode == 'Full-paper' else '[] scalar',
+            'scores_per_sample': 1 if mode == 'Full-paper' else None,
+            'batch_output_aggregated': mode != 'Full-paper',
+            'paper_matched': mode == 'Full-paper',
+            'paper_matched_note': (
+                'paper Sec. 5.4 scoring and official DeiT teacher/student graph; '
+                'random-init weights (efficiency is weight-independent; AUC not paired)'
+                if mode == 'Full-paper' else
+                'repo-default token-only scoring; not paper Full'
+                if mode == 'Full' else
+                'reconstructed from paper Sec. 5.4; not a formal reproduction'),
+            'ranking_status': 'formal' if mode == 'Full-paper' else 'reference-only',
         }
         result = measure(lambda x: model(x), model, x1, x16, meta,
                          run_profiler=not args.no_profiler)

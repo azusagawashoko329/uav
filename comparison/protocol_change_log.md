@@ -378,3 +378,14 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - 新增 `paper_matched` / `paper_matched_note` 到所有外部方法 benchmark JSON；与 `measurement_status` 分开：`measured` 只表示测速完成，`paper_matched` 表示图/输入/评分与产生 AUC 的配置一致。
 - ANDT 保留 adapted benchmark，但 `paper_matched=false`、不进入严格官方模型排名；ASTT 仍是 STE-TTE 结构参考（DA `model.py` 缺失）；HSTforU 是 Avenue/PVT2-b2 参考；MKD 明确为 MVTec-128。
 - 文档统一到上述数值：`fairness_audit.md` §2.1/2.2/2.5/4.1/4.7、`comparison_summary.md` §3.4/§3.5、`v2_validation.md` §8、`RETEST_CHECKLIST.md`、各方法 README。
+
+## 18. 2026-11-04 MADViT Full 评分修正
+
+- 问题：`multi_layer_distillation_loss` 计算 `feature_loss` 后只 `return token_loss`，repo-default “Full” 实际是 token-only batch 标量，不能与论文 Full AUC 配对。
+- `bench_v2_madvit_variants.py` 新增 `Full-paper` 模式：
+  - feature：按论文 Sec. 5.4/3.4 在 patch 维（`dim=-1`）算 per-patch cosine，再对 patch 取 mean，12 层再平均，得到 `[B]`；
+  - token：`F.kl_div(..., reduction='none')` 后对 class 求和，CLS/DIST 两项相加，乘 `T^2/2`，得到 `[B]`；
+  - 两项相加，返回 per-sample `[B]`。
+- 新结果 `MADViT/Full-paper/benchmark_v2.json`：38.533G / 11.066ms / 90.1 FPS@BS1 / 457.6 FPS@BS16，输出 `[1]`/`[16]`，FLOPs verified。
+- 原 `MADViT/Full/benchmark_v2.json` 保留为 repo-default（token-only，BS16 标量无效）；`Multi-layer/Last-layer` 保留为 reconstructed/reference-only，不重训、不作为正式复现结果。
+- 同步更新 `MADViT/README.md`、`comparison_summary.md`、`fairness_audit.md`、`v2_validation.md`、`RETEST_CHECKLIST.md`。

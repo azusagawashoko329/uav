@@ -3003,5 +3003,8 @@
   "fps_bs16_raw_batch_aggregate": 430.17405230337783,
   "fps_bs16_valid": false,
   "fps_bs16_invalid_reason": "scoring returns one batch-aggregate scalar; the 16*K*iters numerator would overcount per-sample scores",
-  "paper_matched_note": "code default is token-only (feature loss discarded); Multi/Last are reconstructed scoring"
+  "paper_matched_note": "reconstructed from paper Sec. 5.4; batch scalar, not a formal reproduction",
+  "variant_label": "reconstructed",
+  "ranking_status": "reference-only",
+  "repro_status": "reconstructed scoring, not a formal reproduction"
 }

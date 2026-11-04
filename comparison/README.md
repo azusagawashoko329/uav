@@ -112,8 +112,8 @@ python comparison/check_comparisons.py
 `comparison/INDEX.md` 会列出：
 
 - `ours` 六个变体（completed）；
-- 用户表格中的外部方法（planned，等待 URL）：adVAE、GANomaly、MemAE、MKD、ANDT、Future Frame、ST Dissoc.、MLEP、ASTT、DAD-FSM、HSTforU、MADViT（Full / Multi-layer / Last-layer）、LightViT-AD。
+- 用户表格中的外部方法（planned，等待 URL）：adVAE、GANomaly、MemAE、MKD、ANDT、Future Frame、ST Dissoc.、MLEP、ASTT、DAD-FSM、HSTforU、MADViT（Full-paper / repo-default Full / Multi-layer / Last-layer）、LightViT-AD。
 
 外部方法的年份/星号/颜色按用户表格登记；`record.json` 暂未编码颜色分类，需要时再加 `category` 字段。
 
-13 个外部仓库已 clone 到 `/data1/data8tb/liangyuxuan/Comparison method/<Method>/`（目录名保留官方大小写/标点），对应 15 条 `planned` record（MADViT 三个变体共享一个仓库）；`source.url/local_path/commit` 已填，等待 DA 适配与运行。`Comparison method/MANIFEST.csv` 保留每个仓库的 commit / license / clone 状态。
+13 个外部仓库已 clone 到 `/data1/data8tb/liangyuxuan/Comparison method/<Method>/`（目录名保留官方大小写/标点），对应 16 条 `planned` record（MADViT 四个变体共享一个仓库）；`source.url/local_path/commit` 已填，等待 DA 适配与运行。`Comparison method/MANIFEST.csv` 保留每个仓库的 commit / license / clone 状态。

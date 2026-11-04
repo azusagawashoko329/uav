@@ -3,7 +3,7 @@
 > **公平性复核**：`measured` 只表示测速完成，不等同于 `paper-matched`；逐方法证据和需脚注/需重测清单见 [da/fairness_audit.md](da/fairness_audit.md)。
 >
 > **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
-> MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
+> MADViT Full-paper、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
 > Future Frame / MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；已补 TF2.20 runtime-adapted score-inclusive 计时（Future Frame 6.820ms / 146.8 FPS@BS1 / 177.7 FPS@BS16；MLEP 12.525ms / 79.6 FPS@BS1，BS16 未测），仍标 `partial/unverified`，不能冒充官方 TF1.15；adVAE 仍 `blocked`。
 > ASTT 当前测的是 `model_ste_tte`（148.22M），DA `train_val_Drone-Anomaly.py` 引用的 `model.py` 缺失，变体未确认，不能当官方 ASTT；详见 [da/fairness_audit.md](da/fairness_audit.md)。
@@ -102,12 +102,13 @@
 | ASTT | partial/unverified | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint；DA `model.py` 缺失，变体未确认，不能当官方 ASTT |
 | DAD-FSM | measured | 71.194G / 17.032ms / 58.3 FPS@BS1（score-inclusive target MSE，per-sample [B]）；RGB+分割双流，ResNet50 随机初始化 |
 | HSTforU | partial/unverified | 168.209G / 64.258ms / 15.5 FPS@BS1；Avenue/PVT2-b2 结构、无 DA config；评分是 batch 标量代理；mmcv-lite 2.x + 兼容 shim |
-| MADViT Full | partial/unverified | code default 实际 token-only（feature loss 被丢弃）：38.533G / 11.525ms / 83.9 FPS@BS1；BS16 标量无效 |
-| MADViT Multi-layer / Last-layer | partial/unverified (reconstructed scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图，batch 标量，BS16 无效 |
+| MADViT Full（repo-default） | reference-only | code default 实际 token-only（feature loss 被丢弃）：38.533G / 11.525ms / 83.9 FPS@BS1；BS16 标量无效 |
+| MADViT Full-paper | measured | 论文 Sec. 5.4 全层 per-patch feature + final token，per-sample：38.533G / 11.066ms / 90.1 FPS@BS1 / 457.6 FPS@BS16 |
+| MADViT Multi-layer / Last-layer | reference-only (reconstructed scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图，batch 标量，BS16 无效；不重训、不作正式复现 |
 | LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
 - [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
-- [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 已按论文 Sec. 5.4 实现 adapted scoring 并完成测量
+- [x] MADViT 已核对：repo-default Full 实际 token-only；新增 Full-paper 按论文 Sec. 5.4 做全层 per-patch feature+token、per-sample 并重测；Multi/Last 仅 reference-only，不重训
 - [x] Future Frame/MLEP 已补 TF2.20 runtime-adapted 计时（官方 TF1.15 latency 仍受 CUDA10/sm_89 限制）；adVAE 仍待视频实现
 - [x] ST/DAD 的 BS16 旧值已用同卡交替 A/B 复核：old vs scored 时间比 1.010 / 1.000，旧 JSON 的 288.2/195.6 是低时钟 run；见 `comparison/da/fairness_bs16_ab.json`
 

@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "v2 efficiency partially measured (BS1 only; BS16 is a batch scalar and invalid); scoring variants per paper Sec. 5.4. DA AUC adaptation/run still pending. | reconstructed; paper_matched=false.",
+  "notes": "v2 efficiency measured for the reconstructed Last-layer scoring (batch scalar, BS16 invalid); reference-only, not a formal reproduction. No retraining was done for this variant; only a formal AUC/efficiency comparison would justify training separate weights. DA AUC adaptation/run pending.",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "224x224x1",
@@ -61,6 +61,6 @@
     "fps_stream_estimated": 103.50025955928872,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/MADViT/Last-layer/benchmark_v2.json",
-    "notes": "Scoring variant Last-layer. Definitions from MADViT paper Sec. 5.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation. | reconstructed scoring; batch-aggregated scalar output. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched."
+    "notes": "Scoring variant Last-layer. Definitions from MADViT paper Sec. 5.4: Full=all 12 feature losses + final token KL; Multi-layer=all 12 feature losses only; Last-layer=final CLS/DIST token KL only. Full is the repo multi_layer_distillation_loss; Multi-layer/Last-layer share the same forward graph and only change scoring, so this is an adapted reconstruction of the paper ablation. | reconstructed scoring; batch-aggregated scalar output. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reconstructed/reference-only, not a formal reproduction; no retraining was done."
   }
 }
