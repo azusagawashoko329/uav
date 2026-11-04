@@ -1,7 +1,7 @@
 # 轻量化对比协议 v2（DA 主表）
 
 - **版本**：v2，2026-11-04。
-- **状态**：口径修订完成，**尚未按 v2 重测**。本文件只定义口径，不产生新数字。
+- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD 完成正式测量；ANDT/adVAE/其余外部方法仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
 - **v1 数据**：`comparison/da/benchmark_*.json`、`comparison/da/benchmark_*.log` 与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/` 全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
 - **正式主表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 重测完成前，数字留空或标 `partial/unverified` / `blocked` / `paper-only`，不得把 v1 数字当正式对比结果。
 
@@ -255,23 +255,23 @@ AUC source | profiling config | benchmark source
 - 新结果另存为 `benchmark_v2_<method>.json`，并在 JSON 内写 `protocol_version: 2`、`supersedes`、`measurement_status`、`code_commit`、`flops_counter` 和覆盖清单。
 - v1 旧数字在 [da/comparison_summary.md](da/comparison_summary.md) 只放在“v1 归档”区，不得进入 v2 正式表。
 
-### 11.1 GLoRD 新旧差异（待复核，不预设哪个正确）
+### 11.1 GLoRD 新旧差异（v2 已定位）
 
-| 项 | 新测（2026-11-04 `benchmark_ours.json`） | 旧审计（2026-10-26 `summary.*`） | 差异 |
+| 项 | v1 profiler 结果 | 旧审计（2026-10-26） | v2 结论 |
 |---|---:|---:|---:|
-| V0 `rd_s12_t4_h512` FLOPs | 90.205G | 95.107G | 4.902G（约 5.2%） |
-| V5 `rd_s4_t12_gl192_h128_qr2` FLOPs | 46.572G | 49.106G | 2.534G（约 5.2%） |
-| V0 BS1 latency | 17.800ms | 10.184ms | 7.616ms |
+| V0 `rd_s12_t4_h512` FLOPs | 90.205G | 95.107G | **95.107G**（v1 漏 student native MHA） |
+| V5 `rd_s4_t12_gl192_h128_qr2` FLOPs | 46.572G | 49.106G | **49.106G** |
+| V0 BS1 latency | 17.800ms | 10.184ms | **14.521ms**（v2 重新计时；旧值不再用） |
 
-复核要求：用**同一计算图**（同一 teacher tap 数、同一 scoring、同一输入）分别做算子计数、共同子集 profiler 核验、盲区独立公式和分模块计时；定位差异来自 tap 数、readout、计时范围还是 GPU 状态。**tap 是输出选择，不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11`，FLOPs 按实际前向层数计，不能按 4 taps × 单层。**在定位前，两组数字都只能标 `partial/unverified`，不能选一个当正式值。**
+v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模块公式和主计数器逐模块对齐（max rel diff = 0）；profiler 总数 90.205G 只作参考，Full FLOPs 95.107G 与旧审计一致。**tap 是输出选择，不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11`，FLOPs 按实际前向层数计，不能按 4 taps × 单层。旧 v1 latency（17.800ms/10.184ms）来自不同计时条件，不能再与 v2 混用。
 
 ## 12. 已知阻塞与逐方法重测清单
 
 - **adVAE**：官方仓库 `WangXuhongCN/adVAE` 是表格/向量版（`(B,400)`，0.329M），不是 DA 视频模型；视频实现缺失，标 `blocked`。
 - **ANDT**：`ANDT/ANDT/model.py` 有 `pdb.set_trace()`、硬编码 `.cuda()`，decoder `x.view(B,256,16,16)` 只支持 1 帧；论文 6 帧模型 `T=6, K=1, stride=1` 需要先修/确认 decoder，否则标 `blocked`。若测 1 帧代码变体，标 `code-variant-1frame`。
-- **MemAE**：原测试的 `K` 待核实（clip 级 vs 逐帧），现有 `÷16` 标 `partial/unverified`。
-- **MKD**：多层特征评分未实现，现有最终层距离标 `partial/unverified`。
-- **GANomaly**：参数量已可拆成 G / G+D / D；FLOPs 需按 G 的完整推理图重测。
+- **MemAE**：已核实原测试每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），`K=1, stride=1`；v2 全窗口 FLOPs=70.808G，旧 `÷16` 废弃。
+- **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
+- **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。
 - **ASTT/DAD-FSM/Future Frame/ST Dissoc./MLEP/HSTforU/MADViT/LightViT-AD**：代码已 clone，但尚未按 v2 适配；全部 `blocked`，不得填入估计值。
 - **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：只有用户表数字，`paper-only`，不参与本机速度排序。
 

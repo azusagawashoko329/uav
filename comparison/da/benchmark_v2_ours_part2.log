@@ -1,0 +1,18 @@
+=== V3 rd_s4_t12_gl192_h512 ===
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_v2_ours_rd_s4_t12_gl192_h512.json
+{"method": "ours", "variant": "rd_s4_t12_gl192_h512", "frame_coverage": 1.0, "inference_params_m": 93.359552, "training_trainable_params_m": 7.718336, "measurement_status": "measured", "flops_g_per_output_frame": 51.132141568, "flops_verified": true, "latency_bs1_p50_ms_per_output_frame": 19.289012503577396, "fps_bs1": 51.529038014143005, "fps_bs16": 314.76501682196033, "score_density": 1.0}
+=== V4 rd_s4_t12_gl192_h128 ===
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_v2_ours_rd_s4_t12_gl192_h128.json
+{"method": "ours", "variant": "rd_s4_t12_gl192_h128", "frame_coverage": 1.0, "inference_params_m": 89.795648, "training_trainable_params_m": 4.154432, "measurement_status": "measured", "flops_g_per_output_frame": 49.307619328, "flops_verified": true, "latency_bs1_p50_ms_per_output_frame": 19.41690902458504, "fps_bs1": 51.25838988719478, "fps_bs16": 324.68323229293014, "score_density": 1.0}
+=== V5 rd_s4_t12_gl192_h128_qr2 ===
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_v2_ours_rd_s4_t12_gl192_h128_qr2.json
+{"method": "ours", "variant": "rd_s4_t12_gl192_h128_qr2", "frame_coverage": 1.0, "inference_params_m": 89.402438, "training_trainable_params_m": 3.761222, "measurement_status": "measured", "flops_g_per_output_frame": 49.106292736, "flops_verified": true, "latency_bs1_p50_ms_per_output_frame": 20.51318049780093, "fps_bs1": 48.5459396574503, "fps_bs16": 324.4397771570848, "score_density": 1.0}
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/benchmark_v2_ours.json
+| variant | FLOPs G | P50 ms | FPS BS1 | FPS BS16 | verified |
+|---|---:|---:|---:|---:|---|
+| rd_s12_t4_h512 | 95.107 | 14.521 | 68.4 | 187.4 | True |
+| rd_s4_t12_h512 | 68.532 | 19.903 | 50.0 | 244.3 | True |
+| rd_s4_t12_gl768_h512 | 62.804 | 14.787 | 67.3 | 263.3 | True |
+| rd_s4_t12_gl192_h512 | 51.132 | 19.289 | 51.5 | 314.8 | True |
+| rd_s4_t12_gl192_h128 | 49.308 | 19.417 | 51.3 | 324.7 | True |
+| rd_s4_t12_gl192_h128_qr2 | 49.106 | 20.513 | 48.5 | 324.4 | True |

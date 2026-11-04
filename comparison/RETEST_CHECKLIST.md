@@ -1,7 +1,8 @@
 # 逐方法待重测清单（v2）
 
-> 本轮只做口径与清单，**不启动 GPU 重测**。所有条目在当前 `comparison/da/comparison_summary.md` §3 中保持
-> `partial/unverified` / `blocked` / `paper-only`，直到本清单的验收项全部满足。
+> **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD 已完成 v2 正式测量（50 warmup + 3×500），
+> 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
+> ANDT、adVAE、其余外部方法仍 `blocked`；paper-only 方法不重测。
 
 ## 0. 全局准入（所有方法共用）
 
@@ -9,16 +10,16 @@
 - [x] record 字段定义：[SCHEMA.md](SCHEMA.md) + [schema.json](schema.json) + `check_comparisons.py`
 - [x] v1 归档清单与哈希：[da/LEGACY_v1.md](da/LEGACY_v1.md)
 - [x] v1 改动记录：[protocol_change_log.md](protocol_change_log.md)
-- [ ] v2 脚本改造：`bench_ours.py` / `bench_external.py` 或新增 `bench_v2_*.py`（规范见 [benchmarks/README.md](benchmarks/README.md)）
-- [ ] 算子计数器：Conv2d/ConvTranspose2d/Conv3d/ConvTranspose3d/Linear/MatMul/Attention QK/AV
-- [ ] 只对 profiler **共同支持**的算子比较且差异 ≤1%；ConvTranspose/Conv3d/融合 Attention 用独立公式核验；**完整 FLOPs 不要求等于 profiler 总数**
-- [ ] 防重复计数：module hook / matmul 包装 / SDPA 包装按 `op_id` 去重，同一矩阵乘不能累计两次
-- [ ] 时序方法 `score_density=K/stride`；`frame_coverage` 按分数映射/重叠/融合单独计算，不用 K/stride 冒充；没有连续流测试只能写 `fps_stream_estimated`
-- [ ] 结果写 `benchmark_v2_<method>.json`，不覆盖任何 v1 文件
+- [x] v2 脚本：`bench_v2_ours.py` / `bench_v2_external.py` / `bench_v2_common.py`（规范见 [benchmarks/README.md](benchmarks/README.md)）
+- [x] 算子计数器：Conv2d/ConvTranspose2d/Conv3d/ConvTranspose3d/Linear/MatMul/Attention QK/AV + native MHA
+- [x] 只对 profiler **共同支持**的算子比较；ConvTranspose/Conv3d/融合 Attention 用独立公式核验；**完整 FLOPs 不要求等于 profiler 总数**
+- [x] 防重复计数：module hook / matmul 包装 / SDPA 包装分开，手写公式与主计数器逐模块对齐
+- [x] 时序方法 `score_density=K/stride`；`frame_coverage` 按分数映射/重叠/融合单独计算，不用 K/stride 冒充；没有连续流测试只能写 `fps_stream_estimated`
+- [x] 结果写 `benchmark_v2_<method>.json`，不覆盖任何 v1 文件
 
-## 1. Ours / GLoRD 六个变体
+## 1. Ours / GLoRD 六个变体（已完成 v2 测量）
 
-当前状态：`partial/unverified`（v1 profiler-only；旧/新 GLoRD 数字不一致）。
+当前状态：`measured`（V0–V5 全部通过 `flops_verified=true`）。
 
 | 变体 | 当前输入 | 待确认 | 重测动作 |
 |---|---|---|---|
@@ -35,9 +36,9 @@
 - [ ] 解决 V0/V5 新旧 FLOPs 与 V0 latency 差异；在解决前两组都只能 `partial/unverified`
 - [ ] AUC 仍引用 `experiments/da/appearance/20261103_variant_matrix_*`，效率配置单独写 `architecture-init`
 
-## 2. GANomaly
+## 2. GANomaly（已完成 v2 测量）
 
-当前状态：`partial/unverified`（参数列已可拆；FLOPs 未做算子覆盖核验）。
+当前状态：`measured`（含 ConvTranspose2d；16.428G）。
 
 - [ ] 推理图只走 G：`inference_params_m=143.950`、`frozen_inference_params_m=0`
 - [ ] 训练列 `training_trainable_params_m=188.690`（G+D），`training_only_params_m=44.739`（D）
@@ -45,9 +46,9 @@
 - [ ] 明确输入 256×256×1、`T=1/K=1/stride=1`
 - [ ] 结果写 `benchmark_v2_ganomaly.json`；AUC 来源仍标 ANDT Table VI / 用户表，不暗示同配置
 
-## 3. MemAE
+## 3. MemAE（已完成 v2 测量）
 
-当前状态：`partial/unverified`（`÷16` 未核实）。
+当前状态：`measured`；`K=1, stride=1`，全窗口 70.808G。
 
 - [ ] 先读原测试代码，确认输出是 clip 级误差还是 `T` 个逐帧分数
 - [ ] 若 clip 级：`K=1`，`stride=16`（或原测试步长），不能沿用 `÷16`
@@ -56,9 +57,9 @@
 - [ ] 记录 `window_flops_g`、`window_latency_ms`、`fps_independent_window`、`score_density`、`frame_coverage`、`fps_stream_estimated`；未做连续流测试时 `fps_stream_measured=null`
 - [ ] 结果写 `benchmark_v2_memae.json`
 
-## 4. MKD
+## 4. MKD（已完成 v2 测量）
 
-当前状态：`partial/unverified`（仅最终层距离）。
+当前状态：`measured`；已用 taps 6/9/12 多层评分。
 
 - [ ] 按原方法实现 source/cloner **多层特征**评分，不能只取最终层
 - [ ] 明确输入 128×128×1（原论文 MVTec 配置）；若改 256 跑 DA，`da_adapted=true` 并另列

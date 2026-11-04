@@ -2,8 +2,16 @@
 
 现有 `bench_ours.py`、`bench_external.py` 是 **v1 legacy**：它们写出的
 `comparison/da/benchmark_*.json` 已被冻结（见 [../da/LEGACY_v1.md](../da/LEGACY_v1.md)），
-**不得再用它们产出正式 v2 数字**。v2 重测时按本文件改造脚本或新增
-`bench_v2_*.py`，输出一律写 `comparison/da/benchmark_v2_<method>.json`。
+**不得再用它们产出正式 v2 数字**。
+
+v2 已实现：
+
+- `flops_counter.py`：FlopCounterMode + native MHA 公式 + 手写模块公式 + profiler 共同子集 + 去重检查。
+- `bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
+- `bench_v2_ours.py`：六个 Ours 变体。
+- `bench_v2_external.py`：GANomaly / MemAE / MKD。
+
+输出一律写 `comparison/da/benchmark_v2_<method>.json`（Ours 另有每变体文件）。
 
 ## 1. 输出文件命名
 

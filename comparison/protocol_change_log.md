@@ -249,3 +249,44 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
   - FLOPs 按实际前向层数计，不能按“4 taps × 单层”；
   - 能优化的是未用 tap 的特征保存/后处理，不是得到第 11 层所必需的前向。
 - **涉及文件**：`BENCHMARK_PROTOCOL.md`、`RETEST_CHECKLIST.md`、`benchmarks/README.md`、`da/comparison_summary.md`、本文件。
+
+## 14. 2026-11-04 v2 实测完成
+
+新增：
+
+- `comparison/benchmarks/flops_counter.py`：FlopCounterMode + native MHA 公式 + 手写模块公式 + profiler 共同子集 + 去重检查。
+- `comparison/benchmarks/bench_v2_common.py`：50 warmup、BS1 3×500、BS16 3×500、JSON 输出。
+- `comparison/benchmarks/bench_v2_ours.py`、`bench_v2_external.py`：只写 `benchmark_v2_*.json`。
+- `comparison/da/v2_validation.md`：玩具算子 + GANomaly/MemAE/GLoRD V0 的验证记录。
+
+验证结论：
+
+- GANomaly：16.427778048G；手写 21 模块误差 0；profiler 只报 10.951852032G（漏 ConvTranspose2d）。
+- MemAE：70.808240128G/窗口；手写 8 模块误差 0；profiler 只报 1.050624G（漏 Conv3d/ConvTranspose3d）。
+- GLoRD V0：95.106764800G；手写 92 模块误差 0；profiler 90.204910640G（漏 student native MHA）；与旧审计 95.107G 一致。
+- 全部 `flops_ops_missing=[]`、`flops_verified=true`；没有把 profiler 总数当 Full FLOPs。
+
+正式结果（`benchmark_v2_*.json`）：
+
+| Method | FLOPs G/output | P50 ms | FPS BS1 | FPS BS16 |
+|---|---:|---:|---:|---:|
+| GANomaly | 16.428 | 8.088 | 123.6 | 848.5 |
+| MemAE | 70.808 | 7.321 | 136.5 | 130.3 |
+| MKD | 10.477 | 2.495 | 394.5 | 2340.8 |
+| Ours V0 | 95.107 | 14.521 | 68.4 | 187.4 |
+| Ours V1 | 68.532 | 19.903 | 50.0 | 244.3 |
+| Ours V2 | 62.804 | 14.787 | 67.3 | 263.3 |
+| Ours V3 | 51.132 | 19.289 | 51.5 | 314.8 |
+| Ours V4 | 49.308 | 19.417 | 51.3 | 324.7 |
+| Ours V5 | 49.106 | 20.513 | 48.5 | 324.4 |
+
+已解决/关闭：
+
+- GLoRD V0/V5 新旧 FLOPs 差异：v2 为 95.107/49.106，与旧审计一致；v1 的 90.205/46.572 是 profiler 漏计 native MHA。
+- MemAE `K`：确认为 `K=1, stride=1`，旧 `÷16` 废弃。
+- MKD：已改为 taps 6/9/12 多层评分，旧最终层距离废弃。
+
+仍未完成：
+
+- ANDT（decoder 只支持 1 帧）、adVAE（表格版）、Future Frame/ST Dissoc./MLEP/ASTT/DAD-FSM/HSTforU/MADViT/LightViT-AD（未适配）保持 `blocked`。
+- DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE 保持 `paper-only`。
