@@ -26,7 +26,7 @@ comparison/
     <method>/
       <variant>/            # 外部方法；URL 到位后建目录
         record.json
-        upstream/           # 外部仓库本地 fork（可选，按 license 决定是否入 Git）
+        upstream/           # 可选；默认 clone 到 /data1/data8tb/liangyuxuan/Comparison method/<method>/
         scripts/            # 适配脚本
         results/
   uit/
@@ -63,7 +63,7 @@ comparison/
 
 ## 添加外部方法
 
-1. 用户提供上游 URL 后，clone 到该条目的 `source.local_path`（建议 `upstream/`），记录 `source.url`、`source.commit`、`source.license`；
+1. 用户提供上游 URL 后，clone 到本机默认根目录 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`（`source.local_path` 记录该绝对路径），或放在条目内 `upstream/`（已 gitignore）；记录 `source.url`、`source.commit`、`source.license`；
 2. 在该条目写 `scripts/` 适配器，把上游训练/评测接到 DA 的 per-scene 官方 train/test 上；
 3. 运行并产出 `results/summary.json`（至少含 macro AUC/EER 与 per-scene AUC/EER）；
 4. 更新 `record.json`，把 `status` 改为 `completed`，填 `results`；
@@ -95,3 +95,5 @@ python comparison/check_comparisons.py
 - 用户表格中的外部方法（planned，等待 URL）：adVAE、GANomaly、MemAE、MKD、ANDT、Future Frame、ST Dissoc.、MLEP、ASTT、DAD-FSM、HSTforU、MADViT（Full / Multi-layer / Last-layer）、LightViT-AD。
 
 外部方法的年份/星号/颜色按用户表格登记；`record.json` 暂未编码颜色分类，需要时再加 `category` 字段。
+
+13 个外部仓库已 clone 到 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`，对应 15 条 `planned` record（MADViT 三个变体共享一个仓库）；`source.url/local_path/commit` 已填，等待 DA 适配与运行。`Comparison method/MANIFEST.csv` 保留每个仓库的 commit / license / clone 状态。

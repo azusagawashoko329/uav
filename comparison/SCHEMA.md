@@ -26,7 +26,7 @@
 | `type` | enum | `internal`（ours，指向 `experiments/`）或 `external`（第三方仓库） |
 | `url` | str/null | 外部仓库 URL；completed external 必须非空 |
 | `commit` | str/null | 外部运行的完整 commit SHA；completed 时必须非空 |
-| `local_path` | str/null | 本地 clone 路径（建议 `upstream/`） |
+| `local_path` | str/null | 本地 clone 路径；本机默认 `/data1/data8tb/liangyuxuan/Comparison method/<method>/`（也可用条目内 `upstream/`） |
 | `experiment` | str/null | internal 时指向 `experiments/...` 原始实验目录 |
 | `run_id` | str/null | internal 时指向原始 `record.json` 的 run |
 | `license` | str/null | 外部仓库 license / 使用限制 |
