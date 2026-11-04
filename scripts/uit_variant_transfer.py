@@ -242,7 +242,7 @@ def archive_one(exp: Path, run_id: str, dry_run: bool) -> Path:
     write_json(out / 'record.json', rec)
     (out / 'README.md').write_text(
         f'# {label} / `{vid}`：UIT-ADrone 45 epoch\n\n'
-        f'原始实验：[{exp.name}](../../../experiments/uit/appearance/{exp.name}/README.md)。\n\n'
+        f'原始实验：[{exp.name}](../../../../experiments/uit/appearance/{exp.name}/README.md)。\n\n'
         f'AUC **{metric["auc_percent"]:.4f}%**，EER **{metric["eer"] * 100:.4f}%**，'
         f'参数 **{metric["trainable_parameters"] / 1e6:.6f}M**；seed42，45 epoch。\n\n'
         '该条目只归档结果；权重、逐帧分数和大日志留在原始实验目录。\n')
