@@ -4,6 +4,24 @@
 - 本地代码：`/data1/data8tb/liangyuxuan/Comparison method/ANDT/`（HEAD `f2e8c4f70123`；`record.json.source.local_path` 指向这里）。
 - 对比条目目录只放记录，不复制上游代码。
 
+## “论文的 6 帧模型”是什么
+
+ANDT 是**时序**方法，不是单帧分类器：
+
+```text
+输入窗口：frame[t-5], frame[t-4], ..., frame[t]   （6 个连续帧）
+   │
+   ├─ patch embedding + 时空位置编码
+   ├─ Transformer encoder（2 层、6 heads）
+   └─ decoder 预测 frame[t+1]
+异常分数 = 预测帧与真实 frame[t+1] 的差异
+```
+
+- 一个 6 帧窗口只输出 **1 个**帧级分数（预测的下一帧），不是 6 个输出帧；
+- 论文 Table IV 的三种设置：1 帧重建自己、6 帧重建自己、**6 帧预测下一帧（最终 ANDT）**；
+- 论文 Table V 的输入帧数 ablation：2→6 帧逐步变好，超过 6 变差，**最终选 6 帧**；
+- 因此主表里 ANDT 的 Input 写 **256×256×6**，不能按单帧 256×256×1 算 FLOPs/latency。
+
 ## 参数（按代码结构）
 
 - `b16` 配置：`num_layers=2`、`heads=6`、`patch=16`、`emb_dim=768`。
