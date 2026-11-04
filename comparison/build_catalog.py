@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate comparisons/CATALOG.csv and comparisons/INDEX.md from record.json files."""
+"""Generate comparison/CATALOG.csv and comparison/INDEX.md from record.json files."""
 from __future__ import annotations
 
 import csv
@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-COMP = ROOT / 'comparisons'
+COMP = ROOT / 'comparison'
 COLUMNS = [
     'path', 'id', 'dataset', 'method', 'method_display', 'year', 'variant', 'status',
     'source_type', 'source_url', 'source_commit', 'source_experiment',
@@ -25,7 +25,7 @@ def compact_protocol(p):
 
 def main():
     records = []
-    for path in sorted(COMP.glob('*/*/record.json')):
+    for path in sorted(COMP.glob('*/*/*/record.json')):
         data = json.loads(path.read_text())
         rel = path.parent.relative_to(COMP).as_posix()
         source = data.get('source') or {}
@@ -97,7 +97,7 @@ def main():
             eer = '—' if r['macro_eer'] == '' else f"{float(r['macro_eer']):.4f}"
             lines.append(f"| [{r['id']}]({link}) | {r['method_display']} | `{r['variant']}` | "
                          f"`{r['status']}` | {auc} | {eer} | {source} |")
-    lines += ['', '重新生成：`python comparisons/build_catalog.py`；校验：`python comparisons/check_comparisons.py`。', '']
+    lines += ['', '重新生成：`python comparison/build_catalog.py`；校验：`python comparison/check_comparisons.py`。', '']
     (COMP / 'INDEX.md').write_text('\n'.join(lines))
     print(f'{len(records)} comparison entries indexed')
 

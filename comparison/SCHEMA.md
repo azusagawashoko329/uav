@@ -1,13 +1,13 @@
 # comparison record schema (v1)
 
-每个对比条目是一个目录 `comparisons/<dataset>/<dataset>-<method>-<variant>/`，其中 `record.json` 是唯一机器入口。JSON Schema 见 [schema.json](schema.json)；`check_comparisons.py` 做不依赖第三方库的等价校验。
+每个对比条目是一个目录 `comparison/<dataset>/<method>/<variant>/`，其中 `record.json` 是唯一机器入口。JSON Schema 见 [schema.json](schema.json)；`check_comparisons.py` 做不依赖第三方库的等价校验。
 
 ## 必填字段
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
 | `schema_version` | int | 固定 `1` |
-| `id` | str | 必须等于目录名，且等于 `<dataset>-<method>-<variant>` |
+| `id` | str | 必须等于 `<dataset>-<method>-<variant>`；目录路径为 `<dataset>/<method>/<variant>` |
 | `dataset` | enum | `da` / `uit` |
 | `method` | str | 小写 slug，如 `ours` / `madvit` / `lightvit-ad` |
 | `method_display` | str | 展示名，如 `Ours` / `MADViT` |

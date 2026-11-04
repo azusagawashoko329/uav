@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate comparisons/<dataset>/<dataset>-<method>-<variant>/record.json.
+"""Validate comparison/<dataset>/<dataset>-<method>-<variant>/record.json.
 
 No third-party dependency. Checks the v1 schema, internal source links, result
 summaries, and CATALOG.csv consistency (run build_catalog.py first).
@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-COMP = ROOT / 'comparisons'
+COMP = ROOT / 'comparison'
 DATASETS = {'da', 'uit'}
 STATUSES = {'planned', 'running', 'completed', 'failed', 'cancelled', 'blocked', 'unknown'}
 ID_RE = re.compile(r'^(da|uit)-[a-z0-9]+(?:[-_][a-z0-9]+)*$')
@@ -75,10 +75,12 @@ def check_record(path: Path):
         fail(rel, f'invalid id {rid!r}')
     if rid != f'{dataset}-{method}-{variant}':
         fail(rel, f'id must equal {dataset}-{method}-{variant}')
-    if path.parent.name != rid:
-        fail(rel, f'directory name must equal id {rid!r}')
-    if path.parent.parent.name != dataset:
-        fail(rel, f'dataset directory mismatch: {path.parent.parent.name!r}')
+    if path.parent.name != variant:
+        fail(rel, f'directory name must equal variant {variant!r}')
+    if path.parent.parent.name != method:
+        fail(rel, f'method directory mismatch: {path.parent.parent.name!r}')
+    if path.parent.parent.parent.name != dataset:
+        fail(rel, f'dataset directory mismatch: {path.parent.parent.parent.name!r}')
     if data.get('status') not in STATUSES:
         fail(rel, f'invalid status {data.get("status")!r}')
     if not isinstance(data.get('method_display'), str) or not data['method_display'].strip():
@@ -197,7 +199,7 @@ def check_record(path: Path):
 
 
 def main():
-    rec_paths = sorted(COMP.glob('*/*/record.json'))
+    rec_paths = sorted(COMP.glob('*/*/*/record.json'))
     for path in rec_paths:
         data = check_record(path)
         if data is not None:
@@ -205,7 +207,7 @@ def main():
 
     catalog = COMP / 'CATALOG.csv'
     if not catalog.is_file():
-        fail(catalog.relative_to(ROOT), 'missing; run comparisons/build_catalog.py')
+        fail(catalog.relative_to(ROOT), 'missing; run comparison/build_catalog.py')
     else:
         with catalog.open() as f:
             rows = list(csv.DictReader(f))

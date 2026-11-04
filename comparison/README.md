@@ -1,15 +1,15 @@
-# 方法对比工作区（comparisons）
+# 方法对比工作区（comparison）
 
 本目录是**方法对比的展示/编排层**，与 `experiments/` 的原始实验记录分开：
 
 - `experiments/<dataset>/<family>/...` 仍是原始实验的唯一记录（README / config / record / artifacts / logs / results）；
-- `comparisons/` 只回答“在统一 One-Class 协议下比较哪些方法/变体”，条目指向原始实验或外部方法仓库；
+- `comparison/` 只回答“在统一 One-Class 协议下比较哪些方法/变体”，条目指向原始实验或外部方法仓库；
 - **不移动、不删除**原始实验目录；原始实验的 record / artifacts / checkpoint 仍以 `experiments/` 为准。
 
 ## 布局
 
 ```
-comparisons/
+comparison/
   README.md                 # 本文件
   SCHEMA.md                 # record.json 字段规范（人类可读）
   schema.json               # record.json 的 JSON Schema（机器可读）
@@ -18,22 +18,26 @@ comparisons/
   CATALOG.csv               # 机器可读索引
   INDEX.md                  # 人类可读索引
   da/
-    da-ours-<variant>/      # 我的方法，六个 DA 外观蒸馏变体
-      README.md
-      record.json
-      results/summary.{json,md}
-    da-<method>-<variant>/  # 外部方法；URL 到位后建目录
-      record.json
-      upstream/             # 外部仓库本地 fork（可选，按 license 决定是否入 Git）
-      scripts/              # 适配脚本
-      results/
+    ours/
+      <variant>/            # 我的方法，六个 DA 外观蒸馏变体
+        README.md
+        record.json
+        results/summary.{json,md}
+    <method>/
+      <variant>/            # 外部方法；URL 到位后建目录
+        record.json
+        upstream/           # 外部仓库本地 fork（可选，按 license 决定是否入 Git）
+        scripts/            # 适配脚本
+        results/
   uit/
-    README.md               # UIT 对比空间；条目按同一 schema 添加
+    <method>/
+      <variant>/            # UIT 对比空间；条目按同一 schema 添加
 ```
 
 ## 命名
 
-- 目录名：`<dataset>-<method>-<variant>`，例如 `da-ours-rd_s4_t12_gl192_h512`、`da-madvit-full`。
+- 目录路径：`comparison/<dataset>/<method>/<variant>/`，例如 `comparison/da/ours/rd_s4_t12_gl192_h512`、`comparison/da/madvit/full`。
+- `record.json` 的 `id` 仍为 `<dataset>-<method>-<variant>`（例如 `da-ours-rd_s4_t12_gl192_h512`），用于 CATALOG/索引唯一标识；目录路径与 `id` 是两种表示。
 - `dataset`：`da` 或 `uit`。
 - `method`：小写 slug，如 `ours`、`madvit`、`astt`、`lightvit-ad`。
 - `variant`：方法内变体；我的方法直接用 `experiments/VARIANTS.md` 的 canonical ID（`rd_s12_t4_h512` 等）；单变体方法用 `default`。
@@ -66,13 +70,13 @@ comparisons/
 5. 运行：
 
 ```bash
-python comparisons/build_catalog.py
-python comparisons/check_comparisons.py
+python comparison/build_catalog.py
+python comparison/check_comparisons.py
 ```
 
 ## Ours
 
-六个 DA 变体的对比条目在 `comparisons/da/da-ours-rd_*`：
+六个 DA 变体的对比条目在 `comparison/da/ours/rd_*`：
 
 - V0 `rd_s12_t4_h512`
 - V1 `rd_s4_t12_h512`
@@ -85,7 +89,7 @@ python comparisons/check_comparisons.py
 
 ## 当前 DA 对比矩阵
 
-`comparisons/INDEX.md` 会列出：
+`comparison/INDEX.md` 会列出：
 
 - `ours` 六个变体（completed）；
 - 用户表格中的外部方法（planned，等待 URL）：adVAE、GANomaly、MemAE、MKD、ANDT、Future Frame、ST Dissoc.、MLEP、ASTT、DAD-FSM、HSTforU、MADViT（Full / Multi-layer / Last-layer）、LightViT-AD。
