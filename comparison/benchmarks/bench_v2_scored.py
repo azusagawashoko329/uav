@@ -29,7 +29,6 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -79,6 +78,10 @@ def _st_scored(out_path: Path):
     meta['inference_params_m'] = p / 1e6
     meta['training_trainable_params_m'] = p / 1e6
     meta['adapted'] = True
+    meta['output_shape_bs1'] = '[1]'
+    meta['output_shape_bs16'] = '[16]'
+    meta['scores_per_sample'] = 1
+    meta['batch_output_aggregated'] = False
     return model, lambda x: model(x), (
         torch.randn(1, 15, 256, 256, device='cuda'),
         torch.randn(16, 15, 256, 256, device='cuda'),
@@ -97,7 +100,7 @@ def _dad_scored(out_path: Path):
         def forward(self, inp):
             x, seg, target = inp
             pred = self.m(x, seg)
-            return F.mse_loss(pred, target)
+            return ((pred - target) ** 2).mean(dim=(1, 2, 3))  # [B]
 
     model = DADScored(raw).cuda().eval()
     p = sum(v.numel() for v in model.parameters())
@@ -111,6 +114,10 @@ def _dad_scored(out_path: Path):
     meta['inference_params_m'] = p / 1e6
     meta['training_trainable_params_m'] = p / 1e6
     meta['adapted'] = True
+    meta['output_shape_bs1'] = '[1]'
+    meta['output_shape_bs16'] = '[16]'
+    meta['scores_per_sample'] = 1
+    meta['batch_output_aggregated'] = False
     return model, lambda inp: model(inp), (
         (torch.randn(1, 4, 3, 224, 224, device='cuda'),
          torch.randn(1, 4, 3, 224, 224, device='cuda'),

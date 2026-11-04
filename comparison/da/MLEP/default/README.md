@@ -50,11 +50,11 @@ MLEP 的 encoder/decoder 是卷积、recurrent 是 ConvLSTM（内部也是卷积
 |---|---:|---:|---:|---:|---:|---|
 | 官方 TF1.15 | 12.561M | 319.513G | —（CUDA10 在 sm_89 上不可执行） | — | — | `partial/unverified` |
 | TF2.20 runtime-adapted，prediction-only | 12.561M | 319.513G | 11.538ms | 82.0 | 75.5 | `partial/unverified`（runtime-adapted） |
-| TF2.20 runtime-adapted，**score-inclusive PSNR (BS1)** | 12.561M | 319.513G | **12.787ms** | **78.3** | —（BS16 未测） | `partial/unverified`（runtime-adapted） |
+| TF2.20 runtime-adapted，**score-inclusive PSNR (BS1, per-sample [B])** | 12.561M | 319.513G | **12.525ms** | **79.6** | —（BS16 未测） | `partial/unverified`（runtime-adapted） |
 
-补充：prediction-only mean 12.188ms、P95 13.822ms；score-inclusive PSNR mean 12.776ms、P95 13.165ms。BS16 的 prediction-only 三轮 500 batch 耗时 105.50 / 106.05 / 105.94s；score-inclusive BS16 在本轮超时未完成（已用 `--skip-bs16` 写 BS1 结果），所以 `fps_bs16=null`，不能拿 prediction-only 的 75.5 冒充 scored BS16。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
+补充：prediction-only mean 12.188ms、P95 13.822ms；score-inclusive PSNR mean 12.567ms、P95 14.099ms。BS16 的 prediction-only 三轮 500 batch 耗时 105.50 / 106.05 / 105.94s；score-inclusive BS16 在本轮超时未完成（已用 `--skip-bs16` 写 BS1 结果），所以 `fps_bs16=null`，不能拿 prediction-only 的 75.5 冒充 scored BS16。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
 
-**score-inclusive 文件**：`benchmark_v2_scored.json` 使用官方 PSNR（预测帧 vs GT 下一帧）；旧的 `benchmark_v2_tf2compat.json` 保留为 prediction-only 对照。PSNR 的 elementwise 运算不计入 319.513G TF-profiler FLOPs。
+**score-inclusive 文件**：`benchmark_v2_scored.json` 使用官方 PSNR 图（预测帧 vs 与 GT 同形状的随机张量；不是真实标签，只测评分计算量）；旧的 `benchmark_v2_tf2compat.json` 保留为 prediction-only 对照。PSNR 的 elementwise 运算不计入 319.513G TF-profiler FLOPs。
 
 **怎么读这个数**：它是“同一个 MLEP 图、同一张 5880、现代 CUDA 运行时”的 runtime-adapted 结果，不是官方 TF1.15/CUDA10 的 latency。主表引用时必须带 `runtime-adapted` 脚注；不能和论文里的 TF1.15 数字直接混比。
 

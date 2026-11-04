@@ -1,4 +1,4 @@
-# ANDT（adapted 6-frame measured；official code still partial）
+# ANDT（adapted 6-frame partial/unverified；official code still blocked）
 
 - 论文：Jin et al., *Anomaly Detection in Aerial Videos With Transformers*, IEEE TGRS 2022（arXiv:2209.13363）；Drone-Anomaly 数据集与 ANDT baseline。
 - 本地代码：`/data1/data8tb/liangyuxuan/Comparison method/ANDT/`（HEAD `f2e8c4f70123`；`record.json.source.local_path` 指向这里）。
@@ -49,14 +49,16 @@ ANDT 是**时序**方法，不是单帧分类器：
 | FLOPs | **74.490G / output score** |
 | Latency@BS1 P50 | **5.015ms / output score** |
 | FPS@BS1 | **199.4** |
-| FPS@BS16 | **197.5** |
+| FPS@BS16 | **—（batch 标量无效）** |
 | FLOPs verified | yes（hand 16 模块误差 0；profiler matmul 0%；ConvTranspose 盲区跳过） |
+| Status | `partial/unverified`；`paper_matched=false`；不进入严格官方模型排名 |
 
 - 适配器：`comparison/da/ANDT/default/scripts/andt_adapted_model.py`
 - benchmark：`comparison/benchmarks/bench_v2_andt.py`
 - 结果：`comparison/da/ANDT/default/benchmark_v2.json`
 - 权重状态：random init；官方 checkpoint 不可用。FLOPs/latency 对权重不敏感。
 - **评分口径**：当前 `bench_v2_andt.py` 用 `F.mse_loss(out, zeros)` 作为产生标量的代理，不是官方 `MSE(pred, true_next_frame)`；因此 latency 只能作 adapted/近似的评分耗时，不能称为官方 anomaly-score latency。
+- **输出形状**：当前 benchmark 的 `fn` 返回 **一个 batch 标量**，不是每样本 `[B]`；BS1 有效，但 BS16 的 `16×K×iters` 分子与“每批只输出 1 个分数”不一致，**BS16 原始批吞吐不能作为有效每样本 FPS**，已从主表标 `—`。
 - **论文 decoder 与本地代码不一致**：论文（arXiv:2209.13363）写的是两个 FC 层把特征升到 `8×8×512`，再用 5 层卷积/上采样重建 `256×256×3`；本地 active 代码是 `view(...,256,16,16)`，`de_dense` 是单层 `768→256*16*16`，两者都不是论文的 `8×8×512` 两 FC 路径。因此 `de_dense(feat[:,0])` 只是能跑通的最小适配，`paper_matched=false`。
 - `frame_coverage=1.0` 是近似值：滑动窗口预测下一帧时，视频开头 5 帧没有预测分数。
 

@@ -60,6 +60,6 @@
     "fps_stream_estimated": 136.5179225758625,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/MemAE/default/benchmark_v2.json",
-    "notes": "Original script_testing.py returns one clip-level reconstruction error per 16-frame clip (mean over T,H,W), mapped to a center frame; K=1, stride=1. The old v1 BxT/16 calculation was wrong. frame_coverage is approximately 1.0 excluding boundary frames. | v2 benchmark 2026-11-04; benchmark tooling in comparison/benchmarks."
+    "notes": "Original script_testing.py returns one clip-level reconstruction error per 16-frame clip (mean over T,H,W), mapped to a center frame; K=1, stride=1. The old v1 BxT/16 calculation was wrong. frame_coverage is approximately 1.0 excluding boundary frames. | v2 benchmark 2026-11-04; benchmark tooling in comparison/benchmarks. paper_matched=false: 3-channel input not confirmed."
   }
 }

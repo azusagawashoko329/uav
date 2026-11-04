@@ -2330,5 +2330,29 @@
     40.74152580101509,
     40.89949597796658,
     41.103262085001916
-  ]
+  ],
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "paper_matched": false,
+  "paper_matched_note": "detector + target-MSE scoring, but segmentation maps are precomputed offline (generation cost excluded)",
+  "bs16_ab_check": {
+    "old_fps_ab": 280.81447967367137,
+    "scored_fps_ab": 280.7033675835267,
+    "scored_over_old_time": 1.0004,
+    "gpu_sm_clock_range_mhz": [
+      1905,
+      2040
+    ],
+    "gpu_utilization_pct_range": [
+      100.0,
+      100.0
+    ],
+    "source": "comparison/da/fairness_bs16_ab.json",
+    "conclusion": "old and scored throughput are within 1% in the same alternating run; the BS16 gap between the archived old JSON and scored JSON is a run-condition (GPU clock/thermal) artifact, not a scoring-graph cost."
+  },
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "batch-aggregate scalar output (not 16 per-sample scores); archived BS16 run was also under lower GPU clocks; use scored JSON / A/B"
 }

@@ -20,16 +20,16 @@
 | [da-GANomaly-default](da/GANomaly/default/record.json) | GANomaly | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/samet-akcay/ganomaly.git) |
 | [da-MemAE-default](da/MemAE/default/record.json) | MemAE | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/donggong1/memae-anomaly-detection.git) |
 | [da-MKD-default](da/MKD/default/record.json) | MKD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/rohban-lab/Knowledge_Distillation_AD.git) |
-| [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
+| [da-ANDT-default](da/ANDT/default/README.md) | ANDT | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/Jin-Pu/Drone-Anomaly.git) |
 | [da-Future Frame-default](da/Future%20Frame/default/README.md) | Future Frame | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/StevenLiuWen/ano_pred_cvpr2018.git) |
 | [da-ST Dissoc.-default](da/ST%20Dissoc./default/README.md) | ST Dissoc. | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/ChangYunPeng/VideoAnomalyDetection.git) |
 | [da-MLEP-default](da/MLEP/default/README.md) | MLEP | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/svip-lab/MLEP.git) |
 | [da-ASTT-default](da/ASTT/default/README.md) | ASTT | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/Tungufm/ASTT.git) |
 | [da-DAD-FSM-default](da/DAD-FSM/default/README.md) | DAD-FSM | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/AhmedFakhry47/DAD-FSM.git) |
-| [da-HSTforU-default](da/HSTforU/default/README.md) | HSTforU | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/vt-le/HSTforU.git) |
-| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
-| [da-MADViT-Multi-layer](da/MADViT/Multi-layer/record.json) | MADViT | `Multi-layer` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
-| [da-MADViT-Last-layer](da/MADViT/Last-layer/record.json) | MADViT | `Last-layer` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-HSTforU-default](da/HSTforU/default/README.md) | HSTforU | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/vt-le/HSTforU.git) |
+| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Multi-layer](da/MADViT/Multi-layer/record.json) | MADViT | `Multi-layer` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Last-layer](da/MADViT/Last-layer/record.json) | MADViT | `Last-layer` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
 | [da-LightViT-AD-default](da/LightViT-AD/default/record.json) | LightViT-AD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/lightvit-ad.git) |
 
 ## uit

@@ -53,7 +53,8 @@ score = reciprocal_metric(loss_pixelwise_cl_re)   # 1 / loss
 | Params | 6.120M | 6.120M |
 | FLOPs | 60.612G | 60.612G |
 
-- 评分增加约 0.61ms P50 / BS1 下降约 14%；BS16 的上升来自本轮实测的 batch 调度差异，不能简单解释为“评分更快”，引用时以 score-inclusive 的 BS1 P50 为主。
+- 评分增加约 0.61ms P50 / BS1 下降约 14%。
+- **BS16 A/B 核验**：同一 GPU、相同 BS16 输入、old/scored 交替 3 轮（`comparison/da/fairness_bs16_ab.json`，50 warmup + 3×500 batches）得到旧版 **426.6 FPS**、scored **422.2 FPS**（scored/old 时间比 1.010，即评分图在 BS16 几乎不增加成本）。因此旧 JSON 的 **288.2** 不能与 scored 的 452.3 直接比较：旧值是在较低 GPU 时钟/其它负载下测得；scored 的 452.3 与本轮 A/B 的 422.2 也属 run-to-run 时钟差异。引用 BS16 时必须带运行条件，主排序仍以 BS1 P50 为主。
 - 60.612G 仍是 v2 MAC 计数器对卷积/线性/矩阵乘的计数；`loss_map`、乘法和 reciprocal 是 elementwise，不计入该 FLOPs 数字。
 - 文件：`benchmark_v2_scored.json`、日志 `benchmark_v2_scored.log`。
 - 旧 `benchmark_v2.json` 保留，作为 forward-only 对照。

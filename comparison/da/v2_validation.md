@@ -83,9 +83,9 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 > `bench_tf2_compat.py` 是 Future Frame/MLEP 的 TF2.20 runtime-adapted 计时，不覆盖官方 `benchmark_v2.json`；说明见 §7。
 
-- ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1 / 197.5 FPS@BS16；不是官方代码。
-- 额外方法：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/3.668ms/269.7 FPS；ASTT 109.416G/19.048ms/52.2 FPS；DAD-FSM 71.194G/12.684ms/78.5 FPS；HSTforU 168.209G/64.258ms/15.5 FPS。
-- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 5.4 改 scoring 的 adapted reconstruction。
+- ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1；BS16 输出 batch 标量，per-sample FPS 无效、记为 `—`；不是官方代码。
+- 额外方法（主表值；ST/DAD 为 score-inclusive 版）：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/4.280ms/231.4 FPS；ASTT 109.416G/19.048ms/52.2 FPS（variant 未确认）；DAD-FSM 71.194G/17.032ms/58.3 FPS；HSTforU 168.209G/64.258ms/15.5 FPS（Avenue 结构）。
+- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 5.4 改 scoring 的 adapted reconstruction；三者输出 batch 标量，BS16 per-sample FPS 无效。
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
 - 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
@@ -172,11 +172,13 @@ MLEP 的 BS16 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 和 batc
 
 | Method | 旧口径 | 旧 P50 / FPS@BS1 / FPS@BS16 | 新评分 | 新 P50 / FPS@BS1 / FPS@BS16 |
 |---|---|---|---:|---:|
-| Future Frame | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR vs GT next frame | **6.829ms / 145.9 / 178.2** |
+| Future Frame | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **6.820ms / 146.8 / 177.7** |
 | ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | 官方 loss_map + reciprocal | **4.280ms / 231.4 / 452.3** |
-| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR vs GT next frame | **12.787ms / 78.3 / —（BS16 未测）** |
-| DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE | **13.576ms / 73.4 / 289.1** |
+| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **12.525ms / 79.6 / —（BS16 未测）** |
+| DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE（per-sample [B]） | **17.032ms / 58.3 / 293.7** |
 
 - MLEP 的 scored BS16 未完成（长时 run 被停止），只写 BS1；不能用 prediction-only 的 75.5 冒充 scored BS16。
 - 评分 elementwise 运算不计入 MAC-based FLOPs；DAD 的分割图仍是离线预计算，不含分割生成。
+- 用于计时的 target 是**同形状随机张量，不是真实数据标签**；这只衡量相同形状评分图的计算量。
+- **BS16 A/B**：同卡 old/scored 交替 3 轮（`fairness_bs16_ab.json`）得 ST 426.6 vs 422.2 FPS、DAD 280.8 vs 280.7 FPS；两者差 ≤1%，说明评分图不是 BS16 差异来源。旧 JSON 的 288.2/195.6 是低时钟 run，scored 的 452.3/293.7 与本轮 A/B 的差属 run-to-run 时钟差异；BS16 引用需带运行条件。
 - `bench_v2_scored.py`（ST/DAD）与 `bench_tf2_scored.py`（Future Frame/MLEP）不覆盖旧 JSON。

@@ -242,8 +242,16 @@ def _dadfsm(out_path):
     # DADFSM hardcodes pretrained=True for ResNet; avoid download and keep the
     # same architecture by forcing weights=None.
     import torchvision.models as tvm
-    orig = tvm.resnet50
-    tvm.resnet50 = lambda pretrained=True, **kw: orig(weights=None, **kw)
+    if not getattr(tvm.resnet50, '_dadfsm_no_pretrained', False):
+        orig = tvm.resnet50
+
+        def _resnet50_no_pretrained(*args, **kw):
+            kw.pop('pretrained', None)
+            kw['weights'] = None
+            return orig(*args, **kw)
+
+        _resnet50_no_pretrained._dadfsm_no_pretrained = True
+        tvm.resnet50 = _resnet50_no_pretrained
     sys.path.insert(0, str(CLONE / 'DAD-FSM'))
     from our_model import DADFSM
 

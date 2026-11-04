@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned locally; v2 lightweight efficiency measured (see efficiency block); DA AUC adaptation/run still pending. Variant unconfirmed; see fairness_audit.md.",
+  "notes": "Upstream cloned locally; v2 lightweight efficiency partially measured (BS1 only; BS16 is a batch scalar and invalid); variant unconfirmed; DA AUC adaptation/run still pending. See fairness_audit.md.",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "384x384x4",
@@ -53,7 +53,7 @@
     "latency_bs1_mean_ms_per_output_frame": 19.164898689292993,
     "latency_bs1_p95_ms_per_output_frame": 19.98988102423027,
     "fps_bs1": 52.178726129070434,
-    "fps_bs16": 146.57238584190952,
+    "fps_bs16": null,
     "input_frames_t": 4,
     "effective_output_scores_k": 1,
     "window_stride": 1,
@@ -64,6 +64,6 @@
     "fps_stream_estimated": 52.178726129070434,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/ASTT/default/benchmark_v2.json",
-    "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint. | STE-TTE variant Variant unconfirmed: DA script imports missing model.py; current speed is model_ste_tte 148.220M, not proven to be the DA AUC model. Original candidates are 63.068M/65.409M."
+    "notes": "STE-TTE variant (model_ste_tte.py): ViT-B/32 spatial transformer at 384 + temporal transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE scoring. No checkpoint. | STE-TTE variant Variant unconfirmed: DA script imports missing model.py; current speed is model_ste_tte 148.220M, not proven to be the DA AUC model. Original candidates are 63.068M/65.409M. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched. paper_matched=false; reference-only."
   }
 }

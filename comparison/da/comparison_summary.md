@@ -59,44 +59,46 @@
 
 ## 3. 轻量化主表 v2（2026-11-04 实测）
 
-> 本表全部来自各方法/变体目录的 `benchmark_v2.json`：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。旧 v1 数字在 §5 归档，不再引用。
+> 本表数字来自各方法/变体目录的 benchmark JSON：`FlopCounterMode + native-MHA 公式 + 手写模块公式 + profiler 共同子集`，50 warmup + 3×500 iterations。ST Dissoc.、DAD-FSM、Future Frame、MLEP 使用 `benchmark_v2_scored.json`（见 §3.4）；其余使用 `benchmark_v2.json`。旧 v1 数字在 §5 归档，不再引用。
 > `FLOPs verified=yes` 表示所有 MAC 算子均已核验、`flops_ops_missing=[]`；profiler 只比共同支持算子，不用其总数做验收。
 > **†** Future Frame / MLEP：latency/FPS 是 **TF2.20 runtime-adapted**（官方 TF1.15 CUDA10 在 5880 sm_89 上不可执行）；模型图未改、参数量与 TF1 逐参数一致，但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态仍是 `partial/unverified`，不是 `measured`。主表/§3.4 使用 score-inclusive PSNR 结果；§3.3 表保留 prediction-only 对照。MLEP 的 scored BS16 未测（见 §3.4），不能用 prediction-only 75.5 冒充。官方 TF1.15 的 latency 留空；详见 §3.3。
 >
-> **‡** 只到 prediction / cluster-map，未含官方 PSNR、最终 loss_map 或异常分数；**§** 输入分割图是离线预计算，未含分割生成；**¶** 测的是原仓库配置（MKD MVTec-128、HSTforU Avenue/PVT2-b2），不是 DA AUC 配置；**?** 模型变体未确认（ASTT 当前是 STE-TTE，DA `model.py` 缺失）。`*` 表示 adapted/reconstructed（见下方 ANDT/MADViT 脚注）。逐方法证据和“可用于主表/需脚注/需重测/暂不可用”判断见 [fairness_audit.md](fairness_audit.md)。
+> **‡**（历史标记）只到 prediction / cluster-map，未含官方 PSNR、最终 loss_map 或异常分数；当前主表已无 ‡ 行；**§** 输入分割图是离线预计算，未含分割生成；**¶** 测的是原仓库配置（MKD MVTec-128、HSTforU Avenue/PVT2-b2），不是 DA AUC 配置；只作参考；**?** 模型变体未确认（ASTT 当前是 STE-TTE，DA `model.py` 缺失；仅结构参考，不进入主表排序）。`*` 表示 adapted/reconstructed（见下方 ANDT/MADViT 脚注）。输出为 batch 标量的方法（ANDT/ASTT/HSTforU/MADViT）其 BS16 FPS 不能按 16 个分数计，主表记 `—`，需逐样本重测；逐方法证据和“可用于主表/需脚注/需重测/暂不可用”判断见 [fairness_audit.md](fairness_audit.md)。
 
-| Method | Input (H×W×T) | Inference Params (M) ↓ | Training Trainable (M) ↓ | Training-only (M) ↓ | FLOPs (G/output score) ↓ | FLOPs verified | Latency@BS1 P50 (ms/output score) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status |
+| Method | Input (H×W×T) | Inference Params (M) ↓ | Training Trainable (M) ↓ | Training-only (M) ↓ | FLOPs (G/output score) ↓ | FLOPs verified | Latency@BS1 P50 (ms/output score) ↓ | FPS@BS1 ↑ | FPS@BS16 ↑ | AUC mean ↑ | Status（measured / paper-matched） |
 |---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---|
 | adVAE | unknown | — | — | — | — | — | — | — | — | 63.87 | blocked |
-| GANomaly | 256×256×1 | 143.950 | 188.690 | 44.739 | 16.428 | yes | 8.088 | 123.6 | 848.5 | 64.54 | measured |
-| MemAE | 256×256×16 | 6.503 | 6.503 | 0 | 70.808 | yes | 7.321 | 136.5 | 130.3 | 67.67 | measured |
-| MKD ¶ | 128×128×1 | 15.059 | 0.344 | 0 | 10.477 | yes | 2.495 | 394.5 | 2340.8 | 66.63 | measured |
-| ANDT (adapted 6-frame)* | 256×256×6 | 70.347 | 70.347 | 0 | 74.490 | yes | 5.015 | 199.4 | 197.5 | 68.64 | measured |
-| Future Frame † | 256×256×4 | 7.704 | 14.536 | 6.831 | 74.476 | no | 6.829 | 145.9 | 178.2 | — | partial/unverified † |
-| ST Dissoc. | 256×256×5 | 6.120 | 6.120 | 0 | 60.612 | yes | 4.280 | 231.4 | 452.3 | — | measured |
-| MLEP † | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | 12.787 | 78.3 | — | — | partial/unverified † |
-| ASTT ? | 384×384×4 | 148.220 | 148.220 | 0 | 109.416 | yes | 19.048 | 52.2 | 146.6 | — | partial/unverified ? |
-| DAD-FSM § | 224×224×4 | 123.979 | 123.979 | 0 | 71.194 | yes | 13.576 | 73.4 | 289.1 | — | measured |
-| HSTforU ¶ | 256×256×4 | 148.970 | 148.970 | 0 | 168.209 | yes | 64.258 | 15.5 | 71.0 | 66.96 | measured |
-| MADViT Full | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.525 | 83.9 | 444.0 | 72.2 | measured |
-| MADViT Multi-layer * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.130 | 88.9 | 432.2 | 62.9 | measured |
-| MADViT Last-layer * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 9.467 | 103.5 | 430.2 | 74.19 | measured |
-| LightViT-AD | 224×224×1 | 8.840 | 3.049 | 0 | 3.753 | yes | 6.519 | 148.8 | 2438.6 | *83.12 | measured |
+| GANomaly | 256×256×1 | 143.950 | 188.690 | 44.739 | 16.428 | yes | 8.088 | 123.6 | 848.5 | 64.54 | measured / no（config 未证实） |
+| MemAE | 256×256×16 | 6.503 | 6.503 | 0 | 70.808 | yes | 7.321 | 136.5 | 130.3 | 67.67 | measured / no（3 通道未证实） |
+| MKD ¶ | 128×128×1 | 15.059 | 0.344 | 0 | 10.477 | yes | 2.495 | 394.5 | 2340.8 | 66.63 | measured / no（MVTec-128） |
+| ANDT (adapted 6-frame)* | 256×256×6 | 70.347 | 70.347 | 0 | 74.490 | yes | 5.015 | 199.4 | — | 68.64 | partial/adapted / no（BS16 标量无效） |
+| Future Frame † | 256×256×4 | 7.704 | 14.536 | 6.831 | 74.476 | no | 6.820 | 146.8 | 177.7 | — | partial / no（TF2 adapted） |
+| ST Dissoc. | 256×256×5 | 6.120 | 6.120 | 0 | 60.612 | yes | 4.280 | 231.4 | 452.3 | — | measured / yes |
+| MLEP † | 224×224×4 | 12.561 | 12.561 | 0 | 319.513 | no | 12.525 | 79.6 | — | — | partial / no（BS16 未测） |
+| ASTT ? | 384×384×4 | 148.220 | 148.220 | 0 | 109.416 | yes | 19.048 | 52.2 | — | — | partial / no（variant 未确认） |
+| DAD-FSM § | 224×224×4 | 123.979 | 123.979 | 0 | 71.194 | yes | 17.032 | 58.3 | 293.7 | — | measured / no（precomputed seg） |
+| HSTforU ¶ | 256×256×4 | 148.970 | 148.970 | 0 | 168.209 | yes | 64.258 | 15.5 | — | 66.96 | partial / no（Avenue config） |
+| MADViT Full * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.525 | 83.9 | — | 72.2 | partial / no（token-only code） |
+| MADViT Multi-layer * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 11.130 | 88.9 | — | 62.9 | partial / no（reconstructed） |
+| MADViT Last-layer * | 224×224×1 | 94.354 | 5.718 | 0 | 38.533 | yes | 9.467 | 103.5 | — | 74.19 | partial / no（reconstructed） |
+| LightViT-AD | 224×224×1 | 8.840 | 3.049 | 0 | 3.753 | yes | 6.519 | 148.8 | 2438.6 | *83.12 | measured / yes（random weights） |
 | DwCVAE | — | — | — | — | — | — | — | — | — | *74.95 | paper-only |
 | CVAE | — | — | — | — | — | — | — | — | — | *68.62 | paper-only |
 | DCVAE | — | — | — | — | — | — | — | — | — | *64.11 | paper-only |
 | SCVAE | — | — | — | — | — | — | — | — | — | *62.25 | paper-only |
 | CLSTMVAE | — | — | — | — | — | — | — | — | — | *63.98 | paper-only |
-| Ours V0 `rd_s12_t4_h512` | 256×256×1 | 174.720 | 89.079 | 0 | 95.107 | yes | 14.521 | 68.4 | 187.4 | 84.7916 | measured |
-| Ours V1 `rd_s4_t12_h512` | 256×256×1 | 125.900 | 40.259 | 0 | 68.532 | yes | 19.903 | 50.0 | 244.3 | 84.9435 | measured |
-| Ours V2 `rd_s4_t12_gl768_h512` | 256×256×1 | 115.889 | 30.248 | 0 | 62.804 | yes | 14.787 | 67.3 | 263.3 | 85.3707 | measured |
-| Ours V3 `rd_s4_t12_gl192_h512` | 256×256×1 | 93.360 | 7.718 | 0 | 51.132 | yes | 19.289 | 51.5 | 314.8 | 84.0864 | measured |
-| Ours V4 `rd_s4_t12_gl192_h128` | 256×256×1 | 89.796 | 4.154 | 0 | 49.308 | yes | 19.417 | 51.3 | 324.7 | 83.9186 | measured |
-| Ours V5 `rd_s4_t12_gl192_h128_qr2` | 256×256×1 | 89.402 | 3.761 | 0 | 49.106 | yes | 20.513 | 48.5 | 324.4 | 84.0137 | measured |
+| Ours V0 `rd_s12_t4_h512` | 256×256×1 | 174.720 | 89.079 | 0 | 95.107 | yes | 14.521 | 68.4 | 187.4 | 84.7916 | measured / yes（architecture-init） |
+| Ours V1 `rd_s4_t12_h512` | 256×256×1 | 125.900 | 40.259 | 0 | 68.532 | yes | 19.903 | 50.0 | 244.3 | 84.9435 | measured / yes（architecture-init） |
+| Ours V2 `rd_s4_t12_gl768_h512` | 256×256×1 | 115.889 | 30.248 | 0 | 62.804 | yes | 14.787 | 67.3 | 263.3 | 85.3707 | measured / yes（architecture-init） |
+| Ours V3 `rd_s4_t12_gl192_h512` | 256×256×1 | 93.360 | 7.718 | 0 | 51.132 | yes | 19.289 | 51.5 | 314.8 | 84.0864 | measured / yes（architecture-init） |
+| Ours V4 `rd_s4_t12_gl192_h128` | 256×256×1 | 89.796 | 4.154 | 0 | 49.308 | yes | 19.417 | 51.3 | 324.7 | 83.9186 | measured / yes（architecture-init） |
+| Ours V5 `rd_s4_t12_gl192_h128_qr2` | 256×256×1 | 89.402 | 3.761 | 0 | 49.106 | yes | 20.513 | 48.5 | 324.4 | 84.0137 | measured / yes（architecture-init） |
 
-> **\\*** ANDT 行为 **adapted 6-frame**：发布代码 decoder 只支持 1 帧，这里用 `de_dense(feat[:,0])` 预测下一帧；输入 `T=6, K=1, stride=1`。不是作者官方代码，AUC 仍引用论文/用户表的官方 6 帧模型，不能把这里的效率数字当成官方实现的效率。
+> **Status 列**：格式为 `measured / paper-matched`。`measured` 只表示 v2 测速协议完成；`paper-matched` 表示效率图/输入/评分与产生该 AUC 的模型配置一致。两者独立，`measured / no` 仍可展示但只能作参考，不能声称复现了论文模型。
 >
-> **MADViT 变体**：代码只有一条评分路径（全部 12 层 skip + token loss），没有 Full/Multi-layer/Last-layer 开关。按论文 Sec. 5.4 的定义，Full=全层 feature+token（代码默认）；Multi-layer=全层 feature only；Last-layer=final CLS/DIST token only。后两者用同一前向图、只替换 scoring，标 `adapted`；FLOPs/params 与 Full 相同，P50/FPS 因 scoring 不同而略有差异。详见 [MADViT/README.md](MADViT/README.md)。
+> **\\*** ANDT 行为 **adapted 6-frame**：发布代码 decoder 只支持 1 帧，这里用 `de_dense(feat[:,0])` 预测下一帧；输入 `T=6, K=1, stride=1`。不是作者官方代码，AUC 仍引用论文/用户表的官方 6 帧模型，不能把这里的效率数字当成官方实现的效率；该行**不进入严格官方模型排名**，只作 adapted 参考。
+>
+> **MADViT 变体**：代码只有一条评分路径（全部 12 层 skip + token loss），没有 Full/Multi-layer/Last-layer 开关。按论文 Sec. 5.4 的定义，Full=全层 feature+token（代码默认）；Multi-layer=全层 feature only；Last-layer=final CLS/DIST token only。后两者用同一前向图、只替换 scoring，标 `reconstructed`；FLOPs/params 与 code default 相同，P50 因 scoring 不同而略有差异。**注意**：代码的 `multi_layer_distillation_loss` 实际 `return token_loss`，feature loss 计算后被丢弃，所以当前 “Full” 不是论文 Full；三变体都需重测 per-sample 评分，当前 BS16 FPS 因输出是 batch 标量而置 `—`。详见 [MADViT/README.md](MADViT/README.md)。
 > **ST Dissoc.** 对 `padding=False` 做了现代 PyTorch 兼容修正（按 0 处理）；**DAD-FSM** 是 RGB+分割双流、ResNet50 随机初始化；**ASTT** 是 STE-TTE 变体；**LightViT-AD** 教师冻结、学生可训练。这些都在各自 record 的 `efficiency.notes` 里写明。
 > **Future Frame 训练参数**：官方默认 `LAM_ADV=0.05`，训练同时更新 G+D；D 有 6.831M 可训练参数，因此 Training Trainable=14.536M、Training-only=6.831M，推理仍只走 G=7.704M。DA 专用 `LAM_ADV` 未在仓库中，是否用 D 训练未确认。
 >
@@ -110,11 +112,11 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | MemAE | 16 | 1 | 1 | 70.808 | 7.321 | 1.0 | 1.0（≈；边界帧除外） | 136.5 | 136.5 | null | measured |
 | ANDT（adapted 6 帧） | 6 | 1 | 1 | 74.490 | 5.015 | 1.0 | ≈1.0（除开头 5 帧） | 199.4 | 199.4 | null | measured |
-| Future Frame † | 4 | 1 | 1 | 74.476 | 6.829 | 1.0 | 1.0（≈） | 145.9 | 145.9 | null | partial/unverified † |
+| Future Frame † | 4 | 1 | 1 | 74.476 | 6.820 | 1.0 | 1.0（≈） | 146.8 | 146.8 | null | partial/unverified † |
 | ST Dissoc. | 5 | 1 | 1 | 60.612 | 4.280 | 1.0 | 1.0（≈） | 231.4 | 231.4 | null | measured |
-| MLEP † | 4 | 1 | 1 | 319.513 | 12.787 | 1.0 | 1.0（≈） | 78.3 | 78.3 | null | partial/unverified † |
+| MLEP † | 4 | 1 | 1 | 319.513 | 12.525 | 1.0 | 1.0（≈） | 79.6 | 79.6 | null | partial/unverified † |
 | ASTT ? | 4 | 1 | 1 | 109.416 | 19.048 | 1.0 | 1.0（≈） | 52.2 | 52.2 | null | partial/unverified ? |
-| DAD-FSM § | 4 | 1 | 1 | 71.194 | 13.576 | 1.0 | 1.0（≈） | 73.4 | 73.4 | null | measured |
+| DAD-FSM § | 4 | 1 | 1 | 71.194 | 17.032 | 1.0 | 1.0（≈） | 58.3 | 58.3 | null | measured |
 | HSTforU ¶ | 4 | 1 | 1 | 168.209 | 64.258 | 1.0 | 1.0（≈） | 15.5 | 15.5 | null | measured |
 
 > `K` 不能默认等于 `T`；`score_density=K/stride` 可以 >1，**不是帧覆盖率**。`frame_coverage` 必须按原方法的分数映射、窗口重叠和融合方式单独计算（例如 T=16/stride=1/K=16 时 score_density=16，但 frame_coverage 最多 1.0）。`fps_stream_estimated` 只是按 stride 推算的吞吐估计；没有实际连续流测试时 `fps_stream_measured=null`，不能声称已实测。
@@ -163,18 +165,42 @@
 
 ### 3.4 score-inclusive 补测（2026-11-04）
 
-旧 `benchmark_v2.json` 里 ST Dissoc. 是 stage-E forward-only、DAD-FSM 是 MSE-to-zero proxy、Future Frame/MLEP 是 prediction-only。已用 `bench_v2_scored.py` / `bench_tf2_scored.py` 补上官方评分路径，写独立 `benchmark_v2_scored.json`，不覆盖旧 JSON：
+旧 `benchmark_v2.json` 里 ST Dissoc. 是 stage-E forward-only、DAD-FSM 是 MSE-to-zero proxy、Future Frame/MLEP 是 prediction-only。已用 `bench_v2_scored.py` / `bench_tf2_scored.py` 补上官方评分路径，写独立 `benchmark_v2_scored.json`，不覆盖旧 JSON。计时用的 target 是**同形状随机张量，不是真实数据标签**，只衡量相同形状评分图的计算量：
 
 | Method | 旧口径 | 旧 P50 / FPS@BS1 / FPS@BS16 | **score-inclusive** | 新 P50 / FPS@BS1 / FPS@BS16 |
 |---|---|---|---:|---:|
-| Future Frame † | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR vs GT next frame | **6.829ms / 145.9 / 178.2** |
+| Future Frame † | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **6.820ms / 146.8 / 177.7** |
 | ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | 官方 `loss_map` + reciprocal | **4.280ms / 231.4 / 452.3** |
-| MLEP † | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR vs GT next frame | **12.787ms / 78.3 / —（BS16 未测）** |
-| DAD-FSM § | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE | **13.576ms / 73.4 / 289.1** |
+| MLEP † | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **12.525ms / 79.6 / —（BS16 未测）** |
+| DAD-FSM § | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE（per-sample [B]） | **17.032ms / 58.3 / 293.7** |
 
 - ST/DAD 的评分 FLOPs（elementwise）不计入各自的 60.612G / 71.194G MAC 计数；FF/MLEP 的 PSNR 也不计入 TF-profiler FLOPs。
 - DAD-FSM 的分割图仍是离线预计算（`§`），不是完整在线成本。
 - 旧 JSON 保留为对照；主表 ST/DAD/FF 已切到 score-inclusive 数字；MLEP 已切到 scored BS1，scored BS16 未测（留 —）。
+- **BS16 A/B 核验**（`fairness_bs16_ab.json`，同卡 old/scored 交替 3 轮，50 warmup + 3×500）：ST 旧版 426.6 vs scored 422.2 FPS（时间比 1.010）；DAD 280.8 vs 280.7 FPS（时间比 1.000）。结论：旧 JSON 的 288.2/195.6 是低 GPU 时钟/其它负载下的 run，不能与 scored 直接比较，也不能据此说“评分更快”；scored 的 452.3/293.7 与本轮 A/B 的差为 run-to-run 时钟差异。
+
+### 3.5 Measured vs Paper-matched
+
+| Method | Measured | Paper-matched | 说明 |
+|---|---|---|---|
+| Ours V0–V5 | 是 | 是（结构） | 效率 architecture-init；AUC 用 DA-trained 权重 |
+| GANomaly | 是 | 未确认 | 输入 256 未在 repo 证实；评分完整 |
+| MemAE | 是 | 未确认 | 3 通道未在 repo 证实；T/K/评分正确 |
+| MKD | 是 | **否** | 当前是 MVTec-128，不是 DA 配置 |
+| ANDT | partial（adapted） | **否** | decoder 是 de_dense 适配；评分是 batch 标量代理；不进入严格官方排名 |
+| Future Frame | partial | 推理 G 匹配；D/评分见注 | TF2 runtime-adapted + PSNR；DA LAM_ADV 未确认 |
+| ST Dissoc. | 是（scored） | 是 | loss_map+reciprocal 已补；padding 兼容修正 |
+| MLEP | partial | 推理结构匹配；BS16 未测 | TF2 runtime-adapted + PSNR BS1 |
+| ASTT | partial | **否/未确认** | DA `model.py` 缺失；当前 STE-TTE 148.22M |
+| DAD-FSM | 是（scored） | 部分 | 评分已补；分割图是离线预计算 |
+| HSTforU | partial | **未确认** | repo 无 DA config；当前 Avenue/PVT2-b2；评分是 batch 标量代理 |
+| MADViT Full | partial | **否** | code default 实际 token-only，不是 paper Full |
+| MADViT Multi/Last | partial | reconstructed | 只替换 scoring；batch 标量需重测 |
+| LightViT-AD | 是 | 是 | drone_anomaly.yaml 224 |
+| adVAE | blocked | — | 无 DA 视频实现 |
+| CVAE 系列 | paper-only | — | 无本机实现 |
+
+> 该表与 [fairness_audit.md](fairness_audit.md) 同步；`Measured` 只表示 v2 测速完成，`Paper-matched` 表示图/输入/评分与论文 AUC 配置一致。
 
 ## 4. 参数审计细节（v2 三列口径）
 
@@ -243,16 +269,16 @@
    - **tap 不是计算裁剪**：V0 取 `[5,7,9,11]` 仍必须前向 `0..11`，FLOPs 按实际前向层数计，不能按 4 taps × 单层。
 2. **MemAE 的 K 已核实**：原 `script_testing.py` 每个 16 帧窗口只输出一个 clip 级误差（对 T,H,W 取均值），并映射到中心帧；`K=1, stride=1`。v2 全窗口 FLOPs = **70.808G/output score**，旧 `÷16` 的 0.066G/0.437ms/2287FPS 错误，已废弃。
 3. **MKD 多层特征评分已实现**：按原 `test_functions.py` 的 taps 6/9/12 做 cosine + 0.01·MSE；FLOPs = **10.477G**，P50 = **2.495ms**。v1 只用最终层距离，已废弃。
-4. **ANDT 已测 adapted 6-frame**：官方代码 decoder 只支持 1 帧，仍不能冒充 official；v2 用 `de_dense(feat[:,0])` 适配为 `T=6,K=1,stride=1`，得到 70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1。该行标 adapted，AUC 仍引用官方 6 帧论文值。
+4. **ANDT 已测 adapted 6-frame**：官方代码 decoder 只支持 1 帧，仍不能冒充 official；v2 用 `de_dense(feat[:,0])` 适配为 `T=6,K=1,stride=1`，得到 70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1；BS16 输出 batch 标量，per-sample FPS 无效。该行标 adapted，AUC 仍引用官方 6 帧论文值，不进入严格官方模型排名。
 5. **本轮新增测量**：
    - LightViT-AD：3.753G / 6.519ms / 148.8 FPS@BS1；
-   - MADViT：Full 38.533G / 11.525ms / 83.9 FPS@BS1；Multi-layer 11.130ms / 88.9 FPS；Last-layer 9.467ms / 103.5 FPS；后两者是按论文 Sec. 5.4 重建的 adapted scoring；
-   - ST Dissoc.：60.612G / 3.668ms / 269.7 FPS@BS1（`padding=False→0` 兼容修正）；
+   - MADViT：Full 38.533G / 11.525ms / 83.9 FPS@BS1；Multi-layer 11.130ms / 88.9 FPS；Last-layer 9.467ms / 103.5 FPS；后两者是按论文 Sec. 5.4 重建的 adapted scoring；三者输出 batch 标量，BS16 per-sample FPS 无效；
+   - ST Dissoc.：60.612G / 4.280ms / 231.4 FPS@BS1 / 452.3 FPS@BS16（score-inclusive loss_map+reciprocal；`padding=False→0` 兼容修正）；旧 forward-only 3.668ms 保留为对照；
    - ASTT（STE-TTE）：109.416G / 19.048ms / 52.2 FPS@BS1；
-   - DAD-FSM：71.194G / 12.684ms / 78.5 FPS@BS1（RGB+分割双流）；
+   - DAD-FSM：71.194G / 17.032ms / 58.3 FPS@BS1 / 293.7 FPS@BS16（score-inclusive target MSE，per-sample [B]；RGB+分割双流，分割图离线预计算）；旧 zero-proxy 12.684ms 保留为对照；
    - HSTforU：168.209G / 64.258ms / 15.5 FPS@BS1（Avenue/PVT2-b2，mmcv-lite 2.x 兼容 shim）；
-   - Future Frame：官方 TF1.15 记录 7.704M / 74.476G，latency 留空；TF2.20 runtime-adapted 为 5.467ms / 180.8 FPS@BS1 / 185.1 FPS@BS16；
-   - MLEP：官方 TF1.15 记录 12.561M / 319.513G，latency 留空；TF2.20 runtime-adapted 为 11.538ms / 82.0 FPS@BS1 / 75.5 FPS@BS16；
+   - Future Frame：官方 TF1.15 记录 7.704M / 74.476G，latency 留空；TF2.20 runtime-adapted 为 score-inclusive PSNR 6.820ms / 146.8 FPS@BS1 / 177.7 FPS@BS16（prediction-only 5.467ms 保留为对照）；
+   - MLEP：官方 TF1.15 记录 12.561M / 319.513G，latency 留空；TF2.20 runtime-adapted 为 score-inclusive PSNR 12.525ms / 79.6 FPS@BS1（scored BS16 未测；prediction-only 11.538ms / 75.5 保留为对照）；
    - 两方法的 TF2 图参数量与 TF1 图逐参数一致；但 FLOPs 仍来自 TF1 profiler、`flops_verified=false`，所以状态保持 `partial/unverified`（runtime-adapted），详见 §3.3。
 6. **仍 blocked**：adVAE 只有表格版；Future Frame 官方 FlowNet2/checkpoint 链接失效；两方法的**官方 TF1.15 runtime** 仍受 CUDA10 在 sm_89 上不可执行的限制（TF2 runtime-adapted 已补，但不能冒充官方 TF1.15）。
 7. **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：用户表速度的硬件/batch 不同，`paper-only`，不能与本机实测混排。

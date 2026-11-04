@@ -2210,5 +2210,29 @@
     27.37946861801902,
     27.75491295097163,
     27.960150651982985
-  ]
+  ],
+  "output_shape_bs1": "tuple[3] (static_decoder,pred_decoder,cluster_map)",
+  "output_shape_bs16": "tuple[3] (static_decoder,pred_decoder,cluster_map)",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "paper_matched": true,
+  "paper_matched_note": "official stage-E + loss_map/reciprocal scoring; padding=False->0 compatibility fix",
+  "bs16_ab_check": {
+    "old_fps_ab": 426.60766343680814,
+    "scored_fps_ab": 422.2101944472823,
+    "scored_over_old_time": 1.0104,
+    "gpu_sm_clock_range_mhz": [
+      1545,
+      2130
+    ],
+    "gpu_utilization_pct_range": [
+      100.0,
+      100.0
+    ],
+    "source": "comparison/da/fairness_bs16_ab.json",
+    "conclusion": "old and scored throughput are within 1% in the same alternating run; the BS16 gap between the archived old JSON and scored JSON is a run-condition (GPU clock/thermal) artifact, not a scoring-graph cost."
+  },
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "forward-only tuple output (no per-sample anomaly score); archived BS16 run was also under lower GPU clocks; use scored JSON / A/B"
 }

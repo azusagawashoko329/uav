@@ -56,5 +56,12 @@
   "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value. Global default training config (adversarial=True, LAM_ADV=0.05 in every shipped hyper_params.ini section) trains generator + discriminator; D has 6.831M trainable params, so training trainable = 14.536M while inference is G-only 7.704M. DA-specific LAM_ADV is not present in the repo and remains unconfirmed.",
   "timing_scope": "prediction_tensor_only",
   "scoring_included": false,
-  "scoring_note": "Official PSNR between predicted and ground-truth next frame is not included; current latency/FPS is prediction-only."
+  "scoring_note": "Official PSNR between predicted and ground-truth next frame is not included; current latency/FPS is prediction-only.",
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "paper_matched": false,
+  "paper_matched_note": "inference G graph and PSNR scoring match, but DA LAM_ADV/training config unconfirmed; TF2 runtime-adapted"
 }

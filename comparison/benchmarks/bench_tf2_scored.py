@@ -51,7 +51,7 @@ def _futureframe_score_graph(batch: int):
         mse = tf.reduce_mean(tf.square(((pred + 1.0) / 2.0) - ((target + 1.0) / 2.0)),
                              axis=[1, 2, 3])
         psnr = 10.0 * tf.math.log(1.0 / mse) / tf.math.log(10.0)
-        score = tf.reduce_mean(psnr)
+        score = psnr  # per-sample PSNR, shape [B]
         vs = tf.compat.v1.trainable_variables()
         params = sum(int(np.prod(v.shape)) for v in vs)
     return g, {x: (256, 256, 12), target: (256, 256, 3)}, score, params
@@ -68,7 +68,7 @@ def _mlep_score_graph(batch: int):
         pred, _, _ = net(inputs=x, use_decoder=True)
         mse = tf.reduce_mean(tf.square((target - pred) / 2.0), axis=[1, 2, 3])
         psnr = 10.0 * tf.math.log(1.0 / mse) / tf.math.log(10.0)
-        score = tf.reduce_mean(psnr)
+        score = psnr  # per-sample PSNR, shape [B]
         vs = tf.compat.v1.trainable_variables()
         params = sum(int(np.prod(v.shape)) for v in vs)
     return g, {x: (4, 224, 224, 3), target: (224, 224, 3)}, score, params
@@ -192,6 +192,13 @@ def measure(method: str, warmup: int, iters: int, rounds: int, skip_bs16: bool =
         ),
         'timing_scope': 'prediction_plus_psnr',
         'scoring_included': True,
+        'output_shape_bs1': '[1]',
+        'output_shape_bs16': '[16]',
+        'output_shape_bs16_note': ('graph output is [B]; BS16 throughput was not measured'
+                                   if skip_bs16 else None),
+        'bs16_throughput_measured': not skip_bs16,
+        'scores_per_sample': 1,
+        'batch_output_aggregated': False,
         'scoring_note': spec['scoring'],
         'flops_scope': 'generator/prednet only; PSNR elementwise ops excluded from FLOPs',
         'profiling_config': (
@@ -252,6 +259,7 @@ def main():
     p.add_argument('--rounds', type=int, default=3)
     p.add_argument('--smoke', action='store_true')
     p.add_argument('--skip-bs16', action='store_true')
+    p.add_argument('--smoke-batch', type=int, default=1)
     args = p.parse_args()
     _prepare_runtime_cwd()
     methods = ['futureframe', 'mlep'] if args.method == 'both' else [args.method]
@@ -259,16 +267,17 @@ def main():
         if args.smoke:
             # Build and run one scored forward only; do not write results.
             spec = METHODS[method]
-            g, feed_spec, score, params = spec['builder'](1)
+            g, feed_spec, score, params = spec['builder'](args.smoke_batch)
             with g.as_default():
                 init = tf.compat.v1.global_variables_initializer()
             rng = np.random.RandomState(0)
-            feed = {pl: rng.randn(1, *shape).astype(np.float32)
+            feed = {pl: rng.randn(args.smoke_batch, *shape).astype(np.float32)
                     for pl, shape in feed_spec.items()}
             with tf.compat.v1.Session(graph=g, config=_config()) as sess:
                 sess.run(init)
                 val = sess.run(score, feed_dict=feed)
-            print('smoke', method, 'params', params, 'score', val, flush=True)
+            print('smoke', method, 'batch', args.smoke_batch, 'params', params,
+                  'score', val, 'shape', getattr(val, 'shape', None), flush=True)
             continue
         result = measure(method, args.warmup, args.iters, args.rounds, skip_bs16=args.skip_bs16)
         out = METHODS[method]['out']

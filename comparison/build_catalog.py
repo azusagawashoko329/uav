@@ -55,7 +55,7 @@ def main():
             'latency_bs1_p50_ms_per_output_frame': efficiency.get(
                 'latency_bs1_p50_ms_per_output_frame', ''),
             'fps_bs1': efficiency.get('fps_bs1', ''),
-            'fps_bs16': efficiency.get('fps_bs16', ''),
+            'fps_bs16': efficiency.get('fps_bs16') or '',
             'source_type': source.get('type', ''),
             'source_url': source.get('url') or '',
             'source_commit': source.get('commit') or '',

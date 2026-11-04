@@ -22,7 +22,7 @@
 
 **训练/推理参数拆分**：`Codes/train.py` 在 `LAM_ADV != 0` 时训练 generator 和 discriminator（D 有 6,831,489 个可训练参数）；仓库自带的 ped1/ped2/avenue/shanghaitech 配置均为 `LAM_ADV=0.05`。因此官方默认训练参数量是 G+D = 14.536M，推理只用 G = 7.704M，Training-only = D = 6.831M。**DA 专用训练配置不在仓库里**，DA AUC 是否使用 adversarial loss 未确认；若 DA 训练设 `LAM_ADV=0`，则 D 不参与。
 
-**评分口径**：官方 `Codes/inference.py` 在 generator 输出后还要对 ground-truth 下一帧计算 PSNR（`utils.psnr_error`）。旧 `benchmark_v2_tf2compat.json` 只到预测图像张量；`benchmark_v2_scored.json` 已把官方 PSNR 放进计时图（6.829ms / 145.9 FPS@BS1）。
+**评分口径**：官方 `Codes/inference.py` 在 generator 输出后还要对 ground-truth 下一帧计算 PSNR（`utils.psnr_error`）。旧 `benchmark_v2_tf2compat.json` 只到预测图像张量；`benchmark_v2_scored.json` 已把官方 PSNR 放进计时图（6.820ms / 146.8 FPS@BS1）。
 
 ## 2. 为什么官方 TF1.15 的 latency 拿不到
 
@@ -56,11 +56,11 @@ TF1.15 官方 wheel 绑定 **CUDA 10.0 + cuDNN 7.6.5**，而 RTX 5880 是 **Ada�
 |---|---:|---:|---:|---:|---:|---|
 | 官方 TF1.15 | 7.704M | 74.476G | —（CUDA10 在 sm_89 上不可执行） | — | — | `partial/unverified` |
 | TF2.20 runtime-adapted，prediction-only | 7.704M | 74.476G | 5.467ms | 180.8 | 185.1 | `partial/unverified`（runtime-adapted） |
-| TF2.20 runtime-adapted，**score-inclusive PSNR** | 7.704M | 74.476G | **6.829ms** | **145.9** | **178.2** | `partial/unverified`（runtime-adapted） |
+| TF2.20 runtime-adapted，**score-inclusive PSNR（per-sample [B]）** | 7.704M | 74.476G | **6.820ms** | **146.8** | **177.7** | `partial/unverified`（runtime-adapted） |
 
-补充：prediction-only mean 5.531ms、P95 6.217ms；score-inclusive PSNR mean 6.852ms、P95 7.001ms。BS16 三轮 500 batch 耗时（prediction-only）43.09 / 43.22 / 43.37s。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
+补充：prediction-only mean 5.531ms、P95 6.217ms；score-inclusive PSNR mean 6.813ms、P95 7.039ms。BS16 三轮 500 batch 耗时（prediction-only）43.09 / 43.22 / 43.37s。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
 
-**score-inclusive 文件**：`benchmark_v2_scored.json` 使用官方 PSNR（预测帧 vs GT 下一帧）并把 PSNR 放进计时图；旧的 `benchmark_v2_tf2compat.json` 保留为 prediction-only 对照。PSNR 的 elementwise 运算不计入 74.476G TF-profiler FLOPs。
+**score-inclusive 文件**：`benchmark_v2_scored.json` 使用官方 PSNR 图（预测帧 vs 与 GT 同形状的随机张量；不是真实标签，只测评分计算量）并把 PSNR 放进计时图；旧的 `benchmark_v2_tf2compat.json` 保留为 prediction-only 对照。PSNR 的 elementwise 运算不计入 74.476G TF-profiler FLOPs。
 
 **怎么读这个数**：它回答的是“同一个 Future Frame 图、同一张 5880、现代 CUDA 运行时下有多快”。它不是官方 TF1.15/CUDA10 的 latency，不能和论文里 TF1.15 的数字直接混比；主表引用时必须带 `runtime-adapted` 脚注。它的价值在于：官方 TF1.15 在这张卡上根本无法执行，而这是目前唯一可复现的 5880 实测。
 

@@ -19,9 +19,9 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned; v2 efficiency measured with mmcv-lite 2.x compatibility shims; DA AUC adaptation/run pending. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
+  "notes": "Upstream cloned; v2 efficiency partially measured (BS1 only; BS16 is a batch scalar and invalid) with mmcv-lite 2.x compatibility shims; DA AUC adaptation/run pending. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
   "efficiency": {
-    "status": "measured",
+    "status": "partial/unverified",
     "input_hwt": "256x256x4",
     "code_commit": "9548473306bbb89895b077275e8503de79653029",
     "weights_state": "random init (no checkpoint)",
@@ -52,7 +52,7 @@
     "latency_bs1_mean_ms_per_output_frame": 64.49019663784809,
     "latency_bs1_p95_ms_per_output_frame": 68.88935604365543,
     "fps_bs1": 15.506232763029269,
-    "fps_bs16": 71.01352697856912,
+    "fps_bs16": null,
     "input_frames_t": 4,
     "effective_output_scores_k": 1,
     "window_stride": 1,
@@ -63,6 +63,6 @@
     "fps_stream_estimated": 15.506232763029269,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/HSTforU/default/benchmark_v2.json",
-    "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2."
+    "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2. BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched. paper_matched=false; reference-only."
   }
 }

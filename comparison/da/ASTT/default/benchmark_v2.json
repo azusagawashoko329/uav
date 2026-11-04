@@ -1028,7 +1028,7 @@
   "latency_bs1_mean_ms_per_output_frame": 19.164898689292993,
   "latency_bs1_p95_ms_per_output_frame": 19.98988102423027,
   "fps_bs1": 52.178726129070434,
-  "fps_bs16": 146.57238584190952,
+  "fps_bs16": null,
   "fps_independent_window": 52.178726129070434,
   "score_density": 1.0,
   "fps_stream_estimated": 52.178726129070434,
@@ -2548,5 +2548,14 @@
     54.72410505998414
   ],
   "paper_matched": false,
-  "variant_unconfirmed": true
+  "variant_unconfirmed": true,
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "fps_bs16_raw_batch_aggregate": 146.57238584190952,
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "scoring returns one batch-aggregate scalar; the 16*K*iters numerator would overcount per-sample scores",
+  "paper_matched_note": "DA model.py missing; current graph is model_ste_tte STE-TTE, variant unconfirmed"
 }

@@ -21,7 +21,7 @@
   "benchmark_source": "comparison/da/ANDT/default/benchmark_v2.json",
   "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. paper_matched=false: decoder is a de_dense reconstruction; paper uses 2 FC -> 8x8x512 + 5 conv decoder.",
   "protocol_version": 2,
-  "measurement_status": "measured",
+  "measurement_status": "partial/unverified",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
   "gpu": "NVIDIA RTX 5880 Ada Generation",
   "torch": "2.8.0+cu129",
@@ -386,7 +386,7 @@
   "latency_bs1_mean_ms_per_output_frame": 5.0146270395101356,
   "latency_bs1_p95_ms_per_output_frame": 5.162373010534793,
   "fps_bs1": 199.41662502934358,
-  "fps_bs16": 197.51394692322614,
+  "fps_bs16": null,
   "fps_independent_window": 199.41662502934358,
   "score_density": 1.0,
   "fps_stream_estimated": 199.41662502934358,
@@ -1906,5 +1906,14 @@
     40.657403805002104
   ],
   "paper_matched": false,
-  "paper_match_note": "paper_matched=false: decoder is a de_dense reconstruction; paper uses 2 FC -> 8x8x512 + 5 conv decoder."
+  "paper_match_note": "paper_matched=false: decoder is a de_dense reconstruction; paper uses 2 FC -> 8x8x512 + 5 conv decoder.",
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "fps_bs16_raw_batch_aggregate": 197.51394692322614,
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "scoring returns one batch-aggregate scalar; the 16*K*iters numerator would overcount per-sample scores",
+  "paper_matched_note": "adapted de_dense decoder + proxy batch-scalar scoring; paper decoder 2FC->8x8x512->5conv not reproduced"
 }

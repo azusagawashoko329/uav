@@ -2637,5 +2637,12 @@
     "Conv2d",
     "Linear",
     "MultiheadAttention"
-  ]
+  ],
+  "output_shape_bs1": "[1]",
+  "output_shape_bs16": "[16]",
+  "scores_per_sample": 1,
+  "batch_output_aggregated": false,
+  "bs16_fps_valid": true,
+  "paper_matched": true,
+  "paper_matched_note": "internal architecture variant; efficiency graph matches the reported variant"
 }

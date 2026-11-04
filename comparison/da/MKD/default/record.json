@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned locally; v2 lightweight efficiency measured (see efficiency block); DA AUC adaptation/run still pending.",
+  "notes": "Upstream cloned locally; v2 lightweight efficiency measured on the MVTec-128 configuration (128x128x1), which is NOT a confirmed Drone-Anomaly config. DA AUC adaptation/run still pending; do not present this efficiency as DA-matched.",
   "efficiency": {
     "status": "measured",
     "input_hwt": "128x128x1",
@@ -58,6 +58,6 @@
     "fps_stream_estimated": 394.4574858150549,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/MKD/default/benchmark_v2.json",
-    "notes": "Multi-layer scoring at cloner/source taps (6,9,12): cosine + 0.01*MSE, per original test_functions.py. Source VGG16 is frozen; cloner cfg B is trainable. V1 only used the final layer and was wrong. | v2 benchmark 2026-11-04; benchmark tooling in comparison/benchmarks."
+    "notes": "Multi-layer scoring at cloner/source taps (6,9,12): cosine + 0.01*MSE, per original test_functions.py. Source VGG16 is frozen; cloner cfg B is trainable. V1 only used the final layer and was wrong. | v2 benchmark 2026-11-04; benchmark tooling in comparison/benchmarks. Efficiency is MVTec-128, not a DA-confirmed configuration; paper_matched=false."
   }
 }

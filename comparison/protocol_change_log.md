@@ -274,16 +274,16 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 | GANomaly | 16.428 | 8.088 | 123.6 | 848.5 |
 | MemAE | 70.808 | 7.321 | 136.5 | 130.3 |
 | MKD | 10.477 | 2.495 | 394.5 | 2340.8 |
-| ANDT adapted 6-frame | 74.490 | 5.015 | 199.4 | 197.5 |
+| ANDT adapted 6-frame | 74.490 | 5.015 | 199.4 | 197.5（batch 标量，per-sample 无效） |
 | LightViT-AD | 3.753 | 6.519 | 148.8 | 2438.6 |
 | MADViT Full (code default) | 38.533 | 11.525 | 83.9 | 444.0 |
-| MADViT Multi-layer (adapted scoring) | 38.533 | 11.130 | 88.9 | 432.2 |
+| MADViT Multi-layer (adapted scoring) | 38.533 | 11.130 | 88.9 | 432.2（batch 标量，per-sample 无效） |
 | MADViT Last-layer (adapted scoring) | 38.533 | 9.467 | 103.5 | 430.2 |
-| HSTforU (Avenue/PVT2-b2) | 168.209 | 64.258 | 15.5 | 71.0 |
+| HSTforU (Avenue/PVT2-b2) | 168.209 | 64.258 | 15.5 | 71.0（batch 标量，per-sample 无效） |
 | Future Frame (partial) | 74.476 | — | — | — |
 | MLEP (partial) | 319.513 | — | — | — |
 | ST Dissoc. | 60.612 | 3.668 | 269.7 | 288.2 |
-| ASTT (STE-TTE) | 109.416 | 19.048 | 52.2 | 146.6 |
+| ASTT (STE-TTE) | 109.416 | 19.048 | 52.2 | 146.6（batch 标量，per-sample 无效） |
 | DAD-FSM | 71.194 | 12.684 | 78.5 | 195.6 |
 | Ours V0 | 95.107 | 14.521 | 68.4 | 187.4 |
 | Ours V1 | 68.532 | 19.903 | 50.0 | 244.3 |
@@ -336,9 +336,45 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 ## 16. 2026-11-04 score-inclusive 补测与版本核实
 
 - 新增 `comparison/benchmarks/bench_v2_scored.py`：ST Dissoc. 官方 `loss_map`+reciprocal；DAD-FSM 未来分割 target MSE；写 `benchmark_v2_scored.json`，不覆盖旧 JSON。
-- 新增 `comparison/benchmarks/bench_tf2_scored.py`：Future Frame/MLEP 官方 PSNR against GT next frame；写 `benchmark_v2_scored.json`。
-- 结果：Future Frame 6.829ms / 145.9 FPS@BS1；ST 4.280ms / 231.4；MLEP 12.787ms / 78.3（scored BS16 未测）；DAD 13.576ms / 73.4。
+- 新增 `comparison/benchmarks/bench_tf2_scored.py`：Future Frame/MLEP 官方 PSNR 图 against 同形状随机 target（**不是真实标签**，只测评分计算量）；写 `benchmark_v2_scored.json`。
+- 结果（per-sample 修正后的最终值，见 §17）：Future Frame 6.820ms / 146.8 FPS@BS1；ST 4.280ms / 231.4；MLEP 12.525ms / 79.6（scored BS16 未测）；DAD 17.032ms / 58.3。
 - ASTT：核实 repo 的 DA 脚本引用缺失的 `model.py`；当前 `model_ste_tte` 148.22M 不是 DA 证据，`adapted` 改为 true、状态 `partial/unverified`、`paper_matched=false`。
 - ANDT：论文 decoder 是 `2 FC→8×8×512→5 conv`，当前 `de_dense` 适配不匹配，`paper_matched=false`。
 - HSTforU：repo 无 Drone-Anomaly config，当前 Avenue/PVT2-b2 是假设，`paper_matched=false`。
 - 旧 `benchmark_v2.json` / `benchmark_v2_tf2compat.json` 全部保留。
+
+## 17. 2026-11-04 输出形状/每样本评分修正与 BS16 A/B
+
+**每样本评分（P0）**
+
+- `bench_tf2_scored.py`：Future Frame/MLEP 的 PSNR 从 `tf.reduce_mean(psnr)` 改为返回 per-sample `[B]`；`output_shape_bs1='[1]'`、`output_shape_bs16='[16]'`（MLEP 未测 BS16 时为 `null`）、`scores_per_sample=1`、`batch_output_aggregated=false`。
+- `bench_v2_scored.py`：DAD-FSM 从 `F.mse_loss(pred,target)`（batch 标量）改为 `((pred-target)**2).mean(dim=(1,2,3))`，返回 `[B]`；ST 已返回 `[1]`/`[16]`。
+- 结果（scored JSON，仍不覆盖旧 JSON）：
+
+| Method | P50 ms | FPS@BS1 | FPS@BS16 | output BS1/BS16 |
+|---|---:|---:|---:|---|
+| Future Frame | 6.820 | 146.8 | 177.7 | `[1]` / `[16]` |
+| MLEP | 12.525 | 79.6 | —（未测） | `[1]` / `null` |
+| ST Dissoc. | 4.280 | 231.4 | 452.3 | `[1]` / `[16]` |
+| DAD-FSM | 17.032 | 58.3 | 293.7 | `[1]` / `[16]` |
+
+- 用于计时的 target 是**同形状随机张量，不是真实数据标签**，只衡量相同形状评分图的计算量。
+
+**batch 标量方法（P0 记录）**
+
+- ANDT、ASTT、HSTforU、MADViT Full/Multi-layer/Last-layer 的 `fn` 返回一个 batch 标量（`output_shape='[] scalar'`）。它们的 BS16 分子 `16×K×iters` 与每批 1 个分数不一致，`fps_bs16` 置 `null`，原值保存在 `fps_bs16_raw_batch_aggregate` 并标 `fps_bs16_valid=false`。这些行的 efficiency/measurement 状态改为 `partial/unverified`，BS16 在主表记 `—`。
+- 没有重跑这些方法；只有真实改图的 Future Frame、MLEP、ST、DAD 重跑了 scored 版。
+- 实际 one-forward 形状核验：GANomaly `[1,1,1]`/`[16,1,1]`（每样本 1 个分数）、MemAE/MKD/LightViT-AD/ST/DAD `[1]`/`[16]`、FF/MLEP `[1]`/`[16]`、ANDT/ASTT/HSTforU/MADViT `[]` 标量。日志：`comparison/da/output_shape_check.log`、`comparison/da/tf_output_shape.log`。
+
+**BS16 A/B（P1）**
+
+- 新增 `bench_v2_ab_bs16.py`：同一 GPU、同一 BS16 输入，old/scored 交替 3 轮，50 warmup + 3×500 batches；记录每轮耗时、SM/显存时钟、GPU 利用率、功耗、温度；写 `fairness_bs16_ab.json`。
+- 结果：ST old **426.6** vs scored **422.2** FPS（时间比 1.010）；DAD old **280.8** vs scored **280.7** FPS（时间比 1.000）。两者在 100% 占用、1545–2130MHz（ST）/1905–2040MHz（DAD）下测得。
+- 结论：旧 JSON 的 ST 288.2 / DAD 195.6 对应 27.4s / 40.7s 每轮，同图 old 在本轮只需 18.75s / 28.49s，说明旧值是低时钟/其它负载下的 run，不能解释为“scored 评分更快”；scored 的 452.3 / 293.7 与本轮 A/B 的 422.2 / 280.7 相差 4–7%，属 run-to-run 时钟差异。主表保留 scored JSON 值，BS16 引用需带运行条件，排序以 BS1 P50 为主。
+- `bench_v2_extra.py::_dadfsm` 的 `torchvision.resnet50` 无预训练补丁改为幂等，避免 A/B 同进程第二次构建时报 `weights` 重复传参；模型图未变。
+
+**状态与文档**
+
+- 新增 `paper_matched` / `paper_matched_note` 到所有外部方法 benchmark JSON；与 `measurement_status` 分开：`measured` 只表示测速完成，`paper_matched` 表示图/输入/评分与产生 AUC 的配置一致。
+- ANDT 保留 adapted benchmark，但 `paper_matched=false`、不进入严格官方模型排名；ASTT 仍是 STE-TTE 结构参考（DA `model.py` 缺失）；HSTforU 是 Avenue/PVT2-b2 参考；MKD 明确为 MVTec-128。
+- 文档统一到上述数值：`fairness_audit.md` §2.1/2.2/2.5/4.1/4.7、`comparison_summary.md` §3.4/§3.5、`v2_validation.md` §8、`RETEST_CHECKLIST.md`、各方法 README。

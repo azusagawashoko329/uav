@@ -1,0 +1,151 @@
+{
+  "st": {
+    "protocol": "BS16 50 warmup + 3x500 batches; old/scored alternate each round; same GPU/inputs",
+    "order": [
+      "st_old",
+      "st_scored",
+      "st_old",
+      "st_scored",
+      "st_old",
+      "st_scored"
+    ],
+    "old_round_times_s": [
+      18.152269735990558,
+      18.752593273995444,
+      18.977414156019222
+    ],
+    "scored_round_times_s": [
+      18.57697409001412,
+      18.947908186994027,
+      19.116030582983512
+    ],
+    "old_median_s": 18.752593273995444,
+    "scored_median_s": 18.947908186994027,
+    "old_fps": 426.60766343680814,
+    "scored_fps": 422.2101944472823,
+    "gpu_state": {
+      "start": [
+        "0, 0 %, 210 MHz, 405 MHz, 21.29 W, 36",
+        "1, 2 %, 2460 MHz, 9501 MHz, 40.32 W, 64"
+      ],
+      "st_old": [
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.50 W, 36",
+          "1, 100 %, 2130 MHz, 9501 MHz, 284.68 W, 77"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.70 W, 36",
+          "1, 100 %, 1560 MHz, 9501 MHz, 284.65 W, 81"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 22.79 W, 37",
+          "1, 100 %, 1545 MHz, 9501 MHz, 284.70 W, 83"
+        ]
+      ],
+      "st_scored": [
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.28 W, 36",
+          "1, 100 %, 1590 MHz, 9501 MHz, 283.69 W, 80"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 22.62 W, 37",
+          "1, 100 %, 1545 MHz, 9501 MHz, 284.73 W, 82"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 28.24 W, 37",
+          "1, 100 %, 1545 MHz, 9501 MHz, 277.31 W, 82"
+        ]
+      ],
+      "end": [
+        "0, 0 %, 210 MHz, 405 MHz, 28.24 W, 37",
+        "1, 100 %, 1545 MHz, 9501 MHz, 277.31 W, 82"
+      ]
+    },
+    "note": "BS16 FPS = 16 * iters / median(round_time). Old ST returns a tuple; old DAD returns a batch scalar. Scored variants return [B] per-sample scores.",
+    "gpu_sm_clock_range_mhz": [
+      1545,
+      2130
+    ],
+    "gpu_utilization_pct_range": [
+      100.0,
+      100.0
+    ],
+    "scored_over_old_time": 1.0104,
+    "analysis": "old and scored throughput are within 1% in the same alternating run; the BS16 gap between the archived old JSON and scored JSON is a run-condition (GPU clock/thermal) artifact, not a scoring-graph cost."
+  },
+  "dad": {
+    "protocol": "BS16 50 warmup + 3x500 batches; old/scored alternate each round; same GPU/inputs",
+    "order": [
+      "dad_old",
+      "dad_scored",
+      "dad_old",
+      "dad_scored",
+      "dad_old",
+      "dad_scored"
+    ],
+    "old_round_times_s": [
+      28.314457261993084,
+      28.488559454970527,
+      28.52249797101831
+    ],
+    "scored_round_times_s": [
+      28.440712598967366,
+      28.52341255598003,
+      28.499836210976355
+    ],
+    "old_median_s": 28.488559454970527,
+    "scored_median_s": 28.499836210976355,
+    "old_fps": 280.81447967367137,
+    "scored_fps": 280.7033675835267,
+    "gpu_state": {
+      "start": [
+        "0, 0 %, 210 MHz, 405 MHz, 21.09 W, 36",
+        "1, 0 %, 2460 MHz, 9501 MHz, 84.92 W, 75"
+      ],
+      "dad_old": [
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.65 W, 36",
+          "1, 100 %, 1950 MHz, 9501 MHz, 283.30 W, 82"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.75 W, 36",
+          "1, 100 %, 1980 MHz, 9501 MHz, 283.52 W, 82"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.80 W, 37",
+          "1, 100 %, 2010 MHz, 9501 MHz, 283.20 W, 82"
+        ]
+      ],
+      "dad_scored": [
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 22.41 W, 37",
+          "1, 100 %, 2040 MHz, 9501 MHz, 283.53 W, 82"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 23.80 W, 37",
+          "1, 100 %, 1905 MHz, 9501 MHz, 277.91 W, 83"
+        ],
+        [
+          "0, 0 %, 210 MHz, 405 MHz, 21.70 W, 37",
+          "1, 100 %, 2040 MHz, 9501 MHz, 284.35 W, 82"
+        ]
+      ],
+      "end": [
+        "0, 0 %, 210 MHz, 405 MHz, 21.70 W, 37",
+        "1, 100 %, 2040 MHz, 9501 MHz, 284.35 W, 82"
+      ]
+    },
+    "note": "BS16 FPS = 16 * iters / median(round_time). Old ST returns a tuple; old DAD returns a batch scalar. Scored variants return [B] per-sample scores.",
+    "gpu_sm_clock_range_mhz": [
+      1905,
+      2040
+    ],
+    "gpu_utilization_pct_range": [
+      100.0,
+      100.0
+    ],
+    "scored_over_old_time": 1.0004,
+    "analysis": "old and scored throughput are within 1% in the same alternating run; the BS16 gap between the archived old JSON and scored JSON is a run-condition (GPU clock/thermal) artifact, not a scoring-graph cost."
+  },
+  "conclusion": "Alternating A/B on one GPU: ST old 426.61 vs scored 422.21 FPS (-1.0%); DAD old 280.81 vs scored 280.70 FPS (-0.04%). The old JSON values (ST 288.2, DAD 195.6) were measured under lower GPU clocks/other load and are not valid comparisons against the scored runs. Keep the scored JSON as primary; quote BS16 with a run-condition caveat."
+}

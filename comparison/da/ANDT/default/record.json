@@ -19,9 +19,9 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 efficiency measured with an adapted decoder (see efficiency block); DA AUC adaptation/run still pending. paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv).",
+  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 adapted benchmark measured (BS1 only; BS16 is a batch scalar and invalid); status partial/unverified; DA AUC adaptation/run still pending. paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv).",
   "efficiency": {
-    "status": "measured",
+    "status": "partial/unverified",
     "input_hwt": "256x256x6",
     "code_commit": "f2e8c4f701238a99faa5841b3e2884cb1c507d1e",
     "weights_state": "random init (official checkpoint unavailable)",
@@ -52,7 +52,7 @@
     "latency_bs1_mean_ms_per_output_frame": 5.0146270395101356,
     "latency_bs1_p95_ms_per_output_frame": 5.162373010534793,
     "fps_bs1": 199.41662502934358,
-    "fps_bs16": 197.51394692322614,
+    "fps_bs16": null,
     "input_frames_t": 6,
     "effective_output_scores_k": 1,
     "window_stride": 1,
@@ -63,6 +63,6 @@
     "fps_stream_estimated": 199.41662502934358,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/ANDT/default/benchmark_v2.json",
-    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv)."
+    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv). BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched. paper_matched=false; reference-only."
   }
 }

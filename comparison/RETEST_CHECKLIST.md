@@ -5,7 +5,7 @@
 > **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
 > MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
-> Future Frame / MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；已补 TF2.20 runtime-adapted 计时（Future Frame 5.467ms / 180.8 FPS@BS1；MLEP 11.538ms / 82.0 FPS@BS1），仍标 `partial/unverified`，不能冒充官方 TF1.15；adVAE 仍 `blocked`。
+> Future Frame / MLEP 的官方 TF1.15 记录为 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；已补 TF2.20 runtime-adapted score-inclusive 计时（Future Frame 6.820ms / 146.8 FPS@BS1 / 177.7 FPS@BS16；MLEP 12.525ms / 79.6 FPS@BS1，BS16 未测），仍标 `partial/unverified`，不能冒充官方 TF1.15；adVAE 仍 `blocked`。
 > ASTT 当前测的是 `model_ste_tte`（148.22M），DA `train_val_Drone-Anomaly.py` 引用的 `model.py` 缺失，变体未确认，不能当官方 ASTT；详见 [da/fairness_audit.md](da/fairness_audit.md)。
 
 ## 0. 全局准入（所有方法共用）
@@ -73,12 +73,12 @@
 
 ## 5. ANDT（adapted 6-frame 已测；official 仍 blocked）
 
-当前状态：`adapted 6-frame measured`；官方 6 帧 decoder 仍不可用。
+当前状态：`adapted 6-frame partial/unverified`；官方 6 帧 decoder 仍不可用，评分仍是 batch 标量代理。
 
 - [x] 采用最小 patch（去掉 `pdb`/`.cuda()`，`output = self.decoder(self.de_dense(feat[:,0]))`），明确标 `adapted`
 - [x] 论文配置：`T=6, K=1, stride=1`，输入 256×256×6，预测下一帧
 - [x] FLOPs 覆盖 Transformer encoder/decoder、patch embedding、de_dense、decoder conv；`K=1`
-- [x] 结果：70.347M / 74.490G / 4.470ms / 223.6 FPS@BS1；写 `ANDT/default/benchmark_v2.json`
+- [x] 结果：70.347M / 74.490G / 5.015ms / 199.4 FPS@BS1；BS16 输出 batch 标量，per-sample FPS 记 `—`；写 `ANDT/default/benchmark_v2.json`
 - [x] README 记录代码改动与 adapted 限制
 - [ ] 官方 6 帧代码/decoder 仍待确认；确认前不能把 adapted 数字当 official
 - [ ] 1 帧代码变体（若需要）单独标 `code-variant-1frame`，不能与论文 6 帧 AUC 混表
@@ -96,19 +96,20 @@
 
 | 方法 | 当前状态 | 结果/限制 |
 |---|---|---|
-| Future Frame | partial/unverified | 官方 TF1.15：7.704M / 74.476G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR 6.829ms / 145.9 FPS@BS1 / 178.2 FPS@BS16（`benchmark_v2_scored.json`；prediction-only 保留） |
+| Future Frame | partial/unverified | 官方 TF1.15：7.704M / 74.476G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR（per-sample [B]）6.820ms / 146.8 FPS@BS1 / 177.7 FPS@BS16（`benchmark_v2_scored.json`；prediction-only 保留） |
 | ST Dissoc. | measured | 60.612G / 4.280ms / 231.4 FPS@BS1（score-inclusive loss_map）；`padding=False→0` 兼容修正 |
-| MLEP | partial/unverified | 官方 TF1.15：12.561M / 319.513G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR BS1 12.787ms / 78.3 FPS（BS16 未测；prediction-only 75.5 不能冒充） |
+| MLEP | partial/unverified | 官方 TF1.15：12.561M / 319.513G，GPU latency 受 CUDA10/sm_89 限制；TF2.20 runtime-adapted：score-inclusive PSNR（per-sample [B]）BS1 12.525ms / 79.6 FPS（BS16 未测；prediction-only 75.5 不能冒充） |
 | ASTT | partial/unverified | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint；DA `model.py` 缺失，变体未确认，不能当官方 ASTT |
-| DAD-FSM | measured | 71.194G / 13.576ms / 73.4 FPS@BS1（score-inclusive target MSE）；RGB+分割双流，ResNet50 随机初始化 |
-| HSTforU | measured | 168.209G / 64.258ms / 15.5 FPS@BS1；mmcv-lite 2.x + 兼容 shim |
-| MADViT Full | measured | code default：38.533G / 11.525ms / 83.9 FPS@BS1 |
-| MADViT Multi-layer / Last-layer | measured (adapted scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图 |
+| DAD-FSM | measured | 71.194G / 17.032ms / 58.3 FPS@BS1（score-inclusive target MSE，per-sample [B]）；RGB+分割双流，ResNet50 随机初始化 |
+| HSTforU | partial/unverified | 168.209G / 64.258ms / 15.5 FPS@BS1；Avenue/PVT2-b2 结构、无 DA config；评分是 batch 标量代理；mmcv-lite 2.x + 兼容 shim |
+| MADViT Full | partial/unverified | code default 实际 token-only（feature loss 被丢弃）：38.533G / 11.525ms / 83.9 FPS@BS1；BS16 标量无效 |
+| MADViT Multi-layer / Last-layer | partial/unverified (reconstructed scoring) | 按论文 Sec. 5.4：Multi=全层 feature only；Last=final token only；同一前向图，batch 标量，BS16 无效 |
 | LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
 - [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
 - [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 已按论文 Sec. 5.4 实现 adapted scoring 并完成测量
 - [x] Future Frame/MLEP 已补 TF2.20 runtime-adapted 计时（官方 TF1.15 latency 仍受 CUDA10/sm_89 限制）；adVAE 仍待视频实现
+- [x] ST/DAD 的 BS16 旧值已用同卡交替 A/B 复核：old vs scored 时间比 1.010 / 1.000，旧 JSON 的 288.2/195.6 是低时钟 run；见 `comparison/da/fairness_bs16_ab.json`
 
 ## 8. Paper-only 方法（不重测，单独表）
 

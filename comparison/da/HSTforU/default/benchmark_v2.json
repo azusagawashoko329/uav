@@ -20,7 +20,7 @@
   "benchmark_source": "comparison/da/HSTforU/default/benchmark_v2.json",
   "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
   "protocol_version": 2,
-  "measurement_status": "measured",
+  "measurement_status": "partial/unverified",
   "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
   "gpu": "NVIDIA RTX 5880 Ada Generation",
   "torch": "2.8.0+cu129",
@@ -2905,7 +2905,7 @@
   "latency_bs1_mean_ms_per_output_frame": 64.49019663784809,
   "latency_bs1_p95_ms_per_output_frame": 68.88935604365543,
   "fps_bs1": 15.506232763029269,
-  "fps_bs16": 71.01352697856912,
+  "fps_bs16": null,
   "fps_independent_window": 15.506232763029269,
   "score_density": 1.0,
   "fps_stream_estimated": 15.506232763029269,
@@ -4425,5 +4425,14 @@
     113.56597629497992
   ],
   "paper_matched": false,
-  "paper_match_note": "paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2."
+  "paper_match_note": "paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "fps_bs16_raw_batch_aggregate": 71.01352697856912,
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "scoring returns one batch-aggregate scalar; the 16*K*iters numerator would overcount per-sample scores",
+  "paper_matched_note": "Avenue/PVT2-b2 structure; repo has no DA config"
 }
