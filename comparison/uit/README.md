@@ -1,8 +1,8 @@
 # UIT-ADrone 对比空间
 
-与 `comparison/da/` 使用同一 [record schema](../SCHEMA.md) 和统一 One-Class 协议；目前没有已登记条目。
+与 `comparison/da/` 使用同一 [record schema](../SCHEMA.md) 和统一 One-Class 协议。Ours 六变体由 `experiments/uit/appearance/20261104_variant_matrix_v*_s42/` 训练后，通过 `scripts/uit_variant_transfer.py` 归档为 `comparison/uit/ours/<variant>/`；在此之前该目录没有正式条目。
 
-Ours 的 UIT 六变体 45 epoch 矩阵仍保存在 `experiments/uit/appearance/20261101_uit_45ep_*_retry2_s42/`。需要把 UIT 纳入对比表时，按 `comparison/da/ours/*` 的方式建 `comparison/uit/<Method>/<variant>/`（方法名保留官方大小写），填 `record.json` 并运行：
+旧版 `20261101_uit_45ep_*_retry2_s42` 已完成同配置 45 epoch 矩阵，保留为历史实验；20261104 matrix 重跑完成后按同样方式归档。手动归档时按 `comparison/da/ours/*` 的方式建 `comparison/uit/<Method>/<variant>/`（方法名保留官方大小写），填 `record.json` 并运行：
 
 ```bash
 python comparison/build_catalog.py
