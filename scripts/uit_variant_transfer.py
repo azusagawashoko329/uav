@@ -153,6 +153,7 @@ def copy_efficiency(vid: str, out: Path, exp: Path) -> dict | None:
     shutil.copyfile(da_bench, bench_out)
     bench = json.loads(bench_out.read_text())
     bench['benchmark_source'] = str(bench_out.relative_to(ROOT))
+    bench['da_adapted'] = False
     bench['auc_source'] = str(exp.relative_to(ROOT)) + ' (seed42, 45ep UIT)'
     write_json(bench_out, bench)
     src = dict(src)
@@ -179,6 +180,11 @@ def archive_one(exp: Path, run_id: str, dry_run: bool) -> Path:
     expected = cfg['resources']['expected_trainable_parameters']
     if int(metric['trainable_parameters']) != int(expected):
         raise RuntimeError(f'{exp}: parameter mismatch {metric["trainable_parameters"]} != {expected}')
+    required_ckpts = ['ckpt/uit_final.pth'] + [f'ckpt/uit_epoch{ep}.pth'
+                                                for ep in cfg['training']['checkpoint_epochs']]
+    missing = [rel for rel in required_ckpts if not (exp / rel).is_file()]
+    if missing:
+        raise RuntimeError(f'{exp}: missing checkpoints: {missing}')
     summary = build_summary(cfg, metric, vid, label)
     out = ROOT / 'comparison/uit/ours' / vid
     print(f'[{label} {vid}] {exp.name} -> {out.relative_to(ROOT)}  '
