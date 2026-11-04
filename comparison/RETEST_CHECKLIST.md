@@ -1,9 +1,9 @@
 # 逐方法待重测清单（v2）
 
 > **2026-11-04 执行结果**：Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted 6-frame)、LightViT-AD、
-> MADViT Full、ST Dissoc.、ASTT、DAD-FSM 已完成 v2 正式测量（50 warmup + 3×500），
+> MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 已完成 v2 正式测量（50 warmup + 3×500），
 > 见 [da/comparison_summary.md](da/comparison_summary.md) §3 与 [da/v2_validation.md](da/v2_validation.md)。
-> MADViT Multi/Last 代码无变体，保持 paper-only；HSTforU/Future Frame/MLEP/adVAE 仍 `blocked`。
+> Future Frame / MLEP 为 TF1 `partial/unverified`（params/FLOPs 有，GPU latency 未按协议完成）；adVAE 仍 `blocked`。
 
 ## 0. 全局准入（所有方法共用）
 
@@ -93,19 +93,19 @@
 
 | 方法 | 当前状态 | 结果/限制 |
 |---|---|---|
-| Future Frame | blocked | TensorFlow 1.x + FlowNet2 权重缺失，当前 TF2.20 不兼容 |
+| Future Frame | partial/unverified | TF1 graph 已建：7.704M / 74.476G；官方权重链接失效，GPU latency 受 TF1 CUDA10 限制 |
 | ST Dissoc. | measured | 60.612G / 3.668ms / 269.7 FPS@BS1；`padding=False→0` 兼容修正 |
-| MLEP | blocked | TensorFlow 1.x（`tf.contrib`），当前 TF2.20 不兼容 |
+| MLEP | partial/unverified | TF1 graph 已建：12.561M / 319.513G；GPU latency 受 TF1 CUDA10 限制 |
 | ASTT | measured | STE-TTE：109.416G / 19.048ms / 52.2 FPS@BS1；无 checkpoint |
 | DAD-FSM | measured | 71.194G / 12.684ms / 78.5 FPS@BS1；RGB+分割双流，ResNet50 随机初始化 |
-| HSTforU | blocked | 缺 `mmcv`（`mmcv.cnn`/`runner`），模型无法构造 |
-| MADViT Full | measured | code default：38.533G / 11.744ms / 79.8 FPS@BS1 |
-| MADViT Multi-layer / Last-layer | paper-only | 代码没有变体开关；只有全层+token 的默认路径，不能复用 Full 数字 |
+| HSTforU | measured | 168.209G / 64.258ms / 15.5 FPS@BS1；mmcv-lite 2.x + 兼容 shim |
+| MADViT Full | measured | code default：38.533G / 11.525ms / 83.9 FPS@BS1 |
+| MADViT Multi-layer / Last-layer | measured (adapted scoring) | 按论文 Sec. 4.4：Multi=全层 feature only；Last=final token only；同一前向图 |
 | LightViT-AD | measured | 3.753G / 6.519ms / 148.8 FPS@BS1；teacher 冻结、student 可训练 |
 
 - [x] 已测方法都有输入 H×W×T、T/K/stride、权重状态、AUC 来源和 benchmark JSON
 - [x] MADViT 三变体已核对：代码只实现 Full-like 路径；Multi/Last 保持 paper-only
-- [ ] HSTforU/Future Frame/MLEP/adVAE 仍待依赖/代码；未适配前不填估计值
+- [ ] Future Frame/MLEP 的 TF1 GPU latency 待解决；adVAE 仍待视频实现
 
 ## 8. Paper-only 方法（不重测，单独表）
 

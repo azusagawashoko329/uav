@@ -284,12 +284,74 @@ def _dadfsm(out_path):
     return model, lambda inp: model(inp), (x1, x16), meta
 
 
+def _install_mmcv_shims():
+    """HSTforU uses mmcv 1.x APIs; mmcv-lite 2.x lacks runner/parrots/UPSAMPLE_LAYERS."""
+    import mmcv.cnn as cnn
+    class Registry:
+        def register_module(self, *a, **k):
+            def deco(cls):
+                return cls
+            return deco
+    if not hasattr(cnn, 'UPSAMPLE_LAYERS'):
+        cnn.UPSAMPLE_LAYERS = Registry()
+    runner = types.ModuleType('mmcv.runner')
+    runner.load_checkpoint = lambda *a, **k: None
+    sys.modules['mmcv.runner'] = runner
+    parrots = types.ModuleType('mmcv.utils.parrots_wrapper')
+    parrots._BatchNorm = torch.nn.modules.batchnorm._BatchNorm
+    sys.modules['mmcv.utils.parrots_wrapper'] = parrots
+
+
+def _hstforu(out_path):
+    _install_mmcv_shims()
+    repo = CLONE / 'HSTforU/HSTforU'
+    sys.path.insert(0, str(repo))
+    from models.dec import dec_618_1_unet as dec
+    if not getattr(dec, '_v2_shimmed', False):
+        def _build(cfg, **kw):
+            if cfg.get('type') == 'DeconvModule':
+                return dec.DeconvModule(kw['in_channels'], kw['out_channels'],
+                                        norm_cfg=kw.get('norm_cfg'),
+                                        act_cfg=kw.get('act_cfg'))
+            return dec.build_upsample_layer(cfg=cfg, **kw)
+        dec.build_upsample_layer = _build
+        dec._v2_shimmed = True
+    from models.HSTforU_Avenue import AnomalyDetection
+    base = AnomalyDetection(None, None, is_trained=False).cuda().eval()
+
+    class HST(nn.Module):
+        def __init__(self, m):
+            super().__init__()
+            self.m = m
+
+        def forward(self, frames):
+            out = self.m(frames)
+            return F.mse_loss(out, torch.zeros_like(out))
+
+    model = HST(base).cuda().eval()
+    p = sum(p.numel() for p in model.parameters())
+    meta = _meta(
+        'HSTforU', 'Avenue', '256x256x4', 4, 1, 1, 1.0,
+        p / 1e6, p / 1e6, 0.0, 0.0,
+        git_commit(CLONE / 'HSTforU'),
+        'random init (no checkpoint)',
+        'user table / HSTforU paper',
+        'Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, '
+        'one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for '
+        'mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint.',
+        out_path, adapted=True)
+    x1 = [torch.randn(1, 3, 256, 256, device='cuda') for _ in range(4)]
+    x16 = [torch.randn(16, 3, 256, 256, device='cuda') for _ in range(4)]
+    return model, lambda frames: model(frames), (x1, x16), meta
+
+
 BUILDERS = {
     'lightvit': (_lightvit, OUT / 'LightViT-AD/default'),
     'madvit': (_madvit, OUT / 'MADViT/Full'),
     'st': (_st_dissoc, OUT / 'ST Dissoc./default'),
     'astt': (_astt, OUT / 'ASTT/default'),
     'dadfsm': (_dadfsm, OUT / 'DAD-FSM/default'),
+    'hstforu': (_hstforu, OUT / 'HSTforU/default'),
 }
 
 

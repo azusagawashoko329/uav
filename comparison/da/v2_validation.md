@@ -37,8 +37,13 @@
 | ST Dissoc. | 1×15×256×256 | **60.611887104G** | 45 模块 | 0 | 60.646413312G | conv 0% |
 | ASTT (STE-TTE) | 1×4×3×384×384 | **109.415536640G** | 64 模块 | 0 | 105.638578944G | attention/ConvTranspose 盲区；matmul 0% |
 | DAD-FSM | 1×4×3×224×224 ×2 流 | **71.193985024G** | 78 模块 | 0 | 71.044112386G | ConvTranspose 盲区；matmul 0% |
+| HSTforU (Avenue) | 4×3×256×256 | **168.209416192G** | 216 模块 | 0 | 144.628441088G | attention/ConvTranspose 盲区；matmul 0% |
+| Future Frame | 4×3×256×256 | **74.476028824G** | — | — | 74.476028824G (TF1) | TF1 profiler；GPU latency 未测 |
+| MLEP | 4×3×224×224 | **319.512526355G** | — | — | 319.512526355G (TF1) | TF1 profiler；GPU latency 未测 |
 
 ANDT 的适配方式是 `de_dense(feat[:,0])` 预测下一帧（发布代码 decoder 只支持 1 帧），因此这一行是 **adapted**，不是 official；详见 [ANDT/default/README.md](ANDT/default/README.md)。
+
+MADViT Full / Multi-layer / Last-layer 共享同一 teacher+student 前向图；FLOPs 都是 38.533G，差异只在 scoring（论文 Sec. 4.4）：Full=全层 feature+token，Multi=全层 feature only，Last=final token only。
 
 DINOv3 teacher 的融合 Attention 还做了独立公式核对：12 blocks × `4·L²·E`（L=261 tokens，E=768）= **2,511,212,544 FLOPs**，与计数器 `aten._scaled_dot_product_efficient_attention` 完全一致。
 
@@ -47,7 +52,7 @@ DINOv3 teacher 的融合 Attention 还做了独立公式核对：12 blocks × `4
 - GANomaly 的 v1 10.952G 只覆盖 Conv2d/Linear，**漏了反卷积**；v2 16.428G 与实际 G 推理图一致。
 - MemAE 的 v1 0.065664G/帧 ×16 = 1.050624G 只覆盖 memory 的 matmul，**漏了全部 3D 卷积/反卷积**；v2 全窗口 70.808G。
 - GLoRD V0 的 v1 90.205G 漏了 student native MHA；v2 95.107G，与 2026-10-26 独立审计的 95.1067648G 一致。
-- 上述所有模型的手写模块与主计数器误差均为 0；没有 `hand_only` 模块；`flops_ops_missing=[]`，`flops_verified=true`。
+- 除 TF1 的 Future Frame/MLEP 外，上述模型的手写模块与主计数器误差均为 0；没有 `hand_only` 模块；`flops_ops_missing=[]`，`flops_verified=true`。Future Frame/MLEP 的 FLOPs 来自 TF1 profiler，标 `partial/unverified`。
 - Profiler 总数只作参考，**没有**用于 Full FLOPs 验收；这避免了 MemAE 这类正确结果被不完整 profiler 判失败。
 
 ## 4. 正式测量
@@ -67,31 +72,38 @@ python comparison/benchmarks/bench_v2_andt.py
 
 CUDA_VISIBLE_DEVICES=GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6 \
 python comparison/benchmarks/bench_v2_extra.py --method lightvit
-# ... --method madvit / st / astt / dadfsm
+# ... --method madvit / st / astt / dadfsm / hstforu
+
+CUDA_VISIBLE_DEVICES=GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6 \
+python comparison/benchmarks/bench_v2_madvit_variants.py
 ```
 
 - ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1 / 197.5 FPS@BS16；不是官方代码。
-- 额外方法：LightViT-AD 3.753G/6.519ms/148.8 FPS；MADViT Full 38.533G/11.744ms/79.8 FPS；ST Dissoc. 60.612G/3.668ms/269.7 FPS；ASTT 109.416G/19.048ms/52.2 FPS；DAD-FSM 71.194G/12.684ms/78.5 FPS。
+- 额外方法：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/3.668ms/269.7 FPS；ASTT 109.416G/19.048ms/52.2 FPS；DAD-FSM 71.194G/12.684ms/78.5 FPS；HSTforU 168.209G/64.258ms/15.5 FPS。
+- MADViT 三变体（同一前向图）：Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。Multi/Last 为按论文 Sec. 4.4 改 scoring 的 adapted reconstruction。
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
 - 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
 - 汇总见 [comparison_summary.md](comparison_summary.md) §3。
 
-## 5. 仍 blocked 的方法（代码/依赖不完整）
+## 5. 依赖/代码限制（HSTforU 已解，其他仍 blocked）
 
-- **HSTforU**：模型代码存在，但 `models/enc/enc_615_1_pvt2.py` 和 `models/dec/dec_618_1_unet.py` 依赖 `mmcv`（`mmcv.runner`、`mmcv.cnn.ConvModule`、`UPSAMPLE_LAYERS`）；当前环境 `import mmcv` 失败，无法构造模型，保持 `blocked`。
-- **Future Frame**：TensorFlow 1.x 代码（`tf.contrib`、`tf.train.Saver`），依赖 FlowNet2（`flownet-SD.ckpt-0`）且仓库未带权重；当前 TensorFlow 2.20 不兼容，保持 `blocked`。
-- **MLEP**：TensorFlow 1.x 代码（`tf.contrib.layers`），当前 TensorFlow 2.20 不兼容，保持 `blocked`。
+- **HSTforU**：已用 `mmcv-lite 2.x` + 兼容 shim（`mmcv.runner`、`parrots_wrapper`、`UPSAMPLE_LAYERS`）构造 Avenue/PVT2-b2 模型并完成测量；不再是 blocked。
+- **Future Frame**：TF1.15 环境已建，generator 图可构建并得到 7.704M / 74.476G；官方 FlowNet2/checkpoint 下载链接失效（OneDrive 301/401、AWS 404），且 TF1 CUDA10 在 5880 上的 GPU session 无法按协议完成 latency，标 `partial/unverified`。
+- **MLEP**：TF1.15 环境已建，`cyclegan_convlstm` 图可构建并得到 12.561M / 319.513G；GPU latency 同样受 TF1 CUDA10 限制，标 `partial/unverified`。
 - **adVAE**：官方仓库是表格/向量版，不是 DA 视频模型，保持 `blocked`。
 
 ### 5.1 MADViT 变体核对
 
 `MADViT/code/train_val_VIT_Distillation.py` 只有一条评分路径：`multi_layer_distillation_loss` 对全部 12 个 teacher/student skip connection 做 cosine loss，再加 CLS/DIST token KL loss。代码里没有 Full / Multi-layer / Last-layer 参数或层选择开关。
 
-因此：
+论文 PDF（本地 `Comparison method/MADViT/...pdf`）Sec. 4.4 的定义：
 
-- `MADViT Full`：用代码默认路径实测（`MADViT/Full/benchmark_v2.json`）；
-- `MADViT Multi-layer` / `Last-layer`：论文/用户表消融标签，代码未实现，**不复用 Full 的效率数字**；效率留空，AUC 仍引用用户表。
+- `Full`：全层 feature loss + final CLS/DIST token loss（代码默认路径）；
+- `Multi-layer`：只做全层 feature loss，不做 token loss；
+- `Last-layer`：只监督 final CLS/DIST token（token loss only）。
+
+因此 Multi-layer / Last-layer 是用同一 teacher+student 前向图、只替换 scoring 的 **adapted reconstruction**，在 `bench_v2_madvit_variants.py` 中实现；结果标 adapted，不冒充代码原生变体。
 
 ## 6. 复现坑（已修复，保留记录）
 

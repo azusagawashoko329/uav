@@ -1,7 +1,7 @@
 # 轻量化对比协议 v2（DA 主表）
 
 - **版本**：v2，2026-11-04。
-- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted)、LightViT-AD、MADViT Full、ST Dissoc.、ASTT、DAD-FSM 完成正式测量；MADViT Multi/Last 无代码变体、HSTforU/Future Frame/MLEP/adVAE 仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
+- **状态**：v2 已对 Ours V0–V5、GANomaly、MemAE、MKD、ANDT(adapted)、LightViT-AD、MADViT Full/Multi-layer/Last-layer、ST Dissoc.、ASTT、DAD-FSM、HSTforU 完成正式测量；Future Frame/MLEP 为 `partial/unverified`（params/FLOPs 有，GPU latency 未完成）；adVAE 仍 `blocked`。本文件定义口径，结果见 [da/comparison_summary.md](da/comparison_summary.md) 与 [da/v2_validation.md](da/v2_validation.md)。
 - **v1 数据**：已归到各方法目录的 `legacy_v1/`（Ours 在 `comparison/da/ours/legacy_v1/`，外部方法在 `<Method>/default/legacy_v1/`）与 `experiments/da/audit/20261026_lightweight_profile_fp32_s42/`，全部原样归档，只作历史记录；清单和哈希见 [da/LEGACY_v1.md](da/LEGACY_v1.md)，逐条改动见 [protocol_change_log.md](protocol_change_log.md)。
 - **正式主表**：[da/comparison_summary.md](da/comparison_summary.md)。v2 重测完成前，数字留空或标 `partial/unverified` / `blocked` / `paper-only`，不得把 v1 数字当正式对比结果。
 
@@ -273,7 +273,8 @@ v2 用同一计算图（teacher 12 taps、同一 scoring）、手写 92 个模�
 - **MKD**：v2 已按原方法 taps 6/9/12 做多层特征评分；FLOPs=10.477G，P50=2.495ms。
 - **GANomaly**：v2 已按 G 的完整推理图（含 ConvTranspose2d）重测；FLOPs=16.428G，D 仍为 training-only。
 - **LightViT-AD / MADViT Full / ST Dissoc. / ASTT / DAD-FSM**：已按 v2 完成测量（结果在各自目录的 `benchmark_v2.json`）；MADViT Multi-layer/Last-layer 代码未实现，保持 `paper-only`。
-- **HSTforU / Future Frame / MLEP**：代码或依赖不完整（HSTforU 缺 `mmcv`；Future Frame/MLEP 为 TF1 代码），保持 `blocked`。
+- **HSTforU**：已用 mmcv-lite 2.x + 兼容 shim（runner/parrots/UPSAMPLE_LAYERS）完成测量：168.209G / 64.258ms / 15.5 FPS@BS1。
+- **Future Frame / MLEP**：TF1 代码；已在 `uav_tf1` 环境构建推理图并得到 params/FLOPs（Future Frame 7.704M/74.476G；MLEP 12.561M/319.513G），但官方权重链接失效、TF1 CUDA10 在 5880 的 GPU latency 无法按协议完成，标 `partial/unverified`。
 - **DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE**：只有用户表数字，`paper-only`，不参与本机速度排序。
 
 逐方法的“要改什么、要确认什么、当前状态”见 [RETEST_CHECKLIST.md](RETEST_CHECKLIST.md)。

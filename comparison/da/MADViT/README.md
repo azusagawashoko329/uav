@@ -1,4 +1,4 @@
-# MADViT 变体核对
+# MADViT 变体核对与实现
 
 本地代码 `/data1/data8tb/liangyuxuan/Comparison method/MADViT/`（HEAD `a1d1732`）**没有** Full / Multi-layer / Last-layer 三种可切换实现。
 
@@ -17,14 +17,28 @@ def multi_layer_distillation_loss(teacher_feats, teacher_token, student_feats, s
 - 评估时调用同一个 `multi_layer_distillation_loss`；
 - 没有 `full/multi/last` 参数、没有层选择开关、没有三个 checkpoint 目录。
 
-因此代码默认路径最接近表格里的 **Full**（全层 feature + token），但不能把它当成 Multi-layer / Last-layer 的实现。
+## 论文定义（Sec. 4.4）
 
-## 三个表格标签怎么处理
+论文 PDF 的 ablation 对三个变体给了明确定义：
 
-| 表格标签 | AUC 来源 | 效率 |
+| 变体 | 论文定义 | 实现 |
 |---|---|---|
-| MADViT Full | 用户表/论文 | 代码默认路径实测：38.533G / 11.744ms / 79.8 FPS@BS1；结果在 `Full/benchmark_v2.json` |
-| MADViT Multi-layer | 用户表/论文 | **代码未实现**；不把 Full 的数字复用到这一行，效率留空 |
-| MADViT Last-layer | 用户表/论文 | **代码未实现**；效率留空 |
+| Full | 全层 feature loss + final CLS/DIST token loss | 代码默认 `multi_layer_distillation_loss` |
+| Multi-layer | 只做全层 feature loss，不做 token loss | adapted scoring：12 层 cosine，无 KL |
+| Last-layer | 只监督 final CLS/DIST token（token loss only） | adapted scoring：只做 KL，无 feature loss |
 
-如果后续要补 Multi-layer / Last-layer 的效率，需要先明确论文对这两者的精确定义（用哪些层、是否保留 token loss），再写 adapted scoring；不能仅改一个不存在的 flag。
+三个变体共享**同一个 teacher+student 前向图**，只改评分函数。因此：
+
+- `inference_params` / `training_trainable` / `FLOPs` 相同；
+- latency 会因 scoring 略有差异；
+- Full 是代码原路径，Multi-layer / Last-layer 是按论文定义重建的 scoring，标 **adapted**。
+
+## 测量结果
+
+| 变体 | FLOPs | P50 | FPS@BS1 | FPS@BS16 | 文件 |
+|---|---:|---:|---:|---:|---|
+| Full | 38.533G | 11.525ms | 83.9 | 444.0 | `Full/benchmark_v2.json` |
+| Multi-layer | 38.533G | 11.130ms | 88.9 | 432.2 | `Multi-layer/benchmark_v2.json` |
+| Last-layer | 38.533G | 9.467ms | 103.5 | 430.2 | `Last-layer/benchmark_v2.json` |
+
+> 三者共享同一 teacher+student 前向图，所以 FLOPs/params 相同；P50/FPS 的差异只来自 scoring 函数。所有结果都按 v2 协议（50 warmup + 3×500）测量。

@@ -276,7 +276,12 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 | MKD | 10.477 | 2.495 | 394.5 | 2340.8 |
 | ANDT adapted 6-frame | 74.490 | 5.015 | 199.4 | 197.5 |
 | LightViT-AD | 3.753 | 6.519 | 148.8 | 2438.6 |
-| MADViT Full (code default) | 38.533 | 11.744 | 79.8 | 436.9 |
+| MADViT Full (code default) | 38.533 | 11.525 | 83.9 | 444.0 |
+| MADViT Multi-layer (adapted scoring) | 38.533 | 11.130 | 88.9 | 432.2 |
+| MADViT Last-layer (adapted scoring) | 38.533 | 9.467 | 103.5 | 430.2 |
+| HSTforU (Avenue/PVT2-b2) | 168.209 | 64.258 | 15.5 | 71.0 |
+| Future Frame (partial) | 74.476 | — | — | — |
+| MLEP (partial) | 319.513 | — | — | — |
 | ST Dissoc. | 60.612 | 3.668 | 269.7 | 288.2 |
 | ASTT (STE-TTE) | 109.416 | 19.048 | 52.2 | 146.6 |
 | DAD-FSM | 71.194 | 12.684 | 78.5 | 195.6 |
@@ -290,10 +295,12 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 额外方法限制：
 
 - LightViT-AD：teacher 冻结、student 可训练；benchmark 用随机初始化，无 checkpoint。
-- MADViT：代码只有一条 all-layer + token 评分路径，标 `Full (code default)`；Multi-layer/Last-layer 无代码开关，保持 `paper-only`。
+- MADViT：代码只有一条 all-layer + token 评分路径；Full 是代码默认，Multi-layer/Last-layer 按论文 Sec. 4.4 用同一前向图替换 scoring 重建，标 adapted。
 - ST Dissoc.：`padding=False` 在现代 PyTorch 下按 0 处理；输入 5 帧拼接为 15 通道。
 - ASTT：测的是 `model_ste_tte.py`（STE-TTE），384×384×4，无 checkpoint。
 - DAD-FSM：RGB + 分割双流，ResNet50 预训练权重未带，随机初始化；FLOPs/latency 与权重无关。
+- HSTforU：Avenue/PVT2-b2；mmcv-lite 2.x 缺 mmcv 1.x runner/parrots/UPSAMPLE_LAYERS，使用兼容 shim；4 帧输入，MSE scoring。
+- Future Frame / MLEP：TF1.15 CPU profiler 得到 FLOPs；官方权重链接失效/无 checkpoint；TF1 CUDA10 在 5880 的 GPU session 无法按协议完成 latency，标 partial/unverified。
 
 已解决/关闭：
 
@@ -305,5 +312,5 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 
 仍未完成：
 
-- 官方 ANDT 6 帧 decoder、HSTforU（缺 mmcv）、Future Frame（TF1/FlowNet2）、MLEP（TF1）、adVAE（表格版）保持 `blocked`。
+- 官方 ANDT 6 帧 decoder、adVAE（表格版）保持 `blocked`；HSTforU 已用 mmcv-lite 2.x + 兼容 shim 完成测量；Future Frame/MLEP 已建 TF1 图并得到 params/FLOPs，但 GPU latency 受 TF1 CUDA10 限制，标 `partial/unverified`。
 - DwCVAE/CVAE/DCVAE/SCVAE/CLSTMVAE 保持 `paper-only`。

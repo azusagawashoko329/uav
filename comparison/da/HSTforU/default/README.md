@@ -1,0 +1,32 @@
+# HSTforU（v2 实测，mmcv-lite 兼容层）
+
+- 代码：`/data1/data8tb/liangyuxuan/Comparison method/HSTforU/`（HEAD `9548473`）。
+- 变体：Avenue/PVT2-b2（`models/HSTforU_Avenue.py`），PVT2 encoder + TimeSformer + UNet decoder。
+- 输入：4 帧 `256×256` RGB；输出下一帧；`T=4, K=1, stride=1`。
+- 权重：random init（无官方 checkpoint）；FLOPs/latency 与权重无关。
+
+## 依赖处理
+
+HSTforU 代码使用 mmcv 1.x API，但当前 Python 3.13 环境只能装 `mmcv-lite 2.2.0`。已加兼容 shim：
+
+- `mmcv.runner.load_checkpoint`：no-op（不加载 checkpoint）；
+- `mmcv.utils.parrots_wrapper._BatchNorm`：映射到 `torch.nn.modules.batchnorm._BatchNorm`；
+- `mmcv.cnn.UPSAMPLE_LAYERS`：轻量 registry；
+- `build_upsample_layer`：`DeconvModule` 直接实例化。
+
+这是**适配层**，不是上游 mmcv 1.x 原环境；结果标 `adapted`，与原版环境可能有细微差异。
+
+## 实测（RTX 5880 Ada，FP32，50 warmup + 3×500）
+
+| 项 | 值 |
+|---|---:|
+| Inference / Trainable Params | 148.970M / 148.970M |
+| FLOPs | 168.209G / output score |
+| Latency@BS1 P50 | 64.258ms |
+| FPS@BS1 | 15.5 |
+| FPS@BS16 | 71.0 |
+| FLOPs verified | yes（手写 216 模块误差 0；profiler matmul 0%） |
+
+- 结果：`comparison/da/HSTforU/default/benchmark_v2.json`
+- benchmark：`comparison/benchmarks/bench_v2_extra.py --method hstforu`
+- AUC 仍引用用户表/论文的 66.96，不把这里的效率数字当成官方 AUC 配置。

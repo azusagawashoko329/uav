@@ -19,5 +19,46 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned locally; DA adaptation, protocol alignment and run pending."
+  "notes": "v2 partial: params/FLOPs profiled; GPU latency blocked by TF1 CUDA10 on RTX 5880; no checkpoint.",
+  "efficiency": {
+    "status": "partial/unverified",
+    "input_hwt": "256x256x4",
+    "code_commit": "9e0f161b8d5f1f46556e116577a5596405798343",
+    "weights_state": "random init (official checkpoint unavailable)",
+    "da_adapted": false,
+    "auc_source": "user table / paper (DA-adapted baseline)",
+    "profiling_config": "TF1.15 CPU graph profiler for FLOPs; GPU latency blocked by TF1 CUDA10 kernels on RTX 5880",
+    "inference_params_m": 7.704195,
+    "training_trainable_params_m": 7.704195,
+    "training_only_params_m": 0.0,
+    "frozen_inference_params_m": 0.0,
+    "flops_g_per_output_frame": 74.476028824,
+    "flops_window_g": 74.476028824,
+    "flops_verified": false,
+    "flops_counter": "TensorFlow 1.15 profiler float_operation (CPU graph)",
+    "flops_ops_covered": [
+      "TF1 graph ops (Conv2D, Conv2DBackpropInput, MatMul, ConvLSTM)"
+    ],
+    "flops_ops_missing": [
+      "TF1 profiler is not cross-checked by the v2 operator counter"
+    ],
+    "flops_common_subset_check": "not applicable: TF1 graph",
+    "flops_duplicate_check": "not applicable: TF1 graph",
+    "latency_bs1_p50_ms_per_output_frame": null,
+    "latency_bs1_mean_ms_per_output_frame": null,
+    "latency_bs1_p95_ms_per_output_frame": null,
+    "fps_bs1": null,
+    "fps_bs16": null,
+    "input_frames_t": 4,
+    "effective_output_scores_k": 1,
+    "window_stride": 1,
+    "window_latency_ms": null,
+    "fps_independent_window": null,
+    "score_density": 1.0,
+    "frame_coverage": 1.0,
+    "fps_stream_estimated": null,
+    "fps_stream_measured": null,
+    "benchmark_source": "comparison/da/Future Frame/default/benchmark_v2.json",
+    "notes": "TF1 graph built and profiled on CPU for params/FLOPs. GPU latency could not be completed: TF1.15 CUDA10/cuDNN7 kernels on RTX 5880 either stall or are not protocol-valid. No official checkpoint. Do not use a CPU/partial latency as the main-table value."
+  }
 }

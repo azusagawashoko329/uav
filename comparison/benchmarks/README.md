@@ -11,7 +11,9 @@ v2 已实现：
 - `bench_v2_ours.py`：六个 Ours 变体。
 - `bench_v2_external.py`：GANomaly / MemAE / MKD。
 - `bench_v2_andt.py`：ANDT adapted 6-frame（适配器在 `comparison/da/ANDT/default/scripts/`）。
-- `bench_v2_extra.py`：LightViT-AD / MADViT Full / ST Dissoc. / ASTT(STE-TTE) / DAD-FSM。
+- `bench_v2_extra.py`：LightViT-AD / MADViT Full / ST Dissoc. / ASTT(STE-TTE) / DAD-FSM / HSTforU。
+- `bench_v2_madvit_variants.py`：MADViT Full / Multi-layer / Last-layer（论文 Sec. 4.4 的 scoring 变体）。
+- `bench_tf1_extra.py`：Future Frame / MLEP（TF1.15，FLOPs 标 partial/unverified）。
 
 结果写在对应方法/变体目录里：
 
@@ -23,10 +25,15 @@ comparison/da/MemAE/default/benchmark_v2.json
 comparison/da/MKD/default/benchmark_v2.json
 comparison/da/ANDT/default/benchmark_v2.json   # adapted 6-frame
 comparison/da/LightViT-AD/default/benchmark_v2.json
-comparison/da/MADViT/Full/benchmark_v2.json    # code default only
+comparison/da/MADViT/Full/benchmark_v2.json
+comparison/da/MADViT/Multi-layer/benchmark_v2.json
+comparison/da/MADViT/Last-layer/benchmark_v2.json
 comparison/da/ST Dissoc./default/benchmark_v2.json
 comparison/da/ASTT/default/benchmark_v2.json
 comparison/da/DAD-FSM/default/benchmark_v2.json
+comparison/da/HSTforU/default/benchmark_v2.json
+comparison/da/Future Frame/default/benchmark_v2.json
+comparison/da/MLEP/default/benchmark_v2.json
 ```
 
 ## 1. 输出文件命名
