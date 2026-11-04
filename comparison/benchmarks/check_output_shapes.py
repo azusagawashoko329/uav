@@ -70,6 +70,21 @@ def run_one(name):
         _check(name, fn, x1, x16, model)
         return
 
+    if name == 'ours':
+        from bench_v2_ours import OursModel
+        from model import build_appearance_teacher
+        from scripts.da_variant_runner import VARIANT_SPECS
+        from scripts.uit_appearance_runner import build_variant
+        vid = 'rd_s4_t12_h512'
+        spec = VARIANT_SPECS[vid]
+        teacher = build_appearance_teacher(layers=list(range(12))).cuda().eval()
+        ocbe, student = build_variant({'variant': spec['builder'], 'seed': 42}, 42)
+        model = OursModel(teacher, ocbe.cuda().eval(), student.cuda().eval(), spec['taps']).cuda().eval()
+        x1 = torch.randn(1, 3, 256, 256, device='cuda')
+        x16 = torch.randn(16, 3, 256, 256, device='cuda')
+        _check(name, lambda x: model(x), x1, x16, model)
+        return
+
     if name == 'andt_adapted':
         sys.path.insert(0, str(ROOT / 'comparison/da/ANDT/default/scripts'))
         from andt_adapted_model import build_adapted_andt
@@ -96,7 +111,7 @@ def main():
     p.add_argument('--only', required=True,
                    choices=['ganomaly', 'memae', 'mkd', 'lightvit', 'madvit',
                             'astt', 'hstforu', 'st_scored', 'dad_scored',
-                            'andt_adapted'])
+                            'andt_adapted', 'ours'])
     args = p.parse_args()
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
