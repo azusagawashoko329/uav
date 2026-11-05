@@ -177,7 +177,7 @@ MLEP 的 BS16 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 和 batc
 | MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **11.957ms / 84.1 / 74.3** |
 | DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE（per-sample [B]） | **17.032ms / 58.3 / 293.7** |
 
-- MLEP 的 scored BS16 未完成（长时 run 被停止），只写 BS1；不能用 prediction-only 的 75.5 冒充 scored BS16。
+- MLEP 的 scored BS16 已完成（74.3 FPS）；prediction-only 的 75.5 仅作对照，不能冒充 scored BS16。
 - 评分 elementwise 运算不计入 MAC-based FLOPs；DAD 的分割图仍是离线预计算，不含分割生成。
 - 用于计时的 target 是**同形状随机张量，不是真实数据标签**；这只衡量相同形状评分图的计算量。
 - **BS16 A/B**：同卡 old/scored 交替 3 轮（`fairness_bs16_ab.json`）得 ST 426.6 vs 422.2 FPS、DAD 280.8 vs 280.7 FPS；两者差 ≤1%，说明评分图不是 BS16 差异来源。旧 JSON 的 288.2/195.6 是低时钟 run，scored 的 452.3/293.7 与本轮 A/B 的差属 run-to-run 时钟差异；BS16 引用需带运行条件。
