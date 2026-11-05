@@ -1,16 +1,16 @@
-# rd_s4_t12_gl768_h512 (V2) — DA 30ep seed42
+# V2 `rd_s4_t12_gl768_h512`：DA 30 epoch（matched score）
 
-- status: `completed`
-- scenes: 7/7
-- macro AUC: 85.3707
-- macro EER: 0.1932
+- macro AUC: 85.2147
+- macro EER: 0.1965
+- scoring: V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean).
+- original top-k results: results_legacy_topk/
 
-| scene | AUC | EER | frames | positives |
-|---|---:|---:|---:|---:|
-| bike | 97.6475 | 0.0467 | 18427 | 12022 |
-| crossroads | 63.0526 | 0.4198 | 6244 | 1687 |
-| farmland | 99.2187 | 0.0650 | 2387 | 80 |
-| highway | 95.8580 | 0.1365 | 2820 | 497 |
-| railway | 93.9081 | 0.1057 | 882 | 68 |
-| solar | 90.0914 | 0.1665 | 2450 | 792 |
-| vehicle | 57.8189 | 0.4120 | 2633 | 973 |
+| scene | AUC | EER |
+|---|---:|---:|
+| bike | 97.7002 | 0.0459 |
+| crossroads | 61.5545 | 0.4332 |
+| farmland | 99.4576 | 0.0550 |
+| highway | 94.9450 | 0.1593 |
+| railway | 95.4762 | 0.1069 |
+| solar | 89.7237 | 0.1683 |
+| vehicle | 57.6453 | 0.4066 |

@@ -48,6 +48,29 @@ def anomaly_score(teacher_taps, student_recons, k=5):
     return score / len(teacher_taps)
 
 
+def matched_score(teacher_taps, student_recons, k=5, alpha=0.5):
+    """Per-sample score matching the training objective in scripts/uit_appearance_runner.loss_for.
+
+    V0 (4 taps): mean over taps of the per-tap top-k mean.
+    V1-V5 (12 taps): four adjacent triplets; each triplet score is
+        0.5 * mean_tap(per-tap top-k mean) + 0.5 * max_tap(per-tap top-k mean),
+    then mean over the four groups.  Returns (B,).
+    """
+    per = []
+    for A, Ahat in zip(teacher_taps, student_recons):
+        d = _per_patch_cosine_dist(A, Ahat)
+        per.append(d.topk(k, dim=-1).values.mean(-1))
+    n = len(per)
+    if n == 4:
+        return torch.stack(per, dim=1).mean(dim=1)
+    if n % 3 == 0:
+        groups = torch.stack(per, dim=1).reshape(per[0].size(0), n // 3, 3)
+        avg = groups.mean(-1)
+        worst = groups.max(-1).values
+        return (avg + alpha * (worst - avg)).mean(dim=1)
+    raise ValueError(f'matched_score expects 4 or 3k taps, got {n}')
+
+
 @torch.no_grad()
 def anomaly_readouts(teacher_taps, student_recons, k=5):
     """Per-frame scores under several read-outs of the reconstruction discrepancy (each averaged over

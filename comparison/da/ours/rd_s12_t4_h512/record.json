@@ -31,15 +31,15 @@
     "notes": "12-block plain; teacher taps [5,7,9,11]; tap-mean top5 loss."
   },
   "results": {
-    "macro_auc": 84.79158580747718,
-    "macro_eer": 0.2028773819337196,
+    "macro_auc": 84.79157216977458,
+    "macro_eer": 0.20283277392658233,
     "per_scene": {
       "bike": {
-        "auc": 98.05165029867828,
-        "eer": 0.042310694769711166
+        "auc": 98.05156133869068,
+        "eer": 0.041998438719750196
       },
       "crossroads": {
-        "auc": 58.80852675697504,
+        "auc": 58.80852025304453,
         "eer": 0.4290103138029405
       },
       "farmland": {
@@ -59,14 +59,14 @@
         "eer": 0.1779252110977081
       },
       "vehicle": {
-        "auc": 60.246505033494714,
+        "auc": 60.24650503349472,
         "eer": 0.41445783132530123
       }
     },
     "summary": "results/summary.json",
     "source_results": "experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42/results/"
   },
-  "notes": "Comparison view of V0; raw experiment: experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md.",
+  "notes": "Comparison view of V0; raw experiment: experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md. Scoring corrected to the training-matched group-balanced top-k objective; original top-k results remain in the raw experiment legacy directory.",
   "efficiency": {
     "status": "measured",
     "input_hwt": "256x256x1",

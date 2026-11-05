@@ -6,13 +6,10 @@
   "scene": "solar",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 89.42150698785197,
-  "eer": 0.18395657418576597,
+  "auc_percent": 89.41960314849338,
+  "eer": 0.18033775633293125,
   "frames": 2450,
   "positive_frames": 792,
-  "train_frames": 2848,
-  "test_videos": 3,
-  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
   "trainable_parameters": 40258880,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 738.0360337549937,
-  "max_steps": 0,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
   "checkpoint": "ckpt/solar_final.pth",
   "checkpoint_sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246",
-  "cuda": "NVIDIA RTX A6000"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 89.42150698785197,
+    "eer": 0.18395657418576597,
+    "scoring": "legacy_topk_mean"
+  }
 }

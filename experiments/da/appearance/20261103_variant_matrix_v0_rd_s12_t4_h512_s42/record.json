@@ -69,7 +69,8 @@
         "ckpt/solar_final.pth",
         "results/vehicle.json",
         "results/vehicle_scores.csv",
-        "ckpt/vehicle_final.pth"
+        "ckpt/vehicle_final.pth",
+        "results_legacy_topk/summary.json"
       ],
       "notes": "completed_scenes=7/7; failures=0"
     }
@@ -81,6 +82,17 @@
     "AUC/EER do not directly optimize training loss",
     "behavior branch excluded",
     "V0 uses teacher taps [5,7,9,11] and tap-mean top5; V1-V5 use 12 taps and group-balanced top5",
-    "DA Student12 GL12 is a different 12-block topology, not V2"
-  ]
+    "DA Student12 GL12 is a different 12-block topology, not V2",
+    "AUC/EER corrected to training-matched score; original top-k results retained under results_legacy_topk/"
+  ],
+  "scoring_correction": {
+    "reason": "training used group-balanced top-k loss; old evaluation used mean-over-taps top-k readout",
+    "old_scoring": "legacy_mean_over_taps_topk",
+    "new_scoring": "matched_group_balanced_top5",
+    "old_summary": "results_legacy_topk/summary.json",
+    "old_macro_auc": 84.79158580747718,
+    "old_macro_eer": 0.2028773819337196,
+    "new_macro_auc": 84.79157216977458,
+    "new_macro_eer": 0.20283277392658233
+  }
 }

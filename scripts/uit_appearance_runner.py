@@ -19,7 +19,7 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms as T
 
-from model import anomaly_readouts, build_appearance_teacher, build_bottleneck
+from model import build_appearance_teacher, build_bottleneck, matched_score
 from model.bottleneck_depthrank_learnable import build_learnable_depthrank2_bottleneck
 from model.student import Block, StudentDecoder
 from model.student_structural import FourBlockGlobalLocalDecoder
@@ -90,20 +90,8 @@ def manifest(root):
 
 
 def loss_for(taps, recons, k=5, alpha=0.5):
-    per = []
-    for a, b in zip(taps, recons):
-        d = 1 - F.cosine_similarity(a, b, dim=-1)
-        per.append(d.topk(k, dim=-1).values.mean(-1))
-    # Historical 12-block baseline uses four taps [5,7,9,11] and the original
-    # tap-mean top-k loss. The lightweight 4-block variants use all 12 taps,
-    # grouped as four adjacent teacher triplets with the group-balanced loss.
-    if len(per) == 4:
-        return torch.stack(per, dim=1).mean()
-    if len(per) != 12:
-        raise ValueError(f'expected either 4 historical taps or 12 grouped taps, got {len(per)}')
-    groups = torch.stack(per, dim=1).reshape(-1, 4, 3)
-    avg, worst = groups.mean(-1), groups.max(-1).values
-    return (avg + alpha * (worst - avg)).mean()
+    """Training loss, exactly the batch mean of the matched per-sample score."""
+    return matched_score(taps, recons, k=k, alpha=alpha).mean()
 
 
 def build_variant(cfg, seed):
@@ -171,7 +159,7 @@ def evaluate(teacher, ocbe, student, test_dirs, tf, device, out_csv, batch):
             xb = xb.to(device, non_blocking=True)
             taps = teacher(xb)['patches']
             rec = student(ocbe(taps))
-            vid_scores.extend(anomaly_readouts(taps, rec, k=5)['topk'].cpu().tolist())
+            vid_scores.extend(matched_score(taps, rec, k=5).cpu().tolist())
         for path, label, score in zip(paths, y, vid_scores):
             rows.append((video.name, path.name, int(label), float(score)))
         scores.extend(vid_scores); labels.extend(y.tolist())

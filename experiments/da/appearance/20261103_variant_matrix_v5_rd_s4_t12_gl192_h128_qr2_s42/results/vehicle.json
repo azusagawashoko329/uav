@@ -6,13 +6,10 @@
   "scene": "vehicle",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 56.25218241929693,
-  "eer": 0.42771084337349397,
+  "auc_percent": 60.37813122995579,
+  "eer": 0.38373493975903616,
   "frames": 2633,
   "positive_frames": 973,
-  "train_frames": 5266,
-  "test_videos": 2,
-  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
   "trainable_parameters": 3761222,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 836.5477939679986,
-  "max_steps": 0,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
   "checkpoint": "ckpt/vehicle_final.pth",
   "checkpoint_sha256": "c46744766297dcffc0f1e9f20b662cb509bfd37e42e08af9d03fb83195fcb8d3",
-  "cuda": "NVIDIA RTX A6000"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 56.25218241929693,
+    "eer": 0.42771084337349397,
+    "scoring": "legacy_topk_mean"
+  }
 }

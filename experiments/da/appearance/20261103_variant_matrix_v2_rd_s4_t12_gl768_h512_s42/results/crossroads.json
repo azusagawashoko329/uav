@@ -6,13 +6,10 @@
   "scene": "crossroads",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 63.052562555128944,
-  "eer": 0.41979372394118936,
+  "auc_percent": 61.55452524624205,
+  "eer": 0.43317972350230416,
   "frames": 6244,
   "positive_frames": 1687,
-  "train_frames": 15772,
-  "test_videos": 5,
-  "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
   "trainable_parameters": 30248000,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 2691.7805104829604,
-  "max_steps": 0,
+  "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
   "checkpoint": "ckpt/crossroads_final.pth",
   "checkpoint_sha256": "56fab3bebd788ba5b3dfe8d6721d74e57fc965a90d1ee85baccc3bc144f191bf",
-  "cuda": "NVIDIA RTX 5880 Ada Generation"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 63.052562555128944,
+    "eer": 0.41979372394118936,
+    "scoring": "legacy_topk_mean"
+  }
 }

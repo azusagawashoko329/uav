@@ -10,9 +10,6 @@
   "eer": 0.052882531426094496,
   "frames": 2387,
   "positive_frames": 80,
-  "train_frames": 9548,
-  "test_videos": 1,
-  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
   "trainable_parameters": 89079104,
   "teacher_taps": [
     5,
@@ -20,9 +17,14 @@
     9,
     11
   ],
-  "elapsed_s": 3858.8023090350325,
-  "max_steps": 0,
+  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
   "checkpoint": "ckpt/farmland_final.pth",
   "checkpoint_sha256": "60e51de06a7051498f8cd9696df70c66062f57dc7a326851df45f8fdcc5130a9",
-  "cuda": "NVIDIA RTX A6000"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 99.42295188556567,
+    "eer": 0.052882531426094496,
+    "scoring": "legacy_topk_mean"
+  }
 }

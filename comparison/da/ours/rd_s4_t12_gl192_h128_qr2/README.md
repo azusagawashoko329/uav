@@ -10,16 +10,16 @@
 
 ## 结果
 
-macro AUC：**84.0137**　macro EER：**0.2021**
+macro AUC：**84.6233**　macro EER：**0.1970**
 
 | scene | AUC | EER |
 |---|---:|---:|
-| bike | 97.6828 | 0.0454 |
-| crossroads | 62.2490 | 0.4178 |
-| farmland | 99.3211 | 0.0629 |
-| highway | 94.8856 | 0.1322 |
-| railway | 90.5261 | 0.1314 |
-| solar | 87.1792 | 0.1972 |
-| vehicle | 56.2522 | 0.4277 |
+| bike | 97.8152 | 0.0432 |
+| crossroads | 60.4277 | 0.4345 |
+| farmland | 99.5703 | 0.0485 |
+| highway | 94.4218 | 0.1528 |
+| railway | 92.1990 | 0.1229 |
+| solar | 87.5511 | 0.1936 |
+| vehicle | 60.3781 | 0.3837 |
 
 完整逐帧分数与 checkpoint 以原始实验目录为准；本条目只复制 `results/summary.{json,md}`。

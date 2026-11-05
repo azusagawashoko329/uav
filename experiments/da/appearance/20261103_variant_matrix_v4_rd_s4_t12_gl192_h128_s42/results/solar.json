@@ -6,13 +6,10 @@
   "scene": "solar",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 86.17843087083135,
-  "eer": 0.19360675512665862,
+  "auc_percent": 86.58227327557846,
+  "eer": 0.1942098914354644,
   "frames": 2450,
   "positive_frames": 792,
-  "train_frames": 2848,
-  "test_videos": 3,
-  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
   "trainable_parameters": 4154432,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 351.82802270399407,
-  "max_steps": 0,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
   "checkpoint": "ckpt/solar_final.pth",
   "checkpoint_sha256": "1f9a0428f2d5210a7b2ed0b0df5b42e5820556bf6db699dac684f1a392bdf3ec",
-  "cuda": "NVIDIA RTX 5880 Ada Generation"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 86.17843087083135,
+    "eer": 0.19360675512665862,
+    "scoring": "legacy_topk_mean"
+  }
 }

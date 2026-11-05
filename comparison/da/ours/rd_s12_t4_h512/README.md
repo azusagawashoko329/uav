@@ -10,11 +10,11 @@
 
 ## 结果
 
-macro AUC：**84.7916**　macro EER：**0.2029**
+macro AUC：**84.7916**　macro EER：**0.2028**
 
 | scene | AUC | EER |
 |---|---:|---:|
-| bike | 98.0517 | 0.0423 |
+| bike | 98.0516 | 0.0420 |
 | crossroads | 58.8085 | 0.4290 |
 | farmland | 99.4230 | 0.0529 |
 | highway | 93.1645 | 0.2040 |

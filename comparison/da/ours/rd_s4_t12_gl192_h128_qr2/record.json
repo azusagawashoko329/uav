@@ -31,42 +31,42 @@
     "notes": "GL192; OCBE fuse_hidden=128; 12 teacher taps; learnable rank-2 Q (random orthonormal init); group-balanced top5 loss (alpha=0.5)."
   },
   "results": {
-    "macro_auc": 84.01371987810137,
-    "macro_eer": 0.20209241805594544,
+    "macro_auc": 84.6233259671992,
+    "macro_eer": 0.19704331247770882,
     "per_scene": {
       "bike": {
-        "auc": 97.68282219002347,
-        "eer": 0.04543325526932084
+        "auc": 97.81516283378988,
+        "eer": 0.04324746291959407
       },
       "crossroads": {
-        "auc": 62.248988931480966,
-        "eer": 0.41781874039938555
+        "auc": 60.42769977180309,
+        "eer": 0.43449637919684003
       },
       "farmland": {
-        "auc": 99.32108799306458,
-        "eer": 0.06285218899003034
+        "auc": 99.57032943216298,
+        "eer": 0.04854789770264413
       },
       "highway": {
-        "auc": 94.88562888307027,
-        "eer": 0.13215669393026258
+        "auc": 94.42180417849328,
+        "eer": 0.15281962978906585
       },
       "railway": {
-        "auc": 90.52608758491111,
-        "eer": 0.13144963144963145
+        "auc": 92.19901719901719,
+        "eer": 0.12285012285012285
       },
       "solar": {
-        "auc": 87.17924114486237,
-        "eer": 0.19722557297949336
+        "auc": 87.5511371251721,
+        "eer": 0.19360675512665862
       },
       "vehicle": {
-        "auc": 56.25218241929693,
-        "eer": 0.42771084337349397
+        "auc": 60.37813122995579,
+        "eer": 0.38373493975903616
       }
     },
     "summary": "results/summary.json",
     "source_results": "experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/results/"
   },
-  "notes": "Comparison view of V5; raw experiment: experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md.",
+  "notes": "Comparison view of V5; raw experiment: experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42. Data audit: experiments/da/appearance/20261103_variant_matrix_data_audit.md. Scoring corrected to the training-matched group-balanced top-k objective; original top-k results remain in the raw experiment legacy directory.",
   "efficiency": {
     "status": "measured",
     "input_hwt": "256x256x1",

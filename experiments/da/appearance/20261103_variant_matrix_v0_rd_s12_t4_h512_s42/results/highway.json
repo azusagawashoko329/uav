@@ -10,9 +10,6 @@
   "eer": 0.2040464916056823,
   "frames": 2820,
   "positive_frames": 497,
-  "train_frames": 9045,
-  "test_videos": 3,
-  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
   "trainable_parameters": 89079104,
   "teacher_taps": [
     5,
@@ -20,9 +17,14 @@
     9,
     11
   ],
-  "elapsed_s": 2897.86693557899,
-  "max_steps": 0,
+  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
   "checkpoint": "ckpt/highway_final.pth",
   "checkpoint_sha256": "19c0e00d73108f2fd6f2f591d45f9ccbdc65a1225a9640536aff87318e627be3",
-  "cuda": "NVIDIA RTX 5880 Ada Generation"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 93.16449709882197,
+    "eer": 0.2040464916056823,
+    "scoring": "legacy_topk_mean"
+  }
 }

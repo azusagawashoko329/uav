@@ -10,12 +10,12 @@
 
 | ID | 方法 | 变体 | 状态 | 轻量化 | macro AUC | macro EER | 来源 |
 |---|---|---|---|---|---:|---:|---|
-| [da-ours-rd_s12_t4_h512](da/ours/rd_s12_t4_h512/README.md) | ours | `rd_s12_t4_h512` | `completed` | `measured` | 84.7916 | 0.2029 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42) |
-| [da-ours-rd_s4_t12_h512](da/ours/rd_s4_t12_h512/README.md) | ours | `rd_s4_t12_h512` | `completed` | `measured` | 84.9435 | 0.2011 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42) |
-| [da-ours-rd_s4_t12_gl768_h512](da/ours/rd_s4_t12_gl768_h512/README.md) | ours | `rd_s4_t12_gl768_h512` | `completed` | `measured` | 85.3707 | 0.1932 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42) |
-| [da-ours-rd_s4_t12_gl192_h512](da/ours/rd_s4_t12_gl192_h512/README.md) | ours | `rd_s4_t12_gl192_h512` | `completed` | `measured` | 84.0864 | 0.1992 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42) |
-| [da-ours-rd_s4_t12_gl192_h128](da/ours/rd_s4_t12_gl192_h128/README.md) | ours | `rd_s4_t12_gl192_h128` | `completed` | `measured` | 83.9186 | 0.2024 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42) |
-| [da-ours-rd_s4_t12_gl192_h128_qr2](da/ours/rd_s4_t12_gl192_h128_qr2/README.md) | ours | `rd_s4_t12_gl192_h128_qr2` | `completed` | `measured` | 84.0137 | 0.2021 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42) |
+| [da-ours-rd_s12_t4_h512](da/ours/rd_s12_t4_h512/README.md) | ours | `rd_s12_t4_h512` | `completed` | `measured` | 84.7916 | 0.2028 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42) |
+| [da-ours-rd_s4_t12_h512](da/ours/rd_s4_t12_h512/README.md) | ours | `rd_s4_t12_h512` | `completed` | `measured` | 85.1314 | 0.2031 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42) |
+| [da-ours-rd_s4_t12_gl768_h512](da/ours/rd_s4_t12_gl768_h512/README.md) | ours | `rd_s4_t12_gl768_h512` | `completed` | `measured` | 85.2147 | 0.1965 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42) |
+| [da-ours-rd_s4_t12_gl192_h512](da/ours/rd_s4_t12_gl192_h512/README.md) | ours | `rd_s4_t12_gl192_h512` | `completed` | `measured` | 84.2137 | 0.2001 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42) |
+| [da-ours-rd_s4_t12_gl192_h128](da/ours/rd_s4_t12_gl192_h128/README.md) | ours | `rd_s4_t12_gl192_h128` | `completed` | `measured` | 83.9925 | 0.2029 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42) |
+| [da-ours-rd_s4_t12_gl192_h128_qr2](da/ours/rd_s4_t12_gl192_h128_qr2/README.md) | ours | `rd_s4_t12_gl192_h128_qr2` | `completed` | `measured` | 84.6233 | 0.1970 | [experiment](../experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42) |
 | [da-adVAE-default](da/adVAE/default/README.md) | adVAE | `default` | `planned` | — | — | — | [upstream](https://github.com/WangXuhongCN/adVAE.git) |
 | [da-GANomaly-default](da/GANomaly/default/record.json) | GANomaly | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/samet-akcay/ganomaly.git) |
 | [da-MemAE-default](da/MemAE/default/record.json) | MemAE | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/donggong1/memae-anomaly-detection.git) |

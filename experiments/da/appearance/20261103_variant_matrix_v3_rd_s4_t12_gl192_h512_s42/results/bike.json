@@ -6,13 +6,10 @@
   "scene": "bike",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 97.65654912389996,
-  "eer": 0.04527712724434036,
+  "auc_percent": 97.79887731196943,
+  "eer": 0.04402810304449649,
   "frames": 18427,
   "positive_frames": 12022,
-  "train_frames": 7950,
-  "test_videos": 7,
-  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
   "trainable_parameters": 7718336,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 1313.7457758319797,
-  "max_steps": 0,
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
   "checkpoint": "ckpt/bike_final.pth",
   "checkpoint_sha256": "afa07481d81497b9497d12d47df40bf6352524afc091c9a58a043c58423a4e6f",
-  "cuda": "NVIDIA RTX A6000"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 97.65654912389996,
+    "eer": 0.04527712724434036,
+    "scoring": "legacy_topk_mean"
+  }
 }

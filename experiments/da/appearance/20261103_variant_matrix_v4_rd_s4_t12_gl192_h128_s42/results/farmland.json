@@ -6,13 +6,10 @@
   "scene": "farmland",
   "seed": 42,
   "epochs": 30,
-  "auc_percent": 99.12982228001734,
-  "eer": 0.0775899436497616,
+  "auc_percent": 99.48797139141743,
+  "eer": 0.054182921543129606,
   "frames": 2387,
   "positive_frames": 80,
-  "train_frames": 9548,
-  "test_videos": 1,
-  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
   "trainable_parameters": 4154432,
   "teacher_taps": [
     0,
@@ -28,9 +25,14 @@
     10,
     11
   ],
-  "elapsed_s": 1095.1930053420365,
-  "max_steps": 0,
+  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
   "checkpoint": "ckpt/farmland_final.pth",
   "checkpoint_sha256": "9de8fc13f652d5cae6e58dc5202348cad9aa6bc7eb03e425ba6c20c0fb8e77c4",
-  "cuda": "NVIDIA RTX 5880 Ada Generation"
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 99.12982228001734,
+    "eer": 0.0775899436497616,
+    "scoring": "legacy_topk_mean"
+  }
 }

@@ -27,7 +27,7 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms as T
 
-from model import anomaly_readouts, build_appearance_teacher
+from model import build_appearance_teacher, matched_score
 from scripts.uit_appearance_runner import build_variant, loss_for
 
 SCENES = {
@@ -129,7 +129,7 @@ def evaluate(teacher, ocbe, student, scene_dir, videos, tf, device, out_csv, bat
             xb = xb.to(device, non_blocking=True)
             taps = teacher(xb)['patches']
             rec = student(ocbe(taps))
-            vid_scores.extend(anomaly_readouts(taps, rec, k=5)['topk'].cpu().tolist())
+            vid_scores.extend(matched_score(taps, rec, k=5).cpu().tolist())
         for path, label, score in zip(paths, y, vid_scores):
             rows.append((str(video.relative_to(scene_dir)), path.name, int(label), float(score)))
         scores.extend(vid_scores)
