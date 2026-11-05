@@ -69,6 +69,10 @@ def main():
         'training_only_params_m': 0.0,
         'frozen_inference_params_m': 0.0,
         'benchmark_source': str(out_path.relative_to(ROOT)),
+        'output_shape_bs1': '[1]',
+        'output_shape_bs16': '[16]',
+        'scores_per_sample': 1,
+        'batch_output_aggregated': False,
         'notes': (
             'ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only '
             'supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one '
@@ -81,7 +85,7 @@ def main():
 
     def fn(x):
         out = model(x)
-        return F.mse_loss(out, torch.zeros_like(out))
+        return out.flatten(1).pow(2).mean(dim=1)
 
     result = measure(fn, model, x1, x16, meta,
                      run_profiler=not args.no_profiler)

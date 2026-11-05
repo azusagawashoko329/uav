@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 adapted benchmark measured (BS1 only; BS16 is a batch scalar and invalid); status partial/unverified; DA AUC adaptation/run still pending. paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv).",
+  "notes": "Upstream cloned; official 6-frame decoder still unavailable. v2 adapted benchmark measured (BS1/BS16 per-sample); status partial/unverified; DA AUC adaptation/run still pending. paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv).",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "256x256x6",
@@ -48,21 +48,21 @@
     "flops_ops_missing": [],
     "flops_common_subset_check": "hand-vs-counter: 16 modules, max_rel_diff=0.000000; counter-only modules=25; profiler common categories=['matmul'], max_rel_diff=0.000000; skipped=['conv(profiler_blind_spot)']",
     "flops_duplicate_check": "single dispatch path; module hooks and counter are separate passes",
-    "latency_bs1_p50_ms_per_output_frame": 5.0147730216849595,
-    "latency_bs1_mean_ms_per_output_frame": 5.0146270395101356,
-    "latency_bs1_p95_ms_per_output_frame": 5.162373010534793,
-    "fps_bs1": 199.41662502934358,
-    "fps_bs16": null,
+    "latency_bs1_p50_ms_per_output_frame": 4.908850503852591,
+    "latency_bs1_mean_ms_per_output_frame": 4.907058086129837,
+    "latency_bs1_p95_ms_per_output_frame": 5.003171041607857,
+    "fps_bs1": 203.78809104106065,
+    "fps_bs16": 200.50801575040293,
     "input_frames_t": 6,
     "effective_output_scores_k": 1,
     "window_stride": 1,
-    "window_latency_ms": 5.0146270395101356,
-    "fps_independent_window": 199.41662502934358,
+    "window_latency_ms": 4.907058086129837,
+    "fps_independent_window": 203.78809104106065,
     "score_density": 1.0,
     "frame_coverage": 1.0,
     "fps_stream_estimated": 199.41662502934358,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/ANDT/default/benchmark_v2.json",
-    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv). BS16 raw timing existed but the scoring function returns one batch-aggregate scalar (output_shape_bs16=\"[] scalar\"), so per-sample FPS@BS16 is invalid and set to null; BS1 is valid. This row is reference-only, not paper-matched. paper_matched=false; reference-only."
+    "notes": "ADAPTED 6-frame variant, not the authors official code. Upstream Decoder.forward only supports 1 frame; this uses de_dense(feat[:,0]) -> 256x16x16 -> decoder to predict one next frame. T=6, K=1, stride=1; frame_coverage ~1.0 excluding the first 5 frames. No official checkpoint; FLOPs/latency are weight-independent; forward includes MSE scoring. | adapted 6-frame; MSE scoring included paper_matched=false: decoder is a de_dense reconstruction, not the paper decoder (2 FC -> 8x8x512 + 5 conv). paper_matched=false; reference-only. MSE-to-zero now per-sample; BS16 is valid. Adapted decoder still not paper-matched. Per-sample scoring; BS16 valid. This row remains reference-only, not paper-matched."
   }
 }

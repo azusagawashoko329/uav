@@ -27,10 +27,10 @@
 | [da-ASTT-default](da/ASTT/default/README.md) | ASTT | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/Tungufm/ASTT.git) |
 | [da-DAD-FSM-default](da/DAD-FSM/default/README.md) | DAD-FSM | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/AhmedFakhry47/DAD-FSM.git) |
 | [da-HSTforU-default](da/HSTforU/default/README.md) | HSTforU | `default` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/vt-le/HSTforU.git) |
-| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Full](da/MADViT/Full/record.json) | MADViT | `Full` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
 | [da-MADViT-Full-paper](da/MADViT/Full-paper/record.json) | MADViT | `Full-paper` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
-| [da-MADViT-Multi-layer](da/MADViT/Multi-layer/record.json) | MADViT | `Multi-layer` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
-| [da-MADViT-Last-layer](da/MADViT/Last-layer/record.json) | MADViT | `Last-layer` | `planned` | `partial/unverified` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Multi-layer](da/MADViT/Multi-layer/record.json) | MADViT | `Multi-layer` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
+| [da-MADViT-Last-layer](da/MADViT/Last-layer/record.json) | MADViT | `Last-layer` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/MAD-ViT.git) |
 | [da-LightViT-AD-default](da/LightViT-AD/default/record.json) | LightViT-AD | `default` | `planned` | `measured` | — | — | [upstream](https://github.com/manojbalwant/lightvit-ad.git) |
 
 ## uit

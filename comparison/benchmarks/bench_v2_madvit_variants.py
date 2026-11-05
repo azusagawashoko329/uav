@@ -3,16 +3,15 @@
 
 The cloned repo has no variant switch. We keep the same teacher+student
 forward and change only the scoring function:
-  Full        : repo default multi_layer_distillation_loss. NOTE: the repo
-                computes feature_loss but returns token_loss only.
+  Full        : repo default token-only path, decomposed per sample for BS16.
   Full-paper  : paper Sec. 5.4 Full score = mean-layer feature loss +
-                final CLS/DIST token KL, returned per sample [B]. This is
-                the corrected paper-Full scoring graph.
-  Multi-layer : all 12 feature losses, no token KL (reconstructed, scalar)
-  Last-layer  : final CLS/DIST token KL only (reconstructed, scalar)
+                final CLS/DIST token KL, returned per sample [B].
+  Multi-layer : all 12 per-patch feature losses, no token KL, per sample [B].
+  Last-layer  : final CLS/DIST token KL only, per sample [B].
 
 Multi-layer / Last-layer share the same forward graph and are reconstructed
 from the paper ablation; they are reference-only, not formal reproductions.
+All modes return one score per sample.
 """
 from __future__ import annotations
 
@@ -93,15 +92,16 @@ class MADVariant(nn.Module):
         t_feats, t_tok = self.teacher(x)
         s_feats, s_tok = self.student(x)
         if self.mode == 'Full':
-            return self._full_loss(t_feats, t_tok, s_feats, s_tok)
+            # Repo default returns token_loss only; decompose the same KL per sample.
+            return self._token_loss_per_sample(t_tok, s_tok)
         if self.mode == 'Full-paper':
             return (self._feature_loss_per_sample(t_feats, s_feats) +
                     self._token_loss_per_sample(t_tok, s_tok))
         if self.mode == 'Multi-layer':
-            return self._feature_loss(t_feats, s_feats)
+            return self._feature_loss_per_sample(t_feats, s_feats)
         if self.mode == 'Last-layer':
             # Paper Sec. 5.4: "Last-layer tokens only" = final CLS/DIST token loss only.
-            return self._token_loss(t_tok, s_tok)
+            return self._token_loss_per_sample(t_tok, s_tok)
         raise ValueError(self.mode)
 
 
@@ -111,6 +111,7 @@ def main():
                    help='default only writes the new Full-paper variant; pass others explicitly')
     p.add_argument('--no-profiler', action='store_true')
     p.add_argument('--smoke', action='store_true')
+    p.add_argument('--output-name', default='benchmark_v2.json')
     args = p.parse_args()
 
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -138,7 +139,7 @@ def main():
         return
 
     for mode in args.modes:
-        out_path = OUT / mode / 'benchmark_v2.json'
+        out_path = OUT / mode / args.output_name
         model = MADVariant(teacher, student, mod, mode).cuda().eval()
         meta = {
             'method': 'MADViT',
@@ -162,19 +163,18 @@ def main():
             'benchmark_source': str(out_path.relative_to(ROOT)),
             'notes': (
                 ('Paper Sec. 5.4 Full scoring: per-patch (1 - cosine), mean over patches, then '
-                 'mean over 12 layers + T^2/2 * sum of CLS/DIST KL; per-sample [B]. The repo default Full '
-                 'returns token loss only and is kept separately as repo-default.'
+                 'mean over 12 layers + T^2/2 * sum of CLS/DIST KL; per-sample [B].'
                  if mode == 'Full-paper' else
-                 'Repo-default Full: calls multi_layer_distillation_loss, which computes '
-                 'feature_loss but returns token_loss only; batch scalar, reference-only.'
+                 'Repo-default Full: multi_layer_distillation_loss returns token_loss only; '
+                 'the same KL is decomposed per sample for BS16. reference-only, not paper Full.'
                  if mode == 'Full' else
-                 f'Reconstructed {mode} scoring from paper Sec. 5.4; batch scalar, '
+                 f'Reconstructed {mode} scoring from paper Sec. 5.4; per-sample [B]; '
                  'reference-only, not a formal reproduction.')
             ),
-            'output_shape_bs1': '[1]' if mode == 'Full-paper' else '[] scalar',
-            'output_shape_bs16': '[16]' if mode == 'Full-paper' else '[] scalar',
-            'scores_per_sample': 1 if mode == 'Full-paper' else None,
-            'batch_output_aggregated': mode != 'Full-paper',
+            'output_shape_bs1': '[1]',
+            'output_shape_bs16': '[16]',
+            'scores_per_sample': 1,
+            'batch_output_aggregated': False,
             'paper_matched': mode == 'Full-paper',
             'paper_matched_note': (
                 'paper Sec. 5.4 scoring and official DeiT teacher/student graph; '

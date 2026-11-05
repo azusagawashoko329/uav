@@ -30,14 +30,14 @@
 | ANDT | 6 帧 + `de_dense(feat[:,0])` | **适配** | `MSE-to-zero` 代理，不是 target MSE | **未确认** | 保持 adapted；官方 decoder 需重测 |
 | Future Frame | G only + PSNR | 官方 G | 完整（score-inclusive PSNR） | 推理结构匹配；DA `LAM_ADV` 未确认 | 需脚注（D/LAM_ADV） |
 | ST Dissoc. | stage E + official `loss_map`/reciprocal | 官方 stage E | 完整（score-inclusive） | 结构匹配 | 可用于主表（scored；旧 forward-only 保留） |
-| MLEP | prediction net + PSNR | 官方 prednet | 完整（score-inclusive PSNR, BS1） | 推理结构匹配 | 需脚注（BS16 未测） |
+| MLEP | prediction net + PSNR | 官方 prednet | 完整（score-inclusive PSNR） | 推理结构匹配 | 需脚注（TF2 adapted） |
 | ASTT | `model_ste_tte`，148.220M | **未确认，且很可能不是 DA 模型** | `MSE-to-zero` 代理 | **否/未确认** | **暂不可用，需重测** |
 | DAD-FSM | detector + target-seg MSE | 官方 detector | 完整（score-inclusive target MSE） | 分割图是离线预计算 | 需脚注（precomputed seg） |
 | HSTforU | Avenue/PVT2-b2 | **未确认**（repo 无 DA config） | `MSE-to-zero` 代理，不是 PSNR | **未确认** | 需脚注；DA 配置需重测 |
-| MADViT Full（repo-default） | code default，实际 token-only | **code bug** | batch scalar | 否 | reference-only；Full-paper 另列 |
+| MADViT Full（repo-default） | code default，实际 token-only | **code bug** | per-sample token KL | 否 | reference-only；Full-paper 另列 |
 | MADViT Full-paper | 论文 Sec. 5.4，per-sample `[B]` | 官方 DeiT 图 | 完整（feature+token） | 是（图/评分；权重 random） | **可用于主表**（权重脚注） |
-| MADViT Multi-layer | 共享前向，只改 scoring | **reconstructed** | 重建 scoring（batch scalar） | 论文变体未提供独立权重/开关 | reference-only（reconstructed） |
-| MADViT Last-layer | 共享前向，只改 scoring | **reconstructed** | 重建 scoring（batch scalar） | 同上 | reference-only（reconstructed） |
+| MADViT Multi-layer | 共享前向，只改 scoring | **reconstructed** | 重建 per-sample scoring | 论文变体未提供独立权重/开关 | reference-only（reconstructed） |
+| MADViT Last-layer | 共享前向，只改 scoring | **reconstructed** | 重建 per-sample scoring | 同上 | reference-only（reconstructed） |
 | LightViT-AD | teacher+6-block student，224 | 官方 config | 完整（token MSE） | 是（drone_anomaly.yaml 224） | 可用于主表（随机权重脚注） |
 | adVAE | 无 DA 视频实现 | — | — | — | blocked |
 | CVAE 系列 | 无本机实现 | — | — | — | paper-only |
@@ -68,8 +68,8 @@
 - `inference.py` 中 `outputs, features, _ = prednet(...)`，随后 `psnr_tensor = psnr_error(outputs, frame_gts)`；官方评分是预测帧与 GT 下一帧的 PSNR（`utils/util.py:psnr_error`）。
 - 旧 benchmark 只到 prediction net 输出，是 **Prediction-only**；没有 target、没有 PSNR。
 - `train_scripts/train_normal_annotation.py` 只优化 generator（`g_vars` 仅 generator），没有额外训练分支；Training Trainable = 12.561M，Training-only = 0 与代码一致。
-- 已补 score-inclusive PSNR（`benchmark_v2_scored.json`）：12.525ms / 79.6 FPS@BS1；target 是同形状随机张量（**不是真实标签**）。scored BS16 长时 run 被停止、未测，不能用 prediction-only 75.5 冒充。
-- 判定：推理结构官方一致；scored BS1 完整，BS16 未测。
+- 已补 score-inclusive PSNR（`benchmark_v2_scored.json`）：11.957ms / 84.1 FPS@BS1 / 74.3 FPS@BS16；target 是同形状随机张量（**不是真实标签**）。
+- 判定：推理结构官方一致；scored BS1/BS16 完整（BS16 74.3 FPS）。
 
 ### 2.3 ANDT（P0）
 
@@ -83,7 +83,7 @@
 - `config.py` 的 `--num-frames` 默认是 **1**；论文/用户表使用 6 帧，但 repo 没有 DA 的六帧配置文件，六帧是通过命令行假设的。
 - 论文 *Anomaly Detection in Aerial Videos with Transformers*（arXiv:2209.13363）明确写：decoder 先用 **两个 FC 层**把特征升到 **8×8×512**，再用 **5 层卷积/上采样**渐进重建 **256×256×3** 下一帧；6 个输入帧是最佳设置。
   本地 active 代码的 `x.view(x.size(0),256,16,16)` 和 `de_dense`（单层 `768→256*16*16`）都不是论文的 `8×8×512` 两 FC 路径；`de_dense(feat[:,0])` 只是能跑通的一种适配，**不能证明与论文 decoder 等价**。
-- 判定：**适配结构 + 评分代理**，不是官方 ANDT 效率；保持 `adapted`，不能与官方 6 帧 AUC 直接联合。当前 70.347M / 74.490G / 5.015ms 只能作 adapted 参考；若要论文 decoder，需按 `8×8×512 → 5 conv/upsample` 重建并重测。
+- 判定：**适配结构 + 评分代理**，不是官方 ANDT 效率；保持 `adapted`，不能与官方 6 帧 AUC 直接联合。当前 70.347M / 74.490G / 4.909ms / 203.8 FPS@BS1 / 200.5 FPS@BS16 只能作 adapted 参考；若要论文 decoder，需按 `8×8×512 → 5 conv/upsample` 重建并重测。
 
 ### 2.4 ASTT（P0，重点）
 
@@ -103,7 +103,7 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
 - 输入 384×384×4 与 DA 脚本的 `image_size=384, num_frames=4` 一致；但 `model_ste_tte` 的 `timm vit_base_patch32_384` 是 patch 32，`model_original` 是 patch 16，结构不同。
 - 已把 `benchmark_v2.json` 的 `adapted` 改为 `true`、`measurement_status` 改为 `partial/unverified`，`variant` 标 `ste_tte (variant unconfirmed)`；这仍只是 STE-TTE 图，不是官方 ASTT。
 
-**判定**：**未确认，且很可能测错变体**。当前 ASTT 行（148.220M / 109.416G / 19.048ms，评分返回 batch 标量、BS16 无效）不能作为 DA ASTT 的正式效率；如果 AUC 对应原始 ASTT，应重测 `model_original`（63.068M）或确认 DA `model.py` 的实际内容。审计建议：**暂不可用/需重测**，至少先把 `adapted` 改为 `true` 并标 `variant_unconfirmed`。
+**判定**：**未确认，且很可能测错变体**。当前 ASTT 行（148.220M / 109.416G / 20.427ms / 49.3 / 148.1 FPS，per-sample MSE 代理）不能作为 DA ASTT 的正式效率；如果 AUC 对应原始 ASTT，应重测 `model_original`（63.068M）或确认 DA `model.py` 的实际内容。审计建议：**暂不可用/需重测**，至少先把 `adapted` 改为 `true` 并标 `variant_unconfirmed`。
 
 ### 2.5 ST Dissoc.（P0）
 
@@ -139,8 +139,8 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
   - token：`reduction='none'` 后对 class 求和，CLS/DIST 两项相加，乘 `T^2/2`，得到 `[B]`；
   - Full-paper = feature + token，返回 per-sample `[B]`，不再对 batch 取平均。
 - 结果为 **38.533G / 11.066ms / 90.1 FPS@BS1 / 457.6 FPS@BS16**，输出 `[1]`/`[16]`；FLOPs 与 repo-default 相同（评分是 elementwise/reduction，不计入 MAC-based 计数）。
-- repo-default `Full/` 保留原测量（batch 标量，BS16 无效），标 `repo-default / reference-only`，不与论文 Full AUC 配对。
-- Multi/Last 是 `bench_v2_madvit_variants.py` 的 **scoring-only reconstruction**：同一 teacher/student 前向，只替换 loss/scoring，且返回 batch 标量。它们是轻量化参考，**不作为正式复现结果**；没有为它们重训三套权重。
+- repo-default `Full/` 改用 per-sample token KL（BS16 433.5 FPS），标 `repo-default / reference-only`，不与论文 Full AUC 配对。
+- Multi/Last 是 `bench_v2_madvit_variants.py` 的 **scoring-only reconstruction**：同一 teacher/student 前向，只替换 loss/scoring，现已按 per-sample 返回 `[B]`（BS16 431.2 / 432.1）。它们是轻量化参考，**不作为正式复现结果**；没有为它们重训三套权重。
 
 判定：paper Full 的评分缺口已补，`Full-paper` 可与论文 Full 的效率讨论配对（权重仍 random init，AUC 不配对）；repo-default Full 只能作 token-only 参考；Multi/Last 为 `reconstructed/reference-only`，不进入正式排名。
 
@@ -152,7 +152,7 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
 - `bench_v2_extra.py` 里的 `mmcv.runner.load_checkpoint = lambda ...: None` 是 no-op；当前 `is_trained=False` 所以没有调用，但必须说明“结构-only、无权重”。
 - 官方 `test.py` 先 `output = model(frames)`，再对 `target` 计算 PSNR，并用 `anomaly_score` 做逐视频 min-max；当前 `_hstforu` 用 `F.mse_loss(out, zeros)`，既没有 target PSNR，也没有逐视频归一化。
 
-判定：**结构未确认（Avenue/PVT2-b2 是假设）**；评分代理且返回 **batch 标量**，BS16 per-sample FPS 无效（已置 `—`）；当前 148.970M / 168.209G / 64.258ms 只能作 Avenue 结构参考，不能自动称为 DA 论文配置。需脚注；DA config 需重测。
+判定：**结构未确认（Avenue/PVT2-b2 是假设）**；评分为 per-sample 代理，BS16 已可测（71.3 FPS）；当前 148.970M / 168.209G / 62.552ms 只能作 Avenue 结构参考，不能自动称为 DA 论文配置。需脚注；DA config 需重测。
 
 ### 2.9 MKD（P1）
 
@@ -204,20 +204,20 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
 | ANDT | 仅 adapted | 仅 adapted | 仅 adapted | decoder/评分不匹配 | **需脚注 + 需重测** |
 | Future Frame | 已修正 G+D | 可用（verified） | 可用（scored PSNR） | 推理 G 匹配；评分完整 | **需脚注**（D/LAM_ADV） |
 | ST Dissoc. | 可用 | 可用（scored） | 可用（scored） | 官方评分完整 | **可用于主表**（旧 forward-only 对照保留） |
-| MLEP | 可用 | 可用（scored PSNR, BS1） | 可用（scored BS1；BS16 未测） | 评分完整（BS1） | **需脚注**（BS16 未测） |
+| MLEP | 可用 | 可用（scored PSNR） | 可用（scored BS1/BS16） | 评分完整 | **需脚注**（TF2 adapted） |
 | ASTT | 当前是 STE-TTE 148M | 当前 STE-TTE | 当前 STE-TTE | 变体未确认，可能测错 | **暂不可用 / 需重测** |
 | DAD-FSM | detector 可用 | detector 可用（scored） | detector 可用（scored） | 分割图离线预计算；评分已补 | **需脚注**（precomputed seg） |
 | HSTforU | Avenue 结构 | Avenue 结构 | Avenue 结构 | DA config 未确认 | **需脚注 + 需重测** |
-| MADViT Full（repo-default） | 可用 | 可用（verified） | BS1 可用；BS16 标量无效 | code default 非 paper Full | **reference-only** |
+| MADViT Full（repo-default） | 可用 | 可用（verified） | 可用（per-sample） | code default 非 paper Full | **reference-only** |
 | MADViT Full-paper | 可用 | 可用（verified） | 可用（BS1/BS16 per-sample） | 论文 Sec. 5.4 评分 | **可用于主表**（权重脚注） |
-| MADViT Multi/Last | 共享前向 | 共享前向 | 共享前向（batch 标量） | reconstructed scoring | **reference-only**（不重训） |
+| MADViT Multi/Last | 共享前向 | 共享前向 | 共享前向（per-sample） | reconstructed scoring | **reference-only**（不重训） |
 | LightViT-AD | 可用 | 可用（verified） | 可用 | 官方 config 224 | **可用于主表**（随机权重脚注） |
 | adVAE | — | — | — | — | blocked |
 | CVAE 系列 | — | — | — | — | paper-only |
 
 图例：`需脚注` = 数字可展示但必须解释配置/评分；`需重测` = 当前图或评分与目标配置不一致；`暂不可用` = 变体未确认，不能当该方法的正式效率。
 
-注：`partial/unverified` 在这里表示“BS1 测速可用，但 BS16 不是 per-sample 分数、评分仍是代理，或 paper 配置未确认”；不是指 BS1 数字不可用。
+注：`partial/unverified` 在这里表示“评分仍是代理，或 paper 配置未确认”；BS1/BS16 均可为有效 per-sample 测速，但不是 official scoring。
 
 ## 4. 跨方法口径问题
 
@@ -227,9 +227,9 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
 
 1. **官方评分**：GANomaly latent MSE、MemAE reconstruction error、MKD cosine+MSE、LightViT token MSE、Ours top-k；MADViT repo-default Full 只返回 token loss，已另建 `Full-paper` 执行论文 Full 的 feature+token 评分。
 2. **已补 score-inclusive**：Future Frame、MLEP、ST Dissoc.、DAD-FSM 的 `benchmark_v2_scored.json` 执行官方 PSNR / loss_map+reciprocal / target MSE 图，输出 per-sample `[B]`。用于计时的 target 是**同形状随机张量，不是真实数据标签**，只衡量相同形状评分图的计算量。
-3. **仍是代理评分**：ANDT、ASTT、HSTforU 仍用 `F.mse_loss(out, zeros)` 或类似零目标产生 batch 标量，官方分别使用 target frame / target segmentation / PSNR；MADViT repo-default/Multi/Last 仍返回 batch 标量（`Full-paper` 已改为 per-sample）。
+3. **仍是代理评分**：ANDT、ASTT、HSTforU 用 `out.flatten(1).pow(2).mean(dim=1)` 产生 per-sample MSE-to-zero 代理，官方分别使用 target frame / target segmentation / PSNR；MADViT repo-default/Multi/Last 已改为 per-sample，但仍是 reconstructed/reference。
 
-代理评分的**计算量**与真实 target 的评分图同阶（MSE/PSNR 都是 O(output)），所以对 latency 的影响有限；但**语义和输出形状不对**：batch 标量会让 BS16 的 `16×K×iters` 分子虚高。审计建议：要么把 target 和 per-sample 评分接入 benchmark，要么在表中明确 `prediction-only / proxy scoring` 并把 BS16 置 `—`。
+代理评分的**计算量**与真实 target 的评分图同阶（MSE/PSNR 都是 O(output)），所以对 latency 的影响有限；语义仍不是官方 target，但输出已改为 per-sample `[B]`，BS16 可计算。表中仍标 `proxy scoring`，不能把代理分数写成官方异常分数。
 
 ### 4.2 输入规格
 
@@ -262,19 +262,19 @@ repo 里有三个候选模型，参数量差异巨大（本机按 DA 配置 `ima
 | GANomaly | `[1,1,1]` | `[16,1,1]` | 1 | 是（多出 singleton 维） |
 | MemAE | `[1]` | `[16]` | 1 | 是 |
 | MKD | `[1]` | `[16]` | 1 | 是 |
-| ANDT（adapted） | `[]` 标量 | `[]` 标量 | 1/B | **否；需逐样本重测** |
+| ANDT（adapted） | `[1]` | `[16]` | 1 | 是（per-sample proxy） |
 | Future Frame（scored） | `[1]` | `[16]` | 1 | 是（本轮已改） |
 | ST Dissoc.（scored） | `[1]` | `[16]` | 1 | 是 |
-| MLEP（scored） | `[1]` | `[16]`（图已验；吞吐未测） | 1 | BS1 是；BS16 吞吐未测 |
-| ASTT（STE-TTE） | `[]` 标量 | `[]` 标量 | 1/B | **否；需逐样本重测** |
+| MLEP（scored） | `[1]` | `[16]` | 1 | 是 |
+| ASTT（STE-TTE） | `[1]` | `[16]` | 1 | 是（per-sample proxy） |
 | DAD-FSM（scored） | `[1]` | `[16]` | 1 | 是（本轮已改） |
-| HSTforU（Avenue） | `[]` 标量 | `[]` 标量 | 1/B | **否；需逐样本重测** |
-| MADViT Full（repo-default）/Multi/Last | `[]` 标量 | `[]` 标量 | 1/B | **否；reference-only** |
+| HSTforU（Avenue） | `[1]` | `[16]` | 1 | 是（per-sample proxy） |
+| MADViT Full（repo-default）/Multi/Last | `[1]` | `[16]` | 1 | 是（reference-only） |
 | MADViT Full-paper | `[1]` | `[16]` | 1 | 是（本轮已改） |
 | LightViT-AD | `[1]` | `[16]` | 1 | 是 |
 | Ours V0–V5 | `[1]` | `[16]` | 1 | 是 |
 
-补充：MADViT 的 repo-default `Full` 实际只 `return token_loss`；`Full-paper` 已按论文 Sec. 5.4 实现全层 per-patch feature + final token，per-sample `[1]`/`[16]`。Multi/Last 仍是 reconstructed、batch 标量，只作 reference。
+补充：MADViT repo-default `Full` 实际只 `return token_loss`，现已把同一 token KL 按 per-sample 分解；`Full-paper` 已按论文 Sec. 5.4 实现全层 per-patch feature + final token。Multi/Last 也改为 per-sample，但仍只作 reconstructed reference。
 
 ### 4.7 BS16 A/B 复核（P1）
 
@@ -302,15 +302,15 @@ ST/DAD 的旧 JSON 与 scored JSON 的 BS16 FPS 差异很大（ST 288.2→452.3�
 
 | 优先级 | 文件/函数 | 需要改什么 | 原因 | 是否需重跑 |
 |---|---|---|---|---|
-| P0 | `comparison/benchmarks/bench_v2_extra.py::_astt` | 确认 DA 对应模型（`model.py` 缺失；候选 `model_original` 63.068M / `model_baseline_ca` 65.409M / `model_ste_tte` 148.220M）；改用正确模型；评分改成 target MSE | 当前是 STE-TTE，可能不是 DA ASTT | 是 |
+| P0 | `comparison/benchmarks/bench_v2_extra.py::_astt` | 确认 DA 对应模型（`model.py` 缺失；候选 `model_original` 63.068M / `model_baseline_ca` 65.409M / `model_ste_tte` 148.220M）；改用正确模型；评分改成 target MSE | 当前是 STE-TTE，可能不是 DA ASTT；已改 per-sample proxy，BS16 可测 | 变体仍待确认 |
 | P0 | `bench_v2_extra.py::_st_dissoc` | 取 `static_decoder,pred_decoder,loss_cluster_map`，加 `pred_recon`/`pred_target`/`loss_map`/reciprocal；或明确字段 `cluster_map_only=True` | 当前缺最终评分 | 是（至少 score-inclusive 版） |
 | P0 | `bench_v2_extra.py::_dadfsm` | 传入真实 `seg_target`，用官方 MSE；记录 `segmentation_source=precomputed`；如需在线，补分割生成 | 当前 `MSE-to-zero` 不是官方评分 | 是（评分版） |
-| P0 | `bench_v2_extra.py::_hstforu` | 传入 target frame，算 PSNR + 逐视频 min-max；确认 DA 使用哪个 `HSTforU_*`；保留 no-op checkpoint 说明 | 当前 Avenue 假设 + 代理评分 | 是 |
-| P0 | `bench_v2_andt.py` | 用 target next-frame MSE；保留 `de_dense(feat[:,0])` 但标 adapted；记录 `num_frames` 与 config 默认 1 的差异 | 当前零目标；decoder 未证实 | 是 |
+| P0 | `bench_v2_extra.py::_hstforu` | 传入 target frame，算 PSNR + 逐视频 min-max；确认 DA 使用哪个 `HSTforU_*`；保留 no-op checkpoint 说明 | 当前 Avenue 假设 + 代理评分；已改 per-sample proxy | 变体仍待确认 |
+| P0 | `bench_v2_andt.py` | 用 target next-frame MSE；保留 `de_dense(feat[:,0])` 但标 adapted；记录 `num_frames` 与 config 默认 1 的差异 | 当前零目标；decoder 未证实；已改 per-sample MSE 代理 | decoder 仍待确认 |
 | P0 | `bench_tf1_extra.py` / `bench_tf2_compat.py` | 增加 PSNR（target GT）版本，或把字段固定为 `timing_scope=prediction_tensor_only`；Future Frame D 参数已补 | 当前只有 prediction tensor | 是（score-inclusive） |
 | P0 | `bench_v2_scored.py`（已实现） | ST：`pred_recon/pred_target/loss_map/reciprocal`；DAD：future-seg target MSE；写 `benchmark_v2_scored.json`，不覆盖旧 JSON | 旧结果缺最终评分/零目标 | 已完成 ST/DAD |
-| P0 | `bench_tf2_scored.py`（已实现） | Future Frame/MLEP：官方 PSNR 图 against 同形状随机 target（不是真实标签）；写 `benchmark_v2_scored.json`，不覆盖旧 JSON | 旧结果 prediction-only | Future Frame 完成；MLEP BS1 完成、BS16 未测 |
-| P1 | `bench_v2_extra.py::_madvit` / `bench_v2_madvit_variants.py` | 给 Multi/Last 加 `reconstructed=true`、`paper_variant_verified=false`；不要宣称三者 FLOPs 必然相同 | 论文变体没有独立权重/开关 | 否（文档/元数据） |
+| P0 | `bench_tf2_scored.py`（已实现） | Future Frame/MLEP：官方 PSNR 图 against 同形状随机 target（不是真实标签）；写 `benchmark_v2_scored.json`，不覆盖旧 JSON | 旧结果 prediction-only | Future Frame 完成；MLEP BS1/BS16 完成 |
+| P1 | `bench_v2_extra.py::_madvit` / `bench_v2_madvit_variants.py` | 给 Multi/Last 加 `reconstructed=true`、`paper_variant_verified=false`；不要宣称三者 FLOPs 必然相同 | 论文变体没有独立权重/开关 | 已改 per-sample；仍 reconstructed |
 | P1 | `bench_v2_external.py::_ganomaly` | 记录 `isize=256` 是 DA 假设，repo 默认 32；或补 DA 配置来源 | 输入配置未证实 | 否（元数据） |
 | P1 | `bench_v2_external.py::_memae` | 记录 `chnum_in=3` 是 DA 彩色假设，repo 默认 1 | 通道配置未证实 | 否（元数据） |
 | P1 | `bench_v2_external.py::_mkd` | 记录 `dataset_config=MVTec-128`、`paper_matched=false` | 当前 AUC 来自 DA | 否（脚注） |
@@ -332,17 +332,17 @@ ST/DAD 的旧 JSON 与 scored JSON 的 BS16 FPS 差异很大（ST 288.2→452.3�
 | GANomaly | 256×256×1 | 143.950 | 16.428 | 8.088 | 123.6 | 848.5 | ¶ config assumption |
 | MemAE | 256×256×16 | 6.503 | 70.808 | 7.321 | 136.5 | 130.3 | ¶ channel assumption |
 | MKD | 128×128×1 | 15.059 | 10.477 | 2.495 | 394.5 | 2340.8 | ¶ MVTec-128 |
-| ANDT | 256×256×6 | 70.347 | 74.490 | 5.015 | 199.4 | —（标量） | * adapted; BS16 无效 |
+| ANDT | 256×256×6 | 70.347 | 74.490 | 4.909 | 203.8 | 200.5 | * adapted; per-sample proxy |
 | Future Frame | 256×256×4 | 7.704 | 74.476 | 6.820 | 146.8 | 177.7 | † scored PSNR, per-sample |
 | ST Dissoc. | 256×256×5 | 6.120 | 60.612 | 4.280 | 231.4 | 452.3 | scored loss_map+reciprocal |
-| MLEP | 224×224×4 | 12.561 | 319.513 | 12.525 | 79.6 | —（BS16 未测） | † scored PSNR, per-sample |
-| ASTT | 384×384×4 | 148.220 | 109.416 | 19.048 | 52.2 | —（标量） | ? variant unconfirmed → 暂不放入 |
+| MLEP | 224×224×4 | 12.561 | 319.513 | 11.957 | 84.1 | 74.3 | † scored PSNR, per-sample |
+| ASTT | 384×384×4 | 148.220 | 109.416 | 20.427 | 49.3 | 148.1 | ? variant unconfirmed; per-sample proxy |
 | DAD-FSM | 224×224×4 | 123.979 | 71.194 | 17.032 | 58.3 | 293.7 | § precomputed seg; scored target MSE |
-| HSTforU | 256×256×4 | 148.970 | 168.209 | 64.258 | 15.5 | —（标量） | ¶ variant/config; BS16 无效 |
-| MADViT Full（repo-default） | 224×224×1 | 94.354 | 38.533 | 11.525 | 83.9 | —（标量） | code default token-only; reference-only |
+| HSTforU | 256×256×4 | 148.970 | 168.209 | 62.552 | 16.2 | 71.3 | ¶ variant/config; per-sample proxy |
+| MADViT Full（repo-default） | 224×224×1 | 94.354 | 38.533 | 10.058 | 99.0 | 433.5 | code default token-only; reference-only |
 | MADViT Full-paper | 224×224×1 | 94.354 | 38.533 | 11.066 | 90.1 | 457.6 | paper Sec. 5.4; per-sample; random weights |
-| MADViT Multi | 224×224×1 | 94.354 | 38.533 | 11.130 | 88.9 | —（标量） | * reconstructed; reference-only |
-| MADViT Last | 224×224×1 | 94.354 | 38.533 | 9.467 | 103.5 | —（标量） | * reconstructed; reference-only |
+| MADViT Multi | 224×224×1 | 94.354 | 38.533 | 11.870 | 84.2 | 431.2 | * reconstructed; reference-only |
+| MADViT Last | 224×224×1 | 94.354 | 38.533 | 9.976 | 99.2 | 432.1 | * reconstructed; reference-only |
 | LightViT-AD | 224×224×1 | 8.840 | 3.753 | 6.519 | 148.8 | 2438.6 | — |
 
 Ours V0–V5 按内部 variant 表另列；表中注明 `architecture-init`，AUC 来自 DA-trained 权重，二者权重不同但效率与权重无关。
@@ -356,7 +356,7 @@ Ours V0–V5 按内部 variant 表另列；表中注明 `architecture-init`，AU
 ## 7. 审计结论与下一步
 
 1. **先不要重跑全部方法**。本轮补测只覆盖确定有问题的评分/输出形状（Future Frame、MLEP、ST、DAD），其余保持原 JSON；旧 `benchmark_v2.json` 未覆盖。
-2. **P0 进展**：ASTT 已核实为“variant unconfirmed”（148M STE-TTE 不是 DA 证据，需作者缺失的 `model.py`）；ST 最终评分、DAD target MSE、Future Frame PSNR 已补 `benchmark_v2_scored.json`；MLEP PSNR 已补 BS1，scored BS16 未完成；HSTforU 需 target PSNR + DA 配置，ANDT 需论文 decoder（2 FC→8×8×512→5 conv）。
+2. **P0 进展**：ASTT 已核实为“variant unconfirmed”（148M STE-TTE 不是 DA 证据，需作者缺失的 `model.py`）；ST 最终评分、DAD target MSE、Future Frame PSNR 已补 `benchmark_v2_scored.json`；MLEP PSNR 已补 BS1/BS16；HSTforU 需 target PSNR + DA 配置，ANDT 需论文 decoder（2 FC→8×8×512→5 conv）。
 3. **P1 元数据/脚注**：MKD MVTec、HSTforU Avenue、GANomaly 256、MemAE 3 通道、MADViT repo-default/Multi/Last reference-only；这些不改数字，只改解释。MADViT Full-paper 是评分修正后的新测量，单独列出。
 4. **主表准入**：把 `measured` 和 `paper-matched` 分成两列/两个脚注；`ASTT` 当前行暂不可用；`Future Frame/MLEP` 的 PSNR 与 `ST` 的 loss_map、`DAD-FSM` 的 target MSE 已补；`DAD-FSM` 加 `§ precomputed seg`；`MKD/HSTforU` 加 `¶ original-repo config`；`ANDT/MADViT Multi/Last` 加 `* adapted/reconstructed`。
 5. **TF FLOPs**：不要把 Future Frame/MLEP 的 TF profiler FLOPs 与 PyTorch MAC-only FLOPs 当成同一口径；若要统一，另做 TF 图的 Conv/MatMul MAC-only 计数并重新验证。
@@ -367,7 +367,7 @@ Ours V0–V5 按内部 variant 表另列；表中注明 `architecture-init`，AU
 |---|---|---|---:|---:|
 | Future Frame | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR | **6.820ms / 146.8 / 177.7** |
 | ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | loss_map + reciprocal | **4.280ms / 231.4 / 452.3** |
-| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR | **12.525ms / 79.6 / —（BS16 未测）** |
+| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR | **11.957ms / 84.1 / 74.3** |
 | DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | future-seg target MSE | **17.032ms / 58.3 / 293.7** |
 
 ## 8. 本次使用的论文/代码证据
@@ -386,13 +386,13 @@ Ours V0–V5 按内部 variant 表另列；表中注明 `architecture-init`，AU
 |---|---|---|
 | ANDT | 发布代码 decoder 只支持 1 帧；论文 decoder 是 `2 FC → 8×8×512 → 5 conv/upsample`，本地 `de_dense` 是单层 `768→256×16×16`，不能证明等价 | 保留 adapted 6-frame 测量；`paper_matched=false`；不进入严格官方排名 |
 | ASTT | DA 脚本 import 的 `model.py` 未发布；候选 `model_original` 63.068M / `model_baseline_ca` 65.409M / `model_ste_tte` 148.220M 无法判定；当前测的是 STE-TTE | 仅作 STE-TTE 结构参考；`partial/unverified`、`paper_matched=false` |
-| HSTforU | repo 无 Drone-Anomaly config；当前 Avenue/PVT2-b2 是假设；评分是 batch 标量代理 | 仅作 Avenue 结构参考；`partial/unverified`、`paper_matched=false` |
+| HSTforU | repo 无 Drone-Anomaly config；当前 Avenue/PVT2-b2 是假设；评分是 per-sample MSE 代理 | 仅作 Avenue 结构参考；`partial/unverified`、`paper_matched=false` |
 | MKD | repo 无 DA config；当前是 MVTec-128（128×128×1），AUC 来自 DA 表 | 明确标 MVTec-128；`paper_matched=false` |
 | MADViT Full（repo-default） | `multi_layer_distillation_loss` 计算 `feature_loss` 但 `return token_loss`，code default 不是论文 Full | 保留为 `reference-only`；`paper_matched=false` |
 | MADViT Full-paper | 已按 Sec. 5.4 修正评分；仍无官方训练权重 | 图/输入/评分 `paper_matched=true`，权重 random init；AUC 不配对 |
-| MADViT Multi/Last | 论文未给独立权重/开关；当前是按 Sec. 5.4 重建的 scoring，且返回 batch 标量 | `reconstructed/reference-only`；不重训；BS16 置 `—` |
+| MADViT Multi/Last | 论文未给独立权重/开关；当前是按 Sec. 5.4 重建的 per-sample scoring | `reconstructed/reference-only`；不重训 |
 | Future Frame | DA 的 `LAM_ADV`/是否训练 D 未确认；TF2 runtime-adapted；FLOPs 是 TF-profiler 口径 | 保留推理 G + score-inclusive PSNR；`partial/unverified`、`paper_matched=false` |
-| MLEP | DA 配置未确认；TF2 runtime-adapted；scored BS16 未测；FLOPs 是 TF-profiler 口径 | 只报 scored BS1；`partial/unverified`、`paper_matched=false` |
+| MLEP | DA 配置未确认；TF2 runtime-adapted；FLOPs 是 TF-profiler 口径 | scored BS1/BS16 可用；`partial/unverified`、`paper_matched=false` |
 | DAD-FSM | 分割图是离线预计算，repo 无分割生成网络/脚本；完整在线成本无法测 | 报 detector + target MSE；`§ precomputed seg`；`paper_matched=false` |
 | GANomaly | 输入 256×256 是本地假设，repo 默认 32，无 DA config | 评分完整；`paper_matched=false`（config 未证实） |
 | MemAE | 3 通道是 DA 彩色假设，repo 默认 1；无 DA config | 评分完整；`paper_matched=false`（channel 未证实） |

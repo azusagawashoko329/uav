@@ -83,9 +83,9 @@ python comparison/benchmarks/bench_tf2_compat.py --method both
 
 > `bench_tf2_compat.py` 是 Future Frame/MLEP 的 TF2.20 runtime-adapted 计时，不覆盖官方 `benchmark_v2.json`；说明见 §7。
 
-- ANDT 为 adapted 6-frame：74.490G / 5.015ms / 199.4 FPS@BS1；BS16 输出 batch 标量，per-sample FPS 无效、记为 `—`；不是官方代码。
-- 额外方法（主表值；ST/DAD 为 score-inclusive 版）：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/4.280ms/231.4 FPS；ASTT 109.416G/19.048ms/52.2 FPS（variant 未确认）；DAD-FSM 71.194G/17.032ms/58.3 FPS；HSTforU 168.209G/64.258ms/15.5 FPS（Avenue 结构）。
-- MADViT（同一前向图）：Full-paper 38.533G/11.066ms/90.1 FPS@BS1/457.6 FPS@BS16（per-sample）；repo-default Full 38.533G/11.525ms/83.9 FPS；Multi-layer 38.533G/11.130ms/88.9 FPS；Last-layer 38.533G/9.467ms/103.5 FPS。repo-default/Multi/Last 输出 batch 标量，BS16 per-sample FPS 无效，仅 reference-only。
+- ANDT 为 adapted 6-frame：74.490G / 4.909ms / 203.8 FPS@BS1 / 200.5 FPS@BS16（per-sample MSE 代理）；不是官方代码。
+- 额外方法（主表值；ST/DAD 为 score-inclusive 版）：LightViT-AD 3.753G/6.519ms/148.8 FPS；ST Dissoc. 60.612G/4.280ms/231.4 FPS；ASTT 109.416G/20.427ms/49.3/148.1 FPS（variant 未确认）；DAD-FSM 71.194G/17.032ms/58.3 FPS；HSTforU 168.209G/62.552ms/16.2/71.3 FPS（Avenue 结构）。
+- MADViT（同一前向图）：Full-paper 38.533G/11.066ms/90.1/457.6；repo-default Full 38.533G/10.058ms/99.0/433.5；Multi-layer 38.533G/11.870ms/84.2/431.2；Last-layer 38.533G/9.976ms/99.2/432.1（均 per-sample）。repo-default/Multi/Last 仍 reference-only。
 - 预热 50 次；BS1 3×500 次（每次同步，P50/Mean/P95）；BS16 3×500 个 batch（只在每轮结束同步）。
 - 结果只写对应方法/变体目录的 `benchmark_v2.json`；旧 `legacy_v1/benchmark_*.json` 未改动。
 - 日志里的 `wrote ...` 是文件重排前的路径；文件已按方法目录归档，JSON/日志内容本身未改。
@@ -174,7 +174,7 @@ MLEP 的 BS16 低于 BS1，来自 ConvLSTM `dynamic_rnn` 的 while-loop 和 batc
 |---|---|---|---:|---:|
 | Future Frame | prediction-only | 5.467ms / 180.8 / 185.1 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **6.820ms / 146.8 / 177.7** |
 | ST Dissoc. | stage-E forward-only | 3.668ms / 269.7 / 288.2 | 官方 loss_map + reciprocal | **4.280ms / 231.4 / 452.3** |
-| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **12.525ms / 79.6 / —（BS16 未测）** |
+| MLEP | prediction-only | 11.538ms / 82.0 / 75.5 | 官方 PSNR 图 vs 同形状随机 target，per-sample [B] | **11.957ms / 84.1 / 74.3** |
 | DAD-FSM | MSE-to-zero proxy | 12.684ms / 78.5 / 195.6 | 未来分割 target MSE（per-sample [B]） | **17.032ms / 58.3 / 293.7** |
 
 - MLEP 的 scored BS16 未完成（长时 run 被停止），只写 BS1；不能用 prediction-only 的 75.5 冒充 scored BS16。

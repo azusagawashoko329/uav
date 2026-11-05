@@ -25,9 +25,9 @@
 | Input | 384×384×4 |
 | Params | 148.220M |
 | FLOPs | 109.416G |
-| P50 | 19.048ms |
-| FPS@BS1 / BS16 | 52.2 / —（BS16 标量无效） |
-| 评分 | `F.mse_loss(out, zeros)` 代理，不是官方 target MSE；返回 batch 标量 |
+| P50 | 20.427ms |
+| FPS@BS1 / BS16 | 49.3 / 148.1 |
+| 评分 | per-sample MSE-to-zero 代理，不是官方 target MSE |
 | Status | `partial/unverified`（variant unconfirmed） |
 
 这些数字只能说明“`model_ste_tte` 这个 STE-TTE 图在这张 5880 上有多快”，**不能**写进主表当作 DA ASTT 的官方效率，也不能和论文 AUC 直接联合。

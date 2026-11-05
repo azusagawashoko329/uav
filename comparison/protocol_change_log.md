@@ -389,3 +389,24 @@ sha256sum -c comparison/da/LEGACY_v1.sha256
 - 新结果 `MADViT/Full-paper/benchmark_v2.json`：38.533G / 11.066ms / 90.1 FPS@BS1 / 457.6 FPS@BS16，输出 `[1]`/`[16]`，FLOPs verified。
 - 原 `MADViT/Full/benchmark_v2.json` 保留为 repo-default（token-only，BS16 标量无效）；`Multi-layer/Last-layer` 保留为 reconstructed/reference-only，不重训、不作为正式复现结果。
 - 同步更新 `MADViT/README.md`、`comparison_summary.md`、`fairness_audit.md`、`v2_validation.md`、`RETEST_CHECKLIST.md`。
+
+## 19. 2026-11-05 补齐 per-sample 评分与 BS16
+
+复核发现部分方法虽然模型一次处理 B 个样本，但 benchmark 的 `fn` 对整个 batch 做 `F.mse_loss` / KL reduction，返回一个标量；这会让 BS16 的 `16×K×iters` 分子与输出不一致。协议要求 BS16 每个 batch 产生 16 个 per-sample 分数。
+
+本轮修正并重测（旧 JSON 保留为 `benchmark_v2_legacy_scalar.json` / `benchmark_v2_scored_bs1only.json`）：
+
+| Method | 修改 | P50 | FPS@BS1 | FPS@BS16 | 输出 |
+|---|---|---:|---:|---:|---|
+| ANDT（adapted） | MSE-to-zero 改为 `out.flatten(1).pow(2).mean(dim=1)` | 4.909 | 203.8 | 200.5 | `[1]/[16]` |
+| ASTT（STE-TTE） | 同上 | 20.427 | 49.3 | 148.1 | `[1]/[16]` |
+| HSTforU（Avenue） | 同上 | 62.552 | 16.2 | 71.3 | `[1]/[16]` |
+| MADViT Full（repo-default） | 把 token KL 按 per-sample 分解 | 10.058 | 99.0 | 433.5 | `[1]/[16]` |
+| MADViT Multi-layer | feature loss 改为 per-sample | 11.870 | 84.2 | 431.2 | `[1]/[16]` |
+| MADViT Last-layer | token KL 改为 per-sample | 9.976 | 99.2 | 432.1 | `[1]/[16]` |
+| MLEP（scored） | 补测 BS16 | 11.957 | 84.1 | 74.3 | `[1]/[16]` |
+
+- 这些都是**评分函数的 per-sample 分解**，不改变模型 forward；随机权重/结构测量不受影响。
+- ANDT/ASTT/HSTforU 仍是 target-frame/segmentation/PSNR 的代理或未确认配置，`paper_matched=false`，不能因为 BS16 可算就当作官方评分。
+- MADViT Full-paper 仍独立保留；repo-default/Multi/Last 仍 reference-only。
+- 测速时用 `SIGSTOP` 暂停了正在跑的 UIT V5 训练和 V1 matched 评测，测完 `SIGCONT` 恢复，避免 GPU/磁盘争用污染 FPS。

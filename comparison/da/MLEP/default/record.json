@@ -19,7 +19,7 @@
   },
   "protocol": null,
   "results": null,
-  "notes": "v2 partial: params/FLOPs profiled; official TF1.15 GPU latency blocked by CUDA10 on RTX 5880; no checkpoint. TF2.20 runtime-adapted score-inclusive PSNR BS1 is in benchmark_v2_scored.json (P50 12.525ms, FPS 79.6); prediction-only TF2 timing (11.538ms, 82.0/75.5) is preserved only as a control. Scored BS16 was stopped and is not measured. Status remains partial/unverified because FLOPs are not cross-checked by the v2 counter, runtime is adapted, and DA config is unconfirmed. Not official TF1.15. Per-sample PSNR [B]; BS16 output not measured (null).",
+  "notes": "v2 partial: params/FLOPs profiled; official TF1.15 GPU latency blocked by CUDA10 on RTX 5880; no checkpoint. TF2.20 runtime-adapted score-inclusive PSNR is in benchmark_v2_scored.json (P50 11.957ms, FPS 84.1/74.3); prediction-only TF2 timing (11.538ms, 82.0/75.5) is preserved only as a control. Status remains partial/unverified because FLOPs are not cross-checked by the v2 counter and runtime is adapted. Not official TF1.15. Per-sample PSNR [B].",
   "efficiency": {
     "status": "partial/unverified",
     "input_hwt": "224x224x4",
@@ -44,21 +44,21 @@
     ],
     "flops_common_subset_check": "not applicable: TF1 graph",
     "flops_duplicate_check": "not applicable: TF1 graph",
-    "latency_bs1_p50_ms_per_output_frame": 12.52475701039657,
-    "latency_bs1_mean_ms_per_output_frame": 12.567218607058749,
-    "latency_bs1_p95_ms_per_output_frame": 14.098827028647065,
-    "fps_bs1": 79.57210193179264,
-    "fps_bs16": null,
+    "latency_bs1_p50_ms_per_output_frame": 11.95674398331903,
+    "latency_bs1_mean_ms_per_output_frame": 11.888484790921211,
+    "latency_bs1_p95_ms_per_output_frame": 12.382437998894602,
+    "fps_bs1": 84.11500856388885,
+    "fps_bs16": 74.2744237291794,
     "input_frames_t": 4,
     "effective_output_scores_k": 1,
     "window_stride": 1,
-    "window_latency_ms": 12.567218607058749,
-    "fps_independent_window": 79.57210193179264,
+    "window_latency_ms": 11.888484790921211,
+    "fps_independent_window": 84.11500856388885,
     "score_density": 1.0,
     "frame_coverage": 1.0,
     "fps_stream_estimated": 79.57210193179264,
     "fps_stream_measured": null,
     "benchmark_source": "comparison/da/MLEP/default/benchmark_v2_scored.json",
-    "notes": "TF1 graph built and profiled on CPU for params/FLOPs. Official TF1.15 GPU latency could not be completed: CUDA10/cuDNN7 kernels on RTX 5880 stall. A separate TF2.20 runtime-adapted measurement is in benchmark_v2_tf2compat.json; it is not the official TF1.15 runtime and keeps status partial/unverified. Score-inclusive PSNR BS1 used for latency; scored BS16 not measured (run stopped); prediction-only BS16 preserved only as a control. Per-sample PSNR [B]. paper_matched=false (TF2 adapted; DA config unconfirmed)."
+    "notes": "TF1 graph built and profiled on CPU for params/FLOPs. Official TF1.15 GPU latency could not be completed: CUDA10/cuDNN7 kernels on RTX 5880 stall. A separate TF2.20 runtime-adapted measurement is in benchmark_v2_tf2compat.json; it is not the official TF1.15 runtime and keeps status partial/unverified. Score-inclusive PSNR BS1/BS16 used for latency; prediction-only preserved as a control. Per-sample PSNR [B]. paper_matched=false (TF2 adapted; DA config unconfirmed)."
   }
 }

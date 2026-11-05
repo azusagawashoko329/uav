@@ -25,14 +25,14 @@ HSTforU 代码使用 mmcv 1.x API，但当前 Python 3.13 环境只能装 `mmcv-
 |---|---:|
 | Inference / Trainable Params | 148.970M / 148.970M |
 | FLOPs | 168.209G / output score |
-| Latency@BS1 P50 | 64.258ms |
-| FPS@BS1 | 15.5 |
-| FPS@BS16 | —（batch 标量无效） |
+| Latency@BS1 P50 | 62.552ms |
+| FPS@BS1 | 16.2 |
+| FPS@BS16 | 71.3 |
 | FLOPs verified | yes（手写 216 模块误差 0；profiler matmul 0%） |
-| Status | `partial/unverified`；`paper_matched=false`（Avenue/PVT2-b2 假设，评分是 batch 标量代理） |
+| Status | `partial/unverified`；`paper_matched=false`（Avenue/PVT2-b2 假设，per-sample MSE 代理） |
 
 - 结果：`comparison/da/HSTforU/default/benchmark_v2.json`
 - benchmark：`comparison/benchmarks/bench_v2_extra.py --method hstforu`
-- **评分口径**：官方 `test.py` 对 `target` 计算 PSNR，再用 `anomaly_score` 做逐视频 min-max；当前 `_hstforu` 用 `F.mse_loss(out, zeros)` 代理，既不是 target PSNR 也不是逐视频归一化。因此当前 latency 只能作网络前向参考，不能称为完整 anomaly-score latency。
-- **输出形状**：当前 `fn` 返回 **一个 batch 标量**；BS1 有效，BS16 原始批吞吐是 batch 聚合分数，不能按 16 个每样本分数计，主表已置 `—`。
+- **评分口径**：官方 `test.py` 对 `target` 计算 PSNR，再用 `anomaly_score` 做逐视频 min-max；当前 `_hstforu` 用 per-sample `out.flatten(1).pow(2).mean(dim=1)` 代理，既不是 target PSNR 也不是逐视频归一化。因此当前 latency 只能作网络前向参考，不能称为完整 anomaly-score latency。
+- **输出形状**：`fn` 返回 per-sample `[1]`/`[16]`；BS1/BS16 均有效（评分仍是 MSE-to-zero 代理，不是官方 target PSNR）。
 - AUC 仍引用用户表/论文的 66.96，不把这里的效率数字当成官方 AUC 配置。

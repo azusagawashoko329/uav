@@ -6,9 +6,9 @@
 
 | 名称 | 含义 | 状态 |
 |---|---|---|
-| **Full（repo-default）** | 原仓库代码路径：token-loss only，batch 标量 | 保留原测量，`reference-only`，不是论文 Full |
+| **Full（repo-default）** | 原仓库代码路径：token-loss only，per-sample | `reference-only`，不是论文 Full |
 | **Full-paper** | 按论文 Sec. 5.4 修正：每层 feature loss + final CLS/DIST token KL，逐样本 `[B]` | 正式效率测量，`paper_matched=true`（图/输入/评分；权重仍 random init） |
-| **Multi-layer / Last-layer** | 按论文 ablation 重建的 scoring，batch 标量 | `reconstructed`，仅参考，**不作为正式复现结果** |
+| **Multi-layer / Last-layer** | 按论文 ablation 重建的 scoring，per-sample | `reconstructed`，仅参考，**不作为正式复现结果** |
 
 ## 1. 代码实际实现（repo-default Full）
 
@@ -51,14 +51,14 @@ L_token = (T^2/2) * sum_{i in {CLS,DIST}} KL(LogSoftmax_T(t_s^i) || Softmax_T(t_
 
 | 变体 | 评分 | FLOPs | P50 | FPS@BS1 | FPS@BS16 | 输出 | 文件 |
 |---|---|---:|---:|---:|---:|---|---|
-| Full（repo-default） | token-only | 38.533G | 11.525ms | 83.9 | —（batch 标量） | `[]` | `Full/benchmark_v2.json` |
+| Full（repo-default） | token-only, per-sample | 38.533G | 10.058ms | 99.0 | 433.5 | `[1]/[16]` | `Full/benchmark_v2_scored.json` |
 | **Full-paper** | feature+token，per-sample | **38.533G** | **11.066ms** | **90.1** | **457.6** | `[1]`/`[16]` | `Full-paper/benchmark_v2.json` |
-| Multi-layer（reconstructed） | feature only | 38.533G | 11.130ms | 88.9 | —（batch 标量） | `[]` | `Multi-layer/benchmark_v2.json` |
-| Last-layer（reconstructed） | token only | 38.533G | 9.467ms | 103.5 | —（batch 标量） | `[]` | `Last-layer/benchmark_v2.json` |
+| Multi-layer（reconstructed） | feature only, per-sample | 38.533G | 11.870ms | 84.2 | 431.2 | `[1]/[16]` | `Multi-layer/benchmark_v2_scored.json` |
+| Last-layer（reconstructed） | token only, per-sample | 38.533G | 9.976ms | 99.2 | 432.1 | `[1]/[16]` | `Last-layer/benchmark_v2_scored.json` |
 
 - Full-paper 的 FLOPs 与 repo-default 相同（38.533G）：feature/token 评分都是 elementwise/reduction，不计入 MAC-based FLOPs；`flops_verified=true`。
 - Full-paper 的 BS1/BS16 已按 50 warmup + 3×500 重测；`BS16=457.6` 使用每批 16 个 per-sample 分数，分子与输出一致。
-- repo-default 与 Multi/Last 的旧 BS16 是 batch 标量，per-sample FPS 无效，主表记 `—`；原原始耗时保留在各自 JSON 的 `fps_bs16_raw_batch_aggregate`。
+- repo-default 与 Multi/Last 已改为 per-sample scoring，BS16 分别 433.5 / 431.2 / 432.1 FPS；旧 batch 标量结果保留为 `benchmark_v2_legacy_scalar.json`。
 - 权重仍是 random init（官方 checkpoint 未随 repo 提供）；FLOPs/latency 与权重无关，但 AUC 不能用这些随机权重配对。`paper_matched=true` 指图/输入/评分，权重配置另见注。
 
 ## 4. Multi-layer / Last-layer 的处理
@@ -68,7 +68,7 @@ L_token = (T^2/2) * sum_{i in {CLS,DIST}} KL(LogSoftmax_T(t_s^i) || Softmax_T(t_
 - Multi-layer：只做全层 feature loss，不做 token loss；
 - Last-layer：只监督 final CLS/DIST token。
 
-当前 `Multi-layer/`、`Last-layer/` 是按这两个定义重建的 scoring，共享同一前向图，且返回 batch 标量。它们是**轻量化参考**，不是正式复现结果；没有为了它们重训三套权重。若论文正文要并列展示三个变体的 AUC 与效率，才需要按各自训练目标完整重训并重新评测。
+当前 `Multi-layer/`、`Last-layer/` 是按这两个定义重建的 scoring，共享同一前向图，且返回 per-sample `[B]`。它们是**轻量化参考**，不是正式复现结果；没有为了它们重训三套权重。若论文正文要并列展示三个变体的 AUC 与效率，才需要按各自训练目标完整重训并重新评测。
 
 ## 5. 结论
 

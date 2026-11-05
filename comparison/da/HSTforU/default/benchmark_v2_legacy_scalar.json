@@ -1,0 +1,4438 @@
+{
+  "method": "HSTforU",
+  "method_display": "HSTforU",
+  "variant": "Avenue",
+  "adapted": true,
+  "supersedes": null,
+  "code_commit": "9548473306bbb89895b077275e8503de79653029",
+  "input_hwt": "256x256x4",
+  "input_frames_t": 4,
+  "effective_output_scores_k": 1,
+  "window_stride": 1,
+  "frame_coverage": 1.0,
+  "weights_state": "random init (no checkpoint)",
+  "da_adapted": false,
+  "auc_source": "user table / HSTforU paper",
+  "inference_params_m": 148.969536,
+  "training_trainable_params_m": 148.969536,
+  "training_only_params_m": 0.0,
+  "frozen_inference_params_m": 0.0,
+  "benchmark_source": "comparison/da/HSTforU/default/benchmark_v2.json",
+  "notes": "Avenue/PVT2-b2 variant: PVT2 encoder + TimeSformer + UNet decoder; 4 input frames, one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint. paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
+  "protocol_version": 2,
+  "measurement_status": "partial/unverified",
+  "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
+  "gpu": "NVIDIA RTX 5880 Ada Generation",
+  "torch": "2.8.0+cu129",
+  "cuda": "12.9",
+  "cudnn": 91002,
+  "python": "3.13.5",
+  "warmup": 50,
+  "iterations": 500,
+  "rounds": 3,
+  "flops_g_per_output_frame": 168.209416192,
+  "flops_window_g": 168.209416192,
+  "flops_verified": true,
+  "flops_counter": "FlopCounterMode(TorchDispatchMode)+native_mha_flop; hand module formulas; profiler common subset",
+  "flops_ops_covered": [
+    "Conv2d",
+    "ConvTranspose2d",
+    "Linear",
+    "aten.addmm",
+    "aten.bmm",
+    "aten.convolution",
+    "aten.mm"
+  ],
+  "flops_ops_missing": [],
+  "flops_module_ops": [
+    "Conv2d",
+    "ConvTranspose2d",
+    "Linear"
+  ],
+  "flops_common_subset_check": "hand-vs-counter: 216 modules, max_rel_diff=0.000000; counter-only modules=150; profiler common categories=['matmul'], max_rel_diff=0.000000; skipped=['conv(profiler_blind_spot)']",
+  "flops_duplicate_check": "single dispatch path; module hooks and counter are separate passes",
+  "flops_breakdown": [
+    {
+      "module": "HST.m",
+      "op": "aten.convolution",
+      "flops": 106668490752
+    },
+    {
+      "module": "HST",
+      "op": "aten.convolution",
+      "flops": 106668490752
+    },
+    {
+      "module": "HST.m.decoder",
+      "op": "aten.convolution",
+      "flops": 99648274432
+    },
+    {
+      "module": "HST.m",
+      "op": "aten.addmm",
+      "flops": 44329598976
+    },
+    {
+      "module": "HST",
+      "op": "aten.addmm",
+      "flops": 44329598976
+    },
+    {
+      "module": "HST.m.decoder.deconv_4",
+      "op": "aten.convolution",
+      "flops": 28017950720
+    },
+    {
+      "module": "HST.m.temp",
+      "op": "aten.addmm",
+      "flops": 23454547968
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block",
+      "op": "aten.convolution",
+      "flops": 22649241600
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block.convs",
+      "op": "aten.convolution",
+      "flops": 22649241600
+    },
+    {
+      "module": "HST.m.encoder",
+      "op": "aten.addmm",
+      "flops": 20875051008
+    },
+    {
+      "module": "HST.m.decoder.deconv_3",
+      "op": "aten.convolution",
+      "flops": 19864223744
+    },
+    {
+      "module": "HST.m.decoder.deconv_2",
+      "op": "aten.convolution",
+      "flops": 18790481920
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block.convs.0",
+      "op": "aten.convolution",
+      "flops": 15099494400
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block.convs.0.conv",
+      "op": "aten.convolution",
+      "flops": 15099494400
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block.convs",
+      "op": "aten.convolution",
+      "flops": 14495514624
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block",
+      "op": "aten.convolution",
+      "flops": 14495514624
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block",
+      "op": "aten.convolution",
+      "flops": 14495514624
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block.convs",
+      "op": "aten.convolution",
+      "flops": 14495514624
+    },
+    {
+      "module": "HST.m",
+      "op": "aten.mm",
+      "flops": 14159970304
+    },
+    {
+      "module": "HST",
+      "op": "aten.mm",
+      "flops": 14159970304
+    },
+    {
+      "module": "HST.m.encoder",
+      "op": "aten.mm",
+      "flops": 14159970304
+    },
+    {
+      "module": "HST.m.decoder.deconv_1",
+      "op": "aten.convolution",
+      "flops": 13958643712
+    },
+    {
+      "module": "HST.m.decoder.deconv_0",
+      "op": "aten.convolution",
+      "flops": 13958643712
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block.convs.0.conv",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block.convs.0",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block.convs.0.conv",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block.convs.0",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block.convs",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block.convs",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block",
+      "op": "aten.convolution",
+      "flops": 9663676416
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block.convs.1",
+      "op": "aten.convolution",
+      "flops": 7549747200
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.conv_block.convs.1.conv",
+      "op": "aten.convolution",
+      "flops": 7549747200
+    },
+    {
+      "module": "HST.m.encoder",
+      "op": "aten.convolution",
+      "flops": 5544869888
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.upsample",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.upsample.deconv_upsamping",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.deconv_4.upsample.deconv_upsamping.0",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.upsample",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.upsample.deconv_upsamping",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.upsample.deconv_upsamping.0",
+      "op": "aten.convolution",
+      "flops": 5368709120
+    },
+    {
+      "module": "HST.m.decoder.conv",
+      "op": "aten.convolution",
+      "flops": 5058330624
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block.convs.1",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_3.conv_block.convs.1.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block.convs.1.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.conv_block.convs.1",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block.convs.0",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block.convs.0.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block.convs.1",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.conv_block.convs.1.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block.convs.0",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block.convs.0.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block.convs.1.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.conv_block.convs.1",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.conv.0",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.conv.0.conv",
+      "op": "aten.convolution",
+      "flops": 4831838208
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.upsample",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.upsample.deconv_upsamping.0",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_2.upsample.deconv_upsamping",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.upsample.deconv_upsamping",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.upsample.deconv_upsamping.0",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_1.upsample",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.upsample.deconv_upsamping.0",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.upsample",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.decoder.deconv_0.upsample.deconv_upsamping",
+      "op": "aten.convolution",
+      "flops": 4294967296
+    },
+    {
+      "module": "HST.m.temp.block3.0",
+      "op": "aten.addmm",
+      "flops": 3250585600
+    },
+    {
+      "module": "HST.m.temp.block3.1",
+      "op": "aten.addmm",
+      "flops": 3250585600
+    },
+    {
+      "module": "HST.m.temp.block2.0",
+      "op": "aten.addmm",
+      "flops": 3103784960
+    },
+    {
+      "module": "HST.m.temp.block2.1",
+      "op": "aten.addmm",
+      "flops": 3103784960
+    },
+    {
+      "module": "HST.m.temp.block1.0",
+      "op": "aten.addmm",
+      "flops": 3091202048
+    },
+    {
+      "module": "HST.m.temp.block1.1",
+      "op": "aten.addmm",
+      "flops": 3091202048
+    },
+    {
+      "module": "HST.m",
+      "op": "aten.bmm",
+      "flops": 3051356160
+    },
+    {
+      "module": "HST",
+      "op": "aten.bmm",
+      "flops": 3051356160
+    },
+    {
+      "module": "HST.m.temp.block4.0",
+      "op": "aten.addmm",
+      "flops": 2281701376
+    },
+    {
+      "module": "HST.m.temp.block4.1",
+      "op": "aten.addmm",
+      "flops": 2281701376
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp",
+      "op": "aten.addmm",
+      "flops": 2147483648
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp",
+      "op": "aten.addmm",
+      "flops": 2147483648
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp",
+      "op": "aten.addmm",
+      "flops": 2147483648
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp",
+      "op": "aten.addmm",
+      "flops": 2147483648
+    },
+    {
+      "module": "HST.m.encoder",
+      "op": "aten.bmm",
+      "flops": 1946157056
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp",
+      "op": "aten.addmm",
+      "flops": 1677721600
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp",
+      "op": "aten.addmm",
+      "flops": 1677721600
+    },
+    {
+      "module": "HST.m.temp",
+      "op": "aten.convolution",
+      "flops": 1475346432
+    },
+    {
+      "module": "HST.m.encoder.block3.0",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block3.1",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block3.2",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block3.3",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block3.4",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block3.5",
+      "op": "aten.addmm",
+      "flops": 1363148800
+    },
+    {
+      "module": "HST.m.encoder.block2.0",
+      "op": "aten.addmm",
+      "flops": 1358954496
+    },
+    {
+      "module": "HST.m.encoder.block2.1",
+      "op": "aten.addmm",
+      "flops": 1358954496
+    },
+    {
+      "module": "HST.m.encoder.block2.2",
+      "op": "aten.addmm",
+      "flops": 1358954496
+    },
+    {
+      "module": "HST.m.encoder.block2.3",
+      "op": "aten.addmm",
+      "flops": 1358954496
+    },
+    {
+      "module": "HST.m.encoder.block1.0",
+      "op": "aten.addmm",
+      "flops": 1346371584
+    },
+    {
+      "module": "HST.m.encoder.block1.1",
+      "op": "aten.addmm",
+      "flops": 1346371584
+    },
+    {
+      "module": "HST.m.encoder.block1.2",
+      "op": "aten.addmm",
+      "flops": 1346371584
+    },
+    {
+      "module": "HST.m.temp",
+      "op": "aten.bmm",
+      "flops": 1105199104
+    },
+    {
+      "module": "HST.m.encoder.block1.0",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.1",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.0",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.1",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.3",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block4.0",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block4.1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block4.2",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp",
+      "op": "aten.addmm",
+      "flops": 1073741824
+    },
+    {
+      "module": "HST.m.encoder.block3.0",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.1",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.3",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.4",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.5",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_attn",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_attn",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 838860800
+    },
+    {
+      "module": "HST.m.encoder.patch_embed3",
+      "op": "aten.convolution",
+      "flops": 754974720
+    },
+    {
+      "module": "HST.m.encoder.patch_embed3.proj",
+      "op": "aten.convolution",
+      "flops": 754974720
+    },
+    {
+      "module": "HST.m.encoder.patch_embed4",
+      "op": "aten.convolution",
+      "flops": 754974720
+    },
+    {
+      "module": "HST.m.encoder.patch_embed4.proj",
+      "op": "aten.convolution",
+      "flops": 754974720
+    },
+    {
+      "module": "HST.m.encoder.patch_embed2",
+      "op": "aten.convolution",
+      "flops": 603979776
+    },
+    {
+      "module": "HST.m.encoder.patch_embed2.proj",
+      "op": "aten.convolution",
+      "flops": 603979776
+    },
+    {
+      "module": "HST.m.encoder.block4.0.attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.0",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1.attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2.attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp.fc2",
+      "op": "aten.mm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.0.attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.1.attn",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp.fc1",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp.fc2",
+      "op": "aten.addmm",
+      "flops": 536870912
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn",
+      "op": "aten.addmm",
+      "flops": 524288000
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 419430400
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 419430400
+    },
+    {
+      "module": "HST.m.encoder.patch_embed1",
+      "op": "aten.convolution",
+      "flops": 308281344
+    },
+    {
+      "module": "HST.m.encoder.patch_embed1.proj",
+      "op": "aten.convolution",
+      "flops": 308281344
+    },
+    {
+      "module": "HST.m.encoder.block1.0",
+      "op": "aten.convolution",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block1.1",
+      "op": "aten.convolution",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block1.2",
+      "op": "aten.convolution",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block1.0",
+      "op": "aten.bmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block1.0",
+      "op": "aten.convolution",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block1.1",
+      "op": "aten.bmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block1.1",
+      "op": "aten.convolution",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn",
+      "op": "aten.addmm",
+      "flops": 285212672
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn",
+      "op": "aten.addmm",
+      "flops": 272629760
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn",
+      "op": "aten.addmm",
+      "flops": 272629760
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn",
+      "op": "aten.addmm",
+      "flops": 272629760
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn",
+      "op": "aten.addmm",
+      "flops": 272629760
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn",
+      "op": "aten.addmm",
+      "flops": 272629760
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block1.0",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block1.1",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block1.2",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block4.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block4.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block4.2.attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn",
+      "op": "aten.bmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block4.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.temp.block4.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 268435456
+    },
+    {
+      "module": "HST.m.encoder.block3.0",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.encoder.block3.1",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.encoder.block3.2",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.encoder.block3.3",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.encoder.block3.4",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.encoder.block3.5",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.temp.block3.0",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.temp.block3.1",
+      "op": "aten.convolution",
+      "flops": 233308160
+    },
+    {
+      "module": "HST.m.decoder.conv.1",
+      "op": "aten.convolution",
+      "flops": 226492416
+    },
+    {
+      "module": "HST.m.encoder.block2.0",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block2.1",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block2.2",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block2.3",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block2.0",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block2.1",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_fc",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_fc",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 209715200
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.encoder.block1.2.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block1.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 150994944
+    },
+    {
+      "module": "HST.m.temp.block2.0",
+      "op": "aten.bmm",
+      "flops": 142606336
+    },
+    {
+      "module": "HST.m.temp.block2.1",
+      "op": "aten.bmm",
+      "flops": 142606336
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.2.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block4.2.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn",
+      "op": "aten.bmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn.sr",
+      "op": "aten.convolution",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.0.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.0.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_fc",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.1.attn.q",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.temp.block4.1.attn.proj",
+      "op": "aten.addmm",
+      "flops": 134217728
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 104857600
+    },
+    {
+      "module": "HST.m.temp.block3.0",
+      "op": "aten.bmm",
+      "flops": 89128960
+    },
+    {
+      "module": "HST.m.temp.block3.1",
+      "op": "aten.bmm",
+      "flops": 89128960
+    },
+    {
+      "module": "HST.m.encoder.block3.0.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.0",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.1.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.1",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.2.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.2",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.3",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.3.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.4",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.4.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.5.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block3.5",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.temp.block3.0.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.temp.block3.1.attn",
+      "op": "aten.bmm",
+      "flops": 83886080
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.2.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.encoder.block2.3.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block2.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 75497472
+    },
+    {
+      "module": "HST.m.temp.block4.0",
+      "op": "aten.bmm",
+      "flops": 35651584
+    },
+    {
+      "module": "HST.m.temp.block4.1",
+      "op": "aten.bmm",
+      "flops": 35651584
+    },
+    {
+      "module": "HST.m.encoder.block4.0.attn",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block4.0",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block4.1",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block4.1.attn",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block4.2",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block4.2.attn",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.temp.block4.0.attn",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.temp.block4.1.attn",
+      "op": "aten.bmm",
+      "flops": 33554432
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.2.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.3.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.4.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block3.5.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.temp.block3.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 23592960
+    },
+    {
+      "module": "HST.m.encoder.block2.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.encoder.block2.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.encoder.block2.2.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.encoder.block2.3.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.temp.block1.0.temp_attn",
+      "op": "aten.bmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.temp.block1.1.temp_attn",
+      "op": "aten.bmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.temp.block2.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.temp.block2.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 16777216
+    },
+    {
+      "module": "HST.m.encoder.block4.0",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.1",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.2",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.encoder.block4.2.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.0",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.0.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.1",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block4.1.mlp.dwconv.dwconv",
+      "op": "aten.convolution",
+      "flops": 9437184
+    },
+    {
+      "module": "HST.m.temp.block2.0.temp_attn",
+      "op": "aten.bmm",
+      "flops": 8388608
+    },
+    {
+      "module": "HST.m.temp.block2.1.temp_attn",
+      "op": "aten.bmm",
+      "flops": 8388608
+    },
+    {
+      "module": "HST.m.temp.block3.0.temp_attn",
+      "op": "aten.bmm",
+      "flops": 5242880
+    },
+    {
+      "module": "HST.m.temp.block3.1.temp_attn",
+      "op": "aten.bmm",
+      "flops": 5242880
+    },
+    {
+      "module": "HST.m.encoder.block1.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 4194304
+    },
+    {
+      "module": "HST.m.encoder.block1.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 4194304
+    },
+    {
+      "module": "HST.m.encoder.block1.2.attn.kv",
+      "op": "aten.addmm",
+      "flops": 4194304
+    },
+    {
+      "module": "HST.m.temp.block1.0.attn.kv",
+      "op": "aten.addmm",
+      "flops": 4194304
+    },
+    {
+      "module": "HST.m.temp.block1.1.attn.kv",
+      "op": "aten.addmm",
+      "flops": 4194304
+    },
+    {
+      "module": "HST.m.temp.block4.0.temp_attn",
+      "op": "aten.bmm",
+      "flops": 2097152
+    },
+    {
+      "module": "HST.m.temp.block4.1.temp_attn",
+      "op": "aten.bmm",
+      "flops": 2097152
+    }
+  ],
+  "per_op_flops": {
+    "aten.convolution": 106668490752,
+    "aten.addmm": 44329598976,
+    "aten.bmm": 3051356160,
+    "aten.mm": 14159970304
+  },
+  "hand_check": {
+    "ok": true,
+    "checked_modules": 216,
+    "max_rel_diff": 0.0,
+    "mismatches": [],
+    "counter_only_modules": [
+      "HST",
+      "HST.m",
+      "HST.m.decoder",
+      "HST.m.decoder.conv",
+      "HST.m.decoder.conv.0",
+      "HST.m.decoder.deconv_0",
+      "HST.m.decoder.deconv_0.conv_block",
+      "HST.m.decoder.deconv_0.conv_block.convs",
+      "HST.m.decoder.deconv_0.conv_block.convs.0",
+      "HST.m.decoder.deconv_0.conv_block.convs.1",
+      "HST.m.decoder.deconv_0.upsample",
+      "HST.m.decoder.deconv_0.upsample.deconv_upsamping",
+      "HST.m.decoder.deconv_1",
+      "HST.m.decoder.deconv_1.conv_block",
+      "HST.m.decoder.deconv_1.conv_block.convs",
+      "HST.m.decoder.deconv_1.conv_block.convs.0",
+      "HST.m.decoder.deconv_1.conv_block.convs.1",
+      "HST.m.decoder.deconv_1.upsample",
+      "HST.m.decoder.deconv_1.upsample.deconv_upsamping",
+      "HST.m.decoder.deconv_2",
+      "HST.m.decoder.deconv_2.conv_block",
+      "HST.m.decoder.deconv_2.conv_block.convs",
+      "HST.m.decoder.deconv_2.conv_block.convs.0",
+      "HST.m.decoder.deconv_2.conv_block.convs.1",
+      "HST.m.decoder.deconv_2.upsample",
+      "HST.m.decoder.deconv_2.upsample.deconv_upsamping",
+      "HST.m.decoder.deconv_3",
+      "HST.m.decoder.deconv_3.conv_block",
+      "HST.m.decoder.deconv_3.conv_block.convs",
+      "HST.m.decoder.deconv_3.conv_block.convs.0",
+      "HST.m.decoder.deconv_3.conv_block.convs.1",
+      "HST.m.decoder.deconv_3.upsample",
+      "HST.m.decoder.deconv_3.upsample.deconv_upsamping",
+      "HST.m.decoder.deconv_4",
+      "HST.m.decoder.deconv_4.conv_block",
+      "HST.m.decoder.deconv_4.conv_block.convs",
+      "HST.m.decoder.deconv_4.conv_block.convs.0",
+      "HST.m.decoder.deconv_4.conv_block.convs.1",
+      "HST.m.decoder.deconv_4.upsample",
+      "HST.m.decoder.deconv_4.upsample.deconv_upsamping",
+      "HST.m.encoder",
+      "HST.m.encoder.block1.0",
+      "HST.m.encoder.block1.0.attn",
+      "HST.m.encoder.block1.0.mlp",
+      "HST.m.encoder.block1.0.mlp.dwconv",
+      "HST.m.encoder.block1.1",
+      "HST.m.encoder.block1.1.attn",
+      "HST.m.encoder.block1.1.mlp",
+      "HST.m.encoder.block1.1.mlp.dwconv",
+      "HST.m.encoder.block1.2",
+      "HST.m.encoder.block1.2.attn",
+      "HST.m.encoder.block1.2.mlp",
+      "HST.m.encoder.block1.2.mlp.dwconv",
+      "HST.m.encoder.block2.0",
+      "HST.m.encoder.block2.0.attn",
+      "HST.m.encoder.block2.0.mlp",
+      "HST.m.encoder.block2.0.mlp.dwconv",
+      "HST.m.encoder.block2.1",
+      "HST.m.encoder.block2.1.attn",
+      "HST.m.encoder.block2.1.mlp",
+      "HST.m.encoder.block2.1.mlp.dwconv",
+      "HST.m.encoder.block2.2",
+      "HST.m.encoder.block2.2.attn",
+      "HST.m.encoder.block2.2.mlp",
+      "HST.m.encoder.block2.2.mlp.dwconv",
+      "HST.m.encoder.block2.3",
+      "HST.m.encoder.block2.3.attn",
+      "HST.m.encoder.block2.3.mlp",
+      "HST.m.encoder.block2.3.mlp.dwconv",
+      "HST.m.encoder.block3.0",
+      "HST.m.encoder.block3.0.attn",
+      "HST.m.encoder.block3.0.mlp",
+      "HST.m.encoder.block3.0.mlp.dwconv",
+      "HST.m.encoder.block3.1",
+      "HST.m.encoder.block3.1.attn",
+      "HST.m.encoder.block3.1.mlp",
+      "HST.m.encoder.block3.1.mlp.dwconv",
+      "HST.m.encoder.block3.2",
+      "HST.m.encoder.block3.2.attn",
+      "HST.m.encoder.block3.2.mlp",
+      "HST.m.encoder.block3.2.mlp.dwconv",
+      "HST.m.encoder.block3.3",
+      "HST.m.encoder.block3.3.attn",
+      "HST.m.encoder.block3.3.mlp",
+      "HST.m.encoder.block3.3.mlp.dwconv",
+      "HST.m.encoder.block3.4",
+      "HST.m.encoder.block3.4.attn",
+      "HST.m.encoder.block3.4.mlp",
+      "HST.m.encoder.block3.4.mlp.dwconv",
+      "HST.m.encoder.block3.5",
+      "HST.m.encoder.block3.5.attn",
+      "HST.m.encoder.block3.5.mlp",
+      "HST.m.encoder.block3.5.mlp.dwconv",
+      "HST.m.encoder.block4.0",
+      "HST.m.encoder.block4.0.attn",
+      "HST.m.encoder.block4.0.mlp",
+      "HST.m.encoder.block4.0.mlp.dwconv",
+      "HST.m.encoder.block4.1",
+      "HST.m.encoder.block4.1.attn",
+      "HST.m.encoder.block4.1.mlp",
+      "HST.m.encoder.block4.1.mlp.dwconv",
+      "HST.m.encoder.block4.2",
+      "HST.m.encoder.block4.2.attn",
+      "HST.m.encoder.block4.2.mlp",
+      "HST.m.encoder.block4.2.mlp.dwconv",
+      "HST.m.encoder.patch_embed1",
+      "HST.m.encoder.patch_embed2",
+      "HST.m.encoder.patch_embed3",
+      "HST.m.encoder.patch_embed4",
+      "HST.m.temp",
+      "HST.m.temp.block1.0",
+      "HST.m.temp.block1.0.attn",
+      "HST.m.temp.block1.0.mlp",
+      "HST.m.temp.block1.0.mlp.dwconv",
+      "HST.m.temp.block1.0.temp_attn",
+      "HST.m.temp.block1.1",
+      "HST.m.temp.block1.1.attn",
+      "HST.m.temp.block1.1.mlp",
+      "HST.m.temp.block1.1.mlp.dwconv",
+      "HST.m.temp.block1.1.temp_attn",
+      "HST.m.temp.block2.0",
+      "HST.m.temp.block2.0.attn",
+      "HST.m.temp.block2.0.mlp",
+      "HST.m.temp.block2.0.mlp.dwconv",
+      "HST.m.temp.block2.0.temp_attn",
+      "HST.m.temp.block2.1",
+      "HST.m.temp.block2.1.attn",
+      "HST.m.temp.block2.1.mlp",
+      "HST.m.temp.block2.1.mlp.dwconv",
+      "HST.m.temp.block2.1.temp_attn",
+      "HST.m.temp.block3.0",
+      "HST.m.temp.block3.0.attn",
+      "HST.m.temp.block3.0.mlp",
+      "HST.m.temp.block3.0.mlp.dwconv",
+      "HST.m.temp.block3.0.temp_attn",
+      "HST.m.temp.block3.1",
+      "HST.m.temp.block3.1.attn",
+      "HST.m.temp.block3.1.mlp",
+      "HST.m.temp.block3.1.mlp.dwconv",
+      "HST.m.temp.block3.1.temp_attn",
+      "HST.m.temp.block4.0",
+      "HST.m.temp.block4.0.attn",
+      "HST.m.temp.block4.0.mlp",
+      "HST.m.temp.block4.0.mlp.dwconv",
+      "HST.m.temp.block4.0.temp_attn",
+      "HST.m.temp.block4.1",
+      "HST.m.temp.block4.1.attn",
+      "HST.m.temp.block4.1.mlp",
+      "HST.m.temp.block4.1.mlp.dwconv",
+      "HST.m.temp.block4.1.temp_attn"
+    ],
+    "hand_only_modules": []
+  },
+  "profiler_check": {
+    "ok": true,
+    "common_ops": [
+      {
+        "category": "matmul",
+        "counter_flops": 61540925440,
+        "profiler_flops": 61540925440,
+        "rel_diff": 0.0
+      }
+    ],
+    "common_categories": [
+      "matmul"
+    ],
+    "max_rel_diff": 0.0,
+    "mismatches": [],
+    "skipped_categories": [
+      "conv(profiler_blind_spot)"
+    ],
+    "profiler_total_flops": 144628441088,
+    "counter_total_flops": 168209416192
+  },
+  "profiler_total_flops": 144628441088,
+  "window_latency_ms": 64.49019663784809,
+  "latency_bs1_p50_ms_per_output_frame": 64.25840852898546,
+  "latency_bs1_mean_ms_per_output_frame": 64.49019663784809,
+  "latency_bs1_p95_ms_per_output_frame": 68.88935604365543,
+  "fps_bs1": 15.506232763029269,
+  "fps_bs16": null,
+  "fps_independent_window": 15.506232763029269,
+  "score_density": 1.0,
+  "fps_stream_estimated": 15.506232763029269,
+  "fps_stream_estimated_bs16": 71.01352697856912,
+  "fps_stream_measured": null,
+  "bs1_rounds_ms": [
+    [
+      76.43437798833475,
+      70.28303999686614,
+      60.93912303913385,
+      63.907332019880414,
+      62.37944500753656,
+      60.60744897695258,
+      60.04009797470644,
+      60.923370998352766,
+      62.3886079993099,
+      62.234668992459774,
+      62.257533019874245,
+      62.60125094559044,
+      62.10036500124261,
+      62.99299496458843,
+      62.56003200542182,
+      62.92550597572699,
+      63.10055899666622,
+      63.184239028487355,
+      63.362256973050535,
+      62.967693025711924,
+      63.07327200192958,
+      61.747301020659506,
+      60.65709696849808,
+      60.64512598095462,
+      60.526241024490446,
+      60.30272302450612,
+      60.427112970501184,
+      60.11439597932622,
+      60.527828987687826,
+      60.184392030350864,
+      59.74102800246328,
+      59.71949500963092,
+      59.684381005354226,
+      59.72750100772828,
+      59.567907999735326,
+      59.688136039767414,
+      59.65485901106149,
+      59.69413398997858,
+      63.17584298085421,
+      59.86357299843803,
+      59.7663099761121,
+      59.694616007618606,
+      62.57497298065573,
+      62.10727401776239,
+      61.832151026465,
+      62.16992199188098,
+      61.836869979742914,
+      62.202266009990126,
+      61.75061396788806,
+      61.80467800004408,
+      62.50724202254787,
+      61.86157203046605,
+      61.416827025823295,
+      102.84554597456008,
+      78.47650098847225,
+      78.25538201723248,
+      77.79879297595471,
+      77.78860704274848,
+      77.69601797917858,
+      80.91857697581872,
+      86.49235602933913,
+      87.23596803611144,
+      66.88361999113113,
+      63.351418008096516,
+      79.02926200767979,
+      78.70961300795898,
+      78.37229495635256,
+      77.4859759840183,
+      77.80932902824134,
+      76.36668003397062,
+      75.60359395574778,
+      76.24300301540643,
+      76.39230403583497,
+      75.23065101122484,
+      75.3982049645856,
+      75.71743300650269,
+      75.57765598176047,
+      75.09353099158034,
+      75.67865599412471,
+      75.18953498220071,
+      75.20076999207959,
+      75.33293502638116,
+      75.42239798931405,
+      76.01906399941072,
+      75.38914302131161,
+      75.19160298397765,
+      75.27621201006696,
+      93.50063098827377,
+      91.27008600626141,
+      92.77352801291272,
+      92.32794202398509,
+      81.25235803890973,
+      63.675346958916634,
+      61.48161902092397,
+      63.26287897536531,
+      61.255059961695224,
+      61.94193405099213,
+      64.69791702693328,
+      61.415254953317344,
+      61.68792798416689,
+      61.72026501735672,
+      61.27989396918565,
+      61.18956702994183,
+      61.19901698548347,
+      62.083432043436915,
+      63.90100403223187,
+      61.7056799819693,
+      64.23119903774932,
+      64.21862699789926,
+      64.75689500803128,
+      67.43232597364113,
+      64.56796603742987,
+      64.43146197125316,
+      65.86137996055186,
+      65.93088601948693,
+      65.85474801249802,
+      65.28846296714619,
+      65.54535398026928,
+      65.05460600601509,
+      64.86565695377067,
+      65.3138019843027,
+      64.88103099400178,
+      64.57827001577243,
+      63.764890015590936,
+      63.86646197643131,
+      63.85987304383889,
+      63.79209301667288,
+      63.54920699959621,
+      64.31473803240806,
+      63.68400395149365,
+      63.6963730212301,
+      64.29782300256193,
+      63.60014999518171,
+      63.47943999571726,
+      63.59565001912415,
+      63.55387298390269,
+      63.97993501741439,
+      64.82618302106857,
+      65.47479401342571,
+      66.3430750137195,
+      66.4188620285131,
+      67.00867897598073,
+      66.31482095690444,
+      66.16837199544534,
+      68.52587999310344,
+      68.23262700345367,
+      68.44166899099946,
+      69.10548196174204,
+      68.92080896068364,
+      68.73820698820055,
+      68.64890002179891,
+      69.8367829900235,
+      66.55817804858088,
+      67.08538299426436,
+      67.17037997441366,
+      67.11230298969895,
+      68.14695196226239,
+      68.9185030059889,
+      69.04991099145263,
+      68.74728802358732,
+      68.70272295782343,
+      69.89344902103767,
+      69.23121097497642,
+      69.15362802101299,
+      67.82722001662478,
+      67.29665299644694,
+      67.08093197084963,
+      67.61852197814733,
+      66.19038200005889,
+      67.13180005317554,
+      68.98502202238888,
+      69.1870860173367,
+      67.54140800330788,
+      67.6750399870798,
+      67.11457198252901,
+      67.69089598674327,
+      67.3012409824878,
+      67.2828929964453,
+      67.96844501513988,
+      67.3726029926911,
+      65.68629003595561,
+      65.87932596448809,
+      61.873410013504326,
+      61.03584001539275,
+      61.93016603356227,
+      60.860529949422926,
+      66.20102404849604,
+      66.25099998200312,
+      65.84590399870649,
+      65.14355802210048,
+      64.55642700893804,
+      65.32129301922396,
+      65.14375400729477,
+      65.32881199382246,
+      66.41180202132091,
+      66.59217597916722,
+      66.00407796213403,
+      66.83938798960298,
+      67.62474903371185,
+      64.92610200075433,
+      63.24154301546514,
+      61.40277598751709,
+      62.274251016788185,
+      62.82228499185294,
+      62.43992497911677,
+      62.080065021291375,
+      61.34267000015825,
+      64.1622330294922,
+      64.09334402997047,
+      63.19621799048036,
+      63.45945497741923,
+      64.67342900577933,
+      64.40632202429697,
+      63.91032302053645,
+      63.35905101150274,
+      63.70745599269867,
+      63.02410096395761,
+      63.08762897970155,
+      62.755745952017605,
+      62.88627797039226,
+      63.741919002495706,
+      62.59972305269912,
+      62.57635698420927,
+      62.24806699901819,
+      61.879095970653,
+      61.976885015610605,
+      61.75763497594744,
+      61.60014099441469,
+      61.88485596794635,
+      62.84298899117857,
+      61.54257198795676,
+      61.90350302495062,
+      61.93826801609248,
+      63.34366201190278,
+      61.57043599523604,
+      61.76600104663521,
+      62.01666500419378,
+      61.216807982418686,
+      61.427731008734554,
+      61.40946695813909,
+      61.63438502699137,
+      62.033580034039915,
+      63.31289804074913,
+      66.19094603229314,
+      65.88920403737575,
+      66.13503798143938,
+      66.95901503553614,
+      66.12998596392572,
+      66.13943801494315,
+      65.53929904475808,
+      65.34784898394719,
+      65.66021300386637,
+      66.50996796088293,
+      65.68013201467693,
+      65.48439303878695,
+      65.57027396047488,
+      65.55531203048304,
+      65.47827098984271,
+      64.89621294895187,
+      62.446953961625695,
+      63.89369297539815,
+      61.5073959925212,
+      61.983035993762314,
+      61.733615992125124,
+      61.336453014519066,
+      61.07373198028654,
+      60.972116014454514,
+      61.693017021752894,
+      60.92353496933356,
+      60.96116197295487,
+      61.045398004353046,
+      61.17299199104309,
+      60.82436098949984,
+      61.34558701887727,
+      65.00362604856491,
+      67.5881450297311,
+      65.00055303331465,
+      65.55690499953926,
+      65.11358096031472,
+      65.70932897739112,
+      65.73322199983522,
+      64.95777802774683,
+      65.16581401228905,
+      66.69564999174327,
+      65.88616099907085,
+      66.08229398261756,
+      66.62252399837598,
+      61.7530980380252,
+      62.130969017744064,
+      61.39472604263574,
+      61.07923301169649,
+      60.910150001291186,
+      61.00133300060406,
+      62.398103007581085,
+      63.65368404658511,
+      62.83578701550141,
+      63.99017100920901,
+      63.524370023515075,
+      63.631213968619704,
+      63.76677396474406,
+      63.20426595630124,
+      62.587198975961655,
+      62.56730400491506,
+      62.698605994228274,
+      63.163440965581685,
+      62.564334948547184,
+      62.34222702914849,
+      64.43389999913052,
+      65.16759295482188,
+      64.53100004000589,
+      64.84291702508926,
+      64.85467700986192,
+      64.68156300252303,
+      65.3037250158377,
+      65.64455799525604,
+      64.14598500123248,
+      64.98619198100641,
+      64.00103500345722,
+      64.39566396875307,
+      64.54281602054834,
+      64.58123598713428,
+      64.18177002342418,
+      63.78594599664211,
+      64.05900901881978,
+      64.83282498084009,
+      64.06613095896319,
+      63.63374902866781,
+      64.3915850087069,
+      64.30688500404358,
+      63.97033901885152,
+      63.917079009115696,
+      64.10522299120203,
+      64.88963303854689,
+      65.09588501648977,
+      64.31751401396468,
+      63.94230399746448,
+      63.94982500933111,
+      64.24626702209935,
+      65.40907896123827,
+      65.71488396730274,
+      65.58064604178071,
+      65.80041901906952,
+      65.59006200404838,
+      65.59435999952257,
+      65.25114399846643,
+      66.24597497284412,
+      65.06743497448042,
+      65.36660494748503,
+      64.8718829615973,
+      64.90409799152985,
+      64.89400699501857,
+      64.14590799249709,
+      64.00753802154213,
+      63.93092998769134,
+      63.70936700841412,
+      63.548172009177506,
+      63.59676399733871,
+      64.55619900953025,
+      64.9289779830724,
+      63.885234005283564,
+      62.947876984253526,
+      64.14455798221752,
+      64.71400300506502,
+      64.6199409966357,
+      63.486311002634466,
+      63.45568294636905,
+      64.40689699957147,
+      62.60500702774152,
+      62.04793002689257,
+      62.29915999574587,
+      66.27461401512846,
+      63.94016102422029,
+      63.02262295503169,
+      61.769167019519955,
+      61.84067396679893,
+      61.76953698741272,
+      61.93518597865477,
+      61.97631795657799,
+      62.539817998185754,
+      61.49775499943644,
+      66.2039970047772,
+      66.22118299128488,
+      66.45141000626609,
+      66.39933702535927,
+      66.2674680352211,
+      66.69943599263206,
+      66.5104320505634,
+      66.44196400884539,
+      66.32481899578124,
+      65.89481397531927,
+      65.84428600035608,
+      65.91896200552583,
+      66.75360200461,
+      64.82854799833149,
+      63.566079013980925,
+      64.21376299113035,
+      67.8658889955841,
+      64.40814398229122,
+      64.08276903675869,
+      66.02989602833986,
+      63.99843201506883,
+      65.02865895163268,
+      65.17061998602003,
+      64.91312803700566,
+      64.2560959677212,
+      64.47217200184241,
+      64.66877000639215,
+      65.47019898425788,
+      64.99960197834298,
+      65.60748297488317,
+      65.32959500327706,
+      67.76665296638384,
+      68.19680496118963,
+      68.24161001713946,
+      68.30008601536974,
+      68.18816799204797,
+      67.4589560367167,
+      67.80761800473556,
+      67.17530597234145,
+      67.58301903028041,
+      66.66794000193477,
+      67.0311440480873,
+      67.57546402513981,
+      66.31478195777163,
+      67.01940199127421,
+      62.49542499426752,
+      63.877927022986114,
+      65.685813955497,
+      66.38424895936623,
+      68.93239100463688,
+      66.65107299340889,
+      65.33860601484776,
+      65.33459702041,
+      65.59752603061497,
+      65.7901480444707,
+      65.60529198031873,
+      65.54037297610193,
+      65.79201202839613,
+      65.45477395411581,
+      64.50506497640163,
+      62.562504957895726,
+      62.30031995801255,
+      62.42016999749467,
+      66.21919700410217,
+      65.77069300692528,
+      66.04216998675838,
+      65.91770896920934,
+      65.92129298951477,
+      65.39743003668264,
+      65.1810159906745,
+      65.64393400913104,
+      65.00663299812004,
+      65.7834520097822,
+      66.97595398873091,
+      65.58007805142552,
+      65.2771539753303,
+      62.11440498009324,
+      62.07688897848129,
+      61.90079101361334,
+      61.715649033430964,
+      63.8035669689998,
+      65.35904400516301,
+      65.31732500297949,
+      65.2044850285165,
+      64.67828096356243,
+      64.63808799162507,
+      64.95527300285175,
+      64.92772500496358,
+      65.59683696832508,
+      65.40117599070072,
+      65.27034903410822,
+      64.71791304647923,
+      64.85797499772161,
+      64.13583998801187,
+      61.556970002129674,
+      61.4388280082494,
+      61.35779700707644,
+      60.97602396039292,
+      61.590276018250734,
+      61.70130200916901,
+      60.943065967876464,
+      62.47309799073264,
+      62.98758101183921,
+      62.75778898270801,
+      63.25900100637227,
+      62.78393801767379,
+      64.40214603208005,
+      63.136768992990255,
+      63.34756000433117,
+      63.80370003171265,
+      64.53862297348678,
+      64.15134598501027,
+      63.23043897282332,
+      62.8807190223597,
+      64.40793798537925,
+      63.041765009984374,
+      62.487690011039376,
+      61.796460999175906,
+      61.59108696738258,
+      60.963073978200555
+    ],
+    [
+      62.57721205474809,
+      66.03377702413127,
+      67.08574097137898,
+      77.21518201287836,
+      62.355500005651265,
+      61.70356896473095,
+      61.6684400010854,
+      61.84590799966827,
+      61.816617962904274,
+      61.7044530226849,
+      61.78809201810509,
+      61.36088300263509,
+      62.62739998055622,
+      62.85305705387145,
+      61.4153309725225,
+      61.475521011743695,
+      63.00733599346131,
+      65.95936801750213,
+      67.38327699713409,
+      65.74549700599164,
+      66.83204503497109,
+      66.30019098520279,
+      66.85583997750655,
+      66.24007498612627,
+      66.94493698887527,
+      66.0920970258303,
+      66.28824502695352,
+      66.57820101827383,
+      65.78668102156371,
+      66.15077599417418,
+      63.95839405013248,
+      62.293566996231675,
+      61.958074977155775,
+      61.93698296556249,
+      61.6419650032185,
+      61.58477597637102,
+      61.79705302929506,
+      62.174589023925364,
+      61.94127298658714,
+      61.71688798349351,
+      61.46281602559611,
+      61.53420603368431,
+      61.325807007960975,
+      61.585100018419325,
+      61.54103804146871,
+      61.52964395005256,
+      62.256912991870195,
+      61.69817200861871,
+      64.4460860057734,
+      65.5373259796761,
+      66.3858909974806,
+      65.36200997652486,
+      65.36681501893327,
+      64.75416803732514,
+      65.55567594477907,
+      67.15520605212077,
+      66.42037403071299,
+      66.23209896497428,
+      67.41881498601288,
+      68.1059510097839,
+      67.07493599969894,
+      64.92758000968024,
+      65.70615596137941,
+      65.10625197552145,
+      66.20958598796278,
+      64.97669703094289,
+      64.55738097429276,
+      64.42477303789929,
+      65.74159301817417,
+      66.1057629622519,
+      64.96168801095337,
+      64.5002219825983,
+      66.15911901462823,
+      65.4191059875302,
+      66.17551803356037,
+      64.51134901726618,
+      65.5826689908281,
+      66.17066002218053,
+      65.96266600536183,
+      66.65132899070159,
+      67.90139299118891,
+      68.45192902255803,
+      67.53733899677172,
+      67.21283099614084,
+      69.0965450485237,
+      67.49091297388077,
+      67.0291319838725,
+      68.06331395637244,
+      67.84918700577691,
+      66.3547990261577,
+      66.56770996050909,
+      66.60117802675813,
+      68.19295103196055,
+      66.45363697316498,
+      67.20905198017135,
+      66.4731630240567,
+      67.1573180006817,
+      67.66700302250683,
+      66.77152699558064,
+      66.87033298658207,
+      67.33446795260534,
+      68.05246300064027,
+      68.56195797445253,
+      68.88720899587497,
+      69.02488501509652,
+      68.60744598088786,
+      68.1938849738799,
+      68.16043599974364,
+      67.6938759861514,
+      68.48939298652112,
+      67.48486502328888,
+      67.82992603257298,
+      67.7366359741427,
+      67.16068601235747,
+      67.46651401044801,
+      68.16388998413458,
+      68.3050979860127,
+      68.26731498586014,
+      67.8637870005332,
+      66.61571597214788,
+      65.84322598064318,
+      66.57944398466498,
+      68.33052902948111,
+      67.41613300982863,
+      67.81363999471068,
+      67.33811099547893,
+      67.4910350353457,
+      67.28193600429222,
+      67.46349902823567,
+      67.11627502227202,
+      66.27387000480667,
+      63.3954310324043,
+      63.4707499993965,
+      62.7796680200845,
+      64.41483600065112,
+      64.52012801310048,
+      64.36687300447375,
+      64.25910303369164,
+      63.55765799526125,
+      64.42930799676105,
+      63.648718991316855,
+      63.90085205202922,
+      64.00789198232815,
+      64.48979600099847,
+      63.73450002865866,
+      63.56367701664567,
+      64.09860000712797,
+      63.177691015880555,
+      63.36159899365157,
+      63.55702900327742,
+      64.29892301093787,
+      65.93255698680878,
+      66.39227998675779,
+      66.85267202556133,
+      66.50822202209383,
+      65.82963699474931,
+      66.01982703432441,
+      65.1683559990488,
+      65.8127450151369,
+      65.98351802676916,
+      65.99567498778924,
+      66.12265901640058,
+      65.4244480538182,
+      63.75476496759802,
+      61.35082902619615,
+      61.271244019735605,
+      61.85023800935596,
+      60.94631500309333,
+      61.089772963896394,
+      60.93480496201664,
+      60.881939018145204,
+      61.08519301051274,
+      60.97855500411242,
+      60.82104297820479,
+      61.47216202225536,
+      61.87628401676193,
+      61.452787020243704,
+      61.3794939708896,
+      61.47551198955625,
+      61.05737300822511,
+      60.800484963692725,
+      62.098203983623534,
+      63.3276259759441,
+      65.19504101015627,
+      65.827023005113,
+      66.03252899367362,
+      65.89194701518863,
+      66.08844600850716,
+      65.83075801609084,
+      65.75907301157713,
+      65.31762302620336,
+      65.06233400432393,
+      64.77260898100212,
+      65.96696400083601,
+      65.94224297441542,
+      63.78327897982672,
+      64.07154304906726,
+      64.49236400658265,
+      64.92456200066954,
+      65.20953902509063,
+      65.36988500738516,
+      64.82176802819595,
+      64.74195898044854,
+      64.68994700117037,
+      65.03973295912147,
+      65.75392099330202,
+      65.72347803739831,
+      65.28408697340637,
+      65.25610701646656,
+      62.52783496165648,
+      62.46467196615413,
+      61.32288300432265,
+      61.18657102342695,
+      61.18124397471547,
+      61.16595701314509,
+      64.84276102855802,
+      64.77569905109704,
+      65.77334902249277,
+      65.14468899695203,
+      64.93932101875544,
+      64.73434099461883,
+      64.91880799876526,
+      65.4374830191955,
+      65.1298530283384,
+      65.2811749605462,
+      65.10251195868477,
+      65.32037100987509,
+      65.27965498389676,
+      62.18122295103967,
+      61.5965019678697,
+      61.34744401788339,
+      61.582063033711165,
+      61.02754198946059,
+      63.776761991903186,
+      65.70277601713315,
+      65.83241000771523,
+      65.77385601121932,
+      65.37392095196992,
+      65.3229120071046,
+      65.69779297569767,
+      65.3353370144032,
+      64.68576897168532,
+      65.59966300847009,
+      65.82953000906855,
+      65.32724300632253,
+      64.94160299189389,
+      64.06207598047331,
+      61.49172596633434,
+      61.41075398772955,
+      62.71958601428196,
+      61.7368399980478,
+      61.65240705013275,
+      61.681045044679195,
+      61.95757398381829,
+      64.59715799428523,
+      63.545662036631256,
+      63.14100598683581,
+      63.392809010110795,
+      63.32976499106735,
+      63.29091702355072,
+      63.65300097968429,
+      63.82051797118038,
+      63.798989984206855,
+      62.47742602135986,
+      62.313413014635444,
+      62.69936403259635,
+      62.95595201663673,
+      62.9567860160023,
+      62.13566998485476,
+      62.46687500970438,
+      62.15682701440528,
+      61.78167398320511,
+      61.698363977484405,
+      61.60528399050236,
+      61.6470500244759,
+      61.44277501152828,
+      61.55660597141832,
+      61.924831999931484,
+      62.38956196466461,
+      61.96376902516931,
+      62.06130201462656,
+      61.61466002231464,
+      61.5670449915342,
+      61.818927992135286,
+      61.73262000083923,
+      61.60118099069223,
+      61.41435296740383,
+      62.13184999069199,
+      65.18607801990584,
+      69.33547701919451,
+      71.17345300503075,
+      69.99549502506852,
+      69.59475099574775,
+      70.66967902937904,
+      72.11766403634101,
+      71.98801502818242,
+      70.3794730361551,
+      69.24320000689477,
+      68.46271199174225,
+      68.91669100150466,
+      69.16045997058973,
+      64.65188995935023,
+      62.12507595773786,
+      61.78383599035442,
+      62.02490197028965,
+      62.481689965352416,
+      61.94019899703562,
+      61.34852196555585,
+      61.039432999677956,
+      61.73139699967578,
+      61.41635403037071,
+      61.22370099183172,
+      60.84695894969627,
+      61.009109020233154,
+      61.0625030240044,
+      60.886867984663695,
+      61.843828996643424,
+      61.39907700708136,
+      61.232412001118064,
+      61.13207200542092,
+      66.89213099889457,
+      64.73112100502476,
+      64.49126300867647,
+      64.90040698554367,
+      64.92076202994213,
+      65.4361880151555,
+      65.00610202783719,
+      65.57283701840788,
+      65.30802801717073,
+      65.39793300908059,
+      66.16307399235666,
+      65.5252969590947,
+      65.52684400230646,
+      63.33008303772658,
+      61.726810003165156,
+      61.4288539509289,
+      61.409321962855756,
+      61.11278000753373,
+      61.32838799385354,
+      61.04748300276697,
+      61.25610397430137,
+      61.479178024455905,
+      61.333999037742615,
+      61.5919369738549,
+      61.75397802144289,
+      61.65209197206423,
+      61.41230900539085,
+      60.90153899276629,
+      61.014892999082804,
+      61.061030020937324,
+      61.18578702444211,
+      61.29309494281188,
+      61.223937023896724,
+      61.73194700386375,
+      65.37114002276212,
+      65.48467499669641,
+      64.99385298229754,
+      64.7942140349187,
+      64.98545903014019,
+      66.12475396832451,
+      65.96805294975638,
+      66.14649400580674,
+      66.07174995588139,
+      65.57437003357336,
+      65.29897300060838,
+      64.65232605114579,
+      64.80445899069309,
+      65.03128900658339,
+      65.57378295110539,
+      65.37403597030789,
+      64.95697697391734,
+      64.89440600853413,
+      65.44177298201248,
+      65.53007999900728,
+      65.14149799477309,
+      65.60009095119312,
+      65.81130699487403,
+      66.25623704167083,
+      68.15303099574521,
+      68.34112497745082,
+      69.00625198613852,
+      68.75011703232303,
+      67.30429898016155,
+      67.12850602343678,
+      67.61933100642636,
+      66.8442589812912,
+      66.49229396134615,
+      66.76980399060994,
+      65.65825297730044,
+      64.77482500486076,
+      64.99420799082145,
+      63.3675130084157,
+      67.09412898635492,
+      64.0094029949978,
+      63.880459987558424,
+      63.785184000153095,
+      63.933341996744275,
+      63.985313987359405,
+      63.70218802476302,
+      62.69230501493439,
+      63.08569200336933,
+      63.071815005969256,
+      63.47492599161342,
+      63.4494120022282,
+      64.53512003645301,
+      62.58804601384327,
+      62.04527796944603,
+      61.942216008901596,
+      62.32597300549969,
+      61.94924202281982,
+      62.97299999278039,
+      62.790681957267225,
+      61.571621045004576,
+      61.56578904483467,
+      61.48667196976021,
+      61.8132870295085,
+      61.76948099164292,
+      61.557641020044684,
+      61.14901998080313,
+      61.080627026967704,
+      60.888829990290105,
+      60.70785701740533,
+      62.02250701608136,
+      61.351009004283696,
+      61.90837000031024,
+      61.304862960241735,
+      62.04720999812707,
+      65.78531500417739,
+      66.89626001752913,
+      66.29801500821486,
+      65.97140902886167,
+      65.71514200186357,
+      66.13865500548854,
+      65.39802602492273,
+      66.52676500380039,
+      65.4989939648658,
+      65.00810995930806,
+      65.2607930242084,
+      65.08819805458188,
+      63.864146010018885,
+      61.733839043881744,
+      61.13487097900361,
+      61.43365503521636,
+      61.03330198675394,
+      61.53380102477968,
+      62.15845298720524,
+      61.28992303274572,
+      60.87945302715525,
+      60.944776982069016,
+      60.75823598075658,
+      61.12505297642201,
+      60.96287496620789,
+      60.76777196722105,
+      61.12495402339846,
+      60.94163504894823,
+      60.99412601906806,
+      61.41254800604656,
+      61.042050016112626,
+      63.32388101145625,
+      65.53868000628427,
+      65.24899898795411,
+      64.96460497146472,
+      65.05711300997064,
+      65.37916697561741,
+      65.81536098383367,
+      66.46564602851868,
+      68.88935604365543,
+      68.72496998403221,
+      68.72011703671888,
+      68.52900702506304,
+      68.88469000114128,
+      68.36188497254625,
+      66.15139602217823,
+      68.19643202470616,
+      69.08444600412622,
+      66.98781397426501,
+      68.56946501648054,
+      67.21143401227891,
+      69.7203540476039,
+      69.16426500538364,
+      68.46505496650934,
+      69.037510023918,
+      67.72706902120262,
+      67.24479101831093,
+      67.2441020142287,
+      66.21818395797163,
+      66.47919001989067,
+      64.87687298795208,
+      61.94842699915171,
+      65.38181495852768,
+      68.3899840223603,
+      66.283377003856,
+      65.38315996294841,
+      64.39391401363537,
+      64.18822903651744,
+      64.25771402427927,
+      65.48838701564819,
+      65.45983196701854,
+      64.99528099084273,
+      64.75876696640626
+    ],
+    [
+      67.27851094910875,
+      77.38292298745364,
+      68.63735796650872,
+      62.26665701251477,
+      61.560794012621045,
+      61.552534985821694,
+      61.15934898843989,
+      61.05376599589363,
+      63.354271987918764,
+      65.54364500334486,
+      66.05761899845675,
+      65.42876799358055,
+      65.00091502675787,
+      65.64390199491754,
+      65.49782300135121,
+      65.40598202263936,
+      65.77503302833065,
+      65.69031998515129,
+      65.35093998536468,
+      65.24767901282758,
+      65.21164794685319,
+      64.79821295943111,
+      62.21908499719575,
+      61.728404951281846,
+      62.94479698408395,
+      61.62296899128705,
+      61.497821006923914,
+      62.69890099065378,
+      63.085912028327584,
+      63.94128402462229,
+      63.162920996546745,
+      63.13915201462805,
+      63.294372987002134,
+      63.46438603941351,
+      63.19830700522289,
+      62.937245005741715,
+      63.07958398247138,
+      62.79114697827026,
+      62.372018001042306,
+      62.30744603089988,
+      62.63753696111962,
+      63.46098298672587,
+      62.34280904754996,
+      62.21791397547349,
+      62.71467299666256,
+      61.659699014853686,
+      61.67437002295628,
+      61.4859500201419,
+      62.39487900165841,
+      62.50533100683242,
+      62.27770197438076,
+      62.22495203837752,
+      61.812211002688855,
+      61.08116003451869,
+      61.637260019779205,
+      61.76842900458723,
+      61.20362097863108,
+      61.17935199290514,
+      61.681904015131295,
+      64.07374201808125,
+      66.19653396774083,
+      66.76082802005112,
+      67.03038298292086,
+      65.13037800323218,
+      65.12690900126472,
+      65.82260801224038,
+      65.44870900688693,
+      87.22825802396983,
+      73.10678501380607,
+      66.22926896670833,
+      65.8887560130097,
+      67.92524101911113,
+      65.18205004977062,
+      65.02921698847786,
+      65.69979997584596,
+      65.15256699640304,
+      65.58561697602272,
+      63.08575201546773,
+      61.97655503638089,
+      61.31886295042932,
+      61.352216987870634,
+      62.44400702416897,
+      61.27300998196006,
+      60.93818799126893,
+      60.849061992485076,
+      60.987890989053994,
+      61.084696964826435,
+      61.229462968185544,
+      61.03560596238822,
+      61.114181007724255,
+      61.671678035054356,
+      61.52553198626265,
+      61.95995898451656,
+      61.93647999316454,
+      62.653976026922464,
+      66.55932997819036,
+      65.31597801949829,
+      65.44689601287246,
+      65.59040100546554,
+      66.05753500480205,
+      65.62869501067325,
+      66.22513598995283,
+      65.74878504034132,
+      65.869432000909,
+      65.86784397950396,
+      66.64022704353556,
+      66.19985599536449,
+      65.29033096740022,
+      62.234064971562475,
+      62.07601597998291,
+      62.09302297793329,
+      62.92092701187357,
+      62.15988902840763,
+      69.05890302732587,
+      73.65800603292882,
+      61.691235983744264,
+      60.8401820063591,
+      61.24305399134755,
+      61.1093679908663,
+      61.28048000391573,
+      61.38606497552246,
+      61.508886981755495,
+      61.81859102798626,
+      61.96894298773259,
+      60.975744971074164,
+      60.8903500251472,
+      61.634828976821154,
+      61.96020601782948,
+      66.10878597712144,
+      65.31724298838526,
+      64.87647298490629,
+      65.86380099179223,
+      66.0538969677873,
+      70.21132402587682,
+      65.81953604472801,
+      64.94584499159828,
+      66.16191996727139,
+      65.15454000327736,
+      65.36519702058285,
+      64.98079496668652,
+      64.905512961559,
+      66.83052598964423,
+      66.17006595479324,
+      65.67268504295498,
+      66.96553196525201,
+      66.36146997334436,
+      65.59903599554673,
+      65.32915000570938,
+      65.05460297921672,
+      65.91656402451918,
+      66.26880698604509,
+      65.79402199713513,
+      65.424186992459,
+      66.9410650152713,
+      66.0103100235574,
+      65.11457997839898,
+      65.18961302936077,
+      65.6801899895072,
+      65.04009797936305,
+      66.02161400951445,
+      66.46736594848335,
+      67.71156197646633,
+      64.51345200184733,
+      61.99935398763046,
+      62.03455600189045,
+      61.96319800801575,
+      63.438499986659735,
+      63.62750998232514,
+      63.3860930101946,
+      63.79850098164752,
+      63.44860699027777,
+      63.32585198106244,
+      63.54703998658806,
+      64.0789779718034,
+      63.30265698488802,
+      63.05211299331859,
+      63.100340019445866,
+      64.01187798473984,
+      64.34638099744916,
+      62.93260300299153,
+      62.09682102780789,
+      62.157144013326615,
+      61.96096999337897,
+      62.235407007392496,
+      61.85032695066184,
+      62.55400797817856,
+      62.03851796453819,
+      62.42804799694568,
+      61.519330949522555,
+      62.20114202005789,
+      61.65684503503144,
+      62.638493021950126,
+      64.04177803779021,
+      62.074591987766325,
+      62.603238970041275,
+      62.34710098942742,
+      62.007387983612716,
+      61.65682099526748,
+      61.61058600991964,
+      62.00924701988697,
+      61.57302897190675,
+      65.05908101098612,
+      66.58024596981704,
+      66.518014005851,
+      66.3079769583419,
+      67.2288759960793,
+      65.84258796647191,
+      66.21251202886924,
+      66.02802703855559,
+      65.8159899758175,
+      65.51947700791061,
+      65.83548203343526,
+      65.52239396842197,
+      65.66504796501249,
+      62.43548798374832,
+      61.495642992667854,
+      62.261210987344384,
+      61.441895028110594,
+      61.24552903929725,
+      63.4441280271858,
+      61.00035202689469,
+      61.358182050753385,
+      60.94868399668485,
+      61.04776496067643,
+      63.14357998780906,
+      61.33322598179802,
+      61.09133700374514,
+      61.06789398472756,
+      62.185732007492334,
+      61.63583800662309,
+      61.754582973662764,
+      61.24957499559969,
+      61.639091989491135,
+      66.66012201458216,
+      65.7199959969148,
+      65.78239798545837,
+      66.10187899786979,
+      65.8171339891851,
+      66.02872599614784,
+      65.26362098520622,
+      65.12603303417563,
+      65.55364798987284,
+      65.87148300604895,
+      64.80645097326487,
+      64.76561701856554,
+      64.96673700166866,
+      64.87144302809611,
+      64.29295899579301,
+      64.54007897991687,
+      65.08616200881079,
+      64.54715499421582,
+      64.6126659703441,
+      64.43034601397812,
+      64.21949801733717,
+      63.26604902278632,
+      62.01390398200601,
+      62.18830100260675,
+      62.22405901644379,
+      61.47486105328426,
+      61.908829025924206,
+      61.379071965347975,
+      62.019344011787325,
+      62.18691199319437,
+      61.766261991579086,
+      61.41322595067322,
+      62.71590304095298,
+      65.65735297044739,
+      64.09491901285946,
+      63.892396981827915,
+      64.57568699261174,
+      63.96914698416367,
+      63.91851702937856,
+      64.10177500220016,
+      64.07077895710245,
+      64.522415981628,
+      64.08660497982055,
+      63.72252100845799,
+      64.18265798129141,
+      63.60578699968755,
+      63.34121699910611,
+      61.19369197404012,
+      61.17232399992645,
+      61.33632699493319,
+      61.08652497641742,
+      60.81649096449837,
+      64.41190600162372,
+      64.53027902171016,
+      63.95487900590524,
+      63.97623801603913,
+      63.89915099134669,
+      64.10108099225909,
+      64.26377198658884,
+      64.16876002913341,
+      64.83401998411864,
+      64.55477699637413,
+      64.45492600323632,
+      64.86643303651363,
+      64.33409603778273,
+      63.999348029028624,
+      62.28910101344809,
+      61.745120969135314,
+      61.64461199659854,
+      61.43166002584621,
+      61.56078597996384,
+      61.44912401214242,
+      63.38205101201311,
+      62.70267500076443,
+      62.666985031683,
+      63.03340301383287,
+      63.053802005015314,
+      62.8675390034914,
+      63.07313602883369,
+      62.76790500851348,
+      64.0903830062598,
+      62.623307981994,
+      62.68774199998006,
+      62.46611301321536,
+      62.641844036988914,
+      62.91802501073107,
+      61.88455497613177,
+      61.62536301417276,
+      61.90301297465339,
+      61.551527003757656,
+      61.374514014460146,
+      61.438313976395875,
+      61.770366970449686,
+      61.376502038910985,
+      61.4720190060325,
+      61.37780996505171,
+      61.78239098517224,
+      61.74771802034229,
+      61.41180801205337,
+      61.608453979715705,
+      63.34024399984628,
+      64.09924296895042,
+      64.37737500527874,
+      64.14024997502565,
+      64.69860801007599,
+      64.41454699961469,
+      64.59855497814715,
+      64.88626200007275,
+      65.3493840363808,
+      64.81120397802442,
+      65.21738501032814,
+      64.81913704192266,
+      64.88868303131312,
+      65.35407097544521,
+      65.39373699342832,
+      64.86853695241734,
+      64.64994000270963,
+      64.45856997743249,
+      64.414183027111,
+      64.08322701463476,
+      63.93897597445175,
+      61.19390996173024,
+      61.15904200123623,
+      62.15422099921852,
+      61.1067260033451,
+      61.05110398493707,
+      61.70949502848089,
+      60.86223304737359,
+      60.99126598564908,
+      61.2695409799926,
+      61.80219101952389,
+      61.530046979896724,
+      61.006846954114735,
+      61.52662599924952,
+      60.86622999282554,
+      61.29715102724731,
+      61.779263021890074,
+      61.31250795442611,
+      61.1791989649646,
+      63.946022011805326,
+      65.1050609885715,
+      65.25149301160127,
+      64.56134398467839,
+      65.27006399119273,
+      65.28981897281483,
+      65.65582001348957,
+      65.4143060091883,
+      66.18020700989291,
+      66.73588801641017,
+      64.80884202755988,
+      65.29819895513356,
+      65.19395700888708,
+      62.74911598302424,
+      61.51092698564753,
+      61.10312102828175,
+      61.48251501144841,
+      61.05388101423159,
+      60.98502897657454,
+      60.80849503632635,
+      63.92740097362548,
+      61.77263997960836,
+      61.006577976513654,
+      61.03783298749477,
+      61.07723596505821,
+      62.83720798091963,
+      61.27991003450006,
+      60.990955971647054,
+      60.875112016219646,
+      60.953754000365734,
+      60.82363403402269,
+      60.9481239807792,
+      61.5955870016478,
+      63.52462602080777,
+      65.15173701336607,
+      64.81036695186049,
+      64.70628303941339,
+      64.68437903095037,
+      64.6197969908826,
+      65.2434989460744,
+      65.48250501509756,
+      65.88305300101638,
+      66.12929195398465,
+      65.23989699780941,
+      65.21569401957095,
+      64.73643099889159,
+      64.82786301057786,
+      65.13725302647799,
+      65.4409080161713,
+      64.95731801260263,
+      64.55226795515046,
+      64.5944019779563,
+      64.8243940086104,
+      66.27485901117325,
+      65.45817101141438,
+      64.95641701621935,
+      65.78413798706606,
+      64.75278199650347,
+      64.95928601361811,
+      65.67381997592747,
+      65.24605903541669,
+      65.29626395786181,
+      64.83187800040469,
+      65.18794799922034,
+      65.21442899247631,
+      64.80209500296041,
+      62.422525021247566,
+      61.540655966382474,
+      61.18047295603901,
+      61.87876797048375,
+      61.04995001805946,
+      60.91787799960002,
+      63.47301497589797,
+      62.920491967815906,
+      62.7450660103932,
+      63.72454500524327,
+      63.34873498417437,
+      62.78825894696638,
+      63.18894197465852,
+      63.18221898982301,
+      62.66166304703802,
+      62.146044976543635,
+      62.44509801035747,
+      62.18357302714139,
+      62.28489399654791,
+      63.30241000978276,
+      61.38320901663974,
+      61.18219601921737,
+      61.40448903897777,
+      60.76478603063151,
+      61.09530501998961,
+      60.989887977484614,
+      61.51110300561413,
+      61.33277900516987,
+      61.135927971918136,
+      61.20673898840323,
+      61.13325501792133,
+      61.48714601295069,
+      60.83684600889683,
+      60.978874971624464,
+      61.291593010537326,
+      61.750803026370704,
+      61.23941601254046,
+      61.772631015628576,
+      63.39714705245569,
+      61.553559033200145,
+      61.80193496402353,
+      61.59298901911825,
+      65.58144302107394,
+      65.68877497920766,
+      66.3457170012407,
+      66.35872303741053,
+      66.33139197947457,
+      66.33493199478835,
+      66.08055694960058,
+      66.03704299777746,
+      65.21408498520032,
+      64.50826599029824,
+      64.5888089784421,
+      64.5774399745278,
+      64.54785499954596,
+      62.26599297951907,
+      62.18753498978913,
+      62.08946596598253,
+      61.46320200059563,
+      61.659306986257434,
+      62.08351900568232,
+      62.4643390183337
+    ]
+  ],
+  "bs16_round_times_s": [
+    108.85902173700742,
+    112.65459329198347,
+    113.56597629497992
+  ],
+  "paper_matched": false,
+  "paper_match_note": "paper_matched=false: repo has no Drone-Anomaly config; current graph is Avenue/PVT2-b2.",
+  "output_shape_bs1": "[] scalar",
+  "output_shape_bs16": "[] scalar",
+  "scores_per_sample": null,
+  "batch_output_aggregated": true,
+  "bs16_fps_valid": false,
+  "fps_bs16_raw_batch_aggregate": 71.01352697856912,
+  "fps_bs16_valid": false,
+  "fps_bs16_invalid_reason": "scoring returns one batch-aggregate scalar; the 16*K*iters numerator would overcount per-sample scores",
+  "paper_matched_note": "Avenue/PVT2-b2 structure; repo has no DA config"
+}

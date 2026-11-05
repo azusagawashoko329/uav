@@ -1,0 +1,16 @@
+WARNING:tensorflow:From /home/lyx/miniconda3/lib/python3.13/site-packages/tensorflow/python/compat/v2_compat.py:98: disable_resource_variables (from tensorflow.python.ops.resource_variables_toggle) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+runtime cwd /tmp/tf2_libdevice_9cczobh2 libdevice /home/lyx/miniconda3/envs/uav_tf1/lib/libdevice.10.bc
+[mlep] score-inclusive BS1
+WARNING:tensorflow:From /data1/data8tb/liangyuxuan/Comparison method/MLEP/models/networks.py:119: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793882778.799100 3470962 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 41014 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+I0000 00:00:1793882778.815579 3470962 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled
+E0000 00:00:1793882778.953412 3470962 meta_optimizer.cc:967] layout failed: INVALID_ARGUMENT: MutableGraphView::SortTopologically error: detected edge(s) creating cycle(s) {'recurrent/ConvLSTM/while/Identity_4' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/concat', 'recurrent/ConvLSTM/while/Identity_3' -> 'recurrent/ConvLSTM/while/conv_lstm_cell/mul'}.
+[mlep] score-inclusive BS16
+I0000 00:00:1793882799.823919 3470962 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 41014 MB memory:  -> device: 0, name: NVIDIA RTX 5880 Ada Generation, pci bus id: 0000:86:00.0, compute capability: 8.9
+wrote /data1/data8tb/liangyuxuan/code/uav/comparison/da/MLEP/default/benchmark_v2_scored.json
+{"measurement_status": "partial/unverified", "runtime_adapted": true, "method": "MLEP", "inference_params_m": 12.560835, "scoring_included": true, "flops_g_per_output_frame": 319.512526355, "flops_verified": false, "latency_bs1_p50_ms_per_output_frame": 11.95674398331903, "fps_bs1": 84.11500856388885, "fps_bs16": 74.2744237291794, "tf1_params_check": {"tf2_params": 12560835, "tf1_params": 12560835, "match": true}}

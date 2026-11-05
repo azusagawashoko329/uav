@@ -16,11 +16,11 @@
 | Inference / Trainable Params | 12.561M / 12.561M |
 | Training-only Params | 0 |
 | FLOPs | 319.513G/output frame |
-| Latency/FPS 口径 | prediction-only（旧 `benchmark_v2_tf2compat.json`）/ **score-inclusive PSNR BS1**（`benchmark_v2_scored.json`；BS16 未测） |
+| Latency/FPS 口径 | prediction-only（旧 `benchmark_v2_tf2compat.json`）/ **score-inclusive PSNR**（`benchmark_v2_scored.json`） |
 
 MLEP 的 margin learning 是训练目标；本表只测推理用的 prediction net（`use_decoder=True`），不把训练期的 margin/三元组计算塞进推理 FLOPs。
 
-**评分口径**：官方 `inference.py` 在 prediction net 输出后还要对 ground-truth 下一帧计算 PSNR（`utils.util.psnr_error`）。旧 `benchmark_v2_tf2compat.json` 只到 prediction tensor；`benchmark_v2_scored.json` 已把官方 PSNR 放进计时图，但本轮只完成 BS1（BS16 长时 run 被停止），所以 BS16 留空。
+**评分口径**：官方 `inference.py` 在 prediction net 输出后还要对 ground-truth 下一帧计算 PSNR（`utils.util.psnr_error`）。旧 `benchmark_v2_tf2compat.json` 只到 prediction tensor；`benchmark_v2_scored.json` 已把官方 PSNR 放进计时图，BS1/BS16 均完成。
 
 ## 2. 为什么官方 TF1.15 的 latency 拿不到
 
@@ -50,9 +50,9 @@ MLEP 的 encoder/decoder 是卷积、recurrent 是 ConvLSTM（内部也是卷积
 |---|---:|---:|---:|---:|---:|---|
 | 官方 TF1.15 | 12.561M | 319.513G | —（CUDA10 在 sm_89 上不可执行） | — | — | `partial/unverified` |
 | TF2.20 runtime-adapted，prediction-only | 12.561M | 319.513G | 11.538ms | 82.0 | 75.5 | `partial/unverified`（runtime-adapted） |
-| TF2.20 runtime-adapted，**score-inclusive PSNR (BS1, per-sample [B])** | 12.561M | 319.513G | **12.525ms** | **79.6** | —（BS16 未测） | `partial/unverified`（runtime-adapted） |
+| TF2.20 runtime-adapted，**score-inclusive PSNR (per-sample [B])** | 12.561M | 319.513G | **11.957ms** | **84.1** | **74.3** | `partial/unverified`（runtime-adapted） |
 
-补充：prediction-only mean 12.188ms、P95 13.822ms；score-inclusive PSNR mean 12.567ms、P95 14.099ms。BS16 的 prediction-only 三轮 500 batch 耗时 105.50 / 106.05 / 105.94s；score-inclusive BS16 在本轮超时未完成（已用 `--skip-bs16` 写 BS1 结果），所以 `fps_bs16=null`，不能拿 prediction-only 的 75.5 冒充 scored BS16。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
+补充：prediction-only mean 12.188ms、P95 13.822ms；score-inclusive PSNR mean 11.888ms、P95 12.382ms。scored BS16 已完成，FPS=74.3。`fps_stream_estimated` 与 BS1 FPS 相同（K=stride=1），没有做连续视频流实测，所以 `fps_stream_measured=null`。
 
 **score-inclusive 文件**：`benchmark_v2_scored.json` 使用官方 PSNR 图（预测帧 vs 与 GT 同形状的随机张量；不是真实标签，只测评分计算量）；旧的 `benchmark_v2_tf2compat.json` 保留为 prediction-only 对照。PSNR 的 elementwise 运算不计入 319.513G TF-profiler FLOPs。
 
@@ -72,7 +72,7 @@ python comparison/benchmarks/bench_tf2_compat.py --method mlep
 
 - 官方 TF1.15 记录：`benchmark_v2.json`（params/FLOPs，latency null，`partial/unverified`）
 - TF2 适配记录：`benchmark_v2_tf2compat.json`（prediction-only，BS1/BS16 原始耗时）
-- score-inclusive 记录：`benchmark_v2_scored.json`（PSNR；BS1 完成、BS16 未测）
+- score-inclusive 记录：`benchmark_v2_scored.json`（PSNR；BS1/BS16 完成）
 - 脚本：`comparison/benchmarks/bench_tf2_compat.py`、`comparison/benchmarks/tf2_compat_shims.py`
 - 日志：`benchmark_v2_tf2compat.log`、`benchmark_v2_scored.log`（BS1 成功）、`benchmark_v2_scored_full.log`（BS16 超时尝试）
 - AUC 仍引用用户表/论文；本目录不提供新的 AUC。

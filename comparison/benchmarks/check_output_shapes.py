@@ -96,7 +96,7 @@ def run_one(name):
 
         def fn(x):
             out = model(x)
-            return F.mse_loss(out, torch.zeros_like(out))
+            return out.flatten(1).pow(2).mean(dim=1)
 
         x1 = torch.randn(1, 6, 3, 256, 256, device='cuda')
         x16 = torch.randn(16, 6, 3, 256, 256, device='cuda')

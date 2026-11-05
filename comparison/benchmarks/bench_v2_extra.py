@@ -218,7 +218,7 @@ def _astt(out_path):
 
         def forward(self, x):
             out = self.m(x)
-            return F.mse_loss(out, torch.zeros_like(out))
+            return out.flatten(1).pow(2).mean(dim=1)
 
     model = ASTTScore(base).cuda().eval()
     p = sum(p.numel() for p in model.parameters())
@@ -232,6 +232,8 @@ def _astt(out_path):
         'transformer over 4 frames, decoder predicts next 256x256 frame; forward includes MSE '
         'scoring. No checkpoint.',
         out_path)
+    meta.update({'output_shape_bs1': '[1]', 'output_shape_bs16': '[16]',
+                 'scores_per_sample': 1, 'batch_output_aggregated': False})
     return model, lambda x: model(x), (
         torch.randn(1, 4, 3, 384, 384, device='cuda'),
         torch.randn(16, 4, 3, 384, 384, device='cuda'),
@@ -334,7 +336,7 @@ def _hstforu(out_path):
 
         def forward(self, frames):
             out = self.m(frames)
-            return F.mse_loss(out, torch.zeros_like(out))
+            return out.flatten(1).pow(2).mean(dim=1)
 
     model = HST(base).cuda().eval()
     p = sum(p.numel() for p in model.parameters())
@@ -348,6 +350,8 @@ def _hstforu(out_path):
         'one next-frame prediction, MSE scoring. Uses mmcv-lite 2.x with compatibility shims for '
         'mmcv 1.x runner/parrots/UPSAMPLE_LAYERS; no checkpoint.',
         out_path, adapted=True)
+    meta.update({'output_shape_bs1': '[1]', 'output_shape_bs16': '[16]',
+                 'scores_per_sample': 1, 'batch_output_aggregated': False})
     x1 = [torch.randn(1, 3, 256, 256, device='cuda') for _ in range(4)]
     x16 = [torch.randn(16, 3, 256, 256, device='cuda') for _ in range(4)]
     return model, lambda frames: model(frames), (x1, x16), meta
