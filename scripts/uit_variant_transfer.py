@@ -97,8 +97,8 @@ def update_experiment(exp: Path, run_id: str, ended_at: str) -> None:
             run['status'] = 'completed'
             run['ended_at'] = ended_at
             run['outputs'] = [
-                'results/uit.json', 'results/uit_scores.csv',
-                'results/summary.json', 'results/summary.md',
+                'results/uit.json', 'results/uit_matched.json', 'results/uit_scores.csv',
+                'results/uit_matched_scores.csv', 'results/summary.json', 'results/summary.md',
                 'ckpt/uit_final.pth',
                 'ckpt/uit_epoch10.pth', 'ckpt/uit_epoch20.pth',
                 'ckpt/uit_epoch30.pth', 'ckpt/uit_epoch40.pth',
@@ -110,8 +110,8 @@ def update_experiment(exp: Path, run_id: str, ended_at: str) -> None:
 def update_artifacts(exp: Path, run_id: str) -> None:
     items = []
     for rel in [
-        'results/uit.json', 'results/summary.json', 'results/summary.md',
-        'results/uit_scores.csv',
+        'results/uit.json', 'results/uit_matched.json', 'results/summary.json', 'results/summary.md',
+        'results/uit_scores.csv', 'results/uit_matched_scores.csv',
         'ckpt/uit_final.pth', 'ckpt/uit_epoch10.pth', 'ckpt/uit_epoch20.pth',
         'ckpt/uit_epoch30.pth', 'ckpt/uit_epoch40.pth', 'ckpt/uit_epoch45.pth',
     ]:
@@ -168,10 +168,22 @@ def copy_efficiency(vid: str, out: Path, exp: Path) -> dict | None:
 
 def archive_one(exp: Path, run_id: str, dry_run: bool) -> Path:
     cfg = json.loads((exp / 'config.json').read_text())
-    metric = json.loads((exp / 'results/uit.json').read_text())
     vid = cfg.get('variant_id') or BUILDER_TO_VID.get(cfg['variant'])
     if vid is None:
         raise RuntimeError(f'{exp}: unknown builder {cfg["variant"]}')
+    matched = exp / 'results/uit_matched.json'
+    if not matched.is_file():
+        if vid == 'rd_s12_t4_h512' and (exp / 'results/uit.json').is_file():
+            metric = json.loads((exp / 'results/uit.json').read_text())
+            metric['scoring'] = 'matched_group_balanced_top5'
+            metric['scoring_note'] = ('V0 4-tap case: old topk readout is exactly the matched '
+                                      'mean-over-taps score; no re-evaluation needed.')
+            write_json(matched, metric)
+        else:
+            raise FileNotFoundError(f'{exp}: matched result missing; run uit_matched_reeval.py')
+    metric = json.loads(matched.read_text())
+    if metric.get('scoring') != 'matched_group_balanced_top5':
+        raise RuntimeError(f'{exp}: result is not matched-scored: {metric.get("scoring")}')
     label, builder, taps = VARIANT_CANONICAL[vid]
     if cfg['variant'] != builder:
         raise RuntimeError(f'{exp}: builder mismatch {cfg["variant"]} != {builder}')

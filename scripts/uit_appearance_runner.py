@@ -271,6 +271,11 @@ def main():
             'split_fingerprint':fingerprint,'trainable_parameters':trainable_parameters,
             'checkpoint':'ckpt/uit_final.pth','checkpoint_sha256':sha,'elapsed_s':time.monotonic()-t0,'max_steps':a.max_steps}
     metric['checkpoint_epochs'] = list(checkpoint_epochs)
-    (out/'uit.json').write_text(json.dumps(metric,ensure_ascii=False,indent=2)+'\n');print(json.dumps(metric),flush=True)
+    metric['scoring'] = 'matched_group_balanced_top5'
+    metric['scoring_note'] = ('V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of '
+                              '0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean).')
+    (out/'uit.json').write_text(json.dumps(metric,ensure_ascii=False,indent=2)+'\n')
+    (out/'uit_matched.json').write_text(json.dumps(metric,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps(metric),flush=True)
 
 if __name__=='__main__': main()
