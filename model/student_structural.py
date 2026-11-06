@@ -2,12 +2,36 @@
 
 The internal width can differ from the teacher width. Reconstruction heads project each
 student stage back to the teacher width so the distillation target remains unchanged.
-The first block is global because reverse alignment maps it to the deepest teacher group.
+The block order is explicit and may be changed for controlled global/local ablations.
 """
 import math
 
 import torch
 import torch.nn as nn
+
+
+class GELUMLP(nn.Module):
+    """Standard ratio-4 GELU MLP used by the plain transformer block."""
+
+    def __init__(self, dim, hidden_ratio=4.0):
+        super().__init__()
+        hidden = int(dim * hidden_ratio)
+        self.mlp = nn.Sequential(
+            nn.Linear(dim, hidden),
+            nn.GELU(),
+            nn.Linear(hidden, dim),
+        )
+
+    def forward(self, x):
+        return self.mlp(x)
+
+
+def build_ffn(dim, ffn_type='gate', gate_ratio=2.0):
+    if ffn_type == 'gate':
+        return GatedFFN(dim, gate_ratio)
+    if ffn_type == 'gelumlp':
+        return GELUMLP(dim, 4.0)
+    raise ValueError(f"unknown ffn_type={ffn_type!r}; expected 'gate' or 'gelumlp'")
 
 
 class GatedFFN(nn.Module):
@@ -30,14 +54,14 @@ class GatedFFN(nn.Module):
 
 
 class GlobalMixerBlock(nn.Module):
-    """Global patch mixer followed by gated channel mixing."""
+    """Global patch mixer followed by the configured channel mixer."""
 
-    def __init__(self, dim=768, heads=8, ffn_ratio=2.0):
+    def __init__(self, dim=768, heads=8, ffn_ratio=2.0, ffn_type='gate'):
         super().__init__()
         self.norm1 = nn.LayerNorm(dim)
         self.attn = nn.MultiheadAttention(dim, heads, batch_first=True)
         self.norm2 = nn.LayerNorm(dim)
-        self.ffn = GatedFFN(dim, ffn_ratio)
+        self.ffn = build_ffn(dim, ffn_type, ffn_ratio)
 
     def forward(self, x):
         z = self.norm1(x)
@@ -47,20 +71,20 @@ class GlobalMixerBlock(nn.Module):
 
 
 class LocalMixerBlock(nn.Module):
-    """2-D local patch mixer followed by the same gated channel mixer.
+    """2-D local patch mixer followed by the configured channel mixer.
 
     The token sequence is temporarily viewed as a square patch grid. There is no token
     permutation or pooling, so each output remains aligned with its original patch.
     """
 
-    def __init__(self, dim=768, ffn_ratio=2.0, kernel_size=3):
+    def __init__(self, dim=768, ffn_ratio=2.0, kernel_size=3, ffn_type='gate'):
         super().__init__()
         self.norm1 = nn.LayerNorm(dim)
         self.dwconv = nn.Conv2d(dim, dim, kernel_size, padding=kernel_size // 2,
                                 groups=dim, bias=True)
         self.pointwise = nn.Linear(dim, dim)
         self.norm2 = nn.LayerNorm(dim)
-        self.ffn = GatedFFN(dim, ffn_ratio)
+        self.ffn = build_ffn(dim, ffn_type, ffn_ratio)
 
     def forward(self, x):
         b, patches, dim = x.shape
@@ -74,18 +98,25 @@ class LocalMixerBlock(nn.Module):
 
 
 class FourBlockGlobalLocalDecoder(nn.Module):
-    """One global block followed by three local blocks and 12 reverse-aligned heads."""
+    """Four configurable global/local blocks and 12 reverse-aligned heads."""
 
     def __init__(self, dim=768, code_dim=64, heads=8, ffn_ratio=2.0,
-                 teacher_dim=768):
+                 teacher_dim=768, block_order='GLLL', ffn_type='gate'):
         super().__init__()
+        if len(block_order) != 4 or any(ch not in 'GL' for ch in block_order):
+            raise ValueError(f"block_order must be four G/L characters, got {block_order!r}")
+        if ffn_type not in {'gate', 'gelumlp'}:
+            raise ValueError(f"unknown ffn_type={ffn_type!r}")
+        self.block_order = block_order
+        self.ffn_type = ffn_type
         self.proj_in = nn.Linear(code_dim, dim)
-        self.blocks = nn.ModuleList([
-            GlobalMixerBlock(dim, heads, ffn_ratio),
-            LocalMixerBlock(dim, ffn_ratio),
-            LocalMixerBlock(dim, ffn_ratio),
-            LocalMixerBlock(dim, ffn_ratio),
-        ])
+        blocks = []
+        for kind in block_order:
+            if kind == 'G':
+                blocks.append(GlobalMixerBlock(dim, heads, ffn_ratio, ffn_type))
+            else:
+                blocks.append(LocalMixerBlock(dim, ffn_ratio, ffn_type=ffn_type))
+        self.blocks = nn.ModuleList(blocks)
         self.heads = nn.ModuleList(nn.Linear(dim, teacher_dim) for _ in range(12))
 
     def forward(self, code):
@@ -100,6 +131,7 @@ class FourBlockGlobalLocalDecoder(nn.Module):
 
 
 def build_structural_student(dim=768, code_dim=64, heads=8, ffn_ratio=2.0,
-                             teacher_dim=768):
+                             teacher_dim=768, block_order='GLLL', ffn_type='gate'):
     return FourBlockGlobalLocalDecoder(dim=dim, code_dim=code_dim, heads=heads,
-                                       ffn_ratio=ffn_ratio, teacher_dim=teacher_dim)
+                                       ffn_ratio=ffn_ratio, teacher_dim=teacher_dim,
+                                       block_order=block_order, ffn_type=ffn_type)

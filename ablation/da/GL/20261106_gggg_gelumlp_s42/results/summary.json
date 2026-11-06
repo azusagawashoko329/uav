@@ -1,0 +1,85 @@
+{
+  "dataset": "Drone-Anomaly",
+  "variant_id": "rd_s4_t12_h512",
+  "variant_label": "V1",
+  "runner_variant": "uit_4block_plain",
+  "seed": 42,
+  "epochs": 30,
+  "status": "completed",
+  "completed_scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "missing_scenes": [],
+  "failures": [],
+  "macro_mean": {
+    "auc_percent": 85.13136600869514,
+    "eer": 0.20308693798743954
+  },
+  "scenes": {
+    "bike": {
+      "auc_percent": 97.74290784355667,
+      "eer": 0.04480874316939891,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/bike_final.pth"
+    },
+    "crossroads": {
+      "auc_percent": 60.17783827300352,
+      "eer": 0.43998244459073954,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/crossroads_final.pth"
+    },
+    "farmland": {
+      "auc_percent": 99.48959687906371,
+      "eer": 0.05374945817078457,
+      "frames": 2387,
+      "positive_frames": 80,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/farmland_final.pth"
+    },
+    "highway": {
+      "auc_percent": 94.81538390913713,
+      "eer": 0.15669393026259149,
+      "frames": 2820,
+      "positive_frames": 497,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/highway_final.pth"
+    },
+    "railway": {
+      "auc_percent": 95.60810810810811,
+      "eer": 0.10687960687960688,
+      "frames": 882,
+      "positive_frames": 68,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/railway_final.pth"
+    },
+    "solar": {
+      "auc_percent": 89.41960314849338,
+      "eer": 0.18033775633293125,
+      "frames": 2450,
+      "positive_frames": 792,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/solar_final.pth"
+    },
+    "vehicle": {
+      "auc_percent": 58.66612389950346,
+      "eer": 0.4391566265060241,
+      "frames": 2633,
+      "positive_frames": 973,
+      "trainable_parameters": 40258880,
+      "checkpoint": "ckpt/vehicle_final.pth"
+    }
+  },
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean).",
+  "previous_topk_summary": "results_legacy_topk/summary.json"
+}

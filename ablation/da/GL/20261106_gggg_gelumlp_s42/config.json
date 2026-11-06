@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "id": "20261106_gggg_gelumlp_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "question": "DA GL 消融：V2 母模板下 block_order=GGGG、ffn_type=gelumlp；历史完成结果迁移。",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GGGG",
+    "ffn_type": "gelumlp",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "fixed": {
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "code_dim": 64,
+    "student_depth": 4,
+    "reconstruction_heads": 12,
+    "loss": "group_balanced_top5_cosine_alpha0.5"
+  },
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "optimizer": "AdamW + OneCycleLR",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "save": "每场景 final checkpoint；不保存中间 epoch"
+  },
+  "resources": {
+    "gpus": 2,
+    "scheduler": "historical run used scripts/da_variant_scheduler.py dynamic two-GPU queue",
+    "expected_trainable_parameters": 40258880,
+    "migrated_from": "experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42"
+  },
+  "migrated_from": "experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+  "original_id": "20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+  "source_model_before_change": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+  "run_id": "20261103T144204Z_da_variant_matrix_s42"
+}

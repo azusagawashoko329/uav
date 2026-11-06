@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "20261106_gggg_gate_s42",
+  "path": "ablation/da/GL/20261106_gggg_gate_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed42; six new cells are planned for 30 epoch training.",
+    "Only block order and student FFN type vary; all V2 mother-template settings are fixed.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GGGG",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  }
+}
