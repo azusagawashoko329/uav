@@ -5,18 +5,18 @@
   "dataset": "da",
   "family": "appearance",
   "status": "running",
-  "source_commit": "61520ddc48d467b3bc800a530c6cc00681d89824",
+  "source_commit": "d22e1d2b7bba526fe5ad17cd9910416f3d241a07",
   "scripts": [
     "scripts/run_scene.py"
   ],
   "runs": [
     {
-      "run_id": "20261106T051500Z_da_gl_ablation_s42_20261106_gggg_gate_s42",
+      "run_id": "20261106T044821Z_da_gl_ablation_s42_20261106_gggg_gate_s42",
       "status": "running",
-      "source_commit": "61520ddc48d467b3bc800a530c6cc00681d89824",
+      "source_commit": "d22e1d2b7bba526fe5ad17cd9910416f3d241a07",
       "script": "scripts/da_gl_ablation_scheduler.py",
       "seed": 42,
-      "started_at": null,
+      "started_at": "20261106T044822Z",
       "ended_at": null,
       "command": [
         "scripts/da_gl_ablation_scheduler.py",
@@ -41,7 +41,7 @@
         "--seed",
         "42"
       ],
-      "log": "logs/scheduler_20261106T051500Z_da_gl_ablation_s42.jsonl",
+      "log": "logs/scheduler_20261106T044821Z_da_gl_ablation_s42.jsonl",
       "outputs": [],
       "notes": "six new cells; dynamic two-GPU queue; training and test both use matched_score(k=5, alpha=0.5)"
     }
