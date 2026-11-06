@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "uit-ours-rd_s4_t12_gl768_h512",
+  "dataset": "uit",
+  "method": "ours",
+  "method_display": "ours",
+  "year": 2026,
+  "variant": "rd_s4_t12_gl768_h512",
+  "status": "completed",
+  "source": {
+    "type": "internal",
+    "url": null,
+    "commit": "82c3418c9c412ad0861aabe77e38efbac4dfe196",
+    "local_path": null,
+    "experiment": "experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
+    "run_id": "20261104T153558Z_uit_variant_matrix_s42_20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
+    "license": "internal",
+    "notes": "Raw experiment remains authoritative; checkpoints are local and registered in the source artifacts.json."
+  },
+  "protocol": {
+    "one_class": true,
+    "train": "official train normal frames only: train/frames/<video>/*.jpg, 41 videos",
+    "test": "concat all 51 test videos and 147005 frames; one global AUC/EER",
+    "metrics": [
+      "AUC",
+      "EER"
+    ],
+    "seed": 42,
+    "epochs": 45,
+    "input_size": 256,
+    "notes": "UIT-ADrone official train/test layout; train/test overlap retained; variant rd_s4_t12_gl768_h512 = uit_4block_gl768; teacher taps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]."
+  },
+  "results": {
+    "macro_auc": 81.73582646872268,
+    "macro_eer": 0.25859674329501914,
+    "per_scene": {
+      "uit": {
+        "auc": 81.73582646872268,
+        "eer": 0.25859674329501914
+      }
+    },
+    "summary": "results/summary.json",
+    "source_results": "experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42/results/"
+  },
+  "notes": "Comparison view of V2; raw experiment: experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42.",
+  "efficiency": {
+    "status": "measured",
+    "input_hwt": "256x256x1",
+    "code_commit": "cef6f9690c0bcd3b5f05d4ffab6ff93640a134b7",
+    "weights_state": "architecture-init",
+    "da_adapted": false,
+    "auc_source": "experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42 (seed42, 45ep UIT)",
+    "profiling_config": "RTX 5880 Ada GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6; FP32; AMP off; TF32 off; eval; inference_mode for timing; BS1 50/500/3; BS16 50/500/3",
+    "inference_params_m": 115.889216,
+    "training_trainable_params_m": 30.248,
+    "training_only_params_m": 0.0,
+    "frozen_inference_params_m": 85.641216,
+    "flops_g_per_output_frame": 62.804463616,
+    "flops_window_g": 62.804463616,
+    "flops_verified": true,
+    "flops_counter": "FlopCounterMode(TorchDispatchMode)+native_mha_flop; hand module formulas; profiler common subset",
+    "flops_ops_covered": [
+      "Conv2d",
+      "Linear",
+      "MultiheadAttention",
+      "aten._native_multi_head_attention",
+      "aten._scaled_dot_product_efficient_attention",
+      "aten.addmm",
+      "aten.convolution",
+      "aten.mm"
+    ],
+    "flops_ops_missing": [],
+    "flops_common_subset_check": "hand-vs-counter: 79 modules, max_rel_diff=0.000000; counter-only modules=50; profiler common categories=['conv'], max_rel_diff=0.000000; skipped=['attention', 'matmul(native_mha_decomposed)', 'native_mha']",
+    "flops_duplicate_check": "single dispatch path; module hooks and counter are separate passes",
+    "latency_bs1_p50_ms_per_output_frame": 14.787128515308723,
+    "latency_bs1_mean_ms_per_output_frame": 14.856763937316524,
+    "latency_bs1_p95_ms_per_output_frame": 15.432513027917594,
+    "fps_bs1": 67.30940898160513,
+    "fps_bs16": 263.3420681147517,
+    "input_frames_t": 1,
+    "effective_output_scores_k": 1,
+    "window_stride": 1,
+    "window_latency_ms": 14.856763937316524,
+    "fps_independent_window": 67.30940898160513,
+    "score_density": 1.0,
+    "frame_coverage": 1.0,
+    "fps_stream_estimated": 67.30940898160513,
+    "fps_stream_measured": null,
+    "benchmark_source": "comparison/uit/ours/rd_s4_t12_gl768_h512/benchmark_v2.json",
+    "notes": "DINOv3 teacher runs all 12 blocks; taps are output selection, not compute pruning. teacher_taps=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; readout=top5; architecture-init (FLOPs/latency are weight-independent). | v2 benchmark 2026-11-04; benchmark tooling in comparison/benchmarks. Efficiency benchmark is architecture-only and dataset-independent; copied from the DA comparison entry with UIT provenance."
+  }
+}

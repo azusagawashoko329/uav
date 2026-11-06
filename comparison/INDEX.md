@@ -1,6 +1,6 @@
 # 对比实验导航
 
-共 22 个条目：completed=6，planned=16。
+共 28 个条目：completed=12，planned=16。
 
 字段规范见 [SCHEMA.md](SCHEMA.md)；统一协议与添加外部方法见 [README.md](README.md)。
 
@@ -35,6 +35,13 @@
 
 ## uit
 
-（暂无条目）
+| ID | 方法 | 变体 | 状态 | 轻量化 | macro AUC | macro EER | 来源 |
+|---|---|---|---|---|---:|---:|---|
+| [uit-ours-rd_s12_t4_h512](uit/ours/rd_s12_t4_h512/README.md) | ours | `rd_s12_t4_h512` | `completed` | `measured` | 85.2491 | 0.2158 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v0_rd_s12_t4_h512_s42) |
+| [uit-ours-rd_s4_t12_h512](uit/ours/rd_s4_t12_h512/README.md) | ours | `rd_s4_t12_h512` | `completed` | `measured` | 82.6516 | 0.2464 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v1_rd_s4_t12_h512_s42) |
+| [uit-ours-rd_s4_t12_gl768_h512](uit/ours/rd_s4_t12_gl768_h512/README.md) | ours | `rd_s4_t12_gl768_h512` | `completed` | `measured` | 81.7358 | 0.2586 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42) |
+| [uit-ours-rd_s4_t12_gl192_h512](uit/ours/rd_s4_t12_gl192_h512/README.md) | ours | `rd_s4_t12_gl192_h512` | `completed` | `measured` | 76.2947 | 0.3166 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42) |
+| [uit-ours-rd_s4_t12_gl192_h128](uit/ours/rd_s4_t12_gl192_h128/README.md) | ours | `rd_s4_t12_gl192_h128` | `completed` | `measured` | 75.7384 | 0.3208 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42) |
+| [uit-ours-rd_s4_t12_gl192_h128_qr2](uit/ours/rd_s4_t12_gl192_h128_qr2/README.md) | ours | `rd_s4_t12_gl192_h128_qr2` | `completed` | `measured` | 75.5807 | 0.3234 | [experiment](../experiments/uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42) |
 
 重新生成：`python comparison/build_catalog.py`；校验：`python comparison/check_comparisons.py`。

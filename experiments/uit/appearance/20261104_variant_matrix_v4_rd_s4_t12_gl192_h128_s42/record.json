@@ -4,7 +4,7 @@
   "path": "experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42",
   "dataset": "uit",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "82c3418c9c412ad0861aabe77e38efbac4dfe196",
   "variant_id": "rd_s4_t12_gl192_h128",
   "variant_label": "V4",
@@ -15,12 +15,12 @@
   "runs": [
     {
       "run_id": "20261104T153558Z_uit_variant_matrix_s42_20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42",
-      "status": "running",
+      "status": "completed",
       "source_commit": "82c3418c9c412ad0861aabe77e38efbac4dfe196",
       "script": "scripts/uit_resource_scheduler.py",
       "seed": 42,
       "started_at": "20261104T153620Z",
-      "ended_at": null,
+      "ended_at": "20261106T041302Z",
       "command": [
         "scripts/uit_resource_scheduler.py",
         "--repo-root",
@@ -51,7 +51,10 @@
       "log": "logs/scheduler_20261104T153558Z_uit_variant_matrix_s42.jsonl",
       "outputs": [
         "results/uit.json",
+        "results/uit_matched.json",
         "results/uit_scores.csv",
+        "results/uit_matched_scores.csv",
+        "results/summary.json",
         "results/summary.md",
         "ckpt/uit_final.pth",
         "ckpt/uit_epoch10.pth",
@@ -63,12 +66,12 @@
       "notes": "Dual-GPU dynamic queue; runner validated variant_id/builder/teacher taps/parameter count before training."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "single seed42",
     "six independent whole-UIT runs; not retrained multi-seed",
     "official UIT train/test overlap retained",
     "checkpoints at epochs 10,20,30,40,45 and final are local and Git-ignored"
   ],
-  "weight_files_local": 0
+  "weight_files_local": 6
 }

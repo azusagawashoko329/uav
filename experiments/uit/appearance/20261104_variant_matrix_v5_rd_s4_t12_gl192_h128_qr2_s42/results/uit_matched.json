@@ -1,0 +1,26 @@
+{
+  "dataset": "UIT-ADrone",
+  "variant": "uit_gl192_dense128_rank2",
+  "seed": 42,
+  "auc_percent": 75.58073548236119,
+  "eer": 0.32341954022988506,
+  "frames": 147005,
+  "positive_frames": 63485,
+  "train_frames": 59186,
+  "test_videos": 51,
+  "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+  "trainable_parameters": 3761222,
+  "checkpoint": "ckpt/uit_final.pth",
+  "checkpoint_sha256": "45b618e67a28ab9d7acac20006bd90132f916aebb7f3bfe191d3601b0bd4d37c",
+  "elapsed_s": 34192.19212235999,
+  "max_steps": 0,
+  "checkpoint_epochs": [
+    10,
+    20,
+    30,
+    40,
+    45
+  ],
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)."
+}

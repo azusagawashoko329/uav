@@ -1,0 +1,29 @@
+{
+  "dataset": "UIT-ADrone",
+  "variant_id": "rd_s4_t12_gl192_h128",
+  "variant_label": "V4",
+  "runner_variant": "uit_gl192_dense128",
+  "seed": 42,
+  "epochs": 45,
+  "status": "completed",
+  "completed_scenes": [
+    "uit"
+  ],
+  "missing_scenes": [],
+  "failures": [],
+  "macro_mean": {
+    "auc_percent": 75.73837357725013,
+    "eer": 0.32079741379310345
+  },
+  "scenes": {
+    "uit": {
+      "auc_percent": 75.73837357725013,
+      "eer": 0.32079741379310345,
+      "frames": 147005,
+      "positive_frames": 63485,
+      "trainable_parameters": 4154432,
+      "checkpoint": "ckpt/uit_final.pth",
+      "checkpoint_sha256": "16fab6f632ec473b8f0bb4f5fd04352645339584bfe33f13320c3e65a3869bd7"
+    }
+  }
+}

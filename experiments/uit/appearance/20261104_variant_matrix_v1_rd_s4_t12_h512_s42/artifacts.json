@@ -1,5 +1,159 @@
 {
   "schema_version": 2,
   "experiment": "20261104_variant_matrix_v1_rd_s4_t12_h512_s42",
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/uit.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 745,
+      "sha256": "7bbec79a9b0750767c79524fc77f249a36fd9e44ce3e8ea084cd98a74f153614",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_matched.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 745,
+      "sha256": "7bbec79a9b0750767c79524fc77f249a36fd9e44ce3e8ea084cd98a74f153614",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 701,
+      "sha256": "c73d96ba060b7f7425e07bdb0a290482021c252b43221ae9ef80290ae257269e",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 252,
+      "sha256": "37ed023f0170468b257ea2e664fddd35862f7c843b97dec3963ef1a13cda5ff3",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 6957952,
+      "sha256": "716216e596abe0c64554ffaddfbc1bd3b658381d1e65dd7b49ba9368985b14c4",
+      "storage": "ignored"
+    },
+    {
+      "path": "results/uit_matched_scores.csv",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 6952413,
+      "sha256": "915d98ba7c59667f77d2319c949220b3a01a4520f79e393c85e58ad8fb99fac8",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066170,
+      "sha256": "826e30aa1bcdbde827df1b099ca6a0fc75b878e7bc588fd23fb53d426a2b52e8",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066382,
+      "sha256": "6db3901d1e16d0ef134ba8e95fc1f8e6590be3954ade04408d2414b89371ed2a",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066382,
+      "sha256": "8f1a4f546c1b92c805675158d32755bd14ce148839425dead0299a611365f1f4",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066382,
+      "sha256": "993e1e700bd883ef805dbd8137c3eb9e956ed71f120af943a4c8101409f74201",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch40.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066382,
+      "sha256": "1512de5d578aadb464d7f5694bf1ebd82b8a787eead8643dc74fcd013bfb0490",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch45.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 161066382,
+      "sha256": "307bc6b0e5e78f5c5cf16c8b4fdfd6d5b4e580a620b2a874f530234cd0edf84c",
+      "storage": "ignored"
+    },
+    {
+      "path": "logs/20261104T153620Z_uit_gpu1.log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 2788,
+      "sha256": "4339b1853394d027ca99df37a83fe7558b0d79bf58f89a052aea426234f78e0b",
+      "storage": "git"
+    },
+    {
+      "path": "logs/reeval_matched_20261105T122351Z_gpu0.log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 707,
+      "sha256": "b8cc0795ae45141dc4448afa0b9df7cfea5a5fe00f237e16a67449d7689d096d",
+      "storage": "git"
+    },
+    {
+      "path": "logs/reeval_matched_20261105T163500Z_uit_matched_reeval.jsonl",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 2281,
+      "sha256": "02522725de006922c515819886ba7f0fb8708901c28babec8b9cd1b6fce60b20",
+      "storage": "git"
+    },
+    {
+      "path": "logs/reeval_matched_20261105T202500Z_uit_matched_early.jsonl",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 2130,
+      "sha256": "13ce562ad83762535761b92e52fad60d2c22e9ffa844fffa950c8624a0019509",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261104T153558Z_uit_variant_matrix_s42.jsonl",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 7994,
+      "sha256": "0d8875a40209d02015908cc9012bcb2e8e9f635b2c12fea73dbb0d623a392e3f",
+      "storage": "git"
+    }
+  ]
 }

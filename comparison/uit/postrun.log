@@ -1,0 +1,15 @@
+{"time": "20261105T210951Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "start", "jobs": 5, "queued": 2, "skipped": 3, "gpus": [{"slot": 0, "uuid": "GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f", "name": "NVIDIA RTX A6000", "used_mb": 15}, {"slot": 1, "uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6", "name": "NVIDIA RTX 5880 Ada Generation", "used_mb": 15}]}
+{"time": "20261105T210951Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "launch", "experiment": "experiments/uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42", "gpu_slot": 0, "uuid": "GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f", "pid": 1092070, "log": "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/logs/reeval_matched_20261105T210951Z_gpu0.log", "remaining": 1}
+{"time": "20261105T210951Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "launch", "experiment": "experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42", "gpu_slot": 1, "uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6", "pid": 1092071, "log": "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/logs/reeval_matched_20261105T210951Z_gpu1.log", "remaining": 0}
+{"time": "20261105T221441Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "finish", "experiment": "experiments/uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42", "gpu_slot": 0, "returncode": 0, "log": "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/logs/reeval_matched_20261105T210951Z_gpu0.log", "elapsed_s": 3890.0767116029747}
+{"time": "20261105T221441Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "finish", "experiment": "experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42", "gpu_slot": 1, "returncode": 0, "log": "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/logs/reeval_matched_20261105T210951Z_gpu1.log", "elapsed_s": 3890.123445137986}
+{"time": "20261105T221441Z", "run_id": "20261105T163500Z_uit_matched_reeval", "kind": "all_finished", "jobs": 5, "failures": []}
+25 comparison entries indexed
+Comparison registry OK: 25 entries (completed=9, planned=16)
+[V0 rd_s12_t4_h512] 20261104_variant_matrix_v0_rd_s12_t4_h512_s42 -> comparison/uit/ours/rd_s12_t4_h512  AUC=85.2491 EER=0.2158 params=89079104
+[V1 rd_s4_t12_h512] 20261104_variant_matrix_v1_rd_s4_t12_h512_s42 -> comparison/uit/ours/rd_s4_t12_h512  AUC=82.6516 EER=0.2464 params=40258880
+SKIP 20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42: results/uit.json missing
+SKIP 20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42: results/uit.json missing
+SKIP 20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42: results/uit.json missing
+[V5 rd_s4_t12_gl192_h128_qr2] 20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42 -> comparison/uit/ours/rd_s4_t12_gl192_h128_qr2  AUC=75.5807 EER=0.3234 params=3761222
+TRANSFER_EXIT=0

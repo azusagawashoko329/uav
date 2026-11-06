@@ -4,7 +4,18 @@
 
 **首批正式六变体矩阵**：`experiments/uit/appearance/20261101_uit_45ep_*_retry2_s42/`，UIT-ADrone，seed42，45 epoch，batch64，AdamW，256×256，冻结 DINOv3 ViT-B/16，`source_commit=532e0e024c1d697d5f45ff1b3aed95487f85fbc1`；六项 `record.json` 均为 `completed`。
 
-**20261104 matrix 命名重跑**：`experiments/uit/appearance/20261104_variant_matrix_v{0..5}_*_s42/`，同样的六变体/45ep/seed42/双卡动态队列，使用当前源码与训练前 variant guard；状态见各 `record.json`。
+**20261104 matrix 命名重跑**：`experiments/uit/appearance/20261104_variant_matrix_v{0..5}_*_s42/`，同样的六变体/45ep/seed42/双卡动态队列，使用当前源码与训练前 variant guard；六项均为 `completed`，matched-score AUC：
+
+| ID | 编号 | matched AUC | matched EER |
+|---|---|---:|---:|
+| `rd_s12_t4_h512` | V0 | 85.2491 | 0.2158 |
+| `rd_s4_t12_h512` | V1 | 82.6516 | 0.2464 |
+| `rd_s4_t12_gl768_h512` | V2 | 81.7358 | 0.2586 |
+| `rd_s4_t12_gl192_h512` | V3 | 76.2947 | 0.3166 |
+| `rd_s4_t12_gl192_h128` | V4 | 75.7384 | 0.3208 |
+| `rd_s4_t12_gl192_h128_qr2` | V5 | 75.5807 | 0.3234 |
+
+对比归档在 `comparison/uit/ours/<variant>/`；旧 `20261101` 矩阵保留为历史运行。
 
 所有变体的 `code_dim=64`；`h512/h128` 指 OCBE 的 `fuse_hidden`，**不是** `code_dim`。
 

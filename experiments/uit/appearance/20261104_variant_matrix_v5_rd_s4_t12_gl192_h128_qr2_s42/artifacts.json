@@ -1,5 +1,132 @@
 {
   "schema_version": 2,
   "experiment": "20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42",
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/uit.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 798,
+      "sha256": "18524a4f5e97361890f3d6abfb7dca7995d6d73bc0f3e6d12c3fb48e9114c022",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_matched.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 798,
+      "sha256": "18524a4f5e97361890f3d6abfb7dca7995d6d73bc0f3e6d12c3fb48e9114c022",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 718,
+      "sha256": "d8736bd2e0183029882bd83ee1aca6015317bb5775f2e009f0989312f3f4d0a1",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 269,
+      "sha256": "f12aa3e7e063a928df7422daea1bfc2bf6a7c9a979dc0830739004621423438f",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit_scores.csv",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 6915941,
+      "sha256": "065e17ff41e03d424066a3e149b11ef956a93304bda23828afdb3e1057409f99",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075706,
+      "sha256": "45b618e67a28ab9d7acac20006bd90132f916aebb7f3bfe191d3601b0bd4d37c",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075920,
+      "sha256": "b2558c41d7f110d71773f26b47cf9eab03511457dccb04ea4adcd0506abd4584",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075920,
+      "sha256": "4afbdb541146d70efef2d0f4c159785dc4d8569041ac3b2d9cafdf54245101a7",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075920,
+      "sha256": "b585597ea79e38dc6152a0f06d81c3a14f5ae0b507d15f29bb8a4d0810f33933",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch40.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075920,
+      "sha256": "bcf9a1e094db9dfee6fccd93e7f20031feb3f62abfcbe3b66efc0503b7d1788b",
+      "storage": "ignored"
+    },
+    {
+      "path": "ckpt/uit_epoch45.pth",
+      "producer_script": "scripts/uit_appearance_runner.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 15075920,
+      "sha256": "ac56930f7abf71612e440bd36b482b346d8d256374dc2e7d75d653c1079547f1",
+      "storage": "ignored"
+    },
+    {
+      "path": "logs/20261105T113503Z_uit_gpu1.log",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 2977,
+      "sha256": "da7213fb3745eb4bdc87c29f2eabaa540ad0c11f3bc19f4134da313ede2b6587",
+      "storage": "git"
+    },
+    {
+      "path": "logs/reeval_matched_20261105T163500Z_uit_matched_reeval.jsonl",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 2281,
+      "sha256": "02522725de006922c515819886ba7f0fb8708901c28babec8b9cd1b6fce60b20",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261104T153558Z_uit_variant_matrix_s42.jsonl",
+      "producer_script": "scripts/uit_resource_scheduler.py",
+      "run_id": "20261104T153558Z_uit_variant_matrix_s42",
+      "status": "present",
+      "size_bytes": 7994,
+      "sha256": "0d8875a40209d02015908cc9012bcb2e8e9f635b2c12fea73dbb0d623a392e3f",
+      "storage": "git"
+    }
+  ]
 }

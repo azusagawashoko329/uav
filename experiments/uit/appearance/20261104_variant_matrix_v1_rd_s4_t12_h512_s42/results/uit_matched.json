@@ -1,0 +1,20 @@
+{
+  "dataset": "UIT-ADrone",
+  "variant_id": "rd_s4_t12_h512",
+  "variant_label": "V1",
+  "variant": "uit_4block_plain",
+  "seed": 42,
+  "epochs": 45,
+  "auc_percent": 82.65160813660995,
+  "eer": 0.24644396551724138,
+  "frames": 147005,
+  "positive_frames": 63485,
+  "train_frames": 59186,
+  "test_videos": 51,
+  "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+  "trainable_parameters": 40258880,
+  "checkpoint": "ckpt/uit_final.pth",
+  "checkpoint_sha256": "826e30aa1bcdbde827df1b099ca6a0fc75b878e7bc588fd23fb53d426a2b52e8",
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)."
+}

@@ -125,7 +125,7 @@ def update_artifacts(exp: Path, run_id: str) -> None:
             'status': 'present',
             'size_bytes': p.stat().st_size,
             'sha256': sha256(p),
-            'storage': 'git' if rel.startswith('results/') else 'ignored',
+            'storage': 'git' if rel.startswith('results/') and not rel.endswith('_scores.csv') else 'ignored',
         })
     for p in sorted((exp / 'logs').glob('*')):
         if p.is_file() and p.suffix in {'.log', '.jsonl'}:
@@ -212,7 +212,8 @@ def archive_one(exp: Path, run_id: str, dry_run: bool) -> Path:
     out.mkdir(parents=True, exist_ok=True)
     write_json(out / 'results/summary.json', summary)
     shutil.copyfile(exp / 'results/summary.md', out / 'results/summary.md')
-    shutil.copyfile(exp / 'results/uit.json', out / 'results/uit.json')
+    src_metric = exp / 'results/uit.json'
+    shutil.copyfile(src_metric if src_metric.is_file() else matched, out / 'results/uit.json')
 
     source = {
         'type': 'internal', 'url': None,
@@ -278,8 +279,8 @@ def main():
     else:
         exps = sorted((ROOT / 'experiments/uit/appearance').glob('20261104_variant_matrix_*'))
     for exp in exps:
-        if not (exp / 'results/uit.json').is_file():
-            print(f'SKIP {exp.name}: results/uit.json missing')
+        if not (exp / 'results/uit_matched.json').is_file():
+            print(f'SKIP {exp.name}: results/uit_matched.json missing')
             continue
         archive_one(exp, args.run_id, args.dry_run)
     if not args.dry_run:
