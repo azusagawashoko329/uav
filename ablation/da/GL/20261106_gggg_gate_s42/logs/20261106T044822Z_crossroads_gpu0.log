@@ -1,0 +1,3 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_gggg_gate_s42", "scene": "crossroads", "seed": 42, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GGGG", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "GGGG", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 15772, "test_videos": 5, "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238", "trainable_parameters": 35540288, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.506692 elapsed_s=156.2
+epoch=2 loss=0.297293 elapsed_s=281.9
