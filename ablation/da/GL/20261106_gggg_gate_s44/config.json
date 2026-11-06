@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "id": "20261106_gggg_gate_s44",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 44,
+  "question": "DA GL 消融多 seed：block_order=GGGG、ffn_type=gate、seed44。",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GGGG",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "fixed": {
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "code_dim": 64,
+    "student_depth": 4,
+    "reconstruction_heads": 12,
+    "loss": "group_balanced_top5_cosine_alpha0.5"
+  },
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "optimizer": "AdamW + OneCycleLR",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "save": "每场景 final checkpoint；不保存中间 epoch"
+  },
+  "resources": {
+    "gpus": 2,
+    "scheduler": "scripts/da_gl_ablation_multi_seed_scheduler.py 动态双卡混合 seed 队列",
+    "expected_trainable_parameters": 35540288
+  },
+  "source_model_before_change": null
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "20261106_glll_gate_s44",
+  "path": "ablation/da/GL/20261106_glll_gate_s44",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed44; this is the GLLL + gate cell in the DA GL multi-seed matrix.",
+    "All V2 mother-template settings are fixed; only block order and FFN type identify this cell.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  }
+}

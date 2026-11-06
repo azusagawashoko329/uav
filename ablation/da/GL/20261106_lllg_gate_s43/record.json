@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "20261106_lllg_gate_s43",
+  "path": "ablation/da/GL/20261106_lllg_gate_s43",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed43; this is the LLLG + gate cell in the DA GL multi-seed matrix.",
+    "All V2 mother-template settings are fixed; only block order and FFN type identify this cell.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "LLLG",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  }
+}
