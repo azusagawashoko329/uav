@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_llll_gelumlp_s42", "scene": "railway", "seed": 42, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "LLLL", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 1206, "test_videos": 1, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 33202496, "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.893364 elapsed_s=8.1
+epoch=2 loss=0.623978 elapsed_s=15.5
+epoch=3 loss=0.430661 elapsed_s=22.7
+epoch=4 loss=0.354908 elapsed_s=29.9
+epoch=5 loss=0.303835 elapsed_s=37.3
+epoch=6 loss=0.263385 elapsed_s=44.7
+epoch=7 loss=0.257741 elapsed_s=52.1
+epoch=8 loss=0.227549 elapsed_s=59.5
+epoch=9 loss=0.194499 elapsed_s=66.9
+epoch=10 loss=0.178181 elapsed_s=74.4
+epoch=11 loss=0.166319 elapsed_s=81.8
+epoch=12 loss=0.157899 elapsed_s=89.1
+epoch=13 loss=0.149309 elapsed_s=96.5
+epoch=14 loss=0.142475 elapsed_s=104.0
+epoch=15 loss=0.136760 elapsed_s=111.4
+epoch=16 loss=0.131547 elapsed_s=118.8
+epoch=17 loss=0.127202 elapsed_s=126.1
+epoch=18 loss=0.123642 elapsed_s=133.4
+epoch=19 loss=0.120505 elapsed_s=140.8
+epoch=20 loss=0.117818 elapsed_s=148.2
+epoch=21 loss=0.115523 elapsed_s=155.6
+epoch=22 loss=0.113786 elapsed_s=163.1
+epoch=23 loss=0.112203 elapsed_s=170.5
+epoch=24 loss=0.111044 elapsed_s=177.9
+epoch=25 loss=0.109925 elapsed_s=185.2
+epoch=26 loss=0.109196 elapsed_s=192.6
+epoch=27 loss=0.108734 elapsed_s=200.1
+epoch=28 loss=0.108409 elapsed_s=207.4
+epoch=29 loss=0.108465 elapsed_s=214.8
+epoch=30 loss=0.108068 elapsed_s=222.3
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_llll_gelumlp_s42", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "scene": "railway", "seed": 42, "epochs": 30, "auc_percent": 94.73189767307414, "eer": 0.10442260442260443, "frames": 882, "positive_frames": 68, "train_frames": 1206, "test_videos": 1, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 33202496, "model_guard": {"block_order": "LLLL", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 228.35561024199706, "max_steps": 0, "checkpoint": "ckpt/railway_final.pth", "checkpoint_sha256": "359d36c97b39efd044dd05a0c35de026b876c0e6fff3c618db7d4049cdbefc45", "cuda": "NVIDIA RTX 5880 Ada Generation"}

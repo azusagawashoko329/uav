@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_glll_gelumlp_s42",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gelumlp",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "railway",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 94.43019222430988,
+  "eer": 0.10442260442260443,
+  "frames": 882,
+  "positive_frames": 68,
+  "train_frames": 1206,
+  "test_videos": 1,
+  "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+  "trainable_parameters": 34966592,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gelumlp",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 295.2091142790159,
+  "max_steps": 0,
+  "checkpoint": "ckpt/railway_final.pth",
+  "checkpoint_sha256": "810f324fc547d4f0b6c94d43c98f9b21472a793926077585673d67fdd6b18527",
+  "cuda": "NVIDIA RTX A6000"
+}

@@ -4,7 +4,7 @@
   "path": "ablation/da/GL/20261106_lllg_gate_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "d22e1d2b7bba526fe5ad17cd9910416f3d241a07",
   "scripts": [
     "scripts/run_scene.py"
@@ -12,12 +12,12 @@
   "runs": [
     {
       "run_id": "20261106T044821Z_da_gl_ablation_s42_20261106_lllg_gate_s42",
-      "status": "running",
+      "status": "cancelled",
       "source_commit": "d22e1d2b7bba526fe5ad17cd9910416f3d241a07",
       "script": "scripts/da_gl_ablation_scheduler.py",
       "seed": 42,
       "started_at": "20261106T044822Z",
-      "ended_at": null,
+      "ended_at": "20261106T080352Z",
       "command": [
         "scripts/da_gl_ablation_scheduler.py",
         "--repo-root",
@@ -43,14 +43,80 @@
       ],
       "log": "logs/scheduler_20261106T044821Z_da_gl_ablation_s42.jsonl",
       "outputs": [],
-      "notes": "six new cells; dynamic two-GPU queue; training and test both use matched_score(k=5, alpha=0.5)"
+      "notes": "Initial scheduler was interrupted before all six cells completed; completed scene outputs were retained and resumed with --resume."
+    },
+    {
+      "run_id": "20261106T084900Z_da_gl_ablation_resume_s42_20261106_lllg_gate_s42",
+      "status": "completed",
+      "source_commit": "d22e1d2b7bba526fe5ad17cd9910416f3d241a07",
+      "script": "scripts/da_gl_ablation_scheduler.py",
+      "seed": 42,
+      "started_at": "20261106T084703Z",
+      "ended_at": "20261106T142434Z",
+      "command": [
+        "scripts/da_gl_ablation_scheduler.py",
+        "--repo-root",
+        ".",
+        "--experiments",
+        "ablation/da/GL/20261106_gggg_gate_s42",
+        "ablation/da/GL/20261106_llll_gate_s42",
+        "ablation/da/GL/20261106_lllg_gate_s42",
+        "ablation/da/GL/20261106_llll_gelumlp_s42",
+        "ablation/da/GL/20261106_glll_gelumlp_s42",
+        "ablation/da/GL/20261106_lllg_gelumlp_s42",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42",
+        "--poll-seconds",
+        "5",
+        "--resume",
+        "--run-id",
+        "20261106T084900Z_da_gl_ablation_resume_s42"
+      ],
+      "log": "logs/20261106T084900Z_da_gl_ablation_resume_s42.jsonl",
+      "outputs": [
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth",
+        "results/summary.json",
+        "results/summary.md"
+      ],
+      "notes": "Resume run skipped complete scenes, finished all remaining scenes with zero scheduler failures; train/eval used matched_score(k=5, alpha=0.5)."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "Single seed42; six new cells are planned for 30 epoch training.",
     "Only block order and student FFN type vary; all V2 mother-template settings are fixed.",
-    "Results are pending execution."
+    "Single seed42; seven independent per-scene models.",
+    "Training and test scoring use matched_score(k=5, alpha=0.5).",
+    "Macro summary is descriptive; no multi-seed uncertainty or significance test."
   ],
   "ablation": {
     "family": "GL",

@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "dataset": "da",
+  "family": "GL",
+  "seed": 42,
+  "score": "matched_group_balanced_top5 (alpha=0.5)",
+  "aggregation": "mean of seven scene AUC/EER",
+  "mother_template": "rd_s4_t12_gl768_h512",
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ],
+  "matrix": [
+    {
+      "block_order": "GGGG",
+      "ffn_type": "gate",
+      "experiment": "20261106_gggg_gate_s42",
+      "macro_auc_percent": 85.31989863231895,
+      "macro_eer": 0.19531790524405898,
+      "trainable_parameters": 35540288,
+      "scenes": 7
+    },
+    {
+      "block_order": "GGGG",
+      "ffn_type": "gelumlp",
+      "experiment": "20261106_gggg_gelumlp_s42",
+      "macro_auc_percent": 85.13136600869514,
+      "macro_eer": 0.20308693798743954,
+      "trainable_parameters": 40258880,
+      "scenes": 7
+    },
+    {
+      "block_order": "LLLL",
+      "ffn_type": "gate",
+      "experiment": "20261106_llll_gate_s42",
+      "macro_auc_percent": 85.56091796935608,
+      "macro_eer": 0.20055882140019896,
+      "trainable_parameters": 28483904,
+      "scenes": 7
+    },
+    {
+      "block_order": "LLLL",
+      "ffn_type": "gelumlp",
+      "experiment": "20261106_llll_gelumlp_s42",
+      "macro_auc_percent": 84.77802985619651,
+      "macro_eer": 0.2040745002868441,
+      "trainable_parameters": 33202496,
+      "scenes": 7
+    },
+    {
+      "block_order": "GLLL",
+      "ffn_type": "gate",
+      "experiment": "20261106_glll_gate_s42",
+      "macro_auc_percent": 85.21465517781522,
+      "macro_eer": 0.19645559306283525,
+      "trainable_parameters": 30248000,
+      "scenes": 7
+    },
+    {
+      "block_order": "GLLL",
+      "ffn_type": "gelumlp",
+      "experiment": "20261106_glll_gelumlp_s42",
+      "macro_auc_percent": 85.50659678591919,
+      "macro_eer": 0.19710824055328188,
+      "trainable_parameters": 34966592,
+      "scenes": 7
+    },
+    {
+      "block_order": "LLLG",
+      "ffn_type": "gate",
+      "experiment": "20261106_lllg_gate_s42",
+      "macro_auc_percent": 85.34607858494269,
+      "macro_eer": 0.19452164704427843,
+      "trainable_parameters": 30248000,
+      "scenes": 7
+    },
+    {
+      "block_order": "LLLG",
+      "ffn_type": "gelumlp",
+      "experiment": "20261106_lllg_gelumlp_s42",
+      "macro_auc_percent": 85.5262986657158,
+      "macro_eer": 0.192179984675399,
+      "trainable_parameters": 34966592,
+      "scenes": 7
+    }
+  ],
+  "comparisons": {
+    "ffn_effect_by_order": {
+      "GGGG": {
+        "auc_delta": -0.1885326236238143,
+        "eer_delta": 0.007769032743380561
+      },
+      "LLLL": {
+        "auc_delta": -0.7828881131595722,
+        "eer_delta": 0.0035156788866451405
+      },
+      "GLLL": {
+        "auc_delta": 0.2919416081039685,
+        "eer_delta": 0.000652647490446634
+      },
+      "LLLG": {
+        "auc_delta": 0.18022008077311114,
+        "eer_delta": -0.0023416623688794214
+      }
+    },
+    "order_effect_vs_glll_gate": {
+      "GGGG": {
+        "auc_delta": 0.10524345450373573,
+        "eer_delta": -0.0011376878187762673
+      },
+      "LLLL": {
+        "auc_delta": 0.34626279154086603,
+        "eer_delta": 0.004103228337363707
+      },
+      "LLLG": {
+        "auc_delta": 0.13142340712747114,
+        "eer_delta": -0.0019339460185568147
+      }
+    },
+    "order_effect_vs_glll_gelumlp": {
+      "GGGG": {
+        "auc_delta": -0.3752307772240471,
+        "eer_delta": 0.005978697434157659
+      },
+      "LLLL": {
+        "auc_delta": -0.7285669297226747,
+        "eer_delta": 0.006966259733562213
+      },
+      "LLLG": {
+        "auc_delta": 0.019701879796613753,
+        "eer_delta": -0.00492825587788287
+      }
+    }
+  },
+  "limitations": [
+    "single seed42",
+    "seven independent scene models",
+    "macro mean gives each scene equal weight",
+    "differences are descriptive and have no multi-seed uncertainty estimate"
+  ]
+}

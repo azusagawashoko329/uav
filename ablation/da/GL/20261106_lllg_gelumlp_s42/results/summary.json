@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment": "20261106_lllg_gelumlp_s42",
+  "ablation": {
+    "block_order": "LLLG",
+    "ffn_type": "gelumlp"
+  },
+  "score": "matched_group_balanced_top5 (alpha=0.5)",
+  "aggregation": "mean of seven scene AUC/EER",
+  "macro_auc_percent": 85.5262986657158,
+  "macro_eer": 0.192179984675399,
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ]
+}

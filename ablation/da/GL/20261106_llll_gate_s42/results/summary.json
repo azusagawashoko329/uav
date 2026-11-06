@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment": "20261106_llll_gate_s42",
+  "ablation": {
+    "block_order": "LLLL",
+    "ffn_type": "gate"
+  },
+  "score": "matched_group_balanced_top5 (alpha=0.5)",
+  "aggregation": "mean of seven scene AUC/EER",
+  "macro_auc_percent": 85.56091796935608,
+  "macro_eer": 0.20055882140019896,
+  "scenes": [
+    "bike",
+    "crossroads",
+    "farmland",
+    "highway",
+    "railway",
+    "solar",
+    "vehicle"
+  ]
+}

@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_llll_gate_s42", "scene": "farmland", "seed": 42, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 9548, "test_videos": 1, "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3", "trainable_parameters": 28483904, "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.522327 elapsed_s=51.4
+epoch=2 loss=0.294300 elapsed_s=103.0
+epoch=3 loss=0.214788 elapsed_s=155.1
+epoch=4 loss=0.172608 elapsed_s=207.3
+epoch=5 loss=0.150015 elapsed_s=259.7
+epoch=6 loss=0.136220 elapsed_s=311.9
+epoch=7 loss=0.126423 elapsed_s=364.3
+epoch=8 loss=0.118465 elapsed_s=416.5
+epoch=9 loss=0.111879 elapsed_s=469.0
+epoch=10 loss=0.106509 elapsed_s=521.3
+epoch=11 loss=0.102415 elapsed_s=573.6
+epoch=12 loss=0.099069 elapsed_s=625.9
+epoch=13 loss=0.096315 elapsed_s=678.2
+epoch=14 loss=0.093932 elapsed_s=730.6
+epoch=15 loss=0.091799 elapsed_s=783.0
+epoch=16 loss=0.089981 elapsed_s=835.8
+epoch=17 loss=0.088391 elapsed_s=888.7
+epoch=18 loss=0.086931 elapsed_s=941.2
+epoch=19 loss=0.085594 elapsed_s=993.6
+epoch=20 loss=0.084430 elapsed_s=1046.2
+epoch=21 loss=0.083361 elapsed_s=1098.7
+epoch=22 loss=0.082386 elapsed_s=1151.2
+epoch=23 loss=0.081506 elapsed_s=1203.8
+epoch=24 loss=0.080734 elapsed_s=1256.4
+epoch=25 loss=0.080061 elapsed_s=1308.7
+epoch=26 loss=0.079497 elapsed_s=1361.2
+epoch=27 loss=0.079036 elapsed_s=1413.6
+epoch=28 loss=0.078687 elapsed_s=1466.1
+epoch=29 loss=0.078448 elapsed_s=1518.6
+epoch=30 loss=0.078325 elapsed_s=1571.1
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_llll_gate_s42", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "scene": "farmland", "seed": 42, "epochs": 30, "auc_percent": 99.42186822713481, "eer": 0.054182921543129606, "frames": 2387, "positive_frames": 80, "train_frames": 9548, "test_videos": 1, "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3", "trainable_parameters": 28483904, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 1582.8322749700164, "max_steps": 0, "checkpoint": "ckpt/farmland_final.pth", "checkpoint_sha256": "9049581cde356a7671a5b0651bd758319e8326684b19d9e01b6e35de60b4c9f0", "cuda": "NVIDIA RTX 5880 Ada Generation"}

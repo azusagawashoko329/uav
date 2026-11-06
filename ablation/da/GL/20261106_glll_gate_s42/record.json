@@ -85,7 +85,8 @@
     "DA Student12 GL12 is a different 12-block topology, not V2",
     "AUC/EER corrected to training-matched score; original top-k results retained under results_legacy_topk/",
     "This directory is a direct migration of the completed canonical DA matrix run; no new training was performed.",
-    "The migrated V1/V2 source uses the same fixed topology and FFN semantics required by this ablation cell."
+    "The migrated V1/V2 source uses the same fixed topology and FFN semantics required by this ablation cell.",
+    "Summary regenerated under the DA GL ablation matrix using matched-score per-scene outputs."
   ],
   "scoring_correction": {
     "reason": "training used group-balanced top-k loss; old evaluation used mean-over-taps top-k readout",
@@ -98,5 +99,15 @@
     "new_macro_eer": 0.19645559306283525
   },
   "migrated_from": "experiments/da/appearance/20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
-  "original_id": "20261106_glll_gate_s42"
+  "original_id": "20261106_glll_gate_s42",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  }
 }

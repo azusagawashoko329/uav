@@ -2,381 +2,355 @@
   "schema_version": 2,
   "artifacts": [
     {
-      "path": "results/bike.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 788,
-      "git": "tracked",
-      "sha256": "52b29c3a7d99997340f8c012d60b3764d64245d6b5c9fb3b4cf0b97687806674",
-      "size_bytes": 962
-    },
-    {
-      "path": "results/bike_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 909466,
-      "git": "tracked",
-      "sha256": "0889fd2736527f06e94f18a0b0190773ff350142ea9d168db9dfd1a242c57d8b",
-      "size_bytes": 908938
-    },
-    {
       "path": "ckpt/bike_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066404,
-      "git": "ignored",
-      "sha256": "deb3742ad7a42e0f33b731c91ddfc4ae90b7f2e1db2c819241192e8d4a04cfcf"
-    },
-    {
-      "path": "results/crossroads.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 811,
-      "git": "tracked",
-      "sha256": "46120c951a14b200b7526b57a2dc7d9c775aa4d9d93b6314e162564fe8569abc",
-      "size_bytes": 970
-    },
-    {
-      "path": "results/crossroads_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 305176,
-      "git": "tracked",
-      "sha256": "cb74355a28fcf299351a77068e8dd4ea1d67dd52116769f65cdba2af18a690b2",
-      "size_bytes": 305112
+      "size_bytes": 161066404,
+      "sha256": "deb3742ad7a42e0f33b731c91ddfc4ae90b7f2e1db2c819241192e8d4a04cfcf",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/crossroads_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161067104,
-      "git": "ignored",
-      "sha256": "11d65b4e253f208602b170891a0ef94d103d4711f720f1929286a2d79672d626"
-    },
-    {
-      "path": "results/farmland.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 806,
-      "git": "tracked",
-      "sha256": "79650531626c64542ebb093aadb66b3686e78a16aad96dead3eb01269e40612f",
-      "size_bytes": 966
-    },
-    {
-      "path": "results/farmland_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 117837,
-      "git": "tracked",
-      "sha256": "6d1a3271a51732052ee09e67e457129b985bd07267b83be91801a0c9f29d47f9",
-      "size_bytes": 117847
+      "size_bytes": 161067104,
+      "sha256": "11d65b4e253f208602b170891a0ef94d103d4711f720f1929286a2d79672d626",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/farmland_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066828,
-      "git": "ignored",
-      "sha256": "7a4f43c919404ddb464d448d8ad13d2c3ddf808d16e950579cb539ebb8ecb04f"
-    },
-    {
-      "path": "results/highway.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 790,
-      "git": "tracked",
-      "sha256": "79c40ba72c6dc6ce913f753c3d958a9de719445d4861705d4a30cb61be00ed3c",
-      "size_bytes": 965
-    },
-    {
-      "path": "results/highway_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 137707,
-      "git": "tracked",
-      "sha256": "80508ec1be337d64ab513677493811ac27904fdd1ebad85444dba6bdface0795",
-      "size_bytes": 137606
+      "size_bytes": 161066828,
+      "sha256": "7a4f43c919404ddb464d448d8ad13d2c3ddf808d16e950579cb539ebb8ecb04f",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/highway_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066722,
-      "git": "ignored",
-      "sha256": "4fd055ed087346bcdb0dd249acf50a9f1dd695afc04f3d7efadff7ce8cfeb392"
-    },
-    {
-      "path": "results/railway.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 788,
-      "git": "tracked",
-      "sha256": "3cdd9adb1969307f83b0de16396ec5ce7cffe1393e2ee38aac42ffeeaef08443",
-      "size_bytes": 963
-    },
-    {
-      "path": "results/railway_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 42864,
-      "git": "tracked",
-      "sha256": "e568844dd3c1c1146ce1723f87f5493402b76befa719380017b8deaec45ec06b",
-      "size_bytes": 42854
+      "size_bytes": 161066722,
+      "sha256": "4fd055ed087346bcdb0dd249acf50a9f1dd695afc04f3d7efadff7ce8cfeb392",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/railway_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066722,
-      "git": "ignored",
-      "sha256": "ec66c9c01e7e4239fc2144f209fa4f17b9f91fa50eb411246ed6024027fd6758"
-    },
-    {
-      "path": "results/solar.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 786,
-      "git": "tracked",
-      "sha256": "7133b22af3c35622065bf0918bf4f106c2b5f3c23c11567cf320464e3201c506",
-      "size_bytes": 961
-    },
-    {
-      "path": "results/solar_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 119024,
-      "git": "tracked",
-      "sha256": "5eccd117df15c88ff6e9b165d283883a71201c470bed08ea8316fd4f2349d15e",
-      "size_bytes": 119026
+      "size_bytes": 161066722,
+      "sha256": "ec66c9c01e7e4239fc2144f209fa4f17b9f91fa50eb411246ed6024027fd6758",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/solar_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066510,
-      "git": "ignored",
-      "sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246"
-    },
-    {
-      "path": "results/vehicle.json",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 791,
-      "git": "tracked",
-      "sha256": "dd6a149ecd8042015e16f68ecdc265f0e1b3dc132962eb805360bf736ff83b12",
-      "size_bytes": 964
-    },
-    {
-      "path": "results/vehicle_scores.csv",
-      "producer_script": "scripts/da_variant_runner.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
-      "status": "present",
-      "size": 128479,
-      "git": "tracked",
-      "sha256": "922b0bfa9c093988350f5b6c6b5436355a656ff53af1c5f2a9b2f46cda65a820",
-      "size_bytes": 128439
+      "size_bytes": 161066510,
+      "sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246",
+      "storage": "local ignored artifact"
     },
     {
       "path": "ckpt/vehicle_final.pth",
-      "producer_script": "scripts/da_variant_runner.py",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 161066722,
-      "git": "ignored",
-      "sha256": "b21666a8faf46aca4918d15ef54b8f364cd95515a2990ca08331a27f6c7fe8fb"
+      "size_bytes": 161066722,
+      "sha256": "b21666a8faf46aca4918d15ef54b8f364cd95515a2990ca08331a27f6c7fe8fb",
+      "storage": "local ignored artifact"
     },
     {
-      "path": "results/summary.json",
-      "producer_script": "scripts/finalize_da_variant_matrix.py",
+      "path": "logs/20261103T144213Z_crossroads_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 2777,
-      "sha256": "df8d1a1881091402d0d738d241ba8c34cc4f9669dec1d57eebb9ec0810239567",
-      "git": "tracked",
-      "size_bytes": 2354
+      "size_bytes": 2372,
+      "sha256": "def37658800140936aadd062a95f83a1e8d07557439ba435a816069183713fd8",
+      "storage": "git-tracked"
     },
     {
-      "path": "results/summary.md",
-      "producer_script": "scripts/finalize_da_variant_matrix.py",
+      "path": "logs/20261103T172158Z_farmland_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 497,
-      "sha256": "f5a0e51cb94b8bcd87c1a6d4c081f158dddf215904c83e8dba9d81314e3b6590",
-      "git": "tracked",
-      "size_bytes": 522
+      "size_bytes": 2357,
+      "sha256": "313a280f832d8d8786895441e85ec44a0be60f538b5bcbd2261f05ab464853f6",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261103T190204Z_highway_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 2329,
+      "sha256": "dd55e0c1f292c577685ffe2315d00168fa6e2fb6267cc9c76461a53ebcac365e",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261103T202709Z_bike_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 2322,
+      "sha256": "bdce5bc329d6404fee9a499b8b2292d3a81094b0c06f0326b00187f61c792601",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261103T214614Z_vehicle_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 2320,
+      "sha256": "bfb26d295e351700fa56a19314e38520258df2aa5ed1030765245fc4ff384a01",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261103T223649Z_solar_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 2303,
+      "sha256": "6b9dd74599d8c9e86302194dc41f832fd9a8b51ddf2351e6e3cbcaaeb52af318",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261103T230519Z_railway_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 2302,
+      "sha256": "8cc934755c57588a89e7f158ab08dc66413c6c83d15928dd734639a48281a978",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T080254Z_bike_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 854,
+      "sha256": "de2de3d4b86cde61ef65acbbb994f3a6d76cfecf2a1f67f73de552db13cb9573",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T080749Z_crossroads_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 862,
+      "sha256": "83a99cf4b7a625c8191653489c8cfecdd3b12776d88dd2b99788197a2d39b04e",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T080944Z_farmland_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 858,
+      "sha256": "75895acc8d1ef2656566352a507d5e3ad52b024176006314424dbf3d830a28f6",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T081054Z_highway_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 857,
+      "sha256": "d3d76a3bb52293ce1764fe942a4f3b6339b11f31a1502dd65762f64d967eb083",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T081234Z_railway_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 855,
+      "sha256": "6b39ca04551d0bd2f86ccbd31c646749cb1f9acca44b5f625907dbce76aea8dc",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T081324Z_solar_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 853,
+      "sha256": "5e1bb8db74368dbda357817675d6108b96d762d168e5fa1372b10c0f2f4b2261",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T081459Z_vehicle_gpu0.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 856,
+      "sha256": "a01ed0c8a23d752fefc7a449b4c84de68e0f223ae7ebd2404b410549e4a491d3",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/reeval_20261105T160500Z_da_matched_reeval.jsonl",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "status": "present",
+      "size_bytes": 38408,
+      "sha256": "b50736475e7ab8e5ba2cccdf8e1eb4a0ff7d50e4bf189a1016c3db5c9a7ccbba",
+      "storage": "git-tracked"
     },
     {
       "path": "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
-      "producer_script": "scripts/da_variant_scheduler.py",
+      "producer_script": "scripts/da_gl_ablation_scheduler.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "size": 60907,
+      "size_bytes": 60907,
       "sha256": "902d15c8af4bb305b902934af0a64714969c7492d0428d32d112472aff99e1b3",
-      "git": "tracked"
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/bike.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/bike.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 788,
-      "sha256": "bd237b3009d4b7cf875a271ff01dd7a733d498e5f10fb5e5309b0e1631e97c01"
+      "size_bytes": 962,
+      "sha256": "52b29c3a7d99997340f8c012d60b3764d64245d6b5c9fb3b4cf0b97687806674",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/bike_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/bike_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 909466,
-      "sha256": "0333e5fff3a8f5308fdff6eba1d834cb1c850d8447ad2528126c82df803caab7"
+      "size_bytes": 890510,
+      "sha256": "0f8b2277494e72e1e39b3c0de53da8a8b441d249ae2cfc24632dcdb3704a6076",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/crossroads.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 811,
-      "sha256": "aa5fa007889f6490ac4b8c9e0fcacb163dcdbf06177bb3d39b0085e7026a57ff"
+      "size_bytes": 970,
+      "sha256": "46120c951a14b200b7526b57a2dc7d9c775aa4d9d93b6314e162564fe8569abc",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/crossroads_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 305176,
-      "sha256": "d97ca77ccc6a8883d27e8a540cceb3b63d72396134530830d6ad78eda976360f"
+      "size_bytes": 298867,
+      "sha256": "b85e2b12cf83bdac2d734ef9c96932bf411583bd81e31a95004b18b55fdcad2a",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/farmland.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/farmland.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 806,
-      "sha256": "d80d19757391a4bc01feebca9e425db0aebe8176e8c2281045cf18ed911120ca"
+      "size_bytes": 966,
+      "sha256": "79650531626c64542ebb093aadb66b3686e78a16aad96dead3eb01269e40612f",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/farmland_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/farmland_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 117837,
-      "sha256": "02d346cb89b248aac2f452d4be3f1f8b7410a9ab6713425ae3a61d59b2a2ebbe"
+      "size_bytes": 115459,
+      "sha256": "1fd745a7af22d40b6839a7bfec717be775d694203ae02101bb7dfffe41d1b6a4",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/highway.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/highway.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 790,
-      "sha256": "6870fec4d3a01143a96a682ef35ea9cee2f0e1c0866212a1d5c95a3cfbbeff4e"
+      "size_bytes": 965,
+      "sha256": "79c40ba72c6dc6ce913f753c3d958a9de719445d4861705d4a30cb61be00ed3c",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/highway_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/highway_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 137707,
-      "sha256": "dac3fa48101a5aa6e989da80ccfa169faf20e36575acefe77c996ac00071dc35"
+      "size_bytes": 134785,
+      "sha256": "152bdffbf8fc809d784e04185fa12822ad9e9d45feaee9c551e6fba19e4585be",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/railway.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/railway.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 788,
-      "sha256": "e8685622b39d44c43679f7c3ef6ce7c47eeb73502a54926a199831415ea45eab"
+      "size_bytes": 963,
+      "sha256": "3cdd9adb1969307f83b0de16396ec5ce7cffe1393e2ee38aac42ffeeaef08443",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/railway_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/railway_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 42864,
-      "sha256": "e598b3c15c8940fabffa1a71fbda26583c9b1863723603c815077af611b503ab"
+      "size_bytes": 41971,
+      "sha256": "e166de4a3a6c573377878bc8425dcaca2ca921140505a283642e226ebf01c0b0",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/solar.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/solar.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 786,
-      "sha256": "8be60f68fe5bffa4f72e7011546b77756aad5cccec3c22c37ac572741d5ea72b"
+      "size_bytes": 961,
+      "sha256": "7133b22af3c35622065bf0918bf4f106c2b5f3c23c11567cf320464e3201c506",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/solar_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/solar_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 119024,
-      "sha256": "3ff592cae4dceb0e29f804f68ba6fe6af450eb66f956cdbbab6ae13acd8e6bce"
+      "size_bytes": 116575,
+      "sha256": "e78fb36f807326632c78f2d9106d28a4e84a1877f79e44863c591446b88f95ca",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/summary.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "path": "results/summary.json",
+      "producer_script": "scripts/summarize_da_gl_ablation.py",
+      "run_id": "20261106T142500Z_da_gl_summary",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 2777,
-      "sha256": "1567bec1423ae7abe2a02ef6023e0d3276a0580f54c2749643ab9a87f9ef885d"
+      "size_bytes": 447,
+      "sha256": "7452093a4fc0df0ee842ec494b1c0848ecd60062d1f7082417b96c2d374f8b22",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/summary.md",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
-      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+      "path": "results/summary.md",
+      "producer_script": "scripts/summarize_da_gl_ablation.py",
+      "run_id": "20261106T142500Z_da_gl_summary",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 497,
-      "sha256": "384183bb6f4598ca1e63ea0df5364bb3a679d1b34053e5eb80a602be2b939000"
+      "size_bytes": 195,
+      "sha256": "e1066d2d2d209d50ccc7b42d9e55e60b8d0137ec3dbe32bcce0ddc0a1a8161b5",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/vehicle.json",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/vehicle.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 791,
-      "sha256": "9c67f4e093d89517a5d76bdf38311293424fed0cb2561d155e4724bcc0106d59"
+      "size_bytes": 964,
+      "sha256": "dd6a149ecd8042015e16f68ecdc265f0e1b3dc132962eb805360bf736ff83b12",
+      "storage": "git-tracked"
     },
     {
-      "path": "results_legacy_topk/vehicle_scores.csv",
-      "producer_script": "scripts/da_matched_reeval_aggregate.py",
+      "path": "results/vehicle_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
       "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
       "status": "present",
-      "storage": "git",
-      "size_bytes": 128479,
-      "sha256": "c09294887e94c59a3af3a2767823acf8e47b458f5bc15e2e0bf0b13d365ecc82"
+      "size_bytes": 125805,
+      "sha256": "538d9bb9597de0d41451b120f05275ecb0cb48ab051e74db4f8930103266dbec",
+      "storage": "git-tracked"
     }
-  ],
-  "migrated_from": "experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42"
+  ]
 }
