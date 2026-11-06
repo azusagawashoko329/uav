@@ -21,3 +21,5 @@ python comparison/check_comparisons.py
 ```
 
 外部方法同样等待上游 URL；UIT 的评测口径是官方 51 个 test 视频拼接后的单 AUC/EER，不能直接照搬 DA 的七场景 macro。
+
+完整主表见 [comparison_summary.md](comparison_summary.md)。
