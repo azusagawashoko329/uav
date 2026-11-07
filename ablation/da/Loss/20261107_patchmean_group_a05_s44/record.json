@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "id": "20261107_patchmean_group_a05_s44",
+  "path": "ablation/da/Loss/20261107_patchmean_group_a05_s44",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed44; Loss ablation cell: Patch Mean; four groups, alpha=0.5.",
+    "V2 student topology and all non-loss settings are fixed.",
+    "Training and test will use the same configured loss_score match.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_group_a05",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Patch Mean; four groups, alpha=0.5"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "id": "20261107_flatten_12mean_s42",
+  "path": "ablation/da/Loss/20261107_flatten_12mean_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed42; Loss ablation cell: Flatten Cosine; direct 12-layer mean.",
+    "V2 student topology and all non-loss settings are fixed.",
+    "Training and test will use the same configured loss_score match.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "flatten_12mean",
+    "error_mode": "flatten",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Flatten Cosine; direct 12-layer mean"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "id": "20261107_top5_group_a05_s44",
+  "path": "ablation/da/Loss/20261107_top5_group_a05_s44",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "Single seed44; Loss ablation cell: Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2).",
+    "V2 student topology and all non-loss settings are fixed.",
+    "Training and test will use the same configured loss_score match.",
+    "Results are pending execution."
+  ],
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "top5_group_a05",
+    "error_mode": "topk",
+    "k": 5,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"
+  }
+}

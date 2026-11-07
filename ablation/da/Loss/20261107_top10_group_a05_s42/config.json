@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "id": "20261107_top10_group_a05_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "seed": 42,
+  "question": "DA Loss 消融：Top-10 Patch Mean; four groups, alpha=0.5，seed42。",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "top10_group_a05",
+    "error_mode": "topk",
+    "k": 10,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-10 Patch Mean; four groups, alpha=0.5"
+  },
+  "fixed": {
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "code_dim": 64,
+    "student_depth": 4,
+    "reconstruction_heads": 12
+  },
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "optimizer": "AdamW + OneCycleLR",
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "save": "每场景 final checkpoint；不保存中间 epoch"
+  },
+  "resources": {
+    "gpus": 2,
+    "scheduler": "scripts/da_loss_ablation_multi_seed_scheduler.py 动态双卡混合 seed 队列",
+    "expected_trainable_parameters": 30248000
+  },
+  "source_model_before_change": null
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "id": "20261107_top5_group_a05_s42",
+  "path": "ablation/da/Loss/20261107_top5_group_a05_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "completed",
+  "source_commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+  "variant_id": "gl_order_glll_ffn_gate",
+  "variant_label": "GL-GLLL-gate",
+  "runner_variant": "uit_4block_gl768",
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [
+    {
+      "run_id": "20261103T144204Z_da_variant_matrix_s42_20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
+      "status": "completed",
+      "source_commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+      "script": "scripts/da_variant_scheduler.py",
+      "seed": 42,
+      "started_at": "20261103T144213Z",
+      "ended_at": "20261103T231714Z",
+      "command": [
+        "scripts/da_variant_scheduler.py",
+        "--run-id",
+        "20261103T144204Z_da_variant_matrix_s42",
+        "--experiments",
+        "experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42",
+        "experiments/da/appearance/20261103_variant_matrix_v1_rd_s4_t12_h512_s42",
+        "experiments/da/appearance/20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
+        "experiments/da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42",
+        "experiments/da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42",
+        "experiments/da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42",
+        "--gpus",
+        "0",
+        "1",
+        "--epochs",
+        "30",
+        "--batch",
+        "64",
+        "--workers",
+        "8",
+        "--seed",
+        "42"
+      ],
+      "log": "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
+      "outputs": [
+        "results/summary.json",
+        "results/summary.md",
+        "logs/scheduler_20261103T144204Z_da_variant_matrix_s42.jsonl",
+        "results/bike.json",
+        "results/bike_scores.csv",
+        "ckpt/bike_final.pth",
+        "results/crossroads.json",
+        "results/crossroads_scores.csv",
+        "ckpt/crossroads_final.pth",
+        "results/farmland.json",
+        "results/farmland_scores.csv",
+        "ckpt/farmland_final.pth",
+        "results/highway.json",
+        "results/highway_scores.csv",
+        "ckpt/highway_final.pth",
+        "results/railway.json",
+        "results/railway_scores.csv",
+        "ckpt/railway_final.pth",
+        "results/solar.json",
+        "results/solar_scores.csv",
+        "ckpt/solar_final.pth",
+        "results/vehicle.json",
+        "results/vehicle_scores.csv",
+        "ckpt/vehicle_final.pth",
+        "results_legacy_topk/summary.json"
+      ],
+      "notes": "completed_scenes=7/7; failures=0"
+    }
+  ],
+  "result_summary": "results/summary.md",
+  "limitations": [
+    "single seed42",
+    "seven independent per-scene models",
+    "AUC/EER do not directly optimize training loss",
+    "behavior branch excluded",
+    "V0 uses teacher taps [5,7,9,11] and tap-mean top5; V1-V5 use 12 taps and group-balanced top5",
+    "DA Student12 GL12 is a different 12-block topology, not V2",
+    "AUC/EER corrected to training-matched score; original top-k results retained under results_legacy_topk/",
+    "This directory is a direct migration of the completed canonical DA matrix run; no new training was performed.",
+    "The migrated V1/V2 source uses the same fixed topology and FFN semantics required by this ablation cell.",
+    "Summary regenerated under the DA GL ablation matrix using matched-score per-scene outputs.",
+    "Directly migrated from completed DA V2 matched-score results; no new training for seed42."
+  ],
+  "scoring_correction": {
+    "reason": "training used group-balanced top-k loss; old evaluation used mean-over-taps top-k readout",
+    "old_scoring": "legacy_mean_over_taps_topk",
+    "new_scoring": "matched_group_balanced_top5",
+    "old_summary": "results_legacy_topk/summary.json",
+    "old_macro_auc": 85.37072634935599,
+    "old_macro_eer": 0.1931602715926968,
+    "new_macro_auc": 85.21465517781522,
+    "new_macro_eer": 0.19645559306283525
+  },
+  "migrated_from": "ablation/da/GL/20261106_glll_gate_s42",
+  "original_id": "20261103_variant_matrix_v2_rd_s4_t12_gl768_h512_s42",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "top5_group_a05",
+    "error_mode": "topk",
+    "k": 5,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"
+  }
+}

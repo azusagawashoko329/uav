@@ -48,27 +48,49 @@ def anomaly_score(teacher_taps, student_recons, k=5):
     return score / len(teacher_taps)
 
 
-def matched_score(teacher_taps, student_recons, k=5, alpha=0.5):
-    """Per-sample score matching the training objective in scripts/uit_appearance_runner.loss_for.
 
-    V0 (4 taps): mean over taps of the per-tap top-k mean.
-    V1-V5 (12 taps): four adjacent triplets; each triplet score is
-        0.5 * mean_tap(per-tap top-k mean) + 0.5 * max_tap(per-tap top-k mean),
-    then mean over the four groups.  Returns (B,).
+def loss_score(teacher_taps, student_recons, error='topk', k=5, aggregation='group', alpha=0.5):
+    """Per-sample score for loss ablations; training uses ``loss_score(...).mean()``.
+
+    ``error`` selects flatten cosine, patch-mean cosine, or top-k patch mean.
+    ``aggregation`` is either the direct 12-layer mean or four adjacent 3-layer groups
+    with ``(1-alpha)*mean + alpha*max`` within each group.
     """
+    if len(teacher_taps) != len(student_recons):
+        raise ValueError('teacher/student tap count mismatch')
     per = []
     for A, Ahat in zip(teacher_taps, student_recons):
-        d = _per_patch_cosine_dist(A, Ahat)
-        per.append(d.topk(k, dim=-1).values.mean(-1))
-    n = len(per)
-    if n == 4:
-        return torch.stack(per, dim=1).mean(dim=1)
-    if n % 3 == 0:
-        groups = torch.stack(per, dim=1).reshape(per[0].size(0), n // 3, 3)
-        avg = groups.mean(-1)
-        worst = groups.max(-1).values
-        return (avg + alpha * (worst - avg)).mean(dim=1)
-    raise ValueError(f'matched_score expects 4 or 3k taps, got {n}')
+        if error == 'flatten':
+            d = 1.0 - F.cosine_similarity(A.reshape(A.size(0), -1),
+                                           Ahat.reshape(Ahat.size(0), -1), dim=1)
+        else:
+            patch = _per_patch_cosine_dist(A, Ahat)
+            if error == 'patchmean':
+                d = patch.mean(dim=-1)
+            elif error == 'topk':
+                if k < 1 or k > patch.size(-1):
+                    raise ValueError(f'invalid k={k} for {patch.size(-1)} patches')
+                d = patch.topk(k, dim=-1).values.mean(dim=-1)
+            else:
+                raise ValueError(f'unknown error mode: {error}')
+        per.append(d)
+    values = torch.stack(per, dim=1)
+    if aggregation == 'mean12':
+        return values.mean(dim=1)
+    if aggregation == 'group':
+        if values.size(1) != 12:
+            raise ValueError(f'group aggregation expects 12 taps, got {values.size(1)}')
+        groups = values.reshape(values.size(0), 4, 3)
+        avg = groups.mean(dim=-1)
+        worst = groups.max(dim=-1).values
+        return ((1.0 - alpha) * avg + alpha * worst).mean(dim=1)
+    raise ValueError(f'unknown aggregation: {aggregation}')
+
+def matched_score(teacher_taps, student_recons, k=5, alpha=0.5):
+    """Per-sample score matching the group-balanced top-k training objective."""
+    if len(teacher_taps) == 4:
+        return loss_score(teacher_taps, student_recons, error='topk', k=k, aggregation='mean12')
+    return loss_score(teacher_taps, student_recons, error='topk', k=k, aggregation='group', alpha=alpha)
 
 
 @torch.no_grad()
