@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_gggg_gate_s44", "scene": "solar", "seed": 44, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GGGG", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "GGGG", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 35540288, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.774740 elapsed_s=24.0
+epoch=2 loss=0.464557 elapsed_s=47.3
+epoch=3 loss=0.375910 elapsed_s=70.8
+epoch=4 loss=0.307860 elapsed_s=94.0
+epoch=5 loss=0.258226 elapsed_s=117.5
+epoch=6 loss=0.224121 elapsed_s=140.8
+epoch=7 loss=0.199577 elapsed_s=164.2
+epoch=8 loss=0.181806 elapsed_s=187.6
+epoch=9 loss=0.223027 elapsed_s=210.9
+epoch=10 loss=0.169621 elapsed_s=234.2
+epoch=11 loss=0.159595 elapsed_s=257.5
+epoch=12 loss=0.153145 elapsed_s=280.9
+epoch=13 loss=0.148643 elapsed_s=304.2
+epoch=14 loss=0.144110 elapsed_s=327.5
+epoch=15 loss=0.140364 elapsed_s=350.9
+epoch=16 loss=0.137170 elapsed_s=374.2
+epoch=17 loss=0.134365 elapsed_s=397.6
+epoch=18 loss=0.131973 elapsed_s=421.0
+epoch=19 loss=0.129829 elapsed_s=444.4
+epoch=20 loss=0.127865 elapsed_s=467.7
+epoch=21 loss=0.126270 elapsed_s=491.0
+epoch=22 loss=0.124710 elapsed_s=514.2
+epoch=23 loss=0.123454 elapsed_s=537.5
+epoch=24 loss=0.122363 elapsed_s=560.9
+epoch=25 loss=0.121493 elapsed_s=584.3
+epoch=26 loss=0.120793 elapsed_s=607.7
+epoch=27 loss=0.120278 elapsed_s=631.0
+epoch=28 loss=0.119884 elapsed_s=654.3
+epoch=29 loss=0.119668 elapsed_s=677.5
+epoch=30 loss=0.119599 elapsed_s=700.8
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_gggg_gate_s44", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GGGG", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "scene": "solar", "seed": 44, "epochs": 30, "auc_percent": 89.33827113109383, "eer": 0.17973462002412546, "frames": 2450, "positive_frames": 792, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 35540288, "model_guard": {"block_order": "GGGG", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 718.2025280969683, "max_steps": 0, "checkpoint": "ckpt/solar_final.pth", "checkpoint_sha256": "3b4c6f9dd4b83dcba346303ce4cb0bd19cc20450cff9bdfa457263d3320d76c9", "cuda": "NVIDIA RTX A6000"}

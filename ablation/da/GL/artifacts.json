@@ -2,21 +2,30 @@
   "schema_version": 2,
   "artifacts": [
     {
-      "path": "summary.md",
-      "producer_script": "scripts/summarize_da_gl_ablation.py",
-      "run_id": "20261106T142500Z_da_gl_summary",
+      "path": "multiseed_summary.md",
+      "producer_script": "scripts/summarize_da_gl_multiseed.py",
+      "run_id": "20261107T143000Z_da_gl_multiseed_summary",
       "status": "present",
-      "size_bytes": 3959,
-      "sha256": "3eb797fcbf77119b3409396134a56b5d051e05769c3846a94b935607dfec010f",
+      "size_bytes": 4257,
+      "sha256": "ccfbc7abc34fc5b0c50e0af15e0e23c73b5a799d83431cfd6222a2b8a2ae3cbb",
       "storage": "git-tracked"
     },
     {
-      "path": "summary.json",
-      "producer_script": "scripts/summarize_da_gl_ablation.py",
-      "run_id": "20261106T142500Z_da_gl_summary",
+      "path": "multiseed_summary.json",
+      "producer_script": "scripts/summarize_da_gl_multiseed.py",
+      "run_id": "20261107T143000Z_da_gl_multiseed_summary",
       "status": "present",
-      "size_bytes": 3897,
-      "sha256": "02e6c1b3bd66562f08845d07d56fe126db9a21d0135a5f33c515e7cba51b5eb3",
+      "size_bytes": 7778,
+      "sha256": "cc279ae483c80fa349fe451cfdfd70f6aaf62e6a30fb7dbcf4ccd75c8d1b9249",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "20261106T150000Z_da_gl_multiseed_s43_s44.stdout.log",
+      "producer_script": "scripts/da_gl_ablation_multi_seed_scheduler.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 144435,
+      "sha256": "5b0a21584eedf005e6289a76a6c986d4a4aa02ebcfcf038d3975fed19cddfd82",
       "storage": "git-tracked"
     }
   ]

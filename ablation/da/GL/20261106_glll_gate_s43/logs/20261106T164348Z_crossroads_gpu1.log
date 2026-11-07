@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_glll_gate_s43", "scene": "crossroads", "seed": 43, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 15772, "test_videos": 5, "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238", "trainable_parameters": 30248000, "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.519179 elapsed_s=87.9
+epoch=2 loss=0.297775 elapsed_s=175.8
+epoch=3 loss=0.216391 elapsed_s=263.6
+epoch=4 loss=0.178720 elapsed_s=351.6
+epoch=5 loss=0.157061 elapsed_s=439.6
+epoch=6 loss=0.142666 elapsed_s=527.6
+epoch=7 loss=0.159530 elapsed_s=615.7
+epoch=8 loss=0.126347 elapsed_s=703.8
+epoch=9 loss=0.129687 elapsed_s=791.9
+epoch=10 loss=0.116985 elapsed_s=880.2
+epoch=11 loss=0.109587 elapsed_s=968.3
+epoch=12 loss=0.105409 elapsed_s=1056.5
+epoch=13 loss=0.102128 elapsed_s=1144.6
+epoch=14 loss=0.099296 elapsed_s=1232.7
+epoch=15 loss=0.096848 elapsed_s=1320.9
+epoch=16 loss=0.094615 elapsed_s=1409.1
+epoch=17 loss=0.092630 elapsed_s=1497.3
+epoch=18 loss=0.090817 elapsed_s=1585.3
+epoch=19 loss=0.089162 elapsed_s=1673.6
+epoch=20 loss=0.087668 elapsed_s=1762.4
+epoch=21 loss=0.086273 elapsed_s=1851.4
+epoch=22 loss=0.085023 elapsed_s=1939.4
+epoch=23 loss=0.083870 elapsed_s=2027.6
+epoch=24 loss=0.082819 elapsed_s=2115.8
+epoch=25 loss=0.081910 elapsed_s=2204.0
+epoch=26 loss=0.081146 elapsed_s=2292.2
+epoch=27 loss=0.080503 elapsed_s=2380.5
+epoch=28 loss=0.080007 elapsed_s=2468.6
+epoch=29 loss=0.079679 elapsed_s=2556.8
+epoch=30 loss=0.079496 elapsed_s=2645.2
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_glll_gate_s43", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "scene": "crossroads", "seed": 43, "epochs": 30, "auc_percent": 62.21047915887008, "eer": 0.4167215273206057, "frames": 6244, "positive_frames": 1687, "train_frames": 15772, "test_videos": 5, "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238", "trainable_parameters": 30248000, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 2672.9578958350467, "max_steps": 0, "checkpoint": "ckpt/crossroads_final.pth", "checkpoint_sha256": "9f96ded81e265ea0d152a6e86f968ec0f0f879c1bbe440f5ff01b84d83547067", "cuda": "NVIDIA RTX 5880 Ada Generation"}

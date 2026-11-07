@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_lllg_gelumlp_s43",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "LLLG",
+    "ffn_type": "gelumlp",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "farmland",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 99.48417858690941,
+  "eer": 0.054182921543129606,
+  "frames": 2387,
+  "positive_frames": 80,
+  "train_frames": 9548,
+  "test_videos": 1,
+  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+  "trainable_parameters": 34966592,
+  "model_guard": {
+    "block_order": "LLLG",
+    "ffn_type": "gelumlp",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 2173.3665224899305,
+  "max_steps": 0,
+  "checkpoint": "ckpt/farmland_final.pth",
+  "checkpoint_sha256": "194fb2bed3fbd5539bf92bc72e4a2c2a36cba4a095591deecf1ac2c4c10e58e7",
+  "cuda": "NVIDIA RTX A6000"
+}

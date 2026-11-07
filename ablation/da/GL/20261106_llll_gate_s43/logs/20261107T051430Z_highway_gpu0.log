@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_llll_gate_s43", "scene": "highway", "seed": 43, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 9045, "test_videos": 3, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 28483904, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.599076 elapsed_s=63.9
+epoch=2 loss=0.345169 elapsed_s=127.2
+epoch=3 loss=0.245434 elapsed_s=190.5
+epoch=4 loss=0.193970 elapsed_s=253.7
+epoch=5 loss=0.166300 elapsed_s=317.1
+epoch=6 loss=0.172964 elapsed_s=380.3
+epoch=7 loss=0.140401 elapsed_s=443.5
+epoch=8 loss=0.129054 elapsed_s=506.8
+epoch=9 loss=0.130086 elapsed_s=570.1
+epoch=10 loss=0.115307 elapsed_s=633.4
+epoch=11 loss=0.122590 elapsed_s=696.7
+epoch=12 loss=0.108114 elapsed_s=759.9
+epoch=13 loss=0.103174 elapsed_s=823.2
+epoch=14 loss=0.099812 elapsed_s=886.4
+epoch=15 loss=0.096982 elapsed_s=949.7
+epoch=16 loss=0.094530 elapsed_s=1012.9
+epoch=17 loss=0.092411 elapsed_s=1076.3
+epoch=18 loss=0.090493 elapsed_s=1139.5
+epoch=19 loss=0.088803 elapsed_s=1202.7
+epoch=20 loss=0.087283 elapsed_s=1265.9
+epoch=21 loss=0.085953 elapsed_s=1329.0
+epoch=22 loss=0.084748 elapsed_s=1392.3
+epoch=23 loss=0.083686 elapsed_s=1455.6
+epoch=24 loss=0.082745 elapsed_s=1518.7
+epoch=25 loss=0.081981 elapsed_s=1582.0
+epoch=26 loss=0.081328 elapsed_s=1645.2
+epoch=27 loss=0.080825 elapsed_s=1708.4
+epoch=28 loss=0.080439 elapsed_s=1771.6
+epoch=29 loss=0.080165 elapsed_s=1834.8
+epoch=30 loss=0.080052 elapsed_s=1898.1
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_llll_gate_s43", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "scene": "highway", "seed": 43, "epochs": 30, "auc_percent": 93.98851135222874, "eer": 0.16745587602238485, "frames": 2820, "positive_frames": 497, "train_frames": 9045, "test_videos": 3, "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941", "trainable_parameters": 28483904, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 1915.7518849420594, "max_steps": 0, "checkpoint": "ckpt/highway_final.pth", "checkpoint_sha256": "6f6b7d61b47b41c192a8e98173d4e4974c8d0492f3494ca7e7f2a7beef06cea3", "cuda": "NVIDIA RTX A6000"}

@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_llll_gate_s43",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "LLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "highway",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 93.98851135222874,
+  "eer": 0.16745587602238485,
+  "frames": 2820,
+  "positive_frames": 497,
+  "train_frames": 9045,
+  "test_videos": 3,
+  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+  "trainable_parameters": 28483904,
+  "model_guard": {
+    "block_order": "LLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 1915.7518849420594,
+  "max_steps": 0,
+  "checkpoint": "ckpt/highway_final.pth",
+  "checkpoint_sha256": "6f6b7d61b47b41c192a8e98173d4e4974c8d0492f3494ca7e7f2a7beef06cea3",
+  "cuda": "NVIDIA RTX A6000"
+}

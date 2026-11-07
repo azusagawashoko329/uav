@@ -4,20 +4,20 @@
   "path": "ablation/da/GL/20261106_lllg_gelumlp_s43",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
-  "source_commit": "c4bae16101e2ac9bd72c638a892c2c3d4f7b10cf8",
+  "status": "completed",
+  "source_commit": "b8b8ac0b2572b884429433f49bac90020fe0b7c4",
   "scripts": [
     "scripts/run_scene.py"
   ],
   "runs": [
     {
       "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44_20261106_lllg_gelumlp_s43",
-      "status": "running",
-      "source_commit": "c4bae16101e2ac9bd72c638a892c2c3d4f7b10cf8",
+      "status": "completed",
+      "source_commit": "b8b8ac0b2572b884429433f49bac90020fe0b7c4",
       "script": "scripts/da_gl_ablation_multi_seed_scheduler.py",
       "seed": 43,
       "started_at": "20261106T150328Z",
-      "ended_at": null,
+      "ended_at": "20261107T142447Z",
       "command": [
         "scripts/da_gl_ablation_multi_seed_scheduler.py",
         "--repo-root",
@@ -52,15 +52,40 @@
         "20261106T150000Z_da_gl_multiseed_s43_s44"
       ],
       "log": "logs/scheduler_20261106T150000Z_da_gl_multiseed_s43_s44.jsonl",
-      "outputs": [],
-      "notes": "mixed seed43/44 two-GPU dynamic queue; train/eval matched_score(k=5, alpha=0.5)"
+      "outputs": [
+        "results/bike.json",
+        "results/crossroads.json",
+        "results/farmland.json",
+        "results/highway.json",
+        "results/railway.json",
+        "results/solar.json",
+        "results/vehicle.json",
+        "results/bike_scores.csv",
+        "results/crossroads_scores.csv",
+        "results/farmland_scores.csv",
+        "results/highway_scores.csv",
+        "results/railway_scores.csv",
+        "results/solar_scores.csv",
+        "results/vehicle_scores.csv",
+        "ckpt/bike_final.pth",
+        "ckpt/crossroads_final.pth",
+        "ckpt/farmland_final.pth",
+        "ckpt/highway_final.pth",
+        "ckpt/railway_final.pth",
+        "ckpt/solar_final.pth",
+        "ckpt/vehicle_final.pth",
+        "results/summary.json",
+        "results/summary.md"
+      ],
+      "notes": "Mixed seed43/44 dynamic two-GPU scheduler completed all 112 scene jobs with zero failures; train/eval used matched_score(k=5, alpha=0.5)."
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "Single seed43; this is the LLLG + gelumlp cell in the DA GL multi-seed matrix.",
     "All V2 mother-template settings are fixed; only block order and FFN type identify this cell.",
-    "Results are pending execution."
+    "Single seed for this directory; cross-seed mean/SD are reported in the shared multiseed summary.",
+    "Training and test scoring use matched_score(k=5, alpha=0.5)."
   ],
   "ablation": {
     "family": "GL",

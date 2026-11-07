@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_glll_gelumlp_s43",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gelumlp",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "bike",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 97.62794556583812,
+  "eer": 0.04605776736924278,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "train_frames": 7950,
+  "test_videos": 7,
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "trainable_parameters": 34966592,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gelumlp",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 1490.0356215930078,
+  "max_steps": 0,
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "a7c99ce1af88f8bb05d72e300b072aa6d91bf42dda5e54f4021606282f2196cf",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

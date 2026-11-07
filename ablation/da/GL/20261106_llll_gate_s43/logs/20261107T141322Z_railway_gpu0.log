@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_llll_gate_s43", "scene": "railway", "seed": 43, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 1206, "test_videos": 1, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 28483904, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.938965 elapsed_s=9.7
+epoch=2 loss=0.684277 elapsed_s=18.4
+epoch=3 loss=0.453819 elapsed_s=27.3
+epoch=4 loss=0.363199 elapsed_s=36.3
+epoch=5 loss=0.306158 elapsed_s=45.3
+epoch=6 loss=0.262011 elapsed_s=54.2
+epoch=7 loss=0.227782 elapsed_s=63.2
+epoch=8 loss=0.214540 elapsed_s=72.0
+epoch=9 loss=0.188841 elapsed_s=80.9
+epoch=10 loss=0.169461 elapsed_s=89.9
+epoch=11 loss=0.158370 elapsed_s=98.9
+epoch=12 loss=0.153350 elapsed_s=107.9
+epoch=13 loss=0.143731 elapsed_s=116.8
+epoch=14 loss=0.135686 elapsed_s=125.6
+epoch=15 loss=0.130159 elapsed_s=134.6
+epoch=16 loss=0.125695 elapsed_s=143.6
+epoch=17 loss=0.121832 elapsed_s=152.6
+epoch=18 loss=0.118124 elapsed_s=161.6
+epoch=19 loss=0.115121 elapsed_s=170.6
+epoch=20 loss=0.112756 elapsed_s=179.6
+epoch=21 loss=0.110633 elapsed_s=188.5
+epoch=22 loss=0.108720 elapsed_s=197.5
+epoch=23 loss=0.107191 elapsed_s=206.5
+epoch=24 loss=0.106176 elapsed_s=215.4
+epoch=25 loss=0.104837 elapsed_s=224.5
+epoch=26 loss=0.104442 elapsed_s=233.5
+epoch=27 loss=0.103877 elapsed_s=242.5
+epoch=28 loss=0.103609 elapsed_s=251.5
+epoch=29 loss=0.103217 elapsed_s=260.5
+epoch=30 loss=0.103328 elapsed_s=269.4
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_llll_gate_s43", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLL", "ffn_type": "gate", "changed_factors": ["student block order", "student FFN type"]}, "scene": "railway", "seed": 43, "epochs": 30, "auc_percent": 95.35337476513946, "eer": 0.10196560196560196, "frames": 882, "positive_frames": 68, "train_frames": 1206, "test_videos": 1, "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f", "trainable_parameters": 28483904, "model_guard": {"block_order": "LLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 276.7784377828939, "max_steps": 0, "checkpoint": "ckpt/railway_final.pth", "checkpoint_sha256": "b2733d48b8585a6ddf83205cd2a37ecc6ed96dc14e56148243d8bdb875a7e973", "cuda": "NVIDIA RTX A6000"}

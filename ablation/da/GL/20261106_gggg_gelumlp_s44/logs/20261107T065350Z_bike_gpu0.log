@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_gggg_gelumlp_s44", "scene": "bike", "seed": 44, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GGGG", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "GGGG", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 7950, "test_videos": 7, "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347", "trainable_parameters": 40258880, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.529977 elapsed_s=66.3
+epoch=2 loss=0.286225 elapsed_s=132.0
+epoch=3 loss=0.197244 elapsed_s=197.7
+epoch=4 loss=0.156195 elapsed_s=263.4
+epoch=5 loss=0.144480 elapsed_s=329.1
+epoch=6 loss=0.119161 elapsed_s=394.9
+epoch=7 loss=0.113249 elapsed_s=460.6
+epoch=8 loss=0.108628 elapsed_s=526.3
+epoch=9 loss=0.095289 elapsed_s=592.1
+epoch=10 loss=0.087345 elapsed_s=657.9
+epoch=11 loss=0.080163 elapsed_s=723.5
+epoch=12 loss=0.075857 elapsed_s=789.3
+epoch=13 loss=0.072329 elapsed_s=855.0
+epoch=14 loss=0.069322 elapsed_s=920.8
+epoch=15 loss=0.066757 elapsed_s=986.6
+epoch=16 loss=0.064491 elapsed_s=1052.3
+epoch=17 loss=0.062516 elapsed_s=1117.9
+epoch=18 loss=0.060753 elapsed_s=1183.7
+epoch=19 loss=0.059198 elapsed_s=1249.4
+epoch=20 loss=0.057841 elapsed_s=1315.0
+epoch=21 loss=0.056613 elapsed_s=1380.6
+epoch=22 loss=0.055515 elapsed_s=1446.4
+epoch=23 loss=0.054568 elapsed_s=1512.1
+epoch=24 loss=0.053745 elapsed_s=1577.9
+epoch=25 loss=0.053050 elapsed_s=1643.5
+epoch=26 loss=0.052473 elapsed_s=1709.2
+epoch=27 loss=0.052025 elapsed_s=1775.0
+epoch=28 loss=0.051694 elapsed_s=1840.8
+epoch=29 loss=0.051480 elapsed_s=1906.6
+epoch=30 loss=0.051370 elapsed_s=1972.5
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_gggg_gelumlp_s44", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GGGG", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "scene": "bike", "seed": 44, "epochs": 30, "auc_percent": 97.76119853648483, "eer": 0.04480874316939891, "frames": 18427, "positive_frames": 12022, "train_frames": 7950, "test_videos": 7, "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347", "trainable_parameters": 40258880, "model_guard": {"block_order": "GGGG", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 2079.043959149043, "max_steps": 0, "checkpoint": "ckpt/bike_final.pth", "checkpoint_sha256": "2acbda8caccd3f885a09546290bbab8d4f4f1ca960525c2782b9a134678e8f9b", "cuda": "NVIDIA RTX A6000"}

@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_glll_gate_s44",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "bike",
+  "seed": 44,
+  "epochs": 30,
+  "auc_percent": 97.7232522316944,
+  "eer": 0.04512099921935987,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "train_frames": 7950,
+  "test_videos": 7,
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 1831.6231258349726,
+  "max_steps": 0,
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "4b52574cbc0a746e079af8b0390588741f4973f0a29dff822a80bd739d4844ba",
+  "cuda": "NVIDIA RTX A6000"
+}

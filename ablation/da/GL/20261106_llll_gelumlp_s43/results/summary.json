@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "experiment": "20261106_llll_gelumlp_s43",
+  "seed": 43,
+  "ablation": {
+    "block_order": "LLLL",
+    "ffn_type": "gelumlp"
+  },
+  "score": "matched_group_balanced_top5 (alpha=0.5)",
+  "macro_auc_percent": 85.07766983852464,
+  "macro_eer": 0.19498824588801622,
+  "cross_seed_mean_auc_percent": 85.09767033094462,
+  "cross_seed_sd_auc_percent": 0.33009547056352445,
+  "cross_seed_mean_eer": 0.19895418748453786,
+  "cross_seed_sd_eer": 0.004651820547980454
+}

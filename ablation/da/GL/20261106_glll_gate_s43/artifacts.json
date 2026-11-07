@@ -1,4 +1,284 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "ckpt/bike_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023268,
+      "sha256": "e4cdb2d2cb8750aca27900241e7220299d546860102af5a5471a0a730e8c23b5",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/crossroads_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023904,
+      "sha256": "9f96ded81e265ea0d152a6e86f968ec0f0f879c1bbe440f5ff01b84d83547067",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/farmland_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023692,
+      "sha256": "2ab121ed9acb0a7a8e482b937405e3faf1d2ecc2d10e04c54cbd7bd7b9cd4a5c",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/highway_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023586,
+      "sha256": "15ecdeed0ddd5496dd45995714fb63e9d9faa29bd5fe96695722c13d927584a9",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/railway_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023586,
+      "sha256": "6585e1527028ef33a7546c2b294dcc994169cf1c684f866e6638043faa9ec2b9",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/solar_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023374,
+      "sha256": "45333f12b03f0f4ff3b14e9c49a04106baa670d2ee853114b30bdd4da6f5c803",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "ckpt/vehicle_final.pth",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 121023586,
+      "sha256": "33ecfdb4cea752bc6daa940a9007ff001e24c2aed61bf28bb3a6e91ec66c99c5",
+      "storage": "local ignored artifact"
+    },
+    {
+      "path": "logs/20261106T164348Z_crossroads_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2771,
+      "sha256": "69d5764818bbc76a16aa7cd2ed746ac416b3e48c61fa30868577f31a2c1329dd",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261106T230209Z_farmland_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2755,
+      "sha256": "41bc871faea2d568fdd64fb420ae5fe14cc003e7052ef8b36763fe8c1eeff01d",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261107T031335Z_highway_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2750,
+      "sha256": "4b8fa90cbc8cf64bca010e1015090ed66db3bc4b153e8b918b861d5e8ec4194b",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261107T071120Z_bike_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2742,
+      "sha256": "03f5f0c21efa05c9a859b76b61679dcbb53ab96f126d29ed19e7e44697305714",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261107T103606Z_vehicle_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2735,
+      "sha256": "d16e972aee1eb26a47325c6a312319e844f03b56536595657d21ea3491e8f542",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261107T124552Z_solar_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2728,
+      "sha256": "273ab401eb48b5994a748366e613c3ef9199166a6ddc05de1c69c4b4582fafb9",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261107T135637Z_railway_gpu1.log",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 2725,
+      "sha256": "709a05bfbe4e8013ddf0803d948cad4282cd5aa3cd862af2df5c0e456d88bf8a",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/scheduler_20261106T150000Z_da_gl_multiseed_s43_s44.jsonl",
+      "producer_script": "scripts/da_gl_ablation_multi_seed_scheduler.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 144435,
+      "sha256": "5b0a21584eedf005e6289a76a6c986d4a4aa02ebcfcf038d3975fed19cddfd82",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/bike.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1033,
+      "sha256": "043ab803964199543e43b6228ef578ed88ecf65b56cf35b27c15567203cac151",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 908988,
+      "sha256": "36923ff84fa7bf34f231ddef22d6dc4ba4fe8b80844d20f352169b6b3a853145",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1043,
+      "sha256": "737ca6e3a8151ca829bdd6d07b7abd1dd8c0cd63f96e8fbd32862ff936260857",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 305169,
+      "sha256": "ad4db7a43bd435afb420048cf228122b3b782a1a96357735f9475e8d7f4cf7c9",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/farmland.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1037,
+      "sha256": "b507158f044923fb6c916e8ef47e47bf024756fb9f8809770b8732b42a2d1ab0",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 117760,
+      "sha256": "8413176d9afa2675dcbecf2f1cdc5c52ef253a6cc7f7382c65dbb79adfafd3f5",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/highway.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1034,
+      "sha256": "2333b787f2f02d0353691ca6eee42994c58ce0fb0c1a2edefcfda50812bb2d68",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 137608,
+      "sha256": "161bd3770f3659e158098b1bc537b0bf6384350df25217081acf28d985032c9f",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/railway.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1033,
+      "sha256": "fdc39ca9eadb5397e17961d84c53936883824770a9901338053a0c13e4b06dda",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 42853,
+      "sha256": "82a9983e0cf8d33888e331f142d466e2f95477b00f3ca8df4f2b1d6cc277803e",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/solar.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1030,
+      "sha256": "38be3be8081f7234753bf3380f6a61f2f2f1edc68162905451e868ccc816aa2a",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 119035,
+      "sha256": "42dd54336cae06261b5fecbf06970d65f469d1b5e9450ec0ded1213928372e0b",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/summarize_da_gl_multiseed.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 479,
+      "sha256": "a5cd0a77dd50054a263e8e5cb8e4e5cdef509e7a1565baca0fd1525e275affb0",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/summarize_da_gl_multiseed.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 215,
+      "sha256": "c42b3c0ffb2f0b4f94511b3cbb482614e4e0ce03a9e11a686bb060f7faf09aee",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/vehicle.json",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 1032,
+      "sha256": "8b3d6d52877c3357810740dbc0d82e1525a2e4fe693e0d940430e87585b03770",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "producer_script": "scripts/da_gl_ablation_runner.py",
+      "run_id": "20261106T150000Z_da_gl_multiseed_s43_s44",
+      "status": "present",
+      "size_bytes": 128463,
+      "sha256": "c35401a4978b1f2b8c1e5b28b69a94f923df017546a3cba929065bbd001a09c7",
+      "storage": "git-tracked"
+    }
+  ]
 }

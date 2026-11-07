@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_glll_gelumlp_s43", "scene": "solar", "seed": 43, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "GLLL", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 34966592, "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.760295 elapsed_s=18.0
+epoch=2 loss=0.459016 elapsed_s=35.0
+epoch=3 loss=0.370732 elapsed_s=52.2
+epoch=4 loss=0.302447 elapsed_s=69.4
+epoch=5 loss=0.252818 elapsed_s=86.7
+epoch=6 loss=0.219702 elapsed_s=103.9
+epoch=7 loss=0.199171 elapsed_s=121.3
+epoch=8 loss=0.180498 elapsed_s=138.6
+epoch=9 loss=0.167832 elapsed_s=155.8
+epoch=10 loss=0.160976 elapsed_s=173.1
+epoch=11 loss=0.150833 elapsed_s=190.4
+epoch=12 loss=0.145349 elapsed_s=207.8
+epoch=13 loss=0.140429 elapsed_s=225.2
+epoch=14 loss=0.136186 elapsed_s=242.5
+epoch=15 loss=0.132422 elapsed_s=259.9
+epoch=16 loss=0.129239 elapsed_s=277.3
+epoch=17 loss=0.126325 elapsed_s=294.7
+epoch=18 loss=0.123797 elapsed_s=312.1
+epoch=19 loss=0.121534 elapsed_s=329.5
+epoch=20 loss=0.119639 elapsed_s=346.9
+epoch=21 loss=0.117824 elapsed_s=364.1
+epoch=22 loss=0.116270 elapsed_s=381.4
+epoch=23 loss=0.114898 elapsed_s=398.8
+epoch=24 loss=0.113728 elapsed_s=416.2
+epoch=25 loss=0.112700 elapsed_s=433.5
+epoch=26 loss=0.111983 elapsed_s=451.0
+epoch=27 loss=0.111341 elapsed_s=468.5
+epoch=28 loss=0.110906 elapsed_s=485.9
+epoch=29 loss=0.110590 elapsed_s=503.3
+epoch=30 loss=0.110665 elapsed_s=520.9
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_glll_gelumlp_s43", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "scene": "solar", "seed": 43, "epochs": 30, "auc_percent": 89.27232213571176, "eer": 0.18275030156815442, "frames": 2450, "positive_frames": 792, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 34966592, "model_guard": {"block_order": "GLLL", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 535.3035318469629, "max_steps": 0, "checkpoint": "ckpt/solar_final.pth", "checkpoint_sha256": "06f053bd3263c058c2617d5fba06bf606653aee49c7c761e9b0cada23522e5be", "cuda": "NVIDIA RTX 5880 Ada Generation"}

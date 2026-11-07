@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261106_lllg_gelumlp_s43", "scene": "vehicle", "seed": 43, "epochs": 30, "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLG", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "model_guard": {"block_order": "LLLG", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 34966592, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.654431 elapsed_s=40.7
+epoch=2 loss=0.393712 elapsed_s=80.6
+epoch=3 loss=0.284531 elapsed_s=120.7
+epoch=4 loss=0.214747 elapsed_s=160.7
+epoch=5 loss=0.176317 elapsed_s=200.9
+epoch=6 loss=0.159989 elapsed_s=241.0
+epoch=7 loss=0.154297 elapsed_s=281.1
+epoch=8 loss=0.150492 elapsed_s=321.3
+epoch=9 loss=0.119026 elapsed_s=361.5
+epoch=10 loss=0.111929 elapsed_s=401.6
+epoch=11 loss=0.103689 elapsed_s=441.7
+epoch=12 loss=0.098894 elapsed_s=481.7
+epoch=13 loss=0.093536 elapsed_s=521.8
+epoch=14 loss=0.089730 elapsed_s=562.0
+epoch=15 loss=0.086251 elapsed_s=602.1
+epoch=16 loss=0.083361 elapsed_s=642.2
+epoch=17 loss=0.080815 elapsed_s=682.2
+epoch=18 loss=0.078499 elapsed_s=722.3
+epoch=19 loss=0.076533 elapsed_s=762.4
+epoch=20 loss=0.074740 elapsed_s=802.6
+epoch=21 loss=0.073250 elapsed_s=842.8
+epoch=22 loss=0.071931 elapsed_s=883.0
+epoch=23 loss=0.070786 elapsed_s=923.2
+epoch=24 loss=0.069812 elapsed_s=963.4
+epoch=25 loss=0.069029 elapsed_s=1003.6
+epoch=26 loss=0.068362 elapsed_s=1043.7
+epoch=27 loss=0.067910 elapsed_s=1083.8
+epoch=28 loss=0.067533 elapsed_s=1123.9
+epoch=29 loss=0.067322 elapsed_s=1164.0
+epoch=30 loss=0.067219 elapsed_s=1204.2
+{"dataset": "Drone-Anomaly", "experiment_id": "20261106_lllg_gelumlp_s43", "ablation": {"family": "GL", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "LLLG", "ffn_type": "gelumlp", "changed_factors": ["student block order", "student FFN type"]}, "scene": "vehicle", "seed": 43, "epochs": 30, "auc_percent": 54.75491895640114, "eer": 0.44819277108433736, "frames": 2633, "positive_frames": 973, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 34966592, "model_guard": {"block_order": "LLLG", "ffn_type": "gelumlp", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64}, "elapsed_s": 1222.0384666220052, "max_steps": 0, "checkpoint": "ckpt/vehicle_final.pth", "checkpoint_sha256": "68f20d8ddff79188d7eeaedf2aeddd2e0d3048e1b09eaec8f27fd54d3ff25c9c", "cuda": "NVIDIA RTX A6000"}

@@ -1,21 +1,16 @@
 {
   "schema_version": 1,
   "experiment": "20261106_lllg_gelumlp_s42",
+  "seed": 42,
   "ablation": {
     "block_order": "LLLG",
     "ffn_type": "gelumlp"
   },
   "score": "matched_group_balanced_top5 (alpha=0.5)",
-  "aggregation": "mean of seven scene AUC/EER",
   "macro_auc_percent": 85.5262986657158,
   "macro_eer": 0.192179984675399,
-  "scenes": [
-    "bike",
-    "crossroads",
-    "farmland",
-    "highway",
-    "railway",
-    "solar",
-    "vehicle"
-  ]
+  "cross_seed_mean_auc_percent": 84.89480271705813,
+  "cross_seed_sd_auc_percent": 0.7716443645055402,
+  "cross_seed_mean_eer": 0.19725304462062757,
+  "cross_seed_sd_eer": 0.007271327241721407
 }
