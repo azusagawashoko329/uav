@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_flatten_12mean_s43",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "flatten_12mean",
+    "error_mode": "flatten",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Flatten Cosine; direct 12-layer mean"
+  },
+  "scene": "vehicle",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 67.159016332545,
+  "eer": 0.36204819277108435,
+  "frames": 2633,
+  "positive_frames": 973,
+  "train_frames": 5266,
+  "test_videos": 2,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "flatten_12mean",
+      "error_mode": "flatten",
+      "k": 196,
+      "aggregation": "mean12",
+      "alpha": 0.5,
+      "description": "Flatten Cosine; direct 12-layer mean"
+    }
+  },
+  "elapsed_s": 938.0748608359136,
+  "max_steps": 0,
+  "checkpoint": "ckpt/vehicle_final.pth",
+  "checkpoint_sha256": "f72428a533d57622cd29443bf66daa356c47006326fe2d0cca4055ddf610689d",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

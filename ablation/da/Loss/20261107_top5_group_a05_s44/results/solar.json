@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_top5_group_a05_s44",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "top5_group_a05",
+    "error_mode": "topk",
+    "k": 5,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"
+  },
+  "scene": "solar",
+  "seed": 44,
+  "epochs": 30,
+  "auc_percent": 89.75719194356107,
+  "eer": 0.17611580217129072,
+  "frames": 2450,
+  "positive_frames": 792,
+  "train_frames": 2848,
+  "test_videos": 3,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "top5_group_a05",
+      "error_mode": "topk",
+      "k": 5,
+      "aggregation": "group",
+      "alpha": 0.5,
+      "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"
+    }
+  },
+  "elapsed_s": 653.9912085830001,
+  "max_steps": 0,
+  "checkpoint": "ckpt/solar_final.pth",
+  "checkpoint_sha256": "f96b47af7d9ce41c9ce67b9c871b011fa225fca30740d8265ee332ae8ec45225",
+  "cuda": "NVIDIA RTX A6000"
+}

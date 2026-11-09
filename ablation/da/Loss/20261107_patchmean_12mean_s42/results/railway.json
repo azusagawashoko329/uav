@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_patchmean_12mean_s42",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_12mean",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Patch Mean Cosine; direct 12-layer mean"
+  },
+  "scene": "railway",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 69.89449342390519,
+  "eer": 0.3574938574938575,
+  "frames": 882,
+  "positive_frames": 68,
+  "train_frames": 1206,
+  "test_videos": 1,
+  "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "patchmean_12mean",
+      "error_mode": "patchmean",
+      "k": 196,
+      "aggregation": "mean12",
+      "alpha": 0.5,
+      "description": "Patch Mean Cosine; direct 12-layer mean"
+    }
+  },
+  "elapsed_s": 285.5179093120387,
+  "max_steps": 0,
+  "checkpoint": "ckpt/railway_final.pth",
+  "checkpoint_sha256": "67a109d32cb1c338f806c26279627e8671470c630e1a9b069d4219fba1421bdf",
+  "cuda": "NVIDIA RTX A6000"
+}

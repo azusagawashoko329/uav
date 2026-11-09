@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_patchmean_group_a05_s43",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_group_a05",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Patch Mean; four groups, alpha=0.5"
+  },
+  "scene": "highway",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 69.18081887796863,
+  "eer": 0.4313387860525183,
+  "frames": 2820,
+  "positive_frames": 497,
+  "train_frames": 9045,
+  "test_videos": 3,
+  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "patchmean_group_a05",
+      "error_mode": "patchmean",
+      "k": 196,
+      "aggregation": "group",
+      "alpha": 0.5,
+      "description": "Patch Mean; four groups, alpha=0.5"
+    }
+  },
+  "elapsed_s": 1991.6730866139987,
+  "max_steps": 0,
+  "checkpoint": "ckpt/highway_final.pth",
+  "checkpoint_sha256": "8ad5e763b309daba4f37baff1a625fb9cf083197e08fe311235e712be31d8965",
+  "cuda": "NVIDIA RTX A6000"
+}

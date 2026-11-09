@@ -1,16 +1,58 @@
 {
-  "schema_version": 1,
-  "experiment": "20261106_glll_gate_s42",
+  "experiment": "20261107_top5_group_a05_s42",
   "seed": 42,
-  "ablation": {
-    "block_order": "GLLL",
-    "ffn_type": "gate"
+  "loss_ablation": {
+    "id": "top5_group_a05",
+    "error_mode": "topk",
+    "k": 5,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"
   },
-  "score": "matched_group_balanced_top5 (alpha=0.5)",
   "macro_auc_percent": 85.21465517781522,
   "macro_eer": 0.19645559306283525,
-  "cross_seed_mean_auc_percent": 85.35159708282721,
-  "cross_seed_sd_auc_percent": 0.24300608413448993,
-  "cross_seed_mean_eer": 0.1964694437344015,
-  "cross_seed_sd_eer": 0.002083638971328322
+  "scenes": {
+    "bike": {
+      "auc_percent": 97.70021549095979,
+      "eer": 0.04590163934426229,
+      "frames": 18427,
+      "checkpoint_sha256": "d55ee480c715b1651f8421b352b208da850cd1c122e305404bbc1725c1db7b76"
+    },
+    "crossroads": {
+      "auc_percent": 61.55452524624205,
+      "eer": 0.43317972350230416,
+      "frames": 6244,
+      "checkpoint_sha256": "56fab3bebd788ba5b3dfe8d6721d74e57fc965a90d1ee85baccc3bc144f191bf"
+    },
+    "farmland": {
+      "auc_percent": 99.45762895535327,
+      "eer": 0.055049848287819676,
+      "frames": 2387,
+      "checkpoint_sha256": "5383e3a89395ff9f88e268a71212aaadfd02c76d44acae2c332d37ca2b040557"
+    },
+    "highway": {
+      "auc_percent": 94.94496033454276,
+      "eer": 0.1592767972449419,
+      "frames": 2820,
+      "checkpoint_sha256": "ca6205af885b436e6cffdcda021eede3f93612c7a27d578e54f81522a9af6bb5"
+    },
+    "railway": {
+      "auc_percent": 95.47622488798959,
+      "eer": 0.10687960687960688,
+      "frames": 882,
+      "checkpoint_sha256": "85cf4ca4354747e28976b5242f955c5a43cdff3a9b96f3d91b1cd3e4ee069218"
+    },
+    "solar": {
+      "auc_percent": 89.72372244763682,
+      "eer": 0.16827503015681544,
+      "frames": 2450,
+      "checkpoint_sha256": "f326c830fee8d2fbb6e1ec1e0d900130e1d1dfff39b5d42a13aafe8a68081b29"
+    },
+    "vehicle": {
+      "auc_percent": 57.645308881982196,
+      "eer": 0.4066265060240964,
+      "frames": 2633,
+      "checkpoint_sha256": "688ad79da8b093c2d6cd29a2236fb1027e5beba792731fa4d43b360e42c222a6"
+    }
+  }
 }

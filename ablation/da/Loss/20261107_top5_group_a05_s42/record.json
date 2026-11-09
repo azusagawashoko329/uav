@@ -5,7 +5,7 @@
   "dataset": "da",
   "family": "appearance",
   "status": "completed",
-  "source_commit": "db2cf70f602783b95533208aae9a4bbc6a0531ca",
+  "source_commit": "8fe58fe4aa7e9fa1e4b38c3513294714a9cfafcc",
   "variant_id": "gl_order_glll_ffn_gate",
   "variant_label": "GL-GLLL-gate",
   "runner_variant": "uit_4block_gl768",
@@ -87,7 +87,10 @@
     "This directory is a direct migration of the completed canonical DA matrix run; no new training was performed.",
     "The migrated V1/V2 source uses the same fixed topology and FFN semantics required by this ablation cell.",
     "Summary regenerated under the DA GL ablation matrix using matched-score per-scene outputs.",
-    "Directly migrated from completed DA V2 matched-score results; no new training for seed42."
+    "Directly migrated from completed DA V2 matched-score results; no new training for seed42.",
+    "Three seeds are summarized in ablation/da/Loss/summary.md.",
+    "Training and test use the same configured loss_score match.",
+    "Direct migration of completed DA V2 matched-score results; no new training for this cell."
   ],
   "scoring_correction": {
     "reason": "training used group-balanced top-k loss; old evaluation used mean-over-taps top-k readout",

@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261107_flatten_12mean_s42", "scene": "vehicle", "seed": 42, "epochs": 30, "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "flatten_12mean", "error_mode": "flatten", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Flatten Cosine; direct 12-layer mean"}, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "flatten_12mean", "error_mode": "flatten", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Flatten Cosine; direct 12-layer mean"}}, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 30248000, "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.566072 elapsed_s=31.1
+epoch=2 loss=0.289434 elapsed_s=61.5
+epoch=3 loss=0.202086 elapsed_s=92.0
+epoch=4 loss=0.145871 elapsed_s=122.7
+epoch=5 loss=0.116076 elapsed_s=153.5
+epoch=6 loss=0.096509 elapsed_s=184.1
+epoch=7 loss=0.083739 elapsed_s=214.8
+epoch=8 loss=0.073978 elapsed_s=245.6
+epoch=9 loss=0.066362 elapsed_s=276.2
+epoch=10 loss=0.060432 elapsed_s=307.0
+epoch=11 loss=0.056207 elapsed_s=337.8
+epoch=12 loss=0.052657 elapsed_s=368.6
+epoch=13 loss=0.049898 elapsed_s=399.4
+epoch=14 loss=0.047614 elapsed_s=430.2
+epoch=15 loss=0.045481 elapsed_s=460.9
+epoch=16 loss=0.044033 elapsed_s=491.7
+epoch=17 loss=0.042492 elapsed_s=522.4
+epoch=18 loss=0.041392 elapsed_s=553.2
+epoch=19 loss=0.040363 elapsed_s=584.0
+epoch=20 loss=0.039555 elapsed_s=614.8
+epoch=21 loss=0.038881 elapsed_s=645.6
+epoch=22 loss=0.038316 elapsed_s=676.4
+epoch=23 loss=0.037869 elapsed_s=707.2
+epoch=24 loss=0.037504 elapsed_s=738.0
+epoch=25 loss=0.037218 elapsed_s=768.9
+epoch=26 loss=0.037018 elapsed_s=799.7
+epoch=27 loss=0.036873 elapsed_s=830.5
+epoch=28 loss=0.036776 elapsed_s=861.2
+epoch=29 loss=0.036734 elapsed_s=892.1
+epoch=30 loss=0.036719 elapsed_s=922.8
+{"dataset": "Drone-Anomaly", "experiment_id": "20261107_flatten_12mean_s42", "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "flatten_12mean", "error_mode": "flatten", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Flatten Cosine; direct 12-layer mean"}, "scene": "vehicle", "seed": 42, "epochs": 30, "auc_percent": 65.96091457298877, "eer": 0.3686746987951807, "frames": 2633, "positive_frames": 973, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 30248000, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "flatten_12mean", "error_mode": "flatten", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Flatten Cosine; direct 12-layer mean"}}, "elapsed_s": 935.7128469790332, "max_steps": 0, "checkpoint": "ckpt/vehicle_final.pth", "checkpoint_sha256": "1ccddaf549c81ac5dcd09daf9d67f4e0e1ff9c387db9522c11b8d070540437c3", "cuda": "NVIDIA RTX 5880 Ada Generation"}

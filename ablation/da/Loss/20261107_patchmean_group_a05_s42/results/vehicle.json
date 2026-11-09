@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_patchmean_group_a05_s42",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_group_a05",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Patch Mean; four groups, alpha=0.5"
+  },
+  "scene": "vehicle",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 66.14668334179473,
+  "eer": 0.3753012048192771,
+  "frames": 2633,
+  "positive_frames": 973,
+  "train_frames": 5266,
+  "test_videos": 2,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "patchmean_group_a05",
+      "error_mode": "patchmean",
+      "k": 196,
+      "aggregation": "group",
+      "alpha": 0.5,
+      "description": "Patch Mean; four groups, alpha=0.5"
+    }
+  },
+  "elapsed_s": 939.5493467439665,
+  "max_steps": 0,
+  "checkpoint": "ckpt/vehicle_final.pth",
+  "checkpoint_sha256": "3a8327c11f901c5aac3a02411417929c131bcbf5dd94ed405f4fc771e7e73dbc",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

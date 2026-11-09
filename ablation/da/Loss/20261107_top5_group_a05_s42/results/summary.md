@@ -1,5 +1,7 @@
-# 20261106_glll_gate_s42
+# 20261107_top5_group_a05_s42
 
-配置：`GLLL + gate`，seed42。
+Top-5 / 4组 α=0.5（V2），seed42，七场景完成。训练和测试采用相同配置的 match 分数。
 
-matched-score 宏平均 AUC：**85.2147%**；宏平均 EER：**0.1965**。三 seed 汇总见 [../../multiseed_summary.md](../../multiseed_summary.md)。
+宏平均 AUC：**85.2147%**；宏平均 EER：**0.196456**。
+
+[三 seed 矩阵与分析](../../summary.md)。

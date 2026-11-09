@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_flatten_12mean_s43",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "flatten_12mean",
+    "error_mode": "flatten",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Flatten Cosine; direct 12-layer mean"
+  },
+  "scene": "farmland",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 55.292045947117465,
+  "eer": 0.4364976159514521,
+  "frames": 2387,
+  "positive_frames": 80,
+  "train_frames": 9548,
+  "test_videos": 1,
+  "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "flatten_12mean",
+      "error_mode": "flatten",
+      "k": 196,
+      "aggregation": "mean12",
+      "alpha": 0.5,
+      "description": "Flatten Cosine; direct 12-layer mean"
+    }
+  },
+  "elapsed_s": 1672.6386737400899,
+  "max_steps": 0,
+  "checkpoint": "ckpt/farmland_final.pth",
+  "checkpoint_sha256": "428e2c596589b1e08e5335eeff7d5f1693849723554fcee1a07d0bfc1462321e",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

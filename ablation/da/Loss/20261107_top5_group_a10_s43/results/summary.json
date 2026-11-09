@@ -1,0 +1,58 @@
+{
+  "experiment": "20261107_top5_group_a10_s43",
+  "seed": 43,
+  "loss_ablation": {
+    "id": "top5_group_a10",
+    "error_mode": "topk",
+    "k": 5,
+    "aggregation": "group",
+    "alpha": 1.0,
+    "description": "Top-5 Patch Mean; four groups, alpha=1 max"
+  },
+  "macro_auc_percent": 85.80976449479344,
+  "macro_eer": 0.19709173503995234,
+  "scenes": {
+    "bike": {
+      "auc_percent": 97.77413150052384,
+      "eer": 0.04449648711943794,
+      "frames": 18427,
+      "checkpoint_sha256": "9ee190e468f45ef6266a997884a6e650a99fafecf3f4aff75e28a76cd55f2821"
+    },
+    "crossroads": {
+      "auc_percent": 61.900202649467154,
+      "eer": 0.42220759271450514,
+      "frames": 6244,
+      "checkpoint_sha256": "f76cfcc9566b1015c6a240b6e36dc170a7622aee712353b9c1d4ee2e27bcb412"
+    },
+    "farmland": {
+      "auc_percent": 99.63480710879931,
+      "eer": 0.04204594711746858,
+      "frames": 2387,
+      "checkpoint_sha256": "1cdde38a1105519a0ecbb084695e22599936a2c753fd745c08e1a778e7736622"
+    },
+    "highway": {
+      "auc_percent": 92.35923504869076,
+      "eer": 0.20060266896254844,
+      "frames": 2820,
+      "checkpoint_sha256": "39b523d782c157a69add4f8e70a0f06dfbca5398ca20159148a0b267501bae43"
+    },
+    "railway": {
+      "auc_percent": 95.86284145107675,
+      "eer": 0.10442260442260443,
+      "frames": 882,
+      "checkpoint_sha256": "b768fa43ea5395ba13f255c23076832ae82bf181b980a80123b4645bced9f69b"
+    },
+    "solar": {
+      "auc_percent": 89.99197341326412,
+      "eer": 0.16948130277442702,
+      "frames": 2450,
+      "checkpoint_sha256": "bd3913c20b3d436627b553dee3f51452cb32112cf449819665f06736ca9936c6"
+    },
+    "vehicle": {
+      "auc_percent": 63.145160291732196,
+      "eer": 0.3963855421686747,
+      "frames": 2633,
+      "checkpoint_sha256": "ccc24635bde6721ddf98f0e957d27524d60df7ec0d1781034a9ed3ea44a7f589"
+    }
+  }
+}

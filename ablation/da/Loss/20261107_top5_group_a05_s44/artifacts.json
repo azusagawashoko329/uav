@@ -1,4 +1,221 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "logs/20261107T223744Z_crossroads_gpu0.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3510,
+      "sha256": "50d54ced7b06fedf25b8648e8fb3556391be431ef80c42217389839f03f60432",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T052040Z_farmland_gpu1.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3517,
+      "sha256": "4ea636bd8927024c07ba80f63e93f7dc89633c4ce624cefe8290c6984e968599",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T110401Z_highway_gpu1.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3514,
+      "sha256": "96f8938d8a698b9e48e3926b0a89274c136feb85c53dcf33aaf47f56fca20b9f",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T162153Z_bike_gpu1.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3504,
+      "sha256": "cb8fcae839382fcd447138bbbd205f38a773c63765d49e6163cb022639a6d256",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T200039Z_vehicle_gpu1.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3498,
+      "sha256": "f574d0992428678a45cab7ef0a6eeb234999e1527bd8e3870d7226bad7e79bee",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T221119Z_solar_gpu0.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3465,
+      "sha256": "e571cd38e5d45f3ce3425d04865b1d6eb00baf35183b5185e010d1111ef85b42",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/20261108T231245Z_railway_gpu0.log",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 3463,
+      "sha256": "b5c9f65e159518a9f25914a7619de20c35593de286388a0ec1fbb0496a3a15de",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "logs/scheduler_20261107T150000Z_da_loss_multiseed_s42_s43_s44.jsonl",
+      "producer_script": "scripts/da_loss_ablation_multi_seed_scheduler.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 219216,
+      "sha256": "60834ce54bd19ad7f6099d1d09ee3c93e8549ecd0f0d716a624c1ea4dcbb34c4",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/bike.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1490,
+      "sha256": "6bb42e653d9e3b7b2cbb7c398a76fbc84123bbe205f487b621c9fe9d149c4d92",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 908922,
+      "sha256": "1fdf8b59c3f8193788fdfbf543f937810bf27789ac323e02dbd5ff60719ee9b6",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1487,
+      "sha256": "37c0b248d5f09095ff9d1b67985d18b25fca43d6662ca2739ff0416614f331ec",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 305240,
+      "sha256": "106a428f31ed2dded21cb47c4bbc2781cb4f3b767a856ed5342d4251ee2ffc4d",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/farmland.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1494,
+      "sha256": "d21ac2233887293945c783cd72f599c7766c956eeabf9299638f34750ec2a846",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 117767,
+      "sha256": "6f397b6f344d7ce95f65b3d9da2e121a8a30302a3749e9b2036390a3a9678a6c",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/highway.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1493,
+      "sha256": "a1d6d31e8c2aa4a599d4eadc122c90d689d1d4e9ab4d742b6a14df2e81602402",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 137606,
+      "sha256": "2bdc68e729eaee41c894e8200653e66689b3acfd16ad41737b644e9e82bc21fa",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/railway.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1476,
+      "sha256": "37edd9322ec11db0fe448816552b343a3896e16fef09e8dd81687d76bb22bce7",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 42865,
+      "sha256": "6cff475edae3bf769fb660c7f77053fe7ed3971918260dafead6781e127b37a7",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/solar.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1474,
+      "sha256": "b70e41981936b505769bd5a0d2ef9a403e9516e5d64cbd4c6ae0c6dad22304a3",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 118980,
+      "sha256": "7a8cda757bc5ce3e4b511d487ab4754118b983f50229ad3a8bfd9309af247b3c",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/summarize_da_loss_ablation.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1870,
+      "sha256": "4eeb24e06f617a8d6ed3bf0e15c62b4f61542eb1d6e09b20d6dd7c2041c77534",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/summarize_da_loss_ablation.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 254,
+      "sha256": "ecdd5064cebc6ec7a5ee719b3235f60afd95439d8033228175954f995c3ca73f",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/vehicle.json",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 1490,
+      "sha256": "130624a70797ae33e383d192e489138d96b4437364b5e751f8437766974de30a",
+      "storage": "git-tracked"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "producer_script": "scripts/da_loss_ablation_runner.py",
+      "run_id": "20261107T150000Z_da_loss_multiseed_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 128396,
+      "sha256": "c2f4e378a7bc3543c646847f2acb2ea53813f09125806e161dfe93411853bcd4",
+      "storage": "git-tracked"
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Detached-friendly dynamic two-GPU scheduler for DA GL seed43/44 cells."""
+"""Detached-friendly dynamic two-GPU scheduler for DA Loss seed42/43/44 cells."""
 from __future__ import annotations
 import argparse, datetime as dt, glob, json, os, subprocess, sys, time
 from pathlib import Path
@@ -21,7 +21,7 @@ def scene_costs(root,scenes):
  return out
 def main():
  p=argparse.ArgumentParser(); p.add_argument('--repo-root',type=Path,required=True); p.add_argument('--experiments',nargs='+',required=True); p.add_argument('--run-id',default=None); p.add_argument('--python',default=DEFAULT_PYTHON); p.add_argument('--gpus',nargs='+',type=int,default=[0,1]); p.add_argument('--epochs',type=int,default=30); p.add_argument('--batch',type=int,default=64); p.add_argument('--workers',type=int,default=8); p.add_argument('--scenes',nargs='+',choices=SCENES,default=SCENES); p.add_argument('--max-steps',type=int,default=0); p.add_argument('--poll-seconds',type=float,default=5); p.add_argument('--max-memory-mb',type=int,default=2000); p.add_argument('--resume',action='store_true'); p.add_argument('--dry-run',action='store_true'); a=p.parse_args()
- root=a.repo_root.resolve(); exps=[(root/e).resolve() if not e.is_absolute() else e.resolve() for e in map(Path,a.experiments)]; run_id=a.run_id or now()+'_da_gl_multiseed'
+ root=a.repo_root.resolve(); exps=[(root/e).resolve() if not e.is_absolute() else e.resolve() for e in map(Path,a.experiments)]; run_id=a.run_id or now()+'_da_loss_multiseed'
  cfgs={}
  for e in exps:
   cfg=json.loads((e/'config.json').read_text()); cfgs[e]=cfg
@@ -47,7 +47,7 @@ def main():
  for j in jobs:
   e,s=j['experiment'],j['scene']; done=(e/'results'/f'{s}.json').is_file() and (e/'ckpt'/f'{s}_final.pth').is_file()
   (skipped if a.resume and done else queue).append(j)
- emit('start',experiments=[display(e) for e in exps],gpus=[{'slot':g,**inv[g]} for g in a.gpus],jobs=len(jobs),epochs=a.epochs,batch=a.batch,workers=a.workers,seeds=sorted({j['seed'] for j in jobs}),scene_order=order,scene_train_frames=costs,skipped=len(skipped),policy='dynamic per-GPU queue; mixed seed43/44')
+ emit('start',experiments=[display(e) for e in exps],gpus=[{'slot':g,**inv[g]} for g in a.gpus],jobs=len(jobs),epochs=a.epochs,batch=a.batch,workers=a.workers,seeds=sorted({j['seed'] for j in jobs}),scene_order=order,scene_train_frames=costs,skipped=len(skipped),policy='dynamic per-GPU queue; mixed seed42/43/44')
  if skipped: emit('resume_skip',jobs=[{'experiment':display(j['experiment']),'scene':j['scene'],'seed':j['seed']} for j in skipped])
  running={}; failures=[]; completed=[]
  def launch(slot,j):

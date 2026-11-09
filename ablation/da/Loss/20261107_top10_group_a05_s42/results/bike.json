@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_top10_group_a05_s42",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "top10_group_a05",
+    "error_mode": "topk",
+    "k": 10,
+    "aggregation": "group",
+    "alpha": 0.5,
+    "description": "Top-10 Patch Mean; four groups, alpha=0.5"
+  },
+  "scene": "bike",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 96.81632593692723,
+  "eer": 0.07119437939110071,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "train_frames": 7950,
+  "test_videos": 7,
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "top10_group_a05",
+      "error_mode": "topk",
+      "k": 10,
+      "aggregation": "group",
+      "alpha": 0.5,
+      "description": "Top-10 Patch Mean; four groups, alpha=0.5"
+    }
+  },
+  "elapsed_s": 1420.8298249109648,
+  "max_steps": 0,
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "ec8fcd6a58a10e687b040382012bc2a0e98fbe564e6d1a0c0fa728b547639a7b",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

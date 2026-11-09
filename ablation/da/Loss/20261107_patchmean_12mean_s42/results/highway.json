@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_patchmean_12mean_s42",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_12mean",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Patch Mean Cosine; direct 12-layer mean"
+  },
+  "scene": "highway",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 70.31651813593571,
+  "eer": 0.3951786482996126,
+  "frames": 2820,
+  "positive_frames": 497,
+  "train_frames": 9045,
+  "test_videos": 3,
+  "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "patchmean_12mean",
+      "error_mode": "patchmean",
+      "k": 196,
+      "aggregation": "mean12",
+      "alpha": 0.5,
+      "description": "Patch Mean Cosine; direct 12-layer mean"
+    }
+  },
+  "elapsed_s": 1586.3262926579919,
+  "max_steps": 0,
+  "checkpoint": "ckpt/highway_final.pth",
+  "checkpoint_sha256": "d2dfcf9f5c5bbb2b315ddda474a5d40cfd2bf970669617e889f80b297d47f08c",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

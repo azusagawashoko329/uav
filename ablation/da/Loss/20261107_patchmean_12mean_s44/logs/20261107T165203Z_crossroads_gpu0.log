@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261107_patchmean_12mean_s44", "scene": "crossroads", "seed": 44, "epochs": 30, "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "patchmean_12mean", "error_mode": "patchmean", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Patch Mean Cosine; direct 12-layer mean"}, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "patchmean_12mean", "error_mode": "patchmean", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Patch Mean Cosine; direct 12-layer mean"}}, "train_frames": 15772, "test_videos": 5, "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238", "trainable_parameters": 30248000, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.390770 elapsed_s=115.0
+epoch=2 loss=0.198480 elapsed_s=229.2
+epoch=3 loss=0.136743 elapsed_s=343.3
+epoch=4 loss=0.109780 elapsed_s=457.6
+epoch=5 loss=0.094067 elapsed_s=571.7
+epoch=6 loss=0.083105 elapsed_s=685.9
+epoch=7 loss=0.074483 elapsed_s=800.1
+epoch=8 loss=0.068023 elapsed_s=914.4
+epoch=9 loss=0.063111 elapsed_s=1028.6
+epoch=10 loss=0.058981 elapsed_s=1142.7
+epoch=11 loss=0.056112 elapsed_s=1256.9
+epoch=12 loss=0.053782 elapsed_s=1371.0
+epoch=13 loss=0.051878 elapsed_s=1485.2
+epoch=14 loss=0.050243 elapsed_s=1599.3
+epoch=15 loss=0.048807 elapsed_s=1713.5
+epoch=16 loss=0.047617 elapsed_s=1827.7
+epoch=17 loss=0.046555 elapsed_s=1941.8
+epoch=18 loss=0.045671 elapsed_s=2056.0
+epoch=19 loss=0.044839 elapsed_s=2170.1
+epoch=20 loss=0.044191 elapsed_s=2284.1
+epoch=21 loss=0.043598 elapsed_s=2398.4
+epoch=22 loss=0.043091 elapsed_s=2512.7
+epoch=23 loss=0.042677 elapsed_s=2626.9
+epoch=24 loss=0.042330 elapsed_s=2741.0
+epoch=25 loss=0.042042 elapsed_s=2855.2
+epoch=26 loss=0.041820 elapsed_s=2969.4
+epoch=27 loss=0.041657 elapsed_s=3083.3
+epoch=28 loss=0.041531 elapsed_s=3197.5
+epoch=29 loss=0.041467 elapsed_s=3311.6
+epoch=30 loss=0.041432 elapsed_s=3425.7
+{"dataset": "Drone-Anomaly", "experiment_id": "20261107_patchmean_12mean_s44", "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "patchmean_12mean", "error_mode": "patchmean", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Patch Mean Cosine; direct 12-layer mean"}, "scene": "crossroads", "seed": 44, "epochs": 30, "auc_percent": 56.79567733168186, "eer": 0.4261575597981128, "frames": 6244, "positive_frames": 1687, "train_frames": 15772, "test_videos": 5, "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238", "trainable_parameters": 30248000, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "patchmean_12mean", "error_mode": "patchmean", "k": 196, "aggregation": "mean12", "alpha": 0.5, "description": "Patch Mean Cosine; direct 12-layer mean"}}, "elapsed_s": 3462.0493323809933, "max_steps": 0, "checkpoint": "ckpt/crossroads_final.pth", "checkpoint_sha256": "40387990925df6f4a0dbb5461c32a5c5dd9e04953986be88149675a5b928e737", "cuda": "NVIDIA RTX A6000"}

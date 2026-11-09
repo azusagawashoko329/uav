@@ -1,0 +1,54 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261107_patchmean_12mean_s43",
+  "ablation": {
+    "family": "Loss",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "reconstruction error",
+      "tap/group aggregation"
+    ]
+  },
+  "loss_ablation": {
+    "id": "patchmean_12mean",
+    "error_mode": "patchmean",
+    "k": 196,
+    "aggregation": "mean12",
+    "alpha": 0.5,
+    "description": "Patch Mean Cosine; direct 12-layer mean"
+  },
+  "scene": "solar",
+  "seed": 43,
+  "epochs": 30,
+  "auc_percent": 40.20040574624411,
+  "eer": 0.6290711700844391,
+  "frames": 2450,
+  "positive_frames": 792,
+  "train_frames": 2848,
+  "test_videos": 3,
+  "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "GLLL",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64,
+    "loss_ablation": {
+      "id": "patchmean_12mean",
+      "error_mode": "patchmean",
+      "k": 196,
+      "aggregation": "mean12",
+      "alpha": 0.5,
+      "description": "Patch Mean Cosine; direct 12-layer mean"
+    }
+  },
+  "elapsed_s": 523.898185795988,
+  "max_steps": 0,
+  "checkpoint": "ckpt/solar_final.pth",
+  "checkpoint_sha256": "56b31c1a1d069bad006cb71e55e926405bd0214604ad28ffa40e992cd79b554b",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}

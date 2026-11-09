@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "experiment": "20261107_top5_group_a05_s44", "scene": "solar", "seed": 44, "epochs": 30, "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "top5_group_a05", "error_mode": "topk", "k": 5, "aggregation": "group", "alpha": 0.5, "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"}, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "top5_group_a05", "error_mode": "topk", "k": 5, "aggregation": "group", "alpha": 0.5, "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"}}, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 30248000, "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.797514 elapsed_s=22.1
+epoch=2 loss=0.474070 elapsed_s=43.3
+epoch=3 loss=0.379448 elapsed_s=64.5
+epoch=4 loss=0.308874 elapsed_s=85.7
+epoch=5 loss=0.256431 elapsed_s=106.8
+epoch=6 loss=0.223625 elapsed_s=128.1
+epoch=7 loss=0.198996 elapsed_s=149.3
+epoch=8 loss=0.185849 elapsed_s=170.6
+epoch=9 loss=0.169010 elapsed_s=191.8
+epoch=10 loss=0.164000 elapsed_s=213.1
+epoch=11 loss=0.152222 elapsed_s=234.4
+epoch=12 loss=0.146286 elapsed_s=255.6
+epoch=13 loss=0.141792 elapsed_s=276.7
+epoch=14 loss=0.137584 elapsed_s=297.8
+epoch=15 loss=0.133880 elapsed_s=319.0
+epoch=16 loss=0.130702 elapsed_s=340.1
+epoch=17 loss=0.127910 elapsed_s=361.3
+epoch=18 loss=0.125504 elapsed_s=382.6
+epoch=19 loss=0.123343 elapsed_s=403.7
+epoch=20 loss=0.121363 elapsed_s=424.9
+epoch=21 loss=0.119762 elapsed_s=446.2
+epoch=22 loss=0.118189 elapsed_s=467.4
+epoch=23 loss=0.116920 elapsed_s=488.6
+epoch=24 loss=0.115802 elapsed_s=509.8
+epoch=25 loss=0.114909 elapsed_s=531.1
+epoch=26 loss=0.114174 elapsed_s=552.4
+epoch=27 loss=0.113614 elapsed_s=573.6
+epoch=28 loss=0.113196 elapsed_s=594.9
+epoch=29 loss=0.112953 elapsed_s=616.1
+epoch=30 loss=0.112871 elapsed_s=637.3
+{"dataset": "Drone-Anomaly", "experiment_id": "20261107_top5_group_a05_s44", "ablation": {"family": "Loss", "mother_template": "rd_s4_t12_gl768_h512", "block_order": "GLLL", "ffn_type": "gate", "changed_factors": ["reconstruction error", "tap/group aggregation"]}, "loss_ablation": {"id": "top5_group_a05", "error_mode": "topk", "k": 5, "aggregation": "group", "alpha": 0.5, "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"}, "scene": "solar", "seed": 44, "epochs": 30, "auc_percent": 89.75719194356107, "eer": 0.17611580217129072, "frames": 2450, "positive_frames": 792, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 30248000, "model_guard": {"block_order": "GLLL", "ffn_type": "gate", "student_dim": 768, "ocbe_fuse_hidden": 512, "teacher_taps": 12, "code_dim": 64, "loss_ablation": {"id": "top5_group_a05", "error_mode": "topk", "k": 5, "aggregation": "group", "alpha": 0.5, "description": "Top-5 Patch Mean; four groups, 0.5 mean + 0.5 max (V2)"}}, "elapsed_s": 653.9912085830001, "max_steps": 0, "checkpoint": "ckpt/solar_final.pth", "checkpoint_sha256": "f96b47af7d9ce41c9ce67b9c871b011fa225fca30740d8265ee332ae8ec45225", "cuda": "NVIDIA RTX A6000"}
