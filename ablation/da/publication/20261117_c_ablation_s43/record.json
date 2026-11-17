@@ -4,12 +4,44 @@
   "path": "ablation/da/publication/20261117_c_ablation_s43",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "status": "running",
+      "seed": 43,
+      "script": "scripts/da_publication_scheduler.py",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "scripts/da_publication_scheduler.py",
+        "--manifest",
+        "/data1/data8tb/liangyuxuan/code/uav/ablation/da/publication/publication_run.json"
+      ],
+      "started_at": "20261117T085753Z",
+      "ended_at": null,
+      "log": "logs/scheduler_20261117T085621Z_da_publication_s42_s43_s44.jsonl",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "scene_jobs": [],
+      "environment": {
+        "gpus": {
+          "0": {
+            "uuid": "GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f",
+            "name": "NVIDIA RTX A6000"
+          },
+          "1": {
+            "uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6",
+            "name": "NVIDIA RTX 5880 Ada Generation"
+          }
+        },
+        "torch": "2.1.0+cu121"
+      }
+    }
+  ],
   "result_summary": null,
   "limitations": [
     "DA only; seed42/43/44 each has seven independently initialized scene models.",
