@@ -12,6 +12,14 @@
 
 旧 `rd_*` ID、V0–V5 编号和对应 checkpoint 含义保持不变。论文名称描述架构；具体结果仍需 dataset、experiment ID、seed、run_id、source_commit 定位。相同参数量不表示 checkpoint 或训练结果可互换。
 
+已再次确认三模型的对应关系：
+
+- **PT-RD = V0 的完整配置**：12个标准学生block、4个teacher taps、4个重建头；student width=768、瓶颈hidden=512，无Rank-2。
+- **HAP-RD = V2 将学生顺序改为LLLG + gate**：student width=768、瓶颈hidden=512，无Rank-2。
+- **HAP-RD-Lite = V5 将学生顺序改为LLLG + gate**：student width=192、瓶颈hidden=128，包含共享可学习Rank-2 Q。
+
+因此，从HAP-RD到Lite同时增加PODP并降低两处宽度（student 768→192、瓶颈hidden 512→128）；它不是单独增加Rank-2的单因素对照。若从V5描述HAP-RD，则除了GLLL→LLLG和移除Rank-2，还必须恢复student width=768和瓶颈hidden=512。
+
 ## 配置表
 
 下表按用户确认的配置与当前实现核对。
