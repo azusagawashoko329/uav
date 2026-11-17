@@ -2,6 +2,8 @@
 
 本轮论文实验直接存放在本目录，各配置独立seed42/43/44目录；原始GL/Loss等实验不移动。正式模型名以[命名规范](../../../docs/PUBLICATION_VARIANTS.md)为准。
 
+过程消融B/C/D/F1/F2的固定版本及机器可读配置见[结构版本存档](ARCHITECTURE_VERSIONS.md)，不列为正式模型。
+
 ## 实验数量与复用来源
 
 | 配置 | 学生结构 | teacher taps / heads | Student width | PDFB hidden | PODP | α | 参数量 | 复用seed | 新训练数 |

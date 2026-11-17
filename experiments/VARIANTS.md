@@ -6,6 +6,8 @@
 
 用户指定论文名称为 **PT-RD**、**HAP-RD**、**HAP-RD-Lite**；模块命名及三模型配置见 [论文变体命名规范](../docs/PUBLICATION_VARIANTS.md)。HAP-RD系列学生顺序为 **LLLG + gate（LGGD）**。历史V0–V5、`rd_*`结构定义和已完成运行含义保持不变；GLLL版本V2/V5不能直接作为LLLG论文模型的别名。重建头/反向对齐和PODP范围已确认；PT-RD沿用V0四tap瓶颈。本轮为命名定稿，不修改现有默认模型构造入口。
 
+论文过程消融 **B/C/D/F1/F2** 单独登记为[结构存档版本](../ablation/da/publication/ARCHITECTURE_VERSIONS.md)，不加入正式模型名单，也不覆盖历史V0–V5。
+
 **首批正式六变体矩阵**：`experiments/uit/appearance/20261101_uit_45ep_*_retry2_s42/`，UIT-ADrone，seed42，45 epoch，batch64，AdamW，256×256，冻结 DINOv3 ViT-B/16，`source_commit=532e0e024c1d697d5f45ff1b3aed95487f85fbc1`；六项 `record.json` 均为 `completed`。
 
 **20261104 matrix 命名重跑**：`experiments/uit/appearance/20261104_variant_matrix_v{0..5}_*_s42/`，同样的六变体/45ep/seed42/双卡动态队列，使用当前源码与训练前 variant guard；六项均为 `completed`，matched-score AUC：

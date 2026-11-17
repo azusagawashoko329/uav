@@ -119,3 +119,8 @@ DA / GL多seed消融中，宽度768的LLLG+gate与GLLL+gate参数量均为30,248
 ## DA 完整消融链补跑（2026-11-17）
 
 新入口为 `model/publication_rd.py`，运行计划见 [ablation/da/publication](../ablation/da/publication/README.md)。24个seed实验中7个复制已有结果、17个需从头训练，共119个新场景任务。PT-RD补seed43/44；B、C、F1、F2、HAP-RD-Lite各补三seed。D复用GGGG+GELU的旧V1等价结果，HAP-RD复用LLLG+gate三seed；新实验均使用新写的scene脚本和显式模型注册表，不改变历史变体默认入口。
+
+
+## 过程消融版本存档
+
+B、C、D、F1、F2作为非正式论文模型的过程消融版本保存，完整定义和固定源码指针见[结构版本存档](../ablation/da/publication/ARCHITECTURE_VERSIONS.md)。正式模型仍为本文件的三个模型，不因存档增加新的正式模型名称。

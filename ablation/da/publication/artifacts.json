@@ -112,6 +112,34 @@
         "publication_preflight.json"
       ],
       "note": "hash is launch snapshot; append-only runtime log continues to grow"
+    },
+    {
+      "path": "ARCHITECTURE_VERSIONS.json",
+      "producer_script": "manual architecture archive; source/config hashes verified against pinned Git commit",
+      "run_id": "20261117_architecture_archive",
+      "inputs": [
+        "publication_chain_plan.json",
+        "publication_preflight.json",
+        "git:aa0f057d834efc9ec30ba1a120b93d9d42aa7028"
+      ],
+      "status": "present",
+      "size_bytes": 20110,
+      "sha256": "cd3c3cc4cb0faf831efc5bc697b7da122d93bc8aedd4754cafcf588cd03c5745",
+      "storage": "git"
+    },
+    {
+      "path": "ARCHITECTURE_VERSIONS.md",
+      "producer_script": "manual architecture archive; source/config hashes verified against pinned Git commit",
+      "run_id": "20261117_architecture_archive",
+      "inputs": [
+        "publication_chain_plan.json",
+        "publication_preflight.json",
+        "git:aa0f057d834efc9ec30ba1a120b93d9d42aa7028"
+      ],
+      "status": "present",
+      "size_bytes": 4141,
+      "sha256": "5fb53a345d6e1a63b93e2306cfc42ae6cbc15a09bdd70f2ab208ca3057e8d956",
+      "storage": "git"
     }
   ]
 }
