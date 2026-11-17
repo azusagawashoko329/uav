@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s12_t4_h512", "variant_label": "V0", "scene": "vehicle", "seed": 42, "epochs": 30, "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly", "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 89079104, "teacher_taps": [5, 7, 9, 11], "cuda": "NVIDIA RTX 5880 Ada Generation", "max_steps": 0}
+epoch=1 loss=0.507324 elapsed_s=55.8
+epoch=2 loss=0.315795 elapsed_s=111.2
+epoch=3 loss=0.215033 elapsed_s=167.0
+epoch=4 loss=0.160455 elapsed_s=222.6
+epoch=5 loss=0.158333 elapsed_s=278.3
+epoch=6 loss=0.118020 elapsed_s=334.2
+epoch=7 loss=0.128290 elapsed_s=390.1
+epoch=8 loss=0.094317 elapsed_s=445.9
+epoch=9 loss=0.085029 elapsed_s=501.9
+epoch=10 loss=0.077722 elapsed_s=557.8
+epoch=11 loss=0.071904 elapsed_s=613.7
+epoch=12 loss=0.067319 elapsed_s=669.7
+epoch=13 loss=0.063617 elapsed_s=725.7
+epoch=14 loss=0.060339 elapsed_s=781.5
+epoch=15 loss=0.057552 elapsed_s=837.1
+epoch=16 loss=0.055046 elapsed_s=892.8
+epoch=17 loss=0.052938 elapsed_s=948.6
+epoch=18 loss=0.051035 elapsed_s=1004.3
+epoch=19 loss=0.049294 elapsed_s=1059.9
+epoch=20 loss=0.047738 elapsed_s=1115.7
+epoch=21 loss=0.046340 elapsed_s=1171.4
+epoch=22 loss=0.045082 elapsed_s=1227.3
+epoch=23 loss=0.044009 elapsed_s=1283.0
+epoch=24 loss=0.043066 elapsed_s=1338.7
+epoch=25 loss=0.042204 elapsed_s=1394.5
+epoch=26 loss=0.041535 elapsed_s=1450.2
+epoch=27 loss=0.040977 elapsed_s=1505.8
+epoch=28 loss=0.040560 elapsed_s=1561.6
+epoch=29 loss=0.040302 elapsed_s=1617.2
+epoch=30 loss=0.040168 elapsed_s=1672.9
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s12_t4_h512", "variant_label": "V0", "runner_variant": "uit_12block_dense512", "scene": "vehicle", "seed": 42, "epochs": 30, "auc_percent": 60.246505033494714, "eer": 0.41445783132530123, "frames": 2633, "positive_frames": 973, "train_frames": 5266, "test_videos": 2, "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f", "trainable_parameters": 89079104, "teacher_taps": [5, 7, 9, 11], "elapsed_s": 1695.625804085983, "max_steps": 0, "checkpoint": "ckpt/vehicle_final.pth", "checkpoint_sha256": "2c8ebe24af966b75f6a8a82ba9036ff731787efd24591da4922d48105aa925fe", "cuda": "NVIDIA RTX 5880 Ada Generation"}

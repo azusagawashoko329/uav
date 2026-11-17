@@ -1,0 +1,2789 @@
+{
+  "status": "passed",
+  "torch": "2.1.0+cu121",
+  "model_checks": [
+    {
+      "experiment": "20261117_pt_rd_s42",
+      "guard": {
+        "variant": "pt_rd",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 12,
+        "actual_block_order": "GGGGGGGGGGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "2": [
+            [
+              0,
+              11
+            ]
+          ],
+          "5": [
+            [
+              1,
+              9
+            ]
+          ],
+          "8": [
+            [
+              2,
+              7
+            ]
+          ],
+          "11": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 89079104
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_pt_rd_s43",
+      "guard": {
+        "variant": "pt_rd",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 12,
+        "actual_block_order": "GGGGGGGGGGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "2": [
+            [
+              0,
+              11
+            ]
+          ],
+          "5": [
+            [
+              1,
+              9
+            ]
+          ],
+          "8": [
+            [
+              2,
+              7
+            ]
+          ],
+          "11": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 89079104
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_pt_rd_s44",
+      "guard": {
+        "variant": "pt_rd",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 12,
+        "actual_block_order": "GGGGGGGGGGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "2": [
+            [
+              0,
+              11
+            ]
+          ],
+          "5": [
+            [
+              1,
+              9
+            ]
+          ],
+          "8": [
+            [
+              2,
+              7
+            ]
+          ],
+          "11": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 89079104
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_b_ablation_s42",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_b_ablation_s43",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_b_ablation_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_c_ablation_s42",
+      "guard": {
+        "variant": "c_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_c_ablation_s43",
+      "guard": {
+        "variant": "c_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_c_ablation_s44",
+      "guard": {
+        "variant": "c_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_d_ablation_s42",
+      "guard": {
+        "variant": "d_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_d_ablation_s43",
+      "guard": {
+        "variant": "d_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_d_ablation_s44",
+      "guard": {
+        "variant": "d_ablation",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 40258880
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_s42",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_s43",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_s44",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f1_s42",
+      "guard": {
+        "variant": "f1",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 7718336
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f1_s43",
+      "guard": {
+        "variant": "f1",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 7718336
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f1_s44",
+      "guard": {
+        "variant": "f1",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 7718336
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f2_s42",
+      "guard": {
+        "variant": "f2",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 4154432
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f2_s43",
+      "guard": {
+        "variant": "f2",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 4154432
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_f2_s44",
+      "guard": {
+        "variant": "f2",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 4154432
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_lite_s42",
+      "guard": {
+        "variant": "hap_rd_lite",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761222
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_lite_s43",
+      "guard": {
+        "variant": "hap_rd_lite",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761222
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    },
+    {
+      "experiment": "20261117_hap_rd_lite_s44",
+      "guard": {
+        "variant": "hap_rd_lite",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761222
+      },
+      "forward_backward": "passed",
+      "head_route_hooks": "passed",
+      "matched_score": "passed"
+    }
+  ],
+  "reused_experiments": [
+    {
+      "experiment": "20261117_pt_rd_s42",
+      "source": "experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "43452eb00d90b9d8a973b52ab1b345892b9dce5caeee9bfe9a7f6225747a7e91",
+          "hash_verified": true,
+          "auc_recomputed": 98.05156133869068,
+          "eer_recomputed": 0.041998438719750196,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "aaa18d89522b14966c9a3e38ff65392c79d8f443978465f8f8832bf6562540bd",
+          "hash_verified": true,
+          "auc_recomputed": 58.80852025304453,
+          "eer_recomputed": 0.4290103138029405,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "60e51de06a7051498f8cd9696df70c66062f57dc7a326851df45f8fdcc5130a9",
+          "hash_verified": true,
+          "auc_recomputed": 99.42295188556567,
+          "eer_recomputed": 0.052882531426094496,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "19c0e00d73108f2fd6f2f591d45f9ccbdc65a1225a9640536aff87318e627be3",
+          "hash_verified": true,
+          "auc_recomputed": 93.16449709882197,
+          "eer_recomputed": 0.2040464916056823,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "dc6c789971377f6ba8d157477be3a10b332ad06cff4f82b34d12b4f9b18992ae",
+          "hash_verified": true,
+          "auc_recomputed": 96.71014597485186,
+          "eer_recomputed": 0.09950859950859951,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "a15a82d3ec5c1008a134566115764f5e12c79ab870c295136f292c54a8292de7",
+          "hash_verified": true,
+          "auc_recomputed": 87.13682360395268,
+          "eer_recomputed": 0.1779252110977081,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "2c8ebe24af966b75f6a8a82ba9036ff731787efd24591da4922d48105aa925fe",
+          "hash_verified": true,
+          "auc_recomputed": 60.24650503349472,
+          "eer_recomputed": 0.41445783132530123,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_d_ablation_s42",
+      "source": "ablation/da/GL/20261106_gggg_gelumlp_s42",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "deb3742ad7a42e0f33b731c91ddfc4ae90b7f2e1db2c819241192e8d4a04cfcf",
+          "hash_verified": true,
+          "auc_recomputed": 97.74290784355667,
+          "eer_recomputed": 0.04480874316939891,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "11d65b4e253f208602b170891a0ef94d103d4711f720f1929286a2d79672d626",
+          "hash_verified": true,
+          "auc_recomputed": 60.17783827300352,
+          "eer_recomputed": 0.43998244459073954,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "7a4f43c919404ddb464d448d8ad13d2c3ddf808d16e950579cb539ebb8ecb04f",
+          "hash_verified": true,
+          "auc_recomputed": 99.48959687906371,
+          "eer_recomputed": 0.05374945817078457,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "4fd055ed087346bcdb0dd249acf50a9f1dd695afc04f3d7efadff7ce8cfeb392",
+          "hash_verified": true,
+          "auc_recomputed": 94.81538390913713,
+          "eer_recomputed": 0.15669393026259149,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "ec66c9c01e7e4239fc2144f209fa4f17b9f91fa50eb411246ed6024027fd6758",
+          "hash_verified": true,
+          "auc_recomputed": 95.60810810810811,
+          "eer_recomputed": 0.10687960687960688,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246",
+          "hash_verified": true,
+          "auc_recomputed": 89.41960314849338,
+          "eer_recomputed": 0.18033775633293125,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "b21666a8faf46aca4918d15ef54b8f364cd95515a2990ca08331a27f6c7fe8fb",
+          "hash_verified": true,
+          "auc_recomputed": 58.66612389950346,
+          "eer_recomputed": 0.4391566265060241,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_d_ablation_s43",
+      "source": "ablation/da/GL/20261106_gggg_gelumlp_s43",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "a74e81d7d65166bf74ecc4bac1c6593766ef2638885edb03f684a6b4345d4181",
+          "hash_verified": true,
+          "auc_recomputed": 97.72262756375216,
+          "eer_recomputed": 0.04465261514441842,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "af12419b1d075be63124e608c1cf9fa6d97a7d85398705385ac1386c68797b8f",
+          "hash_verified": true,
+          "auc_recomputed": 59.50939681377647,
+          "eer_recomputed": 0.445687952600395,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "cf085e7347cbffe3e49b1ff4bfbda66e70a9d7d3736ff50d2a87c6ec7110f0dd",
+          "hash_verified": true,
+          "auc_recomputed": 99.5080190723884,
+          "eer_recomputed": 0.05071521456436931,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "713c7def683dcdb7545d4deb18e0064a98a7497f51e392b1ab817a730baa04c2",
+          "hash_verified": true,
+          "auc_recomputed": 95.57543279478853,
+          "eer_recomputed": 0.14162720619888075,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "2862abf481967bda58406bf90fcb854fc0bb8b0d3f8a51d8b2518dfbb4dc027b",
+          "hash_verified": true,
+          "auc_recomputed": 94.72105795635207,
+          "eer_recomputed": 0.10687960687960688,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "d4a5a791f5fb37e2d8edc45b8c88b9d00b16ae1231a60b66e96d7ac8e1fd36e7",
+          "hash_verified": true,
+          "auc_recomputed": 89.67304224391074,
+          "eer_recomputed": 0.1779252110977081,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "a005f6e56e0d95a80b7f74f17bea6c05261883976cc519bfa92b4ac88ba257f5",
+          "hash_verified": true,
+          "auc_recomputed": 58.662811575180484,
+          "eer_recomputed": 0.39819277108433737,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_d_ablation_s44",
+      "source": "ablation/da/GL/20261106_gggg_gelumlp_s44",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "2acbda8caccd3f885a09546290bbab8d4f4f1ca960525c2782b9a134678e8f9b",
+          "hash_verified": true,
+          "auc_recomputed": 97.76119853648483,
+          "eer_recomputed": 0.04480874316939891,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "b2e56b2b4379be2197ef76dba2d9fb46e4d2708689e27f10af5d0fa80c5d8e9d",
+          "hash_verified": true,
+          "auc_recomputed": 60.51080699599189,
+          "eer_recomputed": 0.4112354619267062,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "6b97ffcfa7eb2aa8c86b197323f014492a233d0e83ecd06acaacfca460f0c861",
+          "hash_verified": true,
+          "auc_recomputed": 99.53348504551366,
+          "eer_recomputed": 0.047247507585609014,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "7cda1a2c1bce32a574eb64005fcb49a6aca9f9cef615585efd999d7e2635654a",
+          "hash_verified": true,
+          "auc_recomputed": 94.29118836999614,
+          "eer_recomputed": 0.16616444253120966,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "674aa921aefa599ee9888c7658ad48e533cbb445d0915d9f29594243cdc4fb71",
+          "hash_verified": true,
+          "auc_recomputed": 95.17813267813268,
+          "eer_recomputed": 0.10687960687960688,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "12f5ddc933c2b349285fa884f1c3aaec14b10d34026474d5d53fda01fe706eaa",
+          "hash_verified": true,
+          "auc_recomputed": 89.23576842002656,
+          "eer_recomputed": 0.17249698431845598,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "bfa8716a5a29292a8fe65a0c26b0d8d04b9d8de1f66cc85bfe5df70dfc3ee8ec",
+          "hash_verified": true,
+          "auc_recomputed": 64.03995220346958,
+          "eer_recomputed": 0.4018072289156627,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_hap_rd_s42",
+      "source": "ablation/da/GL/20261106_lllg_gate_s42",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "6978a2c85e31df1da79fa9438c0c6a27918a9b0ef5089612319bef2dc9ebf346",
+          "hash_verified": true,
+          "auc_recomputed": 97.66781002977756,
+          "eer_recomputed": 0.04574551131928181,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "ab9671514a4d4718269de3e36da5ba7cc0a33278fd5f861a8b3ddb25914adcae",
+          "hash_verified": true,
+          "auc_recomputed": 59.221467809641396,
+          "eer_recomputed": 0.4279131007241606,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "874d6f086abdddac38cf54a1545f04a703ad0aef3015d8cff26c7f7431f97fe3",
+          "hash_verified": true,
+          "auc_recomputed": 99.4527524924144,
+          "eer_recomputed": 0.054182921543129606,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "8f5fb45eb984ca95d41da3e128045490da386ddf7187709121523d082cb5acb3",
+          "hash_verified": true,
+          "auc_recomputed": 94.40404805068032,
+          "eer_recomputed": 0.16659492036160137,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "ef2462d46c7d3bc65b84e85d3ae5351ddee386d7623204075aba51eb17476dcc",
+          "hash_verified": true,
+          "auc_recomputed": 95.58823529411764,
+          "eer_recomputed": 0.10073710073710074,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "4656a31db7205587cdafb09a3dc84ea0197fa27997ad1f932db3ad6c04eac07a",
+          "hash_verified": true,
+          "auc_recomputed": 89.62137204371824,
+          "eer_recomputed": 0.1767189384800965,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "6b50e422431c6a532dc0aa4d53109c6fb5c0352bb8a1c0b5fb6739e174964ca7",
+          "hash_verified": true,
+          "auc_recomputed": 61.46686437424932,
+          "eer_recomputed": 0.3897590361445783,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_hap_rd_s43",
+      "source": "ablation/da/GL/20261106_lllg_gate_s43",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "4445644edee06bcb2d65f5d4c8f6e7c2d3601acea5d8319b8532abceeca390cb",
+          "hash_verified": true,
+          "auc_recomputed": 97.73535663409693,
+          "eer_recomputed": 0.04605776736924278,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "f84b1abcfff87be5aae852959d212a9a5bf77e0db9c4ffdded0f4712a0a438a8",
+          "hash_verified": true,
+          "auc_recomputed": 59.12081298090875,
+          "eer_recomputed": 0.43515470704410797,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "da0d3e91ac185b2bfec5776655975c244ed6386617503317760376d68f0c70dd",
+          "hash_verified": true,
+          "auc_recomputed": 99.4029042045947,
+          "eer_recomputed": 0.055049848287819676,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "43790672df2d6c402fa83a63c1eddf88c380f0a2e5a791cca8f20222d32bc250",
+          "hash_verified": true,
+          "auc_recomputed": 93.7884734147459,
+          "eer_recomputed": 0.16616444253120966,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "15acfc66f486b57dda46b471543af58b291841525176067484761444be4c91ee",
+          "hash_verified": true,
+          "auc_recomputed": 95.71108541696776,
+          "eer_recomputed": 0.10073710073710074,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "89bf3da9ebf9217c4677257cdab14bf9c94fed17b058fed6d93fcc1e879086b2",
+          "hash_verified": true,
+          "auc_recomputed": 89.17004788536754,
+          "eer_recomputed": 0.18576598311218334,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "f96c0f442f046e20559157501a289ef45713241cc1a5fac3b82cb48bf018240c",
+          "hash_verified": true,
+          "auc_recomputed": 66.3212149729442,
+          "eer_recomputed": 0.3644578313253012,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    },
+    {
+      "experiment": "20261117_hap_rd_s44",
+      "source": "ablation/da/GL/20261106_lllg_gate_s44",
+      "scenes": [
+        {
+          "scene": "bike",
+          "checkpoint_sha256": "4447bb0a83d103bf36bb1c0c6153f4dd6c43f994844c3d6395b97ead1805d2d9",
+          "hash_verified": true,
+          "auc_recomputed": 97.71525297558172,
+          "eer_recomputed": 0.04449648711943794,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "crossroads",
+          "checkpoint_sha256": "0de70e070d172685ac821ea945f513b8c6bbef486f6b5f609db98f1b51ff6882",
+          "hash_verified": true,
+          "auc_recomputed": 60.91961154884731,
+          "eer_recomputed": 0.4171604125521176,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "farmland",
+          "checkpoint_sha256": "3d65087df5128ad8033020884ec696026478806ab2bf956ff5e11469e55af94b",
+          "hash_verified": true,
+          "auc_recomputed": 99.40886432596446,
+          "eer_recomputed": 0.06025140875596012,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "highway",
+          "checkpoint_sha256": "f99bbc99cee208556a33f2c9ff3c9a54c717c4fa0aa30a9612feeae972531476",
+          "hash_verified": true,
+          "auc_recomputed": 94.11462316732941,
+          "eer_recomputed": 0.16573396470081792,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "railway",
+          "checkpoint_sha256": "6128a6256d6a00732af1f185e7b278b28ff8ff226e4b4e46319c1f4dba7972a3",
+          "hash_verified": true,
+          "auc_recomputed": 95.57920219684925,
+          "eer_recomputed": 0.10319410319410319,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "solar",
+          "checkpoint_sha256": "922baafac83fe45ada1b8624694868f86e904cc5df3ba19a3a6a1b737a8c6af0",
+          "hash_verified": true,
+          "auc_recomputed": 89.90987986012114,
+          "eer_recomputed": 0.17310012062726177,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        },
+        {
+          "scene": "vehicle",
+          "checkpoint_sha256": "7ef16a3b88124208a4a7ece02368bbeb7a642239076d93617c90cc60322b9acb",
+          "hash_verified": true,
+          "auc_recomputed": 62.43994477395708,
+          "eer_recomputed": 0.3716867469879518,
+          "new_entry_strict_load": "passed",
+          "reference_decoder_forward": "passed"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "bike": {
+      "train_frames": 7950,
+      "test_videos": 7,
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+    },
+    "crossroads": {
+      "train_frames": 15772,
+      "test_videos": 5,
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+    },
+    "farmland": {
+      "train_frames": 9548,
+      "test_videos": 1,
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+    },
+    "highway": {
+      "train_frames": 9045,
+      "test_videos": 3,
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+    },
+    "railway": {
+      "train_frames": 1206,
+      "test_videos": 1,
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+    },
+    "solar": {
+      "train_frames": 2848,
+      "test_videos": 3,
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+    },
+    "vehicle": {
+      "train_frames": 5266,
+      "test_videos": 2,
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+    }
+  },
+  "code_hashes": {
+    "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+    "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+    "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+    "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+    "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+    "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+    "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+    "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+    "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+    "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+    "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+    "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+    "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+    "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+    "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+    "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+    "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+    "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+    "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+    "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+    "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+    "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+    "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+    "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+    "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+    "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+    "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+    "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+    "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+    "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+    "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+    "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+    "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+  },
+  "teacher": {
+    "patch_shape": [
+      1,
+      256,
+      768
+    ],
+    "taps": 12,
+    "frozen": true
+  }
+}

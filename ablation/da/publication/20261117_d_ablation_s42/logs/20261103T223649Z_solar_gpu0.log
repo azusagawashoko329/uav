@@ -1,0 +1,32 @@
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s4_t12_h512", "variant_label": "V1", "scene": "solar", "seed": 42, "epochs": 30, "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly", "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 40258880, "teacher_taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "cuda": "NVIDIA RTX A6000", "max_steps": 0}
+epoch=1 loss=0.756155 elapsed_s=24.8
+epoch=2 loss=0.456557 elapsed_s=48.8
+epoch=3 loss=0.371140 elapsed_s=72.8
+epoch=4 loss=0.303739 elapsed_s=96.8
+epoch=5 loss=0.254770 elapsed_s=120.8
+epoch=6 loss=0.221530 elapsed_s=144.7
+epoch=7 loss=0.197979 elapsed_s=168.6
+epoch=8 loss=0.184561 elapsed_s=192.5
+epoch=9 loss=0.175798 elapsed_s=216.5
+epoch=10 loss=0.159549 elapsed_s=240.5
+epoch=11 loss=0.152949 elapsed_s=264.4
+epoch=12 loss=0.152674 elapsed_s=288.3
+epoch=13 loss=0.143058 elapsed_s=312.3
+epoch=14 loss=0.138909 elapsed_s=336.2
+epoch=15 loss=0.135367 elapsed_s=360.0
+epoch=16 loss=0.132111 elapsed_s=383.8
+epoch=17 loss=0.129362 elapsed_s=407.8
+epoch=18 loss=0.126850 elapsed_s=431.8
+epoch=19 loss=0.124614 elapsed_s=455.8
+epoch=20 loss=0.122524 elapsed_s=479.9
+epoch=21 loss=0.120748 elapsed_s=503.8
+epoch=22 loss=0.119145 elapsed_s=527.8
+epoch=23 loss=0.117800 elapsed_s=551.7
+epoch=24 loss=0.116707 elapsed_s=575.6
+epoch=25 loss=0.115661 elapsed_s=599.6
+epoch=26 loss=0.114830 elapsed_s=623.7
+epoch=27 loss=0.114290 elapsed_s=647.7
+epoch=28 loss=0.113847 elapsed_s=671.7
+epoch=29 loss=0.113559 elapsed_s=695.6
+epoch=30 loss=0.113440 elapsed_s=719.6
+{"dataset": "Drone-Anomaly", "variant_id": "rd_s4_t12_h512", "variant_label": "V1", "runner_variant": "uit_4block_plain", "scene": "solar", "seed": 42, "epochs": 30, "auc_percent": 89.42150698785197, "eer": 0.18395657418576597, "frames": 2450, "positive_frames": 792, "train_frames": 2848, "test_videos": 3, "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333", "trainable_parameters": 40258880, "teacher_taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "elapsed_s": 738.0360337549937, "max_steps": 0, "checkpoint": "ckpt/solar_final.pth", "checkpoint_sha256": "59b730c211ed618173aabcacfe87b0f3b0442542da6670cd2f2466979a008246", "cuda": "NVIDIA RTX A6000"}

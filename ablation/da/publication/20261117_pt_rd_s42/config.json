@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "20261117_pt_rd_s42",
+  "dataset": "da",
+  "family": "appearance",
+  "variant": "pt_rd",
+  "seed": 42,
+  "model": {
+    "label": "PT-RD",
+    "depth": 12,
+    "taps": [
+      5,
+      7,
+      9,
+      11
+    ],
+    "width": 768,
+    "hidden": 512,
+    "order": "GGGGGGGGGGGG",
+    "ffn": "gelumlp",
+    "rank2": false,
+    "alpha": 0.0,
+    "params": 89079104
+  },
+  "training": {
+    "epochs": 30,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "optimizer": "AdamW",
+    "scheduler": "OneCycleLR",
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+    "deterministic": true,
+    "drop_last": true
+  },
+  "evaluation": {
+    "match": "publication_match",
+    "patches": 256,
+    "cosine_channels": 768,
+    "topk": 5,
+    "alpha": 0.0,
+    "batch": 32,
+    "label": "sequence*/test/<video>.npy; 1=anomaly",
+    "score_direction": "larger=more anomalous",
+    "aggregation": "concat within scene; macro mean of 7 scenes"
+  },
+  "reused_from": "experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42"
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": 2,
+  "dataset": "da",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "total_experiments": 24,
+  "reused_experiments": 7,
+  "new_experiments": 17,
+  "new_scene_jobs": 119,
+  "entries": [
+    {
+      "path": "ablation/da/publication/20261117_pt_rd_s42",
+      "variant": "pt_rd",
+      "seed": 42,
+      "reused_from": "experiments/da/appearance/20261103_variant_matrix_v0_rd_s12_t4_h512_s42"
+    },
+    {
+      "path": "ablation/da/publication/20261117_pt_rd_s43",
+      "variant": "pt_rd",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_pt_rd_s44",
+      "variant": "pt_rd",
+      "seed": 44,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_b_ablation_s43",
+      "variant": "b_ablation",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_b_ablation_s44",
+      "variant": "b_ablation",
+      "seed": 44,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_c_ablation_s42",
+      "variant": "c_ablation",
+      "seed": 42,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_c_ablation_s43",
+      "variant": "c_ablation",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_c_ablation_s44",
+      "variant": "c_ablation",
+      "seed": 44,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_d_ablation_s42",
+      "variant": "d_ablation",
+      "seed": 42,
+      "reused_from": "ablation/da/GL/20261106_gggg_gelumlp_s42"
+    },
+    {
+      "path": "ablation/da/publication/20261117_d_ablation_s43",
+      "variant": "d_ablation",
+      "seed": 43,
+      "reused_from": "ablation/da/GL/20261106_gggg_gelumlp_s43"
+    },
+    {
+      "path": "ablation/da/publication/20261117_d_ablation_s44",
+      "variant": "d_ablation",
+      "seed": 44,
+      "reused_from": "ablation/da/GL/20261106_gggg_gelumlp_s44"
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_s42",
+      "variant": "hap_rd",
+      "seed": 42,
+      "reused_from": "ablation/da/GL/20261106_lllg_gate_s42"
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_s43",
+      "variant": "hap_rd",
+      "seed": 43,
+      "reused_from": "ablation/da/GL/20261106_lllg_gate_s43"
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_s44",
+      "variant": "hap_rd",
+      "seed": 44,
+      "reused_from": "ablation/da/GL/20261106_lllg_gate_s44"
+    },
+    {
+      "path": "ablation/da/publication/20261117_f1_s42",
+      "variant": "f1",
+      "seed": 42,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_f1_s43",
+      "variant": "f1",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_f1_s44",
+      "variant": "f1",
+      "seed": 44,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_f2_s42",
+      "variant": "f2",
+      "seed": 42,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_f2_s43",
+      "variant": "f2",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_f2_s44",
+      "variant": "f2",
+      "seed": 44,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_lite_s42",
+      "variant": "hap_rd_lite",
+      "seed": 42,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_lite_s43",
+      "variant": "hap_rd_lite",
+      "seed": 43,
+      "reused_from": null
+    },
+    {
+      "path": "ablation/da/publication/20261117_hap_rd_lite_s44",
+      "variant": "hap_rd_lite",
+      "seed": 44,
+      "reused_from": null
+    }
+  ],
+  "fresh_training_entry": "scripts/da_publication_scene.py",
+  "scheduler": "scripts/da_publication_scheduler.py"
+}

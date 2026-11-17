@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_gggg_gelumlp_s44",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "GGGG",
+    "ffn_type": "gelumlp",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "crossroads",
+  "seed": 44,
+  "epochs": 30,
+  "auc_percent": 60.51080699599189,
+  "eer": 0.4112354619267062,
+  "frames": 6244,
+  "positive_frames": 1687,
+  "train_frames": 15772,
+  "test_videos": 5,
+  "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+  "trainable_parameters": 40258880,
+  "model_guard": {
+    "block_order": "GGGG",
+    "ffn_type": "gelumlp",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 3918.707065802999,
+  "max_steps": 0,
+  "checkpoint": "ckpt/crossroads_final.pth",
+  "checkpoint_sha256": "b2e56b2b4379be2197ef76dba2d9fb46e4d2708689e27f10af5d0fa80c5d8e9d",
+  "cuda": "NVIDIA RTX A6000"
+}

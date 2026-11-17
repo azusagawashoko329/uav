@@ -114,3 +114,8 @@ DA / GL多seed消融中，宽度768的LLLG+gate与GLLL+gate参数量均为30,248
 三者均在融合前使用每tap独立LayerNorm；两个Linear之间使用GELU。P=256。Lite的PODP只影响瓶颈输入，不减少蒸馏目标：损失仍对齐原始12个教师tap，12个重建头每个输出768维。
 
 本轮不重命名Python类，不将旧GLLL默认构造器直接改成LLLG，也不将旧实验结果重新命名为新架构结果。正式模型代码入口和补跑可在此定义基础上另行实施。
+
+
+## DA 完整消融链补跑（2026-11-17）
+
+新入口为 `model/publication_rd.py`，运行计划见 [ablation/da/publication](../ablation/da/publication/README.md)。24个seed实验中7个复制已有结果、17个需从头训练，共119个新场景任务。PT-RD补seed43/44；B、C、F1、F2、HAP-RD-Lite各补三seed。D复用GGGG+GELU的旧V1等价结果，HAP-RD复用LLLG+gate三seed；新实验均使用新写的scene脚本和显式模型注册表，不改变历史变体默认入口。

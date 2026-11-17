@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "variant_id": "rd_s4_t12_h512",
+  "variant_label": "V1",
+  "runner_variant": "uit_4block_plain",
+  "scene": "bike",
+  "seed": 42,
+  "epochs": 30,
+  "auc_percent": 97.74290784355667,
+  "eer": 0.04480874316939891,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "trainable_parameters": 40258880,
+  "teacher_taps": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "deb3742ad7a42e0f33b731c91ddfc4ae90b7f2e1db2c819241192e8d4a04cfcf",
+  "scoring": "matched_group_balanced_top5",
+  "scoring_note": "V0: mean over 4 taps of top5 mean; V1-V5: mean over 4 groups of 0.5*mean_tap(top5 mean)+0.5*max_tap(top5 mean)",
+  "previous": {
+    "auc_percent": 97.68335400192024,
+    "eer": 0.04543325526932084,
+    "scoring": "legacy_topk_mean"
+  }
+}

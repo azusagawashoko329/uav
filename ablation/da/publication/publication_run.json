@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+  "source_commit": null,
+  "base": "ablation/da/publication",
+  "experiments": [
+    "ablation/da/publication/20261117_pt_rd_s42",
+    "ablation/da/publication/20261117_pt_rd_s43",
+    "ablation/da/publication/20261117_pt_rd_s44",
+    "ablation/da/publication/20261117_b_ablation_s42",
+    "ablation/da/publication/20261117_b_ablation_s43",
+    "ablation/da/publication/20261117_b_ablation_s44",
+    "ablation/da/publication/20261117_c_ablation_s42",
+    "ablation/da/publication/20261117_c_ablation_s43",
+    "ablation/da/publication/20261117_c_ablation_s44",
+    "ablation/da/publication/20261117_d_ablation_s42",
+    "ablation/da/publication/20261117_d_ablation_s43",
+    "ablation/da/publication/20261117_d_ablation_s44",
+    "ablation/da/publication/20261117_hap_rd_s42",
+    "ablation/da/publication/20261117_hap_rd_s43",
+    "ablation/da/publication/20261117_hap_rd_s44",
+    "ablation/da/publication/20261117_f1_s42",
+    "ablation/da/publication/20261117_f1_s43",
+    "ablation/da/publication/20261117_f1_s44",
+    "ablation/da/publication/20261117_f2_s42",
+    "ablation/da/publication/20261117_f2_s43",
+    "ablation/da/publication/20261117_f2_s44",
+    "ablation/da/publication/20261117_hap_rd_lite_s42",
+    "ablation/da/publication/20261117_hap_rd_lite_s43",
+    "ablation/da/publication/20261117_hap_rd_lite_s44"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "scene_train_frames": {
+    "bike": 7950,
+    "crossroads": 15772,
+    "farmland": 9548,
+    "highway": 9045,
+    "railway": 1206,
+    "solar": 2848,
+    "vehicle": 5266
+  },
+  "python": "/home/lyx/miniconda3/envs/DMAD/bin/python",
+  "new_scene_jobs": 119,
+  "copied_scene_jobs": 49,
+  "policy": "force two physical GPUs, one process each, no occupancy gate",
+  "preflight": "publication_preflight.json",
+  "source_note": "scheduler records exact clean HEAD immediately before launching and updates this field"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "id": "20261117_hap_rd_lite_s44",
+  "path": "ablation/da/publication/20261117_hap_rd_lite_s44",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "DA only; seed42/43/44 each has seven independently initialized scene models.",
+    "Fresh training unless explicitly copied; B removes unmatched blocks at architecture level, without warm-start/pruned weights.",
+    "Train uses publication_match.mean(); test retains the same per-frame score."
+  ],
+  "variant": "hap_rd_lite"
+}

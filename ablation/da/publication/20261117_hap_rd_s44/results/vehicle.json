@@ -1,0 +1,38 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261106_lllg_gate_s44",
+  "ablation": {
+    "family": "GL",
+    "mother_template": "rd_s4_t12_gl768_h512",
+    "block_order": "LLLG",
+    "ffn_type": "gate",
+    "changed_factors": [
+      "student block order",
+      "student FFN type"
+    ]
+  },
+  "scene": "vehicle",
+  "seed": 44,
+  "epochs": 30,
+  "auc_percent": 62.43994477395708,
+  "eer": 0.3716867469879518,
+  "frames": 2633,
+  "positive_frames": 973,
+  "train_frames": 5266,
+  "test_videos": 2,
+  "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+  "trainable_parameters": 30248000,
+  "model_guard": {
+    "block_order": "LLLG",
+    "ffn_type": "gate",
+    "student_dim": 768,
+    "ocbe_fuse_hidden": 512,
+    "teacher_taps": 12,
+    "code_dim": 64
+  },
+  "elapsed_s": 924.3098079200136,
+  "max_steps": 0,
+  "checkpoint": "ckpt/vehicle_final.pth",
+  "checkpoint_sha256": "7ef16a3b88124208a4a7ece02368bbeb7a642239076d93617c90cc60322b9acb",
+  "cuda": "NVIDIA RTX 5880 Ada Generation"
+}
