@@ -2,6 +2,10 @@
 
 本文件是六个反向蒸馏（RD）外观分支结构变体的唯一命名入口。**变体 ID 只描述模型结构与超参，不包含数据集、种子、训练轮数或 checkpoint**；定位一次具体训练结果时，必须再给出 `experiment ID + dataset + seed + run_id`。这样同一个结构在 DA / UIT 上的不同运行不会被混成同一个模型。
 
+## 论文模型名称（2026-11-17，配置草案待确认）
+
+用户指定论文名称为 **PT-RD**、**HAP-RD**、**HAP-RD-Lite**；模块命名及三模型配置见 [论文变体命名草案](../docs/PUBLICATION_VARIANTS.md)。HAP-RD系列学生顺序为 **LLLG + gate（LGGD）**。历史V0–V5、`rd_*`结构定义和已完成运行含义保持不变；GLLL版本V2/V5不能直接作为LLLG论文模型的别名。重建头对齐及瓶颈命名范围确认前，不修改现有默认模型构造入口。
+
 **首批正式六变体矩阵**：`experiments/uit/appearance/20261101_uit_45ep_*_retry2_s42/`，UIT-ADrone，seed42，45 epoch，batch64，AdamW，256×256，冻结 DINOv3 ViT-B/16，`source_commit=532e0e024c1d697d5f45ff1b3aed95487f85fbc1`；六项 `record.json` 均为 `completed`。
 
 **20261104 matrix 命名重跑**：`experiments/uit/appearance/20261104_variant_matrix_v{0..5}_*_s42/`，同样的六变体/45ep/seed42/双卡动态队列，使用当前源码与训练前 variant guard；六项均为 `completed`，matched-score AUC：

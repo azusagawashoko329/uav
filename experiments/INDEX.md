@@ -2,6 +2,10 @@
 
 共 152 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
+## 论文模型命名
+
+论文候选模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的配置与待确认项见[命名草案](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
+
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 4 | [查看](#da-aggregation) |
