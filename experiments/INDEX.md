@@ -4,7 +4,7 @@
 
 ## 论文模型命名
 
-论文候选模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的配置与待确认项见[命名草案](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
+论文模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的已确认配置见[命名规范](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|

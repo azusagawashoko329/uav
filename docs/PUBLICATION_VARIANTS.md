@@ -1,6 +1,6 @@
-# 论文模型与模块命名（2026-11-17 草案）
+# 论文模型与模块命名（2026-11-17 定稿）
 
-模型和模块名称按用户指定采用下列命名。重建头/对齐、PDFB/PODP 范围、PT-RD 瓶颈名称的三个问题待确认；本草案不改变历史 V0–V5、模型默认参数或历史实验记录，不启动补跑。
+模型与模块定义已由用户确认：基础模型名称为 **PT-RD**（RT-RD为笔误）；保留每stage三个独立重建头及反向对齐；仅Lite采用共享可学习Q的PODP。PT-RD的OCBE明确指V0的四tap瓶颈实例。本文定稿仅确立命名和配置，不改变历史V0–V5、现有模型默认参数或历史实验记录，不启动补跑。用户三张示意图的修订清单见[图示核对](PUBLICATION_FIGURE_REVIEW.md)。
 
 ## 三个论文模型
 
@@ -14,7 +14,7 @@
 
 ## 配置表
 
-下表按用户配置和当前实现核对；带“待确认”的项按现实现列出建议。
+下表按用户确认的配置与当前实现核对。
 
 | 配置项 | PT-RD | HAP-RD | HAP-RD-Lite |
 |---|---|---|---|
@@ -30,11 +30,11 @@
 | Student width | 768 | 768 | 192 |
 | Teacher/reconstruction width | 768 | 768 | 768 |
 | Reconstruction heads | 4 | 12 | 12 |
-| 重建头/教师关系（待确认） | 每个头对应1个tap | 每stage 3个独立头，各对应1个tap | 同左 |
-| Bottleneck 论文名称（待确认） | OCBE | PDFB | PDFB + PODP |
+| 重建头/教师关系 | 每个头对应1个tap | 每stage 3个独立头，各对应1个tap | 同左 |
+| Bottleneck 论文名称 | OCBE | PDFB | PDFB + PODP |
 | 当前瓶颈实现 | `OCBE` | `OCBE` | `LearnableDepthRank2OCBE` |
-| PODP / Q（待确认） | 无 | 无 | 一个可学习2×3 Q，四组三层教师特征共用 |
-| Q 初始化/约束（待确认） | — | — | 按seed随机正交初始化；前向Gram-Schmidt行正交化 |
+| PODP / Q | 无 | 无 | 一个可学习2×3 Q，四组三层教师特征共用 |
+| Q 初始化/约束 | — | — | 按seed随机正交初始化；前向Gram-Schmidt行正交化 |
 | Fusion hidden dim | 512 | 512 | 128 |
 | Bottleneck code dim | 64 | 64 | 64 |
 | Per-tap norm | True | True | True |
@@ -52,8 +52,8 @@
 | LGGD | Local-to-Global Gated Decoder | 整个学生解码器：code投影 → GLMB → GLMB → GLMB → GGMB，及重建头；`FourBlockGlobalLocalDecoder(block_order='LLLG', ffn_type='gate')` |
 | GLMB | Gated Local Mixing Block | LayerNorm、3×3 DWConv、Linear与残差，再LayerNorm、Gated FFN与残差；`LocalMixerBlock(ffn_type='gate')` |
 | GGMB | Gated Global Mixing Block | LayerNorm、MHSA与残差，再LayerNorm、Gated FFN与残差；`GlobalMixerBlock(ffn_type='gate')` |
-| PDFB | Patch-wise Depth-Fusion Bottleneck | 逐patch跨teacher taps融合与code压缩；HAP-RD无Q，Lite含PODP。PT-RD是否也使用PDFB名称待确认 |
-| PODP | Patch-wise Orthogonal Depth Projection | Lite中按每个patch、每个通道，对相邻三层教师特征用Q投影为两个深度模式，不混合空间patch；Q在各patch、通道和四组之间共享（待确认） |
+| PDFB | Patch-wise Depth-Fusion Bottleneck | 逐patch跨teacher taps融合与code压缩；HAP-RD无Q，Lite含PODP。PT-RD沿用V0的四tap OCBE实例，HAP-RD采用12-tap PDFB，不能只凭OCBE代码类名混用两者 |
+| PODP | Patch-wise Orthogonal Depth Projection | Lite中按每个patch、每个通道，对相邻三层教师特征用Q投影为两个深度模式，不混合空间patch；Q在各patch、通道和四组之间共享 |
 | Bottleneck | Bottleneck | PDFB中实际压缩至code_dim=64的部分；不额外引入新的结构缩写 |
 | PLDD | Patch–Layer Discrepancy Distillation | 完整12-tap蒸馏目标，含下面两步；训练取逐样本分数的batch mean，测试保留同一分数 |
 | — | Discrepancy-Guided Patch Distillation | 每个teacher/reconstruction pair按patch算`1-cosine`，取最大5个距离的平均 |
@@ -61,9 +61,9 @@
 
 PDFB 的普通路径：每个tap独立LayerNorm → 同patch跨层concat → Linear(hidden) → GELU → Linear(code_dim=64)。Lite路径在LayerNorm后增加PODP，将12个深度特征压成四组×两个模式，再concat并使用hidden=128的压缩路径。这里的depth是教师层轴，不是空间patch轴，也不是学生深度。
 
-## 重建对齐的待确认定义
+## 已确认的重建对齐
 
-现有实现每个stage输出三个独立重建头，12个头依次对应12个教师层；不能写成“每个重建头输出对应三层”。建议沿用现有反向对齐：
+现有实现每个stage输出三个独立重建头，12个头依次对应12个教师层；不能写成“每个重建头输出对应三层”。已确认沿用现有反向对齐：
 
 | HAP-RD / Lite stage | Block | 独立重建头目标teacher taps |
 |---|---|---|
@@ -93,10 +93,16 @@ DA / GL多seed消融中，宽度768的LLLG+gate与GLLL+gate参数量均为30,248
 - 现有DA Loss消融采用GLLL母模板，不可改写为LGGD/LLLG的Loss消融。
 - 不因命名变化覆盖旧实验、改写旧指标，或把旧源码提交替换成本次文档提交。
 
-## 待确认清单
+## 瓶颈实例与名称边界
 
-1. HAP-RD/Lite是否沿用12个独立重建头（每stage 3头），并保留上述反向对齐？
-2. 是否按配置表仅Lite包含PODP，并沿用共享Q、随机正交初始化和前向正交化？
-3. PT-RD的瓶颈名称是否保留OCBE，HAP-RD系列使用PDFB？
+三个模型都按patch独立做深度融合，差别不能只用旧类名OCBE表达：
 
-确认后才将本配置标为定稿并建立正式模型构造入口；本文件当前为可审阅的命名与配置草案。
+| 论文模型 | 瓶颈名称 | 输入特征数 | 压缩路径（保留batch与patch轴） |
+|---|---|---:|---|
+| PT-RD | V0 OCBE | 4 taps | `(B,P,4,768) → concat → (B,P,3072) → 512 → 64` |
+| HAP-RD | PDFB（无PODP） | 12 taps | `(B,P,12,768) → concat → (B,P,9216) → 512 → 64` |
+| HAP-RD-Lite | PDFB + PODP | 12 taps → 8 modes | `(B,P,4,3,768) → shared Q → (B,P,4,2,768) → concat → (B,P,6144) → 128 → 64` |
+
+三者均在融合前使用每tap独立LayerNorm；两个Linear之间使用GELU。P=256。Lite的PODP只影响瓶颈输入，不减少蒸馏目标：损失仍对齐原始12个教师tap，12个重建头每个输出768维。
+
+本轮不重命名Python类，不将旧GLLL默认构造器直接改成LLLG，也不将旧实验结果重新命名为新架构结果。正式模型代码入口和补跑可在此定义基础上另行实施。
