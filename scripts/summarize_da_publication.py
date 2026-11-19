@@ -89,7 +89,11 @@ def figures(matrix, contrasts):
     axs[1].invert_yaxis()
     axs[1].grid(axis='x', alpha=.2)
     for ext in ('png', 'svg'):
-        fig.savefig(BASE / 'results' / f'publication_tradeoffs.{ext}', dpi=180)
+        path = BASE / 'results' / f'publication_tradeoffs.{ext}'
+        fig.savefig(path, dpi=180)
+        if ext == 'svg':
+            # Matplotlib emits insignificant spaces at the ends of path lines.
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
     plt.close(fig)
 
 
