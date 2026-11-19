@@ -4,6 +4,14 @@
 
 过程消融B/C/D/F1/F2的固定版本及机器可读配置见[结构版本存档](ARCHITECTURE_VERSIONS.md)，不列为正式模型。
 
+## 完成结果（2026-11-19）
+
+24 个实验、168 个场景结果已齐全；119 个新任务完成，49 个结果复用，无失败。
+
+- [三种子汇总与逐步消融分析](summary.md)
+- [总体矩阵 CSV](results/matrix.csv)、[场景长表](results/scene_metrics.csv)、[同 seed 配对差值](results/paired_contrasts.csv)
+- [全量核验报告](results/validation.json)、[汇总 JSON](summary.json)
+
 ## 实验数量与复用来源
 
 | 配置 | 学生结构 | teacher taps / heads | Student width | PDFB hidden | PODP | α | 参数量 | 复用seed | 新训练数 |

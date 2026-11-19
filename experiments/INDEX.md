@@ -4,7 +4,7 @@
 
 ## 论文模型命名
 
-DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的运行计划与核验见 [publication](../ablation/da/publication/README.md)。
+DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 个实验和 168 个场景结果已完成；[汇总分析与矩阵](../ablation/da/publication/summary.md)，[配置与核验入口](../ablation/da/publication/README.md)。
 
 论文模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的已确认配置见[命名规范](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
 
