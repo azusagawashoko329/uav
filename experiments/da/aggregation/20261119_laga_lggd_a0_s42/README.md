@@ -13,3 +13,5 @@
 动态双卡按训练帧数优先的一条跨seed队列；每卡一个本轮任务，完成立即补位，不做外部占用门控。调度器以独立session运行、stdin关闭，忽略SIGHUP。每场景单一logs/<scene>.log；每epoch保存模型、优化器、调度器和全部RNG，恢复从已完成epoch继续，已有完成结果跳过，失败日志保留。权重由Git忽略，产物索引记录哈希。
 
 [版本配置](architecture_version.json)，[运行记录](record.json)。三seed运行计划及preflight位于seed42目录。
+
+状态：completed。21个场景任务全部完成；本目录七场景完整训练与测试结束。[完成后的三种子结果分析](../20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[该seed结果](results/summary.md)。

@@ -69,3 +69,7 @@
 - [seed44](../../../experiments/da/aggregation/20261119_laga_lggd_a0_s44/README.md)
 
 该补跑检验 LAGA 的效果是否依赖 decoder 模板，不预设一定改善；α同时影响训练和测试读出。
+
+### LAGA补跑完成（2026-11-19）
+
+21个新场景任务全部完成并进行42个场景单元（含基线）的复核。LLLG+GATE下，α=0平均AUC为85.8234±0.4714%，α=0.5为85.6552±0.2803%；加入LAGA后平均ΔAUC为−0.1682个百分点，EER增加0.003090。原八配置矩阵不改写，补充证据见 [LAGA_SUPPLEMENT.md](LAGA_SUPPLEMENT.md)。

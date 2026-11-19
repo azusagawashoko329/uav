@@ -23,9 +23,9 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261119_laga_lggd_a0_s42](da/aggregation/20261119_laga_lggd_a0_s42/README.md) | `running` | LGGD without LAGA，α=0，seed42 | 1 | 0 |
-| [20261119_laga_lggd_a0_s43](da/aggregation/20261119_laga_lggd_a0_s43/README.md) | `running` | LGGD without LAGA，α=0，seed43 | 1 | 0 |
-| [20261119_laga_lggd_a0_s44](da/aggregation/20261119_laga_lggd_a0_s44/README.md) | `running` | LGGD without LAGA，α=0，seed44 | 1 | 0 |
+| [20261119_laga_lggd_a0_s42](da/aggregation/20261119_laga_lggd_a0_s42/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s42/results/summary.md) | 1 | 14 |
+| [20261119_laga_lggd_a0_s43](da/aggregation/20261119_laga_lggd_a0_s43/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s43/results/summary.md) | 1 | 14 |
+| [20261119_laga_lggd_a0_s44](da/aggregation/20261119_laga_lggd_a0_s44/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s44/results/summary.md) | 1 | 14 |
 | [20260928_agg_explore](da/aggregation/20260928_agg_explore/RECORD.md) | `unknown` | [loss_compare.csv](da/aggregation/20260928_agg_explore/loss_compare.csv) | 10 | 0 |
 | [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `completed` | 未找到 | 1 |  |
