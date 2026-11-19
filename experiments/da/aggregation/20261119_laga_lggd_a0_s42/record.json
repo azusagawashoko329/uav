@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "20261119_laga_lggd_a0_s42",
+  "path": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+  "dataset": "da",
+  "family": "aggregation",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "variant": "lggd_no_laga",
+  "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+  "limitations": [
+    "DA only; seven independent scene models; no PODP.",
+    "Alpha changes both train objective and matched test readout.",
+    "Three seeds are descriptive; benefits need not agree across decoder architectures."
+  ],
+  "review_status": "passed_preflight",
+  "review_report": "../20261119_laga_lggd_a0_s42/preflight.json"
+}

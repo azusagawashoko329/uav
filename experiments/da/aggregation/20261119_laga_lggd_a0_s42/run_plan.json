@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+  "source_commit": null,
+  "experiments": [
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s44"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "new_experiments": 3,
+  "new_scene_jobs": 21,
+  "scheduler": "scripts/da_laga_scheduler.py",
+  "model_entry": "model/lggd_no_laga.py",
+  "score_entry": "ablation_match; alpha0 for training and test"
+}

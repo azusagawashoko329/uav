@@ -59,3 +59,13 @@
 - 运行source_commit与代码SHA-256固定；每个子进程启动前检查已核验代码和配置字节未变。模型实际guard、分割指纹和环境写入日志/结果/checkpoint。小型结果与日志提交Git，权重仅本地忽略文件并登记哈希。
 
 未完成的训练不标completed；失败日志保留。已有结果不因新命名而重新打分或改写。
+
+## LGGD without LAGA 补充消融（2026-11-19）
+
+别名 d-new-ablation，展示名 **HAP-RD w/o LAGA**，非正式模型版本 `pub_lggd_without_laga_20261119`。在 HAP-RD 的 LLLG+gate、width768、PDFB hidden512、无PODP下，仅将训练与match测试的α从0.5改为0。新跑三个seed、21个DA场景任务，与本目录HAP-RD同seed直接比较；原C/D结果保留。新目录按当前实验规范建在 `experiments/da/aggregation/`：
+
+- [seed42](../../../experiments/da/aggregation/20261119_laga_lggd_a0_s42/README.md)
+- [seed43](../../../experiments/da/aggregation/20261119_laga_lggd_a0_s43/README.md)
+- [seed44](../../../experiments/da/aggregation/20261119_laga_lggd_a0_s44/README.md)
+
+该补跑检验 LAGA 的效果是否依赖 decoder 模板，不预设一定改善；α同时影响训练和测试读出。

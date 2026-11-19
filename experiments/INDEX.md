@@ -1,6 +1,6 @@
 # 实验导航
 
-共 152 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 155 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 ## 论文模型命名
 
@@ -10,7 +10,7 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
-| `da` | `aggregation` | 4 | [查看](#da-aggregation) |
+| `da` | `aggregation` | 7 | [查看](#da-aggregation) |
 | `da` | `appearance` | 86 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
@@ -23,6 +23,9 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
+| [20261119_laga_lggd_a0_s42](da/aggregation/20261119_laga_lggd_a0_s42/README.md) | `planned` | LGGD without LAGA，α=0，seed42 | 1 | 0 |
+| [20261119_laga_lggd_a0_s43](da/aggregation/20261119_laga_lggd_a0_s43/README.md) | `planned` | LGGD without LAGA，α=0，seed43 | 1 | 0 |
+| [20261119_laga_lggd_a0_s44](da/aggregation/20261119_laga_lggd_a0_s44/README.md) | `planned` | LGGD without LAGA，α=0，seed44 | 1 | 0 |
 | [20260928_agg_explore](da/aggregation/20260928_agg_explore/RECORD.md) | `unknown` | [loss_compare.csv](da/aggregation/20260928_agg_explore/loss_compare.csv) | 10 | 0 |
 | [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `completed` | 未找到 | 1 |  |
