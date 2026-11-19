@@ -1,0 +1,1017 @@
+{
+  "variant": "b_ablation",
+  "seed": 42,
+  "scenes": {
+    "bike": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "bike",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+      "train_frames": 7950,
+      "test_videos": 7,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 98.10562888152879,
+      "eer": 0.04028103044496487,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "train_loss": 0.03643355599694675,
+      "checkpoint": "ckpt/bike_final.pth",
+      "checkpoint_sha256": "f8407129fae55720570150a2b3104e1dce5a003da1e1c08e66ce65cfe66cd046",
+      "elapsed_s": 1598.5599639589782,
+      "finished_at": "20261118T072839Z"
+    },
+    "crossroads": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "crossroads",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+      "train_frames": 15772,
+      "test_videos": 5,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 62.256084719678654,
+      "eer": 0.3956550362080316,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "train_loss": 0.05782834237547425,
+      "checkpoint": "ckpt/crossroads_final.pth",
+      "checkpoint_sha256": "a9d015270b0ce37330b7637734912362a14c74b26bf4e15c0add1dd6ef7f0faf",
+      "elapsed_s": 2876.796486762003,
+      "finished_at": "20261117T111817Z"
+    },
+    "farmland": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "farmland",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+      "train_frames": 9548,
+      "test_videos": 1,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 99.36497615951453,
+      "eer": 0.056783701777199824,
+      "frames": 2387,
+      "positive_frames": 80,
+      "train_loss": 0.05598399610627418,
+      "checkpoint": "ckpt/farmland_final.pth",
+      "checkpoint_sha256": "fe8ea4272eddeda74313621146bb528a3cd6d82c233d4b97b1bb6dcad27b24f6",
+      "elapsed_s": 2473.8051147379447,
+      "finished_at": "20261117T210651Z"
+    },
+    "highway": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "highway",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+      "train_frames": 9045,
+      "test_videos": 3,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 92.75394077768375,
+      "eer": 0.219113215669393,
+      "frames": 2820,
+      "positive_frames": 497,
+      "train_loss": 0.057302842167675075,
+      "checkpoint": "ckpt/highway_final.pth",
+      "checkpoint_sha256": "9b3a9a30330759dcbc4c8770fb23e5d9226ae6e5880162aa39673e5648cc03de",
+      "elapsed_s": 1708.945879417006,
+      "finished_at": "20261118T030302Z"
+    },
+    "railway": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "railway",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+      "train_frames": 1206,
+      "test_videos": 1,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX A6000",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 97.07508310449487,
+      "eer": 0.08845208845208845,
+      "frames": 882,
+      "positive_frames": 68,
+      "train_loss": 0.07608020429809888,
+      "checkpoint": "ckpt/railway_final.pth",
+      "checkpoint_sha256": "e8eb98df441ced1af28475558fd64f408948baa52b6690b0073faf85d746ad1b",
+      "elapsed_s": 676.8170224779751,
+      "finished_at": "20261118T164815Z"
+    },
+    "solar": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "solar",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+      "train_frames": 2848,
+      "test_videos": 3,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 86.68736520817339,
+      "eer": 0.18576598311218334,
+      "frames": 2450,
+      "positive_frames": 792,
+      "train_loss": 0.09038434821096333,
+      "checkpoint": "ckpt/solar_final.pth",
+      "checkpoint_sha256": "ec0bcc40b0e7a121d365a1883f09aba02d9282af3bdbb73381a94811eb3f907f",
+      "elapsed_s": 955.4242094439687,
+      "finished_at": "20261118T142426Z"
+    },
+    "vehicle": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261117_b_ablation_s42",
+      "variant": "b_ablation",
+      "seed": 42,
+      "scene": "vehicle",
+      "epochs": 30,
+      "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "guard": {
+        "variant": "b_ablation",
+        "teacher_taps": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "GGGG",
+        "ffn": "gelumlp",
+        "ffn_hidden_ratio": 4,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 4,
+        "routes": {
+          "0": [
+            [
+              0,
+              11
+            ]
+          ],
+          "1": [
+            [
+              1,
+              9
+            ]
+          ],
+          "2": [
+            [
+              2,
+              7
+            ]
+          ],
+          "3": [
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": null,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 32376128
+      },
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+      "train_frames": 5266,
+      "test_videos": 2,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "fd8024995973b21c327c93d16edb9cfffa5bf92d5de95bc0b68e6e04cffb5cf6",
+        "scripts/preflight_da_publication.py": "68014af1888e46493eea50a9e6d6f2534e7e6e4c69de3955646c85e1b551bf3b",
+        "ablation/da/publication/20261117_pt_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_b_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_c_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_d_ablation_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f1_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_f2_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "ablation/da/publication/20261117_pt_rd_s42/config.json": "4a10d6e07c9fa49913055c1e2144032bee9132a329c87cf13fc56f7b5cf3164a",
+        "ablation/da/publication/20261117_pt_rd_s43/config.json": "ba9fa0c08e250190587026964d69e275d45c058b42f4014435b383aad61e0b6d",
+        "ablation/da/publication/20261117_pt_rd_s44/config.json": "321d780bcd1cb566aff22455dab9c6a8dcaf1d58647deb6cf78a74d15c7b54ed",
+        "ablation/da/publication/20261117_b_ablation_s42/config.json": "8ba66dd6917ceb6b6acd612bcdec27829808e1256542c28bfd4c80337e7fcf5a",
+        "ablation/da/publication/20261117_b_ablation_s43/config.json": "db3f78d56f1631cd83129dce7fc97a756f755c8d0ef7f3de419d8097cd803a3b",
+        "ablation/da/publication/20261117_b_ablation_s44/config.json": "01a18785407ee1e46b6e3377a382f00c153b1238340f4faaaebf02d862228306",
+        "ablation/da/publication/20261117_c_ablation_s42/config.json": "6572e3b2a48757a56095b9f0b4bacefe6ef2db388907e53648b49b5afc249954",
+        "ablation/da/publication/20261117_c_ablation_s43/config.json": "9c66eeb0a228ed3e080711874a422b676193026439375dca6687b3fa8b9aed70",
+        "ablation/da/publication/20261117_c_ablation_s44/config.json": "eeffde47b238c82247339470d8fe3a65120f85732666f8653d399e70202f9ced",
+        "ablation/da/publication/20261117_d_ablation_s42/config.json": "a163446e75298b9e52f142330efdd862234e98b7b9df0ecd43a3405a78dba3e0",
+        "ablation/da/publication/20261117_d_ablation_s43/config.json": "63a7bfc3d1c766f59f0c31cee9142d2afa91db7a4b2a44d95e7d73940d7bbdf5",
+        "ablation/da/publication/20261117_d_ablation_s44/config.json": "05967a8b5e43cc5c880d60dd0c44c3c37197a0ea9248d29c337475fb3d78146b",
+        "ablation/da/publication/20261117_hap_rd_s42/config.json": "7282fec069ec951810683a4b8a325ca39716ea05a3d996ba144a2750f262d12c",
+        "ablation/da/publication/20261117_hap_rd_s43/config.json": "64206384bff0cae9c164b23c036c6bd041e3794884474890ea65c5dc0d77e3fe",
+        "ablation/da/publication/20261117_hap_rd_s44/config.json": "ffc6419d90ce7f8d6e586422f20b7bfa6c90430ece647b6b629b934ca9e4017f",
+        "ablation/da/publication/20261117_f1_s42/config.json": "6b5c95daadc98aea7ef3b948db4ac9a7ac0b8c621d29905f028bef10a481ae32",
+        "ablation/da/publication/20261117_f1_s43/config.json": "848c8960ee8e1f645e28393c3fef63c08e5af8451959f4f3c8ff0770db10232e",
+        "ablation/da/publication/20261117_f1_s44/config.json": "29281cf933166c0707cb22542297c6f12c7cc212b92f202715a3a21ad0f3123a",
+        "ablation/da/publication/20261117_f2_s42/config.json": "9a98fe1135355f19311712c4375d43b8843299fd054c41d12d4483c741b03b9b",
+        "ablation/da/publication/20261117_f2_s43/config.json": "398b39b6df42a47b34739a7b5ff9d4504c052e5a5aa22d12c5b56034780c2f38",
+        "ablation/da/publication/20261117_f2_s44/config.json": "8f66b3062a2f4eb5e74ca92a20a90649211a94297b071f64d1f067c24c687486",
+        "ablation/da/publication/20261117_hap_rd_lite_s42/config.json": "224d14c718b0047efe10133391d8dcfb05f72eb536f76fdd1e241815f8b68294",
+        "ablation/da/publication/20261117_hap_rd_lite_s43/config.json": "266bdf7bb033b38a601021bc04f5c5c1e22cdbeda17096181e749dfaddd61d94",
+        "ablation/da/publication/20261117_hap_rd_lite_s44/config.json": "e108dbcc745cdacd326feb6a8537a3d9ae666723cd9848ae456b7dfe53b46ce2"
+      },
+      "auc_percent": 54.759252838692895,
+      "eer": 0.41686746987951806,
+      "frames": 2633,
+      "positive_frames": 973,
+      "train_loss": 0.048498072275301306,
+      "checkpoint": "ckpt/vehicle_final.pth",
+      "checkpoint_sha256": "c0a98b6a15535230478d8cfceaa37f217e7a511da98bdcd93e6bf8ccc75c7cf6",
+      "elapsed_s": 1104.5816445859964,
+      "finished_at": "20261118T105923Z"
+    }
+  },
+  "macro_auc_percent": 84.42890452710955,
+  "macro_eer": 0.20041693222048274,
+  "match": "publication_match"
+}

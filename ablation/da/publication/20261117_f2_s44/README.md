@@ -8,6 +8,8 @@
 
 运行入口为本目录新建scripts/run_scene.py → scripts/da_publication_scene.py → model/publication_rd.py；不调用历史variant/GL/Loss runner。每场景单独logs/<scene>.log，断点重启追加；每epoch保存优化器、调度器和RNG状态。
 
-状态：planned；先提交源码计划并通过preflight，再以精确source_commit运行。
+状态：completed；源码计划提交与 preflight 后，以记录中的精确 source_commit 完成运行。
 
 B-ablation是从头训练的4-block架构，不是剪枝旧权重后的直接测试。C的alpha=0对四个等大小组取mean，数学上等于12层平均。默认超参数保持一致；不根据test标签选择模型或score方向。
+
+完成后的[单种子结果](results/summary.md)、[三种子矩阵与分析](../summary.md)及[全量核验](../results/validation.json)。

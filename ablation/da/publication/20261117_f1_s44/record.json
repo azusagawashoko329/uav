@@ -4,7 +4,7 @@
   "path": "ablation/da/publication/20261117_f1_s44",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
+  "status": "completed",
   "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
   "scripts": [
     "scripts/run_scene.py"
@@ -13,7 +13,7 @@
     {
       "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
       "source_commit": "aa0f057d834efc9ec30ba1a120b93d9d42aa7028",
-      "status": "running",
+      "status": "completed",
       "seed": 44,
       "script": "scripts/da_publication_scheduler.py",
       "command": [
@@ -23,30 +23,95 @@
         "/data1/data8tb/liangyuxuan/code/uav/ablation/da/publication/publication_run.json"
       ],
       "started_at": "20261117T085753Z",
-      "ended_at": null,
+      "ended_at": "20261118T171909Z",
       "log": "logs/scheduler_20261117T085621Z_da_publication_s42_s43_s44.jsonl",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
-      "scene_jobs": [],
-      "environment": {
-        "gpus": {
-          "0": {
-            "uuid": "GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f",
-            "name": "NVIDIA RTX A6000"
-          },
-          "1": {
-            "uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6",
-            "name": "NVIDIA RTX 5880 Ada Generation"
-          }
+      "scene_jobs": [
+        {
+          "scene": "crossroads",
+          "status": "completed",
+          "started_at": "20261117T152040Z",
+          "ended_at": "20261117T160657Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/crossroads.log",
+          "returncode": 0,
+          "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+          "checkpoint_sha256": "4579d01e0ea92b39f5ec0f1c26840594b6c6e07a8f537dbfb7d6ee58b87b7721"
         },
-        "torch": "2.1.0+cu121"
+        {
+          "scene": "farmland",
+          "status": "completed",
+          "started_at": "20261117T235112Z",
+          "ended_at": "20261118T001929Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/farmland.log",
+          "returncode": 0,
+          "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+          "checkpoint_sha256": "3b9733c64e2af8a8ee556ac60cf3b9d8146aeae115887cd2c421af133d62fe3e"
+        },
+        {
+          "scene": "highway",
+          "status": "completed",
+          "started_at": "20261118T045552Z",
+          "ended_at": "20261118T051447Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/highway.log",
+          "returncode": 0,
+          "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+          "checkpoint_sha256": "d211f52a5d5cc7858b19137f0bf1380ac559de59b6d510594a94ec64410c3fe3"
+        },
+        {
+          "scene": "bike",
+          "status": "completed",
+          "started_at": "20261118T085623Z",
+          "ended_at": "20261118T091405Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/bike.log",
+          "returncode": 0,
+          "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+          "checkpoint_sha256": "5a361b7d03a47040ce3036c2fbe7e078e3a9acee85f65c847d5ea0604e4b6f7a"
+        },
+        {
+          "scene": "vehicle",
+          "status": "completed",
+          "started_at": "20261118T122411Z",
+          "ended_at": "20261118T124216Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/vehicle.log",
+          "returncode": 0,
+          "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+          "checkpoint_sha256": "58b00eb36809c45e112b3d92a2a98a0d368b08c086735ef901326a5de1cfe53a"
+        },
+        {
+          "scene": "solar",
+          "status": "completed",
+          "started_at": "20261118T152827Z",
+          "ended_at": "20261118T153850Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/solar.log",
+          "returncode": 0,
+          "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+          "checkpoint_sha256": "00b3ba10e8ff40766e176017669170e348153c1f2ebcbe807e27c4b6f02fb46d"
+        },
+        {
+          "scene": "railway",
+          "status": "completed",
+          "started_at": "20261118T171404Z",
+          "ended_at": "20261118T171909Z",
+          "log": "ablation/da/publication/20261117_f1_s44/logs/railway.log",
+          "returncode": 0,
+          "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+          "checkpoint_sha256": "b032863936eb3e52b79e09e3f986952f5f1440ac93cb7468e0361d73bda5ee3c"
+        }
+      ],
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
       }
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "DA only; seed42/43/44 each has seven independently initialized scene models.",
     "Fresh training unless explicitly copied; B removes unmatched blocks at architecture level, without warm-start/pruned weights.",
     "Train uses publication_match.mean(); test retains the same per-frame score."
   ],
-  "variant": "f1"
+  "variant": "f1",
+  "review_status": "passed_postrun_audit",
+  "review_report": "../results/validation.json"
 }

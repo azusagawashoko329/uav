@@ -1,4 +1,545 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9898,
+      "sha256": "53946cd16de353b47a6d8e0f56df85c16954077c4166fe948a8f8995822d361b",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 305217,
+      "sha256": "67a3ed3ed973914a68c42f776791ed02aa57c02cf3a492ab42b9213bb4d6bdaa",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "b4f909a319639fcf833cc47fd07795b3613e194e63bb61ca0f22ba65a2a3f60a",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18674,
+      "sha256": "2f0a51bcb5d5f412a16ff92264e3e3eca10cf5d913abcf1eeee28b69a3b5f076",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/crossroads_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658824,
+      "sha256": "2fefc0c7dda04ad112391655e77758e240ad609d70f345df8101562fdd2941e1",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/crossroads_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50007918,
+      "sha256": "b9ff0b1ad3da82b3d6fc4f77c345abf024dbc90ad108c77e0e227ddba25dde2e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/farmland.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9893,
+      "sha256": "3f77d531fccbbe3bfc04887c9db430ea4416ea1cdb10928dc2d3b94d4c0bb34e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 117536,
+      "sha256": "655d97c5424b491a4b82d1322b7a6474041d748d06dc6f2e38ab9bcca0e9ccdc",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/farmland_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "1206c958f9915a51032ecfb2c3320b3d6ecfbd333036cb779984d84bd069c1c9",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/farmland.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18658,
+      "sha256": "10ebc84e4c50a10602a9b9557511b7a9b45546e27f9e9e487d84b1ba80e4036d",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/farmland_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658612,
+      "sha256": "d2d7ceaf68f6ebe747094fd9695618a239795a8d01eb7877528b1caa3f473e7a",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/farmland_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50007088,
+      "sha256": "2080d3211bef46581df2e5881cb2be8faf96ba4f7530f1c495ce661e4832269f",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/highway.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9891,
+      "sha256": "99e059c27d849c063b776f6de52f1152ddfdc9d7620f1a93699abf8fed1345ea",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 137413,
+      "sha256": "2598ee1d315ed171aa685deff20cf500aed848c8621fe3121071984045e5f0e1",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/highway_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "bdc02def8df41d1eb115ed174652db8724c12354926e026fb101d8708cf0b4d2",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/highway.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18645,
+      "sha256": "d69c1d08c00a966c3f69dcafc00bffecec1b14d120796db1acbe8a5ee7c5a775",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/highway_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658506,
+      "sha256": "9c4da59ec8f8d1971dabac919c11594ed42dc7b1aaae90cc5281225174716068",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/highway_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50006673,
+      "sha256": "b7d33250250f90bcae97e29c0224ab8b0e77956c51dcdc5f71dc57b5a89b84ce",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/bike.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9875,
+      "sha256": "0b97151a21db3cbfac4e1213bfafff721a7f6aed4a278c42d2f99ebbabf11d89",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 908402,
+      "sha256": "886dfff28e2f5f95853f8279345f54f1d3f9b0b11823e201dbe647736e95da17",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/bike_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "62598b2cde52af90b7f962aac92e01e5f8899efa9c37062188135181255b9dde",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/bike.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18615,
+      "sha256": "b1cec85297557169cb60600621d56b21e3a636f3d27c75d48a93f08968632b3b",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/bike_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658188,
+      "sha256": "51bb899339b88efc23b82f7bb9c16d43d112f7a78b2be71a5c67e6b9fbed0a0e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/bike_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50005364,
+      "sha256": "115d3a2fc6d2c6be0cb6b2bcbc21b910cc8c691a4b1da03300b04c128d522d8e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/vehicle.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9891,
+      "sha256": "17b3f5f308eb5e3a704be44843e1a4458e844d939c8c8f4fa45a82099d8350b7",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 128468,
+      "sha256": "00c6832ec4332fc91c714befd40f0b23cf8e58f8a39c5075aa140a460aaced7c",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/vehicle_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "02838a1e561c60047b843b6ff8f0ebd72e719a82370c972ed1c9439fa223c5d3",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/vehicle.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18643,
+      "sha256": "496d6173a90f7058c1f7cd846c39efd3934224742f195017be82ba985c5d9acd",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/vehicle_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658506,
+      "sha256": "cf4d8bc87149170eab92406776830c01758d45bffd39604cbebaef16addace2c",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/vehicle_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50006673,
+      "sha256": "79f49338ef34b5cf26d976d5ce3c940f8076d7ee0b21855d604292a616ef9802",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/solar.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9871,
+      "sha256": "9a5cc3ce7dda42c0fa5572225b7d8ee95a052ac762a69acd3087e9f591379b7e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 118876,
+      "sha256": "2447a4c7d77c45b1f772d96ff9e811429a52cab733e4e6eab91135938b9509d6",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/solar_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "5ec7c490dfd1980bc467df621fe09a45fabed3d5d0facdfdc8eab73d0adb951c",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/solar.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18606,
+      "sha256": "a2179dc7626cbb0977325986399522f292fd6444ab24c2e65f55528f9080f4d3",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/solar_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658294,
+      "sha256": "bda7b867b4190ebf49b63820ed4ce357f468f0bbaa3394048d9f40cae1d53022",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/solar_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50005779,
+      "sha256": "13857ea73436222ba0022f40f889cc518ed4eb073660eb28d30a2fdfb6900a97",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/railway.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 9890,
+      "sha256": "a401cfb47332ddbba23633ec02f6e993e60096e7009857cf9b13514956cf1151",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 42731,
+      "sha256": "8860b6e529520585a5b68b6fa8147a780b4b4dee21eadfab286be8c16dce3a12",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/railway_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 132,
+      "sha256": "3f8de8e43da98266fa5eaae77be494bcf44a496e7fdbaf7f2e4547795205db89",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/railway.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 18633,
+      "sha256": "db42a38b842de3eeff7af8efdb0cb8c390ed95fe9955e6fbd2753a9de002c44c",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/railway_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 16658506,
+      "sha256": "9bed0c4ec0defed2cbef88beecb6cc5f7d9662d11f36ca48cb988a6e8bc389a9",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/railway_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 50006673,
+      "sha256": "7c6328269f7f37198439dccd4696e32ea3388f153d820b59caf3e62c8759462e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 74608,
+      "sha256": "112776cb62bb7a75878102447aba18f8f9f21e0079b3a297d64458bc629a109e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 84,
+      "sha256": "4c87c8b8780003f88608872c8d262c06ba129956d61f447c47b48663385f9030",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261117T085621Z_da_publication_s42_s43_s44.jsonl",
+      "producer_script": "scripts/da_publication_scheduler.py",
+      "run_id": "20261117T085621Z_da_publication_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 136962,
+      "sha256": "cf5207bd02ab35b0ff70435d98662e2e255ff063f90b7e635cf17bdf9ef752ce",
+      "storage": "git",
+      "inputs": [
+        "config.json"
+      ]
+    }
+  ]
 }

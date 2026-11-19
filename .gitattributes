@@ -1,2 +1,4 @@
 # Preserve historical boundary CSV/log/source bytes as evidence; do not normalize line endings.
 experiments/da/boundary/** -text whitespace=-blank-at-eol,-blank-at-eof
+# csv.writer emits CRLF; preserve publication score evidence byte for byte.
+ablation/da/publication/**/*.csv -text whitespace=cr-at-eol

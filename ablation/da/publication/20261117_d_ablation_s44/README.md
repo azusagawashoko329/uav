@@ -11,3 +11,5 @@
 复制自 ablation/da/GL/20261106_gggg_gelumlp_s44；原始结果与权重不改写，原配置、record和产物索引保留于provenance/，完成性和模型等价性须通过publication_preflight。
 
 B-ablation是从头训练的4-block架构，不是剪枝旧权重后的直接测试。C的alpha=0对四个等大小组取mean，数学上等于12层平均。默认超参数保持一致；不根据test标签选择模型或score方向。
+
+完成后的[单种子结果](results/summary.md)、[三种子矩阵与分析](../summary.md)及[全量核验](../results/validation.json)。
