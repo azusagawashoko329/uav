@@ -15,14 +15,14 @@
     },
     {
       "path": "run_plan.json",
-      "producer_script": "scripts/prepare_da_laga.py",
+      "producer_script": "scripts/da_laga_scheduler.py",
       "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
       "status": "present",
       "inputs": [
         "config.json"
       ],
-      "size_bytes": 546,
-      "sha256": "f301c4a8c9df0a5936c9681f8ab6e397eafdfd78b256ec465dd19866fe3d0b62",
+      "size_bytes": 584,
+      "sha256": "141969f9cb2993e486d9e63bf6c46f19fbb66ad911e4377595611576c00288e8",
       "storage": "git"
     },
     {
@@ -47,6 +47,42 @@
       ],
       "size_bytes": 428,
       "sha256": "3632c46718a1ae129baf34e4df9719d316fcc24c89986264d94ca0c665a88062",
+      "storage": "git"
+    },
+    {
+      "path": "launch.json",
+      "producer_script": "detached launch verification",
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "status": "present",
+      "inputs": [
+        "config.json"
+      ],
+      "size_bytes": 4586,
+      "sha256": "0cfa9addc93b3319ee7fb396d28e0b6e878d625b817d3d4061608e2b1309bc06",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261119T070849Z_da_lggd_no_laga_s42_s43_s44.jsonl",
+      "producer_script": "scripts/da_laga_scheduler.py",
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "status": "present",
+      "inputs": [
+        "config.json"
+      ],
+      "size_bytes": 2161,
+      "sha256": "f76289aafc4984ea508e01e0f5ab2a77522d688d37afa71ae61949ab0624648d",
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads.log",
+      "producer_script": "scripts/da_laga_scene.py",
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "status": "present",
+      "inputs": [
+        "config.json"
+      ],
+      "size_bytes": 3292,
+      "sha256": "03f79268d72852b8eb048085b8c1c71baca77248443438fd9c3bee793c9a33c5",
       "storage": "git"
     }
   ]

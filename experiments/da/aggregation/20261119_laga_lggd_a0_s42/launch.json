@@ -1,0 +1,225 @@
+{
+  "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+  "scheduler_pid": 2048103,
+  "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+  "command": [
+    "/home/lyx/miniconda3/envs/DMAD/bin/python",
+    "scripts/da_laga_scheduler.py",
+    "--manifest",
+    "/data1/data8tb/liangyuxuan/code/uav/experiments/da/aggregation/20261119_laga_lggd_a0_s42/run_plan.json"
+  ],
+  "stdout_debug": "/tmp/20261119T070849Z_da_lggd_no_laga_s42_s43_s44.scheduler.stdout.log",
+  "detached_requested": true,
+  "new_experiments": 3,
+  "new_scene_jobs": 21,
+  "scheduler_ppid": 1,
+  "scheduler_session_id": 2048103,
+  "detached_verified": true,
+  "started_at": "20261119T071229Z",
+  "active_model_checks": [
+    {
+      "seed": 42,
+      "scene": "crossroads",
+      "log": "experiments/da/aggregation/20261119_laga_lggd_a0_s42/logs/crossroads.log",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "epoch_lines": []
+    },
+    {
+      "seed": 43,
+      "scene": "crossroads",
+      "log": "experiments/da/aggregation/20261119_laga_lggd_a0_s43/logs/crossroads.log",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "epoch_lines": []
+    }
+  ]
+}
