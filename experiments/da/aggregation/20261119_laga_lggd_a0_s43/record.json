@@ -4,7 +4,7 @@
   "path": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
   "dataset": "da",
   "family": "aggregation",
-  "status": "running",
+  "status": "completed",
   "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
   "scripts": [
     "scripts/run_scene.py"
@@ -14,10 +14,81 @@
       "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
       "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
       "seed": 43,
-      "status": "running",
+      "status": "completed",
       "started_at": "20261119T071229Z",
-      "ended_at": null,
-      "scene_jobs": [],
+      "ended_at": "20261119T134228Z",
+      "scene_jobs": [
+        {
+          "scene": "crossroads",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T071229Z",
+          "ended_at": "20261119T080202Z",
+          "log": "logs/crossroads.log",
+          "checkpoint_sha256": "cfee4806870eb9af75d603f98e2a9f6b7b59d3672a8c345a5a5eaa0986dc547f",
+          "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238"
+        },
+        {
+          "scene": "farmland",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T092051Z",
+          "ended_at": "20261119T095032Z",
+          "log": "logs/farmland.log",
+          "checkpoint_sha256": "05d88eea766ad938ff4d252540077df7470bae8906066a188d4c96b26ed026c8",
+          "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3"
+        },
+        {
+          "scene": "highway",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T102049Z",
+          "ended_at": "20261119T104929Z",
+          "log": "logs/highway.log",
+          "checkpoint_sha256": "31a8065b093f9a27325849da4eadceaea5a64116628d65e4fef6a9c6eb6823ed",
+          "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941"
+        },
+        {
+          "scene": "vehicle",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T123058Z",
+          "ended_at": "20261119T124852Z",
+          "log": "logs/vehicle.log",
+          "checkpoint_sha256": "0390f90f68aa4916a50d02437ddaba9f90735ebb689fa37614db59f4d25ace79",
+          "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f"
+        },
+        {
+          "scene": "bike",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T113724Z",
+          "ended_at": "20261119T130737Z",
+          "log": "logs/bike.log",
+          "checkpoint_sha256": "f40f38090d58b1e31025cee9d8377caff5aa997ab634e282ebf972d0c71f7d89",
+          "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347"
+        },
+        {
+          "scene": "solar",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T130737Z",
+          "ended_at": "20261119T134108Z",
+          "log": "logs/solar.log",
+          "checkpoint_sha256": "330e7f80e513badc47124f20c64af2a744c17dbe3c74d31debb0ec8676ca941f",
+          "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333"
+        },
+        {
+          "scene": "railway",
+          "status": "completed",
+          "returncode": 0,
+          "started_at": "20261119T133603Z",
+          "ended_at": "20261119T134228Z",
+          "log": "logs/railway.log",
+          "checkpoint_sha256": "a4fa24a9548c1192406279b5841b3133e454a0eac80fac326c7719378d3aa5ac",
+          "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f"
+        }
+      ],
       "command": [
         "/home/lyx/miniconda3/envs/DMAD/bin/python",
         "scripts/da_laga_scheduler.py",
@@ -28,7 +99,7 @@
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly"
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "variant": "lggd_no_laga",
   "baseline": "ablation/da/publication/20261117_hap_rd_s43",
   "limitations": [
@@ -36,6 +107,6 @@
     "Alpha changes both train objective and matched test readout.",
     "Three seeds are descriptive; benefits need not agree across decoder architectures."
   ],
-  "review_status": "passed_preflight",
-  "review_report": "../20261119_laga_lggd_a0_s42/preflight.json"
+  "review_status": "passed_postrun_audit",
+  "review_report": "../20261119_laga_lggd_a0_s42/results/validation.json"
 }

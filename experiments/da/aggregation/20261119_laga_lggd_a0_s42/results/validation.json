@@ -1,0 +1,4570 @@
+{
+  "status": "passed",
+  "new_scenes": 21,
+  "baseline_scenes": 21,
+  "primary_scene_cells": 42,
+  "scheduler_final": {
+    "time": "20261119T135641Z",
+    "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+    "kind": "all_finished",
+    "completed": 21,
+    "skipped": 0,
+    "failures": []
+  },
+  "pinned_code_config_hashes_verified": true,
+  "dataset_frame_order_and_labels_verified": true,
+  "final_checkpoint_hashes_and_strict_loads": 42,
+  "legacy_constructor_checks": [
+    {
+      "seed": 42,
+      "legacy_gl_initial_state_equal": "passed"
+    },
+    {
+      "seed": 43,
+      "legacy_gl_initial_state_equal": "passed"
+    },
+    {
+      "seed": 44,
+      "legacy_gl_initial_state_equal": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "bike",
+      "auc_percent": 97.65440434405257,
+      "eer": 0.04621389539422326,
+      "frames": 18427,
+      "scores_sha256": "50014f78e92392d7073dfd739ac33573e99ab78171b3157d15404bb0f1397ab8",
+      "checkpoint_sha256": "a86e42a1d89cc6d764f95b8bf20d685e9709e1756a489d78e30157a87052dbc6",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "crossroads",
+      "auc_percent": 60.54601277189844,
+      "eer": 0.42440201887206497,
+      "frames": 6244,
+      "scores_sha256": "4fc75060521de533a3b2b2159e4a512f0d9f35f3c88b852dc4a1427330d38862",
+      "checkpoint_sha256": "a07be5b3873940313e53ee96aa7193118b94fa01d13fd824e88d8adfd5ba859f",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "farmland",
+      "auc_percent": 99.26636324230603,
+      "eer": 0.06198526224534027,
+      "frames": 2387,
+      "scores_sha256": "85cad2ac71f9b8410d5be81a8c0f593ecd45cdf61a68093576c546634549a931",
+      "checkpoint_sha256": "41b0f86221a3189073805b604dd40f5b27b95c339e6619ed0e509056283e7b3f",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "highway",
+      "auc_percent": 94.67433096209629,
+      "eer": 0.15066724063710718,
+      "frames": 2820,
+      "scores_sha256": "5d33107e7bfbf7687e9edc516512a253863451806ed05ee022610f3e696fdc19",
+      "checkpoint_sha256": "f07719305bfc8bd477218db33a9a66712d74f9f63a7fac950e75e17eda2777a9",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "railway",
+      "auc_percent": 94.10500072264779,
+      "eer": 0.10810810810810811,
+      "frames": 882,
+      "scores_sha256": "148c84b98b5dc57651e032fe73dad5f0bc913cc50852d3a01cf01e28b51f1ac9",
+      "checkpoint_sha256": "6054864d3ee47f8b3eeca3d645e7d9def75135d081c5df30817d351098e3911f",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "solar",
+      "auc_percent": 89.86152234041256,
+      "eer": 0.16948130277442702,
+      "frames": 2450,
+      "scores_sha256": "080c1285dd9145dc0c5112ae5dd78c31c5d15dfaf4ad8254574781ede6726b4f",
+      "checkpoint_sha256": "95b907ae6c20d5372888bb83d5191812d1f4e9e8329916f79c6e9a37799c3fd7",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s42",
+      "condition": "alpha0",
+      "seed": 42,
+      "scene": "vehicle",
+      "auc_percent": 61.03211406778192,
+      "eer": 0.38072289156626504,
+      "frames": 2633,
+      "scores_sha256": "3c25d878786c4d75dbaa84e3d8511a48c2e2db6ad992b98c593f73035525088a",
+      "checkpoint_sha256": "aef76e2888d898e50635791055f8c669c07a3cf4ab25beba0d97f90f383f83ac",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "bike",
+      "auc_percent": 97.66781002977756,
+      "eer": 0.04574551131928181,
+      "frames": 18427,
+      "scores_sha256": "ba31101fb8040d710d4ee6989b799840f34bd96bf5ab08fd9238e0fb87a7a1ef",
+      "checkpoint_sha256": "6978a2c85e31df1da79fa9438c0c6a27918a9b0ef5089612319bef2dc9ebf346",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "crossroads",
+      "auc_percent": 59.221467809641396,
+      "eer": 0.4279131007241606,
+      "frames": 6244,
+      "scores_sha256": "9f9936b36b6c395ac311d75fb9ec953a2dbb15676fd3a0ad8d2ca689d4e5ad7f",
+      "checkpoint_sha256": "ab9671514a4d4718269de3e36da5ba7cc0a33278fd5f861a8b3ddb25914adcae",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "farmland",
+      "auc_percent": 99.4527524924144,
+      "eer": 0.054182921543129606,
+      "frames": 2387,
+      "scores_sha256": "1dfff978b367a7d1a46df4c3838e8ec3281a7ebde69291c665681e8cec61e536",
+      "checkpoint_sha256": "874d6f086abdddac38cf54a1545f04a703ad0aef3015d8cff26c7f7431f97fe3",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "highway",
+      "auc_percent": 94.40404805068032,
+      "eer": 0.16659492036160137,
+      "frames": 2820,
+      "scores_sha256": "22a904491507b26851c79f7cdcfba3958b47cf867d827c7b8ba7b09f24838cda",
+      "checkpoint_sha256": "8f5fb45eb984ca95d41da3e128045490da386ddf7187709121523d082cb5acb3",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "railway",
+      "auc_percent": 95.58823529411764,
+      "eer": 0.10073710073710074,
+      "frames": 882,
+      "scores_sha256": "094ccfceb32b6314b242d93fe39c12927d4c3be27fef440463f451232dd6b70d",
+      "checkpoint_sha256": "ef2462d46c7d3bc65b84e85d3ae5351ddee386d7623204075aba51eb17476dcc",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "solar",
+      "auc_percent": 89.62137204371824,
+      "eer": 0.1767189384800965,
+      "frames": 2450,
+      "scores_sha256": "8022cfcddfe1b1fdce65cf4068c56ae26ddf9900924e2a0f6219e3c9a926847e",
+      "checkpoint_sha256": "4656a31db7205587cdafb09a3dc84ea0197fa27997ad1f932db3ad6c04eac07a",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s42",
+      "condition": "alpha05",
+      "seed": 42,
+      "scene": "vehicle",
+      "auc_percent": 61.46686437424932,
+      "eer": 0.3897590361445783,
+      "frames": 2633,
+      "scores_sha256": "2ce3349385df2515ecd3a0267762f3a75a9c246f49d300e79e89fd60f354adb2",
+      "checkpoint_sha256": "6b50e422431c6a532dc0aa4d53109c6fb5c0352bb8a1c0b5fb6739e174964ca7",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "bike",
+      "auc_percent": 97.67086778584826,
+      "eer": 0.046370023419203744,
+      "frames": 18427,
+      "scores_sha256": "c5f152c29ec18266a8c22837eaaddc6572e57e1c34fd358dd20cfa004232f124",
+      "checkpoint_sha256": "f40f38090d58b1e31025cee9d8377caff5aa997ab634e282ebf972d0c71f7d89",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "crossroads",
+      "auc_percent": 61.88023558276973,
+      "eer": 0.4215492648672372,
+      "frames": 6244,
+      "scores_sha256": "7c69f303d6f3731d15c429231b974ef5c8d4cd24c77e6de3014c0e4308e9227b",
+      "checkpoint_sha256": "cfee4806870eb9af75d603f98e2a9f6b7b59d3672a8c345a5a5eaa0986dc547f",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "farmland",
+      "auc_percent": 99.17262678803641,
+      "eer": 0.06718682271348071,
+      "frames": 2387,
+      "scores_sha256": "a5c93ca154028c87d8a0920b6332f4d1d7bb4c9b529c2d29e07a8a2d35222a74",
+      "checkpoint_sha256": "05d88eea766ad938ff4d252540077df7470bae8906066a188d4c96b26ed026c8",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "highway",
+      "auc_percent": 94.873935823291,
+      "eer": 0.14894532931554025,
+      "frames": 2820,
+      "scores_sha256": "2132af6ca67ebbb0c176fdbba5b9ff817d137dc5e401a4a2918252dfb0c8411f",
+      "checkpoint_sha256": "31a8065b093f9a27325849da4eadceaea5a64116628d65e4fef6a9c6eb6823ed",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "railway",
+      "auc_percent": 95.0769619887267,
+      "eer": 0.10196560196560196,
+      "frames": 882,
+      "scores_sha256": "8e61a737bbdbf88f282267c0994371bac6fa5aeaf421ea421d8f6d9f3dee0b01",
+      "checkpoint_sha256": "a4fa24a9548c1192406279b5841b3133e454a0eac80fac326c7719378d3aa5ac",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "solar",
+      "auc_percent": 90.51012233310183,
+      "eer": 0.16948130277442702,
+      "frames": 2450,
+      "scores_sha256": "2fac4a46b54479d474a808170638d2bd08a90de9071c25d1acba38154814ebcf",
+      "checkpoint_sha256": "330e7f80e513badc47124f20c64af2a744c17dbe3c74d31debb0ec8676ca941f",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s43",
+      "condition": "alpha0",
+      "seed": 43,
+      "scene": "vehicle",
+      "auc_percent": 64.4110873091544,
+      "eer": 0.3644578313253012,
+      "frames": 2633,
+      "scores_sha256": "b42e04d93a99dd67539c03e806b6c9519fc6de1f70b529ca34ff53f8bdd34abb",
+      "checkpoint_sha256": "0390f90f68aa4916a50d02437ddaba9f90735ebb689fa37614db59f4d25ace79",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "bike",
+      "auc_percent": 97.73535663409693,
+      "eer": 0.04605776736924278,
+      "frames": 18427,
+      "scores_sha256": "ffc768a792ad6d9a8ea166097400dc3a5fec01f5eff1f52e091e136fcc7b97b4",
+      "checkpoint_sha256": "4445644edee06bcb2d65f5d4c8f6e7c2d3601acea5d8319b8532abceeca390cb",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "crossroads",
+      "auc_percent": 59.12081298090875,
+      "eer": 0.43515470704410797,
+      "frames": 6244,
+      "scores_sha256": "75c19d31d9ec358e02ac7b5e1c76cbb1574ea854a8f1a5fb8a88c661576c78d9",
+      "checkpoint_sha256": "f84b1abcfff87be5aae852959d212a9a5bf77e0db9c4ffdded0f4712a0a438a8",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "farmland",
+      "auc_percent": 99.4029042045947,
+      "eer": 0.055049848287819676,
+      "frames": 2387,
+      "scores_sha256": "3b00e8bf06fe18ba62c2f9791494a7e5664d83005d43488bcba0328b3fea1af7",
+      "checkpoint_sha256": "da0d3e91ac185b2bfec5776655975c244ed6386617503317760376d68f0c70dd",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "highway",
+      "auc_percent": 93.7884734147459,
+      "eer": 0.16616444253120966,
+      "frames": 2820,
+      "scores_sha256": "ca71249913a157f793aa9f7c7be4940146d5b96e2aba6c5eb21f6909f2fd713a",
+      "checkpoint_sha256": "43790672df2d6c402fa83a63c1eddf88c380f0a2e5a791cca8f20222d32bc250",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "railway",
+      "auc_percent": 95.71108541696776,
+      "eer": 0.10073710073710074,
+      "frames": 882,
+      "scores_sha256": "8f9edfbef6420497b28dd8fd8fbf83de940e9a10e17a181b440b51f340af6bce",
+      "checkpoint_sha256": "15acfc66f486b57dda46b471543af58b291841525176067484761444be4c91ee",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "solar",
+      "auc_percent": 89.17004788536754,
+      "eer": 0.18576598311218334,
+      "frames": 2450,
+      "scores_sha256": "20349656025e5877aa0f71ab2546cc162265a25c18d626655769d0d8daa6461e",
+      "checkpoint_sha256": "89bf3da9ebf9217c4677257cdab14bf9c94fed17b058fed6d93fcc1e879086b2",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s43",
+      "condition": "alpha05",
+      "seed": 43,
+      "scene": "vehicle",
+      "auc_percent": 66.3212149729442,
+      "eer": 0.3644578313253012,
+      "frames": 2633,
+      "scores_sha256": "265eecaec5e65edd90a54f5a0974821a13bd9a0dda16e432dd5ed6b307fe958d",
+      "checkpoint_sha256": "f96c0f442f046e20559157501a289ef45713241cc1a5fac3b82cb48bf018240c",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "bike",
+      "auc_percent": 97.66509252942596,
+      "eer": 0.04590163934426229,
+      "frames": 18427,
+      "scores_sha256": "7dc3910c1ad4dd2759bfdd4805ebde9a99cbd63fa6747eda16585af7487ea7e8",
+      "checkpoint_sha256": "9839fba34fbb8717d656d6ade35ee426beccc713336c1927d7671280188436fa",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "crossroads",
+      "auc_percent": 61.18375567906953,
+      "eer": 0.4182576256308975,
+      "frames": 6244,
+      "scores_sha256": "ae227d8c3f01e67de9337ad74928dfc19e8952361377a400a68c2666c63da9a6",
+      "checkpoint_sha256": "47faf081e39ba9844e84745c91c020462524b0d4fbe79bdf710254500da3971d",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "farmland",
+      "auc_percent": 99.21001300390118,
+      "eer": 0.06675335934113567,
+      "frames": 2387,
+      "scores_sha256": "4bcb6cfd7ad02b23cd2b309058c16d679fe55649fb8131807f4e520849a5d636",
+      "checkpoint_sha256": "f5e6e31bfb4ad1a359ad117531bd1b8d3b5fd5f84a8fdcdd836b3cae38dec35e",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "highway",
+      "auc_percent": 94.78766702669743,
+      "eer": 0.1459319845027981,
+      "frames": 2820,
+      "scores_sha256": "f9a55f65965791fc6c1ef9faa3b033f6980cbc367ab02cf72b9b79cabd3052f7",
+      "checkpoint_sha256": "6650b956d3bc0193bafd6212c54cbe55f293e14b6dbff5b4943d414fba2a34fd",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "railway",
+      "auc_percent": 94.50065038300332,
+      "eer": 0.10442260442260443,
+      "frames": 882,
+      "scores_sha256": "8311867587697d71db99ebe6ed0da38674a27a051d9dd10fb3ec37ca10e2a514",
+      "checkpoint_sha256": "afee94b08e69f1b75256ebfd6323618950ecfed7d0a2fb2d93e1fde0349f0f3c",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "solar",
+      "auc_percent": 90.14763131922359,
+      "eer": 0.16706875753920386,
+      "frames": 2450,
+      "scores_sha256": "3dcbd8bda86c25f7b30a9545dbdec84f0f20eeb5ca0f407f043987a9b8d61dea",
+      "checkpoint_sha256": "37b27af8b8133bab685984cd1094186514ee3e675fce35196ac3788b17e52144",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "experiments/da/aggregation/20261119_laga_lggd_a0_s44",
+      "condition": "alpha0",
+      "seed": 44,
+      "scene": "vehicle",
+      "auc_percent": 64.06066196956377,
+      "eer": 0.3759036144578313,
+      "frames": 2633,
+      "scores_sha256": "1a4a1036d39171b6d5aaa2ada12e3e7059e81dc3ecf0953ab979fbb569f1eb87",
+      "checkpoint_sha256": "c24ffa98c4dabf8ad624b2050a40f94c31ef8eec9bd5d853dc08417e41cb6aaa",
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "bike",
+      "auc_percent": 97.71525297558172,
+      "eer": 0.04449648711943794,
+      "frames": 18427,
+      "scores_sha256": "343985c69d291a376cbda026ac03cf62d20b6a25e24e7eedf9dab227dac71f35",
+      "checkpoint_sha256": "4447bb0a83d103bf36bb1c0c6153f4dd6c43f994844c3d6395b97ead1805d2d9",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "crossroads",
+      "auc_percent": 60.91961154884731,
+      "eer": 0.4171604125521176,
+      "frames": 6244,
+      "scores_sha256": "f17cd3ca906453e27dcbed19da6be4987eb0de0c102bae9b89fe5364c36d1616",
+      "checkpoint_sha256": "0de70e070d172685ac821ea945f513b8c6bbef486f6b5f609db98f1b51ff6882",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "farmland",
+      "auc_percent": 99.40886432596446,
+      "eer": 0.06025140875596012,
+      "frames": 2387,
+      "scores_sha256": "dc5eb67baa460f80f757c9cdcb4e31576060a22d347f43ed8d62dfd449408553",
+      "checkpoint_sha256": "3d65087df5128ad8033020884ec696026478806ab2bf956ff5e11469e55af94b",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "highway",
+      "auc_percent": 94.11462316732941,
+      "eer": 0.16573396470081792,
+      "frames": 2820,
+      "scores_sha256": "250b65d56be6de83377fd56c001f7d803cf38eb5d617727a1970839a32ca33d4",
+      "checkpoint_sha256": "f99bbc99cee208556a33f2c9ff3c9a54c717c4fa0aa30a9612feeae972531476",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "railway",
+      "auc_percent": 95.57920219684925,
+      "eer": 0.10319410319410319,
+      "frames": 882,
+      "scores_sha256": "ae3a94c5a81c7fa2a6a101d8b6c561ce6467f972903019adf25cf460066a3683",
+      "checkpoint_sha256": "6128a6256d6a00732af1f185e7b278b28ff8ff226e4b4e46319c1f4dba7972a3",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "solar",
+      "auc_percent": 89.90987986012114,
+      "eer": 0.17310012062726177,
+      "frames": 2450,
+      "scores_sha256": "90c5d8613def99cb09878bdfe773765eb7d2b136d475098365fc69d392d1ee7a",
+      "checkpoint_sha256": "922baafac83fe45ada1b8624694868f86e904cc5df3ba19a3a6a1b737a8c6af0",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    },
+    {
+      "experiment": "ablation/da/publication/20261117_hap_rd_s44",
+      "condition": "alpha05",
+      "seed": 44,
+      "scene": "vehicle",
+      "auc_percent": 62.43994477395708,
+      "eer": 0.3716867469879518,
+      "frames": 2633,
+      "scores_sha256": "ecdb66d2482ccf1d909eeb4a16859811674fab3fe9f0ee9300a24533e11e92a6",
+      "checkpoint_sha256": "7ef16a3b88124208a4a7ece02368bbeb7a642239076d93617c90cc60322b9acb",
+      "guard": {
+        "variant": "hap_rd",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 30248000
+      },
+      "checkpoint_hash_verified": true,
+      "strict_load": "passed"
+    }
+  ],
+  "context_scope": "GGGG/GLLL context quotes previously audited summary JSON; not re-evaluated in this audit"
+}

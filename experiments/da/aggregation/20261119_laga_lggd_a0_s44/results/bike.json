@@ -1,0 +1,144 @@
+{
+  "experiment_id": "20261119_laga_lggd_a0_s44",
+  "dataset": "Drone-Anomaly",
+  "variant": "lggd_no_laga",
+  "seed": 44,
+  "scene": "bike",
+  "epochs": 30,
+  "guard": {
+    "variant": "lggd_no_laga",
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "student_blocks": 4,
+    "actual_block_order": "LLLG",
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "student_width": 768,
+    "pdfb_hidden": 512,
+    "code_dim": 64,
+    "tap_norm": true,
+    "reconstruction_heads": 12,
+    "routes": {
+      "0": [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          11
+        ]
+      ],
+      "1": [
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "2": [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "3": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    "rank2": false,
+    "q_shape": null,
+    "q_shared_across_groups": false,
+    "q_init": null,
+    "match": {
+      "error": "patch_cosine",
+      "k": 5,
+      "groups": 4,
+      "alpha": 0.0
+    },
+    "trainable_parameters": 30248000
+  },
+  "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+  "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+  "code_hashes": {
+    "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+    "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+    "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+    "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+    "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+    "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+    "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+    "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+    "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+    "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+    "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+    "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+  },
+  "baseline": "ablation/da/publication/20261117_hap_rd_s44",
+  "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+  "train_frames": 7950,
+  "test_videos": 7,
+  "cuda": "NVIDIA RTX 5880 Ada Generation",
+  "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+  "environment": {
+    "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+    "torch": "2.1.0+cu121",
+    "cuda": "12.1"
+  },
+  "auc_percent": 97.66509252942596,
+  "eer": 0.04590163934426229,
+  "frames": 18427,
+  "positive_frames": 12022,
+  "train_loss": 0.04925366355887344,
+  "checkpoint": "ckpt/bike_final.pth",
+  "checkpoint_sha256": "9839fba34fbb8717d656d6ade35ee426beccc713336c1927d7671280188436fa",
+  "elapsed_s": 1578.742394861998,
+  "finished_at": "20261119T121235Z"
+}

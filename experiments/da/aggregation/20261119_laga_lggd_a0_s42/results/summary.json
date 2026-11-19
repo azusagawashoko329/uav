@@ -1,0 +1,1018 @@
+{
+  "variant": "lggd_no_laga",
+  "seed": 42,
+  "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+  "macro_auc_percent": 85.3056783501708,
+  "macro_eer": 0.1916543885139337,
+  "scenes": {
+    "bike": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "bike",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+      "train_frames": 7950,
+      "test_videos": 7,
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 97.65440434405257,
+      "eer": 0.04621389539422326,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "train_loss": 0.0478744535376468,
+      "checkpoint": "ckpt/bike_final.pth",
+      "checkpoint_sha256": "a86e42a1d89cc6d764f95b8bf20d685e9709e1756a489d78e30157a87052dbc6",
+      "elapsed_s": 1699.865637967945,
+      "finished_at": "20261119T114605Z"
+    },
+    "crossroads": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "crossroads",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+      "train_frames": 15772,
+      "test_videos": 5,
+      "cuda": "NVIDIA RTX A6000",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 60.54601277189844,
+      "eer": 0.42440201887206497,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "train_loss": 0.07234741044722921,
+      "checkpoint": "ckpt/crossroads_final.pth",
+      "checkpoint_sha256": "a07be5b3873940313e53ee96aa7193118b94fa01d13fd824e88d8adfd5ba859f",
+      "elapsed_s": 10051.084850029089,
+      "finished_at": "20261119T100009Z"
+    },
+    "farmland": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "farmland",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+      "train_frames": 9548,
+      "test_videos": 1,
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 99.26636324230603,
+      "eer": 0.06198526224534027,
+      "frames": 2387,
+      "positive_frames": 80,
+      "train_loss": 0.0714275481916914,
+      "checkpoint": "ckpt/farmland_final.pth",
+      "checkpoint_sha256": "41b0f86221a3189073805b604dd40f5b27b95c339e6619ed0e509056283e7b3f",
+      "elapsed_s": 1859.8355916420696,
+      "finished_at": "20261119T092048Z"
+    },
+    "highway": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "highway",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+      "train_frames": 9045,
+      "test_videos": 3,
+      "cuda": "NVIDIA RTX A6000",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 94.67433096209629,
+      "eer": 0.15066724063710718,
+      "frames": 2820,
+      "positive_frames": 497,
+      "train_loss": 0.07383990641815442,
+      "checkpoint": "ckpt/highway_final.pth",
+      "checkpoint_sha256": "f07719305bfc8bd477218db33a9a66712d74f9f63a7fac950e75e17eda2777a9",
+      "elapsed_s": 5822.292099433951,
+      "finished_at": "20261119T113722Z"
+    },
+    "railway": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "railway",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+      "train_frames": 1206,
+      "test_videos": 1,
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 94.10500072264779,
+      "eer": 0.10810810810810811,
+      "frames": 882,
+      "positive_frames": 68,
+      "train_loss": 0.10427265986800194,
+      "checkpoint": "ckpt/railway_final.pth",
+      "checkpoint_sha256": "6054864d3ee47f8b3eeca3d645e7d9def75135d081c5df30817d351098e3911f",
+      "elapsed_s": 379.60173207498156,
+      "finished_at": "20261119T133601Z"
+    },
+    "solar": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "solar",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+      "train_frames": 2848,
+      "test_videos": 3,
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 89.86152234041256,
+      "eer": 0.16948130277442702,
+      "frames": 2450,
+      "positive_frames": 792,
+      "train_loss": 0.10521229000931437,
+      "checkpoint": "ckpt/solar_final.pth",
+      "checkpoint_sha256": "95b907ae6c20d5372888bb83d5191812d1f4e9e8329916f79c6e9a37799c3fd7",
+      "elapsed_s": 678.1000044390094,
+      "finished_at": "20261119T131816Z"
+    },
+    "vehicle": {
+      "experiment_id": "20261119_laga_lggd_a0_s42",
+      "dataset": "Drone-Anomaly",
+      "variant": "lggd_no_laga",
+      "seed": 42,
+      "scene": "vehicle",
+      "epochs": 30,
+      "guard": {
+        "variant": "lggd_no_laga",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": false,
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null,
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.0
+        },
+        "trainable_parameters": 30248000
+      },
+      "run_id": "20261119T070849Z_da_lggd_no_laga_s42_s43_s44",
+      "source_commit": "c43f0d23360cce0b574eeeb3589ac793e00fb548",
+      "code_hashes": {
+        "model/lggd_no_laga.py": "11a62c1411cb03a0b794a334a4e490adc9c2dcc433721242499ec854d32a1948",
+        "model/publication_rd.py": "89d94bf1e6eef75561ef0fe0073b3775482cce227efbe0f33deebafc2e009a1d",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "model/loss.py": "498d81e8963f58666d291788e8d9fcefe55adb4893ff053b161ea5ab2452bd13",
+        "scripts/da_laga_scene.py": "05dcdd675704ed9722915164110dc95cc4b0f1f24a7057da6506406b882026f7",
+        "scripts/da_laga_scheduler.py": "a72ab11ef4265c0691db9d99dd5f65a6da2111037b979c2d01f66c3406702ac6",
+        "scripts/preflight_da_laga.py": "32bd969625a7825d1633cff05b9c61edbd41f944a2c00e8431494976604fb822",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/config.json": "2330d2851f8008a7c8d1c352c31764a94ff24cfccd552c7bc5639e8336f384c2",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s42/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/config.json": "92c49858b3322a775c0ed481f808516f2f325019f31de432a0e5c92446e8678b",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s43/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/config.json": "f8dcba383de0bc7f03302240cdfb2ac1c0604fbf63326dde953ed531bbf20a65",
+        "experiments/da/aggregation/20261119_laga_lggd_a0_s44/scripts/run_scene.py": "63fb2d56bb73ea6be7c8677f53cb83fdadadf3de8324039dcb2a0800aed00061"
+      },
+      "baseline": "ablation/da/publication/20261117_hap_rd_s42",
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+      "train_frames": 5266,
+      "test_videos": 2,
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "match": "ablation_match: top5 patch cosine; alpha0 equal group means; train=batch mean, test=frame score",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "auc_percent": 61.03211406778192,
+      "eer": 0.38072289156626504,
+      "frames": 2633,
+      "positive_frames": 973,
+      "train_loss": 0.06594521956654584,
+      "checkpoint": "ckpt/vehicle_final.pth",
+      "checkpoint_sha256": "aef76e2888d898e50635791055f8c669c07a3cf4ab25beba0d97f90f383f83ac",
+      "elapsed_s": 1092.5334788949694,
+      "finished_at": "20261119T123056Z"
+    }
+  },
+  "match": "ablation_match alpha0 in both training and test"
+}
