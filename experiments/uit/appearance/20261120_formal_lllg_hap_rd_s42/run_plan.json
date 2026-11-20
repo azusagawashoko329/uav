@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "dataset": "uit",
+  "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+  "source_commit": null,
+  "experiments": [
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42",
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_s43",
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_s44",
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_lite_s42",
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_lite_s43",
+    "experiments/uit/appearance/20261120_formal_lllg_hap_rd_lite_s44"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "new_experiments": 6,
+  "new_jobs": 6,
+  "scheduler": "scripts/uit_hap_lllg_scheduler.py",
+  "policy": "fresh whole-UIT,45ep,LLLG+GATE,alpha0.5,force two GPUs"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "20261120_formal_lllg_hap_rd_lite_s42",
+  "path": "experiments/uit/appearance/20261120_formal_lllg_hap_rd_lite_s42",
+  "dataset": "uit",
+  "family": "appearance",
+  "variant": "hap_rd_lite",
+  "status": "planned",
+  "source_commit": null,
+  "scripts": [
+    "scripts/run_uit.py"
+  ],
+  "runs": [],
+  "result_summary": null,
+  "limitations": [
+    "UIT official train/test overlap retained; no deduplication.",
+    "Whole-dataset model, not independent per-scene training.",
+    "Fresh LLLG+GATE formal model; historical GLLL V2/V5 are separate experiments."
+  ],
+  "review_status": "passed_preflight",
+  "review_report": "../20261120_formal_lllg_hap_rd_s42/preflight.json"
+}

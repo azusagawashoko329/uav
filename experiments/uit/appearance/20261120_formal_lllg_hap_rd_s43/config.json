@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "id": "20261120_formal_lllg_hap_rd_s43",
+  "dataset": "uit",
+  "family": "appearance",
+  "variant": "hap_rd",
+  "seed": 43,
+  "model": {
+    "label": "HAP-RD",
+    "student_width": 768,
+    "pdfb_hidden": 512,
+    "podp": false,
+    "parameters": 30248000,
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "block_order": "LLLG",
+    "student_blocks": 4,
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "attention_heads": 8,
+    "reconstruction_heads": 12,
+    "teacher_width": 768,
+    "code_dim": 64,
+    "tap_norm": true,
+    "patches": 256,
+    "topk": 5,
+    "alpha": 0.5
+  },
+  "training": {
+    "epochs": 45,
+    "batch": 64,
+    "workers": 8,
+    "image_size": 256,
+    "max_lr": 0.0005,
+    "weight_decay": 0.05,
+    "optimizer": "AdamW",
+    "scheduler": "OneCycleLR",
+    "deterministic": true,
+    "drop_last": true,
+    "data_root": "/data1/data8tb/liangyuxuan/dataset/UIT-ADrone",
+    "checkpoint_epochs": [
+      10,
+      20,
+      30,
+      40,
+      45
+    ]
+  },
+  "evaluation": {
+    "match": "pldd_match",
+    "topk": 5,
+    "alpha": 0.5,
+    "batch": 32,
+    "workers": 4,
+    "score_direction": "larger=more anomalous",
+    "aggregation": "concat all 51 test videos; one global AUC/EER",
+    "labels": "test/test_frame_mask/<video>.npy; 1=anomaly",
+    "official_overlap_retained": true
+  },
+  "data_protocol": {
+    "train": "41 normal videos / 59186 frames: train/frames/<video>/*.jpg",
+    "test": "51 full videos / 147005 frames: test/frames/<video>/*.jpg",
+    "labels": "test/test_frame_mask/<video>.npy; 63485 anomaly frames",
+    "official_overlap_retained": true
+  },
+  "initialization": "from scratch; no model checkpoint or result reused",
+  "model_entry": "model/hap_lllg.py:build_hap_lllg",
+  "score_entry": "model/hap_lllg.py:pldd_match"
+}

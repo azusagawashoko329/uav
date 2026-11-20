@@ -1,6 +1,6 @@
 # 实验导航
 
-共 155 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 161 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 ## 论文模型命名
 
@@ -17,7 +17,7 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
 | `da` | `gating` | 2 | [查看](#da-gating) |
-| `uit` | `appearance` | 17 | [查看](#uit-appearance) |
+| `uit` | `appearance` | 23 | [查看](#uit-appearance) |
 
 ## da / aggregation
 
@@ -196,6 +196,12 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
+| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
 | [20261030_uit_4block_gl192_retry2_s42](uit/appearance/20261030_uit_4block_gl192_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_gl768_retry2_s42](uit/appearance/20261030_uit_4block_gl768_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_plain_retry2_s42](uit/appearance/20261030_uit_4block_plain_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |

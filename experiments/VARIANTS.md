@@ -119,3 +119,7 @@ AUC 是单 seed42、45 epoch 的 UIT 结果，只用于识别本次矩阵，不�
 `lggd_no_laga` / HAP-RD w/o LAGA（别名d-new-ablation），不是正式模型。固定版本 `pub_lggd_without_laga_20261119`，LLLG+gate、width768、hidden512、12 taps/heads、无PODP，训练及测试match的α=0。仅α不同于HAP-RD；[seed42与三种子运行计划](da/aggregation/20261119_laga_lggd_a0_s42/README.md)。独立代码入口 `model/lggd_no_laga.py`，不修改八配置论文链或旧V0–V5。
 
 该补跑已完成：[三seed结果与LAGA模板差异](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)。α=0的LLLG+gate平均AUC为85.8234%，α=0.5为85.6552%；正式模型及历史结果定义保持原样。
+
+## UIT 正式HAP-RD / Lite三种子（2026-11-20）
+
+[HAP-RD及HAP-RD-Lite的UIT三seed计划](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md)：均为LLLG+GATE、正式α=0.5，独立新模型与训练入口，每个45epoch，六个完整UIT模型。旧V2/V5的GLLL与历史指标继续保留。

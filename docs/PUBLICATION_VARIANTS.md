@@ -132,3 +132,11 @@ B、C、D、F1、F2作为非正式论文模型的过程消融版本保存，完�
 ## LAGA 补充证据（2026-11-19）
 
 [LLLG+GATE移除LAGA的三seed比较](../ablation/da/publication/LAGA_SUPPLEMENT.md)已完成。α=0平均AUC为85.8234%，α=0.5为85.6552%，EER也由0.189799升至0.192889；不支持在当前LLLG模板上宣称LAGA稳定提升。该负向证据归档为过程消融，尚不改变本文件的正式模型α=0.5定义。
+
+## UIT-ADrone 正式LLLG三种子补跑（2026-11-20）
+
+HAP-RD与HAP-RD-Lite各seed42/43/44，从头训练共6个完整UIT模型，每个45epoch。独立模型入口 `model/hap_lllg.py` 固定GLMB→GLMB→GLMB→GGMB及12个独立反向重建头，配套新训练/评分入口 `scripts/uit_hap_lllg_runner.py`；运行代码只复用冻结教师骨干，不调用历史V2/V5、student/bottleneck或loss接口。旧UIT V2/V5为GLLL，仍作为历史实验保存。
+
+本轮保持正式PLDD的Top-5、四组α=0.5；全模型width768、hidden512、无PODP，Lite为width192、hidden128、共享可学习Rank-2 PODP。沿用UIT官方41/51视频划分和全测试帧global AUC/EER。
+
+[六任务计划与核验入口](../experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md)。训练前检查实际LLLG模块、FFN、配对路由、PODP梯度和训练/测试match，运行源码提交由调度器在干净HEAD绑定。
