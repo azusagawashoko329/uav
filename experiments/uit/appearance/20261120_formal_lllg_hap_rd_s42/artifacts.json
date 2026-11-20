@@ -15,14 +15,14 @@
     },
     {
       "path": "run_plan.json",
-      "producer_script": "scripts/prepare_uit_hap_lllg.py",
+      "producer_script": "scripts/uit_hap_lllg_scheduler.py",
       "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
       "inputs": [
         "config.json"
       ],
       "status": "present",
-      "size_bytes": 755,
-      "sha256": "5b932c078707157fc16624669e6354e2d14998a5dc70a2b3cfae8efd31ea5eb0",
+      "size_bytes": 793,
+      "sha256": "32856f0131e8abbfd5b0551062f973b3978590cb3850604ed23d1cafcab5de16",
       "storage": "git"
     },
     {
@@ -47,6 +47,42 @@
       "status": "present",
       "size_bytes": 410,
       "sha256": "033e221c4857b21a9ab8bdc2c9d6a8fb918aff51b8234a28d9ed2b3c0af61593",
+      "storage": "git"
+    },
+    {
+      "path": "logs/run.log",
+      "producer_script": "scripts/uit_hap_lllg_runner.py",
+      "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 3769,
+      "sha256": "28df411e030fda5291e8df1c610f5ffb189993bcfc82eca13e7cfdb34555aaaf",
+      "storage": "git"
+    },
+    {
+      "path": "launch.json",
+      "producer_script": "detached launch verification",
+      "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 3905,
+      "sha256": "9dbefec82ea6daeaff7d007a9fd04e7e2ef33941f2b52a15ea80480c568e51e2",
+      "storage": "git"
+    },
+    {
+      "path": "logs/scheduler_20261120T061731Z_uit_hap_lllg_s42_s43_s44.jsonl",
+      "producer_script": "scripts/uit_hap_lllg_scheduler.py",
+      "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 2105,
+      "sha256": "0d7295769dc05f1f5e931ed60a17f957ad4683ec3fcce37e2a8a85846f31ca6a",
       "storage": "git"
     }
   ]

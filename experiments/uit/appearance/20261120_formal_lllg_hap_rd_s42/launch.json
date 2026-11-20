@@ -1,0 +1,166 @@
+{
+  "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+  "scheduler_pid": 3241705,
+  "source_commit": "992c9950804c45bbf9aec3302764594a29ed992b",
+  "command": [
+    "/home/lyx/miniconda3/envs/DMAD/bin/python",
+    "scripts/uit_hap_lllg_scheduler.py",
+    "--manifest",
+    "/data1/data8tb/liangyuxuan/code/uav/experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42/run_plan.json"
+  ],
+  "stdout_debug": "/tmp/20261120T061731Z_uit_hap_lllg_s42_s43_s44.scheduler.stdout.log",
+  "new_experiments": 6,
+  "epochs_each": 45,
+  "dataset": "UIT-ADrone",
+  "detached_requested": true,
+  "scheduler_ppid": 1,
+  "scheduler_session_id": 3241705,
+  "detached_verified": true,
+  "started_at": "20261120T062019Z",
+  "active_model_checks": [
+    {
+      "seed": 42,
+      "guard": {
+        "label": "HAP-RD",
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "podp": false,
+        "parameters": 30248000,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null
+      },
+      "teacher_state_sha256": "99a3d670f8ac0849d9d5970bdaeb6cf024e655648559220707128ed3dc34f00c",
+      "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+      "log": "experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42/logs/run.log",
+      "epoch_lines": []
+    },
+    {
+      "seed": 43,
+      "guard": {
+        "label": "HAP-RD",
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "podp": false,
+        "parameters": 30248000,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null
+      },
+      "teacher_state_sha256": "99a3d670f8ac0849d9d5970bdaeb6cf024e655648559220707128ed3dc34f00c",
+      "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+      "log": "experiments/uit/appearance/20261120_formal_lllg_hap_rd_s43/logs/run.log",
+      "epoch_lines": []
+    }
+  ]
+}

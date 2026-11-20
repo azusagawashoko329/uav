@@ -196,12 +196,12 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `planned` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
 | [20261030_uit_4block_gl192_retry2_s42](uit/appearance/20261030_uit_4block_gl192_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_gl768_retry2_s42](uit/appearance/20261030_uit_4block_gl768_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_plain_retry2_s42](uit/appearance/20261030_uit_4block_plain_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
