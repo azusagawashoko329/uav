@@ -1,0 +1,549 @@
+{
+  "status": "passed",
+  "experiments": 6,
+  "prediction_rows": 882030,
+  "scheduler_final": {
+    "time": "20261121T091554Z",
+    "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
+    "kind": "all_finished",
+    "completed": 6,
+    "skipped": 0,
+    "failures": []
+  },
+  "committed_source_hashes_verified": true,
+  "dataset_labels_and_order_verified": true,
+  "final_checkpoints_hash_verified_and_strict_loaded": 6,
+  "registered_checkpoints_hash_verified": 42,
+  "distinct_trained_state_signatures_across_seeds": true,
+  "global_auc_video_decomposition_verified": true,
+  "checks": [
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_s42",
+      "variant": "hap_rd",
+      "seed": 42,
+      "auc_percent": 81.79155053709853,
+      "eer": 0.2576867816091954,
+      "frames": 147005,
+      "scores_sha256": "ff5f36fb76ba287deda6fbb0882dddec19f8615e15ad3ba2e0d1e2d05f7b3ea0",
+      "checkpoint_sha256": "50bb4374e476aaadec8e18fc246f5075da6cdb376c2b1d2ba25ddb4463841c77",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD",
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "podp": false,
+        "parameters": 30248000,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null
+      },
+      "trained_state_signatures": {
+        "bottleneck": "4910e3d493e80786b22ee42b8b903adf2d5f3c0e6917e220bb452ff83abd09dc",
+        "decoder": "77ceb55ead7539f8fd94db4a0ee53704ee8e57cfd6fddf57a2a6d19083ed5831"
+      },
+      "effective_q": null
+    },
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_s43",
+      "variant": "hap_rd",
+      "seed": 43,
+      "auc_percent": 81.79163665120461,
+      "eer": 0.25700431034482757,
+      "frames": 147005,
+      "scores_sha256": "92b08c52c3a24c8f89018f6141c7c77b9b82eae2ca0373edb5cdd19785dc60c2",
+      "checkpoint_sha256": "d1bd3e9111af5107f0d79584366e0928c6968f39e32ec083298e28408532c028",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD",
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "podp": false,
+        "parameters": 30248000,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null
+      },
+      "trained_state_signatures": {
+        "bottleneck": "e88283ab66ea77cd4e56a01ab136e8e34081feeba2bf9c612c9377523f091ab8",
+        "decoder": "678e25441a4acf59ed17b1244554dabe5eedcb5bdae0f940de0a3aa9ebbcd35b"
+      },
+      "effective_q": null
+    },
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_s44",
+      "variant": "hap_rd",
+      "seed": 44,
+      "auc_percent": 81.92306727771094,
+      "eer": 0.255830938697318,
+      "frames": 147005,
+      "scores_sha256": "cd658051ca13371748d4d5daa9d74002be26fb36ca38ca020e0b3e1f59e4fb12",
+      "checkpoint_sha256": "8d04a34f1148703f6ff00de1a9c2ba2dd5c39b56e0d79e43a1eb8428884e5e0f",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD",
+        "student_width": 768,
+        "pdfb_hidden": 512,
+        "podp": false,
+        "parameters": 30248000,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": null,
+        "q_shared_across_groups": false,
+        "q_init": null
+      },
+      "trained_state_signatures": {
+        "bottleneck": "f68e7186a89eb76d5f97067b0b5348fa4c8272ffa92b8a6829fd34e0e5ff4171",
+        "decoder": "3cde888e74652c37158f6410a72e99fa9ecb760a7021b884d4a81bf4d26a538a"
+      },
+      "effective_q": null
+    },
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_lite_s42",
+      "variant": "hap_rd_lite",
+      "seed": 42,
+      "auc_percent": 75.67269507843739,
+      "eer": 0.32155172413793104,
+      "frames": 147005,
+      "scores_sha256": "90dfc78d120d88a26c5a2cdef94e34f4ba3d7661cd2b7c586c88f15e38407cf0",
+      "checkpoint_sha256": "80f2c499aa455ddaa8055349ed57d00cbeda666ad1e0d2ade25535f68643c570",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD-Lite",
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "podp": true,
+        "parameters": 3761222,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd_lite",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "seeded_random_orthonormal"
+      },
+      "trained_state_signatures": {
+        "bottleneck": "d6233e039b947f8afb49bb826d67895c56a3e39069750b9bfa2e3d15b71d5083",
+        "decoder": "c706f769cb089fc5910b72239493a55852ec5413cca5508d530fe570d84c7042"
+      },
+      "effective_q": [
+        [
+          0.6574267148971558,
+          0.09009312838315964,
+          0.7481131553649902
+        ],
+        [
+          0.5768693089485168,
+          -0.6989171504974365,
+          -0.42277246713638306
+        ]
+      ]
+    },
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_lite_s43",
+      "variant": "hap_rd_lite",
+      "seed": 43,
+      "auc_percent": 75.57134901651128,
+      "eer": 0.3233596743295019,
+      "frames": 147005,
+      "scores_sha256": "f5b784cbb809f8f9479ff223d4266d2d2c2e60cf7eb24f6c0f384f46562ce4a1",
+      "checkpoint_sha256": "ce89ed3aeb20460e4c8312d877d3431731d5845113c96c736e5a23a354c053f0",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD-Lite",
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "podp": true,
+        "parameters": 3761222,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd_lite",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "seeded_random_orthonormal"
+      },
+      "trained_state_signatures": {
+        "bottleneck": "50ecd8933e9b7dc8236d3a65555804f91f35b4299d2aa88c0fd9012534fff6c3",
+        "decoder": "d5800658507e06655ebd180c0249b0bc5bc668326747bec614f42accdac51ecf"
+      },
+      "effective_q": [
+        [
+          -0.8506342768669128,
+          -0.2137509435415268,
+          0.4803456962108612
+        ],
+        [
+          0.390561580657959,
+          0.35472649335861206,
+          0.8494885563850403
+        ]
+      ]
+    },
+    {
+      "experiment": "20261120_formal_lllg_hap_rd_lite_s44",
+      "variant": "hap_rd_lite",
+      "seed": 44,
+      "auc_percent": 75.64841099482878,
+      "eer": 0.32144396551724136,
+      "frames": 147005,
+      "scores_sha256": "1d40c77f59564acc75668d4845249b646b2e184f50436cf335fa2f6ff6bc774b",
+      "checkpoint_sha256": "a6247fd1b707ec9a63d93a330e9306841330a135e8e630c01fdc8b7a9b33d15f",
+      "checkpoint_strict_load": "passed",
+      "guard": {
+        "label": "HAP-RD-Lite",
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "podp": true,
+        "parameters": 3761222,
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "block_order": "LLLG",
+        "student_blocks": 4,
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "attention_heads": 8,
+        "reconstruction_heads": 12,
+        "teacher_width": 768,
+        "code_dim": 64,
+        "tap_norm": true,
+        "patches": 256,
+        "topk": 5,
+        "alpha": 0.5,
+        "variant": "hap_rd_lite",
+        "observed_block_types": [
+          "GLMB",
+          "GLMB",
+          "GLMB",
+          "GGMB"
+        ],
+        "routes": {
+          "0": [
+            9,
+            10,
+            11
+          ],
+          "1": [
+            6,
+            7,
+            8
+          ],
+          "2": [
+            3,
+            4,
+            5
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ]
+        },
+        "q_shape": [
+          2,
+          3
+        ],
+        "q_shared_across_groups": true,
+        "q_init": "seeded_random_orthonormal"
+      },
+      "trained_state_signatures": {
+        "bottleneck": "8c2f46b20ce525aad6690ec28e706a5ed30603e9b7fbc41a7fafaca458f7bfc7",
+        "decoder": "e77c23e1ea2bdfbe842355c02d9c595d9cc20887cc06b5ec38e41aa549851183"
+      },
+      "effective_q": [
+        [
+          -0.7212846875190735,
+          -0.6523453593254089,
+          0.23279589414596558
+        ],
+        [
+          0.32003694772720337,
+          -0.611956000328064,
+          -0.7232469916343689
+        ]
+      ]
+    }
+  ]
+}

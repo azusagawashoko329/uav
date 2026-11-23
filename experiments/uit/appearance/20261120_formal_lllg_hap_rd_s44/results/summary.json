@@ -1,0 +1,74 @@
+{
+  "dataset": "UIT-ADrone",
+  "variant": "hap_rd",
+  "seed": 44,
+  "auc_percent": 81.92306727771094,
+  "eer": 0.255830938697318,
+  "frames": 147005,
+  "match": "pldd_match top5 patch cosine, four groups alpha0.5; training=batch mean, test=frame score",
+  "guard": {
+    "label": "HAP-RD",
+    "student_width": 768,
+    "pdfb_hidden": 512,
+    "podp": false,
+    "parameters": 30248000,
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "block_order": "LLLG",
+    "student_blocks": 4,
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "attention_heads": 8,
+    "reconstruction_heads": 12,
+    "teacher_width": 768,
+    "code_dim": 64,
+    "tap_norm": true,
+    "patches": 256,
+    "topk": 5,
+    "alpha": 0.5,
+    "variant": "hap_rd",
+    "observed_block_types": [
+      "GLMB",
+      "GLMB",
+      "GLMB",
+      "GGMB"
+    ],
+    "routes": {
+      "0": [
+        9,
+        10,
+        11
+      ],
+      "1": [
+        6,
+        7,
+        8
+      ],
+      "2": [
+        3,
+        4,
+        5
+      ],
+      "3": [
+        0,
+        1,
+        2
+      ]
+    },
+    "q_shape": null,
+    "q_shared_across_groups": false,
+    "q_init": null
+  }
+}

@@ -140,3 +140,7 @@ HAP-RD与HAP-RD-Lite各seed42/43/44，从头训练共6个完整UIT模型，每�
 本轮保持正式PLDD的Top-5、四组α=0.5；全模型width768、hidden512、无PODP，Lite为width192、hidden128、共享可学习Rank-2 PODP。沿用UIT官方41/51视频划分和全测试帧global AUC/EER。
 
 [六任务计划与核验入口](../experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md)。训练前检查实际LLLG模块、FFN、配对路由、PODP梯度和训练/测试match，运行源码提交由调度器在干净HEAD绑定。
+
+## UIT正式三种子完成汇总（2026-11-23归档）
+
+[结果与核验](../experiments/uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)：六个LLLG+GATE实验均完成45epoch，训练与测试均为Top-5/四组α=0.5 PLDD。HAP-RD全局AUC为81.8354±0.0759%，EER为0.256841±0.000939；Lite为75.6308±0.0529%，EER为0.322118±0.001076。Lite减少87.57%的可训练参数，但三个种子均降低AUC，平均损失6.2046个百分点。当前比较同时改变width、PDFB hidden和PODP，不是PODP单因素消融。保留历史GLLL V2/V5来源与结果。

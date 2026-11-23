@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "dataset": "uit",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "models": {
+    "hap_rd": {
+      "label": "HAP-RD",
+      "parameters": 30248000,
+      "auc_percent": {
+        "mean": 81.83541815533803,
+        "sample_sd": 0.07590637880617361,
+        "by_seed": {
+          "42": 81.79155053709853,
+          "43": 81.79163665120461,
+          "44": 81.92306727771094
+        }
+      },
+      "eer": {
+        "mean": 0.2568406768837803,
+        "sample_sd": 0.0009386800096796176,
+        "by_seed": {
+          "42": 0.2576867816091954,
+          "43": 0.25700431034482757,
+          "44": 0.255830938697318
+        }
+      }
+    },
+    "hap_rd_lite": {
+      "label": "HAP-RD-Lite",
+      "parameters": 3761222,
+      "auc_percent": {
+        "mean": 75.63081836325915,
+        "sample_sd": 0.05291390725642219,
+        "by_seed": {
+          "42": 75.67269507843739,
+          "43": 75.57134901651128,
+          "44": 75.64841099482878
+        }
+      },
+      "eer": {
+        "mean": 0.3221184546615581,
+        "sample_sd": 0.0010762772310846027,
+        "by_seed": {
+          "42": 0.32155172413793104,
+          "43": 0.3233596743295019,
+          "44": 0.32144396551724136
+        }
+      }
+    }
+  },
+  "lite_minus_full": {
+    "auc_delta_pp": {
+      "mean": -6.204599792078881,
+      "sample_sd": 0.07907626389384517,
+      "by_seed": {
+        "42": -6.1188554586611446,
+        "43": -6.220287634693335,
+        "44": -6.274656282882162
+      }
+    },
+    "eer_delta": {
+      "mean": 0.06527777777777778,
+      "sample_sd": 0.0012786100645797382,
+      "by_seed": {
+        "42": 0.06386494252873565,
+        "43": 0.06635536398467434,
+        "44": 0.06561302681992337
+      }
+    }
+  },
+  "aggregation": "global concatenated test-frame AUC/EER per seed; three-seed mean and sample SD, ddof=1",
+  "run_source_commit": "992c9950804c45bbf9aec3302764594a29ed992b",
+  "split": {
+    "train_videos": 41,
+    "train_frames": 59186,
+    "test_videos": 51,
+    "test_frames": 147005,
+    "positive_frames": 63485,
+    "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+    "official_overlap_retained": true
+  },
+  "parameter_reduction_percent": 87.56538614123248,
+  "historical_seed42": [
+    {
+      "label": "HAP-RD",
+      "source": "experiments/uit/appearance/20261104_variant_matrix_v2_rd_s4_t12_gl768_h512_s42/results/uit_matched.json",
+      "sha256": "effa7b4aee2107b6ddda95450d9da57a3cfd5e9b1a5995ede0a9f2ed7d629b76",
+      "old_auc": 81.73582646872268,
+      "new_auc": 81.79155053709853,
+      "auc_delta_pp": 0.0557240683758522,
+      "old_eer": 0.25859674329501914,
+      "new_eer": 0.2576867816091954
+    },
+    {
+      "label": "HAP-RD-Lite",
+      "source": "experiments/uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/results/uit_matched.json",
+      "sha256": "18524a4f5e97361890f3d6abfb7dca7995d6d73bc0f3e6d12c3fb48e9114c022",
+      "old_auc": 75.58073548236119,
+      "new_auc": 75.67269507843739,
+      "auc_delta_pp": 0.09195959607619386,
+      "old_eer": 0.32341954022988506,
+      "new_eer": 0.32155172413793104
+    }
+  ],
+  "largest_negative_video_contributions": [
+    {
+      "video": "DJI_0105",
+      "positive_frames": 2955,
+      "seed42_lite_minus_full_contribution_pp": -1.2462955563612481,
+      "seed43_lite_minus_full_contribution_pp": -1.2795906909406607,
+      "seed44_lite_minus_full_contribution_pp": -1.3155736285791104,
+      "mean_lite_minus_full_contribution_pp": -1.280486625293673
+    },
+    {
+      "video": "DJI_0078",
+      "positive_frames": 2789,
+      "seed42_lite_minus_full_contribution_pp": -0.9204254832725138,
+      "seed43_lite_minus_full_contribution_pp": -0.9981802124193218,
+      "seed44_lite_minus_full_contribution_pp": -0.9270289980859512,
+      "mean_lite_minus_full_contribution_pp": -0.9485448979259289
+    },
+    {
+      "video": "DJI_0094-033",
+      "positive_frames": 2084,
+      "seed42_lite_minus_full_contribution_pp": -0.4634320013144564,
+      "seed43_lite_minus_full_contribution_pp": -0.4672407211013434,
+      "seed44_lite_minus_full_contribution_pp": -0.4739397988090832,
+      "mean_lite_minus_full_contribution_pp": -0.46820417374162765
+    },
+    {
+      "video": "DJI_0090-035",
+      "positive_frames": 1634,
+      "seed42_lite_minus_full_contribution_pp": -0.30466000468629706,
+      "seed43_lite_minus_full_contribution_pp": -0.29343798441542146,
+      "seed44_lite_minus_full_contribution_pp": -0.3201498690975062,
+      "mean_lite_minus_full_contribution_pp": -0.3060826193997416
+    },
+    {
+      "video": "DJI_0089-020",
+      "positive_frames": 1980,
+      "seed42_lite_minus_full_contribution_pp": -0.27505199096718513,
+      "seed43_lite_minus_full_contribution_pp": -0.26450307898477865,
+      "seed44_lite_minus_full_contribution_pp": -0.2674976659041248,
+      "mean_lite_minus_full_contribution_pp": -0.2690175786186962
+    }
+  ],
+  "scheduler_started_local": "2026-11-20 14:20:19",
+  "scheduler_finished_local": "2026-11-21 17:15:54",
+  "scheduler_wall_hours": 26.926388888888887
+}

@@ -27,3 +27,9 @@ Teacher为冻结DINOv3 ViT-B/16，taps0..11，输入256×256（256 patches），
 调度器关闭stdin、start_new_session=True，忽略SIGHUP；logs/run.log为唯一训练日志，恢复追加。中断后同目录恢复完整epoch；45epoch已完成时可从resume继续测试。已完成实验跳过，失败/中止证据保留。代码、小型CSV/JSON、日志入Git；权重留本地并由Git忽略，在artifacts.json登记大小与哈希。
 
 [精确配置](config.json)，[结构版本](architecture_version.json)，[运行记录](record.json)。状态以record为准。
+
+## 完成结果
+
+状态：completed。45 epoch及51个测试视频完成；全局match AUC **75.5713%**，EER **0.323360**。
+
+[三种子汇总与模型比较](../20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](results/summary.md)，[复核记录](results/review.md)。

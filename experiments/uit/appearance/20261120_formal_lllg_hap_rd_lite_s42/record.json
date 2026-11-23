@@ -5,7 +5,7 @@
   "dataset": "uit",
   "family": "appearance",
   "variant": "hap_rd_lite",
-  "status": "running",
+  "status": "completed",
   "source_commit": "992c9950804c45bbf9aec3302764594a29ed992b",
   "scripts": [
     "scripts/run_uit.py"
@@ -15,9 +15,9 @@
       "run_id": "20261120T061731Z_uit_hap_lllg_s42_s43_s44",
       "source_commit": "992c9950804c45bbf9aec3302764594a29ed992b",
       "seed": 42,
-      "status": "running",
+      "status": "completed",
       "started_at": "20261120T062019Z",
-      "ended_at": null,
+      "ended_at": "20261121T022142Z",
       "command": [
         "/home/lyx/miniconda3/envs/DMAD/bin/python",
         "scripts/uit_hap_lllg_scheduler.py",
@@ -39,15 +39,19 @@
             "name": "NVIDIA RTX 5880 Ada Generation"
           }
         }
-      }
+      },
+      "checkpoint_sha256": "80f2c499aa455ddaa8055349ed57d00cbeda666ad1e0d2ade25535f68643c570",
+      "task_started_at": "20261120T173257Z",
+      "task_log": "logs/run.log"
     }
   ],
-  "result_summary": null,
+  "result_summary": "results/summary.md",
   "limitations": [
     "UIT official train/test overlap retained; no deduplication.",
     "Whole-dataset model, not independent per-scene training.",
     "Fresh LLLG+GATE formal model; historical GLLL V2/V5 are separate experiments."
   ],
-  "review_status": "passed_preflight",
-  "review_report": "../20261120_formal_lllg_hap_rd_s42/preflight.json"
+  "review_status": "passed_postrun_audit",
+  "review_report": "../20261120_formal_lllg_hap_rd_s42/results/validation.json",
+  "weight_files_local": 7
 }

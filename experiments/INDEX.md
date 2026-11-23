@@ -6,6 +6,8 @@
 
 DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 个实验和 168 个场景结果已完成；[汇总分析与矩阵](../ablation/da/publication/summary.md)，[配置与核验入口](../ablation/da/publication/README.md)。
 
+UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总与复核](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)。
+
 论文模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的已确认配置见[命名规范](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
 
 | 数据集 | 方向 | 数量 | 入口 |
@@ -196,12 +198,12 @@ DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 �
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed42 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed43 | 1 | 0 |
-| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `running` | UIT正式LLLG+GATE，45ep，seed44 | 1 | 0 |
+| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/summary.md) | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s43/results/summary.md) | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s44/results/summary.md) | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/results/summary.md) | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/results/summary.md) | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/results/summary.md) | 1 | 7 |
 | [20261030_uit_4block_gl192_retry2_s42](uit/appearance/20261030_uit_4block_gl192_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_gl768_retry2_s42](uit/appearance/20261030_uit_4block_gl768_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_plain_retry2_s42](uit/appearance/20261030_uit_4block_plain_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
