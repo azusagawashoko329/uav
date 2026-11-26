@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 2392,
+      "sha256": "765930dedd9c0612b35caa13fbc85ba84f533d70d51c9dde08debae95829b70c",
+      "storage": "git"
+    },
+    {
+      "path": "architecture_version.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1082,
+      "sha256": "8c027667c3a8dd0c6263a8e9d124cf9f2840ca4a4550713c518b56877ae34dba",
+      "storage": "git"
+    },
+    {
+      "path": "config.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1969,
+      "sha256": "f2f937dece02fefbd8e501cd2da1a05a72e19579ad22876eeb041cba4376e0be",
+      "storage": "git"
+    },
+    {
+      "path": "record.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 689,
+      "sha256": "ca36686601d31fad0c917ed954ceb3dee0eebc98c5d328c057c92fdb70510557",
+      "storage": "git"
+    },
+    {
+      "path": "scripts/run_uit.py",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 262,
+      "sha256": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db",
+      "storage": "git"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "dataset": "uit",
+  "run_id": "20261127T000000Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+  "source_commit": null,
+  "experiments": [
+    "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42",
+    "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43",
+    "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "scheduler": "scripts/uit_hap_rd_lite_per_q_scheduler.py",
+  "policy": "force two physical GPUs; one whole-UIT task per GPU; immediate refill; ignore occupancy"
+}

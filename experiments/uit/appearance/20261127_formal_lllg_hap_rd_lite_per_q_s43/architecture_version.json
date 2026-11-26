@@ -1,0 +1,62 @@
+{
+  "version_id": "formal_uit_lllg_hap_rd_lite_per_q_20261127",
+  "formal_model": "hap_rd_lite_per_q",
+  "model": {
+    "label": "HAP-RD-Lite-Per-Q",
+    "student_width": 192,
+    "pdfb_hidden": 128,
+    "podp": true,
+    "q_groups": 4,
+    "parameters": 3761240,
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "block_order": "LLLG",
+    "student_blocks": 4,
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "attention_heads": 8,
+    "reconstruction_heads": 12,
+    "teacher_width": 768,
+    "code_dim": 64,
+    "tap_norm": true,
+    "patches": 256,
+    "topk": 5,
+    "alpha": 0.5
+  },
+  "teacher_targets_by_stage": [
+    [
+      9,
+      10,
+      11
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      0,
+      1,
+      2
+    ]
+  ],
+  "implementation": "dedicated model/hap_lllg_per_q.py and runner; no shared-Q runtime entry",
+  "podp": "four independent learnable 2x3 Q matrices, seeded random orthonormal init, forward Gram-Schmidt"
+}

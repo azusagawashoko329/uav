@@ -123,5 +123,6 @@ AUC 是单 seed42、45 epoch 的 UIT 结果，只用于识别本次矩阵，不�
 ## UIT 正式HAP-RD / Lite三种子（2026-11-20）
 
 [HAP-RD及HAP-RD-Lite的UIT三seed计划](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md)：均为LLLG+GATE、正式α=0.5，独立新模型与训练入口，每个45epoch，六个完整UIT模型。旧V2/V5的GLLL与历史指标继续保留。
+[HAP-RD-Lite-Per-Q UIT补充消融](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/README.md)：在共享-Q正式Lite上仅将四组Q改为四个独立可学习Q，保持LLLG+GATE、训练和PLDD测试口径不变。
 
 UIT正式LLLG三seed已完成并[归档汇总](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)：HAP-RD 81.8354±0.0759% AUC，Lite 75.6308±0.0529%；使用全测试帧global AUC/EER，区别于DA七场景宏平均。历史GLLL与新正式模型结果不混用。

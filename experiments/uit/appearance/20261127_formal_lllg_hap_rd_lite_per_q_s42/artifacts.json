@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 2392,
+      "sha256": "adb5ccab67deeb225102d1d85bd565b66975cdffa60cc40bbd4f4695b2471180",
+      "storage": "git"
+    },
+    {
+      "path": "architecture_version.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1082,
+      "sha256": "8c027667c3a8dd0c6263a8e9d124cf9f2840ca4a4550713c518b56877ae34dba",
+      "storage": "git"
+    },
+    {
+      "path": "config.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1969,
+      "sha256": "5f376137e078ad43874214188bac5abfcb48cd781590af318dae5da99a13a2f4",
+      "storage": "git"
+    },
+    {
+      "path": "record.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 689,
+      "sha256": "f0844f51186805dcb9351a9ac4c0f120653c479e486e4c5b465014d0dd50f4cd",
+      "storage": "git"
+    },
+    {
+      "path": "scripts/run_uit.py",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 262,
+      "sha256": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db",
+      "storage": "git"
+    },
+    {
+      "path": "run_plan.json",
+      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 585,
+      "sha256": "9821e3a8259847cd9d4bd5b3111dd515ec5b8dcc5bc46d52d47e2dcfa6602930",
+      "storage": "git"
+    },
+    {
+      "path": "preflight.json",
+      "producer_script": "scripts/preflight_uit_hap_rd_lite_per_q.py",
+      "run_id": "planning",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 7196,
+      "sha256": "34aa504163e04d4f681a466c5c7e71ac613bcf855db5c9533dbd217494b1cb05",
+      "storage": "git"
+    }
+  ]
+}

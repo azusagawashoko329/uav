@@ -1,6 +1,6 @@
 # 实验导航
 
-共 164 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
+共 167 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
@@ -11,7 +11,7 @@
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
 | `da` | `fusion` | 2 | [查看](#da-fusion) |
 | `da` | `gating` | 2 | [查看](#da-gating) |
-| `uit` | `appearance` | 23 | [查看](#uit-appearance) |
+| `uit` | `appearance` | 26 | [查看](#uit-appearance) |
 
 ## da / aggregation
 
@@ -213,6 +213,9 @@
 | [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s42](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s43](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s44](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/README.md) | `planned` | 未找到 | 1 | 0 |
 | [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `completed` | 未找到 | 1 | 7 |

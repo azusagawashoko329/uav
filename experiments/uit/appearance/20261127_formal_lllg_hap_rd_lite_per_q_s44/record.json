@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "20261127_formal_lllg_hap_rd_lite_per_q_s44",
+  "path": "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44",
+  "dataset": "uit",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "variant": "hap_rd_lite_per_q",
+  "scripts": [
+    "scripts/run_uit.py"
+  ],
+  "runs": [],
+  "result_summary": "results/summary.md",
+  "limitations": [
+    "Official UIT train/test overlap retained; no deduplication.",
+    "Whole-dataset model, not independent per-scene training.",
+    "Four independent Q matrices add 18 trainable scalars over shared-Q HAP-RD-Lite.",
+    "Three seeds support descriptive comparison only."
+  ]
+}
