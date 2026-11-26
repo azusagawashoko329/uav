@@ -1,4 +1,77 @@
 {
   "schema_version": 2,
-  "artifacts": []
+  "artifacts": [
+    {
+      "path": "results/crossroads.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 4458,
+      "sha256": "2077f94cfb898935e444a94203a1072ae0c87587d83359be860e6f0a95ac1104",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_scores.csv",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 305201,
+      "sha256": "ecca51f52713ca279eff271585f9c6061334143a3fd86ce650d7a9de56af05c3",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "results/crossroads_status.json",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 137,
+      "sha256": "c11f81d18d7a27f11da3fcf355b0c77ac8f2e396b4d831668c363aaa51e5d17d",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "logs/crossroads.log",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 8068,
+      "sha256": "7ec6db164db71157cddd6c0472afe3bbe195b8d6e5c962ef7a1efba05bed1a9e",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/crossroads_final.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 15080531,
+      "sha256": "1892b180f901ede19ec1498e810016426b8f2064d4dc32d070db9c065144e706",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    },
+    {
+      "path": "ckpt/crossroads_resume.pth",
+      "producer_script": "scripts/da_publication_scene.py",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "status": "present",
+      "size_bytes": 45284894,
+      "sha256": "e4da343915e573a39f2481a88c70f26683bbc06a714c304db313a78beb6157b4",
+      "inputs": [
+        "config.json"
+      ],
+      "storage": "local ignored; no external backup registered"
+    }
+  ]
 }

@@ -4,13 +4,48 @@
   "path": "experiments/da/appearance/20261126_podp_q_per_group_s44",
   "dataset": "da",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": null,
+  "status": "running",
+  "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
   "variant": "hap_rd_lite_q4",
   "scripts": [
     "scripts/run_scene.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+      "status": "running",
+      "seed": 44,
+      "script": "scripts/da_publication_scheduler.py",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "scripts/da_publication_scheduler.py",
+        "--manifest",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/run_manifest.json"
+      ],
+      "started_at": "20261126T100622Z",
+      "ended_at": null,
+      "log": "logs/scheduler_20261126T093800Z_da_podp_q_per_group_s42_s43_s44.jsonl",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "scene_jobs": [
+        {
+          "scene": "crossroads",
+          "status": "completed",
+          "started_at": "20261126T105442Z",
+          "ended_at": "20261126T114026Z",
+          "log": "experiments/da/appearance/20261126_podp_q_per_group_s44/logs/crossroads.log",
+          "returncode": 0,
+          "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+          "checkpoint_sha256": "e479a4d39435f46fd2f62cfec75757d48df7cf3361e856b7f9f817f12d55c44c"
+        }
+      ],
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      }
+    }
+  ],
   "result_summary": "results/summary.md",
   "limitations": [
     "DA七场景分别训练独立模型，每个seed对应七个独立场景任务。",
