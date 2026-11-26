@@ -1,19 +1,11 @@
 # 实验导航
 
-共 161 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
-
-## 论文模型命名
-
-DA论文完整消融链（PT-RD/B/C/D/HAP-RD/F1/F2/Lite，三个seed）的 24 个实验和 168 个场景结果已完成；[汇总分析与矩阵](../ablation/da/publication/summary.md)，[配置与核验入口](../ablation/da/publication/README.md)。
-
-UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总与复核](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)。
-
-论文模型 **PT-RD / HAP-RD / HAP-RD-Lite** 的已确认配置见[命名规范](../docs/PUBLICATION_VARIANTS.md)。历史六变体见 [VARIANTS.md](VARIANTS.md)。
+共 164 个活动实验；另有 22 个已归档的中断/失败尝试，归档目录和完整记录仍保留。状态来自各目录的 `record.json`；`unknown` 表示缺证据，不表示失败。
 
 | 数据集 | 方向 | 数量 | 入口 |
 |---|---|---:|---|
 | `da` | `aggregation` | 7 | [查看](#da-aggregation) |
-| `da` | `appearance` | 86 | [查看](#da-appearance) |
+| `da` | `appearance` | 89 | [查看](#da-appearance) |
 | `da` | `audit` | 9 | [查看](#da-audit) |
 | `da` | `behavior` | 2 | [查看](#da-behavior) |
 | `da` | `boundary` | 30 | [查看](#da-boundary) |
@@ -25,13 +17,13 @@ UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261119_laga_lggd_a0_s42](da/aggregation/20261119_laga_lggd_a0_s42/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s42/results/summary.md) | 1 | 14 |
-| [20261119_laga_lggd_a0_s43](da/aggregation/20261119_laga_lggd_a0_s43/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s43/results/summary.md) | 1 | 14 |
-| [20261119_laga_lggd_a0_s44](da/aggregation/20261119_laga_lggd_a0_s44/README.md) | `completed` | [LAGA三seed比较](da/aggregation/20261119_laga_lggd_a0_s42/results/laga_comparison.md)，[seed结果](da/aggregation/20261119_laga_lggd_a0_s44/results/summary.md) | 1 | 14 |
 | [20260928_agg_explore](da/aggregation/20260928_agg_explore/RECORD.md) | `unknown` | [loss_compare.csv](da/aggregation/20260928_agg_explore/loss_compare.csv) | 10 | 0 |
 | [20261009_student_adapter_channel_s42](da/aggregation/20261009_student_adapter_channel_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261009_student_adapter_none_s42](da/aggregation/20261009_student_adapter_none_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261009_student_adapter_spatial_s42](da/aggregation/20261009_student_adapter_spatial_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261119_laga_lggd_a0_s42](da/aggregation/20261119_laga_lggd_a0_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261119_laga_lggd_a0_s43](da/aggregation/20261119_laga_lggd_a0_s43/README.md) | `completed` | 未找到 | 1 |  |
+| [20261119_laga_lggd_a0_s44](da/aggregation/20261119_laga_lggd_a0_s44/README.md) | `completed` | 未找到 | 1 |  |
 
 ## da / appearance
 
@@ -113,6 +105,9 @@ UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总
 | [20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `completed` | 未找到 | 1 |  |
+| [20261126_podp_q_per_group_s42](da/appearance/20261126_podp_q_per_group_s42/README.md) | `planned` | 未找到 | 1 |  |
+| [20261126_podp_q_per_group_s43](da/appearance/20261126_podp_q_per_group_s43/README.md) | `planned` | 未找到 | 1 |  |
+| [20261126_podp_q_per_group_s44](da/appearance/20261126_podp_q_per_group_s44/README.md) | `planned` | 未找到 | 1 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
 | [cd128](da/appearance/codedim/cd128/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/cd128/results.csv) | 1 | 1 |
@@ -198,12 +193,6 @@ UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总
 
 | 实验或实验组 | 状态 | 结果证据 | 脚本数 | 本地权重数 |
 |---|---|---|---:|---:|
-| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/summary.md) | 1 | 7 |
-| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s43/results/summary.md) | 1 | 7 |
-| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_s44/results/summary.md) | 1 | 7 |
-| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/results/summary.md) | 1 | 7 |
-| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/results/summary.md) | 1 | 7 |
-| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `completed` | [三seed比较](uit/appearance/20261120_formal_lllg_hap_rd_s42/results/multiseed_summary.md)，[单实验结果](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/results/summary.md) | 1 | 7 |
 | [20261030_uit_4block_gl192_retry2_s42](uit/appearance/20261030_uit_4block_gl192_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_gl768_retry2_s42](uit/appearance/20261030_uit_4block_gl768_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
 | [20261030_uit_4block_plain_retry2_s42](uit/appearance/20261030_uit_4block_plain_retry2_s42/README.md) | `completed` | 未找到 | 2 | 1 |
@@ -221,5 +210,11 @@ UIT正式HAP-RD / HAP-RD-Lite的六个LLLG三seed实验已完成；[完整汇总
 | [20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](uit/appearance/20261104_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](uit/appearance/20261104_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `completed` | 未找到 | 1 | 6 |
 | [20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](uit/appearance/20261104_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `completed` | 未找到 | 1 | 6 |
+| [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `completed` | 未找到 | 1 | 7 |
+| [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `completed` | 未找到 | 1 | 7 |
 
 旧路径请查 [迁移表](../docs/MIGRATION_MAP.csv)；跨分支历史见 [历史索引](../docs/LEGACY_EXPERIMENTS.md)。

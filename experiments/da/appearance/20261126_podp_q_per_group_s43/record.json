@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "20261126_podp_q_per_group_s43",
+  "path": "experiments/da/appearance/20261126_podp_q_per_group_s43",
+  "dataset": "da",
+  "family": "appearance",
+  "status": "planned",
+  "source_commit": null,
+  "variant": "hap_rd_lite_q4",
+  "scripts": [
+    "scripts/run_scene.py"
+  ],
+  "runs": [],
+  "result_summary": "results/summary.md",
+  "limitations": [
+    "DA七场景分别训练独立模型，每个seed对应七个独立场景任务。",
+    "唯一结构变化是PODP从四组共享一个2x3 Q改为四组各自一个2x3 Q，新增18个可学习标量。",
+    "每个Q以seeded random orthonormal初始化，并在前向Gram-Schmidt中保持行正交。",
+    "训练与HAP-RD-Lite基线保持30 epoch、数据划分、损失、匹配和评测口径一致。"
+  ]
+}

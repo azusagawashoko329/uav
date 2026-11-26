@@ -24,7 +24,8 @@ def main():
         g,u,n=[x.strip() for x in line.split(',')];inventory[int(g)]={'uuid':u,'name':n}
     slots=manifest['gpus']
     if len(slots)!=2 or len(set(slots))!=2 or any(g not in inventory for g in slots):raise ValueError('requires two distinct GPUs')
-    preflight=base/'publication_preflight.json';audit=event_json(preflight)
+    preflight=ROOT/manifest.get('preflight','ablation/da/publication/publication_preflight.json')
+    preflight=preflight.resolve();audit=event_json(preflight)
     if audit['status']!='passed':raise RuntimeError('preflight did not pass')
     for rel,h in audit['code_hashes'].items():
         if sha(ROOT/rel)!=h:raise RuntimeError(f'code changed after preflight: {rel}')

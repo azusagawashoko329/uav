@@ -10,6 +10,7 @@ from torch import nn
 from torch.nn import functional as F
 from .bottleneck import OCBE
 from .bottleneck_depthrank_learnable import LearnableDepthRank2OCBE
+from .bottleneck_depthrank_group_learnable import GroupLearnableDepthRank2OCBE
 from .student_structural import GlobalMixerBlock, LocalMixerBlock, GatedFFN
 
 SPECS = {
@@ -29,6 +30,8 @@ SPECS = {
                order='LLLG', ffn='gate', rank2=False, alpha=.5, params=4154432),
     'hap_rd_lite': dict(label='HAP-RD-Lite', depth=4, taps=list(range(12)), width=192, hidden=128,
                         order='LLLG', ffn='gate', rank2=True, alpha=.5, params=3761222),
+    'hap_rd_lite_q4': dict(label='HAP-RD-Lite-Q4', depth=4, taps=list(range(12)), width=192, hidden=128,
+                          order='LLLG', ffn='gate', rank2=True, q_groups=4, alpha=.5, params=3761240),
 }
 
 class StandardBlock(nn.Module):
@@ -84,8 +87,10 @@ def model_spec(name):
 def build_publication_model(name, seed):
     spec = model_spec(name)
     if spec['rank2']:
-        bottleneck = LearnableDepthRank2OCBE(n_taps=12, code_dim=64, fuse_hidden=spec['hidden'],
-                                            use_tap_norm=True, basis_init='random_orthonormal', basis_seed=seed)
+        bottleneck_cls = (GroupLearnableDepthRank2OCBE if spec.get('q_groups', 1) == 4
+                          else LearnableDepthRank2OCBE)
+        bottleneck = bottleneck_cls(n_taps=12, code_dim=64, fuse_hidden=spec['hidden'],
+                                    use_tap_norm=True, basis_init='random_orthonormal', basis_seed=seed)
     else:
         bottleneck = OCBE(n_taps=len(spec['taps']), code_dim=64, fuse_hidden=spec['hidden'], use_tap_norm=True)
     decoder = PublicationDecoder(spec)
@@ -130,17 +135,28 @@ def architecture_guard(bn, dec, name):
     if bn.fuse[0].in_features!=expected_in or bn.fuse[0].out_features!=spec['hidden']: raise RuntimeError('wrong bottleneck')
     if dec.proj_in.out_features!=spec['width'] or len(dec.heads)!=len(spec['taps']): raise RuntimeError('wrong decoder')
     if any(h.in_features!=spec['width'] or h.out_features!=768 for h in dec.heads): raise RuntimeError('wrong reconstruction head')
-    if spec['rank2'] != isinstance(bn,LearnableDepthRank2OCBE): raise RuntimeError('wrong Q mode')
+    expected_q_groups = spec.get('q_groups', 1)
+    expected_bn_cls = (GroupLearnableDepthRank2OCBE if expected_q_groups == 4
+                       else LearnableDepthRank2OCBE)
+    if spec['rank2'] != isinstance(bn, expected_bn_cls): raise RuntimeError('wrong Q mode')
     q=None
     if spec['rank2']:
         q=bn.effective_depth_basis().detach().cpu()
-        if q.shape!=(2,3) or not torch.allclose(q@q.T,torch.eye(2),atol=1e-5): raise RuntimeError('Q not row-orthonormal')
+        if expected_q_groups == 4:
+            if q.shape != (4, 2, 3) or not torch.allclose(q @ q.transpose(1, 2),
+                                                           torch.eye(2).expand(4, -1, -1),
+                                                           atol=1e-5):
+                raise RuntimeError('per-group Q not row-orthonormal')
+        elif q.shape!=(2,3) or not torch.allclose(q@q.T,torch.eye(2),atol=1e-5):
+            raise RuntimeError('Q not row-orthonormal')
     return {'variant':name,'teacher_taps':spec['taps'],'student_blocks':len(dec.blocks),
             'actual_block_order':actual_order,'ffn':spec['ffn'],'ffn_hidden_ratio':4 if spec['ffn']=='gelumlp' else 2,
             'student_width':spec['width'],'pdfb_hidden':bn.fuse[0].out_features,'code_dim':bn.code_dim,
             'tap_norm':True,'reconstruction_heads':len(dec.heads),'routes':{str(i):v for i,v in dec.routes.items()},
-            'rank2':spec['rank2'],'q_shape':[2,3] if spec['rank2'] else None,
-            'q_shared_across_groups':spec['rank2'],'q_init':'random_orthonormal' if spec['rank2'] else None,
+            'rank2':spec['rank2'],'q_shape':list(q.shape) if q is not None else None,
+            'q_groups':expected_q_groups if spec['rank2'] else None,
+            'q_shared_across_groups':spec['rank2'] and expected_q_groups == 1,
+            'q_init':'random_orthonormal' if spec['rank2'] else None,
             'match':{'error':'patch_cosine','k':5,'groups':4 if len(spec['taps'])==12 else None,'alpha':spec['alpha']},
             'trainable_parameters':sum(p.numel() for p in bn.parameters())+sum(p.numel() for p in dec.parameters())}
 
