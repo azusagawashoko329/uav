@@ -1,0 +1,148 @@
+{
+  "dataset": "Drone-Anomaly",
+  "experiment_id": "20261126_podp_q_per_group_s42",
+  "variant": "hap_rd_lite_q4",
+  "seed": 42,
+  "scene": "railway",
+  "epochs": 30,
+  "source_commit": "7756e25e98869910e3af02274124e8a55de34eed",
+  "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+  "guard": {
+    "variant": "hap_rd_lite_q4",
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "student_blocks": 4,
+    "actual_block_order": "LLLG",
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "student_width": 192,
+    "pdfb_hidden": 128,
+    "code_dim": 64,
+    "tap_norm": true,
+    "reconstruction_heads": 12,
+    "routes": {
+      "0": [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          11
+        ]
+      ],
+      "1": [
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "2": [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "3": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    "rank2": true,
+    "q_shape": [
+      4,
+      2,
+      3
+    ],
+    "q_groups": 4,
+    "q_shared_across_groups": false,
+    "q_init": "random_orthonormal",
+    "match": {
+      "error": "patch_cosine",
+      "k": 5,
+      "groups": 4,
+      "alpha": 0.5
+    },
+    "trainable_parameters": 3761240
+  },
+  "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+  "train_frames": 1206,
+  "test_videos": 1,
+  "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+  "cuda": "NVIDIA RTX A6000",
+  "environment": {
+    "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+    "torch": "2.1.0+cu121",
+    "cuda": "12.1"
+  },
+  "match": "publication_match train=batch mean; test=per-frame score",
+  "code_hashes": {
+    "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+    "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+    "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+    "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+    "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+    "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+    "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+    "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+    "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+    "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+    "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+    "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+    "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+    "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+    "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+  },
+  "auc_percent": 92.19540396010983,
+  "eer": 0.12039312039312039,
+  "frames": 882,
+  "positive_frames": 68,
+  "train_loss": 0.1811740058991644,
+  "checkpoint": "ckpt/railway_final.pth",
+  "checkpoint_sha256": "0dda6e76d1bf6473e168d5dcc5f59eefa16be597eb9e57ad7f6a9b08b700c85c",
+  "elapsed_s": 422.2704142529983,
+  "finished_at": "20261126T154343Z"
+}

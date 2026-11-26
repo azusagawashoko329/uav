@@ -4,8 +4,8 @@
   "path": "experiments/da/appearance/20261126_podp_q_per_group_s42",
   "dataset": "da",
   "family": "appearance",
-  "status": "running",
-  "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+  "status": "completed",
+  "source_commit": "7756e25e98869910e3af02274124e8a55de34eed",
   "variant": "hap_rd_lite_q4",
   "scripts": [
     "scripts/run_scene.py"
@@ -14,7 +14,7 @@
     {
       "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
       "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
-      "status": "running",
+      "status": "completed",
       "seed": 42,
       "script": "scripts/da_publication_scheduler.py",
       "command": [
@@ -24,7 +24,7 @@
         "experiments/da/appearance/20261126_podp_q_per_group_s42/run_manifest.json"
       ],
       "started_at": "20261126T100622Z",
-      "ended_at": null,
+      "ended_at": "20261126T154345Z",
       "log": "logs/scheduler_20261126T093800Z_da_podp_q_per_group_s42_s43_s44.jsonl",
       "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
       "scene_jobs": [
@@ -57,6 +57,46 @@
           "returncode": 0,
           "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
           "checkpoint_sha256": "03b2458559533b1edba7eca6129c7fd88877bea9a0983cf57d67354ef518d9e9"
+        },
+        {
+          "scene": "bike",
+          "status": "completed",
+          "started_at": "20261126T133233Z",
+          "ended_at": "20261126T135917Z",
+          "log": "experiments/da/appearance/20261126_podp_q_per_group_s42/logs/bike.log",
+          "returncode": 0,
+          "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+          "checkpoint_sha256": "7ec890cebd813ee2c4a697ffee77fecf79b3c1c1eef301ea14bde96447921734"
+        },
+        {
+          "scene": "vehicle",
+          "status": "completed",
+          "started_at": "20261126T142400Z",
+          "ended_at": "20261126T144103Z",
+          "log": "experiments/da/appearance/20261126_podp_q_per_group_s42/logs/vehicle.log",
+          "returncode": 0,
+          "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+          "checkpoint_sha256": "725c8f9b95ec44df83c599c9867d6b5d56d62945c888b83ba49eb039cf5c52c7"
+        },
+        {
+          "scene": "solar",
+          "status": "completed",
+          "started_at": "20261126T152133Z",
+          "ended_at": "20261126T152705Z",
+          "log": "experiments/da/appearance/20261126_podp_q_per_group_s42/logs/solar.log",
+          "returncode": 0,
+          "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+          "checkpoint_sha256": "958f2620fa58638e6eac56e32e30f36b889bb02a2db48cbd332263cc1b34574c"
+        },
+        {
+          "scene": "railway",
+          "status": "completed",
+          "started_at": "20261126T153634Z",
+          "ended_at": "20261126T154345Z",
+          "log": "experiments/da/appearance/20261126_podp_q_per_group_s42/logs/railway.log",
+          "returncode": 0,
+          "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+          "checkpoint_sha256": "0dda6e76d1bf6473e168d5dcc5f59eefa16be597eb9e57ad7f6a9b08b700c85c"
         }
       ],
       "environment": {

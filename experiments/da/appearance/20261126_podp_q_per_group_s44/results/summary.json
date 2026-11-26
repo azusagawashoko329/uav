@@ -1,0 +1,1045 @@
+{
+  "variant": "hap_rd_lite_q4",
+  "seed": 44,
+  "scenes": {
+    "bike": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "bike",
+      "epochs": 30,
+      "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "b11eb28c77b80f223383312f9aae38878f2510fd69e9c9b28ecedbad367ee347",
+      "train_frames": 7950,
+      "test_videos": 7,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX A6000",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 97.75304149002913,
+      "eer": 0.04496487119437939,
+      "frames": 18427,
+      "positive_frames": 12022,
+      "train_loss": 0.0980704190029252,
+      "checkpoint": "ckpt/bike_final.pth",
+      "checkpoint_sha256": "36b146860e417e54c35748cce8875201bc41bdc670574b54b969f3708740cbe7",
+      "elapsed_s": 2617.074698498007,
+      "finished_at": "20261126T145713Z"
+    },
+    "crossroads": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "crossroads",
+      "epochs": 30,
+      "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "22f9aa85b10520057bb56204a6335885ae57cd45697ca395230ced4eceb79238",
+      "train_frames": 15772,
+      "test_videos": 5,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 57.23149270798822,
+      "eer": 0.44393241167434716,
+      "frames": 6244,
+      "positive_frames": 1687,
+      "train_loss": 0.13416772541718755,
+      "checkpoint": "ckpt/crossroads_final.pth",
+      "checkpoint_sha256": "e479a4d39435f46fd2f62cfec75757d48df7cf3361e856b7f9f817f12d55c44c",
+      "elapsed_s": 2732.12895884295,
+      "finished_at": "20261126T114024Z"
+    },
+    "farmland": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "farmland",
+      "epochs": 30,
+      "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "a16bfb9b0ea4bdcbff2bfa775ad12c2bbc5647ca04a2a009b5e7bf6c599ba2c3",
+      "train_frames": 9548,
+      "test_videos": 1,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 99.56653662765497,
+      "eer": 0.04984828781967924,
+      "frames": 2387,
+      "positive_frames": 80,
+      "train_loss": 0.12229020498542978,
+      "checkpoint": "ckpt/farmland_final.pth",
+      "checkpoint_sha256": "7a74a7b1f602bdef3bfb7cd5bf4db245eea9521783725669ca9a0bcdd6e7b257",
+      "elapsed_s": 1676.101292887004,
+      "finished_at": "20261126T123755Z"
+    },
+    "highway": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "highway",
+      "epochs": 30,
+      "source_commit": "6cc1fe2add3dc7dad05d752c465bc444fea99da0",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "52f2e4d96871a4c03b1e2d5392830478ec0a3ddae4a3d55b81cd9ce5bca39941",
+      "train_frames": 9045,
+      "test_videos": 3,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX A6000",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 94.76679274961,
+      "eer": 0.14550150667240638,
+      "frames": 2820,
+      "positive_frames": 497,
+      "train_loss": 0.13216553882081458,
+      "checkpoint": "ckpt/highway_final.pth",
+      "checkpoint_sha256": "078993c0e11da9d6266a9f206a9f537055a6fb44c80390a6b98e44a4ae273485",
+      "elapsed_s": 3614.519255086081,
+      "finished_at": "20261126T141326Z"
+    },
+    "railway": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "railway",
+      "epochs": 30,
+      "source_commit": "7756e25e98869910e3af02274124e8a55de34eed",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "6dbaacdc0414715b190a43583713c61275e3210860f99a8cd8eeebee86e8736f",
+      "train_frames": 1206,
+      "test_videos": 1,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 91.78530134412487,
+      "eer": 0.12285012285012285,
+      "frames": 882,
+      "positive_frames": 68,
+      "train_loss": 0.18015139549970627,
+      "checkpoint": "ckpt/railway_final.pth",
+      "checkpoint_sha256": "296cb51a97987d9eaad11b51d4e2f2d744f0f5688d992f6c1446f14fbc01be82",
+      "elapsed_s": 257.30442036804743,
+      "finished_at": "20261126T155011Z"
+    },
+    "solar": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "solar",
+      "epochs": 30,
+      "source_commit": "7756e25e98869910e3af02274124e8a55de34eed",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "57b6d07651278f4d60d8870a95b4bd07298a0c42d81237b1674e49b83df47333",
+      "train_frames": 2848,
+      "test_videos": 3,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX 5880 Ada Generation",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 86.46240754956074,
+      "eer": 0.19240048250904704,
+      "frames": 2450,
+      "positive_frames": 792,
+      "train_loss": 0.18058682707223025,
+      "checkpoint": "ckpt/solar_final.pth",
+      "checkpoint_sha256": "346035d9e101ffbe98b914ec7a05b307a3b3adafe3c2b7808e74279df5e54d57",
+      "elapsed_s": 549.6961792360526,
+      "finished_at": "20261126T154545Z"
+    },
+    "vehicle": {
+      "dataset": "Drone-Anomaly",
+      "experiment_id": "20261126_podp_q_per_group_s44",
+      "variant": "hap_rd_lite_q4",
+      "seed": 44,
+      "scene": "vehicle",
+      "epochs": 30,
+      "source_commit": "7756e25e98869910e3af02274124e8a55de34eed",
+      "run_id": "20261126T093800Z_da_podp_q_per_group_s42_s43_s44",
+      "guard": {
+        "variant": "hap_rd_lite_q4",
+        "teacher_taps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "student_blocks": 4,
+        "actual_block_order": "LLLG",
+        "ffn": "gate",
+        "ffn_hidden_ratio": 2,
+        "student_width": 192,
+        "pdfb_hidden": 128,
+        "code_dim": 64,
+        "tap_norm": true,
+        "reconstruction_heads": 12,
+        "routes": {
+          "0": [
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              11,
+              11
+            ]
+          ],
+          "1": [
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              8
+            ]
+          ],
+          "2": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "rank2": true,
+        "q_shape": [
+          4,
+          2,
+          3
+        ],
+        "q_groups": 4,
+        "q_shared_across_groups": false,
+        "q_init": "random_orthonormal",
+        "match": {
+          "error": "patch_cosine",
+          "k": 5,
+          "groups": 4,
+          "alpha": 0.5
+        },
+        "trainable_parameters": 3761240
+      },
+      "split_fingerprint": "24f466450f1dbb318fdf3fc17498e461e29db0c391c670753d373df5236ed61f",
+      "train_frames": 5266,
+      "test_videos": 2,
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/Drone-Anomaly",
+      "cuda": "NVIDIA RTX A6000",
+      "environment": {
+        "python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+        "torch": "2.1.0+cu121",
+        "cuda": "12.1"
+      },
+      "match": "publication_match train=batch mean; test=per-frame score",
+      "code_hashes": {
+        "model/publication_rd.py": "3fe2216eab01f1c688625c9ae801b00365c88ec75ca4c2cf7375e848cef236f0",
+        "model/bottleneck.py": "02666ae398c7a7c24753e0e32acae0dba7e68dd4bca4f9b225394d483b2a881c",
+        "model/bottleneck_depthrank.py": "e7007431f796b839629b76e517305bce4ed74c8c378d59be0e5c736bd300f951",
+        "model/bottleneck_depthrank_learnable.py": "0d2cdd10800b55092f15e43aadfc3b2805ad184326482cf85f30ae452af4f835",
+        "model/bottleneck_depthrank_group_learnable.py": "567bc0e6383714235adf16d974f5c8890ed3e0af8c9bbd2946edffe4c7961241",
+        "model/student_structural.py": "c6355e5437ef8649d02a2ed3474e1e2c20e4859b7a6d6be76755ff559794cf44",
+        "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4",
+        "scripts/da_publication_scene.py": "ea88919ff5345bd43cd290e787dc5cb0e882e4ff1d471aa9ed415216f40deb95",
+        "scripts/da_publication_scheduler.py": "b52e2617d4e9d30c3f16c2640f3f5ba098d4d6074b1c174cd014ca6d2c5f8151",
+        "scripts/preflight_da_hap_lite_q4.py": "d87ac225d70707c63510db806d173843e5747006fc3f02dda502a8fbd6fbc49e",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/config.json": "a045bc3bb52305814de39bd95f0e326cf86fc54672115372034754fc48a12742",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/config.json": "70b0f076c7acaa205c28e9669c7f09d5c01b291490aabceeec015b84122e9d42",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/config.json": "e39e3484ab51b3ce634187459257d62490d6320a01a01afe5742255708269c17",
+        "experiments/da/appearance/20261126_podp_q_per_group_s42/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s43/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc",
+        "experiments/da/appearance/20261126_podp_q_per_group_s44/scripts/run_scene.py": "28c2d6b8be2fc751b1d032f798e5c75336bdafae93b74e6a0b684be1f41bcabc"
+      },
+      "auc_percent": 62.37930137817457,
+      "eer": 0.37289156626506026,
+      "frames": 2633,
+      "positive_frames": 973,
+      "train_loss": 0.12791200945290124,
+      "checkpoint": "ckpt/vehicle_final.pth",
+      "checkpoint_sha256": "9528b7345bf5acb78e6dd835ab68fcab55aef5d664441133c020c611b4553aad",
+      "elapsed_s": 890.9639451359399,
+      "finished_at": "20261126T153633Z"
+    }
+  },
+  "macro_auc_percent": 84.27783912102036,
+  "macro_eer": 0.1960556069978632,
+  "match": "publication_match"
+}
