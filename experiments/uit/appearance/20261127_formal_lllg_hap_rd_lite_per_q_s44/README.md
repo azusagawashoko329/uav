@@ -23,7 +23,7 @@
 
 训练入口为 `scripts/uit_hap_rd_lite_per_q_runner.py`，模型入口为 `model/hap_lllg_per_q.py`，调度入口为 `scripts/uit_hap_rd_lite_per_q_scheduler.py`。preflight 必须确认实际 guard 为 `q_shape=[4,2,3]`、`q_shared_across_groups=false`、参数量 3,761,240，并检查 forward/backward、独立初始化、更新后正交性和 PLDD 测试入口。
 
-当前状态为 planned。先提交计划和 preflight，再绑定精确 source_commit，使用双卡 UUID 动态队列脱离会话运行。
+状态：completed。45 epoch 与 51 个测试视频完成；全局 AUC **75.6609%**，EER **0.321348**。先通过 per-Q preflight，再以双卡 UUID 动态队列脱离会话运行。
 
 ## 限制
 

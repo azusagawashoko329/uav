@@ -213,9 +213,9 @@
 | [20261120_formal_lllg_hap_rd_lite_s42](uit/appearance/20261120_formal_lllg_hap_rd_lite_s42/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_lite_s43](uit/appearance/20261120_formal_lllg_hap_rd_lite_s43/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_lite_s44](uit/appearance/20261120_formal_lllg_hap_rd_lite_s44/README.md) | `completed` | 未找到 | 1 | 7 |
-| [20261127_formal_lllg_hap_rd_lite_per_q_s42](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261127_formal_lllg_hap_rd_lite_per_q_s43](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/README.md) | `planned` | 未找到 | 1 | 0 |
-| [20261127_formal_lllg_hap_rd_lite_per_q_s44](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/README.md) | `planned` | 未找到 | 1 | 0 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s42](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/README.md) | `completed` | [results/summary.md](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/results/summary.md) | 1 | 7 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s43](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/README.md) | `completed` | [results/summary.md](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/results/summary.md) | 1 | 7 |
+| [20261127_formal_lllg_hap_rd_lite_per_q_s44](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/README.md) | `completed` | [results/summary.md](uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/results/summary.md) | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_s42](uit/appearance/20261120_formal_lllg_hap_rd_s42/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_s43](uit/appearance/20261120_formal_lllg_hap_rd_s43/README.md) | `completed` | 未找到 | 1 | 7 |
 | [20261120_formal_lllg_hap_rd_s44](uit/appearance/20261120_formal_lllg_hap_rd_s44/README.md) | `completed` | 未找到 | 1 | 7 |

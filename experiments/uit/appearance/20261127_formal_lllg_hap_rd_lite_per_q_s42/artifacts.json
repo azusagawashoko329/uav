@@ -9,8 +9,8 @@
         "config.json"
       ],
       "status": "present",
-      "size_bytes": 2392,
-      "sha256": "adb5ccab67deeb225102d1d85bd565b66975cdffa60cc40bbd4f4695b2471180",
+      "size_bytes": 2437,
+      "sha256": "5aee83abd4da06edd965cdbdd45b84de9c18f9d843b04ea8b18f8bf0b5c8d65b",
       "storage": "git"
     },
     {
@@ -45,8 +45,8 @@
         "config.json"
       ],
       "status": "present",
-      "size_bytes": 727,
-      "sha256": "12c2d09c47f5264878b485fcdee346f21181fa493f0e9aa75b84b91c4248515b",
+      "size_bytes": 2052,
+      "sha256": "915b952430b21383667d7c858411ca47bc7e7760bddff20bd21061477f48eea5",
       "storage": "git"
     },
     {
@@ -63,14 +63,14 @@
     },
     {
       "path": "run_plan.json",
-      "producer_script": "scripts/prepare_uit_hap_rd_lite_per_q.py",
-      "run_id": "planning",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_scheduler.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
       "inputs": [
         "config.json"
       ],
       "status": "present",
       "size_bytes": 623,
-      "sha256": "2b4eec6a09f7b7ec856dc98c787c65725d22c96a721668cd79825b176236644a",
+      "sha256": "370a8f765458eb4a442defedde2844f02469f0a4aeaa08deba2eb7d75f87c00c",
       "storage": "git"
     },
     {
@@ -83,6 +83,212 @@
       "status": "present",
       "size_bytes": 7196,
       "sha256": "34aa504163e04d4f681a466c5c7e71ac613bcf855db5c9533dbd217494b1cb05",
+      "storage": "git"
+    },
+    {
+      "path": "logs/run.log",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 9786,
+      "sha256": "fb42bb6585617777438464dbd1f2cc2da489f35d23a3f05b643e574d252570f6",
+      "storage": "git"
+    },
+    {
+      "path": "results/eval_status.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 126,
+      "sha256": "5d15b701f873cc4ec79e78e5da82e16ea885c2f7456b0924d61030b4c4fd46f4",
+      "storage": "git"
+    },
+    {
+      "path": "results/matched_scores.csv",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 6768677,
+      "sha256": "71f2f321eb89fd7fc7b6bb8756d67d25c5714f65076b9ee650d54fbf6bcf844a",
+      "storage": "git"
+    },
+    {
+      "path": "results/status.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 97,
+      "sha256": "df6b4f7465a9daf548b6f2757e9dadf1017b8576420bea0c445ebd807c3d4e71",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1382,
+      "sha256": "888c99e3009b1deb94ffb789821d47fcd846d0b629c531a686eabf287a07a3e0",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 115,
+      "sha256": "78c4450e999257a4ead419343f99b162aabfe9c9846b5ea4f95a23a3d8a34069",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 3869,
+      "sha256": "0c6d1b4c1b93efa4e399e8dad5c45fe7ae2c423637e8b5161e29552cfdef7fff",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "7c9d912b7fa93d387af9a29f209d69863601ef204c35945d6e56ca424eaccb3f",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "34cb678743a7bfa71951e7ef9770844b2d26d9cf44785adef010ec36fd4ba62b",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "ee7e200e49bb229fe1cd2f838c08493239c6d9424f3fd52953a5734e58ee778e",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch40.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "3910fb2fa07783c24466e24e382c00c2a4ce8e81789fc00b84aa909eadf18ac5",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch45.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "fed61adced195e65248f1171b0e34d260f8b9e577e026f1ed2645f627adca7b8",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079526,
+      "sha256": "641eda2a12acf8022e5730e7de6c07d8a6beaed16cd3c4bf3e819d8fe4d2e8b4",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_resume.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 45281705,
+      "sha256": "cfb1ec32f641cbce1017ae5da90eeba846cd85ea0178f113f0c7a7115a97d778",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "logs/scheduler_20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44.jsonl",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_scheduler.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 6542,
+      "sha256": "d4b6bf4edf07aca990c6d2c6a996caed632b085977471604c324db6dcc4a4f8d",
+      "storage": "git"
+    },
+    {
+      "path": "results/compare_shared_q.json",
+      "producer_script": "scripts/compare_uit_shared_q.py",
+      "run_id": "comparison",
+      "inputs": [
+        "config.json",
+        "results/uit.json"
+      ],
+      "status": "present",
+      "size_bytes": 1684,
+      "sha256": "87447f9cfdab2a9c50784973404459d75376d6ebd9e420d3d2b65aac51168303",
+      "storage": "git"
+    },
+    {
+      "path": "results/compare_shared_q.md",
+      "producer_script": "scripts/compare_uit_shared_q.py",
+      "run_id": "comparison",
+      "inputs": [
+        "config.json",
+        "results/uit.json"
+      ],
+      "status": "present",
+      "size_bytes": 906,
+      "sha256": "8c30bb9050a87526c9155fc26dcf347e7798a3ce654590e886bfa2ef11a03265",
       "storage": "git"
     }
   ]

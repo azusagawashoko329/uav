@@ -1,0 +1,80 @@
+{
+  "dataset": "UIT-ADrone",
+  "variant": "hap_rd_lite_per_q",
+  "seed": 42,
+  "auc_percent": 75.62148555055845,
+  "eer": 0.3220545977011494,
+  "frames": 147005,
+  "match": "pldd_match top5 patch cosine, four groups alpha0.5; training=batch mean, test=frame score",
+  "guard": {
+    "label": "HAP-RD-Lite-Per-Q",
+    "student_width": 192,
+    "pdfb_hidden": 128,
+    "podp": true,
+    "q_groups": 4,
+    "parameters": 3761240,
+    "teacher_taps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "block_order": "LLLG",
+    "student_blocks": 4,
+    "ffn": "gate",
+    "ffn_hidden_ratio": 2,
+    "attention_heads": 8,
+    "reconstruction_heads": 12,
+    "teacher_width": 768,
+    "code_dim": 64,
+    "tap_norm": true,
+    "patches": 256,
+    "topk": 5,
+    "alpha": 0.5,
+    "variant": "hap_rd_lite_per_q",
+    "observed_block_types": [
+      "GLMB",
+      "GLMB",
+      "GLMB",
+      "GGMB"
+    ],
+    "routes": {
+      "0": [
+        9,
+        10,
+        11
+      ],
+      "1": [
+        6,
+        7,
+        8
+      ],
+      "2": [
+        3,
+        4,
+        5
+      ],
+      "3": [
+        0,
+        1,
+        2
+      ]
+    },
+    "q_shape": [
+      4,
+      2,
+      3
+    ],
+    "q_shared_across_groups": false,
+    "q_init": "seeded_random_orthonormal",
+    "trainable_parameters": 3761240
+  }
+}

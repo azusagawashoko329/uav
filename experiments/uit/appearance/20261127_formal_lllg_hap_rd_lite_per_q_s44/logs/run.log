@@ -1,0 +1,99 @@
+{"experiment_id": "20261127_formal_lllg_hap_rd_lite_per_q_s44", "dataset": "UIT-ADrone", "variant": "hap_rd_lite_per_q", "seed": 44, "epochs": 45, "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44", "source_commit": "66380246fbe7c8975ef460204959f6414bf443ed", "guard": {"label": "HAP-RD-Lite-Per-Q", "student_width": 192, "pdfb_hidden": 128, "podp": true, "q_groups": 4, "parameters": 3761240, "teacher_taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "block_order": "LLLG", "student_blocks": 4, "ffn": "gate", "ffn_hidden_ratio": 2, "attention_heads": 8, "reconstruction_heads": 12, "teacher_width": 768, "code_dim": 64, "tap_norm": true, "patches": 256, "topk": 5, "alpha": 0.5, "variant": "hap_rd_lite_per_q", "observed_block_types": ["GLMB", "GLMB", "GLMB", "GGMB"], "routes": {"0": [9, 10, 11], "1": [6, 7, 8], "2": [3, 4, 5], "3": [0, 1, 2]}, "q_shape": [4, 2, 3], "q_shared_across_groups": false, "q_init": "seeded_random_orthonormal", "trainable_parameters": 3761240}, "train_videos": 41, "train_frames": 59186, "test_videos": 51, "test_frames": 147005, "positive_frames": 63485, "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213", "official_overlap_retained": true, "code_hashes": {"model/hap_lllg_per_q.py": "a53a3e2535118903fc730ef6d9bbb28d0eb021f5b137f98f889d035b43a0592a", "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4", "scripts/uit_hap_rd_lite_per_q_runner.py": "5541138d5bd8f6a972c308f23a754b58fac4300d73e34e7061036572e51d818b", "scripts/uit_hap_rd_lite_per_q_scheduler.py": "a7bfdd7a72b178c631cda8132aeb9f7d825b1ea00fe1ba015b3d260965a14042", "scripts/preflight_uit_hap_rd_lite_per_q.py": "2783c7dc1a499a86d084cca59c1ee1cc55f655e4454cc3dd85c78ae634a65bde", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/config.json": "5f376137e078ad43874214188bac5abfcb48cd781590af318dae5da99a13a2f4", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/config.json": "a2712412de7dde8ad6380a9b781feffaf1787174189a93ce0b102beaf6dd05cd", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/config.json": "f2f937dece02fefbd8e501cd2da1a05a72e19579ad22876eeb041cba4376e0be", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db"}, "teacher_state_sha256": "99a3d670f8ac0849d9d5970bdaeb6cf024e655648559220707128ed3dc34f00c", "match": "pldd_match top5 patch cosine, four groups alpha0.5; training=batch mean, test=frame score", "environment": {"python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]", "torch": "2.1.0+cu121", "cuda": "12.1", "gpu": "NVIDIA RTX A6000"}, "kind": "actual_model_guard", "resumed_epoch": 0}
+{"experiment_id": "20261127_formal_lllg_hap_rd_lite_per_q_s44", "dataset": "UIT-ADrone", "variant": "hap_rd_lite_per_q", "seed": 44, "epochs": 45, "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44", "source_commit": "66380246fbe7c8975ef460204959f6414bf443ed", "guard": {"label": "HAP-RD-Lite-Per-Q", "student_width": 192, "pdfb_hidden": 128, "podp": true, "q_groups": 4, "parameters": 3761240, "teacher_taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "block_order": "LLLG", "student_blocks": 4, "ffn": "gate", "ffn_hidden_ratio": 2, "attention_heads": 8, "reconstruction_heads": 12, "teacher_width": 768, "code_dim": 64, "tap_norm": true, "patches": 256, "topk": 5, "alpha": 0.5, "variant": "hap_rd_lite_per_q", "observed_block_types": ["GLMB", "GLMB", "GLMB", "GGMB"], "routes": {"0": [9, 10, 11], "1": [6, 7, 8], "2": [3, 4, 5], "3": [0, 1, 2]}, "q_shape": [4, 2, 3], "q_shared_across_groups": false, "q_init": "seeded_random_orthonormal", "trainable_parameters": 3761240}, "train_videos": 41, "train_frames": 59186, "test_videos": 51, "test_frames": 147005, "positive_frames": 63485, "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213", "official_overlap_retained": true, "code_hashes": {"model/hap_lllg_per_q.py": "a53a3e2535118903fc730ef6d9bbb28d0eb021f5b137f98f889d035b43a0592a", "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4", "scripts/uit_hap_rd_lite_per_q_runner.py": "5541138d5bd8f6a972c308f23a754b58fac4300d73e34e7061036572e51d818b", "scripts/uit_hap_rd_lite_per_q_scheduler.py": "a7bfdd7a72b178c631cda8132aeb9f7d825b1ea00fe1ba015b3d260965a14042", "scripts/preflight_uit_hap_rd_lite_per_q.py": "2783c7dc1a499a86d084cca59c1ee1cc55f655e4454cc3dd85c78ae634a65bde", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/config.json": "5f376137e078ad43874214188bac5abfcb48cd781590af318dae5da99a13a2f4", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/config.json": "a2712412de7dde8ad6380a9b781feffaf1787174189a93ce0b102beaf6dd05cd", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/config.json": "f2f937dece02fefbd8e501cd2da1a05a72e19579ad22876eeb041cba4376e0be", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db"}, "teacher_state_sha256": "99a3d670f8ac0849d9d5970bdaeb6cf024e655648559220707128ed3dc34f00c", "match": "pldd_match top5 patch cosine, four groups alpha0.5; training=batch mean, test=frame score", "environment": {"python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]", "torch": "2.1.0+cu121", "cuda": "12.1", "gpu": "NVIDIA RTX 5880 Ada Generation"}, "kind": "actual_model_guard", "resumed_epoch": 0}
+epoch=1 loss=0.507103 elapsed_s=2846.8
+epoch=2 loss=0.302137 elapsed_s=5115.6
+epoch=3 loss=0.227785 elapsed_s=6681.9
+epoch=4 loss=0.186198 elapsed_s=7000.7
+epoch=5 loss=0.161482 elapsed_s=7242.9
+epoch=6 loss=0.146531 elapsed_s=7481.1
+epoch=7 loss=0.136875 elapsed_s=7718.1
+epoch=8 loss=0.128794 elapsed_s=7954.8
+epoch=9 loss=0.121209 elapsed_s=8192.3
+epoch=10 loss=0.114334 elapsed_s=8430.9
+epoch=11 loss=0.108516 elapsed_s=8669.5
+epoch=12 loss=0.103882 elapsed_s=8908.0
+epoch=13 loss=0.100309 elapsed_s=9145.5
+epoch=14 loss=0.097575 elapsed_s=9382.3
+epoch=15 loss=0.095507 elapsed_s=9619.3
+epoch=16 loss=0.093934 elapsed_s=9857.0
+epoch=17 loss=0.092707 elapsed_s=10094.9
+epoch=18 loss=0.091729 elapsed_s=10332.2
+epoch=19 loss=0.090912 elapsed_s=10570.0
+epoch=20 loss=0.090237 elapsed_s=10808.5
+epoch=21 loss=0.089664 elapsed_s=11047.2
+epoch=22 loss=0.089158 elapsed_s=11285.0
+epoch=23 loss=0.088708 elapsed_s=11523.2
+epoch=24 loss=0.088313 elapsed_s=11761.8
+epoch=25 loss=0.087946 elapsed_s=11999.3
+epoch=26 loss=0.087621 elapsed_s=12236.3
+epoch=27 loss=0.087315 elapsed_s=12472.8
+epoch=28 loss=0.087035 elapsed_s=12709.8
+epoch=29 loss=0.086761 elapsed_s=12947.2
+epoch=30 loss=0.086513 elapsed_s=13185.1
+epoch=31 loss=0.086281 elapsed_s=13423.3
+epoch=32 loss=0.086057 elapsed_s=13661.7
+epoch=33 loss=0.085850 elapsed_s=13899.9
+epoch=34 loss=0.085649 elapsed_s=14138.4
+epoch=35 loss=0.085466 elapsed_s=14376.7
+epoch=36 loss=0.085297 elapsed_s=14615.6
+epoch=37 loss=0.085139 elapsed_s=14854.6
+epoch=38 loss=0.084992 elapsed_s=15093.5
+epoch=39 loss=0.084866 elapsed_s=15332.5
+epoch=40 loss=0.084754 elapsed_s=15571.5
+epoch=41 loss=0.084650 elapsed_s=15808.7
+epoch=42 loss=0.084577 elapsed_s=16047.1
+epoch=43 loss=0.084513 elapsed_s=16286.1
+epoch=44 loss=0.084470 elapsed_s=16525.3
+epoch=45 loss=0.084443 elapsed_s=16765.2
+eval_video=1/51 frames=2087
+eval_video=2/51 frames=4440
+eval_video=3/51 frames=8778
+eval_video=4/51 frames=11059
+eval_video=5/51 frames=14198
+eval_video=6/51 frames=16455
+eval_video=7/51 frames=19281
+eval_video=8/51 frames=20461
+eval_video=9/51 frames=22367
+eval_video=10/51 frames=22477
+eval_video=11/51 frames=25007
+eval_video=12/51 frames=26615
+eval_video=13/51 frames=28967
+eval_video=14/51 frames=30551
+eval_video=15/51 frames=32357
+eval_video=16/51 frames=36832
+eval_video=17/51 frames=39664
+eval_video=18/51 frames=43484
+eval_video=19/51 frames=45947
+eval_video=20/51 frames=48736
+eval_video=21/51 frames=54345
+eval_video=22/51 frames=55310
+eval_video=23/51 frames=55991
+eval_video=24/51 frames=61600
+eval_video=25/51 frames=62315
+eval_video=26/51 frames=67924
+eval_video=27/51 frames=68454
+eval_video=28/51 frames=74043
+eval_video=29/51 frames=79631
+eval_video=30/51 frames=85240
+eval_video=31/51 frames=85631
+eval_video=32/51 frames=91240
+eval_video=33/51 frames=91740
+eval_video=34/51 frames=97349
+eval_video=35/51 frames=99173
+eval_video=36/51 frames=103061
+eval_video=37/51 frames=105458
+eval_video=38/51 frames=109754
+eval_video=39/51 frames=115363
+eval_video=40/51 frames=116239
+eval_video=41/51 frames=116961
+eval_video=42/51 frames=119805
+eval_video=43/51 frames=124445
+eval_video=44/51 frames=127305
+eval_video=45/51 frames=129185
+eval_video=46/51 frames=129229
+eval_video=47/51 frames=131449
+eval_video=48/51 frames=134179
+eval_video=49/51 frames=139788
+eval_video=50/51 frames=144847
+eval_video=51/51 frames=147005
+{"experiment_id": "20261127_formal_lllg_hap_rd_lite_per_q_s44", "dataset": "UIT-ADrone", "variant": "hap_rd_lite_per_q", "seed": 44, "epochs": 45, "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44", "source_commit": "66380246fbe7c8975ef460204959f6414bf443ed", "guard": {"label": "HAP-RD-Lite-Per-Q", "student_width": 192, "pdfb_hidden": 128, "podp": true, "q_groups": 4, "parameters": 3761240, "teacher_taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "block_order": "LLLG", "student_blocks": 4, "ffn": "gate", "ffn_hidden_ratio": 2, "attention_heads": 8, "reconstruction_heads": 12, "teacher_width": 768, "code_dim": 64, "tap_norm": true, "patches": 256, "topk": 5, "alpha": 0.5, "variant": "hap_rd_lite_per_q", "observed_block_types": ["GLMB", "GLMB", "GLMB", "GGMB"], "routes": {"0": [9, 10, 11], "1": [6, 7, 8], "2": [3, 4, 5], "3": [0, 1, 2]}, "q_shape": [4, 2, 3], "q_shared_across_groups": false, "q_init": "seeded_random_orthonormal", "trainable_parameters": 3761240}, "train_videos": 41, "train_frames": 59186, "test_videos": 51, "test_frames": 147005, "positive_frames": 63485, "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213", "official_overlap_retained": true, "code_hashes": {"model/hap_lllg_per_q.py": "a53a3e2535118903fc730ef6d9bbb28d0eb021f5b137f98f889d035b43a0592a", "model/teacher.py": "1db28d5d41c39ea107ac4f40e52dea6715a25297cdedf60abe2adf496515bdb4", "scripts/uit_hap_rd_lite_per_q_runner.py": "5541138d5bd8f6a972c308f23a754b58fac4300d73e34e7061036572e51d818b", "scripts/uit_hap_rd_lite_per_q_scheduler.py": "a7bfdd7a72b178c631cda8132aeb9f7d825b1ea00fe1ba015b3d260965a14042", "scripts/preflight_uit_hap_rd_lite_per_q.py": "2783c7dc1a499a86d084cca59c1ee1cc55f655e4454cc3dd85c78ae634a65bde", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/config.json": "5f376137e078ad43874214188bac5abfcb48cd781590af318dae5da99a13a2f4", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/config.json": "a2712412de7dde8ad6380a9b781feffaf1787174189a93ce0b102beaf6dd05cd", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s43/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/config.json": "f2f937dece02fefbd8e501cd2da1a05a72e19579ad22876eeb041cba4376e0be", "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44/scripts/run_uit.py": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db"}, "teacher_state_sha256": "99a3d670f8ac0849d9d5970bdaeb6cf024e655648559220707128ed3dc34f00c", "match": "pldd_match top5 patch cosine, four groups alpha0.5; training=batch mean, test=frame score", "environment": {"python": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]", "torch": "2.1.0+cu121", "cuda": "12.1", "gpu": "NVIDIA RTX 5880 Ada Generation"}, "auc_percent": 75.66089532417377, "eer": 0.32134818007662835, "frames": 147005, "train_loss": 0.08444283111625678, "checkpoint": "ckpt/uit_final.pth", "checkpoint_sha256": "f898ba25fa0b8d18b36fb2a895bee47d1acd20dc2d3cbf97944bf693ad67d070", "elapsed_s": 23573.69840919599, "finished_at": "20261127T085938Z"}

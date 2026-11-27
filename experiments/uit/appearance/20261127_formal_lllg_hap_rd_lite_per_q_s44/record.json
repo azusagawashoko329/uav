@@ -4,13 +4,47 @@
   "path": "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s44",
   "dataset": "uit",
   "family": "appearance",
-  "status": "planned",
-  "source_commit": "4a734d25bd790b4e167f0c612bdcdd1927dedc7a",
+  "status": "completed",
+  "source_commit": "66380246fbe7c8975ef460204959f6414bf443ed",
   "variant": "hap_rd_lite_per_q",
   "scripts": [
     "scripts/run_uit.py"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "source_commit": "66380246fbe7c8975ef460204959f6414bf443ed",
+      "seed": 44,
+      "status": "completed",
+      "started_at": "20261126T180144Z",
+      "ended_at": "20261127T085940Z",
+      "command": [
+        "/home/lyx/miniconda3/envs/DMAD/bin/python",
+        "scripts/uit_hap_rd_lite_per_q_scheduler.py",
+        "--manifest",
+        "experiments/uit/appearance/20261127_formal_lllg_hap_rd_lite_per_q_s42/run_plan.json"
+      ],
+      "log": "logs/scheduler_20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44.jsonl",
+      "data_root": "/data1/data8tb/liangyuxuan/dataset/UIT-ADrone",
+      "split_fingerprint": "5e44b446917c7ab624da1a2f2224b0bf4cc235cdd34af2328d418c80f3da7213",
+      "environment": {
+        "torch": "2.1.0+cu121",
+        "gpus": {
+          "0": {
+            "uuid": "GPU-35e64f7f-e95e-d3f8-95f0-01ec8531c08f",
+            "name": "NVIDIA RTX A6000"
+          },
+          "1": {
+            "uuid": "GPU-3ae8a423-c7fb-db6c-8c0a-f7da0c5cc8f6",
+            "name": "NVIDIA RTX 5880 Ada Generation"
+          }
+        }
+      },
+      "checkpoint_sha256": "f898ba25fa0b8d18b36fb2a895bee47d1acd20dc2d3cbf97944bf693ad67d070",
+      "task_started_at": "20261127T022616Z",
+      "task_log": "logs/run.log"
+    }
+  ],
   "result_summary": "results/summary.md",
   "limitations": [
     "Official UIT train/test overlap retained; no deduplication.",

@@ -9,8 +9,8 @@
         "config.json"
       ],
       "status": "present",
-      "size_bytes": 2392,
-      "sha256": "75909fcfcd2616ce14ab938db379a469608a27db955d7ee877b07be257e7075a",
+      "size_bytes": 2437,
+      "sha256": "b6f69c45951870530d98f063ea26889916839e2e6193603ee3dfdad88ef781fb",
       "storage": "git"
     },
     {
@@ -45,8 +45,8 @@
         "config.json"
       ],
       "status": "present",
-      "size_bytes": 727,
-      "sha256": "7b6522051051de324e3f635d8fb92bc01483c5a32219161be0f74a49fef81fbf",
+      "size_bytes": 2052,
+      "sha256": "47d0e3f3d9ed28e99f666377f0c04832268627f2b4d19d1bc1e248ed83c5c696",
       "storage": "git"
     },
     {
@@ -59,6 +59,186 @@
       "status": "present",
       "size_bytes": 262,
       "sha256": "f2b9de3dc28b397f24e64d2c8bb431303a91ea5cf6a42dc89af3e47a6ed618db",
+      "storage": "git"
+    },
+    {
+      "path": "logs/run.log",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 13754,
+      "sha256": "1d9e60ec5bce980e66af2433839ea194b51d7b0f6b5b087ce9e484bb2d6c3597",
+      "storage": "git"
+    },
+    {
+      "path": "results/eval_status.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 126,
+      "sha256": "c0c28a57cd8cf475aac15289cdae9f00c902ac588e9acd15f7176e81dfb18399",
+      "storage": "git"
+    },
+    {
+      "path": "results/matched_scores.csv",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 6768438,
+      "sha256": "72f9a3346d95b104431d5899d3e13d047f9dc22db0645415a0c744aa69111193",
+      "storage": "git"
+    },
+    {
+      "path": "results/status.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 97,
+      "sha256": "59eaaa1542d08634f9a70a8f367334c836ab16a01519fe5b6e03039a34c1f247",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 1382,
+      "sha256": "460043929c5b24ef5cb381cdbd2f3d81f681a3d25117fb4bfa67c3a3fef5ab2c",
+      "storage": "git"
+    },
+    {
+      "path": "results/summary.md",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 115,
+      "sha256": "f9410421de5c48d561b9015aa7c75d4004dce3105effe08a3679ff75cbbb1a7f",
+      "storage": "git"
+    },
+    {
+      "path": "results/uit.json",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 3870,
+      "sha256": "5203ea7310dd1b4daa81e0518c57af2efb26784047cb2f4ea9cd23cd98f6c673",
+      "storage": "git"
+    },
+    {
+      "path": "ckpt/uit_epoch10.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "f6cc717f8e9f7183e54961ec41325acca9fa182cc06c44126046cdf313bde6b3",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch20.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "3d61c64815538d59af735199dac609db96b474713ff0e3b7e0b760294d042066",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch30.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "019de0bc856d65cda022f57a9e6678a6f8bd6a6f9ebbae9c7ef3c10f1ccd84e1",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch40.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "f66935047ca70f0327ee91a2e62e1afc6741de39e2084882d4f104c14d5196fb",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_epoch45.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079740,
+      "sha256": "6d3e1b4f70da3dfd7e926db2710685d0dd47ae0ffce30e3fb22e69249a355c98",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_final.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 15079526,
+      "sha256": "1bb60184b7331a5adc5d52dd5db8612829a2b50cbe70a4c28ffa85516fb5a79b",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "ckpt/uit_resume.pth",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_runner.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 45281705,
+      "sha256": "b49017b24cf143076fe35d246c63bd14a612167533e892851d03a0280101a55a",
+      "storage": "local ignored; no external backup"
+    },
+    {
+      "path": "logs/scheduler_20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44.jsonl",
+      "producer_script": "scripts/uit_hap_rd_lite_per_q_scheduler.py",
+      "run_id": "20261126T175952Z_uit_hap_rd_lite_per_q_s42_s43_s44",
+      "inputs": [
+        "config.json"
+      ],
+      "status": "present",
+      "size_bytes": 6542,
+      "sha256": "d4b6bf4edf07aca990c6d2c6a996caed632b085977471604c324db6dcc4a4f8d",
       "storage": "git"
     }
   ]
