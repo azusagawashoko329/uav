@@ -51,11 +51,11 @@ Lite图从右向左为L→L→L→G，**顺序与已确认LLLG一致**。以下�
 
 \[
  X_{b,p,g}\in\mathbb R^{3\times768},\quad
- Q\in\mathbb R^{2\times3},\quad
- Y_{b,p,g}=QX_{b,p,g}\in\mathbb R^{2\times768},\quad QQ^\top=I_2.
+ Q_g\in\mathbb R^{2\times3},\quad
+ Y_{b,p,g}=Q_gX_{b,p,g}\in\mathbb R^{2\times768},\quad Q_gQ_g^\top=I_2.
 \]
 
-Q由随机正交初始化的可学习参数在前向中Gram-Schmidt正交化得到；同一个Q在四组、各patch和各通道之间共享。无需也不能要求`Q^T Q=I_3`。每tap先LayerNorm，再PODP。
+当前定义使用四个独立的可学习矩阵 `Q_g`，每个按 seed 随机正交初始化，并在前向中分别用 Gram-Schmidt 保持两行正交。每个 `Q_g` 只在对应组的各patch和通道之间共享，四组之间不共享。无需也不能要求 `Q_g^T Q_g=I_3`。每tap先LayerNorm，再PODP。旧共享-Q图示若继续用于历史结果，需明确标注为 shared-Q historical run。
 
 - PODP后四组×两模式=8个特征，`8×768=6144`、`6144→128→64`的瓶颈维度正确。12个原始教师层仍是蒸馏目标，不能把损失改成8个模式的对齐。
 - 统一标题大小写为 **HAP-RD-Lite**。

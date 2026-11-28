@@ -1,5 +1,7 @@
 # HAP-RD-Lite / UIT-ADrone / seed44
 
+> **历史口径说明**：本目录记录的是 2026-11-20 的 shared-Q historical run。四组共用一个可学习的 `2×3 Q`，每个 seed 为随机正交初始化，参数量为 3,761,222。它不代表当前论文口径的四组独立 `Q_g`，当前定义和 per-Q 结果见 [Q定义迁移说明](../../../../docs/HAP_RD_LITE_Q_DEFINITION.md)。
+
 新训练的正式LLLG+GATE配置。数据集为UIT-ADrone；不是DA，也不复用历史GLLL V2/V5结果或权重。
 
 学生固定3个GLMB后接1个GGMB，gated FFN hidden ratio2；student width=192，PDFB hidden=128，code_dim64，12个独立重建头。可训练参数3,761,222，不含冻结教师。四stage的三个头分别重建teacher9–11、6–8、3–5、0–2。

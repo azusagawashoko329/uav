@@ -19,7 +19,7 @@ DA七场景各自从头训练30 epoch，输入256×256，batch64，workers8，Ad
 
 ## 运行状态
 
-当前为planned。先通过per-group Q的forward/backward、独立初始化和更新后正交性preflight，再记录40位`source_commit`并启动脱离会话调度。日志、JSON、CSV和报告留在本目录，权重仅保存在被忽略的`ckpt/`并在`artifacts.json`登记。
+状态为 `completed`。三种子均已通过 per-group Q 的 forward/backward、独立初始化、更新后正交性和测试入口核验，并以记录中的精确 `source_commit` 完成脱离会话训练。日志、JSON、CSV和报告留在本目录，权重仅保存在被忽略的 `ckpt/` 并在 `artifacts.json` 登记。三种子配对比较与历史 shared-Q 边界见 [Q定义迁移说明](../../../../docs/HAP_RD_LITE_Q_DEFINITION.md)。
 
 ## 限制
 

@@ -105,9 +105,9 @@
 | [20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42](da/appearance/20261103_variant_matrix_v3_rd_s4_t12_gl192_h512_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42](da/appearance/20261103_variant_matrix_v4_rd_s4_t12_gl192_h128_s42/README.md) | `completed` | 未找到 | 1 |  |
 | [20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42](da/appearance/20261103_variant_matrix_v5_rd_s4_t12_gl192_h128_qr2_s42/README.md) | `completed` | 未找到 | 1 |  |
-| [20261126_podp_q_per_group_s42](da/appearance/20261126_podp_q_per_group_s42/README.md) | `planned` | 未找到 | 1 |  |
-| [20261126_podp_q_per_group_s43](da/appearance/20261126_podp_q_per_group_s43/README.md) | `planned` | 未找到 | 1 |  |
-| [20261126_podp_q_per_group_s44](da/appearance/20261126_podp_q_per_group_s44/README.md) | `planned` | 未找到 | 1 |  |
+| [20261126_podp_q_per_group_s42](da/appearance/20261126_podp_q_per_group_s42/README.md) | `completed` | [results/summary.md](da/appearance/20261126_podp_q_per_group_s42/results/summary.md) | 1 |  |
+| [20261126_podp_q_per_group_s43](da/appearance/20261126_podp_q_per_group_s43/README.md) | `completed` | [results/summary.md](da/appearance/20261126_podp_q_per_group_s43/results/summary.md) | 1 |  |
+| [20261126_podp_q_per_group_s44](da/appearance/20261126_podp_q_per_group_s44/README.md) | `completed` | [results/summary.md](da/appearance/20261126_podp_q_per_group_s44/results/summary.md) | 1 |  |
 | [ablations](da/appearance/ablations/RECORD.md) | `unknown` | 未找到 | 1 | 0 |
 | [202606_code_dim16_all_scenes](da/appearance/codedim/202606_code_dim16_all_scenes/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/202606_code_dim16_all_scenes/results.csv) | 1 | 7 |
 | [cd128](da/appearance/codedim/cd128/RECORD.md) | `completed` | [results.csv](da/appearance/codedim/cd128/results.csv) | 1 | 1 |

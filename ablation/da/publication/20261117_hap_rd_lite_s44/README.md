@@ -1,5 +1,7 @@
 # HAP-RD-Lite / DA / seed44
 
+> **历史口径说明**：本目录记录的是 2026-11-17 的 shared-Q historical run。四组共用一个可学习的 `2×3 Q`，每个 seed 为随机正交初始化，参数量为 3,761,222。它不代表当前论文口径的四组独立 `Q_g`，当前定义和 per-Q 结果见 [Q定义迁移说明](../../../../docs/HAP_RD_LITE_Q_DEFINITION.md)。
+
 唯一配置：{"label": "HAP-RD-Lite", "depth": 4, "taps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "width": 192, "hidden": 128, "order": "LLLG", "ffn": "gate", "rank2": true, "alpha": 0.5, "params": 3761222}。
 
 数据为DA七场景，每场景独立从头初始化并训练30 epoch，batch64，256×256，AdamW(max_lr=5e-4, weight_decay=0.05) + OneCycleLR；teacher冻结，tap_norm=True，code_dim=64。

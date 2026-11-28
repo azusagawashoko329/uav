@@ -1,11 +1,11 @@
-# UIT-ADrone：正式 HAP-RD / HAP-RD-Lite 三种子汇总
+# UIT-ADrone：正式 HAP-RD / HAP-RD-Lite 三种子汇总（Lite 为历史 shared-Q）
 
-**本轮六个独立实验全部完成，均为LLLG+GATE、45 epoch、训练匹配的Top-5/四组α=0.5 PLDD。** HAP-RD的全局AUC为81.8354±0.0759%，Lite为75.6308±0.0529%。Lite在三个种子中都明显降低AUC并提高EER，体现较大的压缩代价，不能描述为无损轻量化。
+**本轮六个独立实验全部完成，均为LLLG+GATE、45 epoch、训练匹配的Top-5/四组α=0.5 PLDD。** 本汇总中的 HAP-RD-Lite 严格使用四组共享的单个 Q，属于 shared-Q historical run。HAP-RD的全局AUC为81.8354±0.0759%，Lite为75.6308±0.0529%。Lite在三个种子中都明显降低AUC并提高EER，体现较大的压缩代价，不能描述为无损轻量化。四组独立 `Q_g` 的当前结果见 [Q定义迁移说明](../../../../../docs/HAP_RD_LITE_Q_DEFINITION.md)。
 
 ## 模型与评价口径
 
 - 两者均为独立新写入口`model/hap_lllg.py`、`scripts/uit_hap_lllg_runner.py`；实际学生顺序是GLMB→GLMB→GLMB→GGMB。12个独立头按四stage依次重建teacher9–11、6–8、3–5、0–2。
-- HAP-RD：width768、PDFB hidden512、无PODP，30,248,000个可训练参数；Lite：width192、hidden128、共享可学习2×3 PODP Q，3,761,222个可训练参数。冻结DINOv3 ViT-B/16不计入参数量。
+- HAP-RD：width768、PDFB hidden512、无PODP，30,248,000个可训练参数；Lite（shared-Q historical）：width192、hidden128、四组共享的可学习2×3 PODP Q，3,761,222个可训练参数。冻结DINOv3 ViT-B/16不计入参数量。
 - teacher taps0..11，输入256×256，共256个patch；逐patch cosine distance取最大5个平均，四组三层各算0.5mean+0.5max再平均。训练取同一`pldd_match`的batch mean，测试直接使用逐帧分数。
 - UIT官方训练集为41个视频/59,186帧；测试51个视频/147,005帧，其中63,485帧为异常。保留历史协议中的官方train/test重叠，不去重。训练45 epoch、batch64、AdamW+OneCycleLR，max_lr=5e-4、weight_decay=0.05。
 - **将所有测试帧拼接后计算一项全局AUC×100和EER**，不是51个视频AUC的宏平均，也不同于DA的七场景独立训练/宏平均。分数越大越异常；EER为0–1比例，取离散ROC的`fpr[argmin(abs(1-tpr-fpr))]`，不插值。
@@ -16,7 +16,7 @@
 | 模型 | 参数M | seed42 AUC | seed43 AUC | seed44 AUC | AUC均值 ± SD | EER均值 ± SD |
 |---|---:|---:|---:|---:|---:|---:|
 | HAP-RD | 30.248000 | 81.7916 | 81.7916 | 81.9231 | 81.8354 ± 0.0759 | 0.256841 ± 0.000939 |
-| HAP-RD-Lite | 3.761222 | 75.6727 | 75.5713 | 75.6484 | 75.6308 ± 0.0529 | 0.322118 ± 0.001076 |
+| HAP-RD-Lite（shared-Q historical） | 3.761222 | 75.6727 | 75.5713 | 75.6484 | 75.6308 ± 0.0529 | 0.322118 ± 0.001076 |
 
 [全精度矩阵CSV](multiseed_matrix.csv)，[机器可读汇总](multiseed_summary.json)。
 

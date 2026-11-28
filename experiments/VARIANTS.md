@@ -6,6 +6,8 @@
 
 用户指定论文名称为 **PT-RD**、**HAP-RD**、**HAP-RD-Lite**；模块命名及三模型配置见 [论文变体命名规范](../docs/PUBLICATION_VARIANTS.md)。HAP-RD系列学生顺序为 **LLLG + gate（LGGD）**。历史V0–V5、`rd_*`结构定义和已完成运行含义保持不变；GLLL版本V2/V5不能直接作为LLLG论文模型的别名。重建头/反向对齐和PODP范围已确认；PT-RD沿用V0四tap瓶颈。本轮为命名定稿，不修改现有默认模型构造入口。
 
+当前论文口径的 HAP-RD-Lite 使用四组独立的可学习 `Q_g`，每个 `Q_g` 为 `2×3`，按 seed 随机正交初始化并在前向逐组正交化。当前可识别入口为 `hap_rd_lite_per_q`，DA 已完成运行使用 `hap_rd_lite_q4`。2026-11-17 的 DA `hap_rd_lite` 和 2026-11-20 的 UIT `hap_rd_lite` 正式运行使用四组共享的单个 `Q`，均保留为 shared-Q historical run，不能并入当前 per-Q 结果。
+
 论文过程消融 **B/C/D/F1/F2** 单独登记为[结构存档版本](../ablation/da/publication/ARCHITECTURE_VERSIONS.md)，不加入正式模型名单，也不覆盖历史V0–V5。
 
 **首批正式六变体矩阵**：`experiments/uit/appearance/20261101_uit_45ep_*_retry2_s42/`，UIT-ADrone，seed42，45 epoch，batch64，AdamW，256×256，冻结 DINOv3 ViT-B/16，`source_commit=532e0e024c1d697d5f45ff1b3aed95487f85fbc1`；六项 `record.json` 均为 `completed`。
@@ -34,7 +36,7 @@
 | `rd_s4_t12_gl768_h512` | V2 | 4block + Global-Local768 | 1 Global + 3 Local | `0..11` | 768 | 512 | — | 30,248,000 |
 | `rd_s4_t12_gl192_h512` | V3 | 4block + Global-Local192 | 1 Global + 3 Local | `0..11` | 192 | 512 | — | 7,718,336 |
 | `rd_s4_t12_gl192_h128` | V4 | GL192 + Dense128 | 1 Global + 3 Local | `0..11` | 192 | 128 | — | 4,154,432 |
-| `rd_s4_t12_gl192_h128_qr2` | V5 | GL192 + Dense128 + Learnable Rank2 Q | 1 Global + 3 Local | `0..11` | 192 | 128 | 2×3 可学习 Q，随机正交初始化 | 3,761,222 |
+| `rd_s4_t12_gl192_h128_qr2` | V5 | GL192 + Dense128 + Learnable Rank2 Q | 1 Global + 3 Local | `0..11` | 192 | 128 | 2×3 可学习共享 Q，随机正交初始化；历史开发变体 | 3,761,222 |
 
 结构细节：
 
